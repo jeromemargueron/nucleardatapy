@@ -1,0 +1,55 @@
+                                          G.Audi  j 29 apr 2004
+
+              masstables/Ame2003/years.dist
+
+    I - Number of references used in Ame2003
+        (Reg. journals - Conf - PrvCom - ...)
+
+    In Ame2003, 3645 references have been considered.
+    Only 2542 of these references have data reported in the tables.
+    The other 1103 appeared in previous Ame publications.
+
+    The considered 3645 references are distributed over the years:
+
+       1934 - 1949 :   19
+       1950 - 1954 :  150
+       1955 - 1959 :  221
+       1960 - 1964 :  358
+       1965 - 1969 :  524
+       1970 - 1974 :  576
+       1975 - 1979 :  457
+       1980 - 1984 :  379
+       1985 - 1989 :  314
+       1990 - 1994 :  306
+       1995 - 1999 :  193
+       2000 - 2003 :  148  * 5/4 = 185
+
+    II - Number of data used in Ame2003
+        (Reg. journals - Conf - PrvCom - ...)
+
+    In Ame2003, 10298 data have been considered.
+    Only 6643 of these references have data reported in the tables.
+    The other 3655 appeared in previous Ame publications.
+
+    The considered 10298 data are distributed over the years:
+
+       1934 - 1949 :   23
+       1950 - 1954 :  204
+       1955 - 1959 :  252
+       1960 - 1964 : 1126
+       1965 - 1969 : 1167
+       1970 - 1974 : 1348
+       1975 - 1979 : 1064
+       1980 - 1984 : 1209
+       1985 - 1989 :  777
+       1990 - 1994 :  883
+       1995 - 1999 :  774
+       2000 - 2003 : 1471  * 5/4 = 1839
+
+    NB: carefull all these numbers are not to be taken for reflecting
+    exactly the reality:
+    - in some cases a ref (like 1934Le01) appear in a comment for a real
+      data, but the comment line was deleted before starting our counting.
+    - some very old references and data therein may have been deleted
+      long time ago and do not appear in these statistics.
+
