@@ -38,7 +38,7 @@ class SetupPheno():
         self.nm_pre = []
         self.sm_pre = []
         #
-        if model.lower() == 'Skyrme':
+        if model.lower() == 'skyrme':
             #
             list_param = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', 'F', \
                'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
@@ -57,17 +57,21 @@ class SetupPheno():
                 self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), unpack = True )
                 self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), unpack = True )
             #
-        elif model.lower() == 'Gogny':
+#        elif model.lower() == 'gogny':
             #
+#            pass
             #
-        elif model.lower() == 'nlrh':
+#        elif model.lower() == 'nlrh':
             #
+#            pass
             #
-        elif model.lower() == 'ddrh':
+#        elif model.lower() == 'ddrh':
             #
+#            pass
             #
-        elif model.lower() == 'ddrhf':
+#        elif model.lower() == 'ddrhf':
             #
+#            pass
             #
 
         self.den_unit = 'fm$^{-3}$'
