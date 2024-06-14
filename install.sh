@@ -25,16 +25,16 @@ rm nucleardatapy
 ln -s nucleardatapy-v$VER nucleardatapy
 
 echo ""
-echo ">> copy nsdatapy toolkit to $LIB folder"
+echo ">> copy nucleardatapy toolkit to $LIB folder"
 cp -R ../nucleardatapy $LIB
 
 echo ""
 echo ">> copy nucleardatapy samples to $SAMPLES/samples/ folder"
-cp -R ../samples/nucleardatapy_samples $SAMPLES/samples/
+cp -R samples/nucleardatapy_samples $SAMPLES/samples/
 
 echo ""
-echo ">> copy nucdatapy plots to $SAMPLES/samples folder"
-cp -R ../samples/nucleardatapy_plots $SAMPLES/samples/
+echo ">> copy nucleardatapy plots to $SAMPLES/samples folder"
+cp -R samples/nucleardatapy_plots $SAMPLES/samples/
 
 
 echo ""
