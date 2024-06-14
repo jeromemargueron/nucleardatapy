@@ -8,6 +8,10 @@ sys.path.insert(0, nucleardatapy_tk)
 import nucleardatapy as nudy
 
 def modelsMicro():
+    """
+    Returns a list with the name of the models available in this toolkit and
+    print them all.
+    """
     models = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
              '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
              '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
@@ -15,10 +19,9 @@ def modelsMicro():
     print('models available in the toolkit:',models)
     return models
 
-
 class SetupMicro():
     """
-    Instantiate the object with microscopic results choosen by the physicist
+    Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.
 
     ...
 
@@ -83,6 +86,20 @@ class SetupMicro():
         self.nm_pre_err = []
         self.sm_pre = []
         self.sm_pre_err = []
+        #self.gap_sm=np.zeros_like( self.den )
+        #self.gap_nm = np.zeros_like( self.den )
+        #self.pre_nm = np.zeros_like( self.den )
+        #self.pre_nm_err = np.zeros_like( self.den )
+        #self.pre_sm = np.zeros_like( self.den )
+        #self.pre_sm_err = np.zeros_like( self.den )
+        #
+        models = modelsMicro()
+        #
+        if model not in models:
+            print('The model name ',model,' is not in the list of models.')
+            print('list of models:',models)
+            print('-- Exit the code --')
+            exit()
         #
         if model.lower() == '1998-var-am-apr':
             #
@@ -97,12 +114,6 @@ class SetupMicro():
             self.sm_kfn = nudy.fermi_gas.kfn( nudy.cst.half * self.nm_den )
             self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
-            #self.gap_sm=np.zeros_like( self.den )
-            #self.gap_nm = np.zeros_like( self.den )
-            #self.pre_nm = np.zeros_like( self.den )
-            #self.pre_nm_err = np.zeros_like( self.den )
-            #self.pre_sm = np.zeros_like( self.den )
-            #self.pre_sm_err = np.zeros_like( self.den )
             #
         elif model.lower() == '2008-afdmc-nm':
             #
@@ -123,7 +134,7 @@ class SetupMicro():
             #
             file_in = os.path.join(nudy.param.path_data,'micro/2008-QMC-NM-AV4.dat')
             if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'Gezerlis & Carlson PRC 81, 025803 (2010)'
+            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.label = 'QMC-AV4-2008'
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -138,7 +149,7 @@ class SetupMicro():
             #
             file_in = os.path.join(nudy.param.path_data,'micro/2008-QMC-NM-swave.dat')
             if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'Gezerlis & Carlson PRC 81, 025803 (2010)'
+            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.label = 'QMC-swave-2008'
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -168,7 +179,7 @@ class SetupMicro():
             #
             file_in = os.path.join(nudy.param.path_data,'micro/2010-NM-Hebeler.dat')
             if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'Kai Hebeler PRL 105, 161102 (2010)'
+            self.ref = 'K. Hebeler, PRL 105, 161102 (2010)'
             self.label = 'Hebeler-2010'
             self.note = "chiral NN forces with SRG and leading 3N forces."
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
@@ -194,7 +205,7 @@ class SetupMicro():
             #
             file_in = os.path.join(nudy.param.path_data,'micro/2014-AFQMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'Bulgac PRL 113, 182503 (2014)'
+            self.ref = 'A. Bulgac PRL 113, 182503 (2014)'
             self.label = 'AFQMC-2014'
             self.note = "write here notes about this EOS."
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
@@ -231,7 +242,6 @@ class SetupMicro():
             e2a_err = np.zeros( (11,35) )
             for i in range(0,11):
                 beta = i/10.0
-                #print('i:',i,beta)
                 if i<10:
                     file_in = os.path.join(nudy.param.path_data,'micro/2016-MBPT-AM/EOS_spec_4_beta_0.'+str(i)+'.txt')
                 if i==10:
@@ -248,20 +258,13 @@ class SetupMicro():
                 e2a[5,i,0:length[i]] = e2a_5
                 e2a[6,i,0:length[i]] = e2a_6
                 e2a[7,i,0:length[i]] = e2a_7
-                #print('den[i]:', den[i])
-                #print('e2a[1,i]:', e2a[1,i])
                 # performs average and compute boundaries
                 e2a_up[i,0:length[i]] = e2a_1
                 e2a_low[i,0:length[i]] = e2a_1
                 for j in range(length[i]):
-                    #if i == 0:
-                    #    print('density:',den[i,j])
                     for k in range(2,8):
-                        #print('e2a:',e2a[k,i,j])
                         if e2a[k,i,j] > e2a_up[i,j]: e2a_up[i,j] = e2a[k,i,j]
                         if e2a[k,i,j] < e2a_low[i,j]: e2a_low[i,j] = e2a[k,i,j]
-                    #print('e2a_up:',e2a_up[i,j])
-                    #print('e2a_low:',e2a_low[i,j])
                     e2a_av[i,j] = 0.5* ( e2a_up[i,j] + e2a_low[i,j] )
                     e2a_err[i,j] = 0.5* ( e2a_up[i,j] - e2a_low[i,j] )
             if nudy.env.verb: print('length:',length[:])
@@ -345,10 +348,10 @@ class SetupMicro():
             self.nm_e2a = self.nm_e2a_n3lo
             self.nm_e2a_err = self.nm_e2a_n3lo_err
             #
-
         self.den_unit = 'fm$^{-3}$'
         self.kfn_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
+        self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
         if nudy.env.verb: print("Exit SetupMicro()")

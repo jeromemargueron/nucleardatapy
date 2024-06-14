@@ -8,7 +8,7 @@ LIB=$HOME/mylib
 
 # Folder where the samples are stored:
 # By default, it can be $LIB, but it is not necessary.
-SAMPLES=$LIB
+SAMPLES=$LIB/nucleardatapy
 
 echo ""
 echo ">> -----------------------------------"
@@ -25,11 +25,15 @@ rm nucleardatapy
 ln -s nucleardatapy-v$VER nucleardatapy
 
 echo ""
-echo ">> copy nucleardatapy toolkit to $LIB folder"
-cp -R ../nucleardatapy $LIB
+echo ">> copy nucleardatapy toolkit to $LIB/nucleardatapy folder"
+mkdir -p $LIB/nucleardatapy
+mkdir -p $LIB/nucleardatapy/nucleardatapy
+cp -R nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
+cp -R data $LIB/nucleardatapy/
 
 echo ""
 echo ">> copy nucleardatapy samples to $SAMPLES/samples/ folder"
+mkdir -p  $SAMPLES/samples
 cp -R samples/nucleardatapy_samples $SAMPLES/samples/
 
 echo ""
@@ -41,6 +45,7 @@ echo ""
 echo ">> You should create the following global variables:"
 echo ">> export NUCLEARDATAPY_TK=$HOME/mylib/nucleardatapy"
 echo ""
-echo ">> To make you life simpler, just copy this last command to one of the following file in your home: .profile, .zprofile, .bashrc, .bashrc_profile."
+echo ">> To make you life simpler, just copy this last command to one of the following file in your home (depending on your OS): .profile, .zprofile, .bashrc, .bashrc_profile."
+echo ""
 
 

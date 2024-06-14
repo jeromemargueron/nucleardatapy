@@ -7,6 +7,31 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nudy
 
+def modelsPheno():
+    """
+    Returns a list with the name of the models available in this toolkit and
+    print them all.
+    """
+    models = [ 'Skyrme' ]
+    print('Phenomenological models available in the toolkit:',models)
+    return models
+
+def paramsPheno( model ):
+    """
+    For a given model given as input, returns a list with the name of the
+    parameterizations available in this toolkit and print them all.
+    """
+    print('For model:',model)
+    if model.lower() == 'skyrme':
+        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', 'F', \
+            'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
+            'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
+            'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
+            'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
+            'UNEDF0', 'UNEDF1']
+        print('Parameters available in the toolkit:',params)
+    return params
+
 class SetupPheno():
     """
     Instantiate the value for the lowden data file.
@@ -40,13 +65,9 @@ class SetupPheno():
         #
         if model.lower() == 'skyrme':
             #
-            list_param = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', 'F', \
-               'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
-               'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
-               'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
-               'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
-               'UNEDF0', 'UNEDF1']
-            if param in list_param:
+            params = paramsPheno( model='Skyrme' )
+            #
+            if param in params:
                 file_in1 = os.path.join(nudy.param.path_data,'pheno/Skyrme/'+param+'-SM.dat')
                 file_in2 = os.path.join(nudy.param.path_data,'pheno/Skyrme/'+param+'-NM.dat')
                 if nudy.env.verb: print('Reads file1:',file_in1)
@@ -77,6 +98,7 @@ class SetupPheno():
         self.den_unit = 'fm$^{-3}$'
         self.kfn_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
+        self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
         if nudy.env.verb: print("Exit SetupPheno()")
