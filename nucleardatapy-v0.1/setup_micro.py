@@ -7,6 +7,15 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nudy
 
+def modelsMicro():
+    models = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
+             '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
+             '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
+             '2023-MBPT-AM' ]
+    print('models available in the toolkit:',models)
+    return models
+
+
 class SetupMicro():
     """
     Instantiate the object with microscopic results choosen by the physicist
@@ -53,7 +62,7 @@ class SetupMicro():
         ----------
         model : str, optional
         The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
-    """
+        """
         #
         if nudy.env.verb: print("Enter SetupMicro()")
         #
