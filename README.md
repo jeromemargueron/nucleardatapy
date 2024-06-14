@@ -1,4 +1,4 @@
-# nucdatapy
+# nucleardatapy
 
 This python toolkit is designed to provide 1) microscopic calculations
 in nuclear matter, 2) phenomenological predictions in nuclear matter,
@@ -10,7 +10,7 @@ $ bash install.sh
 
 Create an environement variable that will be used by python:
 
-export NUCDATAPY_TK=/path/to/nucdatapy-tk
+export NUCLEARDATAPY_TK=/path/to/nucdatapy-tk
 
 put this command in your .profile or .zprofile of .bashrc for instance.
 
