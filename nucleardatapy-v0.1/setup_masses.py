@@ -31,6 +31,11 @@ Gy = y*1.e9 # giga years
 ILt = 100*Gy # infinite Large time
 ISt = 1.e-30 # infinite Short time
 
+def stable_fit():
+    Z = np.arange(110)
+    N = Z + 6.e-3*Z*Z
+    return N, Z
+
 def tables_masses():
     """
     Returns a list with the name of the models available in this toolkit and
@@ -120,6 +125,8 @@ class SetupMasses():
         self.year = []
         self.BE = []
         self.BE_err = []
+        #
+        self.Zmax=0
         #
         if table.lower()=='ame':
             if version=='2012':
@@ -316,6 +323,7 @@ class SetupMasses():
                     # add nucleus to the table
                     self.A.append( nucA )
                     self.Z.append( nucZ )
+                    if nucZ > self.Zmax: self.Zmax = nucZ
                     self.N.append( nucN )
                     self.symb.append( nucSymb )
                     self.I.append( nucI )
@@ -370,7 +378,9 @@ class SetupMasses():
         self.sel_year = []
         self.sel_BE = []
         self.sel_BE_err = []
-
+        #
+        self.sel_Zmax = 0
+        #
         #for nucA,ind in enumerate(self.A):
         for ind in range(self.nbNuc):
             #
@@ -407,6 +417,7 @@ class SetupMasses():
             nbNucSel = nbNucSel + 1
             self.sel_A.append( nucA )
             self.sel_Z.append( nucZ )
+            if nucZ > self.sel_Zmax: self.sel_Zmax = nucZ
             self.sel_N.append( nucN )
             self.sel_symb.append( nucSymb )
             self.sel_I.append( nucI )
@@ -425,4 +436,45 @@ class SetupMasses():
         if nudy.env.verb: print("Exit select()")
         #
         return self
-
+        #
+    def drip(self, Zmax = 95 ):
+        #
+        if nudy.env.verb: print("Enter drip()")
+        #
+        Nstable, Zstable = stable_fit()
+        #
+        self.drip_Z = []
+        self.drip_Nmin = []
+        self.drip_Nmax = []
+        #
+        for Z,ind in enumerate(Zstable):
+            #
+            if Z >= Zmax :
+                break
+            #
+            Nmin = Nstable[ind]
+            Nmax = Nstable[ind]
+            #
+            #print('sel_Z:',self.sel_Z)
+            #exit()
+            for ind2 in range(self.sel_nbNucSel):
+                #if self.sel_Z[ind] == Z:
+                #    print('sel_Z:',self.sel_Z)
+                #    exit()
+                #print('ind:',ind,Z,self.sel_Zmax,self.sel_Z[ind2],Nmin,Nmax)
+                #print('sel_N:',self.sel_N[ind2])
+                if self.sel_Z[ind2] == Z and self.sel_N[ind2] < Nmin:
+                    Nmin = self.sel_N[ind2]
+                if self.sel_Z[ind2] == Z and self.sel_N[ind2] > Nmax:
+                    Nmax = self.sel_N[ind2]
+            self.drip_Z.append( Z )
+            self.drip_Nmin.append( Nmin )
+            self.drip_Nmax.append( Nmax )
+        #print('drip: Z',self.drip_Z)
+        #print('drip: Nmin:',self.drip_Nmin)
+        #print('drip: Nmax:',self.drip_Nmax)
+        #
+        if nudy.env.verb: print("Exit drip()")
+        #
+        return self
+        #

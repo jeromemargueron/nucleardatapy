@@ -48,6 +48,11 @@ def main():
         ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
         axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='.', s = 1, linewidth=0, color = 'b' )
         axs.text(10,110,'Number of unstable nuclei:'+str(ustbl.sel_nbNucSel))
+        # drip line nuclei
+        #drip = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' ).drip()
+        drip = ustbl.drip( Zmax = 95 )
+        axs.scatter( drip.drip_Nmin, drip.drip_Z, marker='s', s = 1, linewidth=0, color = 'green' )
+        axs.scatter( drip.drip_Nmax, drip.drip_Z, marker='s', s = 1, linewidth=0, color = 'green' )
         # plot mass table for stable nuclei:
         stbl = mas.select( state= 'gs', interp = 'n', nucleus = 'stable' )
         axs.scatter( stbl.sel_N, stbl.sel_Z, marker='s', s = 1, linewidth=0, color = 'k' )
@@ -57,6 +62,9 @@ def main():
         # plot N=Z dotted line
         axs.plot( [0, 130], [0, 130], linestyle='dotted', linewidth=1, color='k')
         axs.text(105,120,'N=Z')
+        # plot stable_fit
+        N, Z = nudy.stable_fit()
+        axs.plot( N, Z, linestyle='dashed', linewidth=1, color='k')
         # plot shells
         # for isotopes
         axs.plot( [0,40], [7,7], linestyle='dotted', linewidth=1, color='gray')
