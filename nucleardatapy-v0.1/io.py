@@ -82,3 +82,25 @@ def print_outputs_EsymLsym(obj):
     if nudy.env.verb: print("Exit print_outputs_EsymLsym()")
     #
 
+def print_outputs_isgmr( obj ):
+    """
+    Print outputs on terminal's screen.
+    """
+    print("")
+    #
+    if nudy.env.verb: print("Enter print_outputs_isgmr()")
+    #
+    print("- Print output:")
+    print("   table:",obj.table)
+    print("   ref:",obj.ref)
+    print("   label:",obj.label)
+    print("   note:",obj.note)
+    if any(obj.Z): print(f"   Z: {obj.Z}")
+    if any(obj.A): print(f"   A: {obj.A}")
+    if any(obj.E_cen): print(f"   E: {obj.E_cen}")
+    if any(obj.E_errp): print(f"   E_errp: {obj.E_errp}")
+    if any(obj.E_errm): print(f"   E_errm: {obj.E_errm}")
+    #
+    if nudy.env.verb: print("Exit print_outputs_isgmr()")
+    #
+

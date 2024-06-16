@@ -12,3 +12,5 @@ from nucleardatapy.setup_micro  import *
 from nucleardatapy.setup_pheno  import *
 #
 from nucleardatapy.setup_EsymLsym  import *
+#
+from nucleardatapy.setup_ISGMR  import *

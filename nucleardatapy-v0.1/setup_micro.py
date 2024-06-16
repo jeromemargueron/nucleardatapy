@@ -17,7 +17,8 @@ def models_micro():
              '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
              '2023-MBPT-AM' ]
     print('models available in the toolkit:',models)
-    return models
+    models_lower = [ item.lower() for item in models ]
+    return models, models_lower
 
 class SetupMicro():
     """
@@ -93,7 +94,7 @@ class SetupMicro():
         #self.pre_sm = np.zeros_like( self.den )
         #self.pre_sm_err = np.zeros_like( self.den )
         #
-        models = models_micro()
+        models, models_lower = models_micro()
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
