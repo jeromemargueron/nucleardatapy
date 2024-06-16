@@ -7,7 +7,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nudy
 
-def modelsMicro():
+def models_micro():
     """
     Returns a list with the name of the models available in this toolkit and
     print them all.
@@ -93,9 +93,9 @@ class SetupMicro():
         #self.pre_sm = np.zeros_like( self.den )
         #self.pre_sm_err = np.zeros_like( self.den )
         #
-        models = modelsMicro()
+        models = models_micro()
         #
-        if model not in models:
+        if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
             print('list of models:',models)
             print('-- Exit the code --')

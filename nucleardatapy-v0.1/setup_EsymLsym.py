@@ -8,6 +8,18 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nudy
 
+def constraints_EsymLsym():
+    """
+    Returns a list with the name of the models available in this toolkit and
+    print them all.
+    """
+    constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
+             '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
+              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+    print('Constraints available in the toolkit:',constraints)
+    constraints_lower = [ item.lower() for item in constraints ]
+    return constraints, constraints_lower
+
 def HIC_Esym(n,gi,csk,csp):
     n_sat = 0.16 # in fm-3
     return 0.5 * csk * (n/n_sat)**0.6666 + 0.5 * csp * (n/n_sat)**gi 
@@ -41,6 +53,14 @@ class SetupEsymLsym():
         self.Esym_err = []
         self.Lsym = []
         self.Lsym_err = []
+        #
+        constraints, constraints_lower = constraints_EsymLsym()
+        #
+        if constraint.lower() not in constraints_lower:
+            print('The constraint ',constraint,' is not in the list of constraints.')
+            print('list of constraints:',constraints)
+            print('-- Exit the code --')
+            exit()
         #
         if constraint.lower() == '2009-hic':
             #
@@ -179,7 +199,7 @@ class SetupEsymLsym():
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS-2014'
             self.note = "Constraints from IAS."
-            self.Esym, self.Lsym = \
+            self.Lsym, self.Esym = \
                 np.loadtxt( file_in, usecols=(0,1), unpack = True )
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
@@ -199,7 +219,7 @@ class SetupEsymLsym():
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS+Rnp-2014'
             self.note = "Constraints from IAS + neutron skin (Rnp)."
-            self.Esym, self.Lsym = \
+            self.Lsym, self.Esym = \
                 np.loadtxt( file_in, usecols=(0,1), unpack = True )
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []

@@ -45,14 +45,16 @@ def main():
 #    axs.tick_params(axis = 'both', which='major', length=10, width=1, direction='inout', right = True, left = True, bottom = True, top = True)
 #    axs.tick_params(axis = 'both', which='minor', length=5,  width=1, direction='in', right = True, left = True, bottom = True, top = True )
     #
-    keys = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
-             '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
-              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+    #constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
+    #         '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
+    #          '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+    #constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2014-IAS', '2014-IAS+RNP' ]
+    constraints, constraints_lower = nudy.constraints_EsymLsym()
     #
-    for key in keys:
+    for constraint in constraints:
         #
         #print('constraint:',key)
-        el = nudy.SetupEsymLsym( constraint = key )
+        el = nudy.SetupEsymLsym( constraint = constraint )
         print('Esym:',el.Esym,'+-',el.Esym_err)
         print('Lsym:',el.Lsym,'+-',el.Lsym_err)
         print('len(Esym):',el.Esym.size)

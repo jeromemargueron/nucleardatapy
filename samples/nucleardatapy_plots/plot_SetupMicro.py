@@ -52,7 +52,7 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    keys = nudy.modelsMicro()
+    keys = nudy.models_micro()
     #
     for key in keys:
         #

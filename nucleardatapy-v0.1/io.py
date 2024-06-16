@@ -33,6 +33,31 @@ def print_outputs_micro(obj):
     if nudy.env.verb: print("Exit print_outputs_micro()")
     #
 
+def print_outputs_pheno(obj):
+    """
+    Print outputs on terminal's screen.
+    """
+    print("")
+    #
+    if nudy.env.verb: print("Enter print_outputs_pheno()")
+    #
+    print("- Print output:")
+    print("   model:",obj.model)
+    print("   param:",obj.param)
+    #print("   ref:",obj.ref)
+    print("   label:",obj.label)
+    #print("   note:",obj.note)
+    if any(obj.sm_den): print(f"   sm_den: {np.round(obj.sm_den,2)} in {obj.den_unit}")
+    if any(obj.sm_kfn): print(f"   sm_kfn: {np.round(obj.sm_kfn,2)} in {obj.kfn_unit}")
+    if any(obj.sm_e2a): print(f"   sm_e2a: {np.round(obj.sm_e2a,2)} in {obj.e2a_unit}")
+    if any(obj.nm_den): print(f"   nm_den: {np.round(obj.nm_den,2)} in {obj.den_unit}")
+    if any(obj.nm_kfn): print(f"   nm_kfn: {np.round(obj.nm_kfn,2)} in {obj.kfn_unit}")
+    if any(obj.nm_e2a): print(f"   nm_e2a: {np.round(obj.nm_e2a,2)} in {obj.e2a_unit}")
+    if any(obj.nm_gap): print(f"   nm_gap: {np.round(obj.nm_gap,2)} in {obj.gap_unit}")
+    #
+    if nudy.env.verb: print("Exit print_outputs_pheno()")
+    #
+
 def print_outputs_EsymLsym(obj):
     """
     Print outputs on terminal's screen.

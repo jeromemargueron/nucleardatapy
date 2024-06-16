@@ -14,13 +14,14 @@ def main():
     print("Enter sample_SetupEsymLsym.py:")
     print(50*'-')
     #
-    keys = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
-             '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
-              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+    #constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
+    #         '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
+    #          '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+    constraints, constraints_lower = nudy.constraints_EsymLsym()
     #
-    for key in keys:
+    for constraint in constraints:
         #
-        mic = nudy.SetupEsymLsym( constraint = key )
+        mic = nudy.SetupEsymLsym( constraint = constraint )
         #print('Esym:',mic.cont_Esym)
         #print('Lsym:',mic.cont_Lsym)
         nudy.print_outputs_EsymLsym( mic )
