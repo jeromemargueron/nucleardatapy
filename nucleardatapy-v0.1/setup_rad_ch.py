@@ -16,6 +16,7 @@ def tables_rad_ch():
     if nudy.env.verb: print("\nEnter tables_radch()")
     #
     tables = [ '2013-Angeli' ]
+    #
     print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     print('tables available in the toolkit:',tables_lower)

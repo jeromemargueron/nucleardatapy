@@ -6,7 +6,7 @@
 #       5: 8   ZZZi          a4       Atomic Number (ZZZ); i=0 (gs); i=1,2 (isomers); i=3,4 (levels); i=5 (resonance); i=8,9 (IAS)
 #                                     i=3,4,5,6 can also indicate isomers (when more than two isomers are presented in a nuclide)
 #     12: 16   A El          a5       A Element 
-#     17: 17   s             a1       s=m,n (isomers); s=p,q (levels); s=r (reonance); s=i,j (IAS); 
+#     17: 17   s             a1       s=m,n (isomers); s=p,q (levels); s=r (resonance); s=i,j (IAS); 
 #                                     s=p,q,r,x can also indicate isomers (when more than two isomers are presented in a nuclide)
 #     19: 31   Mass #     f13.6       Mass Excess in keV (# from systematics)
 #     32: 42   dMass #    f11.6       Mass Excess uncertainty in keV (# from systematics)

@@ -12,9 +12,15 @@ def models_pheno():
     Returns a list with the name of the models available in this toolkit and
     print them all.
     """
+    #
+    if nudy.env.verb: print("\nEnter models_pheno()")
+    #
     models = [ 'Skyrme', 'NLRH', 'DDRHF' ]
     print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
+    #
+    if nudy.env.verb: print("Exit models_pheno()")
+    #
     return models, models_lower
 
 def params_pheno( model ):
@@ -22,6 +28,9 @@ def params_pheno( model ):
     For a given model given as input, returns a list with the name of the
     parameterizations available in this toolkit and print them all.
     """
+    #
+    if nudy.env.verb: print("\nEnter params_pheno()")
+    #
     print('For model:',model)
     if model.lower() == 'skyrme':
         params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
@@ -35,9 +44,11 @@ def params_pheno( model ):
             'NL3II', 'PK1', 'PK1R', 'PKDD', 'TM1', 'TW99' ]
     elif model.lower() == 'ddrhf':
         params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
-
     print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
+    #
+    if nudy.env.verb: print("Exit params_pheno()")
+    #
     return params, params_lower
 
 class SetupPheno():
@@ -51,7 +62,7 @@ class SetupPheno():
     #
     def __init__( self, model = 'Skyrme', param = 'SLY5' ):
         #
-        if nudy.env.verb: print("Enter SetupPheno()")
+        if nudy.env.verb: print("\nEnter SetupPheno()")
         #
         self.model = model
         if nudy.env.verb: print("model:",model)
