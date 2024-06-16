@@ -104,3 +104,23 @@ def print_outputs_isgmr( obj ):
     if nudy.env.verb: print("Exit print_outputs_isgmr()")
     #
 
+def print_outputs_rad_ch( obj ):
+    """
+    Print outputs on terminal's screen.
+    """
+    print("")
+    #
+    if nudy.env.verb: print("Enter print_outputs_rad_ch()")
+    #
+    print("- Print output:")
+    print("   table:",obj.table)
+    print("   ref:",obj.ref)
+    print("   label:",obj.label)
+    print("   note:",obj.note)
+    if any(obj.Z): print(f"   Z: {obj.Z}")
+    if any(obj.A): print(f"   A: {obj.A}")
+    if any(obj.R_ch): print(f"   R_ch: {obj.R_ch}")
+    if any(obj.R_ch_err): print(f"   R_ch_err: {obj.R_ch_err}")
+    #
+    if nudy.env.verb: print("Exit print_outputs_rad_ch()")
+    #

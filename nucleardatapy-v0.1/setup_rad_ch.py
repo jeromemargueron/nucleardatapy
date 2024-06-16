@@ -7,24 +7,24 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nudy
 
-def tables_isgmr():
+def tables_rad_ch():
     """
     Returns a list with the name of the models available in this toolkit and
     print them all.
     """
     #
-    if nudy.env.verb: print("\nEnter tables_isgmr()")
+    if nudy.env.verb: print("\nEnter tables_radch()")
     #
-    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG' ]
+    tables = [ '2013-Angeli' ]
     print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     print('tables available in the toolkit:',tables_lower)
     #
-    if nudy.env.verb: print("Exit tables_isgmr()")
+    if nudy.env.verb: print("Exit tables_radch()")
     #
     return tables, tables_lower
 
-class SetupISGMR():
+class SetupRadCh():
     """
     Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.
 
@@ -46,7 +46,7 @@ class SetupISGMR():
        A list with negative errors in the ISGMR energies.
     """
     #
-    def __init__( self, table = '2018-ISGMR-GARG' ):
+    def __init__( self, table = '2013-Angeli' ):
         """
         Parameters
         ----------
@@ -54,18 +54,19 @@ class SetupISGMR():
         The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
         """
         #
-        if nudy.env.verb: print("\nEnter SetupISGMR()")
+        if nudy.env.verb: print("\nEnter SetupRadCh()")
         #
         self.table = table
         if nudy.env.verb: print("table:",table)
         #
         self.Z = []
+        self.symb = []
+        self.N = []
         self.A = []
-        self.E_cen = []
-        self.E_errp = []
-        self.E_errm = []
+        self.R_ch = []
+        self.R_ch_err = []
         #
-        tables, tables_lower = tables_isgmr()
+        tables, tables_lower = tables_rad_ch()
         #
         if table.lower() not in tables_lower:
             print('Table ',table,' is not in the list of tables.')
@@ -73,35 +74,34 @@ class SetupISGMR():
             print('-- Exit the code --')
             exit()
         #
-        if table.lower() == '2010-isgmr-li':
+        if table.lower() == '2013-angeli':
             #
-            file_in = os.path.join(nudy.param.path_data,'isgmr/2010-ISGMR-Li.dat')
+            file_in = os.path.join(nudy.param.path_data,'radii/2013-Angeli.csv')
             if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)'
-            self.label = 'Li-Garg-Liu-2010'
+            self.ref = 'I. Angeli and K.P. Marinova, Table of experimental nuclear ground state charge radii: An update, Atomic Data and Nuclear Data Tables 69, 69 (2013)'
+            self.label = 'Angeli-Marinova-2013'
             self.note = "write here notes about this table."
-            self.Z, self.A, self.E_cen, self.E_errp, self.E_errm = \
-               np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.Z = np.array( self.Z, dtype=int )
-            self.A = np.array( self.A, dtype=int )
-            self.E_erra = [ self.E_errp, self.E_errm ]
-            self.E_errs = 0.5 * ( self.E_errp + self.E_errm )
+
+            with open(file_in,'r') as file:
+               for line in file:
+                  #print('line:',line)
+                  if '#' in line:
+                     continue
+                  linesplit = line.split(',')
+                  #print('line.split:',linesplit)
+                  self.Z.append(linesplit[0])
+                  self.symb.append(linesplit[1])
+                  self.N.append(linesplit[2])
+                  self.A.append(linesplit[3])
+                  self.R_ch.append(linesplit[4])
+                  self.R_ch_err.append(linesplit[5])
+            #self.Z, self.symb, self.N, self.A, self.R_ch, self.R_ch_err = \
+               #np.loadtxt( file_in, usecols=(0,1,2,3,4,5), delimiter=',', comments='#', unpack = True )
+            #self.Z = np.array( self.Z, dtype=int )
+            #self.N = np.array( self.N, dtype=int )
+            #self.A = np.array( self.A, dtype=int )
             #
-        elif table.lower() == '2018-isgmr-garg':
-            #
-            file_in = os.path.join(nudy.param.path_data,'isgmr/2018-ISGMR-Garg.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
-            self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
-            self.label = 'Garg-Colo-2018'
-            self.note = "write here notes about this table."
-            self.Z, self.A, self.E_cen, self.E_errp, self.E_errm = \
-               np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.Z = np.array( self.Z, dtype=int )
-            self.A = np.array( self.A, dtype=int )
-            self.E_erra = [ self.E_errp, self.E_errm ]
-            self.E_errs = 0.5 * ( self.E_errp + self.E_errm )
-            #
-        self.E_unit = 'MeV'
+        self.R_unit = 'fm'
         #
-        if nudy.env.verb: print("Exit SetupISGMR()")
+        if nudy.env.verb: print("Exit SetupRadCh()")
 
