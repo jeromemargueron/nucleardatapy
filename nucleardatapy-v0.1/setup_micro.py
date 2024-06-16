@@ -104,7 +104,7 @@ class SetupMicro():
         #
         if model.lower() == '1998-var-am-apr':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/1998-VAR-AM-APR.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/1998-VAR-AM-APR.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'Akmal, Pandaripande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.label = 'APR'
@@ -118,7 +118,7 @@ class SetupMicro():
             #
         elif model.lower() == '2008-afdmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2008-AFDMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2008-AFDMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005); A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
             self.label = 'AFDMC-2008'
@@ -133,7 +133,7 @@ class SetupMicro():
             #
         elif model.lower() == '2008-qmc-nm-av4':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2008-QMC-NM-AV4.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2008-QMC-NM-AV4.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.label = 'QMC-AV4-2008'
@@ -148,7 +148,7 @@ class SetupMicro():
             #
         elif model.lower() == '2008-qmc-nm-swave':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2008-QMC-NM-swave.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2008-QMC-NM-swave.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.label = 'QMC-swave-2008'
@@ -163,7 +163,7 @@ class SetupMicro():
             #
         elif model.lower() == '2009-dqmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2009-dQMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2009-dQMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = ''
             self.label = 'dQMC-2009'
@@ -178,7 +178,7 @@ class SetupMicro():
             #
         elif model.lower() == '2010-nm-hebeler':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2010-NM-Hebeler.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2010-NM-Hebeler.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'K. Hebeler, PRL 105, 161102 (2010)'
             self.label = 'Hebeler-2010'
@@ -189,7 +189,7 @@ class SetupMicro():
             #
         elif model.lower() == '2013-qmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2013-QMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2013-QMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'I. Tews et al., PRL 110, 032504 (2013)'
             self.label = 'QMC-2013'
@@ -204,7 +204,7 @@ class SetupMicro():
             #
         elif model.lower() == '2014-afqmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2014-AFQMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2014-AFQMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Bulgac PRL 113, 182503 (2014)'
             self.label = 'AFQMC-2014'
@@ -217,7 +217,7 @@ class SetupMicro():
             #
         elif model.lower() == '2016-qmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2016-QMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2016-QMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = ''
             self.label = 'QMC-2016'
@@ -244,9 +244,9 @@ class SetupMicro():
             for i in range(0,11):
                 beta = i/10.0
                 if i<10:
-                    file_in = os.path.join(nudy.param.path_data,'micro/2016-MBPT-AM/EOS_spec_4_beta_0.'+str(i)+'.txt')
+                    file_in = os.path.join(nudy.param.path_data,'eos/micro/2016-MBPT-AM/EOS_spec_4_beta_0.'+str(i)+'.txt')
                 if i==10:
-                    file_in = os.path.join(nudy.param.path_data,'micro/2016-MBPT-AM/EOS_spec_4_beta_1.0.txt')
+                    file_in = os.path.join(nudy.param.path_data,'eos/micro/2016-MBPT-AM/EOS_spec_4_beta_1.0.txt')
                 if nudy.env.verb: print('Reads file:',file_in)
                 deni, e2a_1, e2a_2, e2a_3, e2a_4, e2a_5, e2a_6, e2a_7 = np.genfromtxt( file_in, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
                 length[i] = len(deni)
@@ -286,7 +286,7 @@ class SetupMicro():
             #
         elif model.lower() == '2018-qmc-nm':
             #
-            file_in = os.path.join(nudy.param.path_data,'micro/2018-QMC-NM.dat')
+            file_in = os.path.join(nudy.param.path_data,'eos/micro/2018-QMC-NM.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = ''
             self.label = 'QMC-2018'
@@ -297,8 +297,8 @@ class SetupMicro():
             #
         elif model.lower() == '2020-mbpt-am-dhsl59':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'micro/2020-MBPT-SM-DHSL59.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'micro/2020-MBPT-NM-DHSL59.dat')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/micro/2020-MBPT-SM-DHSL59.dat')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/micro/2020-MBPT-NM-DHSL59.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = 'PRC (2020)'
@@ -313,8 +313,8 @@ class SetupMicro():
             #
         elif model.lower() == '2020-mbpt-am-dhsl69':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'micro/2020-MBPT-SM-DHSL69.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'micro/2020-MBPT-NM-DHSL69.dat')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/micro/2020-MBPT-SM-DHSL69.dat')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/micro/2020-MBPT-NM-DHSL69.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = 'PRC (2020)'
@@ -329,8 +329,8 @@ class SetupMicro():
             #
         elif model.lower() == '2023-mbpt-am':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'micro/2023-MBPT-SM.csv')
-            file_in2 = os.path.join(nudy.param.path_data,'micro/2023-MBPT-NM.csv')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/micro/2023-MBPT-SM.csv')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/micro/2023-MBPT-NM.csv')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = 'PRC (2023)'

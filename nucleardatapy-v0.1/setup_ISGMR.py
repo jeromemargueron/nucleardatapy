@@ -75,7 +75,7 @@ class SetupISGMR():
         #
         if table.lower() == '2010-isgmr-li':
             #
-            file_in = os.path.join(nudy.param.path_data,'isgmr/2010-ISGMR-Li.dat')
+            file_in = os.path.join(nudy.param.path_data,'nuclei/isgmr/2010-ISGMR-Li.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)'
             self.label = 'Li-Garg-Liu-2010'
@@ -89,7 +89,7 @@ class SetupISGMR():
             #
         elif table.lower() == '2018-isgmr-garg':
             #
-            file_in = os.path.join(nudy.param.path_data,'isgmr/2018-ISGMR-Garg.dat')
+            file_in = os.path.join(nudy.param.path_data,'nuclei/isgmr/2018-ISGMR-Garg.dat')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
             self.label = 'Garg-Colo-2018'

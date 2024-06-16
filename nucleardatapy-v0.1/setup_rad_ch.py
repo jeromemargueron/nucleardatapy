@@ -76,7 +76,7 @@ class SetupRadCh():
         #
         if table.lower() == '2013-angeli':
             #
-            file_in = os.path.join(nudy.param.path_data,'radii/2013-Angeli.csv')
+            file_in = os.path.join(nudy.param.path_data,'nuclei/radch/2013-Angeli.csv')
             if nudy.env.verb: print('Reads file:',file_in)
             self.ref = 'I. Angeli and K.P. Marinova, Table of experimental nuclear ground state charge radii: An update, Atomic Data and Nuclear Data Tables 69, 69 (2013)'
             self.label = 'Angeli-Marinova-2013'

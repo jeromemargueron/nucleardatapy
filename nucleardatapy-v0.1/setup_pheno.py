@@ -91,8 +91,8 @@ class SetupPheno():
         #            
         if model.lower() == 'skyrme':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'pheno/Skyrme/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'pheno/Skyrme/'+param+'-NM.dat')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/Skyrme/'+param+'-SM.dat')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/Skyrme/'+param+'-NM.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
@@ -107,8 +107,8 @@ class SetupPheno():
             #
         elif model.lower() == 'nlrh':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'pheno/nlrh/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'pheno/nlrh/'+param+'-NM.dat')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/nlrh/'+param+'-SM.dat')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/nlrh/'+param+'-NM.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
@@ -123,8 +123,8 @@ class SetupPheno():
             #
         elif model.lower() == 'ddrhf':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'pheno/ddrhf/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'pheno/ddrhf/'+param+'-NM.dat')
+            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/ddrhf/'+param+'-SM.dat')
+            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/ddrhf/'+param+'-NM.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
