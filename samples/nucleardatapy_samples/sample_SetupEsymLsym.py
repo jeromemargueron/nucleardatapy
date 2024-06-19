@@ -24,7 +24,7 @@ def main():
         mic = nudy.SetupEsymLsym( constraint = constraint )
         #print('Esym:',mic.cont_Esym)
         #print('Lsym:',mic.cont_Lsym)
-        nudy.print_outputs_EsymLsym( mic )
+        mic.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupEsymLsym.py:")

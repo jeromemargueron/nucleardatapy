@@ -19,8 +19,8 @@ def main():
     #
     for table in tables:
         #
-        gmr = nudy.SetupRadCh( table = table )
-        nudy.print_outputs_rad_ch( gmr )
+        rch = nudy.SetupRadCh( table = table )
+        rch.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupRadCh.py:")

@@ -19,16 +19,14 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    # plot name:
+    # plot E/E_FFG in NM
     #
-    pname = 'figs/plot_SetupMicro.png'
+    pname = 'figs/plot_SetupMicro_e2a_nm.png'
     print(f'Plot name: {pname}')
-    #
-    # plot
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2 )
     #
     axs[0,0].set_ylabel(r'$E_{NM}/E_{FFG}$')
     axs[0,0].set_xlim([0, 0.3])
@@ -39,12 +37,12 @@ def main():
     axs[1,0].set_xlim([0, 0.3])
     axs[1,0].set_ylim([0, 28])
     #
-    axs[0,1].set_ylabel(r'$\Delta/E_F$')
+    #axs[0,1].set_ylabel(r'$\Delta/E_F$')
     axs[0,1].set_xlim([0, 0.65])
-    axs[0,1].set_ylim([0, 0.8])
+    axs[0,1].set_ylim([0, 1.0])
     #
     axs[1,1].set_xlabel(r'k_F (fm$^{-1}$)')
-    axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
+    #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
     axs[1,1].set_xlim([0, 0.65])
     axs[1,1].set_ylim([0, 2.5])
     #
@@ -52,16 +50,67 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    keys = nudy.models_micro()
+    models, models_lower = nudy.models_micro()
     #
-    for key in keys:
+    for model in models:
         #
-        mic = nudy.SetupMicro( model = key )
-        if any(mic.nm_e2a): axs[0,0].plot( mic.nm_den, mic.nm_e2a/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
-        if any(mic.nm_e2a): axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
-        if any(mic.nm_gap): axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
-        if any(mic.nm_gap): axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle='solid', label=mic.label )
-        nudy.print_outputs_micro( mic )
+        mic = nudy.SetupMicro( model = model )
+        if any(mic.nm_e2a): 
+            axs[0,0].plot( mic.nm_den, mic.nm_e2a/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
+        mic.print_outputs( )
+    #
+    axs[1,0].legend(loc='upper right',fontsize='xx-small')
+    #
+    plt.savefig(pname)
+    plt.close()
+
+    #
+    # plot pairing gap in NM
+    #
+    pname = 'figs/plot_SetupMicro_gap_nm.png'
+    print(f'Plot name: {pname}')
+    #
+    fig, axs = plt.subplots(2,2)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2 )
+    #
+    #axs[0,0].set_ylabel(r'$E_{NM}/E_{FFG}$')
+    axs[0,0].set_ylabel(r'$\Delta/E_F$')
+    axs[0,0].set_xlim([0, 0.02])
+    axs[0,0].set_ylim([0, 1.0])
+    #
+    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1,0].set_ylabel(r'$\Delta$ (MeV)')
+    axs[1,0].set_xlim([0, 0.02])
+    axs[1,0].set_ylim([0, 2.5])
+    #
+    #axs[0,1].set_ylabel(r'$\Delta/E_F$')
+    axs[0,1].set_xlim([0, 0.65])
+    axs[0,1].set_ylim([0, 1.0])
+    #
+    axs[1,1].set_xlabel(r'k_F (fm$^{-1}$)')
+    #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
+    axs[1,1].set_xlim([0, 0.65])
+    axs[1,1].set_ylim([0, 2.5])
+    #
+    #keys = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
+    #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
+    #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
+    #         '2023-MBPT-AM' ]
+    models, models_lower = nudy.models_micro()
+    #
+    for model in models:
+        #
+        mic = nudy.SetupMicro( model = model )
+        if any(mic.nm_gap): 
+            axs[0,0].plot( mic.nm_den, mic.nm_gap/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle='solid', label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle='solid', label=mic.label )
+        mic.print_outputs( )
     #
     axs[1,0].legend(loc='upper right',fontsize='xx-small')
     axs[1,1].legend(loc='upper left',fontsize='xx-small')

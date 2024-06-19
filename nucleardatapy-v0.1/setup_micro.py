@@ -356,4 +356,28 @@ class SetupMicro():
         self.gap_unit = 'MeV'
         #
         if nudy.env.verb: print("Exit SetupMicro()")
-
+    def print_outputs( self ):
+        """
+        Print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nudy.env.verb: print("Enter print_outputs()")
+        #
+        print("- Print output:")
+        print("   model:",self.model)
+        print("   ref:  ",self.ref)
+        print("   label:",self.label)
+        print("   note: ",self.note)
+        if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,2)} in {self.den_unit}")
+        if any(self.sm_kfn): print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kfn_unit}")
+        if any(self.sm_e2a): print(f"   sm_e2a: {np.round(self.sm_e2a,2)} in {self.e2a_unit}")
+        if any(self.sm_e2a_err): print(f"   sm_e2a_err: {np.round(self.sm_e2a_err,2)} in {self.e2a_unit}")
+        if any(self.nm_den): print(f"   nm_den: {np.round(self.nm_den,2)} in {self.den_unit}")
+        if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
+        if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
+        if any(self.nm_e2a_err): print(f"   nm_e2a_err: {np.round(self.nm_e2a_err,2)} in {self.e2a_unit}")
+        if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
+        #
+        if nudy.env.verb: print("Exit print_outputs()")
+        #

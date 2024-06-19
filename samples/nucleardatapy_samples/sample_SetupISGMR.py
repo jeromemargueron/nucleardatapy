@@ -20,7 +20,7 @@ def main():
     for table in tables:
         #
         gmr = nudy.SetupISGMR( table = table )
-        nudy.print_outputs_isgmr( gmr )
+        gmr.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupISGMR.py:")

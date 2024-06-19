@@ -27,7 +27,7 @@ def main():
             #
             print('in Sample: model, param',model,param)
             mic = nudy.SetupPheno( model = model, param = param )
-            nudy.print_outputs_pheno( mic )
+            mic.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupPheno.py:")

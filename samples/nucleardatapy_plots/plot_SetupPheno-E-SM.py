@@ -20,7 +20,7 @@ def main():
     os.system('mkdir -p figs/')
     #
     #models, models_lower = nudy.modelsPheno()
-    models = [ 'Skyrme', 'NLRH', 'DDRHF' ]
+    models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     for model in models:
         #
@@ -62,11 +62,12 @@ def main():
         for param in params:
             #
             mic = nudy.SetupPheno( model = model, param = param )
-            if any(mic.sm_e2a): axs[0,0].plot( mic.sm_den, mic.sm_e2a/nudy.fermi_gas.effg(mic.sm_kfn), linestyle='solid', label=mic.label )
-            if any(mic.sm_e2a): axs[1,0].plot( mic.sm_den, mic.sm_e2a, linestyle='solid', label=mic.label )
-            if any(mic.sm_e2a): axs[0,1].plot( mic.sm_kfn, mic.sm_e2a/nudy.fermi_gas.ef(mic.sm_kfn), linestyle='solid', label=mic.label )
-            if any(mic.sm_e2a): axs[1,1].plot( mic.sm_kfn, mic.sm_e2a, linestyle='solid', label=mic.label )
-            nudy.print_outputs_pheno( mic )
+            if any(mic.sm_e2a): 
+                axs[0,0].plot( mic.sm_den, mic.sm_e2a/nudy.fermi_gas.effg(mic.sm_kfn), linestyle='solid', label=mic.label )
+                axs[1,0].plot( mic.sm_den, mic.sm_e2a, linestyle='solid', label=mic.label )
+                axs[0,1].plot( mic.sm_kfn, mic.sm_e2a/nudy.fermi_gas.ef(mic.sm_kfn), linestyle='solid', label=mic.label )
+                axs[1,1].plot( mic.sm_kfn, mic.sm_e2a, linestyle='solid', label=mic.label )
+            mic.print_outputs( )
         #
         axs[0,0].legend(loc='upper right',fontsize='xx-small')
         axs[0,1].legend(loc='upper right',fontsize='xx-small')

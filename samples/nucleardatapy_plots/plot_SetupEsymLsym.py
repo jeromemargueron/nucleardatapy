@@ -69,7 +69,7 @@ def main():
         elif any(el.Esym): 
             axs.plot( el.Esym, el.Lsym, linestyle='solid', label=el.label )
             #print('plot')
-        nudy.print_outputs_EsymLsym( el )
+        el.print_outputs( )
     #
     axs.legend(loc='upper left',fontsize='xx-small')
     #

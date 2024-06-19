@@ -58,7 +58,7 @@ def main():
         if any(gmr.E_cen[gmr.Z==40]): axs[0].errorbar( gmr.A[gmr.Z==40], gmr.E_cen[gmr.Z==40], yerr=[gmr.E_errp[gmr.Z==40],gmr.E_errm[gmr.Z==40]], fmt='o', label=gmr.label )
         if any(gmr.E_cen[gmr.Z==50]): axs[1].errorbar( gmr.A[gmr.Z==50], gmr.E_cen[gmr.Z==50], yerr=[gmr.E_errp[gmr.Z==50],gmr.E_errm[gmr.Z==50]], fmt='o', label=gmr.label )
         if any(gmr.E_cen[gmr.Z==82]): axs[2].errorbar( gmr.A[gmr.Z==82], gmr.E_cen[gmr.Z==82], yerr=[gmr.E_errp[gmr.Z==82],gmr.E_errm[gmr.Z==82]], fmt='o', label=gmr.label )
-        nudy.print_outputs_isgmr( gmr )
+        gmr.print_outputs( )
     #
     axs[0].legend(loc='upper right',fontsize='xx-small')
     #

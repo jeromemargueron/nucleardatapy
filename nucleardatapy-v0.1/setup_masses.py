@@ -339,6 +339,26 @@ class SetupMasses():
         #
         if nudy.env.verb: print("Exit SetupMasses()")
         #
+    #
+    def print_outputs( self ):
+       """
+       Print outputs on terminal's screen.
+       """
+       print("")
+       #
+       if nudy.env.verb: print("Enter print_outputs()")
+       #
+       print("- Print output:")
+       print("   table:  ",self.table)
+       print("   version:",self.version)
+       print("   ref:    ",self.ref)
+       print("   label:  ",self.label)
+       print("   note:   ",self.note)
+       if any(self.Z): print(f"   Z: {self.Z}")
+       if any(self.A): print(f"   A: {self.A}")
+       #
+       if nudy.env.verb: print("Exit print_outputs()")
+       #
     def select(self, Amin = 0, Zmin = 0, interp = 'n', state= 'gs', nucleus = 'unstable', every = 1):
         #
         if nudy.env.verb: print("Enter select()")

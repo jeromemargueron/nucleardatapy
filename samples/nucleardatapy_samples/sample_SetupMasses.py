@@ -28,7 +28,7 @@ def main():
         #print('A:',sel.A)
         print('After selection')
         print('number of nuclei:',sel.sel_nbNucSel)
-        #nudy.print_outputs_masses( mas )
+        mas.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupMasses.py:")

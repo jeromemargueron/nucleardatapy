@@ -339,3 +339,27 @@ class SetupEsymLsym():
             print('does not fit with the options in the code')
 
         if nudy.env.verb: print("Exit SetupEsymLsym()")
+    #
+    def print_outputs( self ):
+        """
+        Print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nudy.env.verb: print("Enter print_outputs()")
+        #
+        print("   constraint:",self.constraint)
+        print("   ref:",self.ref)
+        print("   label:",self.label)
+        print("   note:",self.note)
+        if self.Esym.size==1 and self.Esym_err.size==1 and self.Lsym_err.size==1: 
+            print('errorbar x and y')
+        elif any(self.Esym) and any(self.Esym_err): 
+            print('errorbar x')
+        elif any(self.Esym) and any(self.Lsym_err): 
+            print('errorbar y')
+        elif any(self.Esym): 
+            print('plot')
+        #
+        if nudy.env.verb: print("Exit print_outputs()")
+        #

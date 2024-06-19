@@ -18,12 +18,12 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    models = nudy.models_micro()
+    models, models_lower = nudy.models_micro()
     #
     for model in models:
         #
         mic = nudy.SetupMicro( model = model )
-        nudy.print_outputs_micro( mic )
+        mic.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupMicro.py:")
