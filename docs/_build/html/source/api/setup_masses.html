@@ -78,64 +78,6 @@
              
   <section id="setupmasses">
 <h1>SetupMasses<a class="headerlink" href="#setupmasses" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-nucleardatapy.setup_masses"></span><dl class="py class">
-<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">SetupMasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2020'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses.html#SetupMasses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses.SetupMasses" title="Permalink to this definition"></a></dt>
-<dd><p>Instantiate the experimental nuclear masses from AMDC</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>A</strong> (<em>int.</em>) – (optional) if given returns only the binding energy for nuclei with mass ‘A’, otherwise returns the entier mass table (default: 0, 208 for instance).</p></li>
-<li><p><strong>Z</strong> (<em>int.</em>) – (optional) if given returns only the binding energy for nuclei with charge ‘Z’, otherwise returns the entier mass table (default: 0, 82 for instance).</p></li>
-<li><p><strong>Amin</strong> (<em>int.</em>) – (optional) if given sets the lower bound in A of the mass table, otherwise returns the entier mass table ( default: 0, 12 for instance).</p></li>
-<li><p><strong>Zmin</strong> (<em>int.</em>) – (optional) if given sets the lower bound in Z of the mass table, otherwise returns the entier mass table ( default: 0, 6 for instance).</p></li>
-<li><p><strong>version</strong> (<em>str.</em>) – (optional) version release of the AMDC data table (default: ‘2016’, ‘2012’, ‘2003’, ‘1995’, ‘1993’, ‘1983’).</p></li>
-<li><p><strong>interp</strong> (<em>str.</em>) – (optional) include interpolated data (default: ‘n’, ‘y’).</p></li>
-<li><p><strong>every</strong> (<em>integer.</em>) – (optional) select one nucleus every N. if N=1 no selection (by default).</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses.html#SetupMasses.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses.SetupMasses.print_outputs" title="Permalink to this definition"></a></dt>
-<dd><p>Print outputs on terminal’s screen.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_masses.tables_masses">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">tables_masses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses.html#tables_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses.tables_masses" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of the tables available in this toolkit and
-print them all on the prompt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The list of tables.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list[str].</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_masses.versions_masses">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">versions_masses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses.html#versions_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses.versions_masses" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list with the versions of the table available in
-this toolkit for a given model and print them all on the prompt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>table</strong> (<em>str.</em>) – The table for which there are different versions.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The list of versions.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list[str].</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 

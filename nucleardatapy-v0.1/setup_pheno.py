@@ -72,12 +72,16 @@ class SetupPheno():
         #
         if nudy.env.verb: print("\nEnter SetupPheno()")
         #
+        #: attribute model
         self.model = model
         if nudy.env.verb: print("model:",model)
+        #: attribute param
         self.param = param
         if nudy.env.verb: print("param:",param)
         #
+        #: attribute neutron matter density
         self.nm_den = []
+        #: attribute symmetric matter density
         self.sm_den = []
         self.nm_kfn = []
         self.sm_kfn = []
