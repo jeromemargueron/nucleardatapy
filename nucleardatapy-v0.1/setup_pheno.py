@@ -9,8 +9,10 @@ import nucleardatapy as nudy
 
 def models_pheno():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list of models available in this toolkit and print them all on the prompt.
+
+    :return: The list of models.
+    :rtype: list[str].
     """
     #
     if nudy.env.verb: print("\nEnter models_pheno()")
@@ -25,8 +27,13 @@ def models_pheno():
 
 def params_pheno( model ):
     """
-    For a given model given as input, returns a list with the name of the
-    parameterizations available in this toolkit and print them all.
+    Return a list with the name of the parameterizations available in 
+    this toolkit for a given model and print them all on the prompt.
+
+    :param model: The type of model for which there are parametrizations.
+    :type model: str.
+    :return: The list of parametrizations.
+    :rtype: list[str].
     """
     #
     if nudy.env.verb: print("\nEnter params_pheno()")

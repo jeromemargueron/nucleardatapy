@@ -9,8 +9,11 @@ import nucleardatapy as nudy
 
 def models_micro():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list with the name of the models available in this toolkit and
+    print them all on the prompt.
+
+    :return: The list of models.
+    :rtype: list[str].
     """
     models = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
              '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \

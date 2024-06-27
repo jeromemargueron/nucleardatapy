@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_pheno &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_pheno</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_pheno</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nudy</span>
+
+<div class="viewcode-block" id="models_pheno"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.models_pheno">[docs]</a><span class="k">def</span> <span class="nf">models_pheno</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of models available in this toolkit and print them all on the prompt.</span>
+
+<span class="sd">    :return: The list of models.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter models_pheno()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="s1">&#39;NLRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRHF&#39;</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Phenomenological models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit models_pheno()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span></div>
+
+<div class="viewcode-block" id="params_pheno"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.params_pheno">[docs]</a><span class="k">def</span> <span class="nf">params_pheno</span><span class="p">(</span> <span class="n">model</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list with the name of the parameterizations available in </span>
+<span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
+
+<span class="sd">    :param model: The type of model for which there are parametrizations.</span>
+<span class="sd">    :type model: str.</span>
+<span class="sd">    :return: The list of parametrizations.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter params_pheno()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;skyrme&#39;</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;BSK14&#39;</span><span class="p">,</span> <span class="s1">&#39;BSK16&#39;</span><span class="p">,</span> <span class="s1">&#39;BSK17&#39;</span><span class="p">,</span> <span class="s1">&#39;BSK27&#39;</span><span class="p">,</span> <span class="s1">&#39;F-&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;F+&#39;</span><span class="p">,</span> <span class="s1">&#39;F0&#39;</span><span class="p">,</span> <span class="s1">&#39;FPL&#39;</span><span class="p">,</span> <span class="s1">&#39;LNS&#39;</span><span class="p">,</span> <span class="s1">&#39;LNS1&#39;</span><span class="p">,</span> <span class="s1">&#39;LNS5&#39;</span><span class="p">,</span> <span class="s1">&#39;NRAPR&#39;</span><span class="p">,</span> <span class="s1">&#39;RATP&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;SAMI&#39;</span><span class="p">,</span> <span class="s1">&#39;SGII&#39;</span><span class="p">,</span> <span class="s1">&#39;SIII&#39;</span><span class="p">,</span> <span class="s1">&#39;SKGSIGMA&#39;</span><span class="p">,</span> <span class="s1">&#39;SKI2&#39;</span><span class="p">,</span> <span class="s1">&#39;SKI4&#39;</span><span class="p">,</span> <span class="s1">&#39;SKMP&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;SKMS&#39;</span><span class="p">,</span> <span class="s1">&#39;SKO&#39;</span><span class="p">,</span> <span class="s1">&#39;SKOP&#39;</span><span class="p">,</span> <span class="s1">&#39;SKP&#39;</span><span class="p">,</span> <span class="s1">&#39;SKRSIGMA&#39;</span><span class="p">,</span> <span class="s1">&#39;SKX&#39;</span><span class="p">,</span> <span class="s1">&#39;Skz2&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;SLY4&#39;</span><span class="p">,</span> <span class="s1">&#39;SLY5&#39;</span><span class="p">,</span> <span class="s1">&#39;SLY230A&#39;</span><span class="p">,</span> <span class="s1">&#39;SLY230B&#39;</span><span class="p">,</span> <span class="s1">&#39;SV&#39;</span><span class="p">,</span> <span class="s1">&#39;T6&#39;</span><span class="p">,</span> <span class="s1">&#39;T44&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;UNEDF0&#39;</span><span class="p">,</span> <span class="s1">&#39;UNEDF1&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nlrh&#39;</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;NL-SH&#39;</span><span class="p">,</span> <span class="s1">&#39;NL3&#39;</span><span class="p">,</span> <span class="s1">&#39;NL3II&#39;</span><span class="p">,</span> <span class="s1">&#39;PK1&#39;</span><span class="p">,</span> <span class="s1">&#39;PK1R&#39;</span><span class="p">,</span> <span class="s1">&#39;TM1&#39;</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;ddrh&#39;</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;DDME1&#39;</span><span class="p">,</span> <span class="s1">&#39;DDME2&#39;</span><span class="p">,</span> <span class="s1">&#39;DDMEd&#39;</span><span class="p">,</span> <span class="s1">&#39;PKDD&#39;</span><span class="p">,</span> <span class="s1">&#39;TW99&#39;</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;ddrhf&#39;</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;PKA1&#39;</span><span class="p">,</span> <span class="s1">&#39;PKO1&#39;</span><span class="p">,</span> <span class="s1">&#39;PKO2&#39;</span><span class="p">,</span> <span class="s1">&#39;PKO3&#39;</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parameters available in the toolkit:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">params</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit params_pheno()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span></div>
+
+<div class="viewcode-block" id="SetupPheno"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.SetupPheno">[docs]</a><span class="k">class</span> <span class="nc">SetupPheno</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the value for the lowden data file.</span>
+<span class="sd">    </span>
+<span class="sd">    :param model: name of the model: &#39;2008-AFDMC&#39;, ...</span>
+<span class="sd">    :type model: string().</span>
+<span class="sd">    :returns: kfn, gap, gap_err, e2a, e2a_err, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;SLY5&#39;</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupPheno()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;param:&quot;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">models_pheno</span><span class="p">(</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">params_pheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The param set &#39;</span><span class="p">,</span><span class="n">param</span><span class="p">,</span><span class="s1">&#39; is not in the list of param.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of param:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#            </span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;skyrme&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/Skyrme/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-SM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/Skyrme/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-NM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file1:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file2:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;SKY-&#39;</span><span class="o">+</span><span class="n">param</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="c1">#</span>
+<span class="c1">#        elif model.lower() == &#39;gogny&#39;:</span>
+            <span class="c1">#</span>
+<span class="c1">#            pass</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nlrh&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/nlrh/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-SM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/nlrh/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-NM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file1:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file2:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NLRH-&#39;</span><span class="o">+</span><span class="n">param</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;ddrh&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+<span class="c1">#            pass</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/ddrh/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-SM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/ddrh/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-NM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file1:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file2:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;DDRH-&#39;</span><span class="o">+</span><span class="n">param</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="c1">#</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;ddrhf&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/ddrhf/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-SM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/ddrhf/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-NM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file1:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file2:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;DDRH-&#39;</span><span class="o">+</span><span class="n">param</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="c1">#</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kfn_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupPheno()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupPheno.print_outputs"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.SetupPheno.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   model:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   param:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+        <span class="c1">#print(&quot;   ref:&quot;,self.ref)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="c1">#print(&quot;   note:&quot;,self.note)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_den: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_kfn: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kfn_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_e2a: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_den: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_kfn: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kfn_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_e2a: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_gap: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+        <span class="c1">#</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

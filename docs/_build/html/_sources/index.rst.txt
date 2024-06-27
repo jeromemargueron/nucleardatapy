@@ -6,12 +6,41 @@
 Welcome to nucleardatapy's documentation!
 =========================================
 
+**nucleardatapy** (/in short nudy/) is a Python library for nuclear physicists facilitating the access to theoretical or experimental nuclear data. It is specificaly designed for equation of state practitionners interested in the modeling of neutron stars, and it offers *simple* and *intuitive* APIs.
+
+Check out the :doc:`source/usage` section for further information, including how to
+:ref:`install <installation>` the project.
+
+.. note::
+
+   This project is under active development.
+
+Contents
+--------
+
+.. toctree::
+
+   source/usage
+   source/api
+
+------------------
+Readme:
+------------------
+
+.. include:: ../README.rst
+   :start-line: 2
+
+------------------
+Complement
+------------------
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-source/api/setup_micro
+   source/api/setup_micro
+   source/api/setup_pheno
+   source/api/setup_masses
 
 
 Indices and tables

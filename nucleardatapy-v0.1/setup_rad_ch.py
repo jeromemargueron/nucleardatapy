@@ -9,8 +9,11 @@ import nucleardatapy as nudy
 
 def tables_rad_ch():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list of the tables available in this toolkit and
+    print them all on the prompt.
+
+    :return: The list of tables.
+    :rtype: list[str].
     """
     #
     if nudy.env.verb: print("\nEnter tables_radch()")

@@ -1,0 +1,45 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter M
+  \item \spxentry{model}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{3}
+  \item \spxentry{models\_micro()}\spxextra{in module nucleardatapy.setup\_micro}, \hyperpage{5}
+  \item \spxentry{module}
+    \subitem \spxentry{nucleardatapy.setup\_micro}, \hyperpage{3}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{nm\_den}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{3}
+  \item \spxentry{nm\_e2a}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{nm\_e2a\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, 
+		\hyperpage{4}
+  \item \spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{nm\_kfn}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{nm\_pre\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, 
+		\hyperpage{4}
+  \item \spxentry{nucleardatapy.setup\_micro}
+    \subitem \spxentry{module}, \hyperpage{3}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro.SetupMicro method}, 
+		\hyperpage{5}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{SetupMicro}\spxextra{class in nucleardatapy.setup\_micro}, \hyperpage{3}
+  \item \spxentry{sm\_den}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{3}
+  \item \spxentry{sm\_e2a}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{sm\_e2a\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, 
+		\hyperpage{4}
+  \item \spxentry{sm\_gap}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{sm\_kfn}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{4}
+  \item \spxentry{sm\_pre}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, \hyperpage{5}
+  \item \spxentry{sm\_pre\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}, 
+		\hyperpage{5}
+
+\end{sphinxtheindex}

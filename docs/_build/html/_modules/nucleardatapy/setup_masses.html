@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_masses &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_masses</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_masses</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nudy</span>
+
+<span class="n">CST_AtmMass</span> <span class="o">=</span> <span class="mf">931.494028</span>
+<span class="c1">#CST_mpc2 = 938.272081</span>
+<span class="c1">#CST_mnc2 = 939.565413</span>
+<span class="c1">#CST_mec2 = 0.5109989461</span>
+<span class="n">CST_mnc2</span> <span class="o">=</span> <span class="mf">8.0713171</span>
+<span class="n">CST_dmnc2</span><span class="o">=</span> <span class="mf">0.0000005</span>
+<span class="n">CST_mHc2</span> <span class="o">=</span> <span class="mf">7.2889706</span>
+<span class="n">CST_dmHc2</span><span class="o">=</span> <span class="mf">0.0000001</span>
+<span class="n">yearMin</span><span class="o">=</span><span class="mi">1890</span>
+
+<span class="c1"># time conversion:</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="mf">1.e-9</span>
+<span class="n">ms</span> <span class="o">=</span> <span class="mf">1.e-3</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span> <span class="c1"># number of seconds per hour</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="mi">24</span> <span class="c1"># number of seconds per day</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">d</span> <span class="c1"># number of second per month (30 days)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="o">*</span><span class="mf">365.25</span> <span class="c1">#number of seconds per year</span>
+<span class="n">ky</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="mf">1.e3</span> <span class="c1"># mille years</span>
+<span class="n">my</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="mf">1.e6</span> <span class="c1"># million of years</span>
+<span class="n">Gy</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="mf">1.e9</span> <span class="c1"># giga years</span>
+<span class="n">ILt</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">Gy</span> <span class="c1"># infinite Large time</span>
+<span class="n">ISt</span> <span class="o">=</span> <span class="mf">1.e-30</span> <span class="c1"># infinite Short time</span>
+
+<span class="k">def</span> <span class="nf">stable_fit</span><span class="p">():</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">110</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">Z</span> <span class="o">+</span> <span class="mf">6.e-3</span><span class="o">*</span><span class="n">Z</span><span class="o">*</span><span class="n">Z</span>
+    <span class="k">return</span> <span class="n">N</span><span class="p">,</span> <span class="n">Z</span>
+
+<div class="viewcode-block" id="tables_masses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.tables_masses">[docs]</a><span class="k">def</span> <span class="nf">tables_masses</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the tables available in this toolkit and</span>
+<span class="sd">    print them all on the prompt.</span>
+
+<span class="sd">    :return: The list of tables.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter tables_masses()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;AME&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+    <span class="n">tables_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tables</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit tables_masses()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
+
+<div class="viewcode-block" id="versions_masses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.versions_masses">[docs]</a><span class="k">def</span> <span class="nf">versions_masses</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list with the versions of the table available in </span>
+<span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
+
+<span class="sd">    :param table: The table for which there are different versions.</span>
+<span class="sd">    :type table: str.</span>
+<span class="sd">    :return: The list of versions.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter versions_masses()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;ame&#39;</span><span class="p">:</span>
+        <span class="n">versions</span><span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2012&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Versions available in the toolkit:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
+    <span class="n">versions_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">versions</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit versions_masses()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span></div>
+
+
+<div class="viewcode-block" id="SetupMasses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses">[docs]</a><span class="k">class</span> <span class="nc">SetupMasses</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the experimental nuclear masses from AMDC</span>
+
+<span class="sd">    :param A: (optional) if given returns only the binding energy for nuclei with mass &#39;A&#39;, otherwise returns the entier mass table (default: 0, 208 for instance).</span>
+<span class="sd">    :type  A: int.</span>
+<span class="sd">    :param Z: (optional) if given returns only the binding energy for nuclei with charge &#39;Z&#39;, otherwise returns the entier mass table (default: 0, 82 for instance).</span>
+<span class="sd">    :type  Z: int.</span>
+<span class="sd">    :param Amin: (optional) if given sets the lower bound in A of the mass table, otherwise returns the entier mass table ( default: 0, 12 for instance).</span>
+<span class="sd">    :type  Amin: int.</span>
+<span class="sd">    :param Zmin: (optional) if given sets the lower bound in Z of the mass table, otherwise returns the entier mass table ( default: 0, 6 for instance).</span>
+<span class="sd">    :type  Zmin: int.</span>
+<span class="sd">    :param version: (optional) version release of the AMDC data table (default: &#39;2016&#39;, &#39;2012&#39;, &#39;2003&#39;, &#39;1995&#39;, &#39;1993&#39;, &#39;1983&#39;).</span>
+<span class="sd">    :type  version: str.</span>
+<span class="sd">    :param interp: (optional) include interpolated data (default: &#39;n&#39;, &#39;y&#39;).</span>
+<span class="sd">    :type  interp: str.</span>
+<span class="sd">    :param every: (optional) select one nucleus every N. if N=1 no selection (by default).</span>
+<span class="sd">    :type  every: integer. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupMasses()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">tables_masses</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span> <span class="o">=</span> <span class="n">versions_masses</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">versions_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Version &#39;</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="s1">&#39; is not in the list of versions.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of versions:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;version:&quot;</span><span class="p">,</span><span class="n">version</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symb</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Interp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stbl</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># =&#39;y&#39; if stable nucleus</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">HT</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># half-time in s</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">BE</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">BE_err</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Zmax</span><span class="o">=</span><span class="mi">0</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;ame&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;2012&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;nuclei/masses/AME/2012/nubase.mas12.txt&#39;</span>
+                <span class="n">nbLine_skip</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># lines in the header to skip</span>
+                <span class="n">cbe</span> <span class="o">=</span> <span class="mi">18</span> <span class="c1"># column giving the binding energy</span>
+                <span class="n">cdbe</span> <span class="o">=</span> <span class="mi">29</span> <span class="c1"># column giving the uncertainty in the binding energy</span>
+                <span class="n">cdbee</span> <span class="o">=</span> <span class="mi">38</span> <span class="c1"># column ??</span>
+                <span class="n">cyear</span><span class="o">=</span><span class="mi">105</span> <span class="c1"># column for the discovery year</span>
+            <span class="k">elif</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;2016&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;nuclei/masses/AME/2016/nubase2016.txt&#39;</span>
+                <span class="n">nbLine_skip</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">cbe</span> <span class="o">=</span> <span class="mi">18</span>
+                <span class="n">cdbe</span> <span class="o">=</span> <span class="mi">29</span>
+                <span class="n">cdbee</span> <span class="o">=</span> <span class="mi">38</span>
+                <span class="n">cyear</span><span class="o">=</span><span class="mi">105</span> <span class="c1"># column for the discovery year</span>
+            <span class="k">elif</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;2020&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;nuclei/masses/AME/2020/nubase_3.mas20.txt&#39;</span>
+                <span class="n">nbLine_skip</span> <span class="o">=</span> <span class="mi">26</span>
+                <span class="n">cbe</span> <span class="o">=</span> <span class="mi">18</span>
+                <span class="n">cdbe</span> <span class="o">=</span> <span class="mi">31</span>
+                <span class="n">cdbee</span> <span class="o">=</span> <span class="mi">42</span>
+                <span class="n">cyear</span><span class="o">=</span><span class="mi">114</span> <span class="c1"># column for the discovery year</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, and G. Audi, Chin. Phys. C45, 030001 (2021)&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AME-2020&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
+            <span class="c1">#</span>
+            <span class="c1"># read the AME table</span>
+            <span class="c1">#</span>
+            <span class="n">nbLine</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">nbNuc</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1">#</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">nbLine</span> <span class="o">=</span> <span class="n">nbLine</span> <span class="o">+</span> <span class="mi">1</span>
+                    <span class="c1"># skip the header of the file</span>
+                    <span class="k">if</span> <span class="n">nbLine</span> <span class="o">&lt;</span> <span class="n">nbLine_skip</span><span class="p">:</span> <span class="k">continue</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;line:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">nbLine</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;:&#39;</span><span class="o">+</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="c1"># if &#39;#&#39; in line[14:40]: continue</span>
+                    <span class="c1"># Read input file:</span>
+                    <span class="n">nucA</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+                    <span class="c1">#if nucA &lt; int(Amin): continue</span>
+                    <span class="c1">#if int(A) != 0 and nucA != int(A): continue</span>
+                    <span class="n">nucZ</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+                    <span class="c1">#if nucZ &lt; int(Zmin): continue</span>
+                    <span class="c1">#if int(Z) != 0 and nucZ != int(Z): continue</span>
+                    <span class="n">nucN</span><span class="o">=</span><span class="n">nucA</span><span class="o">-</span><span class="n">nucZ</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   nucleus:&#39;</span><span class="p">,</span><span class="n">nucA</span><span class="p">,</span><span class="n">nucZ</span><span class="p">,</span><span class="n">nucN</span><span class="p">)</span>
+                    <span class="n">nucI</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span> <span class="c1"># if nuci==0: ground-state (GS)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   nucI:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">nucI</span><span class="p">))</span>
+                    <span class="c1"># select only GS by skiping all contributions from other states (nuci != 0)</span>
+                    <span class="c1">#if nucI != 0: continue</span>
+                    <span class="c1">#</span>
+                    <span class="n">nucName</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="p">(</span> <span class="n">nucName</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="p">):</span>
+                        <span class="n">nucSymb</span><span class="o">=</span><span class="n">nucName</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+                    <span class="k">elif</span> <span class="p">(</span> <span class="n">nucName</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="p">):</span>
+                        <span class="n">nucSymb</span><span class="o">=</span><span class="n">nucName</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">nucSymb</span><span class="o">=</span><span class="n">nucName</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Symbol:&#39;</span><span class="p">,</span><span class="n">nucSymb</span><span class="p">)</span>
+                    <span class="n">nucIsomer</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Isomer:&#39;</span><span class="p">,</span><span class="n">nucIsomer</span><span class="p">)</span>
+                    <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                    <span class="n">ht</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">69</span><span class="p">:</span><span class="mi">78</span><span class="p">]</span>
+                    <span class="n">htu</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">78</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ht:&#39;</span><span class="p">,</span><span class="n">ht</span><span class="p">,</span><span class="s1">&#39; unit:&#39;</span><span class="p">,</span><span class="n">htu</span><span class="p">)</span>
+                    <span class="n">fac</span> <span class="o">=</span> <span class="mf">1.0</span>
+                    <span class="k">if</span> <span class="s1">&#39;stbl&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="n">ILt</span>
+                    <span class="k">elif</span> <span class="s1">&#39;p-unst&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="n">ISt</span>
+                    <span class="k">elif</span> <span class="n">ht</span><span class="o">==</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">9</span><span class="p">:</span> <span class="c1"># be carefull: there is no time associated, so it gives a short time by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="n">ISt</span>
+                    <span class="k">elif</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is no data given here, so it gives short time by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="n">ISt</span>
+                    <span class="k">elif</span> <span class="s1">&#39;&gt;&#39;</span> <span class="ow">in</span> <span class="n">ht</span> <span class="ow">and</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only upper limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">elif</span> <span class="s1">&#39;&lt;&#39;</span> <span class="ow">in</span> <span class="n">ht</span> <span class="ow">and</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only upper limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">elif</span> <span class="s1">&#39;&gt;&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only lower limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">elif</span> <span class="s1">&#39;&lt;&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only upper limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">elif</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only upper limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">elif</span> <span class="s1">&#39;~&#39;</span> <span class="ow">in</span> <span class="n">ht</span><span class="p">:</span> <span class="c1"># be carefull: there is only upper limit for the half-time, so it gives it by default</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">nucStbl</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="n">ht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span> <span class="n">ht</span> <span class="p">)</span>
+                        <span class="k">if</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39; s&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="mf">1.0</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;ms&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;milli-second&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">ms</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39; y&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">y</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;ys&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">y</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39; d&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;ns&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nano-second&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">ns</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;as&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;as&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;ps&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ps&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;fs&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;zs&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zs&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;us&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;us&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">d</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;ky&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mille years&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">ky</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;My&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Million of years&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">my</span>
+                        <span class="k">elif</span> <span class="n">htu</span><span class="o">==</span><span class="s1">&#39;Gy&#39;</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Giga years&#39;</span><span class="p">)</span>
+                            <span class="n">fac</span> <span class="o">=</span> <span class="n">Gy</span>
+                    <span class="n">nucHT</span> <span class="o">=</span> <span class="n">ht</span> <span class="o">*</span> <span class="n">fac</span>
+                    <span class="n">year</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="n">cyear</span><span class="p">:</span><span class="n">cyear</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   year:&#39;</span><span class="p">,</span><span class="n">year</span><span class="p">)</span>
+                    <span class="c1"># check if there is &#39;#&#39; in the string or if the value is absent:</span>
+                    <span class="c1">#if &#39; &#39;*11 in line[18:31]: continue</span>
+                    <span class="c1">#print(&quot;   test:&quot;,line[cbe:cdbe],&quot;.&quot;,(cdbe-cbe))</span>
+                    <span class="c1">#if &#39;#&#39; in line[cbe:cdbe]:</span>
+                    <span class="c1"># check that there is a data for the measured mass:</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">cbe</span><span class="p">:</span><span class="n">cdbe</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="p">(</span><span class="n">cdbe</span><span class="o">-</span><span class="n">cbe</span><span class="p">):</span> <span class="k">continue</span>
+                    <span class="k">if</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">[</span><span class="n">cbe</span><span class="p">:</span><span class="n">cdbe</span><span class="p">]:</span>
+                        <span class="n">nucME</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">cbe</span><span class="p">:</span><span class="n">cdbe</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+                        <span class="n">nucdME</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">cdbe</span><span class="p">:</span><span class="n">cdbee</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+                        <span class="n">nucInterp</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+                        <span class="n">nucYear</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="c1"># define a fake year which is after the table release</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">nucME</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">cbe</span><span class="p">:</span><span class="n">cdbe</span><span class="p">])</span>
+                        <span class="n">nucdME</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">cdbe</span><span class="p">:</span><span class="n">cdbee</span><span class="p">])</span>
+                        <span class="n">nucInterp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type(year):&#39;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len(year):&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+                        <span class="c1">#nucYear=int(year)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">year</span> <span class="o">!=</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span><span class="p">:</span> 
+                            <span class="n">nucYear</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">nucYear</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+                        <span class="c1">#if year != &#39; &#39;*4: nucYear=int(year)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ME:&quot;</span><span class="p">,</span><span class="n">nucME</span><span class="p">,</span><span class="s1">&#39; +- &#39;</span><span class="p">,</span><span class="n">nucdME</span><span class="p">,</span><span class="s1">&#39; keV&#39;</span><span class="p">)</span>
+                    <span class="c1"># date could be missing even if the mass measurement exists</span>
+                    <span class="c1">#if ( len(year) == 4 and year == &#39; &#39;*4 and nucInterp == &#39;n&#39; ): continue # to be checked</span>
+                    <span class="c1">#</span>
+                    <span class="c1"># Additional options: analyze the year of discovery</span>
+                    <span class="c1">#</span>
+                    <span class="c1">#print(nucA,nucZ,nucName)</span>
+                    <span class="c1">#if ( len(yearStr) == 4 and yearStr == &#39; &#39;*4 and nucInterp == &#39;n&#39; ):</span>
+                    <span class="c1">#    print(&#39;issue with:&#39;,nucA,nucZ,nucName)</span>
+                    <span class="c1">#yearInt = 0</span>
+                    <span class="c1">#yearInt=int(yearStr)</span>
+                    <span class="c1">#</span>
+                    <span class="c1"># When all tests passed sucessfully: the new line can be stored</span>
+                    <span class="c1">#</span>
+                    <span class="c1">#yearFull.append(yearInt)</span>
+                    <span class="c1">#yearInd=int((yearInt-yearMin)/10)</span>
+                    <span class="c1">#if (env.verb): print(&#39;   year:&#39;+str(yearInt)+&#39;,index:&#39;+str(yearInd))</span>
+                    <span class="c1">#</span>
+                    <span class="n">nucMass</span> <span class="o">=</span> <span class="n">nucA</span> <span class="o">*</span> <span class="n">CST_AtmMass</span> <span class="o">+</span> <span class="n">nucME</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="c1"># conversion to MeV</span>
+                    <span class="n">nucdMass</span> <span class="o">=</span> <span class="n">nucdME</span> <span class="o">/</span> <span class="mf">1000.0</span> 
+                    <span class="c1"># nucBE = ( nucMass - nucZ * ( CST_mpc2 + CST_mec2 ) - nucN * CST_mnc2 )</span>
+                    <span class="n">nucBE</span> <span class="o">=</span> <span class="n">nucME</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="o">-</span> <span class="n">nucZ</span> <span class="o">*</span> <span class="n">CST_mHc2</span> <span class="o">-</span> <span class="n">nucN</span> <span class="o">*</span> <span class="n">CST_mnc2</span>
+                    <span class="n">nucdBE</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nucdMass</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nucZ</span> <span class="o">*</span> <span class="n">CST_dmHc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">nucN</span> <span class="o">*</span> <span class="n">CST_dmnc2</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   BE:&quot;</span><span class="p">,</span><span class="n">nucBE</span><span class="p">,</span><span class="n">nucdBE</span><span class="p">)</span>
+                    <span class="c1"># add nucleus to the table</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucA</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucZ</span> <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">nucZ</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Zmax</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Zmax</span> <span class="o">=</span> <span class="n">nucZ</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucN</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">symb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucSymb</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucI</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">Interp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucInterp</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stbl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucStbl</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">HT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucHT</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucYear</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">BE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucBE</span> <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">BE_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucdBE</span> <span class="p">)</span>
+                    <span class="n">nbNuc</span> <span class="o">=</span> <span class="n">nbNuc</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nbLine</span> <span class="o">=</span> <span class="n">nbLine</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nbNuc</span> <span class="o">=</span> <span class="n">nbNuc</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupMasses()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupMasses.print_outputs"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   table:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   version:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+       <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter select()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">interp</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span> <span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interp &#39;</span><span class="p">,</span><span class="n">interp</span><span class="p">,</span><span class="s1">&#39; is not &quot;y&quot; or &quot;n&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interp</span> <span class="o">=</span> <span class="n">interp</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;interp:&quot;</span><span class="p">,</span><span class="n">interp</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;gs&#39;</span> <span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State &#39;</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="s1">&#39; is not &quot;gs&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;state:&quot;</span><span class="p">,</span><span class="n">state</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;stable&#39;</span><span class="p">,</span> <span class="s1">&#39;unstable&#39;</span> <span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nucleus &#39;</span><span class="p">,</span><span class="n">nucleus</span><span class="p">,</span><span class="s1">&#39; is not &quot;stable&quot; or &quot;unstable&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nucleus</span> <span class="o">=</span> <span class="n">nucleus</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nucleus:&quot;</span><span class="p">,</span><span class="n">nucleus</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">nbNucTot</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">nbNucSta</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">nbNucSel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_A</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_symb</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_I</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_Interp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_HT</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># half-time in s</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_year</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE_err</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_Zmax</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#</span>
+        <span class="c1">#for nucA,ind in enumerate(self.A):</span>
+        <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nbNuc</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="n">nucA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucZ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucN</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucI</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucSymb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">symb</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucInterp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Interp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucStbl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stbl</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">HT</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucYear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucBE</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">nucdBE</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BE_err</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#print(&#39;select:&#39;,ind,nucA,nucZ,nucN,nucSymb)</span>
+            <span class="c1"># skip nuclei below Amin and Zmin:</span>
+            <span class="k">if</span> <span class="n">nucA</span> <span class="o">&lt;</span> <span class="n">Amin</span> <span class="ow">or</span> <span class="n">nucZ</span> <span class="o">&lt;</span> <span class="n">Zmin</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;stable&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span> <span class="ow">and</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;unstable&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">nbNucTot</span> <span class="o">=</span> <span class="n">nbNucTot</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c1"># skip nucleus if interpolated data</span>
+            <span class="k">if</span> <span class="n">nucInterp</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># skip nuclei not in GS</span>
+            <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;gs&#39;</span> <span class="ow">and</span> <span class="n">nucI</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">nbNucSta</span> <span class="o">=</span> <span class="n">nbNucSta</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c1"># skip nuclei depending on every:</span>
+            <span class="k">if</span> <span class="n">nbNucSta</span> <span class="o">%</span> <span class="n">every</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">nbNucSel</span> <span class="o">=</span> <span class="n">nbNucSel</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucA</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucZ</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nucZ</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Zmax</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Zmax</span> <span class="o">=</span> <span class="n">nucZ</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucN</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_symb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucSymb</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_I</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucI</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_Interp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucInterp</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_HT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucHT</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucYear</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucBE</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucdBE</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucTot</span> <span class="o">=</span> <span class="n">nbNucTot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSta</span> <span class="o">=</span> <span class="n">nbNucSta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSel</span> <span class="o">=</span> <span class="n">nbNucSel</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei(Tot):&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucTot</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei(Sta):&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSta</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei(Sel):&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSel</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>
+        <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">Nstable</span><span class="p">,</span> <span class="n">Zstable</span> <span class="o">=</span> <span class="n">stable_fit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmin</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmax</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">Z</span><span class="p">,</span><span class="n">ind</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Zstable</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;=</span> <span class="n">Zmax</span> <span class="p">:</span>
+                <span class="k">break</span>
+            <span class="c1">#</span>
+            <span class="n">Nmin</span> <span class="o">=</span> <span class="n">Nstable</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">Nmax</span> <span class="o">=</span> <span class="n">Nstable</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#</span>
+            <span class="c1">#print(&#39;sel_Z:&#39;,self.sel_Z)</span>
+            <span class="c1">#exit()</span>
+            <span class="k">for</span> <span class="n">ind2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSel</span><span class="p">):</span>
+                <span class="c1">#if self.sel_Z[ind] == Z:</span>
+                <span class="c1">#    print(&#39;sel_Z:&#39;,self.sel_Z)</span>
+                <span class="c1">#    exit()</span>
+                <span class="c1">#print(&#39;ind:&#39;,ind,Z,self.sel_Zmax,self.sel_Z[ind2],Nmin,Nmax)</span>
+                <span class="c1">#print(&#39;sel_N:&#39;,self.sel_N[ind2])</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Z</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">Nmin</span><span class="p">:</span>
+                    <span class="n">Nmin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Z</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
+                    <span class="n">Nmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Z</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmin</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmax</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;drip: Z&#39;,self.drip_Z)</span>
+        <span class="c1">#print(&#39;drip: Nmin:&#39;,self.drip_Nmin)</span>
+        <span class="c1">#print(&#39;drip: Nmax:&#39;,self.drip_Nmax)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit drip()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+        <span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

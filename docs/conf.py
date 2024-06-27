@@ -10,10 +10,11 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+#import pathlib
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
-
+sys.path.insert(0, os.path.abspath('..'))
+#sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
 # -- Project information -----------------------------------------------------
 
@@ -33,7 +34,11 @@ release = '0.1'
 extensions = [
    'recommonmark',
    'sphinx.ext.autodoc',
-   'sphinx.ext.viewcode'
+   'sphinx.ext.viewcode',
+   'sphinx.ext.duration',
+   'sphinx.ext.napoleon',
+   'sphinx.ext.doctest',
+   'sphinx.ext.autosummary'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,3 +62,7 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# EPUB options
+epub_show_urls = 'inline'
+#epub_show_urls = 'footnote'

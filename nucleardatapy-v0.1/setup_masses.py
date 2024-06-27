@@ -38,8 +38,11 @@ def stable_fit():
 
 def tables_masses():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list of the tables available in this toolkit and
+    print them all on the prompt.
+
+    :return: The list of tables.
+    :rtype: list[str].
     """
     #
     if nudy.env.verb: print("\nEnter tables_masses()")
@@ -56,8 +59,13 @@ def tables_masses():
 
 def versions_masses( table ):
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list with the versions of the table available in 
+    this toolkit for a given model and print them all on the prompt.
+
+    :param table: The table for which there are different versions.
+    :type table: str.
+    :return: The list of versions.
+    :rtype: list[str].
     """
     #
     if nudy.env.verb: print("\nEnter versions_masses()")
