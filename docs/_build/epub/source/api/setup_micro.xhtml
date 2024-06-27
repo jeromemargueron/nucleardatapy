@@ -19,177 +19,126 @@
 <span class="target" id="module-nucleardatapy.setup_micro"></span><dl class="py class">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro.</span></span><span class="sig-name descname"><span class="pre">SetupMicro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.</p>
-<p>…</p>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1998-VAR-AM-APR’, ‘2008-AFDMC-NM’, ‘2008-QMC-NM-swave’,     ‘2008-QMC-NM-AV4’, ‘2009-dQMC-NM’, ‘2010-NM-Hebeler’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’, ‘2020-MBPT-AM-DHSL69’,     ‘2023-MBPT-AM’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.label">
+<span class="sig-name descname"><span class="pre">label</span></span></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.model">
 <span class="sig-name descname"><span class="pre">model</span></span></dt>
-<dd><p>The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, …</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str, optional</p>
-</dd>
-</dl>
+<dd><p>Attribute model.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_den">
 <span class="sig-name descname"><span class="pre">nm_den</span></span></dt>
-<dd><p>A list with densities in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_den">
-<span class="sig-name descname"><span class="pre">sm_den</span></span></dt>
-<dd><p>A list with densities in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_kfn">
-<span class="sig-name descname"><span class="pre">nm_kfn</span></span></dt>
-<dd><p>A list with neutron Fermi momentum in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_kfn">
-<span class="sig-name descname"><span class="pre">sm_kfn</span></span></dt>
-<dd><p>A list with neutron Fermi momentum in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute neutron matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_e2a">
 <span class="sig-name descname"><span class="pre">nm_e2a</span></span></dt>
-<dd><p>A list with energy per particle in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute neutron matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_e2a_err">
 <span class="sig-name descname"><span class="pre">nm_e2a_err</span></span></dt>
-<dd><p>A list with uncertainties for the energy per particle in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2a">
-<span class="sig-name descname"><span class="pre">sm_e2a</span></span></dt>
-<dd><p>A list with energy per particle in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2a_err">
-<span class="sig-name descname"><span class="pre">sm_e2a_err</span></span></dt>
-<dd><p>A list with uncertainties for the energy per particle in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute uncertainty in the neutron matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_gap">
 <span class="sig-name descname"><span class="pre">nm_gap</span></span></dt>
-<dd><p>A list with pairing gap in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute neutron matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_gap">
-<span class="sig-name descname"><span class="pre">sm_gap</span></span></dt>
-<dd><p>A list with pairing gap in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_kfn">
+<span class="sig-name descname"><span class="pre">nm_kfn</span></span></dt>
+<dd><p>Attribute neutron matter Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_pre">
 <span class="sig-name descname"><span class="pre">nm_pre</span></span></dt>
-<dd><p>A list with pressure in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute neutron matter pressure.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_pre_err">
 <span class="sig-name descname"><span class="pre">nm_pre_err</span></span></dt>
-<dd><p>A list with uncertainties for the pressure in neutron matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dd><p>Attribute uncertainty in the neutron matter pressure.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_pre">
-<span class="sig-name descname"><span class="pre">sm_pre</span></span></dt>
-<dd><p>A list with pressure in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_pre_err">
-<span class="sig-name descname"><span class="pre">sm_pre_err</span></span></dt>
-<dd><p>A list with uncertainties for the pressure in symmetric matter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.note">
+<span class="sig-name descname"><span class="pre">note</span></span></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.print_outputs">
 <span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Print outputs on terminal’s screen.</p>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_den">
+<span class="sig-name descname"><span class="pre">sm_den</span></span></dt>
+<dd><p>Attribute symmetric matter density.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2a">
+<span class="sig-name descname"><span class="pre">sm_e2a</span></span></dt>
+<dd><p>Attribute symmetric matter energy per particle.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2a_err">
+<span class="sig-name descname"><span class="pre">sm_e2a_err</span></span></dt>
+<dd><p>Attribute uncertainty in the symmetric matter energy per particle.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_gap">
+<span class="sig-name descname"><span class="pre">sm_gap</span></span></dt>
+<dd><p>Attribute symmetric matter pairing gap.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_kfn">
+<span class="sig-name descname"><span class="pre">sm_kfn</span></span></dt>
+<dd><p>Attribute symmetric matter Fermi momentum.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_pre">
+<span class="sig-name descname"><span class="pre">sm_pre</span></span></dt>
+<dd><p>Attribute symmetric matter pressure.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_pre_err">
+<span class="sig-name descname"><span class="pre">sm_pre_err</span></span></dt>
+<dd><p>Attribute uncertainty in the symmetric matter pressure.</p>
 </dd></dl>
 
 </dd></dl>
@@ -197,10 +146,31 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.models_micro">
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro.</span></span><span class="sig-name descname"><span class="pre">models_micro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Returns a list with the name of the models available in this toolkit and
-print them all.</p>
+<dd><p>Return a list with the name of the models available in this toolkit and
+print them all on the prompt. These models are the following ones:     ‘1998-VAR-AM-APR’, ‘2008-AFDMC-NM’, ‘2008-QMC-NM-swave’, ‘2008-QMC-NM-AV4’,     ‘2009-dQMC-NM’, ‘2010-NM-Hebeler’, ‘2013-QMC-NM’, ‘2014-AFQMC-NM’,     ‘2016-QMC-NM’, ‘2016-MBPT-AM’, ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’,     ‘2020-MBPT-AM-DHSL69’, ‘2023-MBPT-AM’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of models.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
 </dd></dl>
 
+<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupMicro.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMicro_e2a_nm.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of model available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMicro_gap_nm.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
 </section>
 
 

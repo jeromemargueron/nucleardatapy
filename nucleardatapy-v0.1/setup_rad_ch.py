@@ -9,8 +9,9 @@ import nucleardatapy as nudy
 
 def tables_rad_ch():
     """
-    Return a list of the tables available in this toolkit and
-    print them all on the prompt.
+    Return a list of the tables available in this toolkit for the charge radiuus and
+    print them all on the prompt.  These tables are the following
+    ones: '2013-Angeli'.
 
     :return: The list of tables.
     :rtype: list[str].
@@ -30,24 +31,18 @@ def tables_rad_ch():
 
 class SetupRadCh():
    """
-   Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.
+   Instantiate the object with charge radii choosen \
+   from a table.
 
-   ...
+   This choice is defined in the variable `table`.
 
-   Attributes
-   ----------
-   table : str, optional
-    The table to consider. Choose between: 2010-isgmr-li, 2018-ismgr_garg (default), ...
-   Z : list
-    A list with nuclear charge.
-   A : list
-    A list with nuclear masses.
-   E_cen : list
-    A list with ISGMR centroid energies.
-   E_errp : list
-    A list with positive errors in the ISGMR energies.
-   E_errm : list
-    A list with negative errors in the ISGMR energies.
+   The tables can chosen among the following ones: \
+   '2013-Angeli'.
+
+   :param table: Fix the name of `table`. Default value: '2013-Angeli'.
+   :type table: str, optional. 
+
+   **Attributes:**
    """
    #
    def __init__( self, table = '2013-Angeli' ):
@@ -63,11 +58,17 @@ class SetupRadCh():
       self.table = table
       if nudy.env.verb: print("table:",table)
       #
+      #: Attribute Z (charge of the nucleus).
       self.Z = []
+      #: Attribute symb (symbol) of the element, e.g., Fe.
       self.symb = []
+      #: Attribute N (number of neutrons of the nucleus).
       self.N = []
+      #: Attribute A (mass of the nucleus).
       self.A = []
+      #: Attribue R_ch (charge radius) in fm.
       self.R_ch = []
+      #: Attribue uncertainty in R_ch (charge radius) in fm.
       self.R_ch_err = []
       #
       tables, tables_lower = tables_rad_ch()
@@ -82,8 +83,11 @@ class SetupRadCh():
          #
          file_in = os.path.join(nudy.param.path_data,'nuclei/radch/2013-Angeli.csv')
          if nudy.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'I. Angeli and K.P. Marinova, Table of experimental nuclear ground state charge radii: An update, Atomic Data and Nuclear Data Tables 69, 69 (2013)'
+         #: Attribute providing the label the data is references for figures.
          self.label = 'Angeli-Marinova-2013'
+         #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
          #
          with open(file_in,'r') as file:
@@ -105,13 +109,14 @@ class SetupRadCh():
             #self.N = np.array( self.N, dtype=int )
             #self.A = np.array( self.A, dtype=int )
             #
+         #: Attribute radius unit.
          self.R_unit = 'fm'
          #
          if nudy.env.verb: print("Exit SetupRadCh()")
    #
    def print_outputs( self ):
       """
-      Print outputs on terminal's screen.
+      Method which print outputs on terminal's screen.
       """
       print("")
       #

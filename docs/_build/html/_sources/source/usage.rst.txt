@@ -42,3 +42,43 @@ Finally, you will have to create the global variable NUCLEARDATAPY_TK with its r
 
    The exact path to write above is given at the end of the installation.
 
+.. _Use:
+
+Use nucleardatapy
+-----------------
+
+Go to the folder `mylib/nucleardatapy/samples/nucleardatapy_samples/` and try that:
+
+.. code-block:: console
+
+   $ python3 sample_SetupMicro.py
+
+.. _Test:
+
+Test nucleardatapy
+------------------
+
+A set of tests can be easily performed. They are stored in tests/ folder.
+
+.. code-block:: console
+
+   $ bash run_tests.sh
+
+.. _Get started:
+
+Get started
+-----------
+
+How to obtain microscopic results for APR equation of state:
+
+.. code-block:: python
+
+   import os
+   nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+   sys.path.insert(0, nucleardatapy_tk)
+
+   import nucleardatapy as nuda
+
+   mic = nuda.SetupMicro( model = '1998-AM-APR' )
+
+   mic.print_outputs( )

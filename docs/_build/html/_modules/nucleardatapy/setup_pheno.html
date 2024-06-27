@@ -38,10 +38,16 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
 </ul>
 
         </div>
@@ -82,7 +88,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of models available in this toolkit and print them all on the prompt.</span>
 
-<span class="sd">    :return: The list of models.</span>
+<span class="sd">    :return: The list of models with can be &#39;Skyrme&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;.</span>
 <span class="sd">    :rtype: list[str].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
@@ -98,12 +104,22 @@
 
 <div class="viewcode-block" id="params_pheno"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.params_pheno">[docs]</a><span class="k">def</span> <span class="nf">params_pheno</span><span class="p">(</span> <span class="n">model</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return a list with the name of the parameterizations available in </span>
+<span class="sd">    Return a list with the parameterizations available in </span>
 <span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
 
-<span class="sd">    :param model: The type of model for which there are parametrizations.</span>
+<span class="sd">    :param model: The type of model for which there are parametrizations. \</span>
+<span class="sd">    They should be chosen among the following options: &#39;Skyrme&#39;, &#39;NLRH&#39;, \</span>
+<span class="sd">    &#39;DDRH&#39;, &#39;DDRHF&#39;.</span>
 <span class="sd">    :type model: str.</span>
-<span class="sd">    :return: The list of parametrizations.</span>
+<span class="sd">    :return: The list of parametrizations. \</span>
+<span class="sd">    If `models` == &#39;skyrme&#39;: &#39;BSK14&#39;, \</span>
+<span class="sd">    &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, \</span>
+<span class="sd">    &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, \</span>
+<span class="sd">    &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, \</span>
+<span class="sd">    &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;. \</span>
+<span class="sd">    If `models` == &#39;NLRH&#39;: &#39;NL-SH&#39;, &#39;NL3&#39;, &#39;NL3II&#39;, &#39;PK1&#39;, &#39;PK1R&#39;, &#39;TM1&#39;. \</span>
+<span class="sd">    If `models` == &#39;DDRH&#39;: &#39;DDME1&#39;, &#39;DDME2&#39;, &#39;DDMEd&#39;, &#39;PKDD&#39;, &#39;TW99&#39;. \</span>
+<span class="sd">    If `models` == &#39;DDRHF&#39;: &#39;PKA1&#39;, &#39;PKO1&#39;, &#39;PKO2&#39;, &#39;PKO3&#39;.</span>
 <span class="sd">    :rtype: list[str].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
@@ -132,35 +148,66 @@
 
 <div class="viewcode-block" id="SetupPheno"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.SetupPheno">[docs]</a><span class="k">class</span> <span class="nc">SetupPheno</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Instantiate the value for the lowden data file.</span>
+<span class="sd">    Instantiate the object with results based on phenomenological\</span>
+<span class="sd">    interactions and choosen by the toolkit practitioner. \</span>
+<span class="sd">    This choice is defined in the variables `model` and `param`.</span>
+
+<span class="sd">    If `models` == &#39;skyrme&#39;, `param` can be: &#39;BSK14&#39;, \</span>
+<span class="sd">    &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, \</span>
+<span class="sd">    &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, \</span>
+<span class="sd">    &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, \</span>
+<span class="sd">    &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;. </span>
+
+<span class="sd">    If `models` == &#39;NLRH&#39;, `param` can be: &#39;NL-SH&#39;, &#39;NL3&#39;, &#39;NL3II&#39;, &#39;PK1&#39;, &#39;PK1R&#39;, &#39;TM1&#39;. </span>
+
+<span class="sd">    If `models` == &#39;DDRH&#39;, `param` can be: &#39;DDME1&#39;, &#39;DDME2&#39;, &#39;DDMEd&#39;, &#39;PKDD&#39;, &#39;TW99&#39;. </span>
+
+<span class="sd">    If `models` == &#39;DDRHF&#39;, `param` can be: &#39;PKA1&#39;, &#39;PKO1&#39;, &#39;PKO2&#39;, &#39;PKO3&#39;. </span>
 <span class="sd">    </span>
-<span class="sd">    :param model: name of the model: &#39;2008-AFDMC&#39;, ...</span>
-<span class="sd">    :type model: string().</span>
-<span class="sd">    :returns: kfn, gap, gap_err, e2a, e2a_err, etc.</span>
+<span class="sd">    :param model: Fix the name of model: &#39;Skyrme&#39;, &#39;NLRH&#39;, \</span>
+<span class="sd">    &#39;DDRH&#39;, &#39;DDRHF&#39;. Default value: &#39;Skyrme&#39;.</span>
+<span class="sd">    :type model: str, optional. </span>
+<span class="sd">    :param param: Fix the parameterization associated to model. \</span>
+<span class="sd">    Default value: &#39;SLY5&#39;.</span>
+<span class="sd">    :type param: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;SLY5&#39;</span> <span class="p">):</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupPheno()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute model.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="c1">#: Attribute param.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;param:&quot;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute neutron matter density.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter density.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter Fermi momentum.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter Fermi momentum.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter pairing gap.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter pairing gap.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter sound speed (c_s/c)^2.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter sound speed (c_s/c)^2.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">models_pheno</span><span class="p">(</span> <span class="p">)</span>
@@ -185,8 +232,11 @@
             <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/pheno/Skyrme/&#39;</span><span class="o">+</span><span class="n">param</span><span class="o">+</span><span class="s1">&#39;-NM.dat&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file1:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file2:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="c1">#: Attribute providing the label the data is references for figures.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;SKY-&#39;</span><span class="o">+</span><span class="n">param</span>
+            <span class="c1">#: Attribute providing additional notes about the data.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -245,7 +295,7 @@
     <span class="c1">#</span>
 <div class="viewcode-block" id="SetupPheno.print_outputs"><a class="viewcode-back" href="../../source/api/setup_pheno.html#nucleardatapy.setup_pheno.SetupPheno.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Print outputs on terminal&#39;s screen.</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="c1">#</span>

@@ -38,12 +38,16 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
 </ul>
 
         </div>
@@ -111,8 +115,9 @@
 
 <div class="viewcode-block" id="tables_masses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.tables_masses">[docs]</a><span class="k">def</span> <span class="nf">tables_masses</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return a list of the tables available in this toolkit and</span>
-<span class="sd">    print them all on the prompt.</span>
+<span class="sd">    Return a list of the tables available in this toolkit for the experimental masses and</span>
+<span class="sd">    print them all on the prompt. These tables are the following</span>
+<span class="sd">    ones: &#39;AME&#39;.</span>
 
 <span class="sd">    :return: The list of tables.</span>
 <span class="sd">    :rtype: list[str].</span>
@@ -132,12 +137,13 @@
 
 <div class="viewcode-block" id="versions_masses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.versions_masses">[docs]</a><span class="k">def</span> <span class="nf">versions_masses</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return a list with the versions of the table available in </span>
+<span class="sd">    Return a list of versions of tables available in </span>
 <span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
 
 <span class="sd">    :param table: The table for which there are different versions.</span>
 <span class="sd">    :type table: str.</span>
-<span class="sd">    :return: The list of versions.</span>
+<span class="sd">    :return: The list of versions. \</span>
+<span class="sd">    If table == &#39;AME&#39;: &#39;2020&#39;, &#39;2016&#39;, &#39;2012&#39;.</span>
 <span class="sd">    :rtype: list[str].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
@@ -156,22 +162,20 @@
 
 <div class="viewcode-block" id="SetupMasses"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses">[docs]</a><span class="k">class</span> <span class="nc">SetupMasses</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Instantiate the experimental nuclear masses from AMDC</span>
+<span class="sd">    Instantiate the experimental nuclear masses from AME mass table.</span>
 
-<span class="sd">    :param A: (optional) if given returns only the binding energy for nuclei with mass &#39;A&#39;, otherwise returns the entier mass table (default: 0, 208 for instance).</span>
-<span class="sd">    :type  A: int.</span>
-<span class="sd">    :param Z: (optional) if given returns only the binding energy for nuclei with charge &#39;Z&#39;, otherwise returns the entier mass table (default: 0, 82 for instance).</span>
-<span class="sd">    :type  Z: int.</span>
-<span class="sd">    :param Amin: (optional) if given sets the lower bound in A of the mass table, otherwise returns the entier mass table ( default: 0, 12 for instance).</span>
-<span class="sd">    :type  Amin: int.</span>
-<span class="sd">    :param Zmin: (optional) if given sets the lower bound in Z of the mass table, otherwise returns the entier mass table ( default: 0, 6 for instance).</span>
-<span class="sd">    :type  Zmin: int.</span>
-<span class="sd">    :param version: (optional) version release of the AMDC data table (default: &#39;2016&#39;, &#39;2012&#39;, &#39;2003&#39;, &#39;1995&#39;, &#39;1993&#39;, &#39;1983&#39;).</span>
-<span class="sd">    :type  version: str.</span>
-<span class="sd">    :param interp: (optional) include interpolated data (default: &#39;n&#39;, &#39;y&#39;).</span>
-<span class="sd">    :type  interp: str.</span>
-<span class="sd">    :param every: (optional) select one nucleus every N. if N=1 no selection (by default).</span>
-<span class="sd">    :type  every: integer. </span>
+<span class="sd">    This choice is defined in the variables `table` and `version`.</span>
+
+<span class="sd">    `table` can chosen among the following ones: &#39;AME&#39;.</span>
+
+<span class="sd">    `version` can be chosen among the following choices: &#39;2020&#39;, &#39;2016&#39;, &#39;2012&#39;.</span>
+
+<span class="sd">    :param table: Fix the name of `table`. Default value: &#39;AME&#39;.</span>
+<span class="sd">    :type table: str, optional. </span>
+<span class="sd">    :param version: Fix the name of `version`. Default value: 2020&#39;.</span>
+<span class="sd">    :type version: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">):</span>
         <span class="c1">#</span>
@@ -195,18 +199,31 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;version:&quot;</span><span class="p">,</span><span class="n">version</span><span class="p">)</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute A (mass of the nucleus).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute Z (charge of the nucleus).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symb (symbol) of the element, e.g., Fe.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">symb</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute N (number of neutrons of the nucleus).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute I.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute Interp (interpolation). Interp=&#39;y&#39; is the nucleus\</span>
+        <span class="c1">#: has not been measured but is in the table based on interpolation expressions.\</span>
+        <span class="c1">#: otherwise Interp = &#39;n&#39; for nuclei produced in laboratory and measured.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Interp</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute stbl. stbl=&#39;y&#39; if the nucleus is stable (according to the table). Otherwise stbl = &#39;n&#39;.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stbl</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># =&#39;y&#39; if stable nucleus</span>
+        <span class="c1">#: Attribute HT (half-Time) of the nucleus.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">HT</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># half-time in s</span>
+        <span class="c1">#: Attribute year of the discovery of the nucleus.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute BE (Binding Energy) of the nucleus.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">BE</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute uncertainty in the BE (Binding Energy) of the nucleus.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">BE_err</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="c1">#</span>
+        <span class="c1">#: Attribute Zmax: maximum charge of nuclei present in the table.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Zmax</span><span class="o">=</span><span class="mi">0</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;ame&#39;</span><span class="p">:</span>
@@ -231,8 +248,11 @@
                 <span class="n">cdbe</span> <span class="o">=</span> <span class="mi">31</span>
                 <span class="n">cdbee</span> <span class="o">=</span> <span class="mi">42</span>
                 <span class="n">cyear</span><span class="o">=</span><span class="mi">114</span> <span class="c1"># column for the discovery year</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, and G. Audi, Chin. Phys. C45, 030001 (2021)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AME-2020&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
             <span class="c1">#</span>
             <span class="c1"># read the AME table</span>
@@ -415,7 +435,9 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">BE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucBE</span> <span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">BE_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucdBE</span> <span class="p">)</span>
                     <span class="n">nbNuc</span> <span class="o">=</span> <span class="n">nbNuc</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c1">#: Attribute with the number of line in the file.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nbLine</span> <span class="o">=</span> <span class="n">nbLine</span>
+            <span class="c1">#: Attribute with the number of nuclei read in the file.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nbNuc</span> <span class="o">=</span> <span class="n">nbNuc</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupMasses()&quot;</span><span class="p">)</span>
@@ -423,7 +445,7 @@
     <span class="c1">#</span>
 <div class="viewcode-block" id="SetupMasses.print_outputs"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Print outputs on terminal&#39;s screen.</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">       &quot;&quot;&quot;</span>
        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
        <span class="c1">#</span>
@@ -440,7 +462,20 @@
        <span class="c1">#</span>
        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
        <span class="c1">#</span>
-    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="SetupMasses.select"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which select some nuclei from the table according to some criteria.</span>
+
+<span class="sd">        :param interp: If interp=&#39;n&#39;, exclude the interpolated nuclei from the selected ones. \</span>
+<span class="sd">        If interp=&#39;y&#39; consider them in the table, in addition to the others.</span>
+<span class="sd">        :type interp: str, optional. Default = &#39;n&#39;.</span>
+<span class="sd">        :param state: select the kind of state. If state=&#39;gs&#39;, select nuclei measured in their ground state.</span>
+<span class="sd">        :type state: str, optional. Default &#39;gs&#39;.</span>
+<span class="sd">        :param nucleus: &#39;unstable&#39;.</span>
+<span class="sd">        :type nucleus: str, optional. Default &#39;unstable&#39;.</span>
+<span class="sd">        :param every: consider only 1 out of `every` nuclei in the table.</span>
+<span class="sd">        :type every: int, optional. Default every = 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -469,8 +504,11 @@
         <span class="n">nbNucSta</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">nbNucSel</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute sel_A (mass of the selected nuclei).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_A</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute sel_Z (charge of the selected nuclei).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute sel_symb (symbol of the selected nuclei).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_symb</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_I</span> <span class="o">=</span> <span class="p">[]</span>
@@ -536,9 +574,15 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
         <span class="c1">#</span>
-    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupMasses.drip"><a class="viewcode-back" href="../../source/api/setup_masses.html#nucleardatapy.setup_masses.SetupMasses.drip">[docs]</a>    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which find the drip-line nuclei (on the two sides).</span>
+
+<span class="sd">        :param Zmax: Fix the maximum charge for the search of the drip line.</span>
+<span class="sd">        :type Zmax: int, optional. Default: 95.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -577,7 +621,7 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
         <span class="c1">#</span>
 </pre></div>
 

@@ -9,8 +9,9 @@ import nucleardatapy as nudy
 
 def tables_isgmr():
     """
-    Returns a list of tables available in this toolkit and
-    print them all on the prompt.
+    Return a list of tables available in this toolkit for the ISGMR energy and
+    print them all on the prompt. These tables are the following
+    ones: '2010-ISGMR-LI', '2018-ISGMR-GARG'.
 
     :return: The list of tables.
     :rtype: list[str].    
@@ -29,43 +30,43 @@ def tables_isgmr():
 
 class SetupISGMR():
    """
-   Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.
+   Instantiate the object with microscopic results choosen \
+   by the toolkit practitioner. \
 
-   ...
+   This choice is defined in the variable `table`.
 
-   Attributes
-   ----------
-   table : str, optional
-    The table to consider. Choose between: 2010-isgmr-li, 2018-ismgr_garg (default), ...
-   Z : list
-    A list with nuclear charge.
-   A : list
-    A list with nuclear masses.
-   E_cen : list
-    A list with ISGMR centroid energies.
-   E_errp : list
-    A list with positive errors in the ISGMR energies.
-   E_errm : list
-    A list with negative errors in the ISGMR energies.
+   The `table` can chosen among the following ones: \
+   '2010-ISGMR-LI', '2018-ISGMR-GARG'.
+
+   :param table: Fix the name of `table`. Default value: '2018-ISGMR-GARG'.
+   :type table: str, optional. 
+
+   **Attributes:**
    """
    #
    def __init__( self, table = '2018-ISGMR-GARG' ):
       """
       Parameters
       ----------
-      model : str, optional
-      The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
+      table : str, optional
+      The table to consider. \
+      Choose between: 2018-ISGMR-GARG (default) and 2010-ISGMR-LI.
       """
       #
       if nudy.env.verb: print("\nEnter SetupISGMR()")
-      #
+      #: Attribute table.
       self.table = table
       if nudy.env.verb: print("table:",table)
       #
+      #: Attribute Z (charge of the nucleus).
       self.Z = []
+      #: Attribute A (mass of the nucleus).
       self.A = []
+      #: Attribute energy centroid.
       self.E_cen = []
+      #: Attribute (+) uncertainty in the energy centroid.
       self.E_errp = []
+      #: Attribute (-) uncertainty in the energy centroid.
       self.E_errm = []
       #
       tables, tables_lower = tables_isgmr()
@@ -80,14 +81,19 @@ class SetupISGMR():
          #
          file_in = os.path.join(nudy.param.path_data,'nuclei/isgmr/2010-ISGMR-Li.dat')
          if nudy.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)'
+         #: Attribute providing the label the data is references for figures.
          self.label = 'Li-Garg-Liu-2010'
+         #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
          self.Z, self.A, self.E_cen, self.E_errp, self.E_errm = \
             np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
          self.Z = np.array( self.Z, dtype=int )
          self.A = np.array( self.A, dtype=int )
+         #: Attribute list with + and - uncertainty
          self.E_erra = [ self.E_errp, self.E_errm ]
+         #: Attribute symmetrised uncertainty (average between + and - uncertainty).
          self.E_errs = 0.5 * ( self.E_errp + self.E_errm )
          #
       elif table.lower() == '2018-isgmr-garg':
@@ -104,13 +110,14 @@ class SetupISGMR():
          self.E_erra = [ self.E_errp, self.E_errm ]
          self.E_errs = 0.5 * ( self.E_errp + self.E_errm )
          #
+      #: Attribute energy unit.
       self.E_unit = 'MeV'
       #
       if nudy.env.verb: print("Exit SetupISGMR()")
    #
    def print_outputs( self ):
       """
-      Print outputs on terminal's screen.
+      Method which print outputs on terminal's screen.
       """
       print("")
       #

@@ -6,7 +6,7 @@ import numpy as np
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -18,11 +18,11 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    models, models_lower = nudy.models_micro()
+    models, models_lower = nuda.models_micro()
     #
     for model in models:
         #
-        mic = nudy.SetupMicro( model = model )
+        mic = nuda.SetupMicro( model = model )
         mic.print_outputs( )
     #
     print(50*'-')

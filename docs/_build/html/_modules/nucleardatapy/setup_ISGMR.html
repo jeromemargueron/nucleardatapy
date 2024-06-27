@@ -38,6 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -85,8 +86,12 @@
 
 <div class="viewcode-block" id="tables_isgmr"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.tables_isgmr">[docs]</a><span class="k">def</span> <span class="nf">tables_isgmr</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a list with the name of the models available in this toolkit and</span>
-<span class="sd">    print them all.</span>
+<span class="sd">    Return a list of tables available in this toolkit for the ISGMR energy and</span>
+<span class="sd">    print them all on the prompt. These tables are the following</span>
+<span class="sd">    ones: &#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;.</span>
+
+<span class="sd">    :return: The list of tables.</span>
+<span class="sd">    :rtype: list[str].    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter tables_isgmr()&quot;</span><span class="p">)</span>
@@ -102,43 +107,43 @@
 
 <div class="viewcode-block" id="SetupISGMR"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR">[docs]</a><span class="k">class</span> <span class="nc">SetupISGMR</span><span class="p">():</span>
 <span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.</span>
+<span class="sd">   Instantiate the object with microscopic results choosen \</span>
+<span class="sd">   by the toolkit practitioner. \</span>
 
-<span class="sd">   ...</span>
+<span class="sd">   This choice is defined in the variable `table`.</span>
 
-<span class="sd">   Attributes</span>
-<span class="sd">   ----------</span>
-<span class="sd">   table : str, optional</span>
-<span class="sd">    The table to consider. Choose between: 2010-isgmr-li, 2018-ismgr_garg (default), ...</span>
-<span class="sd">   Z : list</span>
-<span class="sd">    A list with nuclear charge.</span>
-<span class="sd">   A : list</span>
-<span class="sd">    A list with nuclear masses.</span>
-<span class="sd">   E_cen : list</span>
-<span class="sd">    A list with ISGMR centroid energies.</span>
-<span class="sd">   E_errp : list</span>
-<span class="sd">    A list with positive errors in the ISGMR energies.</span>
-<span class="sd">   E_errm : list</span>
-<span class="sd">    A list with negative errors in the ISGMR energies.</span>
+<span class="sd">   The `table` can chosen among the following ones: \</span>
+<span class="sd">   &#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;.</span>
+
+<span class="sd">   :param table: Fix the name of `table`. Default value: &#39;2018-ISGMR-GARG&#39;.</span>
+<span class="sd">   :type table: str, optional. </span>
+
+<span class="sd">   **Attributes:**</span>
 <span class="sd">   &quot;&quot;&quot;</span>
    <span class="c1">#</span>
    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span> <span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Parameters</span>
 <span class="sd">      ----------</span>
-<span class="sd">      model : str, optional</span>
-<span class="sd">      The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...</span>
+<span class="sd">      table : str, optional</span>
+<span class="sd">      The table to consider. \</span>
+<span class="sd">      Choose between: 2018-ISGMR-GARG (default) and 2010-ISGMR-LI.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
       <span class="c1">#</span>
       <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupISGMR()&quot;</span><span class="p">)</span>
-      <span class="c1">#</span>
+      <span class="c1">#: Attribute table.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
       <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
       <span class="c1">#</span>
+      <span class="c1">#: Attribute Z (charge of the nucleus).</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute A (mass of the nucleus).</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute energy centroid.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute (+) uncertainty in the energy centroid.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute (-) uncertainty in the energy centroid.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#</span>
       <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">tables_isgmr</span><span class="p">()</span>
@@ -153,14 +158,19 @@
          <span class="c1">#</span>
          <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2010-ISGMR-Li.dat&#39;</span><span class="p">)</span>
          <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)&#39;</span>
+         <span class="c1">#: Attribute providing the label the data is references for figures.</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Li-Garg-Liu-2010&#39;</span>
+         <span class="c1">#: Attribute providing additional notes about the data.</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="o">=</span> \
             <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="c1">#: Attribute list with + and - uncertainty</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">E_erra</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">]</span>
+         <span class="c1">#: Attribute symmetrised uncertainty (average between + and - uncertainty).</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">E_errs</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">)</span>
          <span class="c1">#</span>
       <span class="k">elif</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2018-isgmr-garg&#39;</span><span class="p">:</span>
@@ -177,13 +187,14 @@
          <span class="bp">self</span><span class="o">.</span><span class="n">E_erra</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">]</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">E_errs</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">)</span>
          <span class="c1">#</span>
+      <span class="c1">#: Attribute energy unit.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">E_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
       <span class="c1">#</span>
       <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupISGMR()&quot;</span><span class="p">)</span>
    <span class="c1">#</span>
 <div class="viewcode-block" id="SetupISGMR.print_outputs"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">      Print outputs on terminal&#39;s screen.</span>
+<span class="sd">      Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
       <span class="c1">#</span>

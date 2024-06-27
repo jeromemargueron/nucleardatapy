@@ -33,12 +33,114 @@
         </navLabel>
         <content src="source/usage.xhtml#installation" />  
       </navPoint>
+      <navPoint id="navPoint5" playOrder="4">
+        <navLabel>
+          <text>Use nucleardatapy</text>
+        </navLabel>
+        <content src="source/usage.xhtml#use-nucleardatapy" />  
+      </navPoint>
+      <navPoint id="navPoint6" playOrder="5">
+        <navLabel>
+          <text>Test nucleardatapy</text>
+        </navLabel>
+        <content src="source/usage.xhtml#test-nucleardatapy" />  
+      </navPoint>
+      <navPoint id="navPoint7" playOrder="6">
+        <navLabel>
+          <text>Get started</text>
+        </navLabel>
+        <content src="source/usage.xhtml#get-started" />  
+      </navPoint>
     </navPoint>
-    <navPoint id="navPoint5" playOrder="4">
+    <navPoint id="navPoint8" playOrder="7">
+      <navLabel>
+        <text>API</text>
+      </navLabel>
+      <content src="source/api.xhtml" />  
+      <navPoint id="navPoint9" playOrder="7">
+        <navLabel>
+          <text>API</text>
+        </navLabel>
+        <content src="source/api.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint10" playOrder="8">
+        <navLabel>
+          <text>nucleardatapy</text>
+        </navLabel>
+        <content src="source/generated/nucleardatapy.xhtml" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint11" playOrder="9">
+      <navLabel>
+        <text>Miscelaneous</text>
+      </navLabel>
+      <content src="source/miscelaneous.xhtml" />  
+      <navPoint id="navPoint12" playOrder="9">
+        <navLabel>
+          <text>Miscelaneous</text>
+        </navLabel>
+        <content src="source/miscelaneous.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint13" playOrder="10">
+        <navLabel>
+          <text>Contributing</text>
+        </navLabel>
+        <content src="source/miscelaneous.xhtml#contributing" />  
+      </navPoint>
+      <navPoint id="navPoint14" playOrder="11">
+        <navLabel>
+          <text>License</text>
+        </navLabel>
+        <content src="source/miscelaneous.xhtml#license" />  
+      </navPoint>
+      <navPoint id="navPoint15" playOrder="12">
+        <navLabel>
+          <text>Report issues</text>
+        </navLabel>
+        <content src="source/miscelaneous.xhtml#report-issues" />  
+      </navPoint>
+      <navPoint id="navPoint16" playOrder="13">
+        <navLabel>
+          <text>Thanks</text>
+        </navLabel>
+        <content src="source/miscelaneous.xhtml#thanks" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint17" playOrder="14">
       <navLabel>
         <text>SetupMicro</text>
       </navLabel>
       <content src="source/api/setup_micro.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint18" playOrder="15">
+      <navLabel>
+        <text>SetupPheno</text>
+      </navLabel>
+      <content src="source/api/setup_pheno.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint19" playOrder="16">
+      <navLabel>
+        <text>SetupEsymLsym</text>
+      </navLabel>
+      <content src="source/api/setup_EsymLsym.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint20" playOrder="17">
+      <navLabel>
+        <text>SetupMasses</text>
+      </navLabel>
+      <content src="source/api/setup_masses.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint21" playOrder="18">
+      <navLabel>
+        <text>SetupRadCh</text>
+      </navLabel>
+      <content src="source/api/setup_rad_ch.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint22" playOrder="19">
+      <navLabel>
+        <text>SetupISGMR</text>
+      </navLabel>
+      <content src="source/api/setup_ISGMR.xhtml" />  
     </navPoint>
   </navMap>
 </ncx>

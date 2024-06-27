@@ -38,10 +38,16 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
 </ul>
 
         </div>
@@ -81,7 +87,11 @@
 <div class="viewcode-block" id="models_micro"><a class="viewcode-back" href="../../source/api/setup_micro.html#nucleardatapy.setup_micro.models_micro">[docs]</a><span class="k">def</span> <span class="nf">models_micro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list with the name of the models available in this toolkit and</span>
-<span class="sd">    print them all on the prompt.</span>
+<span class="sd">    print them all on the prompt. These models are the following ones: \</span>
+<span class="sd">    &#39;1998-VAR-AM-APR&#39;, &#39;2008-AFDMC-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2008-QMC-NM-AV4&#39;, \</span>
+<span class="sd">    &#39;2009-dQMC-NM&#39;, &#39;2010-NM-Hebeler&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, \</span>
+<span class="sd">    &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2020-MBPT-AM-DHSL59&#39;, \</span>
+<span class="sd">    &#39;2020-MBPT-AM-DHSL69&#39;, &#39;2023-MBPT-AM&#39;.</span>
 
 <span class="sd">    :return: The list of models.</span>
 <span class="sd">    :rtype: list[str].</span>
@@ -96,42 +106,21 @@
 
 <div class="viewcode-block" id="SetupMicro"><a class="viewcode-back" href="../../source/api/setup_micro.html#nucleardatapy.setup_micro.SetupMicro">[docs]</a><span class="k">class</span> <span class="nc">SetupMicro</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.</span>
+<span class="sd">    Instantiate the object with microscopic results choosen \</span>
+<span class="sd">    by the toolkit practitioner.</span>
 
-<span class="sd">    ...</span>
+<span class="sd">    This choice is defined in `model`, which can chosen among \</span>
+<span class="sd">    the following choices: \</span>
+<span class="sd">    &#39;1998-VAR-AM-APR&#39;, &#39;2008-AFDMC-NM&#39;, &#39;2008-QMC-NM-swave&#39;, \</span>
+<span class="sd">    &#39;2008-QMC-NM-AV4&#39;, &#39;2009-dQMC-NM&#39;, &#39;2010-NM-Hebeler&#39;, \</span>
+<span class="sd">    &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, \</span>
+<span class="sd">    &#39;2018-QMC-NM&#39;, &#39;2020-MBPT-AM-DHSL59&#39;, &#39;2020-MBPT-AM-DHSL69&#39;, \</span>
+<span class="sd">    &#39;2023-MBPT-AM&#39;.</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    model : str, optional</span>
-<span class="sd">       The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...</span>
-<span class="sd">    nm_den : list</span>
-<span class="sd">       A list with densities in neutron matter.       </span>
-<span class="sd">    sm_den : list</span>
-<span class="sd">       A list with densities in symmetric matter.       </span>
-<span class="sd">    nm_kfn : list</span>
-<span class="sd">       A list with neutron Fermi momentum in neutron matter.</span>
-<span class="sd">    sm_kfn : list</span>
-<span class="sd">       A list with neutron Fermi momentum in symmetric matter.</span>
-<span class="sd">    nm_e2a : list</span>
-<span class="sd">       A list with energy per particle in neutron matter.</span>
-<span class="sd">    nm_e2a_err : list</span>
-<span class="sd">       A list with uncertainties for the energy per particle in neutron matter.</span>
-<span class="sd">    sm_e2a : list</span>
-<span class="sd">       A list with energy per particle in symmetric matter.</span>
-<span class="sd">    sm_e2a_err : list</span>
-<span class="sd">       A list with uncertainties for the energy per particle in symmetric matter.</span>
-<span class="sd">    nm_gap : list</span>
-<span class="sd">       A list with pairing gap in neutron matter.</span>
-<span class="sd">    sm_gap : list</span>
-<span class="sd">       A list with pairing gap in symmetric matter.</span>
-<span class="sd">    nm_pre : list</span>
-<span class="sd">       A list with pressure in neutron matter.</span>
-<span class="sd">    nm_pre_err : list</span>
-<span class="sd">       A list with uncertainties for the pressure in neutron matter.</span>
-<span class="sd">    sm_pre : list</span>
-<span class="sd">       A list with pressure in symmetric matter.</span>
-<span class="sd">    sm_pre_err : list</span>
-<span class="sd">       A list with uncertainties for the pressure in symmetric matter.</span>
+<span class="sd">    :param model: Fix the name of model. Default value: &#39;1998-VAR-AM-APR&#39;.</span>
+<span class="sd">    :type model: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span> <span class="p">):</span>
@@ -144,22 +133,37 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupMicro()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute model.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
         <span class="c1">#</span>
+        <span class="c1">#: Attribute neutron matter density.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter density.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter Fermi momentum.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter Fermi momentum.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute uncertainty in the neutron matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute uncertainty in the symmetric matter energy per particle.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter pairing gap.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter pairing gap.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute neutron matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute uncertainty in the neutron matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute symmetric matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute uncertainty in the symmetric matter pressure.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#self.gap_sm=np.zeros_like( self.den )</span>
         <span class="c1">#self.gap_nm = np.zeros_like( self.den )</span>
@@ -180,8 +184,11 @@
             <span class="c1">#</span>
             <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;eos/micro/1998-VAR-AM-APR.dat&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Akmal, Pandaripande and Ravenhall, Phys. Rev. C 58, 1804 (1998)&#39;</span>
+            <span class="c1">#: Attribute providing the label the data is references for figures.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;APR&#39;</span>
+            <span class="c1">#: Attribute providing additional notes about the data.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>
@@ -432,7 +439,7 @@
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupMicro()&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="SetupMicro.print_outputs"><a class="viewcode-back" href="../../source/api/setup_micro.html#nucleardatapy.setup_micro.SetupMicro.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Print outputs on terminal&#39;s screen.</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="c1">#</span>

@@ -10,7 +10,11 @@ import nucleardatapy as nudy
 def models_micro():
     """
     Return a list with the name of the models available in this toolkit and
-    print them all on the prompt.
+    print them all on the prompt. These models are the following ones: \
+    '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
+    '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', \
+    '2016-QMC-NM', '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', \
+    '2020-MBPT-AM-DHSL69', '2023-MBPT-AM'.
 
     :return: The list of models.
     :rtype: list[str].
@@ -25,42 +29,21 @@ def models_micro():
 
 class SetupMicro():
     """
-    Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.
+    Instantiate the object with microscopic results choosen \
+    by the toolkit practitioner.
 
-    ...
+    This choice is defined in `model`, which can chosen among \
+    the following choices: \
+    '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', \
+    '2008-QMC-NM-AV4', '2009-dQMC-NM', '2010-NM-Hebeler', \
+    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+    '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
+    '2023-MBPT-AM'.
 
-    Attributes
-    ----------
-    model : str, optional
-       The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
-    nm_den : list
-       A list with densities in neutron matter.       
-    sm_den : list
-       A list with densities in symmetric matter.       
-    nm_kfn : list
-       A list with neutron Fermi momentum in neutron matter.
-    sm_kfn : list
-       A list with neutron Fermi momentum in symmetric matter.
-    nm_e2a : list
-       A list with energy per particle in neutron matter.
-    nm_e2a_err : list
-       A list with uncertainties for the energy per particle in neutron matter.
-    sm_e2a : list
-       A list with energy per particle in symmetric matter.
-    sm_e2a_err : list
-       A list with uncertainties for the energy per particle in symmetric matter.
-    nm_gap : list
-       A list with pairing gap in neutron matter.
-    sm_gap : list
-       A list with pairing gap in symmetric matter.
-    nm_pre : list
-       A list with pressure in neutron matter.
-    nm_pre_err : list
-       A list with uncertainties for the pressure in neutron matter.
-    sm_pre : list
-       A list with pressure in symmetric matter.
-    sm_pre_err : list
-       A list with uncertainties for the pressure in symmetric matter.
+    :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
+    :type model: str, optional. 
+
+    **Attributes:**
     """
     #
     def __init__( self, model = '1998-VAR-AM-APR' ):
@@ -73,22 +56,37 @@ class SetupMicro():
         #
         if nudy.env.verb: print("Enter SetupMicro()")
         #
+        #: Attribute model.
         self.model = model
         if nudy.env.verb: print("model:",model)
         #
+        #: Attribute neutron matter density.
         self.nm_den = []
+        #: Attribute symmetric matter density.
         self.sm_den = []
+        #: Attribute neutron matter Fermi momentum.
         self.nm_kfn = []
+        #: Attribute symmetric matter Fermi momentum.
         self.sm_kfn = []
+        #: Attribute neutron matter energy per particle.
         self.nm_e2a = []
+        #: Attribute uncertainty in the neutron matter energy per particle.
         self.nm_e2a_err = []
+        #: Attribute symmetric matter energy per particle.
         self.sm_e2a = []
+        #: Attribute uncertainty in the symmetric matter energy per particle.
         self.sm_e2a_err = []
-        self.sm_gap = []
+        #: Attribute neutron matter pairing gap.
         self.nm_gap = []
+        #: Attribute symmetric matter pairing gap.
+        self.sm_gap = []
+        #: Attribute neutron matter pressure.
         self.nm_pre = []
+        #: Attribute uncertainty in the neutron matter pressure.
         self.nm_pre_err = []
+        #: Attribute symmetric matter pressure.
         self.sm_pre = []
+        #: Attribute uncertainty in the symmetric matter pressure.
         self.sm_pre_err = []
         #self.gap_sm=np.zeros_like( self.den )
         #self.gap_nm = np.zeros_like( self.den )
@@ -109,8 +107,11 @@ class SetupMicro():
             #
             file_in = os.path.join(nudy.param.path_data,'eos/micro/1998-VAR-AM-APR.dat')
             if nudy.env.verb: print('Reads file:',file_in)
+            #: Attribute providing the full reference to the paper to be citted.
             self.ref = 'Akmal, Pandaripande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
+            #: Attribute providing the label the data is references for figures.
             self.label = 'APR'
+            #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
             self.nm_den, self.sm_e2a, self.nm_e2a = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.sm_den = self.nm_den
@@ -361,7 +362,7 @@ class SetupMicro():
         if nudy.env.verb: print("Exit SetupMicro()")
     def print_outputs( self ):
         """
-        Print outputs on terminal's screen.
+        Method which print outputs on terminal's screen.
         """
         print("")
         #

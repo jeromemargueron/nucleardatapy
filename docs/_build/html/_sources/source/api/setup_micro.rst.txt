@@ -8,3 +8,17 @@ SetupMicro
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.setup_micro
 	:members:
+
+Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupMicro.py
+
+.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupMicro_e2a_nm.png
+	:scale: 70 %
+	:alt: map to buried treasure
+
+	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of model available in the nucleardatapy toolkit.
+
+.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupMicro_gap_nm.png
+	:scale: 70 %
+	:alt: map to buried treasure
+
+	This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.

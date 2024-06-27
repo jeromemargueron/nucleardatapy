@@ -38,6 +38,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -86,8 +87,15 @@
 
 <div class="viewcode-block" id="constraints_EsymLsym"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.constraints_EsymLsym">[docs]</a><span class="k">def</span> <span class="nf">constraints_EsymLsym</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a list with the name of the models available in this toolkit and</span>
-<span class="sd">    print them all.</span>
+<span class="sd">    Return a list of constraints available in this toolkit in the \</span>
+<span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
+<span class="sd">    &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208PB&#39;, &#39;2015-POL-120SN&#39;, \</span>
+<span class="sd">    &#39;2015-POL-68NI&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, \</span>
+<span class="sd">    &#39;2021-PREXII-Reinhard&#39;, &#39;2021-PREXII-Zhang&#39;; and \</span>
+<span class="sd">    print them all on the prompt.</span>
+
+<span class="sd">    :return: The list of constraints.</span>
+<span class="sd">    :rtype: list[str].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2009-HIC&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-RNP&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-FRDM&#39;</span><span class="p">,</span> <span class="s1">&#39;2013-NS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS+RNP&#39;</span><span class="p">,</span> \
              <span class="s1">&#39;2015-POL-208PB&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-120SN&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-68NI&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-UG&#39;</span><span class="p">,</span> \
@@ -113,21 +121,32 @@
 <div class="viewcode-block" id="SetupEsymLsym"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym">[docs]</a><span class="k">class</span> <span class="nc">SetupEsymLsym</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the values of Esym and Lsym from the constraint.</span>
-<span class="sd">    </span>
-<span class="sd">    :param constraint: name of the model: &#39;2008-AFDMC&#39;, ...</span>
-<span class="sd">    :type constraint: string().</span>
-<span class="sd">    :returns: constraint, ref, label, note, Esym, Lsym.</span>
+
+<span class="sd">    The name of the constraint to be chosen in the \</span>
+<span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
+<span class="sd">    &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208PB&#39;, &#39;2015-POL-120SN&#39;, \</span>
+<span class="sd">    &#39;2015-POL-68NI&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, \</span>
+<span class="sd">    &#39;2021-PREXII-Reinhard&#39;, &#39;2021-PREXII-Zhang&#39;.</span>
+
+<span class="sd">    :param constraint: Fix the name of `constraint`. Default value: &#39;2014-IAS&#39;.</span>
+<span class="sd">    :type constraint: str, optional.</span>
+
+<span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2014-IAS&#39;</span> <span class="p">):</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupEsymLsym()&quot;</span><span class="p">)</span>
-        <span class="c1">#</span>
+        <span class="c1">#: Attribute constraint.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constraint:&quot;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="c1">#: Attribute Esym.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute with uncertainty in Esym.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute Lsym.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Attribute with uncertainty in Lsym.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">constraints_EsymLsym</span><span class="p">()</span>
@@ -139,9 +158,11 @@
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2009-hic&#39;</span><span class="p">:</span>
-            <span class="c1">#</span>
+            <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Tsang et al., PRL 102, 122701 (2009)&#39;</span>
+            <span class="c1">#: Attribute providing the label the data is references for figures.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;HIC-2009&#39;</span>
+            <span class="c1">#: Attribute providing additional notes about the constraint.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;constraints inferred from the study of isospin diffusion in HICs&quot;</span>
             <span class="n">csk</span> <span class="o">=</span> <span class="mf">25.0</span> <span class="c1"># MeV</span>
             <span class="n">csp</span> <span class="o">=</span> <span class="mf">35.2</span> <span class="c1"># MeV</span>
@@ -418,7 +439,7 @@
     <span class="c1">#</span>
 <div class="viewcode-block" id="SetupEsymLsym.print_outputs"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Print outputs on terminal&#39;s screen.</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="c1">#</span>

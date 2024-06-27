@@ -41,6 +41,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
@@ -78,6 +79,102 @@
              
   <section id="setupradch">
 <h1>SetupRadCh<a class="headerlink" href="#setupradch" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.setup_rad_ch"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_rad_ch.</span></span><span class="sig-name descname"><span class="pre">SetupRadCh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2013-Angeli'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_rad_ch.html#SetupRadCh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with charge radii choosen    from a table.</p>
+<p>This choice is defined in the variable <cite>table</cite>.</p>
+<p>The tables can chosen among the following ones:    ‘2013-Angeli’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2013-Angeli’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.A">
+<span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.A" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.N">
+<span class="sig-name descname"><span class="pre">N</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.N" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute N (number of neutrons of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.R_ch">
+<span class="sig-name descname"><span class="pre">R_ch</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.R_ch" title="Permalink to this definition"></a></dt>
+<dd><p>Attribue R_ch (charge radius) in fm.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.R_ch_err">
+<span class="sig-name descname"><span class="pre">R_ch_err</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.R_ch_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribue uncertainty in R_ch (charge radius) in fm.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.R_unit">
+<span class="sig-name descname"><span class="pre">R_unit</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.R_unit" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute radius unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.Z" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.label" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.note" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_rad_ch.html#SetupRadCh.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.ref" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.SetupRadCh.symb">
+<span class="sig-name descname"><span class="pre">symb</span></span><a class="headerlink" href="#nucleardatapy.setup_rad_ch.SetupRadCh.symb" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute symb (symbol) of the element, e.g., Fe.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_rad_ch.tables_rad_ch">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_rad_ch.</span></span><span class="sig-name descname"><span class="pre">tables_rad_ch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_rad_ch.html#tables_rad_ch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_rad_ch.tables_rad_ch" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of the tables available in this toolkit for the charge radiuus and
+print them all on the prompt.  These tables are the following
+ones: ‘2013-Angeli’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

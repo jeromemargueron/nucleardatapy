@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -43,7 +43,7 @@ def main():
         axs.set_xlabel(r'N')
         axs.set_xlim([0, 200])
         axs.set_ylim([0, 132])
-        mas = nudy.SetupMasses( table = table, version = version )
+        mas = nuda.SetupMasses( table = table, version = version )
         # plot mass table for unstable nuclei:
         ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
         axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='.', s = 1, linewidth=0, color = 'b' )
@@ -63,7 +63,7 @@ def main():
         axs.plot( [0, 130], [0, 130], linestyle='dotted', linewidth=1, color='k')
         axs.text(105,120,'N=Z')
         # plot stable_fit
-        N, Z = nudy.stable_fit()
+        N, Z = nuda.stable_fit()
         axs.plot( N, Z, linestyle='dashed', linewidth=1, color='k')
         # plot shells
         # for isotopes

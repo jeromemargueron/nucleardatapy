@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -46,12 +46,12 @@ def main():
     axs[2].set_xlim([202, 210])
     axs[2].set_ylim([13, 14])
     #
-    tables, tables_lower = nudy.tables_isgmr()
+    tables, tables_lower = nuda.tables_isgmr()
     #
     for table in tables:
         #
         print('Table:',table)
-        gmr = nudy.SetupISGMR( table = table )
+        gmr = nuda.SetupISGMR( table = table )
         #print('A[gmr.Z==40]:',gmr.A[gmr.Z==40])
         #print('E_cen[gmr.Z==40]:',gmr.E_cen[gmr.Z==40])
         #print('E_errp[gmr.Z==40]:',gmr.E_errp[gmr.Z==40])

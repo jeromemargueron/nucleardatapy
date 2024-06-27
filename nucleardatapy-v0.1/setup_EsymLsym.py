@@ -10,7 +10,11 @@ import nucleardatapy as nudy
 
 def constraints_EsymLsym():
     """
-    Return a list of constraints available in this toolkit and
+    Return a list of constraints available in this toolkit in the \
+    following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
+    '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
+    '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
+    '2021-PREXII-Reinhard', '2021-PREXII-Zhang'; and \
     print them all on the prompt.
 
     :return: The list of constraints.
@@ -40,21 +44,32 @@ def HIC_Lsym_bound(Esym,gi,csk,csp):
 class SetupEsymLsym():
     """
     Instantiate the values of Esym and Lsym from the constraint.
-    
-    :param constraint: name of the model: '2008-AFDMC', ...
-    :type constraint: string().
-    :returns: constraint, ref, label, note, Esym, Lsym.
+
+    The name of the constraint to be chosen in the \
+    following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
+    '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
+    '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
+    '2021-PREXII-Reinhard', '2021-PREXII-Zhang'.
+
+    :param constraint: Fix the name of `constraint`. Default value: '2014-IAS'.
+    :type constraint: str, optional.
+
+    **Attributes:**
     """
     #
     def __init__( self, constraint = '2014-IAS' ):
         #
         if nudy.env.verb: print("Enter SetupEsymLsym()")
-        #
+        #: Attribute constraint.
         self.constraint = constraint
         if nudy.env.verb: print("constraint:",constraint)
+        #: Attribute Esym.
         self.Esym = []
+        #: Attribute with uncertainty in Esym.
         self.Esym_err = []
+        #: Attribute Lsym.
         self.Lsym = []
+        #: Attribute with uncertainty in Lsym.
         self.Lsym_err = []
         #
         constraints, constraints_lower = constraints_EsymLsym()
@@ -66,9 +81,11 @@ class SetupEsymLsym():
             exit()
         #
         if constraint.lower() == '2009-hic':
-            #
+            #: Attribute providing the full reference to the paper to be citted.
             self.ref = 'Tsang et al., PRL 102, 122701 (2009)'
+            #: Attribute providing the label the data is references for figures.
             self.label = 'HIC-2009'
+            #: Attribute providing additional notes about the constraint.
             self.note = "constraints inferred from the study of isospin diffusion in HICs"
             csk = 25.0 # MeV
             csp = 35.2 # MeV
@@ -345,7 +362,7 @@ class SetupEsymLsym():
     #
     def print_outputs( self ):
         """
-        Print outputs on terminal's screen.
+        Method which print outputs on terminal's screen.
         """
         print("")
         #

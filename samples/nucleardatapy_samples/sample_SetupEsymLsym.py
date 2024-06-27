@@ -6,7 +6,7 @@ import numpy as np
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -17,11 +17,11 @@ def main():
     #constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
     #         '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
     #          '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
-    constraints, constraints_lower = nudy.constraints_EsymLsym()
+    constraints, constraints_lower = nuda.constraints_EsymLsym()
     #
     for constraint in constraints:
         #
-        mic = nudy.SetupEsymLsym( constraint = constraint )
+        mic = nuda.SetupEsymLsym( constraint = constraint )
         #print('Esym:',mic.cont_Esym)
         #print('Lsym:',mic.cont_Lsym)
         mic.print_outputs( )

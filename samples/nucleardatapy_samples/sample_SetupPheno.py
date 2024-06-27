@@ -6,7 +6,7 @@ import numpy as np
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -19,14 +19,14 @@ def main():
     #
     for model in models:
         #
-        params, params_lower = nudy.params_pheno( model = model )
+        params, params_lower = nuda.params_pheno( model = model )
         #params = [ 'SLy5' ]
         #params = [ 'ABC' ]
         #
         for param in params:
             #
             print('in Sample: model, param',model,param)
-            mic = nudy.SetupPheno( model = model, param = param )
+            mic = nuda.SetupPheno( model = model, param = param )
             mic.print_outputs( )
     #
     print(50*'-')

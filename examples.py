@@ -6,7 +6,7 @@ import numpy as np
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -21,8 +21,8 @@ def main():
     #
     for key in keys:
         #
-        mic = nudy.SetupMicro( model = key )
-        nudy.print_outputs_micro( mic )
+        mic = nuda.SetupMicro( model = key )
+        nuda.print_outputs_micro( mic )
     #
     print(50*'-')
     print("Exit sample_SetupMicro.py:")

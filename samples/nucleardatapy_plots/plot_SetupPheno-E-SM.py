@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -57,11 +57,11 @@ def main():
         #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
         #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
         #         '2023-MBPT-AM' ]
-        params, params_lower = nudy.params_pheno( model = model )
+        params, params_lower = nuda.params_pheno( model = model )
         #
         for param in params:
             #
-            mic = nudy.SetupPheno( model = model, param = param )
+            mic = nuda.SetupPheno( model = model, param = param )
             if any(mic.sm_e2a): 
                 axs[0,0].plot( mic.sm_den, mic.sm_e2a/nudy.fermi_gas.effg(mic.sm_kfn), linestyle='solid', label=mic.label )
                 axs[1,0].plot( mic.sm_den, mic.sm_e2a, linestyle='solid', label=mic.label )

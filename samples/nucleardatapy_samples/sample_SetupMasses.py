@@ -6,7 +6,7 @@ import numpy as np
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -15,11 +15,11 @@ def main():
     print(50*'-')
     #
     tables = [ 'AME' ]
-    #tables, tables_lower = nudy.tables_masses()
+    #tables, tables_lower = nuda.tables_masses()
     #
     for table in tables:
         #
-        mas = nudy.SetupMasses( table = table, version = '2020' )
+        mas = nuda.SetupMasses( table = table, version = '2020' )
         print('From mass table')
         #print('A:',mas.A)
         print('number of lines:',mas.nbLine)

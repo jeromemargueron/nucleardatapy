@@ -12,8 +12,8 @@
     <dc:publisher>Jérôme Margueron, IRL NPA, USA</dc:publisher>
     <dc:rights>2024, Jérôme Margueron, IRL NPA, USA</dc:rights>
     <dc:identifier id="unknown">unknown</dc:identifier>
-    <dc:date>2024-06-26T19:45:38Z</dc:date>
-    <meta property="dcterms:modified">2024-06-26T19:45:38Z</meta>
+    <dc:date>2024-06-27T18:17:03Z</dc:date>
+    <meta property="dcterms:modified">2024-06-27T18:17:03Z</meta>
     <meta property="ibooks:version"></meta>
     <meta property="ibooks:specified-fonts">true</meta>
     <meta property="ibooks:binding">true</meta>
@@ -25,19 +25,47 @@
     <item id="epub-0" href="genindex.xhtml" media-type="application/xhtml+xml" />
     <item id="epub-1" href="index.xhtml" media-type="application/xhtml+xml" />
     <item id="epub-2" href="py-modindex.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-3" href="_static/basic.css" media-type="text/css" />
-    <item id="epub-4" href="_static/epub.css" media-type="text/css" />
-    <item id="epub-5" href="_static/file.png" media-type="image/png" />
-    <item id="epub-6" href="_static/minus.png" media-type="image/png" />
-    <item id="epub-7" href="_static/plus.png" media-type="image/png" />
-    <item id="epub-8" href="_static/pygments.css" media-type="text/css" />
-    <item id="epub-9" href="source/usage.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-10" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-3" href="_images/plot_SetupEsymLsym.png" media-type="image/png" />
+    <item id="epub-4" href="_images/plot_SetupMassesAME.png" media-type="image/png" />
+    <item id="epub-5" href="_images/plot_SetupMicro_e2a_nm.png" media-type="image/png" />
+    <item id="epub-6" href="_images/plot_SetupMicro_gap_nm.png" media-type="image/png" />
+    <item id="epub-7" href="_images/plot_SetupPheno-DDRH-ENM.png" media-type="image/png" />
+    <item id="epub-8" href="_images/plot_SetupPheno-DDRH-ESM.png" media-type="image/png" />
+    <item id="epub-9" href="_images/plot_SetupPheno-DDRHF-ENM.png" media-type="image/png" />
+    <item id="epub-10" href="_images/plot_SetupPheno-DDRHF-ESM.png" media-type="image/png" />
+    <item id="epub-11" href="_images/plot_SetupPheno-NLRH-ENM.png" media-type="image/png" />
+    <item id="epub-12" href="_images/plot_SetupPheno-NLRH-ESM.png" media-type="image/png" />
+    <item id="epub-13" href="_images/plot_SetupPheno-Skyrme-ENM.png" media-type="image/png" />
+    <item id="epub-14" href="_images/plot_SetupPheno-Skyrme-ESM.png" media-type="image/png" />
+    <item id="epub-15" href="_static/basic.css" media-type="text/css" />
+    <item id="epub-16" href="_static/epub.css" media-type="text/css" />
+    <item id="epub-17" href="_static/file.png" media-type="image/png" />
+    <item id="epub-18" href="_static/minus.png" media-type="image/png" />
+    <item id="epub-19" href="_static/plus.png" media-type="image/png" />
+    <item id="epub-20" href="_static/pygments.css" media-type="text/css" />
+    <item id="epub-21" href="source/api.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-22" href="source/miscelaneous.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-23" href="source/usage.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-24" href="source/api/setup_EsymLsym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-25" href="source/api/setup_ISGMR.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-26" href="source/api/setup_masses.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-27" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-28" href="source/api/setup_pheno.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-29" href="source/api/setup_rad_ch.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-30" href="source/generated/nucleardatapy.xhtml" media-type="application/xhtml+xml" />
   </manifest>
   <spine toc="ncx" page-progression-direction="ltr">
     <itemref idref="epub-1" />
-    <itemref idref="epub-9" />
-    <itemref idref="epub-10" />
+    <itemref idref="epub-23" />
+    <itemref idref="epub-21" />
+    <itemref idref="epub-30" />
+    <itemref idref="epub-22" />
+    <itemref idref="epub-27" />
+    <itemref idref="epub-28" />
+    <itemref idref="epub-24" />
+    <itemref idref="epub-26" />
+    <itemref idref="epub-29" />
+    <itemref idref="epub-25" />
     <itemref idref="epub-2" />
     <itemref idref="epub-0" />
   </spine>

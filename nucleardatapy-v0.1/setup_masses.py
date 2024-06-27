@@ -38,8 +38,9 @@ def stable_fit():
 
 def tables_masses():
     """
-    Return a list of the tables available in this toolkit and
-    print them all on the prompt.
+    Return a list of the tables available in this toolkit for the experimental masses and
+    print them all on the prompt. These tables are the following
+    ones: 'AME'.
 
     :return: The list of tables.
     :rtype: list[str].
@@ -64,7 +65,8 @@ def versions_masses( table ):
 
     :param table: The table for which there are different versions.
     :type table: str.
-    :return: The list of versions.
+    :return: The list of versions. \
+    If table == 'AME': '2020', '2016', '2012'.
     :rtype: list[str].
     """
     #
@@ -83,22 +85,20 @@ def versions_masses( table ):
 
 class SetupMasses():
     """
-    Instantiate the experimental nuclear masses from AMDC
+    Instantiate the experimental nuclear masses from AME mass table.
 
-    :param A: (optional) if given returns only the binding energy for nuclei with mass 'A', otherwise returns the entier mass table (default: 0, 208 for instance).
-    :type  A: int.
-    :param Z: (optional) if given returns only the binding energy for nuclei with charge 'Z', otherwise returns the entier mass table (default: 0, 82 for instance).
-    :type  Z: int.
-    :param Amin: (optional) if given sets the lower bound in A of the mass table, otherwise returns the entier mass table ( default: 0, 12 for instance).
-    :type  Amin: int.
-    :param Zmin: (optional) if given sets the lower bound in Z of the mass table, otherwise returns the entier mass table ( default: 0, 6 for instance).
-    :type  Zmin: int.
-    :param version: (optional) version release of the AMDC data table (default: '2016', '2012', '2003', '1995', '1993', '1983').
-    :type  version: str.
-    :param interp: (optional) include interpolated data (default: 'n', 'y').
-    :type  interp: str.
-    :param every: (optional) select one nucleus every N. if N=1 no selection (by default).
-    :type  every: integer. 
+    This choice is defined in the variables `table` and `version`.
+
+    `table` can chosen among the following ones: 'AME'.
+
+    `version` can be chosen among the following choices: '2020', '2016', '2012'.
+
+    :param table: Fix the name of `table`. Default value: 'AME'.
+    :type table: str, optional. 
+    :param version: Fix the name of `version`. Default value: 2020'.
+    :type version: str, optional. 
+
+    **Attributes:**
     """
     def __init__(self, table = 'AME', version = '2020'):
         #
@@ -122,18 +122,31 @@ class SetupMasses():
         self.version = version
         if nudy.env.verb: print("version:",version)
         #
+        #: Attribute A (mass of the nucleus).
         self.A = []
+        #: Attribute Z (charge of the nucleus).
         self.Z = []
+        #: Attribute symb (symbol) of the element, e.g., Fe.
         self.symb = []
+        #: Attribute N (number of neutrons of the nucleus).
         self.N = []
+        #: Attribute I.
         self.I = []
+        #: Attribute Interp (interpolation). Interp='y' is the nucleus\
+        #: has not been measured but is in the table based on interpolation expressions.\
+        #: otherwise Interp = 'n' for nuclei produced in laboratory and measured.
         self.Interp = []
+        #: Attribute stbl. stbl='y' if the nucleus is stable (according to the table). Otherwise stbl = 'n'.
         self.stbl = [] # ='y' if stable nucleus
+        #: Attribute HT (half-Time) of the nucleus.
         self.HT = [] # half-time in s
+        #: Attribute year of the discovery of the nucleus.
         self.year = []
+        #: Attribute BE (Binding Energy) of the nucleus.
         self.BE = []
+        #: Attribute uncertainty in the BE (Binding Energy) of the nucleus.
         self.BE_err = []
-        #
+        #: Attribute Zmax: maximum charge of nuclei present in the table.
         self.Zmax=0
         #
         if table.lower()=='ame':
@@ -158,8 +171,11 @@ class SetupMasses():
                 cdbe = 31
                 cdbee = 42
                 cyear=114 # column for the discovery year
+                #: Attribute providing the full reference to the paper to be citted.
                 self.ref='F.G. Kondev, M. Wang, W.J. Huang, S. Naimi, and G. Audi, Chin. Phys. C45, 030001 (2021)'
+                #: Attribute providing the label the data is references for figures.
                 self.label = 'AME-2020'
+                #: Attribute providing additional notes about the data.
                 self.note = "write here notes about this table."
             #
             # read the AME table
@@ -342,7 +358,9 @@ class SetupMasses():
                     self.BE.append( nucBE )
                     self.BE_err.append( nucdBE )
                     nbNuc = nbNuc + 1
+            #: Attribute with the number of line in the file.
             self.nbLine = nbLine
+            #: Attribute with the number of nuclei read in the file.
             self.nbNuc = nbNuc
         #
         if nudy.env.verb: print("Exit SetupMasses()")
@@ -350,7 +368,7 @@ class SetupMasses():
     #
     def print_outputs( self ):
        """
-       Print outputs on terminal's screen.
+       Method which print outputs on terminal's screen.
        """
        print("")
        #
@@ -368,6 +386,19 @@ class SetupMasses():
        if nudy.env.verb: print("Exit print_outputs()")
        #
     def select(self, Amin = 0, Zmin = 0, interp = 'n', state= 'gs', nucleus = 'unstable', every = 1):
+        """
+        Method which select some nuclei from the table according to some criteria.
+
+        :param interp: If interp='n', exclude the interpolated nuclei from the selected ones. \
+        If interp='y' consider them in the table, in addition to the others.
+        :type interp: str, optional. Default = 'n'.
+        :param state: select the kind of state. If state='gs', select nuclei measured in their ground state.
+        :type state: str, optional. Default 'gs'.
+        :param nucleus: 'unstable'.
+        :type nucleus: str, optional. Default 'unstable'.
+        :param every: consider only 1 out of `every` nuclei in the table.
+        :type every: int, optional. Default every = 1.
+        """
         #
         if nudy.env.verb: print("Enter select()")
         #
@@ -396,8 +427,11 @@ class SetupMasses():
         nbNucSta = 0
         nbNucSel = 0
         #
+        #: Attribute sel_A (mass of the selected nuclei).
         self.sel_A = []
+        #: Attribute sel_Z (charge of the selected nuclei).
         self.sel_Z = []
+        #: Attribute sel_symb (symbol of the selected nuclei).
         self.sel_symb = []
         self.sel_N = []
         self.sel_I = []
@@ -466,6 +500,12 @@ class SetupMasses():
         return self
         #
     def drip(self, Zmax = 95 ):
+        """
+        Method which find the drip-line nuclei (on the two sides).
+
+        :param Zmax: Fix the maximum charge for the search of the drip line.
+        :type Zmax: int, optional. Default: 95.
+        """
         #
         if nudy.env.verb: print("Enter drip()")
         #

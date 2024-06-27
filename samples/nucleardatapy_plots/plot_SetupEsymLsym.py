@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -49,12 +49,12 @@ def main():
     #         '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
     #          '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
     #constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2014-IAS', '2014-IAS+RNP' ]
-    constraints, constraints_lower = nudy.constraints_EsymLsym()
+    constraints, constraints_lower = nuda.constraints_EsymLsym()
     #
     for constraint in constraints:
         #
         #print('constraint:',key)
-        el = nudy.SetupEsymLsym( constraint = constraint )
+        el = nuda.SetupEsymLsym( constraint = constraint )
         print('Esym:',el.Esym,'+-',el.Esym_err)
         print('Lsym:',el.Lsym,'+-',el.Lsym_err)
         print('len(Esym):',el.Esym.size)

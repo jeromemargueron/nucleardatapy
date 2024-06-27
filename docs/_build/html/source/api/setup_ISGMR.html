@@ -40,6 +40,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
@@ -77,6 +78,114 @@
              
   <section id="setupisgmr">
 <h1>SetupISGMR<a class="headerlink" href="#setupisgmr" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.setup_ISGMR"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">SetupISGMR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2018-ISGMR-GARG'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#SetupISGMR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with microscopic results choosen    by the toolkit practitioner.
+This choice is defined in the variable <cite>table</cite>.</p>
+<p>The <cite>table</cite> can chosen among the following ones:    ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.A">
+<span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.A" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_cen">
+<span class="sig-name descname"><span class="pre">E_cen</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_cen" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_erra">
+<span class="sig-name descname"><span class="pre">E_erra</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_erra" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute list with + and - uncertainty</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errm">
+<span class="sig-name descname"><span class="pre">E_errm</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errm" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errp">
+<span class="sig-name descname"><span class="pre">E_errp</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errp" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errs">
+<span class="sig-name descname"><span class="pre">E_errs</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errs" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute symmetrised uncertainty (average between + and - uncertainty).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_unit">
+<span class="sig-name descname"><span class="pre">E_unit</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_unit" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute energy unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.Z" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.label" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.note" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#SetupISGMR.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.ref" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.table">
+<span class="sig-name descname"><span class="pre">table</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.table" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute table.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.tables_isgmr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">tables_isgmr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#tables_isgmr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.tables_isgmr" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of tables available in this toolkit for the ISGMR energy and
+print them all on the prompt. These tables are the following
+ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

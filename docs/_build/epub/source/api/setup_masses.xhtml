@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupMasses</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupmasses">
+<h1>SetupMasses</h1>
+<span class="target" id="module-nucleardatapy.setup_masses"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">SetupMasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2020'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the experimental nuclear masses from AME mass table.</p>
+<p>This choice is defined in the variables <cite>table</cite> and <cite>version</cite>.</p>
+<p><cite>table</cite> can chosen among the following ones: ‘AME’.</p>
+<p><cite>version</cite> can be chosen among the following choices: ‘2020’, ‘2016’, ‘2012’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘AME’.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>version</cite>. Default value: 2020’.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.A">
+<span class="sig-name descname"><span class="pre">A</span></span></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.BE">
+<span class="sig-name descname"><span class="pre">BE</span></span></dt>
+<dd><p>Attribute BE (Binding Energy) of the nucleus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.BE_err">
+<span class="sig-name descname"><span class="pre">BE_err</span></span></dt>
+<dd><p>Attribute uncertainty in the BE (Binding Energy) of the nucleus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.HT">
+<span class="sig-name descname"><span class="pre">HT</span></span></dt>
+<dd><p>Attribute HT (half-Time) of the nucleus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.I">
+<span class="sig-name descname"><span class="pre">I</span></span></dt>
+<dd><p>Attribute I.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.Interp">
+<span class="sig-name descname"><span class="pre">Interp</span></span></dt>
+<dd><p>Attribute Interp (interpolation). Interp=’y’ is the nucleushas not been measured but is in the table based on interpolation expressions.otherwise Interp = ‘n’ for nuclei produced in laboratory and measured.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.N">
+<span class="sig-name descname"><span class="pre">N</span></span></dt>
+<dd><p>Attribute N (number of neutrons of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.Zmax">
+<span class="sig-name descname"><span class="pre">Zmax</span></span></dt>
+<dd><p>maximum charge of nuclei present in the table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Attribute Zmax</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.drip">
+<span class="sig-name descname"><span class="pre">drip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">95</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Method which find the drip-line nuclei (on the two sides).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Zmax</strong> (<em>int</em><em>, </em><em>optional. Default: 95.</em>) – Fix the maximum charge for the search of the drip line.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.label">
+<span class="sig-name descname"><span class="pre">label</span></span></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.nbLine">
+<span class="sig-name descname"><span class="pre">nbLine</span></span></dt>
+<dd><p>Attribute with the number of line in the file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.nbNuc">
+<span class="sig-name descname"><span class="pre">nbNuc</span></span></dt>
+<dd><p>Attribute with the number of nuclei read in the file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.note">
+<span class="sig-name descname"><span class="pre">note</span></span></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unstable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Method which select some nuclei from the table according to some criteria.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interp</strong> (<em>str</em><em>, </em><em>optional. Default = 'n'.</em>) – If interp=’n’, exclude the interpolated nuclei from the selected ones.         If interp=’y’ consider them in the table, in addition to the others.</p></li>
+<li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
+<li><p><strong>nucleus</strong> (<em>str</em><em>, </em><em>optional. Default 'unstable'.</em>) – ‘unstable’.</p></li>
+<li><p><strong>every</strong> (<em>int</em><em>, </em><em>optional. Default every = 1.</em>) – consider only 1 out of <cite>every</cite> nuclei in the table.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.stbl">
+<span class="sig-name descname"><span class="pre">stbl</span></span></dt>
+<dd><p>Attribute stbl. stbl=’y’ if the nucleus is stable (according to the table). Otherwise stbl = ‘n’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.symb">
+<span class="sig-name descname"><span class="pre">symb</span></span></dt>
+<dd><p>Attribute symb (symbol) of the element, e.g., Fe.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.year">
+<span class="sig-name descname"><span class="pre">year</span></span></dt>
+<dd><p>Attribute year of the discovery of the nucleus.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.tables_masses">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">tables_masses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list of the tables available in this toolkit for the experimental masses and
+print them all on the prompt. These tables are the following
+ones: ‘AME’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.versions_masses">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses.</span></span><span class="sig-name descname"><span class="pre">versions_masses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Return a list of versions of tables available in
+this toolkit for a given model and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str.</em>) – The table for which there are different versions.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of versions.     If table == ‘AME’: ‘2020’, ‘2016’, ‘2012’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupMasses.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMassesAME.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the nuclear chart based on AME 2020 table.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def main():
     #
@@ -50,11 +50,11 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    models, models_lower = nudy.models_micro()
+    models, models_lower = nuda.models_micro()
     #
     for model in models:
         #
-        mic = nudy.SetupMicro( model = model )
+        mic = nuda.SetupMicro( model = model )
         if any(mic.nm_e2a): 
             axs[0,0].plot( mic.nm_den, mic.nm_e2a/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
@@ -100,11 +100,11 @@ def main():
     #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
-    models, models_lower = nudy.models_micro()
+    models, models_lower = nuda.models_micro()
     #
     for model in models:
         #
-        mic = nudy.SetupMicro( model = model )
+        mic = nuda.SetupMicro( model = model )
         if any(mic.nm_gap): 
             axs[0,0].plot( mic.nm_den, mic.nm_gap/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle='solid', label=mic.label )

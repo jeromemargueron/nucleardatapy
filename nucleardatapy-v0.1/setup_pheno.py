@@ -11,7 +11,7 @@ def models_pheno():
     """
     Return a list of models available in this toolkit and print them all on the prompt.
 
-    :return: The list of models.
+    :return: The list of models with can be 'Skyrme', 'NLRH', 'DDRH', 'DDRHF'.
     :rtype: list[str].
     """
     #
@@ -27,12 +27,22 @@ def models_pheno():
 
 def params_pheno( model ):
     """
-    Return a list with the name of the parameterizations available in 
+    Return a list with the parameterizations available in 
     this toolkit for a given model and print them all on the prompt.
 
-    :param model: The type of model for which there are parametrizations.
+    :param model: The type of model for which there are parametrizations. \
+    They should be chosen among the following options: 'Skyrme', 'NLRH', \
+    'DDRH', 'DDRHF'.
     :type model: str.
-    :return: The list of parametrizations.
+    :return: The list of parametrizations. \
+    If `models` == 'skyrme': 'BSK14', \
+    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+    'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
+    'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
+    'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. \
+    If `models` == 'NLRH': 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. \
+    If `models` == 'DDRH': 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. \
+    If `models` == 'DDRHF': 'PKA1', 'PKO1', 'PKO2', 'PKO3'.
     :rtype: list[str].
     """
     #
@@ -61,39 +71,66 @@ def params_pheno( model ):
 
 class SetupPheno():
     """
-    Instantiate the value for the lowden data file.
+    Instantiate the object with results based on phenomenological\
+    interactions and choosen by the toolkit practitioner. \
+    This choice is defined in the variables `model` and `param`.
+
+    If `models` == 'skyrme', `param` can be: 'BSK14', \
+    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+    'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
+    'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
+    'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. 
+
+    If `models` == 'NLRH', `param` can be: 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. 
+
+    If `models` == 'DDRH', `param` can be: 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. 
+
+    If `models` == 'DDRHF', `param` can be: 'PKA1', 'PKO1', 'PKO2', 'PKO3'. 
     
-    :param model: name of the model: '2008-AFDMC', ...
-    :type model: string().
-    :returns: kfn, gap, gap_err, e2a, e2a_err, etc.
+    :param model: Fix the name of model: 'Skyrme', 'NLRH', \
+    'DDRH', 'DDRHF'. Default value: 'Skyrme'.
+    :type model: str, optional. 
+    :param param: Fix the parameterization associated to model. \
+    Default value: 'SLY5'.
+    :type param: str, optional. 
+
+    **Attributes:**
     """
     #
     def __init__( self, model = 'Skyrme', param = 'SLY5' ):
         #
         if nudy.env.verb: print("\nEnter SetupPheno()")
         #
-        #: attribute model
+        #: Attribute model.
         self.model = model
         if nudy.env.verb: print("model:",model)
-        #: attribute param
+        #: Attribute param.
         self.param = param
         if nudy.env.verb: print("param:",param)
         #
-        #: attribute neutron matter density
+        #: Attribute neutron matter density.
         self.nm_den = []
-        #: attribute symmetric matter density
+        #: Attribute symmetric matter density.
         self.sm_den = []
+        #: Attribute neutron matter Fermi momentum.
         self.nm_kfn = []
+        #: Attribute symmetric matter Fermi momentum.
         self.sm_kfn = []
+        #: Attribute neutron matter energy per particle.
         self.nm_e2a = []
+        #: Attribute symmetric matter energy per particle.
         self.sm_e2a = []
-        self.nm_kfn = []
-        self.sm_kfn = []
-        self.sm_gap = []
+        #: Attribute neutron matter pairing gap.
         self.nm_gap = []
+        #: Attribute symmetric matter pairing gap.
+        self.sm_gap = []
+        #: Attribute neutron matter pressure.
         self.nm_pre = []
+        #: Attribute symmetric matter pressure.
         self.sm_pre = []
+        #: Attribute neutron matter sound speed (c_s/c)^2.
         self.nm_cs2 = []
+        #: Attribute symmetric matter sound speed (c_s/c)^2.
         self.sm_cs2 = []
         #
         models, models_lower = models_pheno( )
@@ -118,8 +155,11 @@ class SetupPheno():
             file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/Skyrme/'+param+'-NM.dat')
             if nudy.env.verb: print('Reads file1:',file_in1)
             if nudy.env.verb: print('Reads file2:',file_in2)
+            #: Attribute providing the full reference to the paper to be citted.
             self.ref = ''
+            #: Attribute providing the label the data is references for figures.
             self.label = 'SKY-'+param
+            #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
@@ -178,7 +218,7 @@ class SetupPheno():
     #
     def print_outputs( self ):
         """
-        Print outputs on terminal's screen.
+        Method which print outputs on terminal's screen.
         """
         print("")
         #
