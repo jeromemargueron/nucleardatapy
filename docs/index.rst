@@ -40,8 +40,10 @@ Complement
 
    source/api/setup_micro
    source/api/setup_pheno
+   source/api/setup_EsymLsym
    source/api/setup_masses
    source/api/setup_rad_ch
+   source/api/setup_ISGMR
 
 
 Indices and tables

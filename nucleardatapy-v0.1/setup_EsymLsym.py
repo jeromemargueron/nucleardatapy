@@ -10,8 +10,11 @@ import nucleardatapy as nudy
 
 def constraints_EsymLsym():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Return a list of constraints available in this toolkit and
+    print them all on the prompt.
+
+    :return: The list of constraints.
+    :rtype: list[str].
     """
     constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
              '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \

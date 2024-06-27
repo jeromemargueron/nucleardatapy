@@ -59,7 +59,7 @@ def tables_masses():
 
 def versions_masses( table ):
     """
-    Return a list with the versions of the table available in 
+    Return a list of versions of tables available in 
     this toolkit for a given model and print them all on the prompt.
 
     :param table: The table for which there are different versions.

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_ISGMR &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_ISGMR</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_ISGMR</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nudy</span>
+
+<div class="viewcode-block" id="tables_isgmr"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.tables_isgmr">[docs]</a><span class="k">def</span> <span class="nf">tables_isgmr</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a list with the name of the models available in this toolkit and</span>
+<span class="sd">    print them all.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter tables_isgmr()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2010-ISGMR-LI&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+    <span class="n">tables_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tables</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit tables_isgmr()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
+
+<div class="viewcode-block" id="SetupISGMR"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR">[docs]</a><span class="k">class</span> <span class="nc">SetupISGMR</span><span class="p">():</span>
+<span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Instantiate the object with microscopic results choosen by the toolkit practitioner. This choice is defined in the variable model. If not defined, it is taken to be the APR equation of state by default.</span>
+
+<span class="sd">   ...</span>
+
+<span class="sd">   Attributes</span>
+<span class="sd">   ----------</span>
+<span class="sd">   table : str, optional</span>
+<span class="sd">    The table to consider. Choose between: 2010-isgmr-li, 2018-ismgr_garg (default), ...</span>
+<span class="sd">   Z : list</span>
+<span class="sd">    A list with nuclear charge.</span>
+<span class="sd">   A : list</span>
+<span class="sd">    A list with nuclear masses.</span>
+<span class="sd">   E_cen : list</span>
+<span class="sd">    A list with ISGMR centroid energies.</span>
+<span class="sd">   E_errp : list</span>
+<span class="sd">    A list with positive errors in the ISGMR energies.</span>
+<span class="sd">   E_errm : list</span>
+<span class="sd">    A list with negative errors in the ISGMR energies.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+   <span class="c1">#</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span> <span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Parameters</span>
+<span class="sd">      ----------</span>
+<span class="sd">      model : str, optional</span>
+<span class="sd">      The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupISGMR()&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#</span>
+      <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">tables_isgmr</span><span class="p">()</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables_lower</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+          <span class="n">exit</span><span class="p">()</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2010-isgmr-li&#39;</span><span class="p">:</span>
+         <span class="c1">#</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2010-ISGMR-Li.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Li-Garg-Liu-2010&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">E_erra</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">E_errs</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">)</span>
+         <span class="c1">#</span>
+      <span class="k">elif</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2018-isgmr-garg&#39;</span><span class="p">:</span>
+         <span class="c1">#</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2018-ISGMR-Garg.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Garg-Colo-2018&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">E_erra</span> <span class="o">=</span> <span class="p">[</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">E_errs</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span> <span class="p">)</span>
+         <span class="c1">#</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">E_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupISGMR()&quot;</span><span class="p">)</span>
+   <span class="c1">#</span>
+<div class="viewcode-block" id="SetupISGMR.print_outputs"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Print outputs on terminal&#39;s screen.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   table:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   E: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">E_cen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   E_errp: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   E_errm: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+      <span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

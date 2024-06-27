@@ -9,8 +9,11 @@ import nucleardatapy as nudy
 
 def tables_isgmr():
     """
-    Returns a list with the name of the models available in this toolkit and
-    print them all.
+    Returns a list of tables available in this toolkit and
+    print them all on the prompt.
+
+    :return: The list of tables.
+    :rtype: list[str].    
     """
     #
     if nudy.env.verb: print("\nEnter tables_isgmr()")
