@@ -6,7 +6,7 @@ import random
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def constraints_EsymLsym():
     """
@@ -59,10 +59,10 @@ class SetupEsymLsym():
     #
     def __init__( self, constraint = '2014-IAS' ):
         #
-        if nudy.env.verb: print("Enter SetupEsymLsym()")
+        if nuda.env.verb: print("Enter SetupEsymLsym()")
         #: Attribute constraint.
         self.constraint = constraint
-        if nudy.env.verb: print("constraint:",constraint)
+        if nuda.env.verb: print("constraint:",constraint)
         #: Attribute Esym.
         self.Esym = []
         #: Attribute with uncertainty in Esym.
@@ -91,17 +91,17 @@ class SetupEsymLsym():
             csp = 35.2 # MeV
             csk2 = csk * 28 / 30.1
             csp2 = csp * 28 / 30.1
-            if nudy.env.verb: print('At 28 MeV')
-            if nudy.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk2,csp2), HIC_Esym(0.16,1.05,csk2,csp2) )
-            if nudy.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35*HIC_xgi(28.0),csk2,csp2), HIC_Lsym(0.16,1.05*HIC_xgi(28.0),csk2,csp2) )
-            if nudy.env.verb: print('At 30.1 MeV')
-            if nudy.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk,csp), HIC_Esym(0.16,1.05,csk,csp) )
-            if nudy.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35,csk,csp), HIC_Lsym(0.16,1.05,csk,csp) )
-            if nudy.env.verb: print('At 33.8 MeV')
+            if nuda.env.verb: print('At 28 MeV')
+            if nuda.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk2,csp2), HIC_Esym(0.16,1.05,csk2,csp2) )
+            if nuda.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35*HIC_xgi(28.0),csk2,csp2), HIC_Lsym(0.16,1.05*HIC_xgi(28.0),csk2,csp2) )
+            if nuda.env.verb: print('At 30.1 MeV')
+            if nuda.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk,csp), HIC_Esym(0.16,1.05,csk,csp) )
+            if nuda.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35,csk,csp), HIC_Lsym(0.16,1.05,csk,csp) )
+            if nuda.env.verb: print('At 33.8 MeV')
             csk2 = csk * 33.8 / 30.1
             csp2 = csp * 33.8 / 30.1
-            if nudy.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk2,csp2), HIC_Esym(0.16,1.05,csk2,csp2) )
-            if nudy.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35*HIC_xgi(33.8),csk2,csp2), HIC_Lsym(0.16,1.05*HIC_xgi(33.8),csk2,csp2) )
+            if nuda.env.verb: print('HIC: Esym(gi):', HIC_Esym(0.16,0.35,csk2,csp2), HIC_Esym(0.16,1.05,csk2,csp2) )
+            if nuda.env.verb: print('HIC: Lsym(gi):', HIC_Lsym(0.16,0.35*HIC_xgi(33.8),csk2,csp2), HIC_Lsym(0.16,1.05*HIC_xgi(33.8),csk2,csp2) )
             #
             # setup list with contour for HIC contraint in Esym-Lsym coordinates
             #
@@ -127,8 +127,8 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2010-rnp':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2010-RNP.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2010-RNP.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'L.W. Chen, C.M. Ko, B.A. Li, J. Xu, Phys. Rev. C 82, 024321 (2010)'
             self.label = 'RNP-2010'
             self.note = "analysis of neutron skin thickness in Sn isotopes"
@@ -156,8 +156,8 @@ class SetupEsymLsym():
         #
         elif constraint.lower() == '2012-frdm':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2012-FRDM.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2012-FRDM.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Moller, W.D. Myers, H. Sagawa, S. Yoshida, Phys. Rev. Lett. 108, 052501 (2012)'
             self.label = 'FRDM-2012'
             self.note = "values of S0 and L inferred from finite-range droplet mass model calculations"
@@ -185,8 +185,8 @@ class SetupEsymLsym():
         #
         elif constraint.lower() == '2013-ns':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2013-NS.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2013-NS.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)'
             self.label = 'NS-2013'
             self.note = "Bayesian analysis of mass and radius measurements of NSs by considering 68\% and 96\% confidence values for L."
@@ -214,8 +214,8 @@ class SetupEsymLsym():
         #
         elif constraint.lower() == '2014-ias':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2014-IAS.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS-2014'
             self.note = "Constraints from IAS."
@@ -234,8 +234,8 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2014-ias+rnp':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS+Rnp-2014'
             self.note = "Constraints from IAS + neutron skin (Rnp)."
@@ -306,9 +306,9 @@ class SetupEsymLsym():
             Qnminus = -750 # MeV
             zeta0 = 0.365
             #
-            kFsat = ( 3.0 * nudy.cst.pi2 * nsat )**0.3333
-            EUGsat = (3.0/10.0) * nudy.cst.hbc**2 / nudy.cst.mnuc2 * kFsat**2 * zeta0
-            if nudy.env.verb: print('EUGsat:',EUGsat)
+            kFsat = ( 3.0 * nuda.cst.pi2 * nsat )**0.3333
+            EUGsat = (3.0/10.0) * nuda.cst.hbc**2 / nuda.cst.mnuc2 * kFsat**2 * zeta0
+            if nuda.env.verb: print('EUGsat:',EUGsat)
             #
             self.Esym = np.array([])
             self.Lsym = np.array([])
@@ -325,8 +325,8 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2021-prexii-reed':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2021-PREXII-Reed.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reed.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reed et al., PRL 126, 172503 (2021)'
             self.label = 'PREXII-Reed'
             self.note = "."
@@ -335,8 +335,8 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2021-prexii-reinhard':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2021-PREXII-Reinhard.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reinhard.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reinhard et al., PRL 127, 232501 (2021)'
             self.label = 'PREXII-Reinhard'
             self.note = "."
@@ -345,8 +345,8 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2021-prexii-zhang':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2022-PREXII-Zhang.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2022-PREXII-Zhang.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Zhang and Chen, arXiv:2207.03328 (July 2022)'
             self.label = 'PREXII-Zhang'
             self.note = "."
@@ -358,7 +358,7 @@ class SetupEsymLsym():
             print('The variable constraint:',constraint)
             print('does not fit with the options in the code')
 
-        if nudy.env.verb: print("Exit SetupEsymLsym()")
+        if nuda.env.verb: print("Exit SetupEsymLsym()")
     #
     def print_outputs( self ):
         """
@@ -366,7 +366,7 @@ class SetupEsymLsym():
         """
         print("")
         #
-        if nudy.env.verb: print("Enter print_outputs()")
+        if nuda.env.verb: print("Enter print_outputs()")
         #
         print("   constraint:",self.constraint)
         print("   ref:",self.ref)
@@ -381,5 +381,5 @@ class SetupEsymLsym():
         elif any(self.Esym): 
             print('plot')
         #
-        if nudy.env.verb: print("Exit print_outputs()")
+        if nuda.env.verb: print("Exit print_outputs()")
         #

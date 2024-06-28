@@ -6,7 +6,7 @@ import random
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 class SetupEsymDen():
     """
@@ -19,10 +19,10 @@ class SetupEsymDen():
     #
     def __init__( self, constraint = '2014-IAS' ):
         #
-        if nudy.env.verb: print("Enter SetupEsymLsym()")
+        if nuda.env.verb: print("Enter SetupEsymLsym()")
         #
         self.constraint = constraint
-        if nudy.env.verb: print("constraint:",constraint)
+        if nuda.env.verb: print("constraint:",constraint)
         self.Esym = []
         self.Esym_err = []
         self.Lsym = []
@@ -30,8 +30,8 @@ class SetupEsymDen():
         #
         if constraint.lower() == '2010-rnp':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2010-RNP.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2010-RNP.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'L.W. Chen, C.M. Ko, B.A. Li, J. Xu, Phys. Rev. C 82, 024321 (2010)'
             self.label = 'RNP-2010'
             self.note = "analysis of neutron skin thickness in Sn isotopes"
@@ -59,8 +59,8 @@ class SetupEsymDen():
         #
         elif constraint.lower() == '2012-frdm':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2012-FRDM.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2012-FRDM.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Moller, W.D. Myers, H. Sagawa, S. Yoshida, Phys. Rev. Lett. 108, 052501 (2012)'
             self.label = 'FRDM-2012'
             self.note = "values of S0 and L inferred from finite-range droplet mass model calculations"
@@ -88,8 +88,8 @@ class SetupEsymDen():
         #
         elif constraint.lower() == '2013-ns':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2013-NS.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2013-NS.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)'
             self.label = 'NS-2013'
             self.note = "Bayesian analysis of mass and radius measurements of NSs by considering 68\% and 96\% confidence values for L."
@@ -117,8 +117,8 @@ class SetupEsymDen():
         #
         elif constraint.lower() == '2014-ias':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2014-IAS.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS-2014'
             self.note = "write here notes about this constraint."
@@ -137,8 +137,8 @@ class SetupEsymDen():
             #
         elif constraint.lower() == '2014-ias+rnp':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS+Rnp-2014'
             self.note = "write here notes about this constraint."
@@ -211,7 +211,7 @@ class SetupEsymDen():
             #
             kFsat = ( 3.0 * pi**2 * nsat )**0.3333
             EUGsat = (3.0/10.0) * hbc**2 / mnc2 * kFsat**2 * zeta0
-            if nudy.env.verb: print('EUGsat:',EUGsat)
+            if nuda.env.verb: print('EUGsat:',EUGsat)
             #
             self.Esym = np.array([])
             self.Lsym = np.array([])
@@ -228,8 +228,8 @@ class SetupEsymDen():
             #
         elif constraint.lower() == '2021-prexii-reed':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2021-PREXII-Reed.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reed.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reed et al., PRL 126, 172503 (2021)'
             self.label = 'PREXII-Reed'
             self.note = "."
@@ -238,8 +238,8 @@ class SetupEsymDen():
             #
         elif constraint.lower() == '2021-prexii-reinhard':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2021-PREXII-Reinhard.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reinhard.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reinhard et al., PRL 127, 232501 (2021)'
             self.label = 'PREXII-Reinhard'
             self.note = "."
@@ -248,8 +248,8 @@ class SetupEsymDen():
             #
         elif constraint.lower() == '2021-prexii-zhang':
             #
-            file_in = os.path.join(nudy.param.path_data,'EsymLsym/2022-PREXII-Zhang.dat')
-            if nudy.env.verb: print('Reads file:',file_in)
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2022-PREXII-Zhang.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Zhang and Chen, arXiv:2207.03328 (July 2022)'
             self.label = 'PREXII-Zhang'
             self.note = "."
@@ -285,4 +285,4 @@ class SetupEsymDen():
                 PREX1_Esym_min.append( e_min )
                 PREX1_Esym_max.append( e_max )
 
-        if nudy.env.verb: print("Exit SetupEsymLsym()")
+        if nuda.env.verb: print("Exit SetupEsymLsym()")

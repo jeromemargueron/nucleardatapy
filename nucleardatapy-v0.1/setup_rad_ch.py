@@ -5,7 +5,7 @@ import numpy as np  # 1.15.0
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def tables_rad_ch():
     """
@@ -17,7 +17,7 @@ def tables_rad_ch():
     :rtype: list[str].
     """
     #
-    if nudy.env.verb: print("\nEnter tables_radch()")
+    if nuda.env.verb: print("\nEnter tables_radch()")
     #
     tables = [ '2013-Angeli' ]
     #
@@ -25,7 +25,7 @@ def tables_rad_ch():
     tables_lower = [ item.lower() for item in tables ]
     print('tables available in the toolkit:',tables_lower)
     #
-    if nudy.env.verb: print("Exit tables_radch()")
+    if nuda.env.verb: print("Exit tables_radch()")
     #
     return tables, tables_lower
 
@@ -53,10 +53,10 @@ class SetupRadCh():
       The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
       """
       #
-      if nudy.env.verb: print("\nEnter SetupRadCh()")
+      if nuda.env.verb: print("\nEnter SetupRadCh()")
       #
       self.table = table
-      if nudy.env.verb: print("table:",table)
+      if nuda.env.verb: print("table:",table)
       #
       #: Attribute Z (charge of the nucleus).
       self.Z = []
@@ -81,8 +81,8 @@ class SetupRadCh():
       #
       if table.lower() == '2013-angeli':
          #
-         file_in = os.path.join(nudy.param.path_data,'nuclei/radch/2013-Angeli.csv')
-         if nudy.env.verb: print('Reads file:',file_in)
+         file_in = os.path.join(nuda.param.path_data,'nuclei/radch/2013-Angeli.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
          #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'I. Angeli and K.P. Marinova, Table of experimental nuclear ground state charge radii: An update, Atomic Data and Nuclear Data Tables 69, 69 (2013)'
          #: Attribute providing the label the data is references for figures.
@@ -112,7 +112,7 @@ class SetupRadCh():
          #: Attribute radius unit.
          self.R_unit = 'fm'
          #
-         if nudy.env.verb: print("Exit SetupRadCh()")
+         if nuda.env.verb: print("Exit SetupRadCh()")
    #
    def print_outputs( self ):
       """
@@ -120,7 +120,7 @@ class SetupRadCh():
       """
       print("")
       #
-      if nudy.env.verb: print("Enter print_outputs()")
+      if nuda.env.verb: print("Enter print_outputs()")
       #
       print("- Print output:")
       print("   table:",self.table)
@@ -132,6 +132,6 @@ class SetupRadCh():
       if any(self.R_ch): print(f"   R_ch: {self.R_ch}")
       if any(self.R_ch_err): print(f"   R_ch_err: {self.R_ch_err}")
       #
-      if nudy.env.verb: print("Exit print_outputs()")
+      if nuda.env.verb: print("Exit print_outputs()")
       #
 

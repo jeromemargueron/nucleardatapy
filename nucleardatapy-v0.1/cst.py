@@ -17,11 +17,14 @@ e = 1.602176634e-19 # electron charge in Coulomb
 c = 299.792458e6 # speed of light in m s^-1
 c2 = c*c
 Nc = 3 # Number of colors
-two = 2
-three = 3
+one = 1.0
+two = 2.0
+three = 3.0
 half = 0.5
 third = 1.0/3.0
-t2f = 3.0 / 5.0
+twoThird = 2.0/3.0
+threeFifth = 3.0 / 5.0
+fiveThird = 5.0 / 3.0
 #
 # convertion constants:
 #

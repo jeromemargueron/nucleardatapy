@@ -5,7 +5,7 @@ import numpy as np  # 1.15.0
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def models_pheno():
     """
@@ -15,13 +15,13 @@ def models_pheno():
     :rtype: list[str].
     """
     #
-    if nudy.env.verb: print("\nEnter models_pheno()")
+    if nuda.env.verb: print("\nEnter models_pheno()")
     #
     models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
-    if nudy.env.verb: print("Exit models_pheno()")
+    if nuda.env.verb: print("Exit models_pheno()")
     #
     return models, models_lower
 
@@ -46,7 +46,7 @@ def params_pheno( model ):
     :rtype: list[str].
     """
     #
-    if nudy.env.verb: print("\nEnter params_pheno()")
+    if nuda.env.verb: print("\nEnter params_pheno()")
     #
     print('For model:',model)
     if model.lower() == 'skyrme':
@@ -65,7 +65,7 @@ def params_pheno( model ):
     print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
     #
-    if nudy.env.verb: print("Exit params_pheno()")
+    if nuda.env.verb: print("Exit params_pheno()")
     #
     return params, params_lower
 
@@ -99,14 +99,14 @@ class SetupPheno():
     #
     def __init__( self, model = 'Skyrme', param = 'SLY5' ):
         #
-        if nudy.env.verb: print("\nEnter SetupPheno()")
+        if nuda.env.verb: print("\nEnter SetupPheno()")
         #
         #: Attribute model.
         self.model = model
-        if nudy.env.verb: print("model:",model)
+        if nuda.env.verb: print("model:",model)
         #: Attribute param.
         self.param = param
-        if nudy.env.verb: print("param:",param)
+        if nuda.env.verb: print("param:",param)
         #
         #: Attribute neutron matter density.
         self.nm_den = []
@@ -151,10 +151,10 @@ class SetupPheno():
         #            
         if model.lower() == 'skyrme':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/Skyrme/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/Skyrme/'+param+'-NM.dat')
-            if nudy.env.verb: print('Reads file1:',file_in1)
-            if nudy.env.verb: print('Reads file2:',file_in2)
+            file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/Skyrme/'+param+'-SM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/Skyrme/'+param+'-NM.dat')
+            if nuda.env.verb: print('Reads file1:',file_in1)
+            if nuda.env.verb: print('Reads file2:',file_in2)
             #: Attribute providing the full reference to the paper to be citted.
             self.ref = ''
             #: Attribute providing the label the data is references for figures.
@@ -170,10 +170,10 @@ class SetupPheno():
             #
         elif model.lower() == 'nlrh':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/nlrh/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/nlrh/'+param+'-NM.dat')
-            if nudy.env.verb: print('Reads file1:',file_in1)
-            if nudy.env.verb: print('Reads file2:',file_in2)
+            file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/nlrh/'+param+'-SM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/nlrh/'+param+'-NM.dat')
+            if nuda.env.verb: print('Reads file1:',file_in1)
+            if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
@@ -184,10 +184,10 @@ class SetupPheno():
             #
 #            pass
             #
-            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/ddrh/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/ddrh/'+param+'-NM.dat')
-            if nudy.env.verb: print('Reads file1:',file_in1)
-            if nudy.env.verb: print('Reads file2:',file_in2)
+            file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/ddrh/'+param+'-SM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/ddrh/'+param+'-NM.dat')
+            if nuda.env.verb: print('Reads file1:',file_in1)
+            if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
@@ -197,10 +197,10 @@ class SetupPheno():
             #
         elif model.lower() == 'ddrhf':
             #
-            file_in1 = os.path.join(nudy.param.path_data,'eos/pheno/ddrhf/'+param+'-SM.dat')
-            file_in2 = os.path.join(nudy.param.path_data,'eos/pheno/ddrhf/'+param+'-NM.dat')
-            if nudy.env.verb: print('Reads file1:',file_in1)
-            if nudy.env.verb: print('Reads file2:',file_in2)
+            file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhf/'+param+'-SM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhf/'+param+'-NM.dat')
+            if nuda.env.verb: print('Reads file1:',file_in1)
+            if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
@@ -214,7 +214,7 @@ class SetupPheno():
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
-        if nudy.env.verb: print("Exit SetupPheno()")
+        if nuda.env.verb: print("Exit SetupPheno()")
     #
     def print_outputs( self ):
         """
@@ -222,7 +222,7 @@ class SetupPheno():
         """
         print("")
         #
-        if nudy.env.verb: print("Enter print_outputs()")
+        if nuda.env.verb: print("Enter print_outputs()")
         #
         print("- Print output:")
         print("   model:",self.model)
@@ -238,6 +238,6 @@ class SetupPheno():
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
         #
-        if nudy.env.verb: print("Exit print_outputs()")
+        if nuda.env.verb: print("Exit print_outputs()")
         #
 

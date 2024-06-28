@@ -5,7 +5,7 @@ import numpy as np  # 1.15.0
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 def tables_isgmr():
     """
@@ -17,14 +17,14 @@ def tables_isgmr():
     :rtype: list[str].    
     """
     #
-    if nudy.env.verb: print("\nEnter tables_isgmr()")
+    if nuda.env.verb: print("\nEnter tables_isgmr()")
     #
     tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG' ]
     print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     print('tables available in the toolkit:',tables_lower)
     #
-    if nudy.env.verb: print("Exit tables_isgmr()")
+    if nuda.env.verb: print("Exit tables_isgmr()")
     #
     return tables, tables_lower
 
@@ -53,10 +53,10 @@ class SetupISGMR():
       Choose between: 2018-ISGMR-GARG (default) and 2010-ISGMR-LI.
       """
       #
-      if nudy.env.verb: print("\nEnter SetupISGMR()")
+      if nuda.env.verb: print("\nEnter SetupISGMR()")
       #: Attribute table.
       self.table = table
-      if nudy.env.verb: print("table:",table)
+      if nuda.env.verb: print("table:",table)
       #
       #: Attribute Z (charge of the nucleus).
       self.Z = []
@@ -79,8 +79,8 @@ class SetupISGMR():
       #
       if table.lower() == '2010-isgmr-li':
          #
-         file_in = os.path.join(nudy.param.path_data,'nuclei/isgmr/2010-ISGMR-Li.dat')
-         if nudy.env.verb: print('Reads file:',file_in)
+         file_in = os.path.join(nuda.param.path_data,'nuclei/isgmr/2010-ISGMR-Li.dat')
+         if nuda.env.verb: print('Reads file:',file_in)
          #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)'
          #: Attribute providing the label the data is references for figures.
@@ -98,8 +98,8 @@ class SetupISGMR():
          #
       elif table.lower() == '2018-isgmr-garg':
          #
-         file_in = os.path.join(nudy.param.path_data,'nuclei/isgmr/2018-ISGMR-Garg.dat')
-         if nudy.env.verb: print('Reads file:',file_in)
+         file_in = os.path.join(nuda.param.path_data,'nuclei/isgmr/2018-ISGMR-Garg.dat')
+         if nuda.env.verb: print('Reads file:',file_in)
          self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
          self.label = 'Garg-Colo-2018'
          self.note = "write here notes about this table."
@@ -113,7 +113,7 @@ class SetupISGMR():
       #: Attribute energy unit.
       self.E_unit = 'MeV'
       #
-      if nudy.env.verb: print("Exit SetupISGMR()")
+      if nuda.env.verb: print("Exit SetupISGMR()")
    #
    def print_outputs( self ):
       """
@@ -121,7 +121,7 @@ class SetupISGMR():
       """
       print("")
       #
-      if nudy.env.verb: print("Enter print_outputs()")
+      if nuda.env.verb: print("Enter print_outputs()")
       #
       print("- Print output:")
       print("   table:",self.table)
@@ -134,5 +134,5 @@ class SetupISGMR():
       if any(self.E_errp): print(f"   E_errp: {self.E_errp}")
       if any(self.E_errm): print(f"   E_errm: {self.E_errm}")
       #
-      if nudy.env.verb: print("Exit print_outputs()")
+      if nuda.env.verb: print("Exit print_outputs()")
       #

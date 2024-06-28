@@ -5,7 +5,8 @@ from nucleardatapy.cst          import *
 from nucleardatapy.env          import *
 from nucleardatapy.param        import *
 #
-from nucleardatapy.fermi_gas    import *
+#from nucleardatapy.fermi_gas    import *
+from nucleardatapy.setup_ffg    import *
 from nucleardatapy.setup_micro  import *
 from nucleardatapy.setup_pheno  import *
 #
