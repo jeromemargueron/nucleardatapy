@@ -56,9 +56,9 @@ def main():
         #
         mic = nuda.SetupMicro( model = model )
         if any(mic.nm_e2a): 
-            axs[0,0].plot( mic.nm_den, mic.nm_e2a/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
         mic.print_outputs( )
     #
@@ -106,9 +106,9 @@ def main():
         #
         mic = nuda.SetupMicro( model = model )
         if any(mic.nm_gap): 
-            axs[0,0].plot( mic.nm_den, mic.nm_gap/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[0,0].plot( mic.nm_den, mic.nm_gap/nuda.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle='solid', label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nuda.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
             axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle='solid', label=mic.label )
         mic.print_outputs( )
     #

@@ -19,7 +19,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    #models, models_lower = nudy.modelsPheno()
+    #models, models_lower = nuda.modelsPheno()
     models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     for model in models:
@@ -63,9 +63,9 @@ def main():
             #
             mic = nuda.SetupPheno( model = model, param = param )
             if any(mic.nm_e2a): 
-                axs[0,0].plot( mic.nm_den, mic.nm_e2a/nudy.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
+                axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.fermi_gas.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
                 axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
-                axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nudy.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
+                axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.fermi_gas.ef(mic.nm_kfn), linestyle='solid', label=mic.label )
                 axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
             mic.print_outputs( )
         #
