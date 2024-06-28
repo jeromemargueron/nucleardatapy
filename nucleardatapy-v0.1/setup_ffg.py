@@ -63,6 +63,10 @@ class SetupFFG():
         #
         if nuda.env.verb: print("Enter SetupFFG()")
         #
+        #: Attribute providing the label the data is references for figures.
+        self.label = 'FFG'
+        #: Attribute providing additional notes about the data.
+        self.note = ""
         #: Attribute isoscalar density
         self.den = den 
         #: Attribute isospin parameter
@@ -84,6 +88,7 @@ class SetupFFG():
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            nuda.cst.half * \
            ( (1.0+delta)**nuda.cst.fiveThird + (1.0-delta)**nuda.cst.fiveThird )
+        self.pre = np.zeros(self.den.size)
 
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'

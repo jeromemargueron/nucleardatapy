@@ -63,9 +63,9 @@ def main():
             #
             mic = nuda.SetupPheno( model = model, param = param )
             if any(mic.sm_e2a): 
-                axs[0,0].plot( mic.sm_den, mic.sm_e2a/nuda.fermi_gas.effg(mic.sm_kfn), linestyle='solid', label=mic.label )
+                axs[0,0].plot( mic.sm_den, mic.sm_e2a/nuda.effg(mic.sm_kfn), linestyle='solid', label=mic.label )
                 axs[1,0].plot( mic.sm_den, mic.sm_e2a, linestyle='solid', label=mic.label )
-                axs[0,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.fermi_gas.ef(mic.sm_kfn), linestyle='solid', label=mic.label )
+                axs[0,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.epsF_n(mic.sm_kfn), linestyle='solid', label=mic.label )
                 axs[1,1].plot( mic.sm_kfn, mic.sm_e2a, linestyle='solid', label=mic.label )
             mic.print_outputs( )
         #

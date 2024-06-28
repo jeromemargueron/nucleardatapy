@@ -115,8 +115,8 @@ class SetupMicro():
             self.note = "write here notes about this EOS."
             self.nm_den, self.sm_e2a, self.nm_e2a = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.sm_den = self.nm_den
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
-            self.sm_kfn = nuda.fermi_gas.kfn( nuda.cst.half * self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.nm_den )
             self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             #
@@ -129,11 +129,11 @@ class SetupMicro():
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.fermi_gas.density( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_gap     = gap2ef * nuda.fermi_gas.ef( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.fermi_gas.ef( self.nm_kfn )
+            self.nm_den     = nuda.den_n( self.nm_kfn )
+            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_gap     = gap2ef * nuda.epsF_n( self.nm_kfn )
+            self.nm_gap_err = gap2ef_err * nuda.epsF_n( self.nm_kfn )
             #
         elif model.lower() == '2008-qmc-nm-av4':
             #
@@ -144,11 +144,11 @@ class SetupMicro():
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.fermi_gas.density( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_gap     = gap2ef * nuda.fermi_gas.ef( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.fermi_gas.ef( self.nm_kfn )
+            self.nm_den     = nuda.den_n( self.nm_kfn )
+            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_gap     = gap2ef * nuda.epsF_n( self.nm_kfn )
+            self.nm_gap_err = gap2ef_err * nuda.epsF_n( self.nm_kfn )
             #
         elif model.lower() == '2008-qmc-nm-swave':
             #
@@ -159,11 +159,11 @@ class SetupMicro():
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.fermi_gas.density( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_gap     = gap2ef * nuda.fermi_gas.ef( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.fermi_gas.ef( self.nm_kfn )
+            self.nm_den     = nuda.den_n( self.nm_kfn )
+            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_gap     = gap2ef * nuda.epsF_n( self.nm_kfn )
+            self.nm_gap_err = gap2ef_err * nuda.epsF_n( self.nm_kfn )
             #
         elif model.lower() == '2009-dqmc-nm':
             #
@@ -174,11 +174,11 @@ class SetupMicro():
             self.note = ""
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.fermi_gas.density( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.fermi_gas.effg( self.nm_kfn )
-            self.nm_gap     = gap2ef * nuda.fermi_gas.ef( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.fermi_gas.ef( self.nm_kfn )
+            self.nm_den     = nuda.den_n( self.nm_kfn )
+            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_gap     = gap2ef * nuda.epsF_n( self.nm_kfn )
+            self.nm_gap_err = gap2ef_err * nuda.epsF_n( self.nm_kfn )
             #
         elif model.lower() == '2010-nm-hebeler':
             #
@@ -188,7 +188,7 @@ class SetupMicro():
             self.label = 'Hebeler-2010'
             self.note = "chiral NN forces with SRG and leading 3N forces."
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
             #
         elif model.lower() == '2013-qmc-nm':
@@ -200,7 +200,7 @@ class SetupMicro():
             self.note = "write here notes about this EOS."
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a = 0.5 * ( self.nm_e2a_up + self.nm_e2a_low )
             self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
             self.nm_pre = 0.5 * ( self.nm_pre_up + self.nm_pre_low )
@@ -216,7 +216,7 @@ class SetupMicro():
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_e2a = self.nm_e2a_23bf
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             #
         elif model.lower() == '2016-qmc-nm':
@@ -228,7 +228,7 @@ class SetupMicro():
             self.note = ""
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a = 0.5 * ( self.nm_e2a_up + self.nm_e2a_low )
             self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
             #
@@ -275,14 +275,14 @@ class SetupMicro():
             if nuda.env.verb: print('length:',length[:])
             # SM
             self.sm_den = den[0,:]
-            self.sm_kfn = nuda.fermi_gas.kfn( nuda.cst.half * self.sm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.sm_e2a_up = e2a_up[0,:]
             self.sm_e2a_low = e2a_low[0,:]
             self.sm_e2a = e2a_av[0,:]
             self.sm_e2a_err = e2a_err[0,:]
             # NM
             self.nm_den = den[10,:]
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a_up = e2a_up[10,:]
             self.nm_e2a_low = e2a_low[10,:]
             self.nm_e2a = e2a_av[10,:]
@@ -297,7 +297,7 @@ class SetupMicro():
             self.note = ""
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             #
         elif model.lower() == '2020-mbpt-am-dhsl59':
             #
@@ -343,18 +343,18 @@ class SetupMicro():
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
-            self.sm_kfn = nuda.fermi_gas.kfn( nuda.cst.half * self.sm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.sm_e2a = self.sm_e2a_n3lo
             self.sm_e2a_err = self.sm_e2a_n3lo_err
             self.nm_den, self.nm_e2a_lo, self.nm_e2a_lo_err, self.nm_e2a_nlo, self.nm_e2a_nlo_err, \
                 self.nm_e2a_n2lo, self.nm_e2a_n2lo_err, self.nm_e2a_n3lo, self.nm_e2a_n3lo_err \
                 = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
-            self.nm_kfn = nuda.fermi_gas.kfn( self.nm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a = self.nm_e2a_n3lo
             self.nm_e2a_err = self.nm_e2a_n3lo_err
             #
         self.den_unit = 'fm$^{-3}$'
-        self.kfn_unit = 'fm$^{-1}$'
+        self.kf_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
@@ -374,11 +374,11 @@ class SetupMicro():
         print("   label:",self.label)
         print("   note: ",self.note)
         if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,2)} in {self.den_unit}")
-        if any(self.sm_kfn): print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kfn_unit}")
+        if any(self.sm_kfn): print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kf_unit}")
         if any(self.sm_e2a): print(f"   sm_e2a: {np.round(self.sm_e2a,2)} in {self.e2a_unit}")
         if any(self.sm_e2a_err): print(f"   sm_e2a_err: {np.round(self.sm_e2a_err,2)} in {self.e2a_unit}")
         if any(self.nm_den): print(f"   nm_den: {np.round(self.nm_den,2)} in {self.den_unit}")
-        if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
+        if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kf_unit}")
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
         if any(self.nm_e2a_err): print(f"   nm_e2a_err: {np.round(self.nm_e2a_err,2)} in {self.e2a_unit}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
