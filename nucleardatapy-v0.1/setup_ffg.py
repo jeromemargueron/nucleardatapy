@@ -64,7 +64,7 @@ class SetupFFG():
         if nuda.env.verb: print("Enter SetupFFG()")
         #
         #: Attribute providing the label the data is references for figures.
-        self.label = 'FFG'
+        self.label = r'FFG $\,\delta=$'+str(delta[0])
         #: Attribute providing additional notes about the data.
         self.note = ""
         #: Attribute isoscalar density
@@ -72,9 +72,9 @@ class SetupFFG():
         #: Attribute isospin parameter
         self.delta = delta 
         #: Attribute neutron density
-        self.den_n = 0.5 * ( 1.0 - delta ) * den
+        self.den_n = 0.5 * ( 1.0 + delta ) * den
         #: Attribute proton density
-        self.den_p = 0.5 * ( 1.0 + delta ) * den
+        self.den_p = 0.5 * ( 1.0 - delta ) * den
         #: Attribute neutron Fermi momentum
         self.kf_n = (3*nuda.cst.pi2*self.den_n)**nuda.cst.third
         #: Attribute proton Fermi momentum

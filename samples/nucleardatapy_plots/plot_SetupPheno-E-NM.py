@@ -69,8 +69,8 @@ def main():
                 axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
             mic.print_outputs( )
         #
-        axs[0,0].legend(loc='upper right',fontsize='xx-small')
-        axs[0,1].legend(loc='upper left',fontsize='xx-small')
+        axs[0,0].legend(loc='upper right',fontsize='xx-small', ncol=2)
+        #axs[0,1].legend(loc='upper left',fontsize='xx-small')
         #
         plt.savefig(pname)
         plt.close()
