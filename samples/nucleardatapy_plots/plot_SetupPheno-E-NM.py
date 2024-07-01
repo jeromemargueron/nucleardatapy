@@ -65,7 +65,7 @@ def main():
             if any(mic.nm_e2a): 
                 axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
                 axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
-                axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.epsF_n(mic.nm_kfn), linestyle='solid', label=mic.label )
+                axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), linestyle='solid', label=mic.label )
                 axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
             mic.print_outputs( )
         #

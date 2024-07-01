@@ -4,6 +4,24 @@ import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
+def kf( den ):
+    """
+    Fermi momentum as a function of the density.
+
+    :param den: density.
+    :type den: float or numpy vector of real numbers.
+    """
+    return (1.5*nuda.cst.pi2*den)**nuda.cst.third
+
+def den( kf ):
+    """
+    Density as a function of the Fermi momentum.
+
+    :param kf_n: Fermi momentum.
+    :type kf_n: float or numpy vector of real numbers.
+    """
+    return nuda.cst.two * kf**nuda.cst.three / ( nuda.cst.three * nuda.cst.pi2 )
+
 def kf_n( den_n ):
     """
     Neutron Fermi momentum as a function of the neutron density.
@@ -11,7 +29,7 @@ def kf_n( den_n ):
     :param den_n: neutron density.
     :type den_n: float or numpy vector of real numbers.
     """
-    return (3*nuda.cst.pi2*den_n)**nuda.cst.third
+    return (nuda.cst.three*nuda.cst.pi2*den_n)**nuda.cst.third
 
 def den_n( kf_n ):
     """
@@ -22,7 +40,7 @@ def den_n( kf_n ):
     """
     return kf_n**nuda.cst.three / ( nuda.cst.three * nuda.cst.pi2 )
 
-def epsF_n( kf_n ):
+def eF_n( kf_n ):
     """
     Neutron Fermi energy as a function of the neutron Fermi momentum.
 
@@ -72,24 +90,42 @@ class SetupFFG():
         #: Attribute isospin parameter
         self.delta = delta 
         #: Attribute neutron density
-        self.den_n = 0.5 * ( 1.0 + delta ) * den
+        self.den_n = nuda.cst.half * ( nuda.cst.one + delta ) * den
         #: Attribute proton density
-        self.den_p = 0.5 * ( 1.0 - delta ) * den
+        self.den_p = nuda.cst.half * ( nuda.cst.one - delta ) * den
+        #: Attribute Fermi momentum
+        self.kf = (1.5 * nuda.cst.pi2 * self.den)**nuda.cst.third
         #: Attribute neutron Fermi momentum
-        self.kf_n = (3*nuda.cst.pi2*self.den_n)**nuda.cst.third
+        self.kf_n = (nuda.cst.three * nuda.cst.pi2 * self.den_n)**nuda.cst.third
         #: Attribute proton Fermi momentum
-        self.kf_p = (3*nuda.cst.pi2*self.den_p)**nuda.cst.third
+        self.kf_p = (nuda.cst.three * nuda.cst.pi2 * self.den_p)**nuda.cst.third
         #: Attribute neutron Fermi energy
-        self.epsF_n = nuda.cst.half * nuda.cst.h2m * self.kf_n**2
+        self.eF_n = nuda.cst.half * nuda.cst.h2m * self.kf_n**nuda.cst.two
         #: Attribute proton Fermi energy
-        self.epsF_p = nuda.cst.half * nuda.cst.h2m * self.kf_p**2
+        self.eF_p = nuda.cst.half * nuda.cst.h2m * self.kf_p**nuda.cst.two
         #: Attribute FFG energy per particle
-        self.e2a = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
+        self.int_e2a = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            nuda.cst.half * \
-           ( (1.0+delta)**nuda.cst.fiveThird + (1.0-delta)**nuda.cst.fiveThird )
-        self.pre = np.zeros(self.den.size)
-
+           ( (nuda.cst.one+delta)**nuda.cst.fiveThird + \
+             (nuda.cst.one-delta)**nuda.cst.fiveThird )
+        #: Attribute FFG energy per unit volum
+        self.int_e2v = self.int_e2a * self.den
+        #: Attribute FFG symmetry energy
+        self.esym = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
+           (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
+           ( nuda.cst.two**nuda.cst.twoThird - nuda.cst.one )
+        #: Attribute FFG quadratic contribution to the symmetry energy
+        self.esym2 = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
+           (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
+           10.0/18.0
+        #: Attribute FFG quartic contribution to the symmetry energy
+        self.esym4 = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
+           (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
+           5.0/243.0
+        #: Attribute FFG pressure
+        self.pre = nuda.cst.twoThird * self.int_e2v
+        #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
