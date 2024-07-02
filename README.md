@@ -55,13 +55,13 @@ $ bash run_tests.sh
 How to obtain microscopic results for APR equation of state:
 
 ```Python
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 # Instantiate a microscopic object
-mic = SetMicro( model = '1998-AM-APR')
+mic = nuda.SetMicro( model = '1998-AM-APR')
 
 # print outputs
-print_outputs_micro( mic )
+mic.print_outputs( )
 ```
 
 ## Contributing
