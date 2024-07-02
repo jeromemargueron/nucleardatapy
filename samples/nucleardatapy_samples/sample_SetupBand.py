@@ -11,18 +11,18 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupStat.py:")
+    print("Enter sample_SetupBand.py:")
     print(50*'-')
     #
     #models = [ '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
     #         '2023-MBPT-AM' ]
     models = [ '2016-QMC-NM', '2016-MBPT-AM' ]
     #
-    stat = nuda.SetupStat( models )
+    stat = nuda.SetupBand( models )
     stat.print_outputs( )
     #
     print(50*'-')
-    print("Exit sample_SetupStat.py:")
+    print("Exit sample_SetupBand.py:")
     print(50*'-')
     #
     

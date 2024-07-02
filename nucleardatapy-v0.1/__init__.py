@@ -9,7 +9,7 @@ from nucleardatapy.param        import *
 from nucleardatapy.setup_ffg    import *
 from nucleardatapy.setup_micro  import *
 from nucleardatapy.setup_pheno  import *
-from nucleardatapy.setup_stat   import *
+from nucleardatapy.setup_band   import *
 #
 from nucleardatapy.setup_EsymLsym  import *
 #
