@@ -690,14 +690,14 @@ class SetupMicro():
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
             self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2020-mbpt-am-dhsl59':
+        elif model.lower() == '2019-mbpt-am-dhsl59':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-SM-DHSL59.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-NM-DHSL59.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'PRC (2020)'
-            self.label = 'MBPT-2020-DHSL59'
+            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
+            self.label = 'MBPT-2019-DHSL59'
             self.note = ""
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -749,14 +749,14 @@ class SetupMicro():
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
             self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2020-mbpt-am-dhsl69':
+        elif model.lower() == '2019-mbpt-am-dhsl69':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-SM-DHSL69.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-NM-DHSL69.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'PRC (2020)'
-            self.label = 'MBPT-2020-DHSL69'
+            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
+            self.label = 'MBPT-2019-DHSL69'
             self.note = ""
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -803,14 +803,14 @@ class SetupMicro():
             self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
             self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2023-mbpt-am':
+        elif model.lower() == '2020-mbpt-am':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2023-MBPT-SM.csv')
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2023-MBPT-NM.csv')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'PRC (2023)'
-            self.label = 'MBPT-2023'
+            self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
+            self.label = 'MBPT-2020'
             self.note = ""
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
@@ -871,6 +871,7 @@ class SetupMicro():
         self.gap_unit = 'MeV'
         #
         if nuda.env.verb: print("Exit SetupMicro()")
+        #
     def print_outputs( self ):
         """
         Method which print outputs on terminal's screen.
