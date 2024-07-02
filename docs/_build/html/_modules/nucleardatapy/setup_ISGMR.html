@@ -82,7 +82,7 @@
 <span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nudy</span>
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
 
 <div class="viewcode-block" id="tables_isgmr"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.tables_isgmr">[docs]</a><span class="k">def</span> <span class="nf">tables_isgmr</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -94,14 +94,14 @@
 <span class="sd">    :rtype: list[str].    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
-    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter tables_isgmr()&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter tables_isgmr()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2010-ISGMR-LI&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span> <span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
     <span class="n">tables_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tables</span> <span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables_lower</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit tables_isgmr()&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit tables_isgmr()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
 
@@ -130,10 +130,10 @@
 <span class="sd">      Choose between: 2018-ISGMR-GARG (default) and 2010-ISGMR-LI.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
       <span class="c1">#</span>
-      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupISGMR()&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupISGMR()&quot;</span><span class="p">)</span>
       <span class="c1">#: Attribute table.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
-      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
       <span class="c1">#</span>
       <span class="c1">#: Attribute Z (charge of the nucleus).</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -156,8 +156,8 @@
       <span class="c1">#</span>
       <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2010-isgmr-li&#39;</span><span class="p">:</span>
          <span class="c1">#</span>
-         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2010-ISGMR-Li.dat&#39;</span><span class="p">)</span>
-         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2010-ISGMR-Li.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
          <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)&#39;</span>
          <span class="c1">#: Attribute providing the label the data is references for figures.</span>
@@ -175,8 +175,8 @@
          <span class="c1">#</span>
       <span class="k">elif</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2018-isgmr-garg&#39;</span><span class="p">:</span>
          <span class="c1">#</span>
-         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2018-ISGMR-Garg.dat&#39;</span><span class="p">)</span>
-         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2018-ISGMR-Garg.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)&#39;</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Garg-Colo-2018&#39;</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
@@ -190,7 +190,7 @@
       <span class="c1">#: Attribute energy unit.</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">E_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
       <span class="c1">#</span>
-      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupISGMR()&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupISGMR()&quot;</span><span class="p">)</span>
    <span class="c1">#</span>
 <div class="viewcode-block" id="SetupISGMR.print_outputs"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
@@ -198,7 +198,7 @@
 <span class="sd">      &quot;&quot;&quot;</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
       <span class="c1">#</span>
-      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
       <span class="c1">#</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   table:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
@@ -211,7 +211,7 @@
       <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   E_errp: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
       <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   E_errm: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">E_errm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
       <span class="c1">#</span>
-      <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
       <span class="c1">#</span>
 </pre></div>
 

@@ -60,7 +60,7 @@
 
 
 \title{nucleardatapy}
-\date{Jun 27, 2024}
+\date{Jul 01, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -308,7 +308,7 @@ A special thanks to all contributors who accepted to share their results in this
 Instantiate the object with microscopic results choosen     by the toolkit practitioner.
 
 \sphinxAtStartPar
-This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}dQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}NM\sphinxhyphen{}Hebeler’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
+This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
@@ -318,6 +318,54 @@ This choice is defined in \sphinxtitleref{model}, which can chosen among     the
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
+\index{den\_max (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{den\_max}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.den_max}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{den\_max}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute maximum of the density (SM and NM).
+
+\end{fulllineitems}
+
+\index{den\_min (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{den\_min}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.den_min}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{den\_min}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute minimum of the density (SM and NM).
+
+\end{fulllineitems}
+
+\index{kf\_max (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{kf\_max}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.kf_max}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{kf\_max}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute maximum of the Fermi momentum.
+
+\end{fulllineitems}
+
+\index{kf\_min (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{kf\_min}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.kf_min}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{kf\_min}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute minimum of the Fermi momentum.
+
+\end{fulllineitems}
+
 \index{label (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
 
 \begin{fulllineitems}
@@ -342,6 +390,30 @@ Attribute model.
 
 \end{fulllineitems}
 
+\index{nm\_chempot (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_chempot}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_chempot}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_chempot}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute neutron matter chemical potential.
+
+\end{fulllineitems}
+
+\index{nm\_chempot\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_chempot\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_chempot_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_chempot\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the neutron matter chemical potential.
+
+\end{fulllineitems}
+
 \index{nm\_den (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_den}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
 
 \begin{fulllineitems}
@@ -351,6 +423,30 @@ Attribute model.
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute neutron matter density.
+
+\end{fulllineitems}
+
+\index{nm\_den\_max (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_den\_max}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_den_max}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_den\_max}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the maximum of the neutron matter density.
+
+\end{fulllineitems}
+
+\index{nm\_den\_min (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_den\_min}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_den_min}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_den\_min}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the minimum of the neutron matter density.
 
 \end{fulllineitems}
 
@@ -378,6 +474,42 @@ Attribute uncertainty in the neutron matter energy per particle.
 
 \end{fulllineitems}
 
+\index{nm\_e2v (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_e2v}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_e2v}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_e2v}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute neutron matter energy per unit volume.
+
+\end{fulllineitems}
+
+\index{nm\_e2v\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_e2v\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_e2v_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_e2v\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the neutron matter energy per unit volume.
+
+\end{fulllineitems}
+
+\index{nm\_effmass (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_effmass}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_effmass}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_effmass}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute neutron matter effective mass.
+
+\end{fulllineitems}
+
 \index{nm\_gap (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
 
 \begin{fulllineitems}
@@ -387,6 +519,18 @@ Attribute uncertainty in the neutron matter energy per particle.
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute neutron matter pairing gap.
+
+\end{fulllineitems}
+
+\index{nm\_gap\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{nm\_gap\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.nm_gap_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nm\_gap\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the neutron matter pairing gap.
 
 \end{fulllineitems}
 
@@ -462,6 +606,30 @@ Attribute providing the full reference to the paper to be citted.
 
 \end{fulllineitems}
 
+\index{sm\_chempot (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_chempot}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_chempot}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_chempot}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute symmetric matter chemical potential.
+
+\end{fulllineitems}
+
+\index{sm\_chempot\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_chempot\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_chempot_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_chempot\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the symmetric matter chemical potential.
+
+\end{fulllineitems}
+
 \index{sm\_den (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_den}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
 
 \begin{fulllineitems}
@@ -471,6 +639,30 @@ Attribute providing the full reference to the paper to be citted.
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute symmetric matter density.
+
+\end{fulllineitems}
+
+\index{sm\_den\_max (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_den\_max}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_den_max}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_den\_max}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the maximum of the symmetric matter density.
+
+\end{fulllineitems}
+
+\index{sm\_den\_min (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_den\_min}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_den_min}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_den\_min}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the minimum of the symmetric matter density.
 
 \end{fulllineitems}
 
@@ -498,6 +690,42 @@ Attribute uncertainty in the symmetric matter energy per particle.
 
 \end{fulllineitems}
 
+\index{sm\_e2v (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_e2v}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_e2v}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_e2v}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute symmetric matter energy per unit volume.
+
+\end{fulllineitems}
+
+\index{sm\_e2v\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_e2v\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_e2v_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_e2v\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the symmetric matter energy per unit volume.
+
+\end{fulllineitems}
+
+\index{sm\_effmass (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_effmass}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_effmass}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_effmass}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute symmetric matter effective mass.
+
+\end{fulllineitems}
+
 \index{sm\_gap (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_gap}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
 
 \begin{fulllineitems}
@@ -507,6 +735,18 @@ Attribute uncertainty in the symmetric matter energy per particle.
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute symmetric matter pairing gap.
+
+\end{fulllineitems}
+
+\index{sm\_gap\_err (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{sm\_gap\_err}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.sm_gap_err}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{sm\_gap\_err}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute uncertainty in the symmetric matter pairing gap.
 
 \end{fulllineitems}
 
@@ -557,8 +797,7 @@ Attribute uncertainty in the symmetric matter pressure.
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro.}}\sphinxbfcode{\sphinxupquote{models\_micro}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Return a list with the name of the models available in this toolkit and
-print them all on the prompt. These models are the following ones:     ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’,     ‘2009\sphinxhyphen{}dQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}NM\sphinxhyphen{}Hebeler’, ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’,     ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’, ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
+Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
 \begin{quote}\begin{description}
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
@@ -589,6 +828,80 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_gap_nm}.png}
 \caption{This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id2}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupBand}
+\label{\detokenize{source/api/setup_band:setupband}}\label{\detokenize{source/api/setup_band::doc}}\phantomsection\label{\detokenize{source/api/setup_band:module-nucleardatapy.setup_band}}\index{module@\spxentry{module}!nucleardatapy.setup\_band@\spxentry{nucleardatapy.setup\_band}}\index{nucleardatapy.setup\_band@\spxentry{nucleardatapy.setup\_band}!module@\spxentry{module}}\index{SetupBand (class in nucleardatapy.setup\_band)@\spxentry{SetupBand}\spxextra{class in nucleardatapy.setup\_band}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_band:nucleardatapy.setup_band.SetupBand}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_band.}}\sphinxbfcode{\sphinxupquote{SetupBand}}}{\emph{\DUrole{n}{models}}, \emph{\DUrole{n}{nden}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{ne}\DUrole{o}{=}\DUrole{default_value}{1000}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the object with statistical distributions averaging over
+the models given as inputs.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{models}} (\sphinxstyleliteralemphasis{\sphinxupquote{list.}}) \textendash{} The models given as inputs.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{nden}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} number of density points.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{ne}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} number of points along the energy axis.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{models (nucleardatapy.setup\_band.SetupBand attribute)@\spxentry{models}\spxextra{nucleardatapy.setup\_band.SetupBand attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_band:nucleardatapy.setup_band.SetupBand.models}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{models}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute model.
+
+\end{fulllineitems}
+
+\index{nden (nucleardatapy.setup\_band.SetupBand attribute)@\spxentry{nden}\spxextra{nucleardatapy.setup\_band.SetupBand attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_band:nucleardatapy.setup_band.SetupBand.nden}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nden}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute number of points in density
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_band.SetupBand method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_band.SetupBand method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_band:nucleardatapy.setup_band.SetupBand.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
 
 \sphinxstepscope
 
@@ -1925,6 +2238,7 @@ list{[}str{]}.
 \let\bigletter\sphinxstyleindexlettergroup
 \bigletter{n}
 \item\relax\sphinxstyleindexentry{nucleardatapy}\sphinxstyleindexpageref{source/generated/nucleardatapy:\detokenize{module-nucleardatapy}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_band}\sphinxstyleindexpageref{source/api/setup_band:\detokenize{module-nucleardatapy.setup_band}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_EsymLsym}\sphinxstyleindexpageref{source/api/setup_EsymLsym:\detokenize{module-nucleardatapy.setup_EsymLsym}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_ISGMR}\sphinxstyleindexpageref{source/api/setup_ISGMR:\detokenize{module-nucleardatapy.setup_ISGMR}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_masses}\sphinxstyleindexpageref{source/api/setup_masses:\detokenize{module-nucleardatapy.setup_masses}}

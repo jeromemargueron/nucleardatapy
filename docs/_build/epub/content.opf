@@ -12,8 +12,8 @@
     <dc:publisher>Jérôme Margueron, IRL NPA, USA</dc:publisher>
     <dc:rights>2024, Jérôme Margueron, IRL NPA, USA</dc:rights>
     <dc:identifier id="unknown">unknown</dc:identifier>
-    <dc:date>2024-06-27T18:17:03Z</dc:date>
-    <meta property="dcterms:modified">2024-06-27T18:17:03Z</meta>
+    <dc:date>2024-07-01T20:56:03Z</dc:date>
+    <meta property="dcterms:modified">2024-07-01T20:56:03Z</meta>
     <meta property="ibooks:version"></meta>
     <meta property="ibooks:specified-fonts">true</meta>
     <meta property="ibooks:binding">true</meta>
@@ -48,23 +48,25 @@
     <item id="epub-23" href="source/usage.xhtml" media-type="application/xhtml+xml" />
     <item id="epub-24" href="source/api/setup_EsymLsym.xhtml" media-type="application/xhtml+xml" />
     <item id="epub-25" href="source/api/setup_ISGMR.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-26" href="source/api/setup_masses.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-27" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-28" href="source/api/setup_pheno.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-29" href="source/api/setup_rad_ch.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-30" href="source/generated/nucleardatapy.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-26" href="source/api/setup_band.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-27" href="source/api/setup_masses.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-28" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-29" href="source/api/setup_pheno.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-30" href="source/api/setup_rad_ch.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-31" href="source/generated/nucleardatapy.xhtml" media-type="application/xhtml+xml" />
   </manifest>
   <spine toc="ncx" page-progression-direction="ltr">
     <itemref idref="epub-1" />
     <itemref idref="epub-23" />
     <itemref idref="epub-21" />
-    <itemref idref="epub-30" />
+    <itemref idref="epub-31" />
     <itemref idref="epub-22" />
-    <itemref idref="epub-27" />
     <itemref idref="epub-28" />
-    <itemref idref="epub-24" />
     <itemref idref="epub-26" />
     <itemref idref="epub-29" />
+    <itemref idref="epub-24" />
+    <itemref idref="epub-27" />
+    <itemref idref="epub-30" />
     <itemref idref="epub-25" />
     <itemref idref="epub-2" />
     <itemref idref="epub-0" />

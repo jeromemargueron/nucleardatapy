@@ -114,29 +114,35 @@
     </navPoint>
     <navPoint id="navPoint18" playOrder="15">
       <navLabel>
+        <text>SetupBand</text>
+      </navLabel>
+      <content src="source/api/setup_band.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint19" playOrder="16">
+      <navLabel>
         <text>SetupPheno</text>
       </navLabel>
       <content src="source/api/setup_pheno.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint19" playOrder="16">
+    <navPoint id="navPoint20" playOrder="17">
       <navLabel>
         <text>SetupEsymLsym</text>
       </navLabel>
       <content src="source/api/setup_EsymLsym.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint20" playOrder="17">
+    <navPoint id="navPoint21" playOrder="18">
       <navLabel>
         <text>SetupMasses</text>
       </navLabel>
       <content src="source/api/setup_masses.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint21" playOrder="18">
+    <navPoint id="navPoint22" playOrder="19">
       <navLabel>
         <text>SetupRadCh</text>
       </navLabel>
       <content src="source/api/setup_rad_ch.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint22" playOrder="19">
+    <navPoint id="navPoint23" playOrder="20">
       <navLabel>
         <text>SetupISGMR</text>
       </navLabel>

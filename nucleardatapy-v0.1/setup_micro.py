@@ -10,9 +10,9 @@ import nucleardatapy as nuda
 
 def models_micro():
     """
-    Return a list with the name of the models available in this toolkit and
+    Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM'*, '2008-BCS-NM', '2008-AFDMC-NM', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
@@ -37,7 +37,7 @@ class SetupMicro():
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM'*, '2008-BCS-NM', '2008-AFDMC-NM', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \

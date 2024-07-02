@@ -83,13 +83,37 @@
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro.</span></span><span class="sig-name descname"><span class="pre">SetupMicro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro.html#SetupMicro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
-<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1998-VAR-AM-APR’, ‘2008-AFDMC-NM’, ‘2008-QMC-NM-swave’,     ‘2008-QMC-NM-AV4’, ‘2009-dQMC-NM’, ‘2010-NM-Hebeler’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’, ‘2020-MBPT-AM-DHSL69’,     ‘2023-MBPT-AM’.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘2006-BHF-AM*’, ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’, ‘2020-MBPT-AM-DHSL69’,     ‘2023-MBPT-AM’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.den_max">
+<span class="sig-name descname"><span class="pre">den_max</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.den_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute maximum of the density (SM and NM).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.den_min">
+<span class="sig-name descname"><span class="pre">den_min</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.den_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute minimum of the density (SM and NM).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.kf_max">
+<span class="sig-name descname"><span class="pre">kf_max</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.kf_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute maximum of the Fermi momentum.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.kf_min">
+<span class="sig-name descname"><span class="pre">kf_min</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.kf_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute minimum of the Fermi momentum.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.label">
 <span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.label" title="Permalink to this definition"></a></dt>
@@ -103,9 +127,33 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_chempot">
+<span class="sig-name descname"><span class="pre">nm_chempot</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_chempot" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron matter chemical potential.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_chempot_err">
+<span class="sig-name descname"><span class="pre">nm_chempot_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_chempot_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the neutron matter chemical potential.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_den">
 <span class="sig-name descname"><span class="pre">nm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_den" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute neutron matter density.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_den_max">
+<span class="sig-name descname"><span class="pre">nm_den_max</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_den_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the maximum of the neutron matter density.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_den_min">
+<span class="sig-name descname"><span class="pre">nm_den_min</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_den_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the minimum of the neutron matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -121,9 +169,33 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_e2v">
+<span class="sig-name descname"><span class="pre">nm_e2v</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_e2v" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron matter energy per unit volume.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_e2v_err">
+<span class="sig-name descname"><span class="pre">nm_e2v_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_e2v_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the neutron matter energy per unit volume.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_effmass">
+<span class="sig-name descname"><span class="pre">nm_effmass</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_effmass" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron matter effective mass.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_gap">
 <span class="sig-name descname"><span class="pre">nm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_gap" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute neutron matter pairing gap.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.nm_gap_err">
+<span class="sig-name descname"><span class="pre">nm_gap_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.nm_gap_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the neutron matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -163,9 +235,33 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_chempot">
+<span class="sig-name descname"><span class="pre">sm_chempot</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_chempot" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute symmetric matter chemical potential.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_chempot_err">
+<span class="sig-name descname"><span class="pre">sm_chempot_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_chempot_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the symmetric matter chemical potential.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_den">
 <span class="sig-name descname"><span class="pre">sm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_den" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute symmetric matter density.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_den_max">
+<span class="sig-name descname"><span class="pre">sm_den_max</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_den_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the maximum of the symmetric matter density.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_den_min">
+<span class="sig-name descname"><span class="pre">sm_den_min</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_den_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the minimum of the symmetric matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -181,9 +277,33 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2v">
+<span class="sig-name descname"><span class="pre">sm_e2v</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_e2v" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute symmetric matter energy per unit volume.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_e2v_err">
+<span class="sig-name descname"><span class="pre">sm_e2v_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_e2v_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the symmetric matter energy per unit volume.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_effmass">
+<span class="sig-name descname"><span class="pre">sm_effmass</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_effmass" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute symmetric matter effective mass.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_gap">
 <span class="sig-name descname"><span class="pre">sm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_gap" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute symmetric matter pairing gap.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro.SetupMicro.sm_gap_err">
+<span class="sig-name descname"><span class="pre">sm_gap_err</span></span><a class="headerlink" href="#nucleardatapy.setup_micro.SetupMicro.sm_gap_err" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute uncertainty in the symmetric matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -209,8 +329,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro.models_micro">
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro.</span></span><span class="sig-name descname"><span class="pre">models_micro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro.html#models_micro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro.models_micro" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list with the name of the models available in this toolkit and
-print them all on the prompt. These models are the following ones:     ‘1998-VAR-AM-APR’, ‘2008-AFDMC-NM’, ‘2008-QMC-NM-swave’, ‘2008-QMC-NM-AV4’,     ‘2009-dQMC-NM’, ‘2010-NM-Hebeler’, ‘2013-QMC-NM’, ‘2014-AFQMC-NM’,     ‘2016-QMC-NM’, ‘2016-MBPT-AM’, ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’,     ‘2020-MBPT-AM-DHSL69’, ‘2023-MBPT-AM’.</p>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘2006-BHF-AM*’, ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2020-MBPT-AM-DHSL59’, ‘2020-MBPT-AM-DHSL69’,     ‘2023-MBPT-AM’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The list of models.</p>
