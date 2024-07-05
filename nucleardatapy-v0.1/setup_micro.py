@@ -8,27 +8,45 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
+nsat = 0.16
+mnuc2 = 939.0
+
 def models_micro():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
     '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
+    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
+    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-    '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-    '2023-MBPT-AM'.
+    '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+    '2020-MBPT-AM'.
 
     :return: The list of models.
     :rtype: list[str].
     """
     models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2008-BCS-NM', '2008-AFDMC-NM', \
              '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
+             '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
+             '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
              '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-             '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-             '2023-MBPT-AM' ]
+             '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+             '2020-MBPT-AM' ]
     print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     return models, models_lower
+
+def func_GCR_e2a(den,a,alfa,b,beta):
+    return a * (den/nsat)**alfa + b * (den/nsat)**beta
+
+def func_GCR_pre(den,a,alfa,b,beta):
+    return den * ( a * alfa * (den/nsat)**alfa + b * beta * (den/nsat)**beta )
+
+def func_GCR_cs2(den,a,alfa,b,beta):
+    dp_dn = a * alfa * ( alfa + 1.0 ) * (den/nsat)**alfa + b * beta * ( beta + 1.0 ) * (den/nsat)**beta
+    enth = mnuc2 + func_GCR_e2a(den,a,alfa,b,beta) + func_GCR_pre(den,a,alfa,b,beta) / den
+    return dp_dn / enth
 
 class SetupMicro():
     """
@@ -39,9 +57,11 @@ class SetupMicro():
     the following choices: \
     '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
+    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
+    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-    '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-    '2023-MBPT-AM'.
+    '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+    '2020-MBPT-AM'.
 
     :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
     :type model: str, optional. 
@@ -131,6 +151,12 @@ class SetupMicro():
         self.sm_gap = None
         #: Attribute uncertainty in the symmetric matter pairing gap.
         self.sm_gap_err = None
+        #: Attribute density array for esym.
+        self.esym_den = None
+        #: Attribute Fermi momentum array for esym.
+        self.esym_kf = None
+        #: Attribute energy per particle for esym.
+        self.esym_e2a = None
         #
         models, models_lower = models_micro()
         #
@@ -149,9 +175,10 @@ class SetupMicro():
             #: Attribute providing the full reference to the paper to be citted.
             self.ref = 'Friedman and Pandharipande, Nucl. Phys. A. 361, 502 (1981)'
             #: Attribute providing the label the data is references for figures.
-            self.label = 'APR'
+            self.label = 'FP'
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
+            self.linestyle = 'dashed'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -160,25 +187,25 @@ class SetupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
-            self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
+            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
             # pressure in SM
             x = np.insert( self.sm_kfn, 0, 0.0 )
             y = np.insert( self.sm_e2a, 0, 0.0 )
             cs_sm_e2a = CubicSpline( x, y )
             self.sm_pre = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_kfn, 1 )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
+            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
+            #cs_sm_e2a_err = CubicSpline( x, y_err )
+            #self.sm_pre_err = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
             #
             # Symmetry energy
             self.den_min = max( min( self.nm_den), min( self.sm_den) )
@@ -198,9 +225,9 @@ class SetupMicro():
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
+            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '1998-var-am-apr':
             #
@@ -214,6 +241,7 @@ class SetupMicro():
             self.label = 'APR'
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
+            self.linestyle = 'dashed'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -222,25 +250,25 @@ class SetupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
-            self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
+            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
             # pressure in SM
             x = np.insert( self.sm_den, 0, 0.0 )
             y = np.insert( self.sm_e2a, 0, 0.0 )
             cs_sm_e2a = CubicSpline( x, y )
             self.sm_pre = self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
+            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
+            #cs_sm_e2a_err = CubicSpline( x, y_err )
+            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
             self.den_min = max( min( self.nm_den), min( self.sm_den) )
@@ -260,9 +288,9 @@ class SetupMicro():
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
+            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '2006-bhf-am':
             #
@@ -275,6 +303,7 @@ class SetupMicro():
             self.ref = '.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
             self.label = 'BHF-2006'
             self.note = ""
+            self.linestyle = 'solid'
             #
         elif model.lower() == '2008-bcs-nm':
             #
@@ -283,12 +312,13 @@ class SetupMicro():
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
             self.label = 'BCS-2008'
             self.note = ""
+            self.linestyle = 'dotted'
             self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
 
-            self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            #self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
 
             #self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
             #self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
@@ -300,11 +330,12 @@ class SetupMicro():
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005); A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
             self.label = 'AFDMC-2008'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-            self.nm_chempot_err = abs( 0.01 * self.nm_chempot )
+            #self.nm_chempot_err = abs( 0.01 * self.nm_chempot )
             #
             # Deduce the energy from the chemical potential
             #
@@ -331,13 +362,13 @@ class SetupMicro():
                 eps_n.append( eps )
                 kfn0 = kfn
             self.nm_e2v = eps_n
-            self.nm_e2v_err = 0.01 * eps_n
+            #self.nm_e2v_err = 0.01 * eps_n
             self.nm_e2a = eps_n / self.nm_den
-            self.nm_e2a_err = self.nm_e2v_err / self.nm_den
+            #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
             #
             # pressure
             self.nm_pre = np.array(self.nm_den) * np.array(self.nm_chempot) - np.array(self.nm_e2v)
-            self.nm_pre_err = np.array(self.nm_den) * np.array(self.nm_chempot_err) - np.array(self.nm_e2v_err)
+            #self.nm_pre_err = np.array(self.nm_den) * np.array(self.nm_chempot_err) - np.array(self.nm_e2v_err)
             #self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
             #    = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -353,6 +384,7 @@ class SetupMicro():
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.label = 'QMC-swave-2008'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -384,34 +416,36 @@ class SetupMicro():
             self.ref = 'S. Gandolfi, A.Y. Illarionov, F. Pederiva, K.E. Schmidt, S. Fantoni, Phys. Rev. C 80, 045802 (2009).'
             self.label = 'AFDMC-2009'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-            self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
+            #self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
             self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2010-qmc-nm-av4':
+        elif model.lower() == '2009-dlqmc-nm':
             #
-            file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-QMC-NM-AV4.dat')
+            file_in = os.path.join(nuda.param.path_data,'eos/micro/2009-dQMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
-            self.label = 'QMC-AV4-2008'
+            self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
+            self.label = 'dQMC-2009'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -436,13 +470,14 @@ class SetupMicro():
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
             self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2009-dlqmc-nm':
+        elif model.lower() == '2010-qmc-nm-av4':
             #
-            file_in = os.path.join(nuda.param.path_data,'eos/micro/2009-dQMC-NM.dat')
+            file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-QMC-NM-AV4.dat')
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
-            self.label = 'dQMC-2009'
+            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
+            self.label = 'QMC-AV4-2008'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -474,15 +509,50 @@ class SetupMicro():
             self.ref = 'K. Hebeler, et al, Phys. Rev. Lett. 105, 161102 (2010)'
             self.label = 'MBPT-2010'
             self.note = "chiral NN forces with SRG and leading 3N forces."
+            self.linestyle = 'solid'
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
+            #self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
             #
             # compute nm_e2v by integrating the pressure
             #
             # chemical potential
             #self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
+            #
+        elif '2012-afdmc-nm' in model.lower():
+            #
+            # We do not have the data for this model, but we have a fit of the data
+            k=int(model.split(sep='-')[3])
+            #print('k:',k)
+            file_in = os.path.join(nuda.param.path_data,'eos/micro/2012-AFDMC-NM.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
+            self.label = 'AFDMC-2012'
+            self.note = "We do not have the data for this model, but we have a fit of the data."
+            self.linestyle = 'solid'
+            ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
+            #name = np.loadtxt( file_in, usecols=(5), unpack = True )
+            nmodel = np.size(alfa)
+            #print('nmodel:',nmodel)
+            if k < 0 or k > nmodel:
+                print('issue with the model number k:',k)
+                print('exit')
+                exit()
+            #for i in range(nmodel):
+            #    print('i:',i,' ind:',ind[i],' a:',a[i],' alfa:',alfa[i],' b:',b[i],' beta:',beta[i])
+            nden = 10
+            self.nm_den = 0.04 + 0.45 * np.arange(nden+1)/float(nden)
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            # energy in NM
+            self.nm_e2a = func_GCR_e2a(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
+            self.nm_e2v = self.nm_den * self.nm_e2a
+            # pressure in NM
+            self.nm_pre = func_GCR_pre(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
+            # chemical potential
+            self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
+            # sound speed in NM
+            self.nm_cs2 = func_GCR_cs2(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
             #
         elif model.lower() == '2013-qmc-nm':
             #
@@ -491,6 +561,7 @@ class SetupMicro():
             self.ref = 'I. Tews et al., PRL 110, 032504 (2013)'
             self.label = 'QMC-2013'
             self.note = "write here notes about this EOS."
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -513,27 +584,28 @@ class SetupMicro():
             self.ref = 'G. Wlazłowski, J.W. Holt, S. Moroz, A. Bulgac, and K.J. Roche Phys. Rev. Lett. 113, 182503 (2014)'
             self.label = 'AFQMC-2014'
             self.note = "write here notes about this EOS."
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             self.nm_e2a = self.nm_e2a_23bf
             self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_e2a = CubicSpline( x, y )
             self.nm_pre = nuda.cst.three * self.nm_kfn * self.nm_den * cs_e2a( self.nm_kfn, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
             #
             # chemical potential
             self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '2016-qmc-nm':
             #
@@ -542,6 +614,7 @@ class SetupMicro():
             self.ref = ' I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016).'
             self.label = 'QMC-2016'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -569,6 +642,7 @@ class SetupMicro():
             self.ref = 'PRC (2016)'
             self.label = 'MBPT-2016'
             self.note = ""
+            self.linestyle = 'solid'
             # read the results for the 7 hamiltonians
             length = np.zeros( (11), dtype=int )
             den = np.zeros( (11,35) )
@@ -670,6 +744,7 @@ class SetupMicro():
             self.ref = ''
             self.label = 'QMC-2018'
             self.note = ""
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -699,35 +774,36 @@ class SetupMicro():
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
             self.label = 'MBPT-2019-DHSL59'
             self.note = ""
+            self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
-            self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
+            #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            #self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
                  = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-            self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
             # pressure in SM
             x = np.insert( self.sm_den, 0, 0.0 )
             y = np.insert( self.sm_e2a, 0, 0.0 )
             cs_sm_e2a = CubicSpline( x, y )
             self.sm_pre = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_den, 1 )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
+            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
+            #cs_sm_e2a_err = CubicSpline( x, y_err )
+            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
             self.den_min = max( min( self.nm_den), min( self.sm_den) )
@@ -747,7 +823,7 @@ class SetupMicro():
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '2019-mbpt-am-dhsl69':
             #
@@ -758,35 +834,36 @@ class SetupMicro():
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
             self.label = 'MBPT-2019-DHSL69'
             self.note = ""
+            self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
-            self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
+            #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            #self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
                  = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-            self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
+            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            #cs_nm_e2a_err = CubicSpline( x, y_err )
+            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
             # pressure in SM
             x = np.insert( self.sm_den, 0, 0.0 )
             y = np.insert( self.sm_e2a, 0, 0.0 )
             cs_sm_e2a = CubicSpline( x, y )
             self.sm_pre = self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.nm_den, 1 )
+            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
+            #cs_sm_e2a_err = CubicSpline( x, y_err )
+            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.nm_den, 1 )
             #
             # Symmetry energy
             self.den_min = max( min( self.nm_den), min( self.sm_den) )
@@ -799,9 +876,9 @@ class SetupMicro():
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
+            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '2020-mbpt-am':
             #
@@ -812,6 +889,7 @@ class SetupMicro():
             self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
             self.label = 'MBPT-2020'
             self.note = ""
+            self.linestyle = 'solid'
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)

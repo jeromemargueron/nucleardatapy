@@ -60,7 +60,7 @@
 
 
 \title{nucleardatapy}
-\date{Jul 01, 2024}
+\date{Jul 05, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -308,7 +308,7 @@ A special thanks to all contributors who accepted to share their results in this
 Instantiate the object with microscopic results choosen     by the toolkit practitioner.
 
 \sphinxAtStartPar
-This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
+This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
@@ -339,6 +339,42 @@ Attribute maximum of the density (SM and NM).
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute minimum of the density (SM and NM).
+
+\end{fulllineitems}
+
+\index{esym\_den (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{esym\_den}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.esym_den}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{esym\_den}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute density array for esym.
+
+\end{fulllineitems}
+
+\index{esym\_e2a (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{esym\_e2a}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.esym_e2a}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{esym\_e2a}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute energy per particle for esym.
+
+\end{fulllineitems}
+
+\index{esym\_kf (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{esym\_kf}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.esym_kf}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{esym\_kf}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute Fermi momentum array for esym.
 
 \end{fulllineitems}
 
@@ -797,7 +833,7 @@ Attribute uncertainty in the symmetric matter pressure.
 \pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro.}}\sphinxbfcode{\sphinxupquote{models\_micro}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2023\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
+Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}DHSL69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’.
 \begin{quote}\begin{description}
 \sphinxlineitem{Returns}
 \sphinxAtStartPar
@@ -819,15 +855,36 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_nm}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of model available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_AFDMC}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the AFDMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_gap_nm}.png}
-\caption{This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id2}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_BHF}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the BHF models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id2}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_QMC}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the QMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id3}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_MBPT}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id4}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{../samples/nucleardatapy_plots/figs/plot_SetupMicro_gap_NM}.png}
+\caption{This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id5}}\end{figure}
 
 \sphinxstepscope
 

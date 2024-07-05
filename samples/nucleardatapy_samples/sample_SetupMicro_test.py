@@ -17,10 +17,11 @@ def main():
     #models = [ '1981-VAR-AM-FP' ]
     #models = [ '1998-VAR-AM-APR' ]
     #models = [ '2010-QMC-NM-AV4' ]
+    models = [ '2012-AFDMC-NM-2' ]
     #models = [ '2016-MBPT-AM' ]
     #models = [ '2020-MBPT-AM-DHSL59' ]
     #models = [ '2020-MBPT-AM-DHSL69' ]
-    models = [ '2023-MBPT-AM' ]
+    #models = [ '2023-MBPT-AM' ]
     #
     for model in models:
         #

@@ -9,19 +9,10 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def main():
+def plotMicro_e2a( pname, models ):
     #
-    print(50*'-')
-    print("Enter plot_SetupMicro.py:")
-    print(50*'-')
+    # plot E/A in NM
     #
-    # create the folder where the figures are stored
-    #
-    os.system('mkdir -p figs/')
-    #
-    # plot E/E_FFG in NM
-    #
-    pname = 'figs/plot_SetupMicro_e2a_nm.png'
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(2,2)
@@ -46,31 +37,26 @@ def main():
     axs[1,1].set_xlim([0, 0.65])
     axs[1,1].set_ylim([0, 2.5])
     #
-    #keys = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
-    #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
-    #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-    #         '2023-MBPT-AM' ]
-    models, models_lower = nuda.models_micro()
-    #
     for model in models:
         #
         mic = nuda.SetupMicro( model = model )
-        if any(mic.nm_e2a): 
-            axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
-            axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle='solid', label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), linestyle='solid', label=mic.label )
-            axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle='solid', label=mic.label )
+        if mic.nm_e2a is not None: 
+            print('model:',model)
+            axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
+            axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle=mic.linestyle, label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
+            axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle=mic.linestyle, label=mic.label )
         mic.print_outputs( )
     #
-    axs[1,0].legend(loc='upper right',fontsize='xx-small', ncol=2)
+    axs[1,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     plt.savefig(pname)
     plt.close()
 
+def plotMicro_gap( pname, models ):
     #
     # plot pairing gap in NM
     #
-    pname = 'figs/plot_SetupMicro_gap_nm.png'
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(2,2)
@@ -79,13 +65,13 @@ def main():
     #
     #axs[0,0].set_ylabel(r'$E_{NM}/E_{FFG}$')
     axs[0,0].set_ylabel(r'$\Delta/E_F$')
-    axs[0,0].set_xlim([0, 0.02])
+    axs[0,0].set_xlim([0, 0.08])
     axs[0,0].set_ylim([0, 1.0])
     #
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$\Delta$ (MeV)')
-    axs[1,0].set_xlim([0, 0.02])
-    axs[1,0].set_ylim([0, 2.5])
+    axs[1,0].set_xlim([0, 0.08])
+    axs[1,0].set_ylim([0, 2.8])
     #
     #axs[0,1].set_ylabel(r'$\Delta/E_F$')
     axs[0,1].set_xlim([0, 0.65])
@@ -96,32 +82,63 @@ def main():
     axs[1,1].set_xlim([0, 0.65])
     axs[1,1].set_ylim([0, 2.5])
     #
-    #keys = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
-    #         '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
-    #         '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-    #         '2023-MBPT-AM' ]
-    models, models_lower = nuda.models_micro()
     #
     for model in models:
         #
         mic = nuda.SetupMicro( model = model )
-        if any(mic.nm_gap): 
-            axs[0,0].plot( mic.nm_den, mic.nm_gap/nuda.effg(mic.nm_kfn), linestyle='solid', label=mic.label )
-            axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle='solid', label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nuda.eF_n(mic.nm_kfn), linestyle='solid', label=mic.label )
-            axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle='solid', label=mic.label )
+        if mic.nm_gap is not None: 
+            axs[0,0].plot( mic.nm_den, mic.nm_gap/nuda.effg(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
+            axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle=mic.linestyle, label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nuda.eF_n(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
+            axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle=mic.linestyle, label=mic.label )
         mic.print_outputs( )
     #
-    axs[1,0].legend(loc='upper right',fontsize='xx-small')
-    #axs[1,1].legend(loc='upper left',fontsize='xx-small')
+    axs[1,1].legend(loc='upper left',fontsize='xx-small')
     #
     plt.savefig(pname)
     plt.close()
 
+
+def main():
+    #
+    print(50*'-')
+    print("Enter plot_SetupMicro.py:")
+    print(50*'-')
+    #
+    # create the folder where the figures are stored
+    #
+    os.system('mkdir -p figs/')
+    #
+    groups = [ 'AFDMC', 'BHF', 'QMC', 'MBPT' ]
+    #
+    models, models_lower = nuda.models_micro()
+    #
+    # plot pairing gaps in NM
+    #
+    pname = 'figs/plot_SetupMicro_gap_NM_.png'
+    plotMicro_gap( pname, models )
+    #
+    # plot E/A in NM
+    #
+    for i,group in enumerate(groups):
+        #
+        pname = 'figs/plot_SetupMicro_e2a_NM_'+group+'.png'
+        #
+        models2 = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR' ]
+        for j,model in enumerate(models):
+            if group in model:
+                models2.append( model )
+        #
+        print('models2:',models2)
+        print('pname:',pname)
+        #
+        plotMicro_e2a( pname, models2 )
+    #
     print(50*'-')
     print("Exit plot_SetupMicro.py:")
     print(50*'-')
     #
+
     
 if __name__ == "__main__":
     main()

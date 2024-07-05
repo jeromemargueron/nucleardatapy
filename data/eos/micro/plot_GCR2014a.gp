@@ -43,7 +43,7 @@ qNM_1=9*( a_1*alp_1*(alp_1-1)*(alp_1-2) + b_1*bet_1*(bet_1-1)*(bet_1-2) )
 zNM_1=9*( a_1*alp_1*(alp_1-1)*(alp_1-2)*(alp_1-3) + b_1*bet_1*(bet_1-1)*(bet_1-2)*(bet_1-3) )
 #
 Esyma=eNM_1-Esata
-Esymb=eNM_1-Esatb
+ Esymb=eNM_1-Esatb
 Ksyma=kNM_1-Ksata
 Ksymb=kNM_1-Ksatb
 #
