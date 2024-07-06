@@ -11,6 +11,9 @@ import nucleardatapy as nuda
 nsat = 0.16
 mnuc2 = 939.0
 
+def uncertainty_stat(den):
+    return 0.07*(den/nsat)
+
 def models_micro():
     """
     Return a list with the name of the models available in this toolkit and \
@@ -20,7 +23,7 @@ def models_micro():
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-    '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+    '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM'.
 
     :return: The list of models.
@@ -31,7 +34,7 @@ def models_micro():
              '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
              '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
              '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-             '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+             '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
              '2020-MBPT-AM' ]
     print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
@@ -60,7 +63,7 @@ class SetupMicro():
     '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-    '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+    '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM'.
 
     :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
@@ -157,6 +160,10 @@ class SetupMicro():
         self.esym_kf = None
         #: Attribute energy per particle for esym.
         self.esym_e2a = None
+        #: Attribute which discriminates True uncertainties from False ones.
+        self.err = False
+        #: Attribute plot data every values.
+        self.every = 1
         #
         models, models_lower = models_micro()
         #
@@ -187,7 +194,7 @@ class SetupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
             #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             #
             # pressure in NM
@@ -250,7 +257,7 @@ class SetupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
             #self.sm_e2a_err = np.abs( 0.01 * self.sm_e2a )
             #
             # pressure in NM
@@ -364,6 +371,7 @@ class SetupMicro():
             self.nm_e2v = eps_n
             #self.nm_e2v_err = 0.01 * eps_n
             self.nm_e2a = eps_n / self.nm_den
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
             #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
             #
             # pressure
@@ -395,6 +403,7 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -423,20 +432,21 @@ class SetupMicro():
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             #self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
             self.nm_e2v = self.nm_e2a * self.nm_den
-            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.nm_pre = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 )
-            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            #cs_nm_e2a_err = CubicSpline( x, y_err )
-            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
+            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            cs_nm_e2a_err = CubicSpline( x, y_err )
+            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
         elif model.lower() == '2009-dlqmc-nm':
             #
@@ -456,6 +466,7 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -488,6 +499,7 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -528,7 +540,7 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2012-AFDMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
-            self.label = 'AFDMC-2012'
+            self.label = 'AFDMC-2012-'+str(k)
             self.note = "We do not have the data for this model, but we have a fit of the data."
             self.linestyle = 'solid'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -546,7 +558,9 @@ class SetupMicro():
             self.nm_kfn = nuda.kf_n( self.nm_den )
             # energy in NM
             self.nm_e2a = func_GCR_e2a(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
             self.nm_e2v = self.nm_den * self.nm_e2a
+            self.nm_e2v_err = self.nm_den * self.nm_e2a_err
             # pressure in NM
             self.nm_pre = func_GCR_pre(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
             # chemical potential
@@ -572,6 +586,7 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_pre = 0.5 * ( self.nm_pre_up + self.nm_pre_low )
             self.nm_pre_err = 0.5 * ( self.nm_pre_up - self.nm_pre_low )
+            self.err = True
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
@@ -587,12 +602,13 @@ class SetupMicro():
             self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             self.nm_e2a = self.nm_e2a_23bf
-            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
             #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
-            #self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -623,6 +639,7 @@ class SetupMicro():
             self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -639,7 +656,7 @@ class SetupMicro():
             #
         elif model.lower() == '2016-mbpt-am':
             #
-            self.ref = 'PRC (2016)'
+            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. C 93, 054314 (2016).'
             self.label = 'MBPT-2016'
             self.note = ""
             self.linestyle = 'solid'
@@ -699,6 +716,11 @@ class SetupMicro():
             self.sm_e2a_err = e2a_err[0,:]
             self.sm_e2v     = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.err = True
+            #
+            # Note: here I define the pressure as the derivative of the centroid energy
+            # It would however be better to compute the presure for each models and only
+            # after that, estimate the centroid and uncertainty.
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )
@@ -751,6 +773,7 @@ class SetupMicro():
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -765,14 +788,17 @@ class SetupMicro():
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
             self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2019-mbpt-am-dhsl59':
+        elif model.lower() == '2019-mbpt-am-l59':
+            #
+            # here, the L59 case is compute alone, it would be interesting to compute the uncertainty
+            # in the previous MBPT calculation (based on H1-H7) adding this new calculation.
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-SM-DHSL59.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-NM-DHSL59.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.label = 'MBPT-2019-DHSL59'
+            self.label = 'MBPT-2019-L59'
             self.note = ""
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
@@ -825,14 +851,16 @@ class SetupMicro():
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
             #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             #
-        elif model.lower() == '2019-mbpt-am-dhsl69':
+        elif model.lower() == '2019-mbpt-am-l69':
+            #
+            # same remarck as for L59
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-SM-DHSL69.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2020-MBPT-NM-DHSL69.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.label = 'MBPT-2019-DHSL69'
+            self.label = 'MBPT-2019-L69'
             self.note = ""
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
@@ -890,6 +918,7 @@ class SetupMicro():
             self.label = 'MBPT-2020'
             self.note = ""
             self.linestyle = 'solid'
+            self.every = 4
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
@@ -908,6 +937,7 @@ class SetupMicro():
             self.nm_e2a_err = self.nm_e2a_n3lo_err
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )
