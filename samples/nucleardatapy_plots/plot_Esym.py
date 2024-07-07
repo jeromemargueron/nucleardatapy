@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_esym( pname, models_micro, models_pheno ):
+def plot_esym( pname, models_micro, models_pheno, band ):
     #
     # plot E/A in NM
     #
@@ -45,7 +45,11 @@ def plot_esym( pname, models_micro, models_pheno ):
                 else:
                     axs[0].plot( mic.esym_den, mic.esym_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         mic.print_outputs( )
-    axs[0].legend(loc='upper left',fontsize='8', ncol=2)
+    axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[0].text(0.05,5,'microscopic models',fontsize='10')
+    axs[0].legend(loc='upper left',fontsize='8', ncol=1)
     #
     for model in models_pheno:
         #
@@ -56,9 +60,14 @@ def plot_esym( pname, models_micro, models_pheno ):
             pheno = nuda.SetupPheno( model = model, param = param )
             if pheno.esym_e2a is not None: 
                 print('model:',model,' param:',param)
+                #pheno.label=None
                 axs[1].plot( pheno.esym_den, pheno.esym_e2a, label=pheno.label )
             pheno.print_outputs( )
-    axs[1].legend(loc='upper left',fontsize='8', ncol=2)
+    axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].text(0.05,5,'phenomenological models',fontsize='10')
+    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     plt.savefig(pname)
@@ -74,6 +83,12 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
+    # fix the uncertainty band
+    #
+    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+    models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
+    band = nuda.SetupMicroBand( models, den=den, matter='ESYM' )
+    #
     # list the available models
     #
     models_micro, models_lower = nuda.models_micro()
@@ -82,7 +97,7 @@ def main():
     # plot Esym
     #
     pname = 'figs/plot_Esym.png'
-    plot_esym( pname, models_micro, models_pheno )
+    plot_esym( pname, models_micro, models_pheno, band )
     #
     print(50*'-')
     print("Exit plot_Esym.py:")

@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plotMicro_e2a( pname, models, band ):
+def plotMicro_e2a( pname, group, models, band ):
     #
     # plot E/A in NM
     #
@@ -46,33 +46,42 @@ def plotMicro_e2a( pname, models, band ):
                 if mic.err:
                     axs[0,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
                     axs[1,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
-                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
                     axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
                 else:
                     axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
                     axs[1,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
-                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
                     axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
             else:
                 if mic.err:
                     axs[0,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
                     axs[1,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
                     axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
                 else:
                     axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
 
         mic.print_outputs( )
-        axs[0,0].fill_between( band.nm_den, y1=(band.nm_e2a-band.nm_e2a_std)/nuda.effg(band.nm_kfn), y2=(band.nm_e2a+band.nm_e2a_std)/nuda.effg(band.nm_kfn), color=band.color, alpha=band.alpha )
-        axs[1,0].fill_between( band.nm_den, y1=(band.nm_e2a-band.nm_e2a_std), y2=(band.nm_e2a+band.nm_e2a_std), color=band.color, alpha=band.alpha )
-        axs[0,1].fill_between( band.nm_kfn, y1=(band.nm_e2a-band.nm_e2a_std)/nuda.eF_n(band.nm_kfn), y2=(band.nm_e2a+band.nm_e2a_std)/nuda.eF_n(band.nm_kfn), color=band.color, alpha=band.alpha )
-        axs[1,1].fill_between( band.nm_kfn, y1=(band.nm_e2a-band.nm_e2a_std), y2=(band.nm_e2a+band.nm_e2a_std), color=band.color, alpha=band.alpha )        
+        axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+        axs[0,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+        axs[0,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+        axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
+        axs[1,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+        axs[1,0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+        axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+        axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+        axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+        axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )        
+        axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+        axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     #
-    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    #axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
+    if group not in 'BHF':
+        axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     #
     plt.savefig(pname)
     plt.close()
@@ -105,7 +114,6 @@ def plotMicro_gap( pname, models ):
     #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
     axs[1,1].set_xlim([0, 1.4])
     axs[1,1].set_ylim([0, 2.8])
-    #
     #
     for model in models:
         #
@@ -160,14 +168,15 @@ def main():
         #
         models2 = []
         #models2 = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR' ]
+        #
         for j,model in enumerate(models):
-            if group in model:
+            if group in model and '2BF' not in model:
                 models2.append( model )
         #
         print('models2:',models2)
         print('pname:',pname)
         #
-        plotMicro_e2a( pname, models2, band )
+        plotMicro_e2a( pname, group, models2, band )
     #
     print(50*'-')
     print("Exit plot_SetupMicro.py:")

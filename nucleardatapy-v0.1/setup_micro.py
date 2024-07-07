@@ -24,7 +24,14 @@ def models_micro():
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM'.
+    '2020-MBPT-AM',\
+    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
+    '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93'\
 
     :return: The list of models.
     :rtype: list[str].
@@ -35,8 +42,14 @@ def models_micro():
              '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
              '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
              '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-             '2020-MBPT-AM' ]
-    print('models available in the toolkit:',models)
+             '2020-MBPT-AM', \
+            '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+            '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
+    if nuda.env.verb: print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     return models, models_lower
 
@@ -64,7 +77,13 @@ class SetupMicro():
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM'.
+    '2020-MBPT-AM', \
+    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14', \
+    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14'
 
     :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
     :type model: str, optional. 
@@ -86,94 +105,7 @@ class SetupMicro():
         self.model = model
         if nuda.env.verb: print("model:",model)
         #
-        #: Attribute providing the full reference to the paper to be citted.
-        self.ref = ''
-        #: Attribute providing additional notes about the data.
-        self.note = ''
-        #: Attribute neutron matter density.
-        self.nm_den = None
-        #: Attribute symmetric matter density.
-        self.sm_den = None
-        #: Attribute the minimum of the neutron matter density.
-        self.nm_den_min = None
-        #: Attribute the minimum of the symmetric matter density.
-        self.sm_den_min = None
-        #: Attribute minimum of the density (SM and NM).
-        self.den_min = None
-        #: Attribute the maximum of the neutron matter density.
-        self.nm_den_max = None
-        #: Attribute the maximum of the symmetric matter density.
-        self.sm_den_max = None
-        #: Attribute maximum of the density (SM and NM).
-        self.den_max = None
-        #: Attribute minimum of the Fermi momentum.
-        self.kf_min = None
-        #: Attribute maximum of the Fermi momentum.
-        self.kf_max = None
-        #: Attribute neutron matter Fermi momentum.
-        self.nm_kfn = None
-        #: Attribute symmetric matter Fermi momentum.
-        self.sm_kfn = None
-        #: Attribute neutron matter chemical potential.
-        self.nm_chempot = None
-        #: Attribute uncertainty in the neutron matter chemical potential.
-        self.nm_chempot_err = None
-        #: Attribute symmetric matter chemical potential.
-        self.sm_chempot = None
-        #: Attribute uncertainty in the symmetric matter chemical potential.
-        self.sm_chempot_err = None
-        #: Attribute neutron matter effective mass.
-        self.nm_effmass = None
-        #: Attribute symmetric matter effective mass.
-        self.sm_effmass = None
-        #: Attribute neutron matter energy per particle.
-        self.nm_e2a = None
-        #: Attribute uncertainty in the neutron matter energy per particle.
-        self.nm_e2a_err = None
-        #: Attribute symmetric matter energy per particle.
-        self.sm_e2a = None
-        #: Attribute uncertainty in the symmetric matter energy per particle.
-        self.sm_e2a_err = None
-        #: Attribute neutron matter energy per unit volume.
-        self.nm_e2v = None
-        #: Attribute uncertainty in the neutron matter energy per unit volume.
-        self.nm_e2v_err = None
-        #: Attribute symmetric matter energy per unit volume.
-        self.sm_e2v = None
-        #: Attribute uncertainty in the symmetric matter energy per unit volume.
-        self.sm_e2v_err = None
-        #: Attribute neutron matter pressure.
-        self.nm_pre = None
-        #: Attribute uncertainty in the neutron matter pressure.
-        self.nm_pre_err = None
-        #: Attribute symmetric matter pressure.
-        self.sm_pre = None
-        #: Attribute uncertainty in the symmetric matter pressure.
-        self.sm_pre_err = None
-        #: Attribute neutron matter pairing gap.
-        self.nm_gap = None
-        #: Attribute uncertainty in the neutron matter pairing gap.
-        self.nm_gap_err = None
-        #: Attribute symmetric matter pairing gap.
-        self.sm_gap = None
-        #: Attribute uncertainty in the symmetric matter pairing gap.
-        self.sm_gap_err = None
-        #: Attribute density array for esym.
-        self.esym_den = None
-        #: Attribute Fermi momentum array for esym.
-        self.esym_kf = None
-        #: Attribute energy per particle for esym.
-        self.esym_e2a = None
-        #: Attribute plot linestyle.
-        self.linestyle = 'solid'
-        #: Attribute plot to discriminate True uncertainties from False ones.
-        self.err = False
-        #: Attribute plot label data.
-        self.label = ''
-        #: Attribute plot marker.
-        self.marker = None
-        #: Attribute plot every data.
-        self.every = 1
+        self = SetupMicro.init_self( self )
         #
         models, models_lower = models_micro()
         #
@@ -221,15 +153,14 @@ class SetupMicro():
             #self.sm_pre_err = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min )
-            self.kf_max = nuda.kf( self.den_max )
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min )
+            self.esym_kf_max = nuda.kf( self.esym_den_max )
             #print('den_min:',self.den_min,' den_max:',self.den_max)
             #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
-            nesym = 20
-            kf_step = ( self.kf_max - self.kf_min ) / float( nesym )
-            self.esym_kf = self.kf_min + np.arange(nesym+1) * kf_step
+            kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
+            self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
@@ -287,15 +218,14 @@ class SetupMicro():
             #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min )
-            self.kf_max = nuda.kf( self.den_max )
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min )
+            self.esym_kf_max = nuda.kf( self.esym_den_max )
             #print('den_min:',self.den_min,' den_max:',self.den_max)
             #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
-            nesym = 20
-            kf_step = ( self.kf_max - self.kf_min ) / float( nesym )
-            self.esym_kf = self.kf_min + np.arange(nesym+1) * kf_step
+            kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
+            self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
@@ -318,7 +248,7 @@ class SetupMicro():
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2006-BHF-SM.dat')
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
-            self.ref = '.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
+            self.ref = 'L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
             self.note = ""
             self.label = 'BHF-2006'
             self.linestyle = 'solid'
@@ -570,8 +500,7 @@ class SetupMicro():
                 exit()
             #for i in range(nmodel):
             #    print('i:',i,' ind:',ind[i],' a:',a[i],' alfa:',alfa[i],' b:',b[i],' beta:',beta[i])
-            nden = 10
-            self.nm_den = 0.04 + 0.45 * np.arange(nden+1)/float(nden)
+            self.nm_den = 0.04 + 0.45 * np.arange(self.nden+1)/float(self.nden)
             self.nm_kfn = nuda.kf_n( self.nm_den )
             # energy in NM
             self.nm_e2a = func_GCR_e2a(self.nm_den,a[k-1],alfa[k-1],b[k-1],beta[k-1])
@@ -757,15 +686,14 @@ class SetupMicro():
             self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min )
-            self.kf_max = nuda.kf( self.den_max )
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min )
+            self.esym_kf_max = nuda.kf( self.esym_den_max )
             #print('den_min:',self.den_min,' den_max:',self.den_max)
             #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
-            nesym = 20
-            den_step = ( self.den_max - self.den_min ) / float( nesym )
-            self.esym_den = self.den_min + np.arange(nesym+1) * den_step
+            den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
+            self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
@@ -854,15 +782,14 @@ class SetupMicro():
             #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min )
-            self.kf_max = nuda.kf( self.den_max )
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min )
+            self.esym_kf_max = nuda.kf( self.esym_den_max )
             #print('den_min:',self.den_min,' den_max:',self.den_max)
             #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
-            nesym = 20
-            den_step = ( self.den_max - self.den_min ) / float( nesym )
-            self.esym_den = self.den_min + np.arange(nesym+1) * den_step
+            den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
+            self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
@@ -921,11 +848,11 @@ class SetupMicro():
             #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.nm_den, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min ); self.kf_max = nuda.kf( self.den_max )
-            nesym = 20; den_step = ( self.den_max - self.den_min ) / float( nesym )
-            self.esym_den = self.den_min + np.arange(nesym+1) * den_step
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min ); self.esym_kf_max = nuda.kf( self.esym_den_max )
+            den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
+            self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
             self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
@@ -985,11 +912,11 @@ class SetupMicro():
             self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
             #
             # Symmetry energy
-            self.den_min = max( min( self.nm_den), min( self.sm_den) )
-            self.den_max = min( max( self.nm_den), max( self.sm_den) )
-            self.kf_min = nuda.kf( self.den_min ); self.kf_max = nuda.kf( self.den_max )
-            nesym = 20; den_step = ( self.den_max - self.den_min ) / float( nesym )
-            self.esym_den = self.den_min + np.arange(nesym+1) * den_step
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min ); self.esym_kf_max = nuda.kf( self.esym_den_max )
+            den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
+            self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
             self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
@@ -999,6 +926,170 @@ class SetupMicro():
             self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
             self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
             self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
+            #
+        elif '2024-bhf-am' in model.lower():
+            #
+            # 2BF
+            if model.lower() == '2024-bhf-am-2bf-av8p':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_Av8p2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_Av8p2BF.dat')
+                self.label = 'BHF-2024-2BF-Av8p'
+            elif model.lower() == '2024-bhf-am-2bf-av18':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_Av182BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_Av182BF.dat')
+                self.label = 'BHF-2024-2BF-Av18'
+            elif model.lower() == '2024-bhf-am-2bf-bonn':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_BONN2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_BONN2BF.dat')
+                self.label = 'BHF-2024-2BF-Bonn'
+            elif model.lower() == '2024-bhf-am-2bf-cdbonn':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_CDBONN2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_CDBONN2BF.dat')
+                self.label = 'BHF-2024-2BF-CDBonn'
+            elif model.lower() == '2024-bhf-am-2bf-sscv14':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_SSCV142BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_SSCV142BF.dat')
+                self.label = 'BHF-2024-2BF-SSCV14'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97a':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97a2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97a2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97a'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97b':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97b2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97b2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97b'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97c':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97c2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97c2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97c'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97d':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97d2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97d2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97d'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97e':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97e2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97e2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97e'
+            elif model.lower() == '2024-bhf-am-2bf-nsc97f':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-2BF/spin_isosp_NSC97f2BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-2BF/spin_isosp_NSC97f2BF.dat')
+                self.label = 'BHF-2024-2BF-NSC97f'
+            # 2+3BF
+            elif model.lower() == '2024-bhf-am-23bf-av8p':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_Av8p23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_Av8p23BF.dat')
+                self.label = 'BHF-2024-23BF-Av8p'
+            elif model.lower() == '2024-bhf-am-23bf-av18':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_Av1823BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_Av1823BF.dat')
+                self.label = 'BHF-2024-23BF-Av18'
+            elif model.lower() == '2024-bhf-am-23bfmicro-av18':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_Av1823BFmicro.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_Av1823BFmicro.dat')
+                self.label = 'BHF-2024-23BFmicro-Av18'
+            elif model.lower() == '2024-bhf-am-23bf-bonn':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_BONN23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_BONN23BF.dat')
+                self.label = 'BHF-2024-23BF-Bonn'
+            elif model.lower() == '2024-bhf-am-23bfmicro-bonnb':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_BONNB23BFmicro.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_BONNB23BFmicro.dat')
+                self.label = 'BHF-2024-23BFMicro-BonnB'
+            elif model.lower() == '2024-bhf-am-23bf-cdbonn':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_CDBONN23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_CDBONN23BF.dat')
+                self.label = 'BHF-2024-23BF-CDBonn'
+            elif model.lower() == '2024-bhf-am-23bf-sscv14':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_SSCV1423BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_SSCV1423BF.dat')
+                self.label = 'BHF-2024-23BF-SSCV14'
+            elif model.lower() == '2024-bhf-am-23bfmicro-nsc93':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC9323BFmicro.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC9323BFmicro.dat')
+                self.label = 'BHF-2024-23BFmicro-NSC93'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97a':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97a23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97a23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC97a'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97b':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97b23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97b23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC97b'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97c':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97c23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97c23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC97c'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97d':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97d23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97d23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC9d7'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97e':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97e23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97e23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC97e'
+            elif model.lower() == '2024-bhf-am-23bf-nsc97f':
+                file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-SM-23BF/spin_isosp_NSC97f23BF.dat')
+                file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2024-BHF-NM-23BF/spin_isosp_NSC97f23BF.dat')
+                self.label = 'BHF-2024-23BF-NSC97f'
+
+            if nuda.env.verb: print('Reads file:',file_in1)
+            if nuda.env.verb: print('Reads file:',file_in2)
+            self.ref = 'I. Vida\~na, J. Margueron, H.J. Schulze, Universe 10, 5 (2024).'
+            self.note = ""
+            self.linestyle = 'solid'
+            self.every = 4
+            self.err = False
+            #
+            self.sm_den, self.sm_vS0T0, self.sm_vS0T1, self.sm_vS1T0, self.sm_vS1T1, self.sm_vtot, self.sm_kin, self.sm_etot \
+                = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
+            self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.sm_kf = self.sm_kfn
+            self.sm_e2a = self.sm_etot
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.sm_e2v     = self.sm_e2a * self.sm_den
+            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            #
+            self.nm_den, self.nm_vS0T0, self.nm_vS0T1, self.nm_vS1T0, self.nm_vS1T1, self.nm_vtot, self.nm_kin, self.nm_etot \
+                = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
+            self.nm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.nm_e2a = self.nm_etot
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            self.nm_e2v     = self.nm_e2a * self.nm_den
+            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #
+            # pressure in SM
+            x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a, 0, 0.0 )
+            cs_sm_e2a = CubicSpline( x, y )
+            self.sm_pre = self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 )
+            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
+            cs_sm_e2a_err = CubicSpline( x, y_err )
+            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
+            # pressure in NM
+            x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.nm_pre = self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 )
+            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
+            cs_nm_e2a_err = CubicSpline( x, y_err )
+            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
+            #
+            # Symmetry energy
+            self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
+            self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
+            self.esym_kf_min = nuda.kf( self.esym_den_min ); self.esym_kf_max = nuda.kf( self.esym_den_max )
+            den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
+            self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
+            self.esym_kf = nuda.kf( self.esym_den )
+            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
+            #
+            # chemical potential in SM and NM
+            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
+            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
+            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
+            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+            #
             #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
@@ -1053,3 +1144,132 @@ class SetupMicro():
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
+    def init_self( self ):
+        """
+        Initialize variables in self.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter init_self()")
+        #
+        #: Attribute the number of points for the density.
+        self.nden = 10; 
+        #: Attribute the number of points for esym calculation.
+        self.nesym = 20; 
+        #: Attribute providing the full reference to the paper to be citted.
+        self.ref = ''
+        #: Attribute providing additional notes about the data.
+        self.note = ''
+        #: Attribute the neutron matter density.
+        self.nm_den = None
+        #: Attribute the symmetric matter density.
+        self.sm_den = None
+        #: Attribute the minimum of the neutron matter density.
+        self.nm_den_min = None
+        #: Attribute the minimum of the symmetric matter density.
+        self.sm_den_min = None
+        #: Attribute the maximum of the neutron matter density.
+        self.nm_den_max = None
+        #: Attribute the maximum of the symmetric matter density.
+        self.sm_den_max = None
+        #: Attribute the neutron matter neutron Fermi momentum.
+        self.nm_kfn = None
+        #: Attribute the symmetric matter neutron Fermi momentum.
+        self.sm_kfn = None
+        #: Attribute the symmetric matter Fermi momentum.
+        self.nm_kf = None
+        #: Attribute the symmetric matter Fermi momentum.
+        self.sm_kf = None
+        #: Attribute the neutron matter chemical potential.
+        self.nm_chempot = None
+        #: Attribute the uncertainty in the neutron matter chemical potential.
+        self.nm_chempot_err = None
+        #: Attribute the symmetric matter chemical potential.
+        self.sm_chempot = None
+        #: Attribute the uncertainty in the symmetric matter chemical potential.
+        self.sm_chempot_err = None
+        #: Attribute the neutron matter effective mass.
+        self.nm_effmass = None
+        #: Attribute the symmetric matter effective mass.
+        self.sm_effmass = None
+        #: Attribute the neutron matter energy per particle.
+        self.nm_e2a = None
+        #: Attribute the uncertainty in the neutron matter energy per particle.
+        self.nm_e2a_err = None
+        #: Attribute the neutron matter potential per particle in the (S=0,T=0) channel.
+        self.nm_vS0T0 = None
+        #: Attribute the neutron matter potential per particle in the (S=0,T=1) channel.
+        self.nm_vS0T1 = None
+        #: Attribute the neutron matter potential per particle in the (S=1,T=0) channel.
+        self.nm_vS1T0 = None
+        #: Attribute the neutron matter potential per particle in the (S=1,T=1) channel.
+        self.nm_vS1T1 = None
+        #: Attribute the neutron matter total potential per particle.
+        self.nm_vtot = None
+        #: Attribute the symmetric matter energy per particle.
+        self.sm_e2a = None
+        #: Attribute the uncertainty in the symmetric matter energy per particle.
+        self.sm_e2a_err = None
+        #: Attribute the symmetric matter energy per particle in the (S=0,T=0) channel.
+        self.sm_vS0T0 = None
+        #: Attribute the symmetric matter energy per particle in the (S=0,T=1) channel.
+        self.sm_vS0T1 = None
+        #: Attribute the symmetric matter energy per particle in the (S=1,T=0) channel.
+        self.sm_vS1T0 = None
+        #: Attribute the symmetric matter energy per particle in the (S=1,T=1) channel.
+        self.sm_vS1T1 = None
+        #: Attribute the symmetric matter total potential per particle.
+        self.sm_vtot = None
+        #: Attribute the neutron matter energy per unit volume.
+        self.nm_e2v = None
+        #: Attribute the uncertainty in the neutron matter energy per unit volume.
+        self.nm_e2v_err = None
+        #: Attribute the symmetric matter energy per unit volume.
+        self.sm_e2v = None
+        #: Attribute the uncertainty in the symmetric matter energy per unit volume.
+        self.sm_e2v_err = None
+        #: Attribute the neutron matter pressure.
+        self.nm_pre = None
+        #: Attribute the uncertainty in the neutron matter pressure.
+        self.nm_pre_err = None
+        #: Attribute the symmetric matter pressure.
+        self.sm_pre = None
+        #: Attribute the uncertainty in the symmetric matter pressure.
+        self.sm_pre_err = None
+        #: Attribute the neutron matter pairing gap.
+        self.nm_gap = None
+        #: Attribute the uncertainty in the neutron matter pairing gap.
+        self.nm_gap_err = None
+        #: Attribute the symmetric matter pairing gap.
+        self.sm_gap = None
+        #: Attribute the uncertainty in the symmetric matter pairing gap.
+        self.sm_gap_err = None
+        #: Attribute the density array for esym.
+        self.esym_den = None
+        #: Attribute the maximum of the density.
+        self.esym_den_max = None
+        #: Attribute the minimum of the density.
+        self.esym_den_min = None
+        #: Attribute the Fermi momentum array for esym.
+        self.esym_kf = None
+        #: Attribute the minimum of the Fermi momentum.
+        self.esym_kf_min = None
+        #: Attribute the maximum of the Fermi momentum.
+        self.esym_kf_max = None
+        #: Attribute the energy per particle for esym.
+        self.esym_e2a = None
+        #: Attribute the plot linestyle.
+        self.linestyle = 'solid'
+        #: Attribute the plot to discriminate True uncertainties from False ones.
+        self.err = False
+        #: Attribute the plot label data.
+        self.label = ''
+        #: Attribute the plot marker.
+        self.marker = None
+        #: Attribute the plot every data.
+        self.every = 1
+        #
+        if nuda.env.verb: print("Exit init_self()")
+        #
+        return self        
+

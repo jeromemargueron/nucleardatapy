@@ -109,30 +109,38 @@ class SetupPheno():
         self.param = param
         if nuda.env.verb: print("param:",param)
         #
-        #: Attribute neutron matter density.
+        #: Attribute the neutron matter density.
         self.nm_den = []
-        #: Attribute symmetric matter density.
+        #: Attribute the symmetric matter density.
         self.sm_den = []
-        #: Attribute neutron matter Fermi momentum.
+        #: Attribute the neutron matter neutron Fermi momentum.
         self.nm_kfn = []
-        #: Attribute symmetric matter Fermi momentum.
+        #: Attribute the symmetric matter neutron Fermi momentum.
         self.sm_kfn = []
-        #: Attribute neutron matter energy per particle.
+        #: Attribute the symmetric matter Fermi momentum.
+        self.sm_kf = []
+        #: Attribute the neutron matter energy per particle.
         self.nm_e2a = []
-        #: Attribute symmetric matter energy per particle.
+        #: Attribute the symmetric matter energy per particle.
         self.sm_e2a = []
-        #: Attribute neutron matter pairing gap.
+        #: Attribute the neutron matter pairing gap.
         self.nm_gap = []
-        #: Attribute symmetric matter pairing gap.
+        #: Attribute the symmetric matter pairing gap.
         self.sm_gap = []
-        #: Attribute neutron matter pressure.
+        #: Attribute the neutron matter pressure.
         self.nm_pre = []
-        #: Attribute symmetric matter pressure.
+        #: Attribute the symmetric matter pressure.
         self.sm_pre = []
-        #: Attribute neutron matter sound speed (c_s/c)^2.
+        #: Attribute the neutron matter sound speed (c_s/c)^2.
         self.nm_cs2 = []
-        #: Attribute symmetric matter sound speed (c_s/c)^2.
+        #: Attribute the symmetric matter sound speed (c_s/c)^2.
         self.sm_cs2 = []
+        #: Attribute the density for the symmetry energy.
+        self.esym_den = []
+        #: Attribute the Fermi momentum for the symmetry energy.
+        self.esym_kf = []
+        #: Attribute the symmetry energy.
+        self.esym_e2a = []
         #
         models, models_lower = models_pheno( )
         #
@@ -164,8 +172,9 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
-            self.esym_kfn = self.sm_kfn            
+            self.esym_kf = self.sm_kf
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
@@ -186,8 +195,9 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
-            self.esym_kfn = self.sm_kfn
+            self.esym_kf = self.sm_kf
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
@@ -206,8 +216,9 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
-            self.esym_kfn = self.sm_kfn
+            self.esym_kf = self.sm_kf
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
@@ -221,12 +232,13 @@ class SetupPheno():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = ''
-            self.label = 'DDRH-'+param
+            self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
-            self.esym_kfn = self.sm_kfn
+            self.esym_kf = self.sm_kf
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )

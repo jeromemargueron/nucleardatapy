@@ -49,7 +49,7 @@ def eF_n( kf_n ):
     """
     return nuda.cst.half * nuda.cst.h2m * kf_n**2
 
-def effg( kf_n ):
+def effg_NM( kf_n ):
     """
     Free Fermi gas energy as a function of the neutron Fermi momentum.
 
@@ -57,6 +57,33 @@ def effg( kf_n ):
     :type kf_n: float or numpy vector of real numbers.
     """
     return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf_n**2
+
+def effg_SM( kf ):
+    """
+    Free Fermi gas energy as a function of the Fermi momentum in SM.
+
+    :param kf: neutron Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+    """
+    return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf**2
+
+def effg( kf ):
+    """
+    Free Fermi gas energy as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+    """
+    return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf**2
+
+def esymffg( kf ):
+    """
+    Free Fermi gas symmetry energy as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+    """
+    return effg( kf ) * ( nuda.cst.two**nuda.cst.twoThird - 1.0 )
 
 class SetupFFG():
     """

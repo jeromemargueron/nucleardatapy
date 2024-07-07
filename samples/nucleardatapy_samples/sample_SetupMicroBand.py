@@ -14,12 +14,30 @@ def main():
     print("Enter sample_SetupMicroBand.py:")
     print(50*'-')
     #
-    #models = [ '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-    #         '2023-MBPT-AM' ]
-    models = [ '2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM' ]
+    #models = [ '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', '2018-QMC-NM', '2019-MBPT-AM-DHSL59', '2019-MBPT-AM-DHSL69', \
+    #         '2020-MBPT-AM' ]
     #models = [ '2016-MBPT-AM' ]
     #
-    band = nuda.SetupMicroBand( models )
+    # Band for NM
+    #
+    models = [ '2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM' ]
+    #
+    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+    band = nuda.SetupMicroBand( models, den=den, matter='NM' )
+    band.print_outputs( )
+    #
+    # Band for SM
+    #
+    models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
+    #
+    band = nuda.SetupMicroBand( models, den=den, matter='SM' )
+    band.print_outputs( )
+    #
+    # Band for esym
+    #
+    models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
+    #
+    band = nuda.SetupMicroBand( models, den=den, matter='ESYM' )
     band.print_outputs( )
     #
     print(50*'-')
