@@ -1,6 +1,7 @@
 import os
 import sys
 import numpy as np  # 1.15.0
+from scipy.interpolate import CubicSpline
 
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
@@ -163,6 +164,12 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.esym_den = self.sm_den
+            self.esym_kfn = self.sm_kfn            
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
 #        elif model.lower() == 'gogny':
             #
@@ -179,6 +186,12 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.esym_den = self.sm_den
+            self.esym_kfn = self.sm_kfn
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
         elif model.lower() == 'ddrh':
             #
@@ -193,6 +206,12 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.esym_den = self.sm_den
+            self.esym_kfn = self.sm_kfn
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
             #
         elif model.lower() == 'ddrhf':
@@ -206,6 +225,12 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.esym_den = self.sm_den
+            self.esym_kfn = self.sm_kfn
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
 
         self.den_unit = 'fm$^{-3}$'
