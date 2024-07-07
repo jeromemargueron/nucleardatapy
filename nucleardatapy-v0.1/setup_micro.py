@@ -461,7 +461,7 @@ class SetupMicro():
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
             self.note = ""
-            self.label = 'dQMC-2009'
+            self.label = 'dLQMC-2009'
             self.linestyle = 'solid'
             self.marker = 'v'
             self.err = True
