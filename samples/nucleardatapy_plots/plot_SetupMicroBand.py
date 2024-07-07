@@ -22,13 +22,13 @@ def plotMicro_band( pname, models ):
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)',fontsize='14')
     axs[0].set_ylabel(r'$E_{NM}$',fontsize='14')
-    axs[0].set_xlim([0, 0.3])
-    axs[0].set_ylim([0, 30])
+    axs[0].set_xlim([0, 0.2])
+    axs[0].set_ylim([0, 20])
     #
     axs[1].set_xlabel(r'n (fm$^{-3}$)',fontsize='14')
     axs[1].set_ylabel(r'$E_{NM}/E_{FFG}$',fontsize='14')
-    axs[1].set_xlim([0, 0.3])
-    axs[1].set_ylim([0, 1])
+    axs[1].set_xlim([0, 0.2])
+    axs[1].set_ylim([0.2, 0.9])
     #
     for model in models:
         #

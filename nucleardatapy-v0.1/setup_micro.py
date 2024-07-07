@@ -86,6 +86,10 @@ class SetupMicro():
         self.model = model
         if nuda.env.verb: print("model:",model)
         #
+        #: Attribute providing the full reference to the paper to be citted.
+        self.ref = ''
+        #: Attribute providing additional notes about the data.
+        self.note = ''
         #: Attribute neutron matter density.
         self.nm_den = None
         #: Attribute symmetric matter density.
@@ -160,9 +164,15 @@ class SetupMicro():
         self.esym_kf = None
         #: Attribute energy per particle for esym.
         self.esym_e2a = None
-        #: Attribute which discriminates True uncertainties from False ones.
+        #: Attribute plot linestyle.
+        self.linestyle = 'solid'
+        #: Attribute plot to discriminate True uncertainties from False ones.
         self.err = False
-        #: Attribute plot data every values.
+        #: Attribute plot label data.
+        self.label = ''
+        #: Attribute plot marker.
+        self.marker = None
+        #: Attribute plot every data.
         self.every = 1
         #
         models, models_lower = models_micro()
@@ -179,13 +189,9 @@ class SetupMicro():
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/1981-VAR-SM-FP.dat')
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
-            #: Attribute providing the full reference to the paper to be citted.
             self.ref = 'Friedman and Pandharipande, Nucl. Phys. A. 361, 502 (1981)'
-            #: Attribute providing the label the data is references for figures.
-            self.label = 'FP'
-            #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.linestyle = 'dashed'
+            self.label = 'FP-1981'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -242,13 +248,10 @@ class SetupMicro():
             file_in2 = os.path.join(nuda.param.path_data,'eos/micro/1998-VAR-SM-APR.dat')
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
-            #: Attribute providing the full reference to the paper to be citted.
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
-            #: Attribute providing the label the data is references for figures.
-            self.label = 'APR'
-            #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.linestyle = 'dashed'
+            self.label = 'APR-1998'
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -308,8 +311,8 @@ class SetupMicro():
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
             self.ref = '.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
-            self.label = 'BHF-2006'
             self.note = ""
+            self.label = 'BHF-2006'
             self.linestyle = 'solid'
             #
         elif model.lower() == '2008-bcs-nm':
@@ -317,9 +320,11 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-BCS-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
-            self.label = 'BCS-2008'
             self.note = ""
+            self.label = 'BCS-2008'
             self.linestyle = 'dotted'
+            #self.marker = None
+            self.marker = '.'
             self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -335,9 +340,10 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-AFDMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005); A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
-            self.label = 'AFDMC-2008'
             self.note = ""
+            self.label = 'AFDMC-2008'
             self.linestyle = 'solid'
+            self.marker = 'D'
             self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -390,9 +396,11 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-QMC-NM-swave.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
-            self.label = 'QMC-swave-2008'
             self.note = ""
+            self.label = 'QMC-swave-2008'
             self.linestyle = 'solid'
+            self.marker = 'o'
+            self.err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -403,7 +411,6 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -423,9 +430,10 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2009-AFDMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, A.Y. Illarionov, F. Pederiva, K.E. Schmidt, S. Fantoni, Phys. Rev. C 80, 045802 (2009).'
-            self.label = 'AFDMC-2009'
             self.note = ""
+            self.label = 'AFDMC-2009'
             self.linestyle = 'solid'
+            self.err = True
             self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -433,7 +441,6 @@ class SetupMicro():
             #self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -453,9 +460,11 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2009-dQMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
-            self.label = 'dQMC-2009'
             self.note = ""
+            self.label = 'dQMC-2009'
             self.linestyle = 'solid'
+            self.marker = 'v'
+            self.err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -466,7 +475,6 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -486,9 +494,11 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-QMC-NM-AV4.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
-            self.label = 'QMC-AV4-2008'
             self.note = ""
+            self.label = 'QMC-AV4-2008'
             self.linestyle = 'solid'
+            self.marker = 's'
+            self.err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -499,7 +509,6 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
             self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -519,8 +528,8 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2010-NM-Hebeler.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'K. Hebeler, et al, Phys. Rev. Lett. 105, 161102 (2010)'
-            self.label = 'MBPT-2010'
             self.note = "chiral NN forces with SRG and leading 3N forces."
+            self.label = 'MBPT-2010'
             self.linestyle = 'solid'
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -540,8 +549,8 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2012-AFDMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
-            self.label = 'AFDMC-2012-'+str(k)
             self.note = "We do not have the data for this model, but we have a fit of the data."
+            self.label = 'AFDMC-2012-'+str(k)
             self.linestyle = 'solid'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #name = np.loadtxt( file_in, usecols=(5), unpack = True )
@@ -573,9 +582,10 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2013-QMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'I. Tews et al., PRL 110, 032504 (2013)'
-            self.label = 'QMC-2013'
             self.note = "write here notes about this EOS."
+            self.label = 'QMC-2013'
             self.linestyle = 'solid'
+            self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -586,7 +596,6 @@ class SetupMicro():
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_pre = 0.5 * ( self.nm_pre_up + self.nm_pre_low )
             self.nm_pre_err = 0.5 * ( self.nm_pre_up - self.nm_pre_low )
-            self.err = True
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
@@ -597,8 +606,8 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2014-AFQMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'G. Wlazłowski, J.W. Holt, S. Moroz, A. Bulgac, and K.J. Roche Phys. Rev. Lett. 113, 182503 (2014)'
-            self.label = 'AFQMC-2014'
             self.note = "write here notes about this EOS."
+            self.label = 'AFQMC-2014'
             self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -628,9 +637,10 @@ class SetupMicro():
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2016-QMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = ' I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016).'
-            self.label = 'QMC-2016'
             self.note = ""
+            self.label = 'QMC-2016'
             self.linestyle = 'solid'
+            self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -639,7 +649,6 @@ class SetupMicro():
             self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -657,9 +666,10 @@ class SetupMicro():
         elif model.lower() == '2016-mbpt-am':
             #
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. C 93, 054314 (2016).'
-            self.label = 'MBPT-2016'
             self.note = ""
+            self.label = 'MBPT-2016'
             self.linestyle = 'solid'
+            self.err = True
             # read the results for the 7 hamiltonians
             length = np.zeros( (11), dtype=int )
             den = np.zeros( (11,35) )
@@ -716,7 +726,6 @@ class SetupMicro():
             self.sm_e2a_err = e2a_err[0,:]
             self.sm_e2v     = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            self.err = True
             #
             # Note: here I define the pressure as the derivative of the centroid energy
             # It would however be better to compute the presure for each models and only
@@ -763,17 +772,17 @@ class SetupMicro():
             #
             file_in = os.path.join(nuda.param.path_data,'eos/micro/2018-QMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = ''
-            self.label = 'QMC-2018'
+            self.ref = 'I. Tews, J. Carlson, S. Gandolfi, S. Reddy, Astroph. J. 860(2), 149 (2018).'
             self.note = ""
+            self.label = 'QMC-2018'
             self.linestyle = 'solid'
+            self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -798,8 +807,8 @@ class SetupMicro():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.label = 'MBPT-2019-L59'
             self.note = ""
+            self.label = 'MBPT-2019-L59'
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -860,8 +869,8 @@ class SetupMicro():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.label = 'MBPT-2019-L69'
             self.note = ""
+            self.label = 'MBPT-2019-L69'
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -915,10 +924,11 @@ class SetupMicro():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
-            self.label = 'MBPT-2020'
             self.note = ""
+            self.label = 'MBPT-2020'
             self.linestyle = 'solid'
             self.every = 4
+            self.err = True
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
@@ -937,7 +947,6 @@ class SetupMicro():
             self.nm_e2a_err = self.nm_e2a_n3lo_err
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.err = True
             #
             # pressure in NM
             x = np.insert( self.nm_den, 0, 0.0 )

@@ -21,44 +21,58 @@ def plotMicro_e2a( pname, models, band ):
     #
     axs[0,0].set_ylabel(r'$E_{NM}/E_{FFG}$')
     axs[0,0].set_xlim([0, 0.3])
-    axs[0,0].set_ylim([0, 1.0])
+    axs[0,0].set_ylim([0.2, 0.9])
     #
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$E_{NM}/A$ (MeV)')
     axs[1,0].set_xlim([0, 0.3])
-    axs[1,0].set_ylim([0, 28])
+    axs[1,0].set_ylim([0, 30])
     #
     #axs[0,1].set_ylabel(r'$\Delta/E_F$')
-    axs[0,1].set_xlim([0, 0.65])
-    axs[0,1].set_ylim([0, 1.0])
+    axs[0,1].set_xlim([0, 1.5])
+    axs[0,1].set_ylim([0.2, 0.9])
     #
-    axs[1,1].set_xlabel(r'k_F (fm$^{-1}$)')
+    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
-    axs[1,1].set_xlim([0, 0.65])
-    axs[1,1].set_ylim([0, 2.5])
+    axs[1,1].set_xlim([0, 1.5])
+    axs[1,1].set_ylim([0, 10.0])
     #
     for model in models:
         #
         mic = nuda.SetupMicro( model = model )
         if mic.nm_e2a is not None: 
             print('model:',model)
-            if mic.err:
-                axs[0,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                axs[1,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err,linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.eF_n(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+            if mic.marker:
+                if mic.err:
+                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                else:
+                    axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[1,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
             else:
-                axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-                axs[1,0].plot( mic.nm_den, mic.nm_e2a, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-                axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-                axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                if mic.err:
+                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                else:
+                    axs[0,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                    axs[1,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                    axs[1,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+
         mic.print_outputs( )
         axs[0,0].fill_between( band.nm_den, y1=(band.nm_e2a-band.nm_e2a_std)/nuda.effg(band.nm_kfn), y2=(band.nm_e2a+band.nm_e2a_std)/nuda.effg(band.nm_kfn), color=band.color, alpha=band.alpha )
         axs[1,0].fill_between( band.nm_den, y1=(band.nm_e2a-band.nm_e2a_std), y2=(band.nm_e2a+band.nm_e2a_std), color=band.color, alpha=band.alpha )
         axs[0,1].fill_between( band.nm_kfn, y1=(band.nm_e2a-band.nm_e2a_std)/nuda.eF_n(band.nm_kfn), y2=(band.nm_e2a+band.nm_e2a_std)/nuda.eF_n(band.nm_kfn), color=band.color, alpha=band.alpha )
         axs[1,1].fill_between( band.nm_kfn, y1=(band.nm_e2a-band.nm_e2a_std), y2=(band.nm_e2a+band.nm_e2a_std), color=band.color, alpha=band.alpha )        
     #
-    axs[1,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
+    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     plt.savefig(pname)
     plt.close()
@@ -75,35 +89,35 @@ def plotMicro_gap( pname, models ):
     #
     #axs[0,0].set_ylabel(r'$E_{NM}/E_{FFG}$')
     axs[0,0].set_ylabel(r'$\Delta/E_F$')
-    axs[0,0].set_xlim([0, 0.08])
-    axs[0,0].set_ylim([0, 1.0])
+    axs[0,0].set_xlim([0, 0.05])
+    axs[0,0].set_ylim([0, 0.8])
     #
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$\Delta$ (MeV)')
-    axs[1,0].set_xlim([0, 0.08])
+    axs[1,0].set_xlim([0, 0.05])
     axs[1,0].set_ylim([0, 2.8])
     #
     #axs[0,1].set_ylabel(r'$\Delta/E_F$')
-    axs[0,1].set_xlim([0, 0.65])
-    axs[0,1].set_ylim([0, 1.0])
+    axs[0,1].set_xlim([0, 1.4])
+    axs[0,1].set_ylim([0, 0.8])
     #
-    axs[1,1].set_xlabel(r'k_F (fm$^{-1}$)')
+    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
-    axs[1,1].set_xlim([0, 0.65])
-    axs[1,1].set_ylim([0, 2.5])
+    axs[1,1].set_xlim([0, 1.4])
+    axs[1,1].set_ylim([0, 2.8])
     #
     #
     for model in models:
         #
         mic = nuda.SetupMicro( model = model )
         if mic.nm_gap is not None: 
-            axs[0,0].plot( mic.nm_den, mic.nm_gap/nuda.effg(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
-            axs[1,0].plot( mic.nm_den, mic.nm_gap, linestyle=mic.linestyle, label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nuda.eF_n(mic.nm_kfn), linestyle=mic.linestyle, label=mic.label )
-            axs[1,1].plot( mic.nm_kfn, mic.nm_gap, linestyle=mic.linestyle, label=mic.label )
+            axs[0,0].plot( mic.nm_den, mic.nm_gap/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
+            axs[1,0].plot( mic.nm_den, mic.nm_gap, marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
+            axs[0,1].plot( mic.nm_kfn, mic.nm_gap/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
+            axs[1,1].plot( mic.nm_kfn, mic.nm_gap, marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
         mic.print_outputs( )
     #
-    axs[1,1].legend(loc='upper left',fontsize='xx-small')
+    axs[0,0].legend(loc='upper right',fontsize='8')
     #
     plt.savefig(pname)
     plt.close()

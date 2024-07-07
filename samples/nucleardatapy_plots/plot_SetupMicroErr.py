@@ -32,8 +32,8 @@ def plotMicro_err( pname, models ):
         mic.print_outputs( )
         if mic.nm_e2a is not None: 
             print('model:',model)
-            axs.plot( mic.nm_den, mic.nm_e2a_err/mic.nm_e2a, linestyle=mic.linestyle, label=mic.label )
-    axs.plot( den, nuda.uncertainty_stat(den), linestyle='dashed', label='fit' )        
+            axs.plot( mic.nm_den, mic.nm_e2a_err/mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
+    axs.plot( den, nuda.uncertainty_stat(den), linestyle='dashed', linewidth=3, label='fit' )        
     #
     axs.legend(loc='upper left',fontsize='12', ncol=2)
     #
@@ -50,7 +50,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    models = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
+    models = [ '2013-QMC-NM', '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
     #
     # plot errors in NM
     #
