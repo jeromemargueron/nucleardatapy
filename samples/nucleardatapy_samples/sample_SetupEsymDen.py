@@ -20,11 +20,14 @@ def main():
     #constraints, constraints_lower = nuda.constraints_EsymLsym()
     constraints = [ '2014-IAS' ]
     #
+    Ksym = -100.0
+    #
     for constraint in constraints:
         #
-        cons = nuda.SetupEsymDen( constraint = constraint )
-        print('Esym_max:',cons.esym_e2a_max)
-        print('Esym_min:',cons.esym_e2a_min)
+        esym = nuda.SetupEsymDen( constraint = constraint , Ksym=Ksym )
+        #print('Esym_max:',esym.esym_e2a_max)
+        #print('Esym_min:',esym.esym_e2a_min)
+        esym.print_outputs()
     #
     print(50*'-')
     print("Exit sample_SetupEsymDen.py:")

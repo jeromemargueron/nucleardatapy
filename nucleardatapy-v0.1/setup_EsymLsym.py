@@ -79,6 +79,8 @@ class SetupEsymLsym():
         self.Lsym_min = None
         #: Attribute with uncertainty in Lsym.
         self.Lsym_err = None
+        #: Attribute the plot alpha
+        self.alpha = 0.5
         #
         constraints, constraints_lower = constraints_EsymLsym()
         #
@@ -252,6 +254,8 @@ class SetupEsymLsym():
             #self.plot = 'contour'
             self.Esym, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
             self.plot = 'band_y'
             self.alpha = 0.5
 
@@ -276,6 +280,8 @@ class SetupEsymLsym():
             self.note = "Constraints from IAS + neutron skin (Rnp)."
             self.Esym, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
             self.plot = 'band_y'
             self.alpha = 0.5
             #self.Lsym, self.Esym = \
