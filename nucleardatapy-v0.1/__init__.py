@@ -11,6 +11,7 @@ from nucleardatapy.setup_micro_band   import *
 from nucleardatapy.setup_pheno  import *
 #
 from nucleardatapy.setup_EsymLsym  import *
+from nucleardatapy.setup_EsymDen   import *
 #
 from nucleardatapy.setup_ISGMR  import *
 #

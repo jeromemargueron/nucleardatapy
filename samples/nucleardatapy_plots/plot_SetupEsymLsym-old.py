@@ -33,7 +33,7 @@ def main():
     #
     axs.set_xlabel(r'$E_{\mathrm{sym},2}$ (MeV)')
     axs.set_ylabel(r'$L_{\mathrm{sym},2}$ (MeV)')
-    axs.set_xlim([23, 44])
+    axs.set_xlim([22, 44])
     axs.set_ylim([10, 120])
     #axs.tick_params(labelbottom=True, labeltop=False, labelleft=True, labelright=False,
     #                 bottom=True, top=True, left=True, right=True)
@@ -58,23 +58,20 @@ def main():
         print('Esym:',el.Esym,'+-',el.Esym_err)
         print('Lsym:',el.Lsym,'+-',el.Lsym_err)
         print('len(Esym):',el.Esym.size)
-
-
-        if el.plot == 'point_err_xy':
+        if el.Esym.size==1 and el.Esym_err.size==1 and el.Lsym_err.size==1: 
             axs.errorbar( el.Esym, el.Lsym, xerr=el.Esym_err, yerr=el.Lsym_err, linestyle='solid', label=el.label )
-        elif el.plot == 'curve':
-            axs.plot( el.Esym, el.Lsym, linestyle='solid', linewidth=3, label=el.label )
-        elif el.plot == 'contour':
+        elif any(el.Esym) and any(el.Esym_err): 
+            axs.errorbar( el.Esym, el.Lsym, xerr=el.Esym_err, linestyle='solid', label=el.label )
+            #print('errorbar x')
+        elif any(el.Esym) and any(el.Lsym_err): 
+            axs.errorbar( el.Esym, el.Lsym, yerr=el.Lsym_err, linestyle='solid', label=el.label )
+            #print('errorbar y')
+        elif any(el.Esym): 
             axs.plot( el.Esym, el.Lsym, linestyle='solid', label=el.label )
-        elif el.plot == 'band_y':
-            axs.fill_between( el.Esym, y1=el.Lsym-el.Lsym_err, y2=el.Lsym+el.Lsym_err, label=el.label, alpha=el.alpha )
-            #axs.errorbar( el.Esym, el.Lsym, xerr=el.Esym_err, linestyle='solid', label=el.label )
-        elif el.plot == 'band_x':
-            axs.fill_betweenx( el.Lsym, x1=el.Esym-el.Esym_err, x2=el.Esym+el.Esym_err, label=el.label, alpha=el.alpha )
-            #axs.errorbar( el.Esym, el.Lsym, yerr=el.Lsym_err, linestyle='solid', label=el.label )
+            #print('plot')
         el.print_outputs( )
     #
-    axs.legend(loc='lower right',fontsize='8')
+    axs.legend(loc='upper left',fontsize='xx-small')
     #
     plt.savefig(pname)
     plt.close()

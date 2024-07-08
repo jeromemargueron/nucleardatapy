@@ -64,13 +64,21 @@ class SetupEsymLsym():
         self.constraint = constraint
         if nuda.env.verb: print("constraint:",constraint)
         #: Attribute Esym.
-        self.Esym = []
+        self.Esym = None
+        #: Attribute max of Esym.
+        self.Esym_max = None
+        #: Attribute min of Esym.
+        self.Esym_min = None
         #: Attribute with uncertainty in Esym.
-        self.Esym_err = []
+        self.Esym_err = None
         #: Attribute Lsym.
-        self.Lsym = []
+        self.Lsym = None
+        #: Attribute max of Lsym.
+        self.Lsym_max = None
+        #: Attribute min of Lsym.
+        self.Lsym_min = None
         #: Attribute with uncertainty in Lsym.
-        self.Lsym_err = []
+        self.Lsym_err = None
         #
         constraints, constraints_lower = constraints_EsymLsym()
         #
@@ -110,6 +118,10 @@ class SetupEsymLsym():
             Lsym2 = HIC_Lsym_bound(self.Esym,1.05,csk,csp)
             self.Lsym = 0.5 * ( Lsym1 + Lsym2 )
             self.Lsym_err = 0.5 * abs( Lsym1 - Lsym2 )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'band_y'
+            self.alpha = 0.5
             #
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -136,6 +148,11 @@ class SetupEsymLsym():
                 np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.Lsym = 0.5 * ( Lsym_max + Lsym_min )
             self.Lsym_err = 0.5 * ( Lsym_max - Lsym_min )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'band_y'
+            self.alpha = 0.5
+
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -165,6 +182,11 @@ class SetupEsymLsym():
                 np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.Lsym = 0.5 * ( Lsym_max + Lsym_min )
             self.Lsym_err = 0.5 * ( Lsym_max - Lsym_min )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'band_y'
+            self.alpha = 0.5
+
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -194,6 +216,11 @@ class SetupEsymLsym():
                 np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.Lsym = 0.5 * ( Lsym95_max + Lsym95_min )
             self.Lsym_err = 0.5 * ( Lsym95_max - Lsym95_min )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'band_y'
+            self.alpha = 0.5
+
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -221,6 +248,8 @@ class SetupEsymLsym():
             self.note = "Constraints from IAS."
             self.Lsym, self.Esym = \
                 np.loadtxt( file_in, usecols=(0,1), unpack = True )
+            self.plot = 'contour'
+
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -241,6 +270,8 @@ class SetupEsymLsym():
             self.note = "Constraints from IAS + neutron skin (Rnp)."
             self.Lsym, self.Esym = \
                 np.loadtxt( file_in, usecols=(0,1), unpack = True )
+            self.plot = 'contour'
+
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
@@ -264,6 +295,10 @@ class SetupEsymLsym():
             POL_Esym_3 = 23.7 + 0.168 * self.Lsym
             self.Esym = POL_Esym_2
             self.Esym_err = 0.5 * ( POL_Esym_1 - POL_Esym_3 )
+            self.Esym_min = self.Esym - self.Esym_err
+            self.Esym_max = self.Esym + self.Esym_err
+            self.plot = 'band_x'
+            self.alpha = 0.5
             #
         elif constraint.lower() == '2015-pol-120sn':
             #
@@ -277,6 +312,10 @@ class SetupEsymLsym():
             POL_Esym_3 = 24.3 + 0.17 * self.Lsym
             self.Esym = POL_Esym_2
             self.Esym_err = 0.5 * ( POL_Esym_1 - POL_Esym_3 )
+            self.Esym_min = self.Esym - self.Esym_err
+            self.Esym_max = self.Esym + self.Esym_err
+            self.plot = 'band_x'
+            self.alpha = 0.5
             #
         elif constraint.lower() == '2015-pol-68ni':
             #
@@ -290,6 +329,10 @@ class SetupEsymLsym():
             POL_Esym_3 = 22.9 + 0.19 * self.Lsym
             self.Esym = POL_Esym_2
             self.Esym_err = 0.5 * ( POL_Esym_1 - POL_Esym_3 )
+            self.Esym_min = self.Esym - self.Esym_err
+            self.Esym_max = self.Esym + self.Esym_err
+            self.plot = 'band_x'
+            self.alpha = 0.5
             #
         elif constraint.lower() == '2017-ug':
             #
@@ -322,6 +365,7 @@ class SetupEsymLsym():
                     - Esat )
                 self.Lsym = np.append( self.Lsym, 2.0 * EUGsat / ut**0.3333 - \
                     Kn / 3.0 * ( ut - 1.0 ) - Qn / 18.0 * (ut - 1.0 )**2 )
+            self.plot = 'curve'
             #
         elif constraint.lower() == '2021-prexii-reed':
             #
@@ -332,6 +376,9 @@ class SetupEsymLsym():
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'point_err_xy'
             #
         elif constraint.lower() == '2021-prexii-reinhard':
             #
@@ -342,6 +389,9 @@ class SetupEsymLsym():
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'point_err_xy'
             #
         elif constraint.lower() == '2021-prexii-zhang':
             #
@@ -352,6 +402,9 @@ class SetupEsymLsym():
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
+            self.Lsym_min = self.Lsym - self.Lsym_err
+            self.Lsym_max = self.Lsym + self.Lsym_err
+            self.plot = 'point_err_xy'
             #
         else:
             #
@@ -372,14 +425,7 @@ class SetupEsymLsym():
         print("   ref:",self.ref)
         print("   label:",self.label)
         print("   note:",self.note)
-        if self.Esym.size==1 and self.Esym_err.size==1 and self.Lsym_err.size==1: 
-            print('errorbar x and y')
-        elif any(self.Esym) and any(self.Esym_err): 
-            print('errorbar x')
-        elif any(self.Esym) and any(self.Lsym_err): 
-            print('errorbar y')
-        elif any(self.Esym): 
-            print('plot')
+        print("   plot:",self.plot)
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
