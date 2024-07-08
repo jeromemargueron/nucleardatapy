@@ -14,7 +14,7 @@ def constraints_EsymLsym():
     following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
     '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
     '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
-    '2021-PREXII-Reinhard', '2021-PREXII-Zhang'; and \
+    '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang'; and \
     print them all on the prompt.
 
     :return: The list of constraints.
@@ -22,7 +22,7 @@ def constraints_EsymLsym():
     """
     constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
              '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
-              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
+              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang' ]
     print('Constraints available in the toolkit:',constraints)
     constraints_lower = [ item.lower() for item in constraints ]
     return constraints, constraints_lower
@@ -49,7 +49,7 @@ class SetupEsymLsym():
     following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
     '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
     '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
-    '2021-PREXII-Reinhard', '2021-PREXII-Zhang'.
+    '2021-PREXII-Reinhard', '2021-PREXII+CREX-Zhang'.
 
     :param constraint: Fix the name of `constraint`. Default value: '2014-IAS'.
     :type constraint: str, optional.
@@ -409,12 +409,12 @@ class SetupEsymLsym():
             self.Lsym_max = self.Lsym + self.Lsym_err
             self.plot = 'point_err_xy'
             #
-        elif constraint.lower() == '2021-prexii-zhang':
+        elif constraint.lower() == '2023-prexii+crex-zhang':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2022-PREXII-Zhang.dat')
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2023-PREXII-Zhang.dat')
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'Zhang and Chen, arXiv:2207.03328 (July 2022)'
-            self.label = 'PREXII-Zhang'
+            self.ref = 'Z. Zhang, L.W. Chen, Phys. Rev. C 108, 024317 (2023).'
+            self.label = 'PREXII+CREX-Zhang'
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )

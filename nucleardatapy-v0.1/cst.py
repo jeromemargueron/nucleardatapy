@@ -1,5 +1,5 @@
 """
-Instantiate a few constants for the nseospy toolkit.
+Instantiate a few constants for the nucleardatapy toolkit.
 """
 #
 # fundamental constants:
@@ -20,6 +20,7 @@ Nc = 3 # Number of colors
 one = 1.0
 two = 2.0
 three = 3.0
+four = 4.0
 half = 0.5
 third = 1.0/3.0
 twoThird = 2.0/3.0
@@ -38,7 +39,7 @@ MeVfm32dyncm2=c2*MeV2kg/10**-46
 
 #class constants():
 #    """
-#    Instantiate a few constants for the nseospy toolkit.
+#    Instantiate a few constants for the nucleardatapy toolkit.
 #    """
 #    # convertion constants:
 

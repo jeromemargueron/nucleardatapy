@@ -59,32 +59,65 @@ class SetupCrust():
         if nuda.env.verb: print("modcrust:",modcrust)
         #
         #: Attribute the density of the system (in cm^-3).
+        self.den_cgs = None
+        #: Attribute the density of the system (in fm^-3).
         self.den = None
         #: Attribute A (mass of the nucleus).
         self.A = None
         #: Attribute Z (charge of the nucleus).
         self.Z = None
-        #: Attribute N (number of neutrons of the nucleus).
+        #: Attribute N (total number of neutrons of the WS cell).
         self.N = None
-        #: Attribute Ngas (number of neutrons in the gas).
-        self.Ngas = None
-        #: Attribute BE (Binding Energy) of the nucleus.
-        self.BE = None
-        #: Attribute uncertainty in the BE (Binding Energy) of the nucleus.
-        self.BE_err = None
+        #: Attribute N_g (number of neutrons in the gas).
+        self.N_g = None
+        #: Attribute the fraction of neutrons.
+        self.xn = None
+        #: Attribute the fraction of bound neutrons.
+        self.xn_bound = None
+        #: Attribute the fraction of protons.
+        self.xp = None
+        #: Attribute the approximate ratio of proton to neutron in the nucleus.
+        self.xpn_bound = None
+        #: Attribute the neutron chemical potential (in MeV).
+        self.mu_n = None
+        #: Attribute the proton chemical potential (in MeV).
+        self.mu_p = None
+        #: Attribute the approximate density of neutron in the gas (in fm-3).
+        self.den_g = None
+        #: Attribute the radius of the WS cell (in fm).
+        self.RWS = None
+        #: Attribute the rest mass energy (in MeV).
+        self.e2a_rm = None
+        #: Attribute the energy minus the neutron mass (in MeV).
+        self.e2a_int2 = None
+        #: Attribute the internal energy (in MeV).
+        self.e2a_int = None
+        #: Attribute the internal energy of the gas component (in MeV).
+        self.e2a_int_g = None
         #
         if modcrust.lower()=='negele-vautherin-1971':
             #
             file_in = nuda.param.path_data+'crust/Negele-Vautherin.dat'
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'Negele and Vautherin, Phys. Rev. C (1971)'
+            self.ref = 'Negele and Vautherin, Nuc. Phys. A 207, 298 (1973).'
             self.note = "write here notes about this EOS."
-            self.label = 'NV-1971'
+            self.label = 'NV-1973'
             self.linestyle = 'solid'
-            self.den, self.N, self.Z, self.mu_n, self.mu_p, self.rho_g, self.x, self.e2a_tot, \
-                self.e2a_g = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
+            self.den_cgs, self.N, self.Z, self.mu_n, self.mu_p, self.den_g, self.xpn_bound, self.e2a_int2, \
+                self.e2a_int_g = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
+            self.den = self.den_cgs * 1.e39 # in fm-3
+            self.N = np.array([ int(item) for item in self.N ])
+            self.Z = np.array([ int(item) for item in self.Z ])
             self.A = self.N + self.Z
-
+            self.N_bound = [ int(item) for item in self.Z * self.xpn_bound ]
+            self.xn = self.N / self.A
+            self.xn_bound = self.N_bound / self.A
+            self.N_g = self.N - self.N_bound
+            self.xp = self.Z / self.A
+            self.RWS = ( nuda.cst.three * self.N_g / (nuda.cst.four * nuda.cst.pi * self.den_g) )**nuda.cst.third
+            self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2
+            self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
+            self.e2a_int = self.e2a_tot - self.e2a_rm
 
     #
     def print_outputs( self ):
@@ -100,15 +133,21 @@ class SetupCrust():
        print("   ref:     ",self.ref)
        print("   label:   ",self.label)
        print("   note:    ",self.note)
+       if self.A is not None: print(f"   A: {self.A}")
        if self.Z is not None: print(f"   Z: {self.Z}")
        if self.N is not None: print(f"   N: {self.N}")
-       if self.A is not None: print(f"   A: {self.A}")
+       if self.N_bound is not None: print(f"   N_bound: {self.N_bound}")
+       if self.N_g is not None: print(f"   N_g: {self.N_g}")
        if self.mu_n is not None: print(f"   mu_n(MeV): {self.mu_n}")
        if self.mu_p is not None: print(f"   mu_p(MeV): {self.mu_p}")
-       if self.rho_g is not None: print(f"   rho_g(fm-3): {self.rho_g}")
-       if self.x is not None: print(f"   x: {self.x}")
-       if self.e2a_tot is not None: print(f"   e2a_tot(MeV): {self.e2a_tot}")
-       if self.e2a_g is not None: print(f"   e2a_g(MeV): {self.e2a_g}")
+       if self.den_g is not None: print(f"   den_g(fm-3): {self.den_g}")
+       if self.RWS is not None: print(f"   RWS(fm): {np.round(self.RWS,3)}")
+       if self.xpn_bound is not None: print(f"   xpn_bound: {self.xpn_bound}")
+       if self.e2a_tot is not None: print(f"   e2a_tot(MeV): {np.round(self.e2a_tot,3)}")
+       if self.e2a_rm is not None: print(f"   e2a_rm(MeV): {np.round(self.e2a_rm,3)}")
+       if self.e2a_int2 is not None: print(f"   e2a_int2(MeV): {np.round(self.e2a_int2,3)}")
+       if self.e2a_int is not None: print(f"   e2a_int(MeV): {np.round(self.e2a_int,3)}")
+       if self.e2a_int_g is not None: print(f"   e2a_int_g(MeV): {np.round(self.e2a_int_g,3)}")
        #
        if nuda.env.verb: print("Exit print_outputs()")
        #
