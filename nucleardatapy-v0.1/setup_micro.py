@@ -429,7 +429,7 @@ class SetupMicro():
             #
         elif model.lower() == '2010-qmc-nm-av4':
             #
-            file_in = os.path.join(nuda.param.path_data,'eos/micro/2008-QMC-NM-AV4.dat')
+            file_in = os.path.join(nuda.param.path_data,'eos/micro/2010-QMC-NM-AV4.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.note = ""
