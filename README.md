@@ -55,6 +55,11 @@ $ bash run_tests.sh
 How to obtain microscopic results for APR equation of state:
 
 ```Python
+import os
+import sys
+nuda_tk = os.getenv('NUCLEARDATAPY_TK')
+sys.path.insert(0, nuda_tk)
+
 import nucleardatapy as nuda
 
 # Instantiate a microscopic object
