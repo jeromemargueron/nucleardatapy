@@ -241,14 +241,19 @@ class SetupEsymLsym():
         #
         elif constraint.lower() == '2014-ias':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS.dat')
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS-err.dat')
+            #file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS-2014'
             self.note = "Constraints from IAS."
-            self.Lsym, self.Esym = \
-                np.loadtxt( file_in, usecols=(0,1), unpack = True )
-            self.plot = 'contour'
+            #self.Lsym, self.Esym = \
+            #    np.loadtxt( file_in, usecols=(0,1), unpack = True )
+            #self.plot = 'contour'
+            self.Esym, self.Lsym, self.Lsym_err = \
+                np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.plot = 'band_y'
+            self.alpha = 0.5
 
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
@@ -263,14 +268,19 @@ class SetupEsymLsym():
             #
         elif constraint.lower() == '2014-ias+rnp':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
+            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP-err.dat')
+            #file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS+Rnp-2014'
             self.note = "Constraints from IAS + neutron skin (Rnp)."
-            self.Lsym, self.Esym = \
-                np.loadtxt( file_in, usecols=(0,1), unpack = True )
-            self.plot = 'contour'
+            self.Esym, self.Lsym, self.Lsym_err = \
+                np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.plot = 'band_y'
+            self.alpha = 0.5
+            #self.Lsym, self.Esym = \
+            #    np.loadtxt( file_in, usecols=(0,1), unpack = True )
+            #self.plot = 'contour'
 
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
