@@ -131,13 +131,13 @@ class SetupFFG():
         #: Attribute proton Fermi energy
         self.eF_p = nuda.cst.half * nuda.cst.h2m * self.kf_p**nuda.cst.two
         #: Attribute FFG energy per particle
-        self.int_e2a = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
+        self.e2a_int = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            nuda.cst.half * \
            ( (nuda.cst.one+delta)**nuda.cst.fiveThird + \
              (nuda.cst.one-delta)**nuda.cst.fiveThird )
         #: Attribute FFG energy per unit volum
-        self.int_e2v = self.int_e2a * self.den
+        self.e2v_int = self.e2a_int * self.den
         #: Attribute FFG symmetry energy
         self.esym = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
@@ -151,7 +151,7 @@ class SetupFFG():
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            5.0/243.0
         #: Attribute FFG pressure
-        self.pre = nuda.cst.twoThird * self.int_e2v
+        self.pre = nuda.cst.twoThird * self.e2v_int
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
@@ -169,10 +169,10 @@ class SetupFFG():
         if nuda.env.verb: print("Enter print_outputs()")
         #
         print("- Print output:")
-        if any(self.den): print(f"   den: {np.round(self.den,2)} in {self.den_unit}")
-        if any(self.delta): print(f"   delta: {np.round(self.delta,2)}")
-        if any(self.kf_n): print(f"   kf_n: {np.round(self.kf_n,2)} in {self.kf_unit}")
-        if any(self.e2a): print(f"   e2a: {np.round(self.e2a,2)} in {self.e2a_unit}")
+        if self.den is not None: print(f"   den: {np.round(self.den,2)} in {self.den_unit}")
+        if self.delta is not None: print(f"   delta: {np.round(self.delta,2)}")
+        if self.kf_n is not None: print(f"   kf_n: {np.round(self.kf_n,2)} in {self.kf_unit}")
+        if self.e2a_int is not None: print(f"   e2a: {np.round(self.e2a_int,2)} in {self.e2a_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
