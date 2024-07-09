@@ -9,6 +9,7 @@ from nucleardatapy.setup_ffg    import *
 from nucleardatapy.setup_micro  import *
 from nucleardatapy.setup_micro_band   import *
 from nucleardatapy.setup_pheno  import *
+from nucleardatapy.setup_eoshic  import *
 #
 from nucleardatapy.setup_EsymLsym  import *
 from nucleardatapy.setup_EsymDen   import *
