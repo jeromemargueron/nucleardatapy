@@ -31,12 +31,24 @@ class SetupMicroBand():
     **Attributes:**
     """
     #
-    def __init__( self, models, nden = 10, ne = 200, den=None, matter='NM' ):
+    def __init__( self, models = [ '2016-MBPT-AM' ], nden = 10, ne = 200, den=None, matter='NM', e2a_min = -20.0, e2a_max = 50.0 ):
         """
         Parameters
         ----------
-        model : str, optional
+        model : str, optional.
         The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
+        nden: int, optional.
+        The density points to consider.
+        ne: int, optional.
+        The number of intervalle in the energy direction.
+        den: None or numpy array.
+        If None, then the density range is calculated automaticaly. If den = list of densities, the code will prefer using them.
+        matter: str, optional.
+        Set if we consider 'NM' neutron matter, 'SM' symmetric matter, or 'Esym' the symmetry energy.
+        e2a_min: float, optional.
+        e2a_min is set to be -20 MeV by default, or any number passed by the practitionner.
+        e2a_max: float, optional.
+        e2a_max is set to be 50 MeV by default, or any number passed by the practitionner.
         """
         #
         if nuda.env.verb: print("Enter SetupMicroBand()")
@@ -48,13 +60,11 @@ class SetupMicroBand():
         elif matter.lower() == 'esym':
             print('\nBand for Esym')
         #
+        self = SetupMicroBand.init_self( self )
+        #
         #: Attribute model.
         self.models = models
         if nuda.env.verb: print("models:",models)
-        #: Attribute color.
-        self.color = 'pink'
-        #: Attribute alpha.
-        self.alpha = 0.5
         #: Attribute number of points in density.
         self.nden = nden
         if nuda.env.verb: print("nden:",nden)
@@ -134,7 +144,14 @@ class SetupMicroBand():
         #    e2a = e2effg * nuda.effg( self.kf )
         #elif matter.lower() == 'esym':
         #    e2a = e2effg * nuda.esymffg( self.kf )
-        e2a = -20.0 + 70.0 * np.arange( ne + 1 ) / float( ne )
+        if e2a_max < e2a_min:
+            print('e2a_max:',e2a_max,' is smaller than e2a_min: ',e2a_min)
+            print('Please define these variables properly,')
+            print('or leave default values without touching them.')
+            print('Exit()')
+            exit()
+        step = ( e2a_max - e2a_min ) / float( ne )
+        e2a = e2a_min + step * np.arange( ne + 1 )
         mat = np.zeros( (nden+1,ne+1), dtype = float )
         #
         for model in models:
@@ -175,7 +192,6 @@ class SetupMicroBand():
         """
         Method which print outputs on terminal's screen.
         """
-        print("")
         #
         if nuda.env.verb: print("Enter print_outputs()")
         #
@@ -191,3 +207,18 @@ class SetupMicroBand():
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
+    def init_self( self ):
+        """
+        Initialize variables in self.
+        """
+        #
+        if nuda.env.verb: print("Enter init_self()")
+        #
+        #: Attribute color.
+        self.color = 'pink'
+        #: Attribute alpha.
+        self.alpha = 0.5
+        #
+        if nuda.env.verb: print("Exit init_self()")
+        #
+        return self        

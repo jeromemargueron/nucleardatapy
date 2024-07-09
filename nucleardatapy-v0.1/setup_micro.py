@@ -1104,7 +1104,6 @@ class SetupMicro():
         """
         Method which print outputs on terminal's screen.
         """
-        print("")
         #
         if nuda.env.verb: print("Enter print_outputs()")
         #
@@ -1148,7 +1147,6 @@ class SetupMicro():
         """
         Initialize variables in self.
         """
-        print("")
         #
         if nuda.env.verb: print("Enter init_self()")
         #
