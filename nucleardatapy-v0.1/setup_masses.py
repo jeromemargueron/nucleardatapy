@@ -18,17 +18,13 @@ CST_mHc2 = 7.2889706
 CST_dmHc2= 0.0000001
 yearMin=1890
 
-# time conversion:
-ns = 1.e-9
-ms = 1.e-3
+# time conversion (using tropical year as in NUBASE2020):
 h = 60*60 # number of seconds per hour
 d = h*24 # number of seconds per day
+d = 86400 # in s
 m = 30*d # number of second per month (30 days)
-y = d*365.25 #number of seconds per year
-ky = y*1.e3 # mille years
-my = y*1.e6 # million of years
-Gy = y*1.e9 # giga years
-ILt = 100*Gy # infinite Large time
+y = d*365.2422 #number of seconds per year
+ILt = 1e30*y # infinite Large time
 ISt = 1.e-30 # infinite Short time
 
 def stable_fit():
@@ -217,7 +213,7 @@ class SetupMasses():
                     nucStbl = 'n'
                     ht=line[69:78]
                     htu=line[78:80]
-                    print('ht:',ht,' unit:',htu)
+                    #print('ht:',ht,' unit:',htu)
                     fac = 1.0
                     if 'stbl' in ht:
                         nucStbl = 'y'
@@ -252,48 +248,53 @@ class SetupMasses():
                     else:
                         nucStbl = 'n'
                         ht = float( ht )
-                        if htu==' s':
-                            print('second')
-                            fac = 1.0
-                        elif htu=='ms':
-                            print('milli-second')
-                            fac = ms
-                        elif htu==' y':
-                            print('year')
-                            fac = y
-                        elif htu=='ys':
-                            print('years')
-                            fac = y
-                        elif htu==' d':
-                            print('day')
-                            fac = d
-                        elif htu=='ns':
-                            print('nano-second')
-                            fac = ns
-                        elif htu=='as':
-                            print('as')
-                            fac = d
-                        elif htu=='ps':
-                            print('ps')
-                            fac = d
-                        elif htu=='fs':
-                            print('fs')
-                            fac = d
+                        if htu=='ys': 
+                            fac = 1.e-24 #print('yoctoseconds (1.e-24)')
                         elif htu=='zs':
-                            print('zs')
-                            fac = d
+                            fac = 1.e-21 # print('zeptoseconds (1.e-21)')
+                        elif htu=='as':
+                            fac = 1.e-18 # print('attoseconds (1.e-18)')
+                        elif htu=='fs':
+                            fac = 1.e-15 # print('femtosecond (1.e-15)')
+                        elif htu=='ps':
+                            fac = 1.e-12 # print('picoseconds (1.e-12)')
+                        elif htu=='ns':
+                            fac = 1.e-9 # print('nano-second (1.e-9)')
                         elif htu=='us':
-                            print('us')
-                            fac = d
+                            fac = 1.e-6 # print('us (microsecond?) (1.e-6)')
+                        elif htu=='ms':
+                            fac = 1.e-3 # print('milliseconds (1.e-3)')
+                        elif htu==' s':
+                            fac = 1.0 # print('second')
+                        elif htu==' h':
+                            fac = h # print('hours')
+                        elif htu==' d':
+                            fac = d # print('day')
+                        elif htu==' m':
+                            fac = m # print('month')
+                        elif htu==' y':
+                            fac = y # print('year')
                         elif htu=='ky':
-                            print('mille years')
-                            fac = ky
+                            fac = 1e3 * y # print('Kiloyears (1e3)')
                         elif htu=='My':
-                            print('Million of years')
-                            fac = my
+                            fac = 1e6 * y # print('Megayears (1e6)')
                         elif htu=='Gy':
-                            print('Giga years')
-                            fac = Gy
+                            fac = 1e9 * y # print('Gigayears (1e9)')
+                        elif htu=='Ty':
+                            fac = 1e12 * y # print('Terayears (1e12)')
+                        elif htu=='Py':
+                            fac = 1e15 * y # print('Petayears (1e15)')
+                        elif htu=='Ey':
+                            fac = 1e18 * y # print('Exayears (1e18)')
+                        elif htu=='Zy':
+                            fac = 1e21 * y # print('Zettayears (1e21)')
+                        elif htu=='Yy':
+                            fac = 1e24 * y # print('Yottayears (1e24)')
+                        else:
+                            print('unknown lifetime unit')
+                            print('ht:',ht,' unit:',htu)
+                            print('Exit()')
+                            exit()
                     nucHT = ht * fac
                     year=line[cyear:cyear+4]
                     if nudy.env.verb: print('   year:',year)
@@ -312,8 +313,8 @@ class SetupMasses():
                         nucME=float(line[cbe:cdbe])
                         nucdME=float(line[cdbe:cdbee])
                         nucInterp = 'n'
-                        print('type(year):',type(year))
-                        print('len(year):',len(year))
+                        #print('type(year):',type(year))
+                        #print('len(year):',len(year))
                         #nucYear=int(year)
                         if len(year) == 4 and year != ' '*4: 
                             nucYear=int(year)
@@ -380,8 +381,8 @@ class SetupMasses():
        print("   ref:    ",self.ref)
        print("   label:  ",self.label)
        print("   note:   ",self.note)
-       if any(self.Z): print(f"   Z: {self.Z}")
-       if any(self.A): print(f"   A: {self.A}")
+       if any(self.Z): print(f"   Z: {self.Z[0:-1:10]}")
+       if any(self.A): print(f"   A: {self.A[0:-1:10]}")
        #
        if nudy.env.verb: print("Exit print_outputs()")
        #
