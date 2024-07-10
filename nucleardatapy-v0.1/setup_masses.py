@@ -16,15 +16,19 @@ CST_mnc2 = 8.0713171
 CST_dmnc2= 0.0000005
 CST_mHc2 = 7.2889706
 CST_dmHc2= 0.0000001
-yearMin=1890
+yearMin=1851
 
 # time conversion (using tropical year as in NUBASE2020):
-h = 60*60 # number of seconds per hour
-d = h*24 # number of seconds per day
-d = 86400 # in s
-m = 30*d # number of second per month (30 days)
-y = d*365.2422 #number of seconds per year
-ILt = 1e30*y # infinite Large time
+ns = 1e-9
+minutes = 60 # in s
+hours = 60 * minutes # (hours) in s
+days = 24 * hours # (day) in s
+days = 86400 # in s
+months = 30 * days # (month) (30 days) in s
+years = 365.2422 * days # (year) in s
+#print('years:',years)
+#print('type(years):',type(years))
+ILt = 1e30 * years # infinite Large time
 ISt = 1.e-30 # infinite Short time
 
 def stable_fit():
@@ -179,6 +183,11 @@ class SetupMasses():
             nbLine = 0
             nbNuc = 0
             #
+            self.ind_min = 10000
+            self.ind_max = 0
+            self.year_min = 3000
+            self.year_max = 1600
+            #
             with open(file_in,'r') as file:
                 for line in file:
                     nbLine = nbLine + 1
@@ -267,29 +276,29 @@ class SetupMasses():
                         elif htu==' s':
                             fac = 1.0 # print('second')
                         elif htu==' h':
-                            fac = h # print('hours')
+                            fac = hours # print('hours')
                         elif htu==' d':
-                            fac = d # print('day')
+                            fac = days # print('day')
                         elif htu==' m':
-                            fac = m # print('month')
+                            fac = months # print('month')
                         elif htu==' y':
-                            fac = y # print('year')
+                            fac = years # print('year')
                         elif htu=='ky':
-                            fac = 1e3 * y # print('Kiloyears (1e3)')
+                            fac = 1e3 * years # print('Kiloyears (1e3)')
                         elif htu=='My':
-                            fac = 1e6 * y # print('Megayears (1e6)')
+                            fac = 1e6 * years # print('Megayears (1e6)')
                         elif htu=='Gy':
-                            fac = 1e9 * y # print('Gigayears (1e9)')
+                            fac = 1e9 * years # print('Gigayears (1e9)')
                         elif htu=='Ty':
-                            fac = 1e12 * y # print('Terayears (1e12)')
+                            fac = 1e12 * years # print('Terayears (1e12)')
                         elif htu=='Py':
-                            fac = 1e15 * y # print('Petayears (1e15)')
+                            fac = 1e15 * years # print('Petayears (1e15)')
                         elif htu=='Ey':
-                            fac = 1e18 * y # print('Exayears (1e18)')
+                            fac = 1e18 * years # print('Exayears (1e18)')
                         elif htu=='Zy':
-                            fac = 1e21 * y # print('Zettayears (1e21)')
+                            fac = 1e21 * years # print('Zettayears (1e21)')
                         elif htu=='Yy':
-                            fac = 1e24 * y # print('Yottayears (1e24)')
+                            fac = 1e24 * years # print('Yottayears (1e24)')
                         else:
                             print('unknown lifetime unit')
                             print('ht:',ht,' unit:',htu)
@@ -308,7 +317,7 @@ class SetupMasses():
                         nucME=float(line[cbe:cdbe].replace('#',''))
                         nucdME=float(line[cdbe:cdbee].replace('#',''))
                         nucInterp = 'y'
-                        nucYear=int(version)+1 # define a fake year which is after the table release
+                        nucYear=int(version)+10 # define a fake year which is after the table release
                     else:
                         nucME=float(line[cbe:cdbe])
                         nucdME=float(line[cdbe:cdbee])
@@ -319,7 +328,7 @@ class SetupMasses():
                         if len(year) == 4 and year != ' '*4: 
                             nucYear=int(year)
                         else:
-                            nucYear=int(version)+1
+                            nucYear=int(version)+10
                         #if year != ' '*4: nucYear=int(year)
                     if (nudy.env.verb): print("   ME:",nucME,' +- ',nucdME,' keV')
                     # date could be missing even if the mass measurement exists
@@ -338,6 +347,14 @@ class SetupMasses():
                     #yearFull.append(yearInt)
                     #yearInd=int((yearInt-yearMin)/10)
                     #if (env.verb): print('   year:'+str(yearInt)+',index:'+str(yearInd))
+                    #
+                    if nucYear > self.year_max: 
+                        self.year_max = nucYear
+                        #self.i_max = nbNuc
+                    if nucYear < self.year_min: 
+                        self.year_min = nucYear
+                        #self.i_min = nbNuc
+                    #print('nucYear:',nucYear,self.year_min)
                     #
                     nucMass = nucA * CST_AtmMass + nucME / 1000.0 # conversion to MeV
                     nucdMass = nucdME / 1000.0 
@@ -359,10 +376,24 @@ class SetupMasses():
                     self.BE.append( nucBE )
                     self.BE_err.append( nucdBE )
                     nbNuc = nbNuc + 1
+            self.year_max = int(version)
             #: Attribute with the number of line in the file.
             self.nbLine = nbLine
             #: Attribute with the number of nuclei read in the file.
             self.nbNuc = nbNuc
+        print('Oldest discovery is from: ',self.year_min)
+        print('Most recent discovery is from: ',self.year_max)
+        #
+        # clasify per year of discovery discovered 
+        #
+        dist_nyear = 20
+        #mas = nuda.SetupMasses( table = table, version = '2020' )
+        self.dist_year = int(self.year_min/10) + np.arange(dist_nyear)
+        self.dist_nbNuc = np.zeros( (dist_nyear) )
+        for i in range(self.nbNuc):
+            i_year = int( (self.year[i]-self.year_min)/10 )
+            self.dist_nbNuc[i_year] += 1
+        print( 'dist:',self.dist_nbNuc )
         #
         if nudy.env.verb: print("Exit SetupMasses()")
         #
@@ -397,6 +428,8 @@ class SetupMasses():
         :type state: str, optional. Default 'gs'.
         :param nucleus: 'unstable'.
         :type nucleus: str, optional. Default 'unstable'.
+        It can be set to 'stable', 'longlive' (with LT>10 min), 'shortlive' (with 10min>LT>1 ns), \
+        'veryshortlive' (with LT< 1ns)
         :param every: consider only 1 out of `every` nuclei in the table.
         :type every: int, optional. Default every = 1.
         """
@@ -417,8 +450,10 @@ class SetupMasses():
         self.state = state
         if nudy.env.verb: print("state:",state)
         #
-        if nucleus.lower() not in [ 'stable', 'unstable' ]:
-            print('Nucleus ',nucleus,' is not "stable" or "unstable".')
+        nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive' ]
+        #
+        if nucleus.lower() not in nuclei:
+            print('Nucleus ',nucleus,' is not in the list: ',nuclei)
             print('-- Exit the code --')
             exit()
         self.nucleus = nucleus
@@ -444,7 +479,6 @@ class SetupMasses():
         #
         self.sel_Zmax = 0
         #
-        #for nucA,ind in enumerate(self.A):
         for ind in range(self.nbNuc):
             #
             nucA = self.A[ind]
@@ -462,10 +496,20 @@ class SetupMasses():
             # skip nuclei below Amin and Zmin:
             if nucA < Amin or nucZ < Zmin:
                 continue
-            if nucStbl == 'n' and nucleus.lower() == 'stable':
+            #
+            if nucleus.lower() == 'stable' and nucStbl == 'y':
+                pass
+            elif nucleus.lower() == 'unstable' and nucStbl == 'n':
+                pass
+            elif nucleus.lower() == 'longlive' and nucStbl == 'n' and nucHT > 10 * minutes:
+                pass
+            elif nucleus.lower() == 'shortlive' and nucStbl == 'n' and nucHT < 10 * minutes and nucHT > ns:
+                pass
+            elif nucleus.lower() == 'veryshortlive' and nucStbl == 'n' and nucHT < ns:
+                pass
+            else:
                 continue
-            if nucStbl == 'y' and nucleus.lower() == 'unstable':
-                continue
+            #
             nbNucTot = nbNucTot + 1
             # skip nucleus if interpolated data
             if nucInterp == 'y':
@@ -544,6 +588,101 @@ class SetupMasses():
         #print('drip: Nmax:',self.drip_Nmax)
         #
         if nudy.env.verb: print("Exit drip()")
+        #
+        return self
+        #
+    def select_year(self, year_min=1940, year_max=1960, state= 'gs'):
+        """
+        Method which select some nuclei from the table according to the discovery year.
+
+        :param year_min:
+        :type year_min:
+        :param year_max:
+        :type year_max:
+        :param state: select the kind of state. If state='gs', select nuclei measured in their ground state.
+        :type state: str, optional. Default 'gs'.
+        """
+        #
+        if year_min > int(self.version) or year_max < yearMin:
+            print('year_min or year_max is not well defined')
+            print('year_min:',year_min,' >? ',int(self.version))
+            print('year_max:',year_max,' <? ',yearMin)
+            print('-- Exit the code --')
+            exit()
+        self.year_min = year_min
+        self.year_max = year_max
+        #
+        if state.lower() not in [ 'gs' ]:
+            print('State ',state,' is not "gs".')
+            print('-- Exit the code --')
+            exit()
+        self.state = state
+        #
+        nbNucTot = 0
+        nbNucSta = 0
+        nbNucSel = 0
+        #
+        #: Attribute sel_A (mass of the selected nuclei).
+        self.sel_A = []
+        #: Attribute sel_Z (charge of the selected nuclei).
+        self.sel_Z = []
+        #: Attribute sel_symb (symbol of the selected nuclei).
+        self.sel_symb = []
+        self.sel_N = []
+        self.sel_I = []
+        self.sel_Interp = []
+        self.sel_HT = [] # half-time in s
+        self.sel_year = []
+        self.sel_BE = []
+        self.sel_BE_err = []
+        #
+        self.sel_Zmax = 0
+        for ind in range(self.nbNuc):
+            #
+            nucA = self.A[ind]
+            nucZ = self.Z[ind]
+            nucN = self.N[ind]
+            nucI = self.I[ind]
+            nucSymb = self.symb[ind]
+            nucInterp = self.Interp[ind]
+            nucStbl = self.stbl[ind]
+            nucHT = self.HT[ind]
+            nucYear = self.year[ind]
+            nucBE = self.BE[ind]
+            nucdBE = self.BE_err[ind]
+            # skip nuclei out of the year range:
+            if nucYear < year_min or nucYear >= year_max:
+                continue
+            #
+            #print('discovery year:',nucYear)
+            nbNucTot = nbNucTot + 1
+            # skip nucleus if interpolated data
+            if nucInterp == 'y':
+                continue
+            # skip nuclei not in GS
+            if state == 'gs' and nucI != 0:
+                continue
+            nbNucSta = nbNucSta + 1
+            nbNucSel = nbNucSel + 1
+            self.sel_A.append( nucA )
+            self.sel_Z.append( nucZ )
+            if nucZ > self.sel_Zmax: self.sel_Zmax = nucZ
+            self.sel_N.append( nucN )
+            self.sel_symb.append( nucSymb )
+            self.sel_I.append( nucI )
+            self.sel_Interp.append( nucInterp )
+            self.sel_HT.append( nucHT )
+            self.sel_year.append( nucYear )
+            self.sel_BE.append( nucBE )
+            self.sel_BE_err.append( nucdBE )
+        self.sel_nbNucTot = nbNucTot
+        self.sel_nbNucSta = nbNucSta
+        self.sel_nbNucSel = nbNucSel
+        print('number of nuclei(Tot):',self.sel_nbNucTot)
+        print('number of nuclei(Sta):',self.sel_nbNucSta)
+        print('number of nuclei(Sel):',self.sel_nbNucSel)
+        #
+        if nudy.env.verb: print("Exit select()")
         #
         return self
         #

@@ -114,9 +114,9 @@
     </navPoint>
     <navPoint id="navPoint18" playOrder="15">
       <navLabel>
-        <text>SetupBand</text>
+        <text>SetupMicroBand</text>
       </navLabel>
-      <content src="source/api/setup_band.xhtml" />  
+      <content src="source/api/setup_micro_band.xhtml" />  
     </navPoint>
     <navPoint id="navPoint19" playOrder="16">
       <navLabel>

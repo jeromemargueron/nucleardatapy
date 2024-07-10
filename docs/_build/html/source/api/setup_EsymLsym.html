@@ -46,7 +46,7 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_band.html">SetupBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_micro_band.html">SetupMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_pheno.html">SetupPheno</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEsymLsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_masses.html">SetupMasses</a></li>
@@ -84,7 +84,7 @@
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">SetupEsymLsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2014-IAS'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#SetupEsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the values of Esym and Lsym from the constraint.</p>
-<p>The name of the constraint to be chosen in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2021-PREXII-Zhang’.</p>
+<p>The name of the constraint to be chosen in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2021-PREXII+CREX-Zhang’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>constraint</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>constraint</cite>. Default value: ‘2014-IAS’.</p>
@@ -104,6 +104,18 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max">
+<span class="sig-name descname"><span class="pre">Esym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute max of Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min">
+<span class="sig-name descname"><span class="pre">Esym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute min of Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym">
 <span class="sig-name descname"><span class="pre">Lsym</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute Lsym.</p>
@@ -113,6 +125,24 @@
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err">
 <span class="sig-name descname"><span class="pre">Lsym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute with uncertainty in Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max">
+<span class="sig-name descname"><span class="pre">Lsym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute max of Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min">
+<span class="sig-name descname"><span class="pre">Lsym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute min of Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the plot alpha</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -150,7 +180,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.constraints_EsymLsym">
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">constraints_EsymLsym</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#constraints_EsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.constraints_EsymLsym" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of constraints available in this toolkit in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2021-PREXII-Zhang’; and     print them all on the prompt.</p>
+<dd><p>Return a list of constraints available in this toolkit in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2023-PREXII+CREX-Zhang’; and     print them all on the prompt.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The list of constraints.</p>

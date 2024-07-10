@@ -39,7 +39,7 @@ Complement
    :caption: Contents:
 
    source/api/setup_micro
-   source/api/setup_band
+   source/api/setup_micro_band
    source/api/setup_pheno
    source/api/setup_EsymLsym
    source/api/setup_masses
