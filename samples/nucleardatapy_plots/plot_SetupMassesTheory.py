@@ -24,6 +24,55 @@ def plot_theory_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     pname = 'figs/plot_SetupMassesTheory_Zref'+str(Zref)+'.png'
     print(f'Plot name: {pname}')
+    #
+    # plot
+    #
+    fig, axs = plt.subplots(1,1)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    #
+    axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
+    axs.set_ylabel(r'$E-E_{DZ}$ (MeV)',fontsize='12')
+    axs.set_xlabel(r'N',fontsize='12')
+    #axs.set_xlim([0, 200])
+    axs.set_ylim([-500, 500])
+    axs.text(60,400,'For Z='+str(Zref),fontsize='12')
+    #
+    # loop over the tables
+    #
+    mas = nuda.SetupMassesTheory( table = table_ref )
+    #
+    for i,table in enumerate( tables ):
+        #
+        N_dif, BE_dif = mas.diff( table=table, Zref = Zref)
+        #
+        axs.plot( N_dif, BE_dif, linestyle='solid', linewidth=1, label=mas.label)
+    #
+    axs.legend(loc='upper right',fontsize='10')
+    #
+    plt.savefig(pname)
+    plt.close()
+    #
+    print(50*'-')
+    print("Exit plot_theory_isotopes.py:")
+    print(50*'-')
+
+
+def plot_theory_isotopes_old( tables, table_ref = '1995-DZ', Zref = 50 ):
+    #
+    print(50*'-')
+    print("Enter plot_theory_isotopes_old.py:")
+    print(50*'-')
+    #
+    print('Tables:',tables)
+    if table_ref in tables:
+        tables.remove(table_ref)
+    print('Tables:',tables)
+    print('Table_ref:',table_ref)
+    print('Zref:',Zref)
+    #
+    pname = 'figs/plot_SetupMassesTheory_Zref'+str(Zref)+'.png'
+    print(f'Plot name: {pname}')
     mas_ref = nuda.SetupMassesTheory( table = table_ref )
     BE_ref = []
     N_ref = []
@@ -79,7 +128,7 @@ def plot_theory_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     plt.close()
     #
     print(50*'-')
-    print("Exit plot_theory_isotopes.py:")
+    print("Exit plot_theory_isotopes_old.py:")
     print(50*'-')
 
 def main():
@@ -95,7 +144,9 @@ def main():
     tables, tables_lower = nuda.tables_masses_theory()
     #tables = [ '1995-DZ' ]
     #
-    plot_theory_isotopes( tables )
+    plot_theory_isotopes_old( tables, Zref = 50 )
+    #
+    plot_theory_isotopes( tables, Zref = 20 )
     #
     print(50*'-')
     print("Exit plot_SetupMassesTheory.py:")
