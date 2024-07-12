@@ -47,6 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
 </ul>
@@ -108,6 +109,8 @@
 <span class="c1">#print(&#39;type(years):&#39;,type(years))</span>
 <span class="n">ILt</span> <span class="o">=</span> <span class="mf">1e30</span> <span class="o">*</span> <span class="n">years</span> <span class="c1"># infinite Large time</span>
 <span class="n">ISt</span> <span class="o">=</span> <span class="mf">1.e-30</span> <span class="c1"># infinite Short time</span>
+<span class="n">HTvsl</span> <span class="o">=</span> <span class="mf">1e-3</span> <span class="c1"># half-time for very short live nuclei</span>
+<span class="n">HTsl</span> <span class="o">=</span> <span class="n">hours</span> <span class="c1"># half-time for short live nuclei</span>
 
 <span class="k">def</span> <span class="nf">stable_fit</span><span class="p">():</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">110</span><span class="p">)</span>
@@ -243,7 +246,7 @@
                 <span class="n">cdbee</span> <span class="o">=</span> <span class="mi">38</span>
                 <span class="n">cyear</span><span class="o">=</span><span class="mi">105</span> <span class="c1"># column for the discovery year</span>
             <span class="k">elif</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;2020&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;nuclei/masses/AME/2020/nubase_3.mas20.txt&#39;</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nudy</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;nuclei/masses/AME/2020/nubase_4.mas20.txt&#39;</span>
                 <span class="n">nbLine_skip</span> <span class="o">=</span> <span class="mi">26</span>
                 <span class="n">cbe</span> <span class="o">=</span> <span class="mi">18</span>
                 <span class="n">cdbe</span> <span class="o">=</span> <span class="mi">31</span>
@@ -499,6 +502,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which select some nuclei from the table according to some criteria.</span>
 
+
 <span class="sd">        :param interp: If interp=&#39;n&#39;, exclude the interpolated nuclei from the selected ones. \</span>
 <span class="sd">        If interp=&#39;y&#39; consider them in the table, in addition to the others.</span>
 <span class="sd">        :type interp: str, optional. Default = &#39;n&#39;.</span>
@@ -510,7 +514,10 @@
 <span class="sd">        &#39;veryshortlive&#39; (with LT&lt; 1ns)</span>
 <span class="sd">        :param every: consider only 1 out of `every` nuclei in the table.</span>
 <span class="sd">        :type every: int, optional. Default every = 1.</span>
+
+<span class="sd">        **Attributes:**</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -579,11 +586,11 @@
                 <span class="k">pass</span>
             <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;unstable&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;longlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">minutes</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;longlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&gt;</span> <span class="n">HTsl</span><span class="p">:</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;shortlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">minutes</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&gt;</span> <span class="n">ns</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;shortlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&lt;</span> <span class="n">HTsl</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&gt;</span> <span class="n">HTvsl</span><span class="p">:</span>
                 <span class="k">pass</span>
-            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;veryshortlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&lt;</span> <span class="n">ns</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;veryshortlive&#39;</span> <span class="ow">and</span> <span class="n">nucStbl</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">and</span> <span class="n">nucHT</span> <span class="o">&lt;</span> <span class="n">HTvsl</span><span class="p">:</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -628,6 +635,8 @@
 
 <span class="sd">        :param Zmax: Fix the maximum charge for the search of the drip line.</span>
 <span class="sd">        :type Zmax: int, optional. Default: 95.</span>
+
+<span class="sd">        **Attributes:**</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip()&quot;</span><span class="p">)</span>
@@ -679,6 +688,8 @@
 <span class="sd">        :type year_max:</span>
 <span class="sd">        :param state: select the kind of state. If state=&#39;gs&#39;, select nuclei measured in their ground state.</span>
 <span class="sd">        :type state: str, optional. Default &#39;gs&#39;.</span>
+
+<span class="sd">        **Attributes:**</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">year_min</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year_max</span> <span class="o">&lt;</span> <span class="n">yearMin</span><span class="p">:</span>

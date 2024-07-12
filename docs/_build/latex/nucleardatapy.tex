@@ -60,7 +60,7 @@
 
 
 \title{nucleardatapy}
-\date{Jul 10, 2024}
+\date{Jul 11, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1349,6 +1349,9 @@ Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
 
 \end{description}\end{quote}
 
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+
 \end{fulllineitems}
 
 \index{label (nucleardatapy.setup\_masses.SetupMasses attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_masses.SetupMasses attribute}}
@@ -1455,6 +1458,9 @@ It can be set to ‘stable’, ‘longlive’ (with LT\textgreater{}10 min), ‘
 :param every: consider only 1 out of \sphinxtitleref{every} nuclei in the table.
 :type every: int, optional. Default every = 1.
 
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+
 \end{fulllineitems}
 
 \index{select\_year() (nucleardatapy.setup\_masses.SetupMasses method)@\spxentry{select\_year()}\spxextra{nucleardatapy.setup\_masses.SetupMasses method}}
@@ -1483,6 +1489,9 @@ Method which select some nuclei from the table according to the discovery year.
 \end{itemize}
 
 \end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
 
 \end{fulllineitems}
 
@@ -1585,7 +1594,7 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMasses_AME_2020}.png}
-\caption{The nuclear chart based on AME 2020 table. The different colors correspond to the different life\sphinxhyphen{}times of the nuclei.}\label{\detokenize{source/api/setup_masses:id1}}\end{figure}
+\caption{The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half\sphinxhyphen{}times of nuclei.}\label{\detokenize{source/api/setup_masses:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -1593,6 +1602,117 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMasses_AME_2020_year}.png}
 \caption{Histogram showing the distribution of nuclei per discovery year, since the first one discovered in 1851.}\label{\detokenize{source/api/setup_masses:id2}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupMassesTheory}
+\label{\detokenize{source/api/setup_masses_theory:setupmassestheory}}\label{\detokenize{source/api/setup_masses_theory::doc}}\phantomsection\label{\detokenize{source/api/setup_masses_theory:module-nucleardatapy.setup_masses_theory}}\index{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}}\index{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}}\index{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{SetupMassesTheory}}}{\emph{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1995\sphinxhyphen{}DZ\textquotesingle{}}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the theory nuclear masses.
+
+\sphinxAtStartPar
+This choice is defined in the variable \sphinxtitleref{table}.
+
+\sphinxAtStartPar
+\sphinxtitleref{table} can chosen among the following ones:     {[} ‘1988\sphinxhyphen{}GK’, ‘1988\sphinxhyphen{}MJ’, ‘1995\sphinxhyphen{}DZ’, ‘1995\sphinxhyphen{}ETFSI’, ‘1995\sphinxhyphen{}FRDM’,     ‘2005\sphinxhyphen{}KTUY’, ‘2007\sphinxhyphen{}HFB14’, ‘2010\sphinxhyphen{}WS3’, ‘2011\sphinxhyphen{}WS3’, ‘2013\sphinxhyphen{}HFB26’ {]}
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{table}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{table}. Default value: ‘1995\sphinxhyphen{}DZ’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{drip() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.drip}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{drip}}}{\emph{\DUrole{n}{Zmax}\DUrole{o}{=}\DUrole{default_value}{95}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{Zmax}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional. Default: 95.}}) \textendash{} Fix the maximum charge for the search of the drip line.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+
+\end{fulllineitems}
+
+\index{init\_self() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.init_self}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Initialize variables in self.
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{tables\_masses\_theory() (in module nucleardatapy.setup\_masses\_theory)@\spxentry{tables\_masses\_theory()}\spxextra{in module nucleardatapy.setup\_masses\_theory}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.tables_masses_theory}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{tables\_masses\_theory}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of the tables available in this toolkit for the masses
+predicted by theoretical approaches and print them all on the prompt.
+These tables are the following ones:     {[} ‘1988\sphinxhyphen{}GK’, ‘1988\sphinxhyphen{}MJ’, ‘1995\sphinxhyphen{}DZ’, ‘1995\sphinxhyphen{}ETFSI’, ‘1995\sphinxhyphen{}FRDM’,     ‘2005\sphinxhyphen{}KTUY’, ‘2007\sphinxhyphen{}HFB14’, ‘2010\sphinxhyphen{}WS3’, ‘2011\sphinxhyphen{}WS3’, ‘2013\sphinxhyphen{}HFB26’ {]}
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of tables.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupMassesTheory.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMassesTheory_Zref50}.png}
+\caption{Differences between binding energies predicted by different models with respect to the one predicted by Duflo\sphinxhyphen{}Zuker for Z = 50.}\label{\detokenize{source/api/setup_masses_theory:id1}}\end{figure}
 
 \sphinxstepscope
 
@@ -2018,6 +2138,7 @@ list{[}str{]}.
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_EsymLsym}\sphinxstyleindexpageref{source/api/setup_EsymLsym:\detokenize{module-nucleardatapy.setup_EsymLsym}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_ISGMR}\sphinxstyleindexpageref{source/api/setup_ISGMR:\detokenize{module-nucleardatapy.setup_ISGMR}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_masses}\sphinxstyleindexpageref{source/api/setup_masses:\detokenize{module-nucleardatapy.setup_masses}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_masses\_theory}\sphinxstyleindexpageref{source/api/setup_masses_theory:\detokenize{module-nucleardatapy.setup_masses_theory}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro}\sphinxstyleindexpageref{source/api/setup_micro:\detokenize{module-nucleardatapy.setup_micro}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro\_band}\sphinxstyleindexpageref{source/api/setup_micro_band:\detokenize{module-nucleardatapy.setup_micro_band}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_pheno}\sphinxstyleindexpageref{source/api/setup_pheno:\detokenize{module-nucleardatapy.setup_pheno}}

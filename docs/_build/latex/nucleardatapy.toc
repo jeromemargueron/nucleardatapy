@@ -18,8 +18,9 @@
 \contentsline {section}{\numberline {2.3}SetupPheno}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}SetupEsymLsym}{18}{section.2.4}%
 \contentsline {section}{\numberline {2.5}SetupMasses}{19}{section.2.5}%
-\contentsline {section}{\numberline {2.6}SetupRadCh}{23}{section.2.6}%
-\contentsline {section}{\numberline {2.7}SetupISGMR}{24}{section.2.7}%
+\contentsline {section}{\numberline {2.6}SetupMassesTheory}{22}{section.2.6}%
+\contentsline {section}{\numberline {2.7}SetupRadCh}{23}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupISGMR}{25}{section.2.8}%
 \contentsline {chapter}{\numberline {3}Indices and tables}{27}{chapter.3}%
-\contentsline {chapter}{Python Module Index}{29}{section*.115}%
-\contentsline {chapter}{Index}{31}{section*.116}%
+\contentsline {chapter}{Python Module Index}{29}{section*.121}%
+\contentsline {chapter}{Index}{31}{section*.122}%

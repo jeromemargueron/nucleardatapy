@@ -30,6 +30,8 @@ years = 365.2422 * days # (year) in s
 #print('type(years):',type(years))
 ILt = 1e30 * years # infinite Large time
 ISt = 1.e-30 # infinite Short time
+HTvsl = 1e-3 # half-time for very short live nuclei
+HTsl = hours # half-time for short live nuclei
 
 def stable_fit():
     Z = np.arange(110)
@@ -165,7 +167,7 @@ class SetupMasses():
                 cdbee = 38
                 cyear=105 # column for the discovery year
             elif version=='2020':
-                file_in = nudy.param.path_data+'nuclei/masses/AME/2020/nubase_3.mas20.txt'
+                file_in = nudy.param.path_data+'nuclei/masses/AME/2020/nubase_4.mas20.txt'
                 nbLine_skip = 26
                 cbe = 18
                 cdbe = 31
@@ -421,6 +423,7 @@ class SetupMasses():
         """
         Method which select some nuclei from the table according to some criteria.
 
+
         :param interp: If interp='n', exclude the interpolated nuclei from the selected ones. \
         If interp='y' consider them in the table, in addition to the others.
         :type interp: str, optional. Default = 'n'.
@@ -432,7 +435,10 @@ class SetupMasses():
         'veryshortlive' (with LT< 1ns)
         :param every: consider only 1 out of `every` nuclei in the table.
         :type every: int, optional. Default every = 1.
+
+        **Attributes:**
         """
+
         #
         if nudy.env.verb: print("Enter select()")
         #
@@ -501,11 +507,11 @@ class SetupMasses():
                 pass
             elif nucleus.lower() == 'unstable' and nucStbl == 'n':
                 pass
-            elif nucleus.lower() == 'longlive' and nucStbl == 'n' and nucHT > 10 * minutes:
+            elif nucleus.lower() == 'longlive' and nucStbl == 'n' and nucHT > HTsl:
                 pass
-            elif nucleus.lower() == 'shortlive' and nucStbl == 'n' and nucHT < 10 * minutes and nucHT > ns:
+            elif nucleus.lower() == 'shortlive' and nucStbl == 'n' and nucHT < HTsl and nucHT > HTvsl:
                 pass
-            elif nucleus.lower() == 'veryshortlive' and nucStbl == 'n' and nucHT < ns:
+            elif nucleus.lower() == 'veryshortlive' and nucStbl == 'n' and nucHT < HTvsl:
                 pass
             else:
                 continue
@@ -550,6 +556,8 @@ class SetupMasses():
 
         :param Zmax: Fix the maximum charge for the search of the drip line.
         :type Zmax: int, optional. Default: 95.
+
+        **Attributes:**
         """
         #
         if nudy.env.verb: print("Enter drip()")
@@ -601,6 +609,8 @@ class SetupMasses():
         :type year_max:
         :param state: select the kind of state. If state='gs', select nuclei measured in their ground state.
         :type state: str, optional. Default 'gs'.
+
+        **Attributes:**
         """
         #
         if year_min > int(self.version) or year_max < yearMin:

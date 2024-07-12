@@ -15,7 +15,7 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 	:scale: 70 %
 	:alt: map to buried treasure
 
-	The nuclear chart based on AME 2020 table. The different colors correspond to the different life-times of the nuclei.
+	The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half-times of nuclei.
 
 .. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupMasses_AME_2020_year.png
 	:scale: 70 %

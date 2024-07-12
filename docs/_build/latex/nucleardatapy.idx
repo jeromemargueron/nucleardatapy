@@ -87,35 +87,42 @@
 \indexentry{year (nucleardatapy.setup\_masses.SetupMasses attribute)@\spxentry{year}\spxextra{nucleardatapy.setup\_masses.SetupMasses attribute}|hyperpage}{21}
 \indexentry{tables\_masses() (in module nucleardatapy.setup\_masses)@\spxentry{tables\_masses()}\spxextra{in module nucleardatapy.setup\_masses}|hyperpage}{21}
 \indexentry{versions\_masses() (in module nucleardatapy.setup\_masses)@\spxentry{versions\_masses()}\spxextra{in module nucleardatapy.setup\_masses}|hyperpage}{21}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}|hyperpage}{22}
+\indexentry{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}|hyperpage}{22}
+\indexentry{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}|hyperpage}{22}
+\indexentry{drip() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{22}
+\indexentry{init\_self() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{22}
+\indexentry{print\_outputs() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{22}
+\indexentry{tables\_masses\_theory() (in module nucleardatapy.setup\_masses\_theory)@\spxentry{tables\_masses\_theory()}\spxextra{in module nucleardatapy.setup\_masses\_theory}|hyperpage}{23}
 \indexentry{module@\spxentry{module}!nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}|hyperpage}{23}
 \indexentry{nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}!module@\spxentry{module}|hyperpage}{23}
 \indexentry{SetupRadCh (class in nucleardatapy.setup\_rad\_ch)@\spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}|hyperpage}{23}
 \indexentry{A (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{A}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{N (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{N}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{R\_ch (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_ch}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{R\_ch\_err (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_ch\_err}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{R\_unit (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_unit}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{Z (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{label (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{note (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{print\_outputs() (nucleardatapy.setup\_rad\_ch.SetupRadCh method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}|hyperpage}{23}
-\indexentry{ref (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{symb (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{symb}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{23}
-\indexentry{tables\_rad\_ch() (in module nucleardatapy.setup\_rad\_ch)@\spxentry{tables\_rad\_ch()}\spxextra{in module nucleardatapy.setup\_rad\_ch}|hyperpage}{23}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}|hyperpage}{24}
-\indexentry{nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}!module@\spxentry{module}|hyperpage}{24}
-\indexentry{SetupISGMR (class in nucleardatapy.setup\_ISGMR)@\spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}|hyperpage}{24}
-\indexentry{A (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{A}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_cen (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_cen}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_erra (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_erra}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_errs (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errs}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{E\_unit (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_unit}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{Z (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{label (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{note (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{print\_outputs() (nucleardatapy.setup\_ISGMR.SetupISGMR method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR method}|hyperpage}{24}
-\indexentry{ref (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{table (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{table}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{24}
-\indexentry{tables\_isgmr() (in module nucleardatapy.setup\_ISGMR)@\spxentry{tables\_isgmr()}\spxextra{in module nucleardatapy.setup\_ISGMR}|hyperpage}{24}
+\indexentry{N (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{N}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{R\_ch (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_ch}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{R\_ch\_err (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_ch\_err}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{R\_unit (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_unit}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{Z (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{label (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{note (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{print\_outputs() (nucleardatapy.setup\_rad\_ch.SetupRadCh method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}|hyperpage}{24}
+\indexentry{ref (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{symb (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{symb}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{24}
+\indexentry{tables\_rad\_ch() (in module nucleardatapy.setup\_rad\_ch)@\spxentry{tables\_rad\_ch()}\spxextra{in module nucleardatapy.setup\_rad\_ch}|hyperpage}{25}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}|hyperpage}{25}
+\indexentry{nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}!module@\spxentry{module}|hyperpage}{25}
+\indexentry{SetupISGMR (class in nucleardatapy.setup\_ISGMR)@\spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}|hyperpage}{25}
+\indexentry{A (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{A}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_cen (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_cen}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_erra (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_erra}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_errs (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errs}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{E\_unit (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_unit}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{Z (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{label (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{note (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{25}
+\indexentry{print\_outputs() (nucleardatapy.setup\_ISGMR.SetupISGMR method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR method}|hyperpage}{25}
+\indexentry{ref (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{26}
+\indexentry{table (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{table}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{26}
+\indexentry{tables\_isgmr() (in module nucleardatapy.setup\_ISGMR)@\spxentry{tables\_isgmr()}\spxextra{in module nucleardatapy.setup\_ISGMR}|hyperpage}{26}
