@@ -13,7 +13,7 @@ def tables_masses_theory():
     Return a list of the tables available in this toolkit for the masses 
     predicted by theoretical approaches and print them all on the prompt. 
     These tables are the following ones: \
-    [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
     '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21', '2011-WS3', '2013-HFB26' ]
 
     :return: The list of tables.
@@ -22,7 +22,7 @@ def tables_masses_theory():
     #
     if nuda.env.verb: print("\nEnter tables_masses_theory()")
     #
-    tables = [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    tables = [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
        '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB26' ]
     #
     print('theory tables available in the toolkit:',tables)
@@ -40,7 +40,7 @@ class SetupMassesTheory():
     This choice is defined in the variable `table`.
 
     `table` can chosen among the following ones: \
-    [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
     '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB26' ]
 
     :param table: Fix the name of `table`. Default value: '1995-DZ'.
@@ -352,7 +352,8 @@ class SetupMassesTheory():
        #
     def diff(self, table, Zref = 50 ):
         """
-        Method calculates the difference between a given mass model and the table_ref.
+        Method calculates the difference between a given mass 
+        model and table_ref.
 
         :param table: Fix the table to analyze.
         :type table: str.
@@ -373,35 +374,167 @@ class SetupMassesTheory():
         #
         # table_ref
         #
-        N_ref = self.nucN
-        BE_ref = self.nucBE
+        BE_ref = []
+        N_ref = []
+        A_ref = []
+        for k in range(len(self.nucZ)):
+            if int( self.nucZ[k] ) == Zref:
+                BE_ref.append( self.nucBE[k] )
+                N_ref.append( self.nucN[k] )
+                A_ref.append( self.nucA[k] )
+        N_ref = np.array( N_ref )
+        #print('N_ref:',N_ref)
         #
         # table
         #
-        mas = nuda.SetupMassesTheory( table = table )
-        BE = []
-        N = []
-        for k in range(len(mas.nucZ)):
-            if int( mas.nucZ[k] ) == Zref:
-                BE.append( mas.nucBE[k] )
-                N.append( mas.nucN[k] )
-        N_min = max( N[0], N_ref[0] )
-        k_ref, = np.where( N_ref[:] == N_min )[0]
-        k_init, = np.where( N[:] == N_min )[0]
+        mod = nuda.SetupMassesTheory( table = table )
+        BE_mod = []
+        N_mod = []
+        A_mod = []
+        for k in range(len(mod.nucZ)):
+            if int( mod.nucZ[k] ) == Zref:
+                BE_mod.append( mod.nucBE[k] )
+                N_mod.append( mod.nucN[k] )
+                A_mod.append( mod.nucA[k] )
+        N_mod = np.array( N_mod )
+        print('N_ref:',N_ref)
+        print('N_mod:',N_mod)
+        N_min = max( N_ref[0], N_mod[0] )
+        print('N_min:',N_min)
+        N_max = min( N_ref[-1], N_mod[-1] )
+        print('N_max:',N_max)
+        k_ref_min, = np.where( N_ref[:] == N_min )[0]
+        print('k_ref_min:',k_ref_min)
+        k_mod_min, = np.where( N_mod[:] == N_min )[0]
+        print('k_mod_min:',k_mod_min)
         #
         # diff
         #
-        N_dif = []
-        BE_dif = []
-        for k in range(k_init,len(N)-k_init):
-            k_ref += N[k] - N_ref[k_ref]
-            BE_dif.append( BE[k]-BE_ref[k_ref] )
-            N_dif.append( N[k] )
-            k_ref += 1
+        N_diff = []
+        A_diff = []
+        BE_diff = []
+        print('k goes from 0 to ',N_max-N_min+1)
+        print('Last elements of:')
+        #print('ref:',N_ref[k_ref_min+N_max-N_min])
+        #print('mod:',N_mod[k_mod_min+N_max-N_min-1])
+        for k in range(N_max-N_min+1):
+            k_ref = k_ref_min + k
+            k_mod = k_mod_min + k
+            print('k,k_ref,k_mod,N_ref,N_mod:',k,k_ref,k_mod,N_ref[k_ref],N_mod[k_mod])
+            if N_ref[k_ref] > N_mod[k_mod]:
+                k_ref_min -= 1
+                continue
+            elif N_mod[k_mod] > N_ref[k_ref]:
+                k_mod_min -= 1
+                continue
+            elif N_ref[k_ref] == N_mod[k_mod]:
+                N_diff.append( int( N_mod[k_mod] ) )
+                A_diff.append( int( A_mod[k_mod] ) )
+                BE_diff.append( BE_mod[k_mod]-BE_ref[k_ref] )
+            else:
+                print('impossible case')
+                print('Exit()')
+                exit()
+        #print('N_diff:',N_diff)
+        N_diff = np.array( N_diff )
+        A_diff = np.array( A_diff )
+        BE_diff = np.array( BE_diff )
+        BE2A_diff = BE_diff / A_diff
         #
         if nuda.env.verb: print("Exit diff()")
         #
-        return N_dif, BE_dif
+        return N_diff, A_diff, BE_diff, BE2A_diff
+        #
+    def diff_exp(self, table_exp, version_exp, Zref = 50 ):
+        """
+        Method calculates the difference between a given experimental 
+        mass (identified by `table_exp` and `version_exp`) and table_ref.
+
+        :param table: Fix the table to analyze.
+        :type table: str.
+        :param Zref: Fix the isotopic chain to study.
+        :type Zref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter diff()")
+        #
+        if self.table == table_exp:
+            print('we have self.table = table_exp')
+            print('self.table:',self.table)
+            print('table:',table_exp)
+            print('exit()')
+            exit()
+        #
+        # table_ref
+        #
+        BE_ref = []
+        N_ref = []
+        A_ref = []
+        for k in range(len(self.nucZ)):
+            if int( self.nucZ[k] ) == Zref:
+                BE_ref.append( self.nucBE[k] )
+                N_ref.append( self.nucN[k] )
+                A_ref.append( self.nucA[k] )
+        N_ref = np.array( N_ref )
+        #print('N_ref:',N_ref)
+        #
+        # table
+        #
+        exp = nuda.SetupMassesExp( table = table_exp, version = version_exp )
+        exp2 = exp.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
+        BE_exp = []
+        N_exp = []
+        A_exp = []
+        for k in range(len(exp2.sel_nucZ)):
+            if int( exp2.sel_nucZ[k] ) == Zref:
+                BE_exp.append( exp2.sel_nucBE[k] )
+                N_exp.append( exp2.sel_nucN[k] )
+                A_exp.append( exp2.sel_nucA[k] )
+                #print('N,Z(exp),I:',N_exp[-1],A_exp[-1]-N_exp[-1],exp2.sel_flagI[k])
+        N_exp = np.array( N_exp )
+        N_min = max( N_ref[0], N_exp[0] )
+        N_max = min( N_ref[-1], N_exp[-1] )
+        k_ref_min, = np.where( N_ref == N_min )[0]
+        k_exp_min, = np.where( N_exp == N_min )[0]
+        #
+        # diff
+        #
+        N_diff = []
+        A_diff = []
+        BE_diff = []
+        for k in range(N_max-N_min+1):
+            k_ref = k_ref_min + k
+            k_exp = k_exp_min + k
+            #print('k,k_ref,k_exp,N_ref,N_exp:',k,k_ref,k_exp,N_ref[k_ref],N_exp[k_exp])
+            if N_ref[k_ref] > N_exp[k_exp]:
+                k_ref_min -= 1
+                continue
+            elif N_exp[k_exp] > N_ref[k_ref]:
+                k_exp_min -= 1
+                continue
+            elif N_ref[k_ref] == N_exp[k_exp]:
+                N_diff.append( int( N_exp[k_exp] ) )
+                A_diff.append( int( A_exp[k_exp] ) )
+                BE_diff.append( BE_exp[k_exp]-BE_ref[k_ref] )
+            else:
+                print('impossible case')
+                print('Exit()')
+                exit()
+
+            N_diff.append( int( N_exp[k_exp] ) )
+            A_diff.append( int( A_exp[k_exp] ) )
+            BE_diff.append( BE_exp[k_exp]-BE_ref[k_ref] )
+        #print('N_diff:',N_diff)
+        N_diff = np.array( N_diff )
+        A_diff = np.array( A_diff )
+        BE_diff = np.array( BE_diff )
+        BE2A_diff = BE_diff / A_diff
+        #
+        if nuda.env.verb: print("Exit diff()")
+        #
+        return N_diff, A_diff, BE_diff, BE2A_diff
         #
     def init_self( self ):
         """
@@ -411,15 +544,15 @@ class SetupMassesTheory():
         if nuda.env.verb: print("Enter init_self()")
         #
         #: Attribute A (mass of the nucleus).
-        self.A = None
+        self.nucA = None
         #: Attribute Z (charge of the nucleus).
-        self.Z = None
+        self.nucZ = None
         #: Attribute N (number of neutrons of the nucleus).
-        self.N = None
+        self.nucN = None
         #: Attribute BE (Binding Energy) of the nucleus.
-        self.BE = None
+        self.nucBE = None
         #: Attribute uncertainty in the BE (Binding Energy) of the nucleus.
-        self.BE2A = None
+        self.nucBE2A = None
         #: Attribute Zmax: maximum charge of nuclei present in the table.
         self.Zmax = None
         #

@@ -11,17 +11,17 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupMasses.py:")
+    print("Enter sample_SetupMassesExp.py:")
     print(50*'-')
     #
     tables = [ 'AME' ]
-    #tables, tables_lower = nuda.tables_masses()
+    #tables, tables_lower = nuda.tables_masses_exp()
     #
     for table in tables:
         #
         # Search for GS and unstable nuclei in the 'AME' '2020'
         #
-        mas = nuda.SetupMasses( table = table, version = '2020' )
+        mas = nuda.SetupMassesExp( table = table, version = '2020' )
         print('\nFrom mass table')
         #print('A:',mas.A)
         print('number of lines:',mas.nbLine)
@@ -34,7 +34,7 @@ def main():
         #
         # Search for nuclei discovered betwen 1950 and 1960
         #
-        mas = nuda.SetupMasses( table = table, version = '2020' )
+        #mas = nuda.SetupMassesExp( table = table, version = '2020' )
         #print('\nFrom mass table')
         #print('number of lines:',mas.nbLine)
         #print('number of nuclei:',mas.nbNuc)
@@ -45,7 +45,7 @@ def main():
 
     #
     print(50*'-')
-    print("Exit sample_SetupMasses.py:")
+    print("Exit sample_SetupMassesExp.py:")
     print(50*'-')
     #
     

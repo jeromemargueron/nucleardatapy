@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2024.6.13)  11 JUL 2024 20:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2024.6.13)  13 JUL 2024 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -821,709 +821,933 @@ Underfull \hbox (badness 6157) in paragraph at lines 310--312
  []
 
 [7{/opt/local/share/texmf-texlive/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
-<plot_SetupMicro_e2a_NM_VAR.png, id=192, 462.528pt x 346.896pt>
+<plot_SetupMicro_e2a_NM_VAR.png, id=202, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_VAR.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_VAR.png>
 Package pdftex.def Info: plot_SetupMicro_e2a_NM_VAR.png  used on input line 382
 .
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupMicro_e2a_NM_AFDMC.png, id=194, 462.528pt x 346.896pt>
+<plot_SetupMicro_e2a_NM_AFDMC.png, id=204, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_AFDMC.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_AFDMC.png>
 Package pdftex.def Info: plot_SetupMicro_e2a_NM_AFDMC.png  used on input line 3
 89.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupMicro_e2a_NM_BHF.png, id=195, 462.528pt x 346.896pt>
+<plot_SetupMicro_e2a_NM_BHF.png, id=205, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_BHF.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_BHF.png>
 Package pdftex.def Info: plot_SetupMicro_e2a_NM_BHF.png  used on input line 396
 .
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupMicro_e2a_NM_QMC.png, id=196, 462.528pt x 346.896pt>
+<plot_SetupMicro_e2a_NM_QMC.png, id=206, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_QMC.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_QMC.png>
 Package pdftex.def Info: plot_SetupMicro_e2a_NM_QMC.png  used on input line 403
 .
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupMicro_e2a_NM_MBPT.png, id=197, 462.528pt x 346.896pt>
+<plot_SetupMicro_e2a_NM_MBPT.png, id=207, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_MBPT.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_MBPT.png>
 Package pdftex.def Info: plot_SetupMicro_e2a_NM_MBPT.png  used on input line 41
 0.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupMicro_gap_NM.png, id=198, 462.528pt x 346.896pt>
+<plot_SetupMicro_gap_NM.png, id=208, 462.528pt x 346.896pt>
 File: plot_SetupMicro_gap_NM.png Graphic file (type png)
 <use plot_SetupMicro_gap_NM.png>
 Package pdftex.def Info: plot_SetupMicro_gap_NM.png  used on input line 417.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
  [8 <./plot_SetupMicro_e2a_NM_VAR.png>] [9 <./plot_SetupMicro_e2a_NM_AFDMC.png>
  <./plot_SetupMicro_e2a_NM_BHF.png>] [10 <./plot_SetupMicro_e2a_NM_QMC.png> <./
-plot_SetupMicro_e2a_NM_MBPT.png>] [11 <./plot_SetupMicro_gap_NM.png>] [12]
-<plot_SetupPheno-NLRH-E-NM.png, id=259, 462.528pt x 346.896pt>
+plot_SetupMicro_e2a_NM_MBPT.png>]
+<plot_SetupMicroBand_NM.png, id=236, 462.528pt x 346.896pt>
+File: plot_SetupMicroBand_NM.png Graphic file (type png)
+<use plot_SetupMicroBand_NM.png>
+Package pdftex.def Info: plot_SetupMicroBand_NM.png  used on input line 542.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+<plot_SetupMicroBand_SM.png, id=237, 462.528pt x 346.896pt>
+File: plot_SetupMicroBand_SM.png Graphic file (type png)
+<use plot_SetupMicroBand_SM.png>
+Package pdftex.def Info: plot_SetupMicroBand_SM.png  used on input line 549.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+<plot_SetupMicroBand_Esym.png, id=238, 462.528pt x 346.896pt>
+File: plot_SetupMicroBand_Esym.png Graphic file (type png)
+<use plot_SetupMicroBand_Esym.png>
+Package pdftex.def Info: plot_SetupMicroBand_Esym.png  used on input line 556.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+ [11 <./plot_SetupMicro_gap_NM.png>] [12 <./plot_SetupMicroBand_NM.png> <./plot
+_SetupMicroBand_SM.png>] [13 <./plot_SetupMicroBand_Esym.png>] [14]
+<plot_SetupPheno-NLRH-E-NM.png, id=294, 462.528pt x 346.896pt>
 File: plot_SetupPheno-NLRH-E-NM.png Graphic file (type png)
 <use plot_SetupPheno-NLRH-E-NM.png>
-Package pdftex.def Info: plot_SetupPheno-NLRH-E-NM.png  used on input line 903.
+Package pdftex.def Info: plot_SetupPheno-NLRH-E-NM.png  used on input line 924.
 
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-NLRH-E-SM.png, id=260, 462.528pt x 346.896pt>
+<plot_SetupPheno-NLRH-E-SM.png, id=295, 462.528pt x 346.896pt>
 File: plot_SetupPheno-NLRH-E-SM.png Graphic file (type png)
 <use plot_SetupPheno-NLRH-E-SM.png>
-Package pdftex.def Info: plot_SetupPheno-NLRH-E-SM.png  used on input line 910.
+Package pdftex.def Info: plot_SetupPheno-NLRH-E-SM.png  used on input line 931.
 
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-DDRH-E-NM.png, id=261, 462.528pt x 346.896pt>
+<plot_SetupPheno-DDRH-E-NM.png, id=296, 462.528pt x 346.896pt>
 File: plot_SetupPheno-DDRH-E-NM.png Graphic file (type png)
 <use plot_SetupPheno-DDRH-E-NM.png>
-Package pdftex.def Info: plot_SetupPheno-DDRH-E-NM.png  used on input line 917.
+Package pdftex.def Info: plot_SetupPheno-DDRH-E-NM.png  used on input line 938.
 
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-DDRH-E-SM.png, id=262, 462.528pt x 346.896pt>
+<plot_SetupPheno-DDRH-E-SM.png, id=297, 462.528pt x 346.896pt>
 File: plot_SetupPheno-DDRH-E-SM.png Graphic file (type png)
 <use plot_SetupPheno-DDRH-E-SM.png>
-Package pdftex.def Info: plot_SetupPheno-DDRH-E-SM.png  used on input line 924.
+Package pdftex.def Info: plot_SetupPheno-DDRH-E-SM.png  used on input line 945.
 
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-DDRHF-E-NM.png, id=263, 462.528pt x 346.896pt>
+<plot_SetupPheno-DDRHF-E-NM.png, id=298, 462.528pt x 346.896pt>
 File: plot_SetupPheno-DDRHF-E-NM.png Graphic file (type png)
 <use plot_SetupPheno-DDRHF-E-NM.png>
-Package pdftex.def Info: plot_SetupPheno-DDRHF-E-NM.png  used on input line 931
+Package pdftex.def Info: plot_SetupPheno-DDRHF-E-NM.png  used on input line 952
 .
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-DDRHF-E-SM.png, id=264, 462.528pt x 346.896pt>
+<plot_SetupPheno-DDRHF-E-SM.png, id=299, 462.528pt x 346.896pt>
 File: plot_SetupPheno-DDRHF-E-SM.png Graphic file (type png)
 <use plot_SetupPheno-DDRHF-E-SM.png>
-Package pdftex.def Info: plot_SetupPheno-DDRHF-E-SM.png  used on input line 938
+Package pdftex.def Info: plot_SetupPheno-DDRHF-E-SM.png  used on input line 959
 .
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-Skyrme-E-NM.png, id=265, 462.528pt x 346.896pt>
+<plot_SetupPheno-Skyrme-E-NM.png, id=300, 462.528pt x 346.896pt>
 File: plot_SetupPheno-Skyrme-E-NM.png Graphic file (type png)
 <use plot_SetupPheno-Skyrme-E-NM.png>
-Package pdftex.def Info: plot_SetupPheno-Skyrme-E-NM.png  used on input line 94
-5.
+Package pdftex.def Info: plot_SetupPheno-Skyrme-E-NM.png  used on input line 96
+6.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-<plot_SetupPheno-Skyrme-E-SM.png, id=266, 462.528pt x 346.896pt>
+<plot_SetupPheno-Skyrme-E-SM.png, id=301, 462.528pt x 346.896pt>
 File: plot_SetupPheno-Skyrme-E-SM.png Graphic file (type png)
 <use plot_SetupPheno-Skyrme-E-SM.png>
-Package pdftex.def Info: plot_SetupPheno-Skyrme-E-SM.png  used on input line 95
-2.
+Package pdftex.def Info: plot_SetupPheno-Skyrme-E-SM.png  used on input line 97
+3.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
- [13] [14 <./plot_SetupPheno-NLRH-E-NM.png> <./plot_SetupPheno-NLRH-E-SM.png>] 
-[15 <./plot_SetupPheno-DDRH-E-NM.png> <./plot_SetupPheno-DDRH-E-SM.png>] [16 <.
-/plot_SetupPheno-DDRHF-E-NM.png> <./plot_SetupPheno-DDRHF-E-SM.png>] [17 <./plo
-t_SetupPheno-Skyrme-E-NM.png> <./plot_SetupPheno-Skyrme-E-SM.png>] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 1174--1176
-[]\T1/qtm/m/n/10 Here are a set of fig-ures which are pro-duced with the Python
- sam-ple: /sam-
- []
-
-<plot_SetupEsymLsym.png, id=334, 462.528pt x 346.896pt>
-File: plot_SetupEsymLsym.png Graphic file (type png)
-<use plot_SetupEsymLsym.png>
-Package pdftex.def Info: plot_SetupEsymLsym.png  used on input line 1181.
+ [15 <./plot_SetupPheno-NLRH-E-NM.png>] [16 <./plot_SetupPheno-NLRH-E-SM.png> <
+./plot_SetupPheno-DDRH-E-NM.png>] [17 <./plot_SetupPheno-DDRH-E-SM.png> <./plot
+_SetupPheno-DDRHF-E-NM.png>] [18 <./plot_SetupPheno-DDRHF-E-SM.png> <./plot_Set
+upPheno-Skyrme-E-NM.png>]
+<plot_SetupEOSHIC.png, id=334, 462.528pt x 346.896pt>
+File: plot_SetupEOSHIC.png Graphic file (type png)
+<use plot_SetupEOSHIC.png>
+Package pdftex.def Info: plot_SetupEOSHIC.png  used on input line 1061.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-[19 <./plot_SetupEsymLsym.png>] [20]
+ [19 <./plot_SetupPheno-Skyrme-E-SM.png>]
+[20 <./plot_SetupEOSHIC.png>]
+<plot_SetupCrust.png, id=361, 462.528pt x 346.896pt>
+File: plot_SetupCrust.png Graphic file (type png)
+<use plot_SetupCrust.png>
+Package pdftex.def Info: plot_SetupCrust.png  used on input line 1352.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+ [21] [22 <./plot_SetupCrust.png>] [23]
 LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
 (Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 1.
-<plot_SetupMasses_AME_2020.png, id=364, 462.528pt x 346.896pt>
-File: plot_SetupMasses_AME_2020.png Graphic file (type png)
-<use plot_SetupMasses_AME_2020.png>
-Package pdftex.def Info: plot_SetupMasses_AME_2020.png  used on input line 1596
-.
-(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
- [21{/opt/local/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}]
-<plot_SetupMasses_AME_2020_year.png, id=377, 462.528pt x 346.896pt>
-File: plot_SetupMasses_AME_2020_year.png Graphic file (type png)
-<use plot_SetupMasses_AME_2020_year.png>
-Package pdftex.def Info: plot_SetupMasses_AME_2020_year.png  used on input line
- 1603.
-(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
- [22 <./plot_SetupMasses_AME_2020.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1707--1709
+
+Underfull \hbox (badness 10000) in paragraph at lines 1784--1786
 []\T1/qtm/m/n/10 Here are a set of fig-ures which are pro-duced with the Python
  sam-ple: /sam-
  []
 
-<plot_SetupMassesTheory_Zref50.png, id=389, 462.528pt x 346.896pt>
+<plot_SetupMassesExp_AME_2020.png, id=414, 462.528pt x 346.896pt>
+File: plot_SetupMassesExp_AME_2020.png Graphic file (type png)
+<use plot_SetupMassesExp_AME_2020.png>
+Package pdftex.def Info: plot_SetupMassesExp_AME_2020.png  used on input line 1
+791.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+<plot_SetupMassesExp_AME_2020_year.png, id=415, 462.528pt x 346.896pt>
+File: plot_SetupMassesExp_AME_2020_year.png Graphic file (type png)
+<use plot_SetupMassesExp_AME_2020_year.png>
+Package pdftex.def Info: plot_SetupMassesExp_AME_2020_year.png  used on input l
+ine 1798.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+[24{/opt/local/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}] [25 <./plot_Se
+tupMassesExp_AME_2020.png> <./plot_SetupMassesExp_AME_2020_year.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1960--1962
+[]\T1/qtm/m/n/10 Here are a set of fig-ures which are pro-duced with the Python
+ sam-ple: /sam-
+ []
+
+[26]
+<plot_SetupMassesTheory_Zref50.png, id=445, 462.528pt x 346.896pt>
 File: plot_SetupMassesTheory_Zref50.png Graphic file (type png)
 <use plot_SetupMassesTheory_Zref50.png>
 Package pdftex.def Info: plot_SetupMassesTheory_Zref50.png  used on input line 
-1714.
+1967.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-[23 <./plot_SetupMasses_AME_2020_year.png>] [24 <./plot_SetupMassesTheory_Zref5
-0.png>] [25] [26]
+<plot_SetupMassesTheory_Zref20.png, id=446, 462.528pt x 346.896pt>
+File: plot_SetupMassesTheory_Zref20.png Graphic file (type png)
+<use plot_SetupMassesTheory_Zref20.png>
+Package pdftex.def Info: plot_SetupMassesTheory_Zref20.png  used on input line 
+1974.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+ [27 <./plot_SetupMassesTheory_Zref50.png>]
+<plot_SetupRadCh.png, id=461, 462.528pt x 346.896pt>
+File: plot_SetupRadCh.png Graphic file (type png)
+<use plot_SetupRadCh.png>
+Package pdftex.def Info: plot_SetupRadCh.png  used on input line 2181.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+ [28 <./plot_SetupMassesTheory_Zref20.png>] [29 <./plot_SetupRadCh.png>]
+<plot_SetupISGMR.png, id=491, 462.528pt x 346.896pt>
+File: plot_SetupISGMR.png Graphic file (type png)
+<use plot_SetupISGMR.png>
+Package pdftex.def Info: plot_SetupISGMR.png  used on input line 2398.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+ [30 <./plot_SetupISGMR.png>] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 2620--2622
+[]\T1/qtm/m/n/10 Here are a set of fig-ures which are pro-duced with the Python
+ sam-ple: /sam-
+ []
+
+<plot_SetupEsymLsym.png, id=526, 462.528pt x 346.896pt>
+File: plot_SetupEsymLsym.png Graphic file (type png)
+<use plot_SetupEsymLsym.png>
+Package pdftex.def Info: plot_SetupEsymLsym.png  used on input line 2627.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+[32 <./plot_SetupEsymLsym.png>]
 Chapter 3.
-[27
+[33
 
-] [28
+] [34
 
-] [29
+] [35
 
 
-] (./nucleardatapy.ind [30
+] (./nucleardatapy.ind [36
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-[]\T1/txtt/m/n/10 BE_err \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
-p_masses.SetupMasses
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
 []\T1/txtt/m/n/10 constraint \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
+[]\T1/txtt/m/n/10 constraints_EOSHIC() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-u
+le nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 []\T1/txtt/m/n/10 constraints_EsymLsym() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod
 -ule nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 5203) in paragraph at lines 29--31
+Underfull \hbox (badness 5203) in paragraph at lines 25--27
 []\T1/txtt/m/n/10 den \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_m
 icro_band.SetupMicroBand
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-[]\T1/txtt/m/n/10 drip() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
-p_masses.SetupMasses
+Underfull \hbox (badness 10000) in paragraph at lines 27--29
+[]\T1/txtt/m/n/10 den_cgs \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
+up_crust.SetupCrust at-
  []
 
 
-Overfull \hbox (33.77242pt too wide) in paragraph at lines 32--34
+Overfull \hbox (33.77242pt too wide) in paragraph at lines 30--32
+[]\T1/txtt/m/n/10 diff() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
+p_masses_theory.SetupMassesTheory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
+[]\T1/txtt/m/n/10 diff_exp() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
+\T1/qtm/m/it/10 apy.setup_masses_theory.SetupMassesTheory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+[]\T1/txtt/m/n/10 dist_nbNuc \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+[]\T1/txtt/m/n/10 dist_year \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp at-
+ []
+
+
+Overfull \hbox (9.07242pt too wide) in paragraph at lines 38--40
+[]\T1/txtt/m/n/10 drip() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
+p_masses_exp.SetupMassesExp
+ []
+
+
+Overfull \hbox (33.77242pt too wide) in paragraph at lines 40--42
 []\T1/txtt/m/n/10 drip() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_masses_theory.SetupMassesTheory
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
+[]\T1/txtt/m/n/10 e2a_int \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
+up_crust.SetupCrust at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
+[]\T1/txtt/m/n/10 e2a_int2 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.se
+tup_crust.SetupCrust at-
+ []
+
+
+Underfull \hbox (badness 7851) in paragraph at lines 49--51
+[]\T1/txtt/m/n/10 e2a_int_g \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.s
+etup_crust.SetupCrust at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
+[]\T1/txtt/m/n/10 e2a_rm \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
+p_crust.SetupCrust at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
 []\T1/txtt/m/n/10 E_cen \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _ISGMR.SetupISGMR
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--50
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
 []\T1/txtt/m/n/10 Esym \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
 EsymLsym.SetupEsymLsym
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
 []\T1/txtt/m/n/10 Esym_err \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
 []\T1/txtt/m/n/10 esym_kf \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
 up_pheno.SetupPheno
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 []\T1/txtt/m/n/10 Esym_max \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--62
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
 []\T1/txtt/m/n/10 Esym_min \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--62
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
+Overfull \hbox (3.82161pt too wide) in paragraph at lines 81--83
+[]\T1/txtt/m/n/10 flagI \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
+_masses_exp.SetupMassesExp
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
+[]\T1/txtt/m/n/10 flagInterp \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp at-
+ []
+
+[37
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 []\T1/txtt/m/n/10 init_self() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+\T1/qtm/m/it/10 apy.setup_eoshic.SetupEOSHIC method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
+[]\T1/txtt/m/n/10 init_self() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
 \T1/qtm/m/it/10 apy.setup_masses_theory.SetupMassesTheory
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--74
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 []\T1/txtt/m/n/10 init_self() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy
 .setup_micro.SetupMicro
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
 []\T1/txtt/m/n/10 init_self() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
 \T1/qtm/m/it/10 apy.setup_micro_band.SetupMicroBand
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--78
-[]\T1/txtt/m/n/10 Interp \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
-p_masses.SetupMasses
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 []\T1/txtt/m/n/10 label \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _ISGMR.SetupISGMR
  []
 
-[31
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Overfull \hbox (3.82243pt too wide) in paragraph at lines 102--104
 []\T1/txtt/m/n/10 label \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
-_masses.SetupMasses at-
+_masses_exp.SetupMassesExp
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 []\T1/txtt/m/n/10 label \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
 []\T1/txtt/m/n/10 label \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _rad_ch.SetupRadCh at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--91
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
 []\T1/txtt/m/n/10 Lsym \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
 EsymLsym.SetupEsymLsym
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
 []\T1/txtt/m/n/10 Lsym_err \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
 []\T1/txtt/m/n/10 Lsym_max \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 []\T1/txtt/m/n/10 Lsym_min \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--97
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym at-
  []
 
 
-Overfull \hbox (10.25241pt too wide) in paragraph at lines 100--102
+Overfull \hbox (10.25241pt too wide) in paragraph at lines 118--120
 []\T1/txtt/m/n/10 matter \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_micro_band.SetupMicroBand
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 []\T1/txtt/m/n/10 model \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _micro.SetupMicro at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 []\T1/txtt/m/n/10 model \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _pheno.SetupPheno at-
  []
 
 
-Overfull \hbox (10.25241pt too wide) in paragraph at lines 104--106
+Overfull \hbox (10.25241pt too wide) in paragraph at lines 122--124
 []\T1/txtt/m/n/10 models \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_micro_band.SetupMicroBand
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+[]\T1/txtt/m/n/10 models_crust() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu-
+cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 []\T1/txtt/m/n/10 models_micro() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu-
 cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 []\T1/txtt/m/n/10 models_pheno() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu-
 cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--125
+Overfull \hbox (9.07242pt too wide) in paragraph at lines 146--148
 []\T1/txtt/m/n/10 nbLine \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
-p_masses.SetupMasses
+p_masses_exp.SetupMassesExp
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--127
+Overfull \hbox (3.82243pt too wide) in paragraph at lines 148--150
 []\T1/txtt/m/n/10 nbNuc \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
-_masses.SetupMasses at-
+_masses_exp.SetupMassesExp
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--131
+Underfull \hbox (badness 10000) in paragraph at lines 152--154
 []\T1/txtt/m/n/10 nm_cs2 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 []\T1/txtt/m/n/10 nm_den \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 []\T1/txtt/m/n/10 nm_e2a \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
 []\T1/txtt/m/n/10 nm_gap \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 []\T1/txtt/m/n/10 nm_kfn \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
 []\T1/txtt/m/n/10 nm_pre \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 []\T1/txtt/m/n/10 note \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
 EsymLsym.SetupEsymLsym
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 []\T1/txtt/m/n/10 note \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
 ISGMR.SetupISGMR at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
-[]\T1/txtt/m/n/10 note \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-masses.SetupMasses at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 []\T1/txtt/m/n/10 note \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
 rad_ch.SetupRadCh at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+[]\T1/txtt/m/n/10 nucA \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
+rad_ch.SetupRadCh at-
+ []
+
+
+Overfull \hbox (3.82161pt too wide) in paragraph at lines 174--176
+[]\T1/txtt/m/n/10 nucBE \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
+_masses_exp.SetupMassesExp
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+[]\T1/txtt/m/n/10 nucBE_err \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp at-
+ []
+
+[38]
+Overfull \hbox (3.82161pt too wide) in paragraph at lines 178--180
+[]\T1/txtt/m/n/10 nucHT \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
+_masses_exp.SetupMassesExp
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
+[]\T1/txtt/m/n/10 nucN \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
+rad_ch.SetupRadCh at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--207
+[]\T1/txtt/m/n/10 nucRch \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
+p_rad_ch.SetupRadCh
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+[]\T1/txtt/m/n/10 nucRch_err \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.
+setup_rad_ch.SetupRadCh
+ []
+
+
+Overfull \hbox (14.3224pt too wide) in paragraph at lines 209--211
+[]\T1/txtt/m/n/10 nucStbl \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
+up_masses_exp.SetupMassesExp
+ []
+
+
+Overfull \hbox (14.3224pt too wide) in paragraph at lines 211--213
+[]\T1/txtt/m/n/10 nucSymb \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
+up_masses_exp.SetupMassesExp
+ []
+
+
+Overfull \hbox (14.3224pt too wide) in paragraph at lines 215--217
+[]\T1/txtt/m/n/10 nucYear \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.set
+up_masses_exp.SetupMassesExp
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
+[]\T1/txtt/m/n/10 nucZ \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
+rad_ch.SetupRadCh at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 []\T1/txtt/m/n/10 param \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 []\T1/txtt/m/n/10 params_pheno() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu-
 cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 227--229
+[]\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
+-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--229
+\T1/qtm/m/it/10 apy.setup_eoshic.SetupEOSHIC method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--231
+[]\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
+-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--231
 \T1/qtm/m/it/10 apy.setup_EsymLsym.SetupEsymLsym
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
+Underfull \hbox (badness 10000) in paragraph at lines 231--233
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
+Underfull \hbox (badness 10000) in paragraph at lines 231--233
 \T1/qtm/m/it/10 apy.setup_ISGMR.SetupISGMR method\T1/qtm/m/n/10 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
-\T1/qtm/m/it/10 apy.setup_masses.SetupMasses method\T1/qtm/m/n/10 ),
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp
  []
 
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
 \T1/qtm/m/it/10 apy.setup_masses_theory.SetupMassesTheory
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 239--241
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 239--241
 \T1/qtm/m/it/10 apy.setup_micro_band.SetupMicroBand
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--186
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
 []\T1/txtt/m/n/10 print_outputs() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat
 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--186
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
 \T1/qtm/m/it/10 apy.setup_rad_ch.SetupRadCh method\T1/qtm/m/n/10 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--191
-[]\T1/txtt/m/n/10 R_ch \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-rad_ch.SetupRadCh at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--195
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
 []\T1/txtt/m/n/10 R_unit \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_rad_ch.SetupRadCh
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
+[]\T1/txtt/m/n/10 RadCh_isotopes() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-da
+t-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
+\T1/qtm/m/it/10 apy.setup_rad_ch.SetupRadCh method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 []\T1/txtt/m/n/10 ref \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_I
 SGMR.SetupISGMR at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 255--257
 []\T1/txtt/m/n/10 ref \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_m
-asses.SetupMasses at-
+asses_exp.SetupMassesExp
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
-[]\T1/txtt/m/n/10 select() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.se
-tup_masses.SetupMasses
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
+[]\T1/txtt/m/n/10 select() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--208
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
 []\T1/txtt/m/n/10 select_year() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--208
-\T1/qtm/m/it/10 apy.setup_masses.SetupMasses method\T1/qtm/m/n/10 ),
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
+\T1/qtm/m/it/10 apy.setup_masses_exp.SetupMassesExp
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
 []\T1/txtt/m/n/10 SetupEsymLsym \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in nu-cle
 -ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--213
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
+[]\T1/txtt/m/n/10 SetupMassesExp \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in nu-cl
+e-ar-dat-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
 []\T1/txtt/m/n/10 SetupMassesTheory \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in nu
 -cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--216
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 []\T1/txtt/m/n/10 SetupMicroBand \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in nu-cl
 e-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
 []\T1/txtt/m/n/10 sm_cs2 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
 []\T1/txtt/m/n/10 sm_den \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--224
+Underfull \hbox (badness 10000) in paragraph at lines 284--286
 []\T1/txtt/m/n/10 sm_e2a \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--226
+Underfull \hbox (badness 10000) in paragraph at lines 286--288
 []\T1/txtt/m/n/10 sm_gap \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 []\T1/txtt/m/n/10 sm_kf \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--229
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
 []\T1/txtt/m/n/10 sm_kfn \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--231
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
 []\T1/txtt/m/n/10 sm_pre \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setu
 p_pheno.SetupPheno at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
-[]\T1/txtt/m/n/10 stbl \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-masses.SetupMasses at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
-[]\T1/txtt/m/n/10 symb \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-masses.SetupMasses at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
-[]\T1/txtt/m/n/10 symb \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-rad_ch.SetupRadCh at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 []\T1/txtt/m/n/10 table \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup
 _ISGMR.SetupISGMR
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
 []\T1/txtt/m/n/10 tables_isgmr() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu-
 cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
-[]\T1/txtt/m/n/10 tables_masses() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu
--cle-ar-dat-
+Underfull \hbox (badness 10000) in paragraph at lines 298--300
+[]\T1/txtt/m/n/10 tables_masses_exp() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ul
+e nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--242
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
 []\T1/txtt/m/n/10 tables_masses_theory() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod
 -ule nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
+Underfull \hbox (badness 10000) in paragraph at lines 302--304
 []\T1/txtt/m/n/10 tables_rad_ch() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule nu
 -cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--249
-[]\T1/txtt/m/n/10 versions_masses() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-ule 
-nu-cle-ar-dat-
+Underfull \hbox (badness 10000) in paragraph at lines 307--309
+[]\T1/txtt/m/n/10 versions_masses_exp() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 in mod-
+ule nu-cle-ar-dat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--253
-[]\T1/txtt/m/n/10 year \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-masses.SetupMasses at-
+Underfull \hbox (badness 10000) in paragraph at lines 313--315
+[]\T1/txtt/m/n/10 xn_bound \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.se
+tup_crust.SetupCrust at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-[]\T1/txtt/m/n/10 Zmax \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.setup_
-masses.SetupMasses at-
+Underfull \hbox (badness 7851) in paragraph at lines 316--318
+[]\T1/txtt/m/n/10 xpn_bound \T1/qtm/m/n/10 (\T1/qtm/m/it/10 nu-cle-ar-dat-apy.s
+etup_crust.SetupCrust at-
  []
 
-[33]) (./nucleardatapy.aux)
+[40]) (./nucleardatapy.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `nucleardatapy.out' has not changed.
-(rerunfilecheck)             Checksum: 7265FDAA02EA8EF9967BB8FDBE6F02D1;2824.
+(rerunfilecheck)             Checksum: 4CABDBACE1A62F6166F8AAD7E2D1E7E7;3055.
  ) 
 Here is how much of TeX's memory you used:
- 15466 strings out of 476076
- 253312 string characters out of 5792957
- 1946187 words of memory out of 5000000
- 37008 multiletter control sequences out of 15000+600000
+ 15625 strings out of 476076
+ 258903 string characters out of 5792957
+ 1944187 words of memory out of 5000000
+ 37118 multiletter control sequences out of 15000+600000
  613045 words of font info for 83 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 72i,12n,79p,3770b,711s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,3770b,816s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/local/share/texmf-texlive/fonts/type1/public/tex-gyre/qhvb.pfb></opt/lo
 cal/share/texmf-texlive/fonts/type1/public/tex-gyre/qhvbi.pfb></opt/local/share
 /texmf-texlive/fonts/type1/public/tex-gyre/qhvr.pfb></opt/local/share/texmf-tex
@@ -1534,10 +1758,10 @@ ts/t1xbtt.pfb></opt/local/share/texmf-texlive/fonts/type1/public/txfonts/t1xtt.
 pfb></opt/local/share/texmf-texlive/fonts/type1/public/txfonts/t1xtt.pfb></opt/
 local/share/texmf-texlive/fonts/type1/public/txfonts/tcxtt.pfb></opt/local/shar
 e/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on nucleardatapy.pdf (37 pages, 1120381 bytes).
+Output written on nucleardatapy.pdf (44 pages, 1375230 bytes).
 PDF statistics:
- 702 PDF objects out of 1000 (max. 8388607)
- 600 compressed objects within 6 object streams
- 199 named destinations out of 1000 (max. 500000)
- 311 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 846 PDF objects out of 1000 (max. 8388607)
+ 719 compressed objects within 8 object streams
+ 248 named destinations out of 1000 (max. 500000)
+ 367 words of extra memory for PDF output out of 10000 (max. 10000000)
 

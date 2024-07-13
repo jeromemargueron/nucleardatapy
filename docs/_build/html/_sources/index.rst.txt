@@ -41,11 +41,13 @@ Complement
    source/api/setup_micro
    source/api/setup_micro_band
    source/api/setup_pheno
-   source/api/setup_EsymLsym
-   source/api/setup_masses
+   source/api/setup_eoshic
+   source/api/setup_crust
+   source/api/setup_masses_exp
    source/api/setup_masses_theory
    source/api/setup_rad_ch
    source/api/setup_ISGMR
+   source/api/setup_EsymLsym
 
 
 Indices and tables

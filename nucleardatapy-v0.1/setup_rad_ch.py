@@ -59,17 +59,17 @@ class SetupRadCh():
       if nuda.env.verb: print("table:",table)
       #
       #: Attribute Z (charge of the nucleus).
-      self.Z = []
+      self.nucZ = []
       #: Attribute symb (symbol) of the element, e.g., Fe.
-      self.symb = []
+      self.nucSymb = []
       #: Attribute N (number of neutrons of the nucleus).
-      self.N = []
+      self.nucN = []
       #: Attribute A (mass of the nucleus).
-      self.A = []
+      self.nucA = []
       #: Attribue R_ch (charge radius) in fm.
-      self.R_ch = []
+      self.nucRch = []
       #: Attribue uncertainty in R_ch (charge radius) in fm.
-      self.R_ch_err = []
+      self.nucRch_err = []
       #
       tables, tables_lower = tables_rad_ch()
       #
@@ -97,22 +97,46 @@ class SetupRadCh():
                   continue
                linesplit = line.split(',')
                #print('line.split:',linesplit)
-               self.Z.append(linesplit[0])
-               self.symb.append(linesplit[1])
-               self.N.append(linesplit[2])
-               self.A.append(linesplit[3])
-               self.R_ch.append(linesplit[4])
-               self.R_ch_err.append(linesplit[5])
-            #self.Z, self.symb, self.N, self.A, self.R_ch, self.R_ch_err = \
-               #np.loadtxt( file_in, usecols=(0,1,2,3,4,5), delimiter=',', comments='#', unpack = True )
-            #self.Z = np.array( self.Z, dtype=int )
-            #self.N = np.array( self.N, dtype=int )
-            #self.A = np.array( self.A, dtype=int )
-            #
+               self.nucZ.append(linesplit[0])
+               self.nucSymb.append(linesplit[1])
+               self.nucN.append(linesplit[2])
+               self.nucA.append(linesplit[3])
+               self.nucRch.append(linesplit[4])
+               self.nucRch_err.append(linesplit[5])
+               #
          #: Attribute radius unit.
          self.R_unit = 'fm'
          #
          if nuda.env.verb: print("Exit SetupRadCh()")
+   #
+   def RadCh_isotopes(self, Zref = 50 ):
+      """
+      This method provide a list if radii for an isotopic chain defined by Zref.
+
+      """
+      #
+      if nuda.env.verb: print("Enter RadCh_isotopes()")
+      #
+      Nref = []
+      Aref = []
+      Rchref = []
+      Rchref_err = []
+      for k in range(len(self.nucZ)):
+         if int( self.nucZ[k] ) == Zref:
+            Nref.append( self.nucN[k] )
+            Aref.append( self.nucA[k] )
+            Rchref.append( self.nucRch[k] )
+            Rchref_err.append( self.nucRch_err[k] )
+      Nref = np.array( Nref, dtype = int )
+      Aref = np.array( Aref, dtype = int )
+      Rchref = np.array( Rchref, dtype = float )
+      Rchref_err = np.array( Rchref_err, dtype = float )
+      #
+      return Nref, Aref, Rchref, Rchref_err
+      #
+      if nuda.env.verb: print("Exit RadCh_isotopes()")
+
+
    #
    def print_outputs( self ):
       """
@@ -127,10 +151,10 @@ class SetupRadCh():
       print("   ref:",self.ref)
       print("   label:",self.label)
       print("   note:",self.note)
-      if any(self.Z): print(f"   Z: {self.Z}")
-      if any(self.A): print(f"   A: {self.A}")
-      if any(self.R_ch): print(f"   R_ch: {self.R_ch}")
-      if any(self.R_ch_err): print(f"   R_ch_err: {self.R_ch_err}")
+      if any(self.nucZ): print(f"   Z: {self.nucZ}")
+      if any(self.nucA): print(f"   A: {self.nucA}")
+      if any(self.nucRch): print(f"   Rch: {self.nucRch}")
+      if any(self.nucRch_err): print(f"   Rch_err: {self.nucRch_err}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #

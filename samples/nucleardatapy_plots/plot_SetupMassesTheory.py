@@ -36,7 +36,7 @@ def plot_theory_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     axs.set_xlabel(r'N',fontsize='12')
     #axs.set_xlim([0, 200])
     axs.set_ylim([-500, 500])
-    axs.text(60,400,'For Z='+str(Zref),fontsize='12')
+    axs.text(int(Zref),400,'For Z='+str(Zref),fontsize='12')
     #
     # loop over the tables
     #
@@ -44,9 +44,12 @@ def plot_theory_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     for i,table in enumerate( tables ):
         #
-        N_dif, BE_dif = mas.diff( table=table, Zref = Zref)
+        N_diff, A_diff, BE_diff, BE2A_diff = mas.diff( table = table, Zref = Zref )
         #
-        axs.plot( N_dif, BE_dif, linestyle='solid', linewidth=1, label=mas.label)
+        axs.plot( N_diff, BE_diff, linestyle='solid', linewidth=1, label=table )
+    #
+    N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
+    axs.scatter( N_diff, BE_diff, label='AME2020' )
     #
     axs.legend(loc='upper right',fontsize='10')
     #
@@ -144,7 +147,7 @@ def main():
     tables, tables_lower = nuda.tables_masses_theory()
     #tables = [ '1995-DZ' ]
     #
-    plot_theory_isotopes_old( tables, Zref = 50 )
+    plot_theory_isotopes( tables, Zref = 50 )
     #
     plot_theory_isotopes( tables, Zref = 20 )
     #

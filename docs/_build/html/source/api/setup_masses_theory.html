@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="SetupRadCh" href="setup_rad_ch.html" />
-    <link rel="prev" title="SetupMasses" href="setup_masses.html" /> 
+    <link rel="prev" title="SetupMassesExp" href="setup_masses_exp.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,7 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_band.html">SetupMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_pheno.html">SetupPheno</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_EsymLsym.html">SetupEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_masses_exp.html">SetupMassesExp</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_ISGMR.html">SetupISGMR</a></li>
@@ -86,13 +86,45 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses_theory.</span></span><span class="sig-name descname"><span class="pre">SetupMassesTheory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1995-DZ'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses_theory.html#SetupMassesTheory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses_theory.SetupMassesTheory" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the theory nuclear masses.</p>
 <p>This choice is defined in the variable <cite>table</cite>.</p>
-<p><cite>table</cite> can chosen among the following ones:     [ ‘1988-GK’, ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2011-WS3’, ‘2013-HFB26’ ]</p>
+<p><cite>table</cite> can chosen among the following ones:     [ ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2010-HFB21’,’2011-WS3’, ‘2013-HFB26’ ]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘1995-DZ’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses_theory.SetupMassesTheory.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses_theory.html#SetupMassesTheory.diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses_theory.SetupMassesTheory.diff" title="Permalink to this definition"></a></dt>
+<dd><p>Method calculates the difference between a given mass
+model and table_ref.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str.</em>) – Fix the table to analyze.</p></li>
+<li><p><strong>Zref</strong> (<em>int</em><em>, </em><em>optional. Default: 50.</em>) – Fix the isotopic chain to study.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses_theory.SetupMassesTheory.diff_exp">
+<span class="sig-name descname"><span class="pre">diff_exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_exp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_exp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses_theory.html#SetupMassesTheory.diff_exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses_theory.SetupMassesTheory.diff_exp" title="Permalink to this definition"></a></dt>
+<dd><p>Method calculates the difference between a given experimental
+mass (identified by <cite>table_exp</cite> and <cite>version_exp</cite>) and table_ref.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str.</em>) – Fix the table to analyze.</p></li>
+<li><p><strong>Zref</strong> (<em>int</em><em>, </em><em>optional. Default: 50.</em>) – Fix the isotopic chain to study.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_masses_theory.SetupMassesTheory.drip">
 <span class="sig-name descname"><span class="pre">drip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses_theory.html#SetupMassesTheory.drip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses_theory.SetupMassesTheory.drip" title="Permalink to this definition"></a></dt>
@@ -124,7 +156,7 @@
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses_theory.</span></span><span class="sig-name descname"><span class="pre">tables_masses_theory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_masses_theory.html#tables_masses_theory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_masses_theory.tables_masses_theory" title="Permalink to this definition"></a></dt>
 <dd><p>Return a list of the tables available in this toolkit for the masses
 predicted by theoretical approaches and print them all on the prompt.
-These tables are the following ones:     [ ‘1988-GK’, ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2011-WS3’, ‘2013-HFB26’ ]</p>
+These tables are the following ones:     [ ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2010-HFB21’, ‘2011-WS3’, ‘2013-HFB26’ ]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The list of tables.</p>
@@ -142,13 +174,19 @@ These tables are the following ones:     [ ‘1988-GK’, ‘1988-MJ’, ‘1995
 <p><span class="caption-text">Differences between binding energies predicted by different models with respect to the one predicted by Duflo-Zuker for Z = 50.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/plot_SetupMassesTheory_Zref20.png"><img alt="map to buried treasure" src="../../_images/plot_SetupMassesTheory_Zref20.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Differences between binding energies predicted by different models with respect to the one predicted by Duflo-Zuker for Z = 20.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_masses.html" class="btn btn-neutral float-left" title="SetupMasses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_masses_exp.html" class="btn btn-neutral float-left" title="SetupMassesExp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="setup_rad_ch.html" class="btn btn-neutral float-right" title="SetupRadCh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -16,11 +16,13 @@
 \contentsline {section}{\numberline {2.1}SetupMicro}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}SetupMicroBand}{8}{section.2.2}%
 \contentsline {section}{\numberline {2.3}SetupPheno}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}SetupEsymLsym}{18}{section.2.4}%
-\contentsline {section}{\numberline {2.5}SetupMasses}{19}{section.2.5}%
-\contentsline {section}{\numberline {2.6}SetupMassesTheory}{22}{section.2.6}%
-\contentsline {section}{\numberline {2.7}SetupRadCh}{23}{section.2.7}%
-\contentsline {section}{\numberline {2.8}SetupISGMR}{25}{section.2.8}%
-\contentsline {chapter}{\numberline {3}Indices and tables}{27}{chapter.3}%
-\contentsline {chapter}{Python Module Index}{29}{section*.121}%
-\contentsline {chapter}{Index}{31}{section*.122}%
+\contentsline {section}{\numberline {2.4}SetupEOSHIC}{19}{section.2.4}%
+\contentsline {section}{\numberline {2.5}SetupCrust}{20}{section.2.5}%
+\contentsline {section}{\numberline {2.6}SetupMassesExp}{22}{section.2.6}%
+\contentsline {section}{\numberline {2.7}SetupMassesTheory}{26}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupRadCh}{27}{section.2.8}%
+\contentsline {section}{\numberline {2.9}SetupISGMR}{29}{section.2.9}%
+\contentsline {section}{\numberline {2.10}SetupEsymLsym}{31}{section.2.10}%
+\contentsline {chapter}{\numberline {3}Indices and tables}{33}{chapter.3}%
+\contentsline {chapter}{Python Module Index}{35}{section*.153}%
+\contentsline {chapter}{Index}{37}{section*.154}%

@@ -18,7 +18,7 @@ from nucleardatapy.setup_ISGMR  import *
 #
 from nucleardatapy.setup_rad_ch import *
 #
-from nucleardatapy.setup_masses import *
+from nucleardatapy.setup_masses_exp    import *
 from nucleardatapy.setup_masses_theory import *
 #
 from nucleardatapy.setup_crust  import *

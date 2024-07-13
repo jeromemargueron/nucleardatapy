@@ -13,7 +13,7 @@ def models_crust():
     """
     Return a list of the tables available in this toolkit for the experimental masses and
     print them all on the prompt. These tables are the following
-    ones: 'Negele-Vautheron-1971'.
+    ones: 'Negele-Vautheron-1973'.
 
     :return: The list of tables.
     :rtype: list[str].
@@ -21,7 +21,7 @@ def models_crust():
     #
     if nuda.env.verb: print("\nEnter models_crust()")
     #
-    modcrusts = [ 'Negele-Vautherin-1971' ]
+    modcrusts = [ 'Negele-Vautherin-1973' ]
     #
     print('crust models available in the toolkit:',modcrusts)
     modcrusts_lower = [ item.lower() for item in modcrusts ]
@@ -38,14 +38,14 @@ class SetupCrust():
 
     This choice is defined in the variable `crust`.
 
-    `crust` can chosen among the following ones: 'Negele-Vautherin-1971'.
+    `crust` can chosen among the following ones: 'Negele-Vautherin-1973'.
 
-    :param crust: Fix the name of `crust`. Default value: 'Negele-Vautherin-1971'.
+    :param crust: Fix the name of `crust`. Default value: 'Negele-Vautherin-1973'.
     :type crust: str, optional. 
 
     **Attributes:**
     """
-    def __init__(self, modcrust = 'Negele-Vautherin-1971'):
+    def __init__(self, modcrust = 'Negele-Vautherin-1973'):
         #
         if nuda.env.verb: print("Enter SetupCrusts()")
         #
@@ -95,7 +95,7 @@ class SetupCrust():
         #: Attribute the internal energy of the gas component (in MeV).
         self.e2a_int_g = None
         #
-        if modcrust.lower()=='negele-vautherin-1971':
+        if modcrust.lower()=='negele-vautherin-1973':
             #
             file_in = nuda.param.path_data+'crust/Negele-Vautherin.dat'
             if nuda.env.verb: print('Reads file:',file_in)
@@ -105,7 +105,7 @@ class SetupCrust():
             self.linestyle = 'solid'
             self.den_cgs, self.N, self.Z, self.mu_n, self.mu_p, self.den_g, self.xpn_bound, self.e2a_int2, \
                 self.e2a_int_g = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
-            self.den = self.den_cgs * 1.e39 # in fm-3
+            self.den = self.den_cgs * 1.e-39 # in fm-3
             self.N = np.array([ int(item) for item in self.N ])
             self.Z = np.array([ int(item) for item in self.Z ])
             self.A = self.N + self.Z
@@ -133,6 +133,7 @@ class SetupCrust():
        print("   ref:     ",self.ref)
        print("   label:   ",self.label)
        print("   note:    ",self.note)
+       if self.den is not None: print(f"   den: {self.den}")
        if self.A is not None: print(f"   A: {self.A}")
        if self.Z is not None: print(f"   Z: {self.Z}")
        if self.N is not None: print(f"   N: {self.N}")
