@@ -60,7 +60,7 @@
 
 
 \title{nucleardatapy}
-\date{Jul 13, 2024}
+\date{Jul 14, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -972,6 +972,13 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-Skyrme-E-SM}.png}
 \caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id8}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_NEP}.png}
+\caption{Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id9}}\end{figure}
 
 \sphinxstepscope
 
@@ -2201,84 +2208,12 @@ The \sphinxtitleref{table} can chosen among the following ones:    ‘2010\sphin
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{table}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{table}. Default value: ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG’.
+\sphinxstyleliteralstrong{\sphinxupquote{table}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{table}. Default value: ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG’, ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG\sphinxhyphen{}LATEX’.
 
 \end{description}\end{quote}
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
-\index{A (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{A}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.A}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{A}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute A (mass of the nucleus).
-
-\end{fulllineitems}
-
-\index{E\_cen (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_cen}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_cen}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_cen}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute energy centroid.
-
-\end{fulllineitems}
-
-\index{E\_erra (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_erra}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_erra}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_erra}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute list with + and \sphinxhyphen{} uncertainty
-
-\end{fulllineitems}
-
-\index{E\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_errm}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_errm}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute (\sphinxhyphen{}) uncertainty in the energy centroid.
-
-\end{fulllineitems}
-
-\index{E\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_errp}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_errp}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute (+) uncertainty in the energy centroid.
-
-\end{fulllineitems}
-
-\index{E\_errs (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_errs}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_errs}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_errs}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute symmetrised uncertainty (average between + and \sphinxhyphen{} uncertainty).
-
-\end{fulllineitems}
-
 \index{E\_unit (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_unit}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
 
 \begin{fulllineitems}
@@ -2288,18 +2223,6 @@ Attribute symmetrised uncertainty (average between + and \sphinxhyphen{} uncerta
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute energy unit.
-
-\end{fulllineitems}
-
-\index{Z (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.Z}}
-\pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Z}}}
-\pysigstopsignatures
-\sphinxAtStartPar
-Attribute Z (charge of the nucleus).
 
 \end{fulllineitems}
 
@@ -2324,6 +2247,78 @@ Attribute providing the label the data is references for figures.
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the data.
+
+\end{fulllineitems}
+
+\index{nucA (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucA}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucA}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucA}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute A (mass of the nucleus).
+
+\end{fulllineitems}
+
+\index{nucM12Mm1\_cent (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_cent}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_cent}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute energy centroid.
+
+\end{fulllineitems}
+
+\index{nucM12Mm1\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errm}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute (\sphinxhyphen{}) uncertainty in the energy centroid.
+
+\end{fulllineitems}
+
+\index{nucM12Mm1\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errp}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute (+) uncertainty in the energy centroid.
+
+\end{fulllineitems}
+
+\index{nucSymbol (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucSymbol}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucSymbol}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the symbol of the element.
+
+\end{fulllineitems}
+
+\index{nucZ (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucZ}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucZ}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{nucZ}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute Z (charge of the nucleus).
 
 \end{fulllineitems}
 
@@ -2376,7 +2371,7 @@ Attribute table.
 \sphinxAtStartPar
 Return a list of tables available in this toolkit for the ISGMR energy and
 print them all on the prompt. These tables are the following
-ones: ‘2010\sphinxhyphen{}ISGMR\sphinxhyphen{}LI’, ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG’.
+ones: ‘2010\sphinxhyphen{}ISGMR\sphinxhyphen{}LI’, ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG’, ‘2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG\sphinxhyphen{}LATEX’.
 \begin{quote}\begin{description}
 \sphinxlineitem{Returns}
 \sphinxAtStartPar

@@ -15,7 +15,7 @@ def main():
     print(50*'-')
     #
     #models, models_lower = nudy.models_pheno()
-    models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    models = [ 'Skyrme', 'NLRH', 'DDRHF' ]
     #
     for model in models:
         #

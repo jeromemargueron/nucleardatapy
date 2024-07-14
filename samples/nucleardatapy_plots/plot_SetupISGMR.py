@@ -55,10 +55,48 @@ def main():
         #print('A[gmr.Z==40]:',gmr.A[gmr.Z==40])
         #print('E_cen[gmr.Z==40]:',gmr.E_cen[gmr.Z==40])
         #print('E_errp[gmr.Z==40]:',gmr.E_errp[gmr.Z==40])
-        if any(gmr.E_cen[gmr.Z==40]): axs[0].errorbar( gmr.A[gmr.Z==40], gmr.E_cen[gmr.Z==40], yerr=[gmr.E_errp[gmr.Z==40],gmr.E_errm[gmr.Z==40]], fmt='o', label=gmr.label )
-        if any(gmr.E_cen[gmr.Z==50]): axs[1].errorbar( gmr.A[gmr.Z==50], gmr.E_cen[gmr.Z==50], yerr=[gmr.E_errp[gmr.Z==50],gmr.E_errm[gmr.Z==50]], fmt='o', label=gmr.label )
-        if any(gmr.E_cen[gmr.Z==82]): axs[2].errorbar( gmr.A[gmr.Z==82], gmr.E_cen[gmr.Z==82], yerr=[gmr.E_errp[gmr.Z==82],gmr.E_errm[gmr.Z==82]], fmt='o', label=gmr.label )
-        gmr.print_outputs( )
+        print('For Z = 40')
+        if any(gmr.isgmr['40']):
+            for A in gmr.isgmr['40']['A']:
+                if isinstance(gmr.isgmr['40'][str(A)]['M12Mm1']['cent'],float):
+                    nucA = np.array( gmr.isgmr['40']['A'], dtype=float )
+                    cent = np.array( gmr.isgmr['40'][str(A)]['M12Mm1']['cent'], dtype=float )
+                    errp = np.array( gmr.isgmr['40'][str(A)]['M12Mm1']['errp'], dtype=float )
+                    errm = np.array( gmr.isgmr['40'][str(A)]['M12Mm1']['errm'], dtype=float )
+                    print('A:',nucA)
+                    print('cent:',cent)
+                    print('errp:',errp)
+                    print('errm:',errm)
+                    axs[0].errorbar( nucA, cent, yerr=errp, fmt='o', label=gmr.label )
+                    #axs[0].errorbar( nucA, cent, yerr=[ errp, -errm ],fmt='o', label=gmr.label )
+        print('For Z = 50')
+        if any(gmr.isgmr['50']): 
+            for A in gmr.isgmr['50']['A']:
+                if isinstance(gmr.isgmr['50'][str(A)]['M12Mm1']['cent'],float):
+                    nucA = gmr.isgmr['50']['A']
+                    cent = gmr.isgmr['50'][str(A)]['M12Mm1']['cent']
+                    errp = gmr.isgmr['50'][str(A)]['M12Mm1']['errp']
+                    errm = gmr.isgmr['50'][str(A)]['M12Mm1']['errm']
+                    print('A:',nucA)
+                    print('cent:',cent)
+                    print('errp:',errp)
+                    print('errm:',errm)
+                    axs[1].errorbar( nucA, cent, yerr=errp, fmt='o', label=gmr.label )
+                    #axs[1].errorbar( nucA, cent, yerr=[ errp, errm ],fmt='o', label=gmr.label )
+        print('For Z = 82')
+        if any(gmr.isgmr['82']): 
+            for A in gmr.isgmr['82']['A']:
+                if isinstance(gmr.isgmr['82'][str(A)]['M12Mm1']['cent'],float):             
+                    nucA = gmr.isgmr['82']['A']
+                    cent = gmr.isgmr['82'][str(A)]['M12Mm1']['cent']
+                    errp = gmr.isgmr['82'][str(A)]['M12Mm1']['errp']
+                    errm = gmr.isgmr['82'][str(A)]['M12Mm1']['errm']
+                    print('A:',nucA)
+                    print('cent:',cent)
+                    print('errp:',errp)
+                    print('errm:',errm)
+                    axs[2].errorbar( nucA, cent, yerr=errp, fmt='o', label=gmr.label )
+                    #axs[2].errorbar( nucA, cent, yerr=[ errp, errm ],fmt='o', label=gmr.label )
     #
     axs[0].legend(loc='upper right',fontsize='xx-small')
     #

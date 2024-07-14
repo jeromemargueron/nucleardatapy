@@ -58,3 +58,9 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 	:alt: map to buried treasure
 
 	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.	
+
+.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_NEP.png
+	:scale: 70 %
+	:alt: map to buried treasure
+
+	Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.	

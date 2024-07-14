@@ -15,13 +15,15 @@ def main():
     print(50*'-')
     #
     #models, models_lower = nudy.models_pheno()
-    models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models = [ 'Skyrme', 'NLRH', 'DDRHF' ]
+    models = [ 'Skyrme' ]
     #
     for model in models:
         #
-        params, params_lower = nuda.params_pheno( model = model )
+        #params, params_lower = nuda.params_pheno( model = model )
         #params = [ 'SLy5' ]
         #params = [ 'ABC' ]
+        params = [ 'BSK14' ]
         #
         for param in params:
             #

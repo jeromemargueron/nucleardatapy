@@ -5,40 +5,39 @@
 \let\spxextra \sphinxstyleindexextra
 
   \bigletter A
-  \item \spxentry{A}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
-  \item \spxentry{A}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{29}
+  \item \spxentry{A}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{alpha}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
 
   \indexspace
   \bigletter C
   \item \spxentry{constraint}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
   \item \spxentry{constraints\_EOSHIC()}\spxextra{in module nucleardatapy.setup\_eoshic}, 
-		\hyperpage{19}
+		\hyperpage{20}
   \item \spxentry{constraints\_EsymLsym()}\spxextra{in module nucleardatapy.setup\_EsymLsym}, 
-		\hyperpage{31}
+		\hyperpage{32}
 
   \indexspace
   \bigletter D
-  \item \spxentry{den}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
+  \item \spxentry{den}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{den}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}, 
 		\hyperpage{8}
   \item \spxentry{den\_cgs}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, 
-		\hyperpage{20}
+		\hyperpage{21}
   \item \spxentry{den\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{diff()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}, 
 		\hyperpage{26}
   \item \spxentry{diff\_exp()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}, 
 		\hyperpage{26}
   \item \spxentry{dist\_nbNuc}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{22}
+		\hyperpage{23}
   \item \spxentry{dist\_year}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{22}
+		\hyperpage{23}
   \item \spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}, 
-		\hyperpage{22}
+		\hyperpage{23}
   \item \spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}, 
-		\hyperpage{26}
+		\hyperpage{27}
 
   \indexspace
   \bigletter E
@@ -50,17 +49,8 @@
 		\hyperpage{21}
   \item \spxentry{e2a\_rm}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, 
 		\hyperpage{21}
-  \item \spxentry{E\_cen}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{29}
-  \item \spxentry{E\_erra}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
-		\hyperpage{29}
-  \item \spxentry{E\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
-		\hyperpage{29}
-  \item \spxentry{E\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
-		\hyperpage{29}
-  \item \spxentry{E\_errs}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
-		\hyperpage{29}
   \item \spxentry{E\_unit}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
-		\hyperpage{29}
+		\hyperpage{30}
   \item \spxentry{Esym}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
 		\hyperpage{31}
   \item \spxentry{esym\_den}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, 
@@ -86,9 +76,9 @@
   \indexspace
   \bigletter I
   \item \spxentry{init\_self()}\spxextra{nucleardatapy.setup\_eoshic.SetupEOSHIC method}, 
-		\hyperpage{19}
+		\hyperpage{20}
   \item \spxentry{init\_self()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}, 
-		\hyperpage{26}
+		\hyperpage{27}
   \item \spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro.SetupMicro method}, 
 		\hyperpage{7}
   \item \spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand method}, 
@@ -97,13 +87,13 @@
   \indexspace
   \bigletter L
   \item \spxentry{label}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
   \item \spxentry{label}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{label}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
 		\hyperpage{23}
   \item \spxentry{label}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, \hyperpage{13}
   \item \spxentry{label}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, 
-		\hyperpage{27}
+		\hyperpage{28}
   \item \spxentry{Lsym}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
 		\hyperpage{31}
   \item \spxentry{Lsym\_err}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
@@ -111,7 +101,7 @@
   \item \spxentry{Lsym\_max}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
 		\hyperpage{31}
   \item \spxentry{Lsym\_min}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
 
   \indexspace
   \bigletter M
@@ -121,28 +111,28 @@
   \item \spxentry{model}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, \hyperpage{13}
   \item \spxentry{models}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}, 
 		\hyperpage{11}
-  \item \spxentry{models\_crust()}\spxextra{in module nucleardatapy.setup\_crust}, \hyperpage{21}
+  \item \spxentry{models\_crust()}\spxextra{in module nucleardatapy.setup\_crust}, \hyperpage{22}
   \item \spxentry{models\_micro()}\spxextra{in module nucleardatapy.setup\_micro}, \hyperpage{7}
   \item \spxentry{models\_pheno()}\spxextra{in module nucleardatapy.setup\_pheno}, \hyperpage{14}
   \item \spxentry{module}
     \subitem \spxentry{nucleardatapy}, \hyperpage{4}
-    \subitem \spxentry{nucleardatapy.setup\_crust}, \hyperpage{20}
-    \subitem \spxentry{nucleardatapy.setup\_eoshic}, \hyperpage{19}
+    \subitem \spxentry{nucleardatapy.setup\_crust}, \hyperpage{21}
+    \subitem \spxentry{nucleardatapy.setup\_eoshic}, \hyperpage{20}
     \subitem \spxentry{nucleardatapy.setup\_EsymLsym}, \hyperpage{31}
-    \subitem \spxentry{nucleardatapy.setup\_ISGMR}, \hyperpage{29}
-    \subitem \spxentry{nucleardatapy.setup\_masses\_exp}, \hyperpage{22}
+    \subitem \spxentry{nucleardatapy.setup\_ISGMR}, \hyperpage{30}
+    \subitem \spxentry{nucleardatapy.setup\_masses\_exp}, \hyperpage{23}
     \subitem \spxentry{nucleardatapy.setup\_masses\_theory}, \hyperpage{26}
     \subitem \spxentry{nucleardatapy.setup\_micro}, \hyperpage{7}
     \subitem \spxentry{nucleardatapy.setup\_micro\_band}, \hyperpage{8}
     \subitem \spxentry{nucleardatapy.setup\_pheno}, \hyperpage{11}
-    \subitem \spxentry{nucleardatapy.setup\_rad\_ch}, \hyperpage{27}
+    \subitem \spxentry{nucleardatapy.setup\_rad\_ch}, \hyperpage{28}
   \item \spxentry{mu\_n}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{mu\_p}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
 
   \indexspace
   \bigletter N
-  \item \spxentry{N}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
-  \item \spxentry{N\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
+  \item \spxentry{N}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
+  \item \spxentry{N\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{nbLine}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
 		\hyperpage{23}
   \item \spxentry{nbNuc}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
@@ -162,33 +152,34 @@
   \item \spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, 
 		\hyperpage{14}
   \item \spxentry{note}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
   \item \spxentry{note}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{note}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
 		\hyperpage{23}
   \item \spxentry{note}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, \hyperpage{14}
-  \item \spxentry{note}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{27}
+  \item \spxentry{note}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{28}
+  \item \spxentry{nucA}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{nucA}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
 		\hyperpage{23}
-  \item \spxentry{nucA}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{27}
+  \item \spxentry{nucA}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{28}
   \item \spxentry{nucBE}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucBE\_err}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucHT}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucleardatapy}
     \subitem \spxentry{module}, \hyperpage{4}
   \item \spxentry{nucleardatapy.setup\_crust}
-    \subitem \spxentry{module}, \hyperpage{20}
+    \subitem \spxentry{module}, \hyperpage{21}
   \item \spxentry{nucleardatapy.setup\_eoshic}
-    \subitem \spxentry{module}, \hyperpage{19}
+    \subitem \spxentry{module}, \hyperpage{20}
   \item \spxentry{nucleardatapy.setup\_EsymLsym}
     \subitem \spxentry{module}, \hyperpage{31}
   \item \spxentry{nucleardatapy.setup\_ISGMR}
-    \subitem \spxentry{module}, \hyperpage{29}
+    \subitem \spxentry{module}, \hyperpage{30}
   \item \spxentry{nucleardatapy.setup\_masses\_exp}
-    \subitem \spxentry{module}, \hyperpage{22}
+    \subitem \spxentry{module}, \hyperpage{23}
   \item \spxentry{nucleardatapy.setup\_masses\_theory}
     \subitem \spxentry{module}, \hyperpage{26}
   \item \spxentry{nucleardatapy.setup\_micro}
@@ -198,25 +189,34 @@
   \item \spxentry{nucleardatapy.setup\_pheno}
     \subitem \spxentry{module}, \hyperpage{11}
   \item \spxentry{nucleardatapy.setup\_rad\_ch}
-    \subitem \spxentry{module}, \hyperpage{27}
+    \subitem \spxentry{module}, \hyperpage{28}
+  \item \spxentry{nucM12Mm1\_cent}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
+		\hyperpage{30}
+  \item \spxentry{nucM12Mm1\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
+		\hyperpage{30}
+  \item \spxentry{nucM12Mm1\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
+		\hyperpage{30}
   \item \spxentry{nucN}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucN}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{28}
   \item \spxentry{nucRch}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, 
 		\hyperpage{28}
   \item \spxentry{nucRch\_err}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, 
-		\hyperpage{28}
+		\hyperpage{29}
   \item \spxentry{nucStbl}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucSymb}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{nucSymb}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, 
-		\hyperpage{28}
+		\hyperpage{29}
+  \item \spxentry{nucSymbol}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, 
+		\hyperpage{30}
   \item \spxentry{nucYear}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
+  \item \spxentry{nucZ}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{nucZ}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
-  \item \spxentry{nucZ}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{28}
+		\hyperpage{24}
+  \item \spxentry{nucZ}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{29}
 
   \indexspace
   \bigletter P
@@ -225,15 +225,15 @@
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_crust.SetupCrust method}, 
 		\hyperpage{21}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_eoshic.SetupEOSHIC method}, 
-		\hyperpage{19}
+		\hyperpage{20}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym method}, 
-		\hyperpage{31}
+		\hyperpage{32}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR method}, 
 		\hyperpage{30}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}, 
-		\hyperpage{26}
+		\hyperpage{27}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro.SetupMicro method}, 
 		\hyperpage{7}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand method}, 
@@ -241,42 +241,42 @@
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_pheno.SetupPheno method}, 
 		\hyperpage{14}
   \item \spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}, 
-		\hyperpage{28}
+		\hyperpage{29}
 
   \indexspace
   \bigletter R
   \item \spxentry{R\_unit}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, 
-		\hyperpage{27}
+		\hyperpage{28}
   \item \spxentry{RadCh\_isotopes()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}, 
-		\hyperpage{27}
+		\hyperpage{28}
   \item \spxentry{ref}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}, 
-		\hyperpage{31}
+		\hyperpage{32}
   \item \spxentry{ref}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{ref}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{ref}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, \hyperpage{14}
-  \item \spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{28}
-  \item \spxentry{RWS}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
+  \item \spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}, \hyperpage{29}
+  \item \spxentry{RWS}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
 
   \indexspace
   \bigletter S
   \item \spxentry{select()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}, 
-		\hyperpage{23}
+		\hyperpage{24}
   \item \spxentry{select\_year()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}, 
 		\hyperpage{24}
-  \item \spxentry{SetupCrust}\spxextra{class in nucleardatapy.setup\_crust}, \hyperpage{20}
-  \item \spxentry{SetupEOSHIC}\spxextra{class in nucleardatapy.setup\_eoshic}, \hyperpage{19}
+  \item \spxentry{SetupCrust}\spxextra{class in nucleardatapy.setup\_crust}, \hyperpage{21}
+  \item \spxentry{SetupEOSHIC}\spxextra{class in nucleardatapy.setup\_eoshic}, \hyperpage{20}
   \item \spxentry{SetupEsymLsym}\spxextra{class in nucleardatapy.setup\_EsymLsym}, \hyperpage{31}
-  \item \spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}, \hyperpage{29}
+  \item \spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}, \hyperpage{30}
   \item \spxentry{SetupMassesExp}\spxextra{class in nucleardatapy.setup\_masses\_exp}, 
-		\hyperpage{22}
+		\hyperpage{23}
   \item \spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}, 
 		\hyperpage{26}
   \item \spxentry{SetupMicro}\spxextra{class in nucleardatapy.setup\_micro}, \hyperpage{7}
   \item \spxentry{SetupMicroBand}\spxextra{class in nucleardatapy.setup\_micro\_band}, 
 		\hyperpage{8}
   \item \spxentry{SetupPheno}\spxextra{class in nucleardatapy.setup\_pheno}, \hyperpage{11}
-  \item \spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}, \hyperpage{27}
+  \item \spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}, \hyperpage{28}
   \item \spxentry{sm\_cs2}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, 
 		\hyperpage{14}
   \item \spxentry{sm\_den}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}, 
@@ -296,31 +296,30 @@
   \item \spxentry{table}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
   \item \spxentry{tables\_isgmr()}\spxextra{in module nucleardatapy.setup\_ISGMR}, \hyperpage{30}
   \item \spxentry{tables\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}, 
-		\hyperpage{24}
+		\hyperpage{25}
   \item \spxentry{tables\_masses\_theory()}\spxextra{in module nucleardatapy.setup\_masses\_theory}, 
-		\hyperpage{26}
+		\hyperpage{27}
   \item \spxentry{tables\_rad\_ch()}\spxextra{in module nucleardatapy.setup\_rad\_ch}, 
-		\hyperpage{28}
+		\hyperpage{29}
 
   \indexspace
   \bigletter V
   \item \spxentry{versions\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}, 
-		\hyperpage{24}
+		\hyperpage{25}
 
   \indexspace
   \bigletter X
   \item \spxentry{xn}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{xn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, 
-		\hyperpage{21}
-  \item \spxentry{xp}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
+		\hyperpage{22}
+  \item \spxentry{xp}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{22}
   \item \spxentry{xpn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, 
-		\hyperpage{21}
+		\hyperpage{22}
 
   \indexspace
   \bigletter Z
-  \item \spxentry{Z}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{20}
-  \item \spxentry{Z}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}, \hyperpage{30}
+  \item \spxentry{Z}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}, \hyperpage{21}
   \item \spxentry{Zmax}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}, 
-		\hyperpage{22}
+		\hyperpage{23}
 
 \end{sphinxtheindex}
