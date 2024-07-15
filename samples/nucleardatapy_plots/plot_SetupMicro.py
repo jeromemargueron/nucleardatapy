@@ -79,9 +79,9 @@ def plotMicro_e2a( pname, group, models, band ):
         axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
         axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     #
-    #axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
-    if group not in 'BHF':
-        axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
+    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
+    #if group not in 'BHF':
+    #    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     #
     plt.savefig(pname)
     plt.close()

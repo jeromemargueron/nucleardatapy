@@ -162,8 +162,10 @@ class SetupPheno():
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/Skyrme/'+param+'-SM.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/Skyrme/'+param+'-NM.dat')
+            file_in3 = os.path.join(nuda.param.path_data,'eos/pheno/SkyrmeNEP.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
+            if nuda.env.verb: print('Reads file2:',file_in3)
             #: Attribute providing the full reference to the paper to be citted.
             self.ref = ''
             #: Attribute providing the label the data is references for figures.
@@ -172,6 +174,9 @@ class SetupPheno():
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
             self.esym_kf = self.sm_kf
@@ -179,6 +184,15 @@ class SetupPheno():
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
             self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
+            #
+            if param in name:
+                self.nep = True
+                ind = np.where(name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+            else:
+                self.nep = False
             #
 #        elif model.lower() == 'gogny':
             #
@@ -188,13 +202,19 @@ class SetupPheno():
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/nlrh/'+param+'-SM.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/nlrh/'+param+'-NM.dat')
+            file_in3 = os.path.join(nuda.param.path_data,'eos/pheno/nlrhNEP.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
+            if nuda.env.verb: print('Reads file3:',file_in3)
             self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            ind = np.where(name == param )
             self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
             self.esym_kf = self.sm_kf
@@ -203,19 +223,32 @@ class SetupPheno():
             cs_nm_e2a = CubicSpline( x, y )
             self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
-        elif model.lower() == 'ddrh':
+            if param in name:
+                self.nep = True
+                ind = np.where(name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
+            else:
+                self.nep = False
             #
-#            pass
+        elif model.lower() == 'ddrh':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/ddrh/'+param+'-SM.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/ddrh/'+param+'-NM.dat')
+            file_in3 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhNEP.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
+            if nuda.env.verb: print('Reads file3:',file_in3)
             self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            ind = np.where(name == param )
             self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
             self.esym_kf = self.sm_kf
@@ -224,18 +257,32 @@ class SetupPheno():
             cs_nm_e2a = CubicSpline( x, y )
             self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
+            if param in name:
+                self.nep = True
+                ind = np.where(name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+            else:
+                self.nep = False
             #
         elif model.lower() == 'ddrhf':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhf/'+param+'-SM.dat')
             file_in2 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhf/'+param+'-NM.dat')
+            file_in3 = os.path.join(nuda.param.path_data,'eos/pheno/ddrhfNEP.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
+            if nuda.env.verb: print('Reads file3:',file_in3)
             self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            ind = np.where(name == param )
             self.sm_kf = self.sm_kfn
             self.esym_den = self.sm_den
             self.esym_kf = self.sm_kf
@@ -244,7 +291,15 @@ class SetupPheno():
             cs_nm_e2a = CubicSpline( x, y )
             self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
-
+            if param in name:
+                self.nep = True
+                ind = np.where(name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+            else:
+                self.nep = False
+            #
         self.den_unit = 'fm$^{-3}$'
         self.kfn_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
@@ -274,6 +329,10 @@ class SetupPheno():
         if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
+        print(' NEP:')
+        print(' sat:',self.Esat,self.nsat,self.Ksat,self.Qsat,self.Zsat)
+        print(' sym:',self.Esym,self.Lsym,self.Ksym,self.Qsym,self.Zsym)
+        print(' ms:',self.msat,self.kappas,self.kappav)
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #

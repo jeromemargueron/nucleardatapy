@@ -19,6 +19,7 @@ def main():
     #
     for table in tables:
         #
+        print('\ntable',table)
         gmr = nuda.SetupISGMR( table = table )
         gmr.print_outputs( )
     #

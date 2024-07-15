@@ -34,6 +34,24 @@
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_den">
+<span class="sig-name descname"><span class="pre">esym_den</span></span></dt>
+<dd><p>Attribute the density for the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_e2a">
+<span class="sig-name descname"><span class="pre">esym_e2a</span></span></dt>
+<dd><p>Attribute the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_kf">
+<span class="sig-name descname"><span class="pre">esym_kf</span></span></dt>
+<dd><p>Attribute the Fermi momentum for the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.label">
 <span class="sig-name descname"><span class="pre">label</span></span></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
@@ -48,37 +66,37 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_cs2">
 <span class="sig-name descname"><span class="pre">nm_cs2</span></span></dt>
-<dd><p>Attribute neutron matter sound speed (c_s/c)^2.</p>
+<dd><p>Attribute the neutron matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_den">
 <span class="sig-name descname"><span class="pre">nm_den</span></span></dt>
-<dd><p>Attribute neutron matter density.</p>
+<dd><p>Attribute the neutron matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_e2a">
 <span class="sig-name descname"><span class="pre">nm_e2a</span></span></dt>
-<dd><p>Attribute neutron matter energy per particle.</p>
+<dd><p>Attribute the neutron matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_gap">
 <span class="sig-name descname"><span class="pre">nm_gap</span></span></dt>
-<dd><p>Attribute neutron matter pairing gap.</p>
+<dd><p>Attribute the neutron matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_kfn">
 <span class="sig-name descname"><span class="pre">nm_kfn</span></span></dt>
-<dd><p>Attribute neutron matter Fermi momentum.</p>
+<dd><p>Attribute the neutron matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_pre">
 <span class="sig-name descname"><span class="pre">nm_pre</span></span></dt>
-<dd><p>Attribute neutron matter pressure.</p>
+<dd><p>Attribute the neutron matter pressure.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -108,37 +126,43 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_cs2">
 <span class="sig-name descname"><span class="pre">sm_cs2</span></span></dt>
-<dd><p>Attribute symmetric matter sound speed (c_s/c)^2.</p>
+<dd><p>Attribute the symmetric matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_den">
 <span class="sig-name descname"><span class="pre">sm_den</span></span></dt>
-<dd><p>Attribute symmetric matter density.</p>
+<dd><p>Attribute the symmetric matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_e2a">
 <span class="sig-name descname"><span class="pre">sm_e2a</span></span></dt>
-<dd><p>Attribute symmetric matter energy per particle.</p>
+<dd><p>Attribute the symmetric matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_gap">
 <span class="sig-name descname"><span class="pre">sm_gap</span></span></dt>
-<dd><p>Attribute symmetric matter pairing gap.</p>
+<dd><p>Attribute the symmetric matter pairing gap.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_kf">
+<span class="sig-name descname"><span class="pre">sm_kf</span></span></dt>
+<dd><p>Attribute the symmetric matter Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_kfn">
 <span class="sig-name descname"><span class="pre">sm_kfn</span></span></dt>
-<dd><p>Attribute symmetric matter Fermi momentum.</p>
+<dd><p>Attribute the symmetric matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_pre">
 <span class="sig-name descname"><span class="pre">sm_pre</span></span></dt>
-<dd><p>Attribute symmetric matter pressure.</p>
+<dd><p>Attribute the symmetric matter pressure.</p>
 </dd></dl>
 
 </dd></dl>
@@ -177,51 +201,57 @@ this toolkit for a given model and print them all on the prompt.</p>
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupPheno.py</p>
 <figure class="align-default" id="id1">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-ENM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-E-NM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-ESM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-E-SM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-ENM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-E-NM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-ESM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-E-SM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-ENM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-E-NM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-ESM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-E-SM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-ENM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-E-NM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-ESM.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-E-SM.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<img alt="map to buried treasure" src="../../_images/plot_NEP.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 </section>

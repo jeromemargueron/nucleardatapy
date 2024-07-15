@@ -20,7 +20,12 @@ def main():
     for table in tables:
         #
         rch = nuda.SetupRadCh( table = table )
-        rch.print_outputs( )
+        Nref, Aref, Rchref, Rchref_err = rch.RadCh_isotopes( Zref = 50 )
+        print('Nref:',Nref)
+        print('Aref:',Aref)
+        print('Rchref:',Rchref)
+        print('Rchref_err:',Rchref_err)
+        #rch.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupRadCh.py:")

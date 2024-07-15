@@ -19,6 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SetupEsymLsym" href="setup_EsymLsym.html" />
     <link rel="prev" title="SetupRadCh" href="setup_rad_ch.html" /> 
 </head>
 
@@ -45,12 +46,15 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_band.html">SetupBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_micro_band.html">SetupMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_pheno.html">SetupPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_EsymLsym.html">SetupEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eoshic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_masses_exp.html">SetupMassesExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SetupISGMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_EsymLsym.html">SetupEsymLsym</a></li>
 </ul>
 
         </div>
@@ -87,56 +91,14 @@ This choice is defined in the variable <cite>table</cite>.</p>
 <p>The <cite>table</cite> can chosen among the following ones:    ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’.</p>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.A">
-<span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.A" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute A (mass of the nucleus).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_cen">
-<span class="sig-name descname"><span class="pre">E_cen</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_cen" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_erra">
-<span class="sig-name descname"><span class="pre">E_erra</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_erra" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute list with + and - uncertainty</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errm">
-<span class="sig-name descname"><span class="pre">E_errm</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errm" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errp">
-<span class="sig-name descname"><span class="pre">E_errp</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errp" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errs">
-<span class="sig-name descname"><span class="pre">E_errs</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_errs" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetrised uncertainty (average between + and - uncertainty).</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_unit">
 <span class="sig-name descname"><span class="pre">E_unit</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_unit" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute energy unit.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.Z">
-<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.Z" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute Z (charge of the nucleus).</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -149,6 +111,42 @@ This choice is defined in the variable <cite>table</cite>.</p>
 <dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.note">
 <span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.note" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucA">
+<span class="sig-name descname"><span class="pre">nucA</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucA" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_cent</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errm</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errp</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol">
+<span class="sig-name descname"><span class="pre">nucSymbol</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the symbol of the element.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucZ">
+<span class="sig-name descname"><span class="pre">nucZ</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucZ" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -176,7 +174,7 @@ This choice is defined in the variable <cite>table</cite>.</p>
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">tables_isgmr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#tables_isgmr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.tables_isgmr" title="Permalink to this definition"></a></dt>
 <dd><p>Return a list of tables available in this toolkit for the ISGMR energy and
 print them all on the prompt. These tables are the following
-ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The list of tables.</p>
@@ -187,6 +185,12 @@ ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
 </dl>
 </dd></dl>
 
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_SetupISGMR.png"><img alt="map to buried treasure" src="../../_images/plot_SetupISGMR.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">ISGMR energies available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
 </section>
 
 
@@ -194,6 +198,7 @@ ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="setup_rad_ch.html" class="btn btn-neutral float-left" title="SetupRadCh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_EsymLsym.html" class="btn btn-neutral float-right" title="SetupEsymLsym" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

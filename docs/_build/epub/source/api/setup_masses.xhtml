@@ -100,6 +100,7 @@
 <dd class="field-odd"><p><strong>Zmax</strong> (<em>int</em><em>, </em><em>optional. Default: 95.</em>) – Fix the maximum charge for the search of the drip line.</p>
 </dd>
 </dl>
+<p><strong>Attributes:</strong></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -148,10 +149,29 @@
 <li><p><strong>interp</strong> (<em>str</em><em>, </em><em>optional. Default = 'n'.</em>) – If interp=’n’, exclude the interpolated nuclei from the selected ones.         If interp=’y’ consider them in the table, in addition to the others.</p></li>
 <li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
 <li><p><strong>nucleus</strong> (<em>str</em><em>, </em><em>optional. Default 'unstable'.</em>) – ‘unstable’.</p></li>
-<li><p><strong>every</strong> (<em>int</em><em>, </em><em>optional. Default every = 1.</em>) – consider only 1 out of <cite>every</cite> nuclei in the table.</p></li>
 </ul>
 </dd>
 </dl>
+<p>It can be set to ‘stable’, ‘longlive’ (with LT&gt;10 min), ‘shortlive’ (with 10min&gt;LT&gt;1 ns),         ‘veryshortlive’ (with LT&lt; 1ns)
+:param every: consider only 1 out of <cite>every</cite> nuclei in the table.
+:type every: int, optional. Default every = 1.</p>
+<p><strong>Attributes:</strong></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_masses.SetupMasses.select_year">
+<span class="sig-name descname"><span class="pre">select_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1940</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1960</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Method which select some nuclei from the table according to the discovery year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year_min</strong> – </p></li>
+<li><p><strong>year_max</strong> – </p></li>
+<li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -210,9 +230,15 @@ this toolkit for a given model and print them all on the prompt.</p>
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupMasses.py</p>
 <figure class="align-default" id="id1">
-<img alt="map to buried treasure" src="../../_images/plot_SetupMassesAME.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_SetupMasses_AME_2020.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
-<p><span class="caption-text">This figure shows the nuclear chart based on AME 2020 table.</span></p>
+<p><span class="caption-text">The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half-times of nuclei.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMasses_AME_2020_year.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Histogram showing the distribution of nuclei per discovery year, since the first one discovered in 1851.</span></p>
 </figcaption>
 </figure>
 </section>

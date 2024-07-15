@@ -43,11 +43,15 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_band.html">SetupMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eoshic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
 </ul>
 
         </div>
@@ -136,17 +140,17 @@
       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
       <span class="c1">#</span>
       <span class="c1">#: Attribute Z (charge of the nucleus).</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#: Attribute symb (symbol) of the element, e.g., Fe.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">symb</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucSymb</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#: Attribute N (number of neutrons of the nucleus).</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#: Attribute A (mass of the nucleus).</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#: Attribue R_ch (charge radius) in fm.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">R_ch</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucRch</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#: Attribue uncertainty in R_ch (charge radius) in fm.</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">R_ch_err</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucRch_err</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="c1">#</span>
       <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">tables_rad_ch</span><span class="p">()</span>
       <span class="c1">#</span>
@@ -174,22 +178,46 @@
                   <span class="k">continue</span>
                <span class="n">linesplit</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
                <span class="c1">#print(&#39;line.split:&#39;,linesplit)</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">symb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">R_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">R_ch_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
-            <span class="c1">#self.Z, self.symb, self.N, self.A, self.R_ch, self.R_ch_err = \</span>
-               <span class="c1">#np.loadtxt( file_in, usecols=(0,1,2,3,4,5), delimiter=&#39;,&#39;, comments=&#39;#&#39;, unpack = True )</span>
-            <span class="c1">#self.Z = np.array( self.Z, dtype=int )</span>
-            <span class="c1">#self.N = np.array( self.N, dtype=int )</span>
-            <span class="c1">#self.A = np.array( self.A, dtype=int )</span>
-            <span class="c1">#</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucSymb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucRch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+               <span class="bp">self</span><span class="o">.</span><span class="n">nucRch_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linesplit</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+               <span class="c1">#</span>
          <span class="c1">#: Attribute radius unit.</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">R_unit</span> <span class="o">=</span> <span class="s1">&#39;fm&#39;</span>
          <span class="c1">#</span>
          <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupRadCh()&quot;</span><span class="p">)</span>
+   <span class="c1">#</span>
+<div class="viewcode-block" id="SetupRadCh.RadCh_isotopes"><a class="viewcode-back" href="../../source/api/setup_rad_ch.html#nucleardatapy.setup_rad_ch.SetupRadCh.RadCh_isotopes">[docs]</a>   <span class="k">def</span> <span class="nf">RadCh_isotopes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span> <span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This method provide a list if radii for an isotopic chain defined by Zref.</span>
+
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter RadCh_isotopes()&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="n">Nref</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">Aref</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">Rchref</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">Rchref_err</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">)):</span>
+         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span> <span class="o">==</span> <span class="n">Zref</span><span class="p">:</span>
+            <span class="n">Nref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">Aref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">Rchref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucRch</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">Rchref_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucRch_err</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+      <span class="n">Nref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+      <span class="n">Aref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Aref</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+      <span class="n">Rchref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Rchref</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+      <span class="n">Rchref_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Rchref_err</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="k">return</span> <span class="n">Nref</span><span class="p">,</span> <span class="n">Aref</span><span class="p">,</span> <span class="n">Rchref</span><span class="p">,</span> <span class="n">Rchref_err</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit RadCh_isotopes()&quot;</span><span class="p">)</span></div>
+
+
    <span class="c1">#</span>
 <div class="viewcode-block" id="SetupRadCh.print_outputs"><a class="viewcode-back" href="../../source/api/setup_rad_ch.html#nucleardatapy.setup_rad_ch.SetupRadCh.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
@@ -204,10 +232,10 @@
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R_ch</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   R_ch: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">R_ch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R_ch_err</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   R_ch_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">R_ch_err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucRch</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Rch: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucRch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucRch_err</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Rch_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucRch_err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
       <span class="c1">#</span>
       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
       <span class="c1">#</span>

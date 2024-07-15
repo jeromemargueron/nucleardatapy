@@ -92,19 +92,19 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
-    pname = 'figs/plot_SetupMicro_band_NM.png'
+    pname = 'figs/plot_SetupMicroBand_NM.png'
     plotMicro_band( pname, models, den=den, matter='NM' )
     #
     # plot E/A + band for SM
     #
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    pname = 'figs/plot_SetupMicro_band_SM.png'
+    pname = 'figs/plot_SetupMicroBand_SM.png'
     plotMicro_band( pname, models, den=den, matter='SM' )
     #
     # plot Esym + band for SM
     #
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    pname = 'figs/plot_SetupMicro_band_Esym.png'
+    pname = 'figs/plot_SetupMicroBand_Esym.png'
     plotMicro_band( pname, models, den=den, matter='ESYM' )
     #
     print(50*'-')

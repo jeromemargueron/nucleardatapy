@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SetupEsymLsym" href="setup_EsymLsym.html" />
-    <link rel="prev" title="SetupBand" href="setup_band.html" /> 
+    <link rel="next" title="SetupEOSHIC" href="setup_eoshic.html" />
+    <link rel="prev" title="SetupMicroBand" href="setup_micro_band.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,12 +46,15 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_band.html">SetupBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_micro_band.html">SetupMicroBand</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SetupPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_EsymLsym.html">SetupEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eoshic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_masses_exp.html">SetupMassesExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_ISGMR.html">SetupISGMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_EsymLsym.html">SetupEsymLsym</a></li>
 </ul>
 
         </div>
@@ -98,6 +101,24 @@
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_den">
+<span class="sig-name descname"><span class="pre">esym_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.esym_den" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the density for the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_e2a">
+<span class="sig-name descname"><span class="pre">esym_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.esym_e2a" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.esym_kf">
+<span class="sig-name descname"><span class="pre">esym_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.esym_kf" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the Fermi momentum for the symmetry energy.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.label">
 <span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.label" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
@@ -112,37 +133,37 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_cs2">
 <span class="sig-name descname"><span class="pre">nm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_cs2" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter sound speed (c_s/c)^2.</p>
+<dd><p>Attribute the neutron matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_den">
 <span class="sig-name descname"><span class="pre">nm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_den" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter density.</p>
+<dd><p>Attribute the neutron matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_e2a">
 <span class="sig-name descname"><span class="pre">nm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_e2a" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter energy per particle.</p>
+<dd><p>Attribute the neutron matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_gap">
 <span class="sig-name descname"><span class="pre">nm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_gap" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter pairing gap.</p>
+<dd><p>Attribute the neutron matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_kfn">
 <span class="sig-name descname"><span class="pre">nm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_kfn" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter Fermi momentum.</p>
+<dd><p>Attribute the neutron matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.nm_pre">
 <span class="sig-name descname"><span class="pre">nm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.nm_pre" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute neutron matter pressure.</p>
+<dd><p>Attribute the neutron matter pressure.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -172,37 +193,43 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_cs2">
 <span class="sig-name descname"><span class="pre">sm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_cs2" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter sound speed (c_s/c)^2.</p>
+<dd><p>Attribute the symmetric matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_den">
 <span class="sig-name descname"><span class="pre">sm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_den" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter density.</p>
+<dd><p>Attribute the symmetric matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_e2a">
 <span class="sig-name descname"><span class="pre">sm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_e2a" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter energy per particle.</p>
+<dd><p>Attribute the symmetric matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_gap">
 <span class="sig-name descname"><span class="pre">sm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_gap" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter pairing gap.</p>
+<dd><p>Attribute the symmetric matter pairing gap.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_kf">
+<span class="sig-name descname"><span class="pre">sm_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_kf" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the symmetric matter Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_kfn">
 <span class="sig-name descname"><span class="pre">sm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_kfn" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter Fermi momentum.</p>
+<dd><p>Attribute the symmetric matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno.SetupPheno.sm_pre">
 <span class="sig-name descname"><span class="pre">sm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno.SetupPheno.sm_pre" title="Permalink to this definition"></a></dt>
-<dd><p>Attribute symmetric matter pressure.</p>
+<dd><p>Attribute the symmetric matter pressure.</p>
 </dd></dl>
 
 </dd></dl>
@@ -241,51 +268,57 @@ this toolkit for a given model and print them all on the prompt.</p>
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupPheno.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-NLRH-ENM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-ENM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-NLRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-NLRH-ESM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-ESM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-NLRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-NLRH-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRH-ENM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-ENM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRH-ESM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-ESM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRH-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRHF-ENM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-ENM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRHF-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRHF-ESM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-ESM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-DDRHF-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-DDRHF-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-Skyrme-ENM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-ENM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-Skyrme-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-Skyrme-ESM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-ESM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPheno-Skyrme-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPheno-Skyrme-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<a class="reference internal image-reference" href="../../_images/plot_NEP.png"><img alt="map to buried treasure" src="../../_images/plot_NEP.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -294,8 +327,8 @@ this toolkit for a given model and print them all on the prompt.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_band.html" class="btn btn-neutral float-left" title="SetupBand" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="setup_EsymLsym.html" class="btn btn-neutral float-right" title="SetupEsymLsym" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_micro_band.html" class="btn btn-neutral float-left" title="SetupMicroBand" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_eoshic.html" class="btn btn-neutral float-right" title="SetupEOSHIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
