@@ -46,7 +46,6 @@ def APR():
     cs_nm_e2a_err = CubicSpline( x, y_err )
     nm_interp = interp1d(nm_den, nm_e2a, kind="cubic")
     nm_pre = nm_den**2 * cs_nm_e2a( nm_den, 1 )
-    nm_pre_CS = cs_nm_e2a(nm_den, 2)
     den_array = np.linspace(0.02, 0.96)
     nm_e2v_fd = nm_interp(den_array) * den_array
     nm_e2a_fd, nm_e2a_fdd = fd.fderiv(den_array, nm_interp(den_array))
@@ -92,9 +91,13 @@ def APR():
     #sm_chempot_err = ( np.array(sm_pre_err) + np.array(sm_e2v_err) ) / np.array(nm_den)
     #
     # Speed of sound calculation
+    x = np.insert( nm_den, 0, 0.0 )
+    y = np.insert( nm_pre, 0, 0.0 )
+    cs_nm_pre_e2a = CubicSpline( x, y )
+    cs2_nm_CS = cs_nm_pre_e2a(nm_den,1)
     nm_chempot_fd = (nm_pre_fd + nm_e2v_fd)/ den_array
     cs2_nm_fd =  nm_e2a_fdd /(nm_chempot_fd + 939)
-    cs2_nm_CS = nm_pre_CS/(nm_chempot + 939)
+    cs2_nm_CS = cs2_nm_CS/(nm_chempot + 939)
     cs2_nm_np = nm_pre_np / (nm_chempot + 939)
 
     plt.plot(nm_den, cs2_nm_CS, label="CS")
