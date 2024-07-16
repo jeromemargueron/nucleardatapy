@@ -15,14 +15,14 @@
 \contentsline {chapter}{\numberline {2}Complement}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}SetupMicro}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}SetupMicroBand}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}SetupPheno}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}SetupEOSHIC}{20}{section.2.4}%
-\contentsline {section}{\numberline {2.5}SetupCrust}{21}{section.2.5}%
+\contentsline {section}{\numberline {2.3}SetupPheno}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}SetupEOSHIC}{15}{section.2.4}%
+\contentsline {section}{\numberline {2.5}SetupCrust}{20}{section.2.5}%
 \contentsline {section}{\numberline {2.6}SetupMassesExp}{23}{section.2.6}%
 \contentsline {section}{\numberline {2.7}SetupMassesTheory}{26}{section.2.7}%
 \contentsline {section}{\numberline {2.8}SetupRadCh}{28}{section.2.8}%
 \contentsline {section}{\numberline {2.9}SetupISGMR}{30}{section.2.9}%
 \contentsline {section}{\numberline {2.10}SetupEsymLsym}{31}{section.2.10}%
 \contentsline {chapter}{\numberline {3}Indices and tables}{35}{chapter.3}%
-\contentsline {chapter}{Python Module Index}{37}{section*.152}%
-\contentsline {chapter}{Index}{39}{section*.153}%
+\contentsline {chapter}{Python Module Index}{37}{section*.153}%
+\contentsline {chapter}{Index}{39}{section*.154}%

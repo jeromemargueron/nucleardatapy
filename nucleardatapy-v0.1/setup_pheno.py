@@ -141,6 +141,10 @@ class SetupPheno():
         self.esym_kf = []
         #: Attribute the symmetry energy.
         self.esym_e2a = []
+        #: Attribute the NEP.
+        self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
+        self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
+        self.msat = None; self.kappas = None; self.pappav = None; 
         #
         models, models_lower = models_pheno( )
         #
@@ -330,9 +334,10 @@ class SetupPheno():
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
         print(' NEP:')
-        print(' sat:',self.Esat,self.nsat,self.Ksat,self.Qsat,self.Zsat)
-        print(' sym:',self.Esym,self.Lsym,self.Ksym,self.Qsym,self.Zsym)
-        print(' ms:',self.msat,self.kappas,self.kappav)
+        if self.Esat is not None:
+            print(' sat:',self.Esat,self.nsat,self.Ksat,self.Qsat,self.Zsat)
+            print(' sym:',self.Esym,self.Lsym,self.Ksym,self.Qsym,self.Zsym)
+            print(' ms:',self.msat,self.kappas,self.kappav)
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #

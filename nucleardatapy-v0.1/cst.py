@@ -22,6 +22,7 @@ one = 1.0
 two = 2.0
 three = 3.0
 four = 4.0
+five = 5.0
 half = 0.5
 third = 1.0/3.0
 twoThird = 2.0/3.0
