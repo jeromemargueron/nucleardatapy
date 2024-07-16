@@ -206,12 +206,11 @@ def plotMicro_nm_gap( pname, models ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2 )
     #
-    #
     axs[0,0].set_ylabel(r'$\Delta$ (MeV)')
     axs[0,0].set_xlim([0, 0.05])
     axs[0,0].set_ylim([0, 2.8])
     #
-    axs[0,1].set_xlim([0, 1.4])
+    axs[0,1].set_xlim([0, 1.6])
     axs[0,1].set_ylim([0, 2.8])
     #
     axs[1,0].set_ylabel(r'$\Delta/E_F$')
@@ -220,20 +219,27 @@ def plotMicro_nm_gap( pname, models ):
     axs[1,0].set_ylim([0, 0.8])
     #
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
-    axs[1,1].set_xlim([0, 1.4])
+    axs[1,1].set_xlim([0, 1.6])
     axs[1,1].set_ylim([0, 0.8])
     #
     for model in models:
         #
         mic = nuda.SetupMicro( model = model )
-        if mic.nm_gap is not None: 
-            axs[0,0].plot( mic.nm_den, mic.nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
-            axs[0,1].plot( mic.nm_kfn, mic.nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
-            axs[1,0].plot( mic.nm_den, mic.nm_gap/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-            axs[1,1].plot( mic.nm_kfn, mic.nm_gap/nuda.eF_n(mic.nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
+        if mic.gap_nm_gap is not None:
+            if mic.gap_err:
+                axs[0,0].errorbar( mic.gap_nm_den, mic.gap_nm_gap, yerr=mic.gap_nm_gap_err, marker=mic.marker, linestyle='none', label=mic.label )
+                axs[0,1].errorbar( mic.gap_nm_kfn, mic.gap_nm_gap, yerr=mic.gap_nm_gap_err, marker=mic.marker, linestyle='none', label=mic.label )
+                axs[1,0].errorbar( mic.gap_nm_den, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), yerr=mic.gap_nm_gap_err/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
+                axs[1,1].errorbar( mic.gap_nm_kfn, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), yerr=mic.gap_nm_gap_err/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
+            else:
+                axs[0,0].plot( mic.gap_nm_den, mic.gap_nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
+                axs[0,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
+                axs[1,0].plot( mic.gap_nm_den, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
+                axs[1,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
         mic.print_outputs( )
+        #
     #
-    axs[0,0].legend(loc='upper right',fontsize='8')
+    axs[1,0].legend(loc='upper right',fontsize='8')
     #
     plt.savefig(pname)
     plt.close()
@@ -276,10 +282,9 @@ def main():
         # NM results
         #
         pname = 'figs/plot_SetupMicro_e2a_NM_'+group+'.png'
-        #
         models2 = []
-        #models2 = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR' ]
         print('For group:',group)
+        #
         for j,model in enumerate(models):
             if group in model and '2BF' not in model:
                 models2.append( model )
@@ -305,6 +310,7 @@ def main():
         #
         models2 = []
         print('For group:',group)
+        #
         for j,model in enumerate(models):
             if group in model and '2BF' not in model and 'NM' not in model:
                 models2.append( model )
@@ -313,7 +319,6 @@ def main():
         print('models2:',models2)
         print('pname:',pname)
         plotMicro_sm_e2a( pname, group, models2, band )
-        #
     #
     print(50*'-')
     print("Exit plot_SetupMicro.py:")

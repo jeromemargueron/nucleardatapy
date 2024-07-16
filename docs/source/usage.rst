@@ -79,6 +79,6 @@ How to obtain microscopic results for APR equation of state:
 
    import nucleardatapy as nuda
 
-   mic = nuda.SetupMicro( model = '1998-AM-APR' )
+   mic = nuda.SetupMicro( model = '1998-VAR-AM-APR' )
 
    mic.print_outputs( )

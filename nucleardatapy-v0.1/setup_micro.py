@@ -26,7 +26,7 @@ def models_micro():
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM', '2024-NLEFT-AM', \
+    '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
     '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -44,7 +44,7 @@ def models_micro():
              '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
              '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
              '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-             '2020-MBPT-AM', '2024-NLEFT-AM', \
+             '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
             '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
             '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -93,7 +93,7 @@ class SetupMicro():
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM', '2024-NLEFT-AM', \
+    '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
     '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14', \
@@ -158,7 +158,6 @@ class SetupMicro():
             y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
             cs_nm_e2a_err = CubicSpline( x, y_err )
             self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
             # pressure in SM
             x = np.insert( self.sm_kfn, 0, 0.0 )
             y = np.insert( self.sm_e2a, 0, 0.0 )
@@ -166,24 +165,18 @@ class SetupMicro():
             y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
             cs_sm_e2a_err = CubicSpline( x, y_err )
             self.sm_pre = np.array( nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_kfn, 1 ) )
-            #self.sm_pre_err = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
             #
             # Symmetry energy
             self.esym_den_min = max( min( self.nm_den), min( self.sm_den) )
             self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
             self.esym_kf_min = nuda.kf( self.esym_den_min )
             self.esym_kf_max = nuda.kf( self.esym_den_max )
-            #print('den_min:',self.den_min,' den_max:',self.den_max)
-            #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
             kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
             self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
-            #print('kf:',self.esym_kf)
-            #print('den:',self.esym_den)
             self.esym_e2a = cs_nm_e2a( 2**nuda.cst.third * self.esym_kf ) - cs_sm_e2a( self.esym_kf )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( 2**nuda.cst.third * self.esym_kf )**2 + \
                 cs_sm_e2a_err( self.esym_kf )**2 )
-            #print('esym:',self.esym_e2a)
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
@@ -252,17 +245,12 @@ class SetupMicro():
             self.esym_den_max = min( max( self.nm_den), max( self.sm_den) )
             self.esym_kf_min = nuda.kf( self.esym_den_min )
             self.esym_kf_max = nuda.kf( self.esym_den_max )
-            #print('den_min:',self.den_min,' den_max:',self.den_max)
-            #print('kf_min:',self.kf_min,' kf_max:',self.kf_max)
             kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
             self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
-            #print('kf:',self.esym_kf)
-            #print('den:',self.esym_den)
             self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( 2**nuda.cst.third * self.esym_kf )**2 + \
                 cs_sm_e2a_err( self.esym_kf )**2 )
-            #print('esym:',self.esym_e2a)
             #
             # chemical potential
             self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
@@ -306,16 +294,14 @@ class SetupMicro():
             self.label = 'BCS-2008'
             self.linestyle = 'dotted'
             #self.marker = None
+            self.gap_err = False
             self.marker = '.'
-            self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
+            self.nm_kfn, self.gap_nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-
-            #self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
-
-            #self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
-            #self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.gap_nm_kfn = self.nm_kfn
+            self.gap_nm_den = self.nm_den
             #
         elif model.lower() == '2008-afdmc-nm':
             #
@@ -326,11 +312,12 @@ class SetupMicro():
             self.label = 'AFDMC-2008'
             self.linestyle = 'solid'
             self.marker = 'D'
-            self.nm_kfn, self.nm_gap, self.nm_chempot, self.nm_effmass \
+            self.nm_kfn, self.gap_nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
-            #self.nm_chempot_err = abs( 0.01 * self.nm_chempot )
+            self.gap_nm_kfn = self.nm_kfn
+            self.gap_nm_den = self.nm_den
             #
             # Deduce the energy from the chemical potential
             #
@@ -392,6 +379,7 @@ class SetupMicro():
             self.linestyle = 'solid'
             self.marker = 'o'
             self.err = True
+            self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -400,8 +388,10 @@ class SetupMicro():
             self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            self.gap_nm_kfn = self.nm_kfn
+            self.gap_nm_den = self.nm_den
+            self.gap_nm_gap     = gap2ef * nuda.eF_n( self.gap_nm_kfn )
+            self.gap_nm_gap_err = gap2ef_err * nuda.eF_n( self.gap_nm_kfn )
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -474,6 +464,7 @@ class SetupMicro():
             self.linestyle = 'solid'
             self.marker = 'v'
             self.err = True
+            self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -482,8 +473,10 @@ class SetupMicro():
             self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.nm_gap     = gap2ef * nuda.eF_n( self.nm_kfn )
-            self.nm_gap_err = gap2ef_err * nuda.eF_n( self.nm_kfn )
+            self.gap_nm_kfn = self.nm_kfn
+            self.gap_nm_den = self.nm_den
+            self.gap_nm_gap     = gap2ef * nuda.eF_n( self.gap_nm_kfn )
+            self.gap_nm_gap_err = gap2ef_err * nuda.eF_n( self.gap_nm_kfn )
             #
             # pressure in NM
             x = np.insert( self.nm_kfn, 0, 0.0 )
@@ -517,6 +510,7 @@ class SetupMicro():
             self.linestyle = 'solid'
             self.marker = 's'
             self.err = True
+            self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -1120,6 +1114,47 @@ class SetupMicro():
             cs_nm_pre = CubicSpline( x, y )
             nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
             #
+        elif model.lower() == '2022-afdmc-nm':
+            #
+            file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2022-AFDMC-NM.csv')
+            file_in2 = os.path.join(nuda.param.path_data,'eos/micro/2022-AFDMC-NM-gap.csv')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Gandolfi, G. Palkanoglou, J. Carlson, A. Gezerlis, K.E. Schmidt, Condensed Matter 7(1) (2022).'
+            self.note = ""
+            self.label = 'AFDMC+corr.-2022'
+            self.linestyle = 'solid'
+            self.marker = 'o'
+            self.linestyle = 'solid'
+            self.every = 1
+            self.err = False
+            self.gap_err = True
+            # read e2a
+            self.nm_kfn, nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
+            self.nm_den     = nuda.den_n( self.nm_kfn )
+            self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
+            # read gap
+            self.gap_nm_kfn, self.gap_nm_gap, self.gap_nm_gap_err = np.loadtxt( file_in2, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
+            self.gap_nm_den     = nuda.den_n( self.gap_nm_kfn )
+            #
+            self.nm_e2v = self.nm_e2a * self.nm_den
+            #self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
+            #
+            # pressure in NM
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
+            #
+            # enthalpy
+            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
+            #
+            # sound speed
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_pre, 0, 0.0 )
+            cs_nm_pre = CubicSpline( x, y )
+            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #
         elif model.lower() == '2024-nleft-am':
             #
             file_in1 = os.path.join(nuda.param.path_data,'eos/micro/2024-NLEFT-SM.dat')
@@ -1556,8 +1591,8 @@ class SetupMicro():
         if self.esym_e2a is not None: print(f"   esym_e2a: {np.round(self.esym_e2a,3)} in {self.e2a_unit}")
         if self.esym_e2a_err is not None: print(f"   esym_e2a_err: {np.round(self.esym_e2a_err,3)} in {self.e2a_unit}")
         #
-        if self.nm_gap is not None: print(f"   nm_gap: {np.round(self.nm_gap,3)} in {self.gap_unit}")
-        if self.nm_gap_err is not None: print(f"   nm_gap_err: {np.round(self.nm_gap_err,3)} in {self.gap_unit}")
+        if self.gap_nm_gap is not None: print(f"   nm_gap: {np.round(self.gap_nm_gap,3)} in {self.gap_unit}")
+        if self.gap_nm_gap_err is not None: print(f"   nm_gap_err: {np.round(self.gap_nm_gap_err,3)} in {self.gap_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
@@ -1668,14 +1703,18 @@ class SetupMicro():
         self.sm_cs2 = None
         #: Attribute the uncertainty in the symmetric matter sound speed.
         self.sm_cs2_err = None
+        #: Attribute the neutron matter Fermi momentum for which the pairing gap is provided.
+        self.gap_nm_kfn = None
+        #: Attribute the neutron matter densities for which the pairing gap is provided.
+        self.gap_nm_den = None
         #: Attribute the neutron matter pairing gap.
-        self.nm_gap = None
+        self.gap_nm_gap = None
         #: Attribute the uncertainty in the neutron matter pairing gap.
-        self.nm_gap_err = None
+        self.gap_nm_gap_err = None
         #: Attribute the symmetric matter pairing gap.
-        self.sm_gap = None
+        self.gap_sm_gap = None
         #: Attribute the uncertainty in the symmetric matter pairing gap.
-        self.sm_gap_err = None
+        self.gap_sm_gap_err = None
         #: Attribute the density array for esym.
         self.esym_den = None
         #: Attribute the maximum of the density.
@@ -1696,6 +1735,8 @@ class SetupMicro():
         self.linestyle = 'solid'
         #: Attribute the plot to discriminate True uncertainties from False ones.
         self.err = False
+        #: Attribute the plot to discriminate True uncertainties from False ones.
+        self.gap_err = False
         #: Attribute the plot label data.
         self.label = ''
         #: Attribute the plot marker.
