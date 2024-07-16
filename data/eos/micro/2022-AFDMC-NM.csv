@@ -1,5 +1,5 @@
 # S. Gandolfi, G. Palkanoglou, J. Carlson, A. Gezerlis, K.E. Schmidt, Condensed Matter 7(1) (2022).
-# kf (fm-1), den (fm-3), gap (MeV)
+# kf (fm-1), e2effg, e2effg_err
 0.1,0.7359,0.0024
 0.2,0.6214,0.0018
 0.3,0.5885,0.0014

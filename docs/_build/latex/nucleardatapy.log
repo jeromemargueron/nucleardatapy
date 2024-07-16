@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2024.6.13)  16 JUL 2024 14:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/MacPorts 2024.70613_0) (preloaded format=pdflatex 2024.6.13)  16 JUL 2024 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -814,25 +814,7 @@ LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 3
 05.
 (/opt/local/share/texmf-texlive/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
-)
-Underfull \hbox (badness 5607) in paragraph at lines 310--312
-\T1/qtm/m/n/10 AM-23BF-BONN', `2024-BHF-AM-23BF-CDBONN', `2024-BHF-AM-23BF-NSC9
-7a', `2024-BHF-AM-
- []
-
-
-Underfull \hbox (badness 5446) in paragraph at lines 366--371
-\T1/qtm/m/n/10 Re-turn a list with the name of the mod-els avail-able in this t
-oolkit and print them all on the
- []
-
-
-Underfull \hbox (badness 5681) in paragraph at lines 366--371
-\T1/qtm/m/n/10 AM-L59', `2019-MBPT-AM-L69', `2020-MBPT-AM', `2024-NLEFT-AM', `2
-024-BHF-AM-2BF-Av8p',
- []
-
-[7{/opt/local/share/texmf-texlive/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
+) [7{/opt/local/share/texmf-texlive/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
 <plot_SetupMicro_e2a_NM_VAR.png, id=202, 462.528pt x 346.896pt>
 File: plot_SetupMicro_e2a_NM_VAR.png Graphic file (type png)
 <use plot_SetupMicro_e2a_NM_VAR.png>
@@ -941,10 +923,11 @@ File: plot_NEP.png Graphic file (type png)
 <use plot_NEP.png>
 Package pdftex.def Info: plot_NEP.png  used on input line 992.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
- [15] [16 <./plot_SetupPheno-NLRH-E-NM.png> <./plot_SetupPheno-NLRH-E-SM.png>] 
-[17 <./plot_SetupPheno-DDRH-E-NM.png> <./plot_SetupPheno-DDRH-E-SM.png>] [18 <.
-/plot_SetupPheno-DDRHF-E-NM.png> <./plot_SetupPheno-DDRHF-E-SM.png>] [19 <./plo
-t_SetupPheno-Skyrme-E-NM.png> <./plot_SetupPheno-Skyrme-E-SM.png>]
+
+[15] [16 <./plot_SetupPheno-NLRH-E-NM.png> <./plot_SetupPheno-NLRH-E-SM.png>]
+[17 <./plot_SetupPheno-DDRH-E-NM.png> <./plot_SetupPheno-DDRH-E-SM.png>]
+[18 <./plot_SetupPheno-DDRHF-E-NM.png> <./plot_SetupPheno-DDRHF-E-SM.png>]
+[19 <./plot_SetupPheno-Skyrme-E-NM.png> <./plot_SetupPheno-Skyrme-E-SM.png>]
 <plot_SetupEOSHIC.png, id=347, 462.528pt x 346.896pt>
 File: plot_SetupEOSHIC.png Graphic file (type png)
 <use plot_SetupEOSHIC.png>
@@ -1809,7 +1792,7 @@ Here is how much of TeX's memory you used:
  37127 multiletter control sequences out of 15000+600000
  613045 words of font info for 83 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 72i,12n,79p,3820b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,3869b,832s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/local/share/texmf-texlive/fonts/type1/public/tex-gyre/qhvb.pfb></opt/lo
 cal/share/texmf-texlive/fonts/type1/public/tex-gyre/qhvbi.pfb></opt/local/share
 /texmf-texlive/fonts/type1/public/tex-gyre/qhvr.pfb></opt/local/share/texmf-tex
@@ -1820,7 +1803,7 @@ ts/t1xbtt.pfb></opt/local/share/texmf-texlive/fonts/type1/public/txfonts/t1xtt.
 pfb></opt/local/share/texmf-texlive/fonts/type1/public/txfonts/t1xtt.pfb></opt/
 local/share/texmf-texlive/fonts/type1/public/txfonts/tcxtt.pfb></opt/local/shar
 e/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on nucleardatapy.pdf (46 pages, 1412208 bytes).
+Output written on nucleardatapy.pdf (46 pages, 1417483 bytes).
 PDF statistics:
  857 PDF objects out of 1000 (max. 8388607)
  726 compressed objects within 8 object streams

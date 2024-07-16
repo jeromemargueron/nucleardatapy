@@ -1126,12 +1126,14 @@ class SetupMicro():
             self.marker = 'o'
             self.linestyle = 'solid'
             self.every = 1
-            self.err = False
+            self.err = True
             self.gap_err = True
             # read e2a
-            self.nm_kfn, nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
+            self.nm_kfn, e2effg, e2effg_err = np.loadtxt( file_in1, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
+            self.nm_e2a = e2effg * nuda.effg( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
             # read gap
             self.gap_nm_kfn, self.gap_nm_gap, self.gap_nm_gap_err = np.loadtxt( file_in2, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
             self.gap_nm_den     = nuda.den_n( self.gap_nm_kfn )
