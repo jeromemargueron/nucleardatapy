@@ -112,15 +112,15 @@ def plotMicro_sm_e2a( pname, group, models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2 )
     #
-    axs[0,0].set_ylabel(r'$E_{SM}/E_{FFG}$')
+    axs[0,0].set_ylabel(r'$E_{SM}/A$ (MeV)')
     axs[0,0].set_xlim([0, 0.3])
-    axs[0,0].set_ylim([-20, 20])
+    axs[0,0].set_ylim([-20, 10])
     #
     axs[0,1].set_xlim([0, 1.5])
-    axs[0,1].set_ylim([-20, 20])
+    axs[0,1].set_ylim([-20, 10])
     #
+    axs[1,0].set_ylabel(r'$E_{SM}/E_{FFG}$')
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$E_{SM}/A$ (MeV)')
     axs[1,0].set_xlim([0, 0.3])
     axs[1,0].set_ylim([-2.0, 0.1])
     #

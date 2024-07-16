@@ -40,7 +40,7 @@ def plotPheno_E( models, band, matter ):
             axs[1,1].set_ylim([0.2, 0.8])
         elif matter.lower() == 'sm':
             axs[0,0].set_ylabel(r'$E_{SM}/A$ (MeV)',fontsize='12')
-            axs[0,0].set_ylim([-20, 20])
+            axs[0,0].set_ylim([-20, 10])
             axs[0,1].set_ylim([-20, 10])
             axs[1,0].set_ylabel(r'$E_{SM}/E_{FFG,SM}$',fontsize='12')
             axs[1,0].set_ylim([-2.0, 0.1])
