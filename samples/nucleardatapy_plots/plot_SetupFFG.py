@@ -52,16 +52,16 @@ def main():
     #
     ffg0 = nuda.SetupFFG( den, delta0 )
     ffg1 = nuda.SetupFFG( den, delta1 )
-    if any(ffg0.e2a): 
-        axs[0,0].plot( ffg0.den, ffg0.e2a, linestyle='solid', label=ffg0.label )
+    if any(ffg0.e2a_int): 
+        axs[0,0].plot( ffg0.den, ffg0.e2a_int, linestyle='solid', label=ffg0.label )
         axs[1,0].plot( ffg0.den, ffg0.pre, linestyle='solid', label=ffg0.label )
-        axs[0,1].plot( ffg0.kf_n, ffg0.e2a, linestyle='solid', label=ffg0.label )
+        axs[0,1].plot( ffg0.kf_n, ffg0.e2a_int, linestyle='solid', label=ffg0.label )
         axs[1,1].plot( ffg0.kf_n, ffg0.pre, linestyle='solid', label=ffg0.label )
     ffg0.print_outputs( )
-    if any(ffg1.e2a): 
-        axs[0,0].plot( ffg1.den, ffg1.e2a, linestyle='dashed', label=ffg1.label )
+    if any(ffg1.e2a_int): 
+        axs[0,0].plot( ffg1.den, ffg1.e2a_int, linestyle='dashed', label=ffg1.label )
         axs[1,0].plot( ffg1.den, ffg1.pre, linestyle='dashed', label=ffg1.label )
-        axs[0,1].plot( ffg1.kf_n, ffg1.e2a, linestyle='dashed', label=ffg1.label )
+        axs[0,1].plot( ffg1.kf_n, ffg1.e2a_int, linestyle='dashed', label=ffg1.label )
         axs[1,1].plot( ffg1.kf_n, ffg1.pre, linestyle='dashed', label=ffg1.label )
     ffg1.print_outputs( )
     #

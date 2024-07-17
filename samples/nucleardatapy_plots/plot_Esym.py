@@ -31,7 +31,7 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     #
     for model in models_micro:
         #
-        mic = nuda.SetupMicro( model = model )
+        mic = nuda.SetupMicroMatter( model = model )
         if mic.esym_e2a is not None: 
             print('model:',model)
             if mic.marker:
@@ -53,11 +53,11 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     #
     for model in models_pheno:
         #
-        params, params_lower = nuda.params_pheno( model = model )
+        params, params_lower = nuda.params_pheno_matter( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupPheno( model = model, param = param )
+            pheno = nuda.SetupPhenoMatter( model = model, param = param )
             if pheno.esym_e2a is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
@@ -87,11 +87,11 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupMicroBand( models, den=den, matter='ESYM' )
+    band = nuda.SetupMicroMatterBand( models, den=den, matter='ESYM' )
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro()
+    models_micro, models_lower = nuda.models_micro_matter()
     models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym

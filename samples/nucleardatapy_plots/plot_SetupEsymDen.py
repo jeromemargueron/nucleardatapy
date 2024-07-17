@@ -54,13 +54,13 @@ def main():
     constraints, constraints_lower = nuda.constraints_EsymLsym()
     #constraints = [ '2014-IAS' ]
     #
-    #Ksym = -200.0
-    #Ksym = 0.0
-    Ksym = 200.0
+    Ksyms = [ -200.0, 0.0, 200 ]
     #
-    pname = 'figs/plot_SetupEsymDen_'+str(int(Ksym))+'.png'
-    #
-    plot_SetupEsymDen( pname, constraints, Ksym )
+    for Ksym in Ksyms:
+        #
+        pname = 'figs/plot_SetupEsymDen_'+str(int(Ksym))+'.png'
+        #
+        plot_SetupEsymDen( pname, constraints, Ksym )
     #
     print(50*'-')
     print("Exit plot_SetupEsymDen.py:")

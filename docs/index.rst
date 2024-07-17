@@ -38,10 +38,11 @@ Complement
    :maxdepth: 2
    :caption: Contents:
 
-   source/api/setup_micro
-   source/api/setup_micro_band
-   source/api/setup_pheno
-   source/api/setup_eoshic
+   source/api/setup_micro_matter
+   source/api/setup_micro_matter_band
+   source/api/setup_micro_LP
+   source/api/setup_pheno_matter
+   source/api/setup_hic_matter
    source/api/setup_crust
    source/api/setup_masses_exp
    source/api/setup_masses_theory

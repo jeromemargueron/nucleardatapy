@@ -12,6 +12,7 @@ mmuc2= 105.6583745 # muon mass in MeV
 mnc2 = 939.565346 # neutron mass in MeV
 mpc2 = 938.272013 # proton mass in MeV
 mnuc2 = 0.5*(mnc2 + mpc2)
+mnuc2_approx = 939.0
 h2m = hbc**2 / mnuc2
 nsat = 0.16 # in fm-3
 e = 1.602176634e-19 # electron charge in Coulomb

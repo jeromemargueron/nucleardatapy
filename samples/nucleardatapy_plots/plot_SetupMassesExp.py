@@ -34,28 +34,28 @@ def plot_nuclear_chart( pname, table, version ):
     #
     mas = nuda.SetupMassesExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'longlive' )
-    axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='s', s = 3, linewidth=0, color = 'grey', label='longlive ('+str(ustbl.sel_nbNucSel)+')' )
+    axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'grey', label='longlive ('+str(ustbl.sel_nbNucSel)+')' )
     #axs.text(10,96,'long live: '+str(ustbl.sel_nbNucSel))
     #
     # shortlive nuclei
     #
     mas = nuda.SetupMassesExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'shortlive' )
-    axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='s', s = 3, linewidth=0, color = 'r', label='shortlive ('+str(ustbl.sel_nbNucSel)+')' )
+    axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'r', label='shortlive ('+str(ustbl.sel_nbNucSel)+')' )
     #axs.text(10,88,'short live: '+str(ustbl.sel_nbNucSel))
     #
     # veryshortlive nuclei
     #
     mas = nuda.SetupMassesExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'veryshortlive' )
-    axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='s', s = 3, linewidth=0, color = 'b', label='veryshortlive ('+str(ustbl.sel_nbNucSel)+')' )
+    axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'b', label='veryshortlive ('+str(ustbl.sel_nbNucSel)+')' )
     #axs.text(10,80,'very short live: '+str(ustbl.sel_nbNucSel))
     #
     # unstable nuclei:
     #
     mas = nuda.SetupMassesExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
-    #axs.scatter( ustbl.sel_N, ustbl.sel_Z, marker='.', s = 1, linewidth=0, color = 'b' )
+    #axs.scatter( ustbl.sel_nucN, ustbl.sel_Z, marker='.', s = 1, linewidth=0, color = 'b' )
     axs.text(10,104,'unstable: '+str(ustbl.sel_nbNucSel))
     #
     # drip line nuclei
@@ -69,7 +69,7 @@ def plot_nuclear_chart( pname, table, version ):
     #
     mas = nuda.SetupMassesExp( table = table, version = version )
     stbl = mas.select( state= 'gs', interp = 'n', nucleus = 'stable' )
-    axs.scatter( stbl.sel_N, stbl.sel_Z, marker='s', s = 3, linewidth=0, color = 'k' )
+    axs.scatter( stbl.sel_nucN, stbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'k' )
     axs.text(10,112,'stable: '+str(stbl.sel_nbNucSel))
     #
     # plot N=Z dotted line
