@@ -60,7 +60,7 @@
 
 
 \title{nucleardatapy}
-\date{Jul 14, 2024}
+\date{Jul 17, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -163,7 +163,7 @@ The exact path to write above is given at the end of the installation.
 Go to the folder \sphinxtitleref{mylib/nucleardatapy/samples/nucleardatapy\_samples/} and try that:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZdl{} }python3\PYG{+w}{ }sample\PYGZus{}SetupMicro.py
+\PYG{g+gp}{\PYGZdl{} }python3\PYG{+w}{ }sample\PYGZus{}SetupMicroMatter.py
 \end{sphinxVerbatim}
 
 
@@ -189,7 +189,7 @@ How to obtain microscopic results for APR equation of state:
 
 \PYG{k+kn}{import} \PYG{n+nn}{nucleardatapy} \PYG{k}{as} \PYG{n+nn}{nuda}
 
-\PYG{n}{mic} \PYG{o}{=} \PYG{n}{nuda}\PYG{o}{.}\PYG{n}{SetupMicro}\PYG{p}{(} \PYG{n}{model} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{1998\PYGZhy{}AM\PYGZhy{}APR}\PYG{l+s+s1}{\PYGZsq{}} \PYG{p}{)}
+\PYG{n}{mic} \PYG{o}{=} \PYG{n}{nuda}\PYG{o}{.}\PYG{n}{SetupMicroMatter}\PYG{p}{(} \PYG{n}{model} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{1998\PYGZhy{}VAR\PYGZhy{}AM\PYGZhy{}APR}\PYG{l+s+s1}{\PYGZsq{}} \PYG{p}{)}
 
 \PYG{n}{mic}\PYG{o}{.}\PYG{n}{print\PYGZus{}outputs}\PYG{p}{(} \PYG{p}{)}
 \end{sphinxVerbatim}
@@ -296,19 +296,19 @@ A special thanks to all contributors who accepted to share their results in this
 \sphinxstepscope
 
 
-\section{SetupMicro}
-\label{\detokenize{source/api/setup_micro:setupmicro}}\label{\detokenize{source/api/setup_micro::doc}}\phantomsection\label{\detokenize{source/api/setup_micro:module-nucleardatapy.setup_micro}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro@\spxentry{nucleardatapy.setup\_micro}}\index{nucleardatapy.setup\_micro@\spxentry{nucleardatapy.setup\_micro}!module@\spxentry{module}}\index{SetupMicro (class in nucleardatapy.setup\_micro)@\spxentry{SetupMicro}\spxextra{class in nucleardatapy.setup\_micro}}
+\section{SetupMicroMatter}
+\label{\detokenize{source/api/setup_micro_matter:setupmicromatter}}\label{\detokenize{source/api/setup_micro_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_matter:module-nucleardatapy.setup_micro_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}}\index{nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}!module@\spxentry{module}}\index{SetupMicroMatter (class in nucleardatapy.setup\_micro\_matter)@\spxentry{SetupMicroMatter}\spxextra{class in nucleardatapy.setup\_micro\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro.}}\sphinxbfcode{\sphinxupquote{SetupMicro}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatter}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with microscopic results choosen     by the toolkit practitioner.
 
 \sphinxAtStartPar
-This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’
+This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
@@ -318,10 +318,10 @@ This choice is defined in \sphinxtitleref{model}, which can chosen among     the
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
-\index{init\_self() (nucleardatapy.setup\_micro.SetupMicro method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro.SetupMicro method}}
+\index{init\_self() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.init_self}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.init_self}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
 \pysigstopsignatures
@@ -330,10 +330,10 @@ Initialize variables in self.
 
 \end{fulllineitems}
 
-\index{model (nucleardatapy.setup\_micro.SetupMicro attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro.SetupMicro attribute}}
+\index{model (nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.model}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.model}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{model}}}
 \pysigstopsignatures
@@ -342,10 +342,10 @@ Attribute model.
 
 \end{fulllineitems}
 
-\index{print\_outputs() (nucleardatapy.setup\_micro.SetupMicro method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro.SetupMicro method}}
+\index{print\_outputs() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.SetupMicro.print_outputs}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.print_outputs}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
 \pysigstopsignatures
@@ -357,15 +357,15 @@ Method which print outputs on terminal’s screen.
 
 \end{fulllineitems}
 
-\index{models\_micro() (in module nucleardatapy.setup\_micro)@\spxentry{models\_micro()}\spxextra{in module nucleardatapy.setup\_micro}}
+\index{models\_micro\_matter() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter()}\spxextra{in module nucleardatapy.setup\_micro\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro:nucleardatapy.setup_micro.models_micro}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.models_micro_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro.}}\sphinxbfcode{\sphinxupquote{models\_micro}}}{}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{models\_micro\_matter}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}BONNB’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}NSC93’
+Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}BONNB’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}NSC93’
 :return: The list of models.
 :rtype: list{[}str{]}.
 
@@ -379,54 +379,54 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_VAR}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the variational models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_e2a_NM_VAR}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the variational models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_AFDMC}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the AFDMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id2}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_e2a_NM_AFDMC}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the AFDMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id2}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_BHF}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the BHF models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id3}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_e2a_NM_BHF}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the BHF models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id3}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_QMC}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the QMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id4}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_e2a_NM_QMC}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the QMC models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id4}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_e2a_NM_MBPT}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id5}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_e2a_NM_MBPT}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id5}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicro_gap_NM}.png}
-\caption{This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro:id6}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatter_gap_NM}.png}
+\caption{This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_micro_matter:id6}}\end{figure}
 
 \sphinxstepscope
 
 
-\section{SetupMicroBand}
-\label{\detokenize{source/api/setup_micro_band:setupmicroband}}\label{\detokenize{source/api/setup_micro_band::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_band:module-nucleardatapy.setup_micro_band}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_band@\spxentry{nucleardatapy.setup\_micro\_band}}\index{nucleardatapy.setup\_micro\_band@\spxentry{nucleardatapy.setup\_micro\_band}!module@\spxentry{module}}\index{SetupMicroBand (class in nucleardatapy.setup\_micro\_band)@\spxentry{SetupMicroBand}\spxextra{class in nucleardatapy.setup\_micro\_band}}
+\section{SetupMicroMatterBand}
+\label{\detokenize{source/api/setup_micro_matter_band:setupmicromatterband}}\label{\detokenize{source/api/setup_micro_matter_band::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:module-nucleardatapy.setup_micro_matter_band}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}}\index{nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}!module@\spxentry{module}}\index{SetupMicroMatterBand (class in nucleardatapy.setup\_micro\_matter\_band)@\spxentry{SetupMicroMatterBand}\spxextra{class in nucleardatapy.setup\_micro\_matter\_band}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_band.}}\sphinxbfcode{\sphinxupquote{SetupMicroBand}}}{\emph{\DUrole{n}{models}\DUrole{o}{=}\DUrole{default_value}{{[}\textquotesingle{}2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM\textquotesingle{}{]}}}, \emph{\DUrole{n}{nden}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{ne}\DUrole{o}{=}\DUrole{default_value}{200}}, \emph{\DUrole{n}{den}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{matter}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}NM\textquotesingle{}}}, \emph{\DUrole{n}{e2a\_min}\DUrole{o}{=}\DUrole{default_value}{\sphinxhyphen{} 20.0}}, \emph{\DUrole{n}{e2a\_max}\DUrole{o}{=}\DUrole{default_value}{50.0}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter\_band.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatterBand}}}{\emph{\DUrole{n}{models}\DUrole{o}{=}\DUrole{default_value}{{[}\textquotesingle{}2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM\textquotesingle{}{]}}}, \emph{\DUrole{n}{nden}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{ne}\DUrole{o}{=}\DUrole{default_value}{200}}, \emph{\DUrole{n}{den}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{matter}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}NM\textquotesingle{}}}, \emph{\DUrole{n}{e2a\_min}\DUrole{o}{=}\DUrole{default_value}{\sphinxhyphen{} 20.0}}, \emph{\DUrole{n}{e2a\_max}\DUrole{o}{=}\DUrole{default_value}{50.0}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with statistical distributions averaging over
@@ -459,10 +459,10 @@ the models given as inputs and in NM.
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
-\index{den (nucleardatapy.setup\_micro\_band.SetupMicroBand attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}}
+\index{den (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.den}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.den}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{den}}}
 \pysigstopsignatures
@@ -471,10 +471,10 @@ Attribute a set of density points.
 
 \end{fulllineitems}
 
-\index{init\_self() (nucleardatapy.setup\_micro\_band.SetupMicroBand method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand method}}
+\index{init\_self() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.init_self}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.init_self}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
 \pysigstopsignatures
@@ -483,10 +483,10 @@ Initialize variables in self.
 
 \end{fulllineitems}
 
-\index{matter (nucleardatapy.setup\_micro\_band.SetupMicroBand attribute)@\spxentry{matter}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}}
+\index{matter (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{matter}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.matter}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.matter}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{matter}}}
 \pysigstopsignatures
@@ -495,10 +495,10 @@ Attribute matter str.
 
 \end{fulllineitems}
 
-\index{models (nucleardatapy.setup\_micro\_band.SetupMicroBand attribute)@\spxentry{models}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}}
+\index{models (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{models}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.models}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.models}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{models}}}
 \pysigstopsignatures
@@ -507,10 +507,10 @@ Attribute model.
 
 \end{fulllineitems}
 
-\index{nden (nucleardatapy.setup\_micro\_band.SetupMicroBand attribute)@\spxentry{nden}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand attribute}}
+\index{nden (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{nden}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.nden}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.nden}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nden}}}
 \pysigstopsignatures
@@ -519,10 +519,10 @@ Attribute number of points in density.
 
 \end{fulllineitems}
 
-\index{print\_outputs() (nucleardatapy.setup\_micro\_band.SetupMicroBand method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_band.SetupMicroBand method}}
+\index{print\_outputs() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_micro_band:nucleardatapy.setup_micro_band.SetupMicroBand.print_outputs}}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.print_outputs}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
 \pysigstopsignatures
@@ -539,33 +539,139 @@ Method which print outputs on terminal’s screen.
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroBand_NM}.png}
-\caption{Uncertainty band in NM obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016, QMC\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_band:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatterBand_NM}.png}
+\caption{Uncertainty band in NM obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016, QMC\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_matter_band:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroBand_SM}.png}
-\caption{Uncertainty band in SM obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_band:id2}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatterBand_SM}.png}
+\caption{Uncertainty band in SM obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_matter_band:id2}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroBand_Esym}.png}
-\caption{Uncertainty band for the symmetry energy obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_band:id3}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroMatterBand_Esym}.png}
+\caption{Uncertainty band for the symmetry energy obtained from the analysis of different predictions: MBPT\sphinxhyphen{}2016 and MBPT\sphinxhyphen{}2020.}\label{\detokenize{source/api/setup_micro_matter_band:id3}}\end{figure}
 
 \sphinxstepscope
 
 
-\section{SetupPheno}
-\label{\detokenize{source/api/setup_pheno:setuppheno}}\label{\detokenize{source/api/setup_pheno::doc}}\phantomsection\label{\detokenize{source/api/setup_pheno:module-nucleardatapy.setup_pheno}}\index{module@\spxentry{module}!nucleardatapy.setup\_pheno@\spxentry{nucleardatapy.setup\_pheno}}\index{nucleardatapy.setup\_pheno@\spxentry{nucleardatapy.setup\_pheno}!module@\spxentry{module}}\index{SetupPheno (class in nucleardatapy.setup\_pheno)@\spxentry{SetupPheno}\spxextra{class in nucleardatapy.setup\_pheno}}
+\section{SetupMicroLP}
+\label{\detokenize{source/api/setup_micro_LP:setupmicrolp}}\label{\detokenize{source/api/setup_micro_LP::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_LP:module-nucleardatapy.setup_micro_LP}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}}\index{nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}!module@\spxentry{module}}\index{SetupMicroLP (class in nucleardatapy.setup\_micro\_LP)@\spxentry{SetupMicroLP}\spxextra{class in nucleardatapy.setup\_micro\_LP}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno}}
+\phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno.}}\sphinxbfcode{\sphinxupquote{SetupPheno}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}Skyrme\textquotesingle{}}}, \emph{\DUrole{n}{param}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}SLY5\textquotesingle{}}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{SetupMicroLP}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP\textquotesingle{}}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the object with Landau parameters from microscopic calculations choosen     by the toolkit practitioner.
+
+\sphinxAtStartPar
+This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT’,     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}CONT’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT\sphinxhyphen{}0.7’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{model}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of model. Default value: ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}LP’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{init\_self() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.init_self}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Initialize variables in self.
+
+\end{fulllineitems}
+
+\index{model (nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.model}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{model}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute model.
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{models\_micro\_LP() (in module nucleardatapy.setup\_micro\_LP)@\spxentry{models\_micro\_LP()}\spxextra{in module nucleardatapy.setup\_micro\_LP}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.models_micro_LP}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{models\_micro\_LP}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT’,     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}CONT’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT\sphinxhyphen{}0.7’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of models.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupLP.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroLP0_SM}.png}
+\caption{This figure shows the L=0 Landau parameters in SM for different NN interactions obtained
+from BHF calculations.}\label{\detokenize{source/api/setup_micro_LP:id1}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMicroLP1_SM}.png}
+\caption{This figure shows the L=1 Landau parameters in SM for different NN interactions obtained
+from BHF calculations.}\label{\detokenize{source/api/setup_micro_LP:id2}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupPhenoMatter}
+\label{\detokenize{source/api/setup_pheno_matter:setupphenomatter}}\label{\detokenize{source/api/setup_pheno_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_pheno_matter:module-nucleardatapy.setup_pheno_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}}\index{nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}!module@\spxentry{module}}\index{SetupPhenoMatter (class in nucleardatapy.setup\_pheno\_matter)@\spxentry{SetupPhenoMatter}\spxextra{class in nucleardatapy.setup\_pheno\_matter}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{SetupPhenoMatter}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}Skyrme\textquotesingle{}}}, \emph{\DUrole{n}{param}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}SLY5\textquotesingle{}}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with results based on phenomenological    interactions and choosen by the toolkit practitioner.     This choice is defined in the variables \sphinxtitleref{model} and \sphinxtitleref{param}.
@@ -597,10 +703,22 @@ If \sphinxtitleref{models} == ‘DDRHF’, \sphinxtitleref{param} can be: ‘PKA
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
-\index{esym\_den (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{esym\_den}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{Esat (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{Esat}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.esym_den}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{Esat}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the NEP.
+
+\end{fulllineitems}
+
+\index{esym\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{esym\_den}}}
 \pysigstopsignatures
@@ -609,10 +727,10 @@ Attribute the density for the symmetry energy.
 
 \end{fulllineitems}
 
-\index{esym\_e2a (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{esym\_e2a}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{esym\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.esym_e2a}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{esym\_e2a}}}
 \pysigstopsignatures
@@ -621,10 +739,10 @@ Attribute the symmetry energy.
 
 \end{fulllineitems}
 
-\index{esym\_kf (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{esym\_kf}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{esym\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.esym_kf}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{esym\_kf}}}
 \pysigstopsignatures
@@ -633,10 +751,10 @@ Attribute the Fermi momentum for the symmetry energy.
 
 \end{fulllineitems}
 
-\index{label (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{label (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.label}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
@@ -645,10 +763,10 @@ Attribute providing the label the data is references for figures.
 
 \end{fulllineitems}
 
-\index{model (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{model (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.model}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{model}}}
 \pysigstopsignatures
@@ -657,10 +775,10 @@ Attribute model.
 
 \end{fulllineitems}
 
-\index{nm\_cs2 (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_cs2}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_cs2 (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_cs2}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_cs2}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_cs2}}}
 \pysigstopsignatures
@@ -669,10 +787,10 @@ Attribute the neutron matter sound speed (c\_s/c)\textasciicircum{}2.
 
 \end{fulllineitems}
 
-\index{nm\_den (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_den}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_den}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_den}}}
 \pysigstopsignatures
@@ -681,10 +799,10 @@ Attribute the neutron matter density.
 
 \end{fulllineitems}
 
-\index{nm\_e2a (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_e2a}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_e2a}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_e2a}}}
 \pysigstopsignatures
@@ -693,10 +811,10 @@ Attribute the neutron matter energy per particle.
 
 \end{fulllineitems}
 
-\index{nm\_gap (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_gap (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_gap}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_gap}}}
 \pysigstopsignatures
@@ -705,10 +823,10 @@ Attribute the neutron matter pairing gap.
 
 \end{fulllineitems}
 
-\index{nm\_kfn (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_kfn}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_kfn}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_kfn}}}
 \pysigstopsignatures
@@ -717,10 +835,10 @@ Attribute the neutron matter neutron Fermi momentum.
 
 \end{fulllineitems}
 
-\index{nm\_pre (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{nm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.nm_pre}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{nm\_pre}}}
 \pysigstopsignatures
@@ -729,10 +847,10 @@ Attribute the neutron matter pressure.
 
 \end{fulllineitems}
 
-\index{note (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{note (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.note}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
@@ -741,10 +859,10 @@ Attribute providing additional notes about the data.
 
 \end{fulllineitems}
 
-\index{param (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{param}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{param (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{param}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.param}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{param}}}
 \pysigstopsignatures
@@ -753,10 +871,10 @@ Attribute param.
 
 \end{fulllineitems}
 
-\index{print\_outputs() (nucleardatapy.setup\_pheno.SetupPheno method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_pheno.SetupPheno method}}
+\index{print\_outputs() (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.print_outputs}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
 \pysigstopsignatures
@@ -765,10 +883,10 @@ Method which print outputs on terminal’s screen.
 
 \end{fulllineitems}
 
-\index{ref (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{ref (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.ref}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
@@ -777,10 +895,10 @@ Attribute providing the full reference to the paper to be citted.
 
 \end{fulllineitems}
 
-\index{sm\_cs2 (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_cs2}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_cs2 (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_cs2}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_cs2}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_cs2}}}
 \pysigstopsignatures
@@ -789,10 +907,10 @@ Attribute the symmetric matter sound speed (c\_s/c)\textasciicircum{}2.
 
 \end{fulllineitems}
 
-\index{sm\_den (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_den}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_den}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_den}}}
 \pysigstopsignatures
@@ -801,10 +919,10 @@ Attribute the symmetric matter density.
 
 \end{fulllineitems}
 
-\index{sm\_e2a (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_e2a}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_e2a}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_e2a}}}
 \pysigstopsignatures
@@ -813,10 +931,10 @@ Attribute the symmetric matter energy per particle.
 
 \end{fulllineitems}
 
-\index{sm\_gap (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_gap}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_gap (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_gap}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_gap}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_gap}}}
 \pysigstopsignatures
@@ -825,10 +943,10 @@ Attribute the symmetric matter pairing gap.
 
 \end{fulllineitems}
 
-\index{sm\_kf (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_kf}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_kf}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_kf}}}
 \pysigstopsignatures
@@ -837,10 +955,10 @@ Attribute the symmetric matter Fermi momentum.
 
 \end{fulllineitems}
 
-\index{sm\_kfn (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_kfn}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_kfn}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_kfn}}}
 \pysigstopsignatures
@@ -849,10 +967,10 @@ Attribute the symmetric matter neutron Fermi momentum.
 
 \end{fulllineitems}
 
-\index{sm\_pre (nucleardatapy.setup\_pheno.SetupPheno attribute)@\spxentry{sm\_pre}\spxextra{nucleardatapy.setup\_pheno.SetupPheno attribute}}
+\index{sm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.SetupPheno.sm_pre}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre}}
 \pysigstartsignatures
 \pysigline{\sphinxbfcode{\sphinxupquote{sm\_pre}}}
 \pysigstopsignatures
@@ -864,12 +982,12 @@ Attribute the symmetric matter pressure.
 
 \end{fulllineitems}
 
-\index{models\_pheno() (in module nucleardatapy.setup\_pheno)@\spxentry{models\_pheno()}\spxextra{in module nucleardatapy.setup\_pheno}}
+\index{models\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{models\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.models_pheno}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.models_pheno_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno.}}\sphinxbfcode{\sphinxupquote{models\_pheno}}}{}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{models\_pheno\_matter}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of models available in this toolkit and print them all on the prompt.
@@ -886,12 +1004,12 @@ list{[}str{]}.
 
 \end{fulllineitems}
 
-\index{params\_pheno() (in module nucleardatapy.setup\_pheno)@\spxentry{params\_pheno()}\spxextra{in module nucleardatapy.setup\_pheno}}
+\index{params\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{params\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_pheno:nucleardatapy.setup_pheno.params_pheno}}
+\phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.params_pheno_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno.}}\sphinxbfcode{\sphinxupquote{params\_pheno}}}{\emph{\DUrole{n}{model}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{params\_pheno\_matter}}}{\emph{\DUrole{n}{model}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list with the parameterizations available in
@@ -915,81 +1033,81 @@ list{[}str{]}.
 
 
 \sphinxAtStartPar
-Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupPheno.py
+Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupPhenoMatter.py
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-NLRH-E-NM}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non\sphinxhyphen{}linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-NLRH-E-NM}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non\sphinxhyphen{}linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-NLRH-E-SM}.png}
-\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non\sphinxhyphen{}linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id2}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-NLRH-E-SM}.png}
+\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non\sphinxhyphen{}linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id2}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-DDRH-E-NM}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id3}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-DDRH-E-NM}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id3}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-DDRH-E-SM}.png}
-\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id4}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-DDRH-E-SM}.png}
+\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id4}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-DDRHF-E-NM}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree\sphinxhyphen{}Fock (DDRHF) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id5}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-DDRHF-E-NM}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree\sphinxhyphen{}Fock (DDRHF) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id5}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-DDRHF-E-SM}.png}
-\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree\sphinxhyphen{}Fock (DDRHF) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id6}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-DDRHF-E-SM}.png}
+\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density\sphinxhyphen{}dependent relativistic Hartree\sphinxhyphen{}Fock (DDRHF) approach available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id6}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-Skyrme-E-NM}.png}
-\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id7}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-Skyrme-E-NM}.png}
+\caption{This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id7}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPheno-Skyrme-E-SM}.png}
-\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id8}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupPhenoMatter-Skyrme-E-SM}.png}
+\caption{This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id8}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_NEP}.png}
-\caption{Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno:id9}}\end{figure}
+\caption{Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_pheno_matter:id9}}\end{figure}
 
 \sphinxstepscope
 
 
-\section{SetupEOSHIC}
-\label{\detokenize{source/api/setup_eoshic:setupeoshic}}\label{\detokenize{source/api/setup_eoshic::doc}}\phantomsection\label{\detokenize{source/api/setup_eoshic:module-nucleardatapy.setup_eoshic}}\index{module@\spxentry{module}!nucleardatapy.setup\_eoshic@\spxentry{nucleardatapy.setup\_eoshic}}\index{nucleardatapy.setup\_eoshic@\spxentry{nucleardatapy.setup\_eoshic}!module@\spxentry{module}}\index{SetupEOSHIC (class in nucleardatapy.setup\_eoshic)@\spxentry{SetupEOSHIC}\spxextra{class in nucleardatapy.setup\_eoshic}}
+\section{SetupHICMatter}
+\label{\detokenize{source/api/setup_hic_matter:setuphicmatter}}\label{\detokenize{source/api/setup_hic_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_hic_matter:module-nucleardatapy.setup_hic_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}}\index{nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}!module@\spxentry{module}}\index{SetupHICMatter (class in nucleardatapy.setup\_hic\_matter)@\spxentry{SetupHICMatter}\spxextra{class in nucleardatapy.setup\_hic\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_eoshic:nucleardatapy.setup_eoshic.SetupEOSHIC}}
+\phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_eoshic.}}\sphinxbfcode{\sphinxupquote{SetupEOSHIC}}}{\emph{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}DLL\sphinxhyphen{}2002\textquotesingle{}}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{SetupHICMatter}}}{\emph{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}DLL\sphinxhyphen{}2002\textquotesingle{}}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the constraints on the EOS from HIC.
@@ -1008,10 +1126,10 @@ This choice is defined in the variable \sphinxtitleref{constraint}.
 
 \sphinxAtStartPar
 \sphinxstylestrong{Attributes:}
-\index{init\_self() (nucleardatapy.setup\_eoshic.SetupEOSHIC method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_eoshic.SetupEOSHIC method}}
+\index{init\_self() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_eoshic:nucleardatapy.setup_eoshic.SetupEOSHIC.init_self}}
+\phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter.init_self}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
 \pysigstopsignatures
@@ -1020,10 +1138,10 @@ Initialize variables in self.
 
 \end{fulllineitems}
 
-\index{print\_outputs() (nucleardatapy.setup\_eoshic.SetupEOSHIC method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_eoshic.SetupEOSHIC method}}
+\index{print\_outputs() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_eoshic:nucleardatapy.setup_eoshic.SetupEOSHIC.print_outputs}}
+\phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter.print_outputs}}
 \pysigstartsignatures
 \pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
 \pysigstopsignatures
@@ -1035,12 +1153,12 @@ Method which print outputs on terminal’s screen.
 
 \end{fulllineitems}
 
-\index{constraints\_EOSHIC() (in module nucleardatapy.setup\_eoshic)@\spxentry{constraints\_EOSHIC()}\spxextra{in module nucleardatapy.setup\_eoshic}}
+\index{constraints\_HIC\_matter() (in module nucleardatapy.setup\_hic\_matter)@\spxentry{constraints\_HIC\_matter()}\spxextra{in module nucleardatapy.setup\_hic\_matter}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{source/api/setup_eoshic:nucleardatapy.setup_eoshic.constraints_EOSHIC}}
+\phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.constraints_HIC_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_eoshic.}}\sphinxbfcode{\sphinxupquote{constraints\_EOSHIC}}}{}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{constraints\_HIC\_matter}}}{}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the HIC constraints available in this toolkit
@@ -1065,8 +1183,8 @@ list{[}str{]}.
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupEOSHIC}.png}
-\caption{HIC Experimental constraints for the energy per particle (left) and pressure (right) in SM as a function of the particle density for different analyses available in the \sphinxtitleref{nuda} toolkit.}\label{\detokenize{source/api/setup_eoshic:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupHICMatter}.png}
+\caption{HIC Experimental constraints for the energy per particle (left) and pressure (right) in SM as a function of the particle density for different analyses available in the \sphinxtitleref{nuda} toolkit.}\label{\detokenize{source/api/setup_hic_matter:id1}}\end{figure}
 
 \sphinxstepscope
 
@@ -1077,7 +1195,7 @@ list{[}str{]}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{SetupCrust}}}{\emph{\DUrole{n}{modcrust}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}Negele\sphinxhyphen{}Vautherin\sphinxhyphen{}1973\textquotesingle{}}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{SetupCrust}}}{\emph{\DUrole{n}{modcrust}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1973\sphinxhyphen{}Negele\sphinxhyphen{}Vautherin\textquotesingle{}}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the properties of the crust for the existing models.
@@ -1117,6 +1235,18 @@ Attribute A (mass of the nucleus).
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N (total number of neutrons of the WS cell).
+
+\end{fulllineitems}
+
+\index{N\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{N\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.N_bound}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{N\_bound}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute N\_bound (number of bound neutrons).
 
 \end{fulllineitems}
 
@@ -1971,15 +2101,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMassesTheory_Zref50}.png}
-\caption{Differences between binding energies predicted by different models with respect to the one predicted by Duflo\sphinxhyphen{}Zuker for Z = 50.}\label{\detokenize{source/api/setup_masses_theory:id1}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMassesTheory_Zref20}.png}
+\caption{Differences between binding energies predicted by different models with respect to the one predicted by Duflo\sphinxhyphen{}Zuker for Z = 20.}\label{\detokenize{source/api/setup_masses_theory:id1}}\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMassesTheory_Zref20}.png}
-\caption{Differences between binding energies predicted by different models with respect to the one predicted by Duflo\sphinxhyphen{}Zuker for Z = 20.}\label{\detokenize{source/api/setup_masses_theory:id2}}\end{figure}
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupMassesTheory_Zref50}.png}
+\caption{Differences between binding energies predicted by different models with respect to the one predicted by Duflo\sphinxhyphen{}Zuker for Z = 50.}\label{\detokenize{source/api/setup_masses_theory:id2}}\end{figure}
 
 \sphinxstepscope
 
@@ -2646,14 +2776,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \bigletter{n}
 \item\relax\sphinxstyleindexentry{nucleardatapy}\sphinxstyleindexpageref{source/generated/nucleardatapy:\detokenize{module-nucleardatapy}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_crust}\sphinxstyleindexpageref{source/api/setup_crust:\detokenize{module-nucleardatapy.setup_crust}}
-\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_eoshic}\sphinxstyleindexpageref{source/api/setup_eoshic:\detokenize{module-nucleardatapy.setup_eoshic}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_EsymLsym}\sphinxstyleindexpageref{source/api/setup_EsymLsym:\detokenize{module-nucleardatapy.setup_EsymLsym}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_hic\_matter}\sphinxstyleindexpageref{source/api/setup_hic_matter:\detokenize{module-nucleardatapy.setup_hic_matter}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_ISGMR}\sphinxstyleindexpageref{source/api/setup_ISGMR:\detokenize{module-nucleardatapy.setup_ISGMR}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_masses\_exp}\sphinxstyleindexpageref{source/api/setup_masses_exp:\detokenize{module-nucleardatapy.setup_masses_exp}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_masses\_theory}\sphinxstyleindexpageref{source/api/setup_masses_theory:\detokenize{module-nucleardatapy.setup_masses_theory}}
-\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro}\sphinxstyleindexpageref{source/api/setup_micro:\detokenize{module-nucleardatapy.setup_micro}}
-\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro\_band}\sphinxstyleindexpageref{source/api/setup_micro_band:\detokenize{module-nucleardatapy.setup_micro_band}}
-\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_pheno}\sphinxstyleindexpageref{source/api/setup_pheno:\detokenize{module-nucleardatapy.setup_pheno}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro\_LP}\sphinxstyleindexpageref{source/api/setup_micro_LP:\detokenize{module-nucleardatapy.setup_micro_LP}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro\_matter}\sphinxstyleindexpageref{source/api/setup_micro_matter:\detokenize{module-nucleardatapy.setup_micro_matter}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_micro\_matter\_band}\sphinxstyleindexpageref{source/api/setup_micro_matter_band:\detokenize{module-nucleardatapy.setup_micro_matter_band}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_pheno\_matter}\sphinxstyleindexpageref{source/api/setup_pheno_matter:\detokenize{module-nucleardatapy.setup_pheno_matter}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_rad\_ch}\sphinxstyleindexpageref{source/api/setup_rad_ch:\detokenize{module-nucleardatapy.setup_rad_ch}}
 \end{sphinxtheindex}
 

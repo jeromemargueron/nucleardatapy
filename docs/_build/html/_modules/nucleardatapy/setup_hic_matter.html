@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_hic_matter &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_hic_matter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_hic_matter</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+
+<div class="viewcode-block" id="constraints_HIC_matter"><a class="viewcode-back" href="../../source/api/setup_hic_matter.html#nucleardatapy.setup_hic_matter.constraints_HIC_matter">[docs]</a><span class="k">def</span> <span class="nf">constraints_HIC_matter</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the HIC constraints available in this toolkit </span>
+<span class="sd">    for the equation of state in SM and NM and print them all on </span>
+<span class="sd">    the prompt. These constraints are the following</span>
+<span class="sd">    ones: [ &#39;DLL-2002&#39;, &#39;FOPI-2016&#39; ].</span>
+
+<span class="sd">    :return: The list of constraints.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter constraints_HIC_matter()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;DLL-2002&#39;</span><span class="p">,</span> <span class="s1">&#39;FOPI-2016&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC constraints available in the toolkit:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+    <span class="n">constraints_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">constraints</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC constraints available in the toolkit:&#39;</span><span class="p">,</span><span class="n">constraints_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit constraints_HIC_matter()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span></div>
+
+
+<div class="viewcode-block" id="SetupHICMatter"><a class="viewcode-back" href="../../source/api/setup_hic_matter.html#nucleardatapy.setup_hic_matter.SetupHICMatter">[docs]</a><span class="k">class</span> <span class="nc">SetupHICMatter</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the constraints on the EOS from HIC.</span>
+
+<span class="sd">    This choice is defined in the variable `constraint`.</span>
+
+<span class="sd">    `constraint` can chosen among the following ones: [ &#39;DLL-2002&#39;, &#39;FOPI-2016&#39; ].</span>
+
+<span class="sd">    :param constraint: Fix the name of `constraint`. Default value: &#39;DLL-2002&#39;.</span>
+<span class="sd">    :type constraint: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;DLL-2002&#39;</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupHICMatter()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constraint:&quot;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">SetupHICMatter</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">constraints_HIC_matter</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">constraints_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The constraint &#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">,</span><span class="s1">&#39; is not in the list of EOS HIC constraints.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of EOS HIC constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;dll-2002&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-SM.dat&#39;</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-NM-soft.dat&#39;</span>
+            <span class="n">file_in3</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-NM-stiff.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;P. Danielewicz, R. Lacey, and W. Lynch, Science, 298, 1592 (2002).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this constraint.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;DLL-2002&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_up</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in3</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span> <span class="p">)</span>
+            <span class="c1"># decide that the NM pressure should be the asy-soft one by default</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;fopi-2016&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2016-FOPI.dat&#39;</span>
+            <span class="c1">#if nuda.env.verb: print(&#39;Reads file:&#39;,file_in)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;A. Le Fevre, Y. Leifels, W. Reisdorf, J. Aichelin, and C. Hartnack, Nuclear Physics A 945, 112 (2016).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this constraint.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;FOPI-2016&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span>
+            <span class="c1">#</span>
+            <span class="c1"># pressure?</span>
+
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupHICMatter.print_outputs"><a class="viewcode-back" href="../../source/api/setup_hic_matter.html#nucleardatapy.setup_hic_matter.SetupHICMatter.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   constraint:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:     &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_pre: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+       <span class="c1">#</span>
+<div class="viewcode-block" id="SetupHICMatter.init_self"><a class="viewcode-back" href="../../source/api/setup_hic_matter.html#nucleardatapy.setup_hic_matter.SetupHICMatter.init_self">[docs]</a>    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute providing additional notes about the data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the density of the system (in fm^-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the energy per particle in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the energy per particle in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the energy per particle in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty in the energy per particle in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM for azy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM for azy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM for azy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM for azy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM for azy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM for azy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM for azy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM for azy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot linestyle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+        <span class="c1">#: Attribute plot label.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute plot alpha.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>         </div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

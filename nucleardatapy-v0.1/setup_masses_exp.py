@@ -586,10 +586,10 @@ class SetupMassesExp():
                 #    exit()
                 #print('ind:',ind,Z,self.sel_Zmax,self.sel_Z[ind2],Nmin,Nmax)
                 #print('sel_N:',self.sel_N[ind2])
-                if self.sel_Z[ind2] == Z and self.sel_N[ind2] < Nmin:
-                    Nmin = self.sel_N[ind2]
-                if self.sel_Z[ind2] == Z and self.sel_N[ind2] > Nmax:
-                    Nmax = self.sel_N[ind2]
+                if self.sel_nucZ[ind2] == Z and self.sel_nucN[ind2] < Nmin:
+                    Nmin = self.sel_nucN[ind2]
+                if self.sel_nucZ[ind2] == Z and self.sel_nucN[ind2] > Nmax:
+                    Nmax = self.sel_nucN[ind2]
             self.drip_Z.append( Z )
             self.drip_Nmin.append( Nmin )
             self.drip_Nmax.append( Nmax )

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupMicroMatterBand</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupmicromatterband">
+<h1>SetupMicroMatterBand</h1>
+<span class="target" id="module-nucleardatapy.setup_micro_matter_band"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro_matter_band.</span></span><span class="sig-name descname"><span class="pre">SetupMicroMatterBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['2016-MBPT-AM']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2a_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2a_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with statistical distributions averaging over
+the models given as inputs and in NM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models</strong> (<em>list.</em>) – The models given as inputs.</p></li>
+<li><p><strong>nden</strong> (<em>int</em><em>, </em><em>optional.</em>) – number of density points.</p></li>
+<li><p><strong>ne</strong> (<em>int</em><em>, </em><em>optional.</em>) – number of points along the energy axis.</p></li>
+<li><p><strong>den</strong> (<em>None</em><em> or </em><em>numpy array</em><em>, </em><em>optional.</em>) – if not None (default), impose the densities.</p></li>
+<li><p><strong>matter</strong> (<em>str</em><em>, </em><em>optional.</em>) – can be ‘NM’ (default), ‘SM’ or ‘ESYM’.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.den">
+<span class="sig-name descname"><span class="pre">den</span></span></dt>
+<dd><p>Attribute a set of density points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.matter">
+<span class="sig-name descname"><span class="pre">matter</span></span></dt>
+<dd><p>Attribute matter str.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.models">
+<span class="sig-name descname"><span class="pre">models</span></span></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.nden">
+<span class="sig-name descname"><span class="pre">nden</span></span></dt>
+<dd><p>Attribute number of points in density.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMicroMatterBand_NM.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Uncertainty band in NM obtained from the analysis of different predictions: MBPT-2016, QMC-2016 and MBPT-2020.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMicroMatterBand_SM.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Uncertainty band in SM obtained from the analysis of different predictions: MBPT-2016 and MBPT-2020.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="map to buried treasure" src="../../_images/plot_SetupMicroMatterBand_Esym.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Uncertainty band for the symmetry energy obtained from the analysis of different predictions: MBPT-2016 and MBPT-2020.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -11,21 +11,21 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupMicro.py:")
+    print("Enter sample_SetupMicroMatter.py:")
     print(50*'-')
     #
-    keys = [ '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
+    keys = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
              '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
              '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
              '2023-MBPT-AM' ]
     #
     for key in keys:
         #
-        mic = nuda.SetupMicro( model = key )
-        nuda.print_outputs_micro( mic )
+        mic = nuda.SetupMicroMatter( model = key )
+        nuda.print_outputs()
     #
     print(50*'-')
-    print("Exit sample_SetupMicro.py:")
+    print("Exit sample_SetupMicroMatter.py:")
     print(50*'-')
     #
     

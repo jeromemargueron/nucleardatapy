@@ -21,7 +21,7 @@ def models_crust():
     #
     if nuda.env.verb: print("\nEnter models_crust()")
     #
-    modcrusts = [ 'Negele-Vautherin-1973' ]
+    modcrusts = [ '1973-Negele-Vautherin', '2020-MVCD-D1S', '2020-MVCD-D1M', '2020-MVCD-D1MS' ]
     #
     print('crust models available in the toolkit:',modcrusts)
     modcrusts_lower = [ item.lower() for item in modcrusts ]
@@ -45,7 +45,7 @@ class SetupCrust():
 
     **Attributes:**
     """
-    def __init__(self, modcrust = 'Negele-Vautherin-1973'):
+    def __init__(self, modcrust = '1973-Negele-Vautherin'):
         #
         if nuda.env.verb: print("Enter SetupCrusts()")
         #
@@ -68,6 +68,8 @@ class SetupCrust():
         self.Z = None
         #: Attribute N (total number of neutrons of the WS cell).
         self.N = None
+        #: Attribute N_bound (number of bound neutrons).
+        self.N_bound = None
         #: Attribute N_g (number of neutrons in the gas).
         self.N_g = None
         #: Attribute the fraction of neutrons.
@@ -95,9 +97,9 @@ class SetupCrust():
         #: Attribute the internal energy of the gas component (in MeV).
         self.e2a_int_g = None
         #
-        if modcrust.lower()=='negele-vautherin-1973':
+        if modcrust.lower()=='1973-negele-vautherin':
             #
-            file_in = nuda.param.path_data+'crust/Negele-Vautherin.dat'
+            file_in = nuda.param.path_data+'crust/1973-Negele-Vautherin.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Negele and Vautherin, Nuc. Phys. A 207, 298 (1973).'
             self.note = "write here notes about this EOS."
@@ -118,7 +120,39 @@ class SetupCrust():
             self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
-
+            #
+        elif '2020-mvcd' in modcrust.lower():
+            #
+            # Note: N_bound or N_g cannot be determined from the tables (Jerome).
+            # It is right?
+            #
+            if modcrust.lower()=='2020-mvcd-d1s':
+                file_in = nuda.param.path_data+'crust/2020-MVCD-D1S.dat'
+                self.label = 'MVCD-D1S-2020'
+            elif modcrust.lower()=='2020-mvcd-d1m':
+                file_in = nuda.param.path_data+'crust/2020-MVCD-D1M.dat'
+                self.label = 'MVCD-D1M-2020'
+            elif modcrust.lower()=='2020-mvcd-d1ms':
+                file_in = nuda.param.path_data+'crust/2020-MVCD-D1MS.dat'
+                self.label = 'MVCD-D1M$^*$-2020'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).'
+            self.note = "semiclassical variational Wigner-Kirkwood method along with shell and pairing corrections calculated with the Strutinsky integral method and the BCS approximation."
+            self.linestyle = 'solid'
+            self.den, self.RWS, self.N, self.Z, self.e2a_int2, self.pre, self.mu_n, self.mu_p, self.mu_e \
+                = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
+            self.den_cgs = self.den / 1.e-39 # in cm-3
+            self.N = np.array([ int(item) for item in self.N ])
+            self.Z = np.array([ int(item) for item in self.Z ])
+            self.A = self.N + self.Z
+            #self.N_bound = [ int(item) for item in self.Z * self.xpn_bound ]
+            self.xn = self.N / self.A
+            #self.xn_bound = self.N_bound / self.A
+            #self.N_g = self.N - self.N_bound
+            self.xp = self.Z / self.A
+            self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
+            self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
+            self.e2a_int = self.e2a_tot - self.e2a_rm
     #
     def print_outputs( self ):
        """

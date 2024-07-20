@@ -38,12 +38,12 @@ def plot_NEP( pname, models_micro, models_pheno ):
         nsat = []; Esat = []; Ksat = []; Qsat = []; Zsat = []
         Esym = []; Lsym = []; Ksym = []; Qsym = []; Zsym = []
         msat = []; kappas = []; kappav = []
-        params, params_lower = nuda.params_pheno( model = model )
+        params, params_lower = nuda.params_pheno_matter( model = model )
         #
         for param in params:
             #
             print('param:',param)
-            pheno = nuda.SetupPheno( model = model, param = param )
+            pheno = nuda.SetupPhenoMatter( model = model, param = param )
             if pheno.nep:
                 nsat.append( pheno.nsat ); Esat.append( pheno.Esat ); 
                 Ksat.append( pheno.Ksat ); Qsat.append( pheno.Qsat ); 
@@ -94,7 +94,7 @@ def main():
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro()
+    models_micro, models_lower = nuda.models_micro_matter()
     models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP

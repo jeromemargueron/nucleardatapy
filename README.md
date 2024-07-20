@@ -63,7 +63,7 @@ sys.path.insert(0, nuda_tk)
 import nucleardatapy as nuda
 
 # Instantiate a microscopic object
-mic = nuda.SetMicro( model = '1998-AM-APR')
+mic = nuda.SetMicroMatter( model = '1998-VAR-AM-APR')
 
 # print outputs
 mic.print_outputs( )
