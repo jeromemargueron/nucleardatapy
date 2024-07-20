@@ -28,7 +28,7 @@ def plot_crust( pname, modcrusts ):
     axs[1].set_xlabel(r'n (fm$^{-3}$)')
     axs[1].set_ylabel(r'$Z$')
     axs[1].set_xlim([1e-4, 1e-1])
-    axs[1].set_ylim([0, 60])
+    axs[1].set_ylim([10, 100])
     axs[1].set_xscale('log')
     #
     for modcrust in modcrusts:
@@ -39,7 +39,7 @@ def plot_crust( pname, modcrusts ):
         if crust.Z is not None: 
             axs[1].plot( crust.den, crust.Z, label=crust.label )
     axs[0].legend(loc='upper left',fontsize='8', ncol=1)
-    axs[1].legend(loc='upper left',fontsize='8', ncol=1)
+    #axs[1].legend(loc='upper left',fontsize='8', ncol=1)
     #
     plt.savefig(pname)
     plt.close()

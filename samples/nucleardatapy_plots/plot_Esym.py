@@ -31,12 +31,12 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     #
     for model in models_micro:
         #
-        mic = nuda.SetupMicro( model = model )
+        mic = nuda.SetupMicroMatter( model = model )
         if mic.esym_e2a is not None: 
             print('model:',model)
             if mic.marker:
                 if mic.err:
-                    axs[0].errorbar( mic.esym_den, mic.esym_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[0].errorbar( mic.esym_den, mic.esym_e2a, yerr=mic.esym_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
                 else:
                     axs[0].plot( mic.esym_den, mic.esym_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
             else:
@@ -49,15 +49,15 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[0].text(0.05,5,'microscopic models',fontsize='10')
-    axs[0].legend(loc='upper left',fontsize='8', ncol=1)
+    axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     for model in models_pheno:
         #
-        params, params_lower = nuda.params_pheno( model = model )
+        params, params_lower = nuda.params_pheno_matter( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupPheno( model = model, param = param )
+            pheno = nuda.SetupPhenoMatter( model = model, param = param )
             if pheno.esym_e2a is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
@@ -87,11 +87,11 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupMicroBand( models, den=den, matter='ESYM' )
+    band = nuda.SetupMicroMatterBand( models, den=den, matter='ESYM' )
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro()
+    models_micro, models_lower = nuda.models_micro_matter()
     models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym

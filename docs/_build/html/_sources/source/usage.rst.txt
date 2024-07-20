@@ -51,7 +51,7 @@ Go to the folder `mylib/nucleardatapy/samples/nucleardatapy_samples/` and try th
 
 .. code-block:: console
 
-   $ python3 sample_SetupMicro.py
+   $ python3 sample_SetupMicroMatter.py
 
 .. _Test:
 
@@ -79,6 +79,6 @@ How to obtain microscopic results for APR equation of state:
 
    import nucleardatapy as nuda
 
-   mic = nuda.SetupMicro( model = '1998-AM-APR' )
+   mic = nuda.SetupMicroMatter( model = '1998-VAR-AM-APR' )
 
    mic.print_outputs( )
