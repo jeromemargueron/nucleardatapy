@@ -42,9 +42,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_band.html">SetupMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_LP.html">SetupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
@@ -101,7 +103,7 @@
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter models_crust()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">modcrusts</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Negele-Vautherin-1973&#39;</span> <span class="p">]</span>
+    <span class="n">modcrusts</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1973-Negele-Vautherin&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1S&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1M&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1MS&#39;</span> <span class="p">]</span>
     <span class="c1">#</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crust models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">modcrusts</span><span class="p">)</span>
     <span class="n">modcrusts_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">modcrusts</span> <span class="p">]</span>
@@ -125,7 +127,7 @@
 
 <span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modcrust</span> <span class="o">=</span> <span class="s1">&#39;Negele-Vautherin-1973&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modcrust</span> <span class="o">=</span> <span class="s1">&#39;1973-Negele-Vautherin&#39;</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupCrusts()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -148,6 +150,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1">#: Attribute N (total number of neutrons of the WS cell).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute N_bound (number of bound neutrons).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1">#: Attribute N_g (number of neutrons in the gas).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1">#: Attribute the fraction of neutrons.</span>
@@ -175,9 +179,9 @@
         <span class="c1">#: Attribute the internal energy of the gas component (in MeV).</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_g</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;negele-vautherin-1973&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;1973-negele-vautherin&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
-            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/Negele-Vautherin.dat&#39;</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/1973-Negele-Vautherin.dat&#39;</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Negele and Vautherin, Nuc. Phys. A 207, 298 (1973).&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
@@ -198,7 +202,39 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnuc2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
-
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="s1">&#39;2020-mvcd&#39;</span> <span class="ow">in</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="c1">#</span>
+            <span class="c1"># Note: N_bound or N_g cannot be determined from the tables (Jerome).</span>
+            <span class="c1"># It is right?</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1s&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1S.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1S-2020&#39;</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1m&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1M.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1M-2020&#39;</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1ms&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1MS.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1M$^*$-2020&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;semiclassical variational Wigner-Kirkwood method along with shell and pairing corrections calculated with the Strutinsky integral method and the BCS approximation.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_e</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">/</span> <span class="mf">1.e-39</span> <span class="c1"># in cm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span>
+            <span class="c1">#self.N_bound = [ int(item) for item in self.Z * self.xpn_bound ]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="c1">#self.xn_bound = self.N_bound / self.A</span>
+            <span class="c1">#self.N_g = self.N - self.N_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnuc2_approx</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
     <span class="c1">#</span>
 <div class="viewcode-block" id="SetupCrust.print_outputs"><a class="viewcode-back" href="../../source/api/setup_crust.html#nucleardatapy.setup_crust.SetupCrust.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
