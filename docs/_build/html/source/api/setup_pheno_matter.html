@@ -1,21 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupPhenoMatter &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -48,7 +52,37 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter.html">SetupMicroMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_LP.html">SetupMicroLP</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupPhenoMatter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupPhenoMatter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.Esat</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.esym_den</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.esym_e2a</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.esym_kf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_cs2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_den</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_e2a</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_gap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_kfn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.nm_pre</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.note</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.param</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.print_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_cs2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_den</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_e2a</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_gap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_kf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_kfn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre"><code class="docutils literal notranslate"><span class="pre">SetupPhenoMatter.sm_pre</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.models_pheno_matter"><code class="docutils literal notranslate"><span class="pre">models_pheno_matter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_pheno_matter.params_pheno_matter"><code class="docutils literal notranslate"><span class="pre">params_pheno_matter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_masses_exp.html">SetupMassesExp</a></li>
@@ -71,8 +105,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupPhenoMatter</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupPhenoMatter</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_pheno_matter.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,17 +117,17 @@
            <div itemprop="articleBody">
              
   <section id="setupphenomatter">
-<h1>SetupPhenoMatter<a class="headerlink" href="#setupphenomatter" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-nucleardatapy.setup_pheno_matter"></span><dl class="py class">
+<h1>SetupPhenoMatter<a class="headerlink" href="#setupphenomatter" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-nucleardatapy.setup_pheno_matter">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">SetupPhenoMatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Skyrme'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SLY5'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#SetupPhenoMatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">SetupPhenoMatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Skyrme'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SLY5'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#SetupPhenoMatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter" title="Link to this definition"></a></dt>
 <dd><p>Instantiate the object with results based on phenomenological    interactions and choosen by the toolkit practitioner.     This choice is defined in the variables <cite>model</cite> and <cite>param</cite>.</p>
 <p>If <cite>models</cite> == ‘skyrme’, <cite>param</cite> can be: ‘BSK14’,     ‘BSK16’, ‘BSK17’, ‘BSK27’, ‘F-’, ‘F+’, ‘F0’, ‘FPL’, ‘LNS’, ‘LNS1’, ‘LNS5’,     ‘NRAPR’, ‘RATP’, ‘SAMI’, ‘SGII’, ‘SIII’, ‘SKGSIGMA’, ‘SKI2’, ‘SKI4’, ‘SKMP’,     ‘SKMS’, ‘SKO’, ‘SKOP’, ‘SKP’, ‘SKRSIGMA’, ‘SKX’, ‘Skz2’, ‘SLY4’, ‘SLY5’,     ‘SLY230A’, ‘SLY230B’, ‘SV’, ‘T6’, ‘T44’, ‘UNEDF0’, ‘UNEDF1’.</p>
 <p>If <cite>models</cite> == ‘NLRH’, <cite>param</cite> can be: ‘NL-SH’, ‘NL3’, ‘NL3II’, ‘PK1’, ‘PK1R’, ‘TM1’.</p>
 <p>If <cite>models</cite> == ‘DDRH’, <cite>param</cite> can be: ‘DDME1’, ‘DDME2’, ‘DDMEd’, ‘PKDD’, ‘TW99’.</p>
 <p>If <cite>models</cite> == ‘DDRHF’, <cite>param</cite> can be: ‘PKA1’, ‘PKO1’, ‘PKO2’, ‘PKO3’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model: ‘Skyrme’, ‘NLRH’,     ‘DDRH’, ‘DDRHF’. Default value: ‘Skyrme’.</p></li>
 <li><p><strong>param</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the parameterization associated to model.     Default value: ‘SLY5’.</p></li>
@@ -103,139 +137,139 @@
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat">
-<span class="sig-name descname"><span class="pre">Esat</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Esat</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat" title="Link to this definition"></a></dt>
 <dd><p>Attribute the NEP.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den">
-<span class="sig-name descname"><span class="pre">esym_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">esym_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den" title="Link to this definition"></a></dt>
 <dd><p>Attribute the density for the symmetry energy.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a">
-<span class="sig-name descname"><span class="pre">esym_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">esym_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetry energy.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf">
-<span class="sig-name descname"><span class="pre">esym_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">esym_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf" title="Link to this definition"></a></dt>
 <dd><p>Attribute the Fermi momentum for the symmetry energy.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label">
-<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model">
-<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model" title="Link to this definition"></a></dt>
 <dd><p>Attribute model.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2">
-<span class="sig-name descname"><span class="pre">nm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den">
-<span class="sig-name descname"><span class="pre">nm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a">
-<span class="sig-name descname"><span class="pre">nm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap">
-<span class="sig-name descname"><span class="pre">nm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn">
-<span class="sig-name descname"><span class="pre">nm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre">
-<span class="sig-name descname"><span class="pre">nm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">nm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre" title="Link to this definition"></a></dt>
 <dd><p>Attribute the neutron matter pressure.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note">
-<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the data.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param">
-<span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param" title="Link to this definition"></a></dt>
 <dd><p>Attribute param.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#SetupPhenoMatter.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#SetupPhenoMatter.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs" title="Link to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref">
-<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the full reference to the paper to be citted.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2">
-<span class="sig-name descname"><span class="pre">sm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_cs2</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter sound speed (c_s/c)^2.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den">
-<span class="sig-name descname"><span class="pre">sm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_den</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter density.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a">
-<span class="sig-name descname"><span class="pre">sm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_e2a</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter energy per particle.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap">
-<span class="sig-name descname"><span class="pre">sm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_gap</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter pairing gap.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf">
-<span class="sig-name descname"><span class="pre">sm_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_kf</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn">
-<span class="sig-name descname"><span class="pre">sm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_kfn</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter neutron Fermi momentum.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre">
-<span class="sig-name descname"><span class="pre">sm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sm_pre</span></span><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre" title="Link to this definition"></a></dt>
 <dd><p>Attribute the symmetric matter pressure.</p>
 </dd></dl>
 
@@ -243,13 +277,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.models_pheno_matter">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">models_pheno_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#models_pheno_matter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.models_pheno_matter" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">models_pheno_matter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#models_pheno_matter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.models_pheno_matter" title="Link to this definition"></a></dt>
 <dd><p>Return a list of models available in this toolkit and print them all on the prompt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of models with can be ‘Skyrme’, ‘NLRH’, ‘DDRH’, ‘DDRHF’.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>
@@ -257,17 +291,17 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_pheno_matter.params_pheno_matter">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">params_pheno_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#params_pheno_matter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.params_pheno_matter" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_pheno_matter.</span></span><span class="sig-name descname"><span class="pre">params_pheno_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_pheno_matter.html#params_pheno_matter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_pheno_matter.params_pheno_matter" title="Link to this definition"></a></dt>
 <dd><p>Return a list with the parameterizations available in
 this toolkit for a given model and print them all on the prompt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>str.</em>) – The type of model for which there are parametrizations.     They should be chosen among the following options: ‘Skyrme’, ‘NLRH’,     ‘DDRH’, ‘DDRHF’.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The list of parametrizations.     If <cite>models</cite> == ‘skyrme’: ‘BSK14’,     ‘BSK16’, ‘BSK17’, ‘BSK27’, ‘F-’, ‘F+’, ‘F0’, ‘FPL’, ‘LNS’, ‘LNS1’, ‘LNS5’,     ‘NRAPR’, ‘RATP’, ‘SAMI’, ‘SGII’, ‘SIII’, ‘SKGSIGMA’, ‘SKI2’, ‘SKI4’, ‘SKMP’,     ‘SKMS’, ‘SKO’, ‘SKOP’, ‘SKP’, ‘SKRSIGMA’, ‘SKX’, ‘Skz2’, ‘SLY4’, ‘SLY5’,     ‘SLY230A’, ‘SLY230B’, ‘SV’, ‘T6’, ‘T44’, ‘UNEDF0’, ‘UNEDF1’.     If <cite>models</cite> == ‘NLRH’: ‘NL-SH’, ‘NL3’, ‘NL3II’, ‘PK1’, ‘PK1R’, ‘TM1’.     If <cite>models</cite> == ‘DDRH’: ‘DDME1’, ‘DDME2’, ‘DDMEd’, ‘PKDD’, ‘TW99’.     If <cite>models</cite> == ‘DDRHF’: ‘PKA1’, ‘PKO1’, ‘PKO2’, ‘PKO3’.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[str].</p>
 </dd>
 </dl>
@@ -275,57 +309,66 @@ this toolkit for a given model and print them all on the prompt.</p>
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupPhenoMatter.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-NLRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-NLRH-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-NLRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-NLRH-E-NM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-NLRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-NLRH-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-NLRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-NLRH-E-SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRH-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRH-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRH-E-NM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRH-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRH-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRH-E-SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRHF-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRHF-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRHF-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRHF-E-NM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRHF-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRHF-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-DDRHF-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-DDRHF-E-SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-Skyrme-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-Skyrme-E-NM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-Skyrme-E-NM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-Skyrme-E-NM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-Skyrme-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-Skyrme-E-SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupPhenoMatter-Skyrme-E-SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupPhenoMatter-Skyrme-E-SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
-<a class="reference internal image-reference" href="../../_images/plot_NEP.png"><img alt="map to buried treasure" src="../../_images/plot_NEP.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_NEP.png"><img alt="map to buried treasure" src="../../_images/plot_NEP.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Distribution of NEP for phenomenological models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

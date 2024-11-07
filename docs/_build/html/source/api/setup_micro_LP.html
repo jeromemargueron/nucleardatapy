@@ -1,21 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupMicroLP &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -47,7 +51,16 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter.html">SetupMicroMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupMicroLP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupMicroLP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_micro_LP.SetupMicroLP"><code class="docutils literal notranslate"><span class="pre">SetupMicroLP</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.init_self"><code class="docutils literal notranslate"><span class="pre">SetupMicroLP.init_self()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.model"><code class="docutils literal notranslate"><span class="pre">SetupMicroLP.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupMicroLP.print_outputs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_micro_LP.models_micro_LP"><code class="docutils literal notranslate"><span class="pre">models_micro_LP()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="setup_pheno_matter.html">SetupPhenoMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
@@ -71,8 +84,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupMicroLP</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupMicroLP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_micro_LP.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,33 +96,33 @@
            <div itemprop="articleBody">
              
   <section id="setupmicrolp">
-<h1>SetupMicroLP<a class="headerlink" href="#setupmicrolp" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-nucleardatapy.setup_micro_LP"></span><dl class="py class">
+<h1>SetupMicroLP<a class="headerlink" href="#setupmicrolp" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-nucleardatapy.setup_micro_LP">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro_LP.SetupMicroLP">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro_LP.</span></span><span class="sig-name descname"><span class="pre">SetupMicroLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1994-BHF-SM-LP-AV14-GAP'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro_LP.</span></span><span class="sig-name descname"><span class="pre">SetupMicroLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1994-BHF-SM-LP-AV14-GAP'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP" title="Link to this definition"></a></dt>
 <dd><p>Instantiate the object with Landau parameters from microscopic calculations choosen     by the toolkit practitioner.</p>
 <p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1994-BHF-SM-LP-AV14-GAP’, ‘1994-BHF-SM-LP-AV14-CONT’,     ‘1994-BHF-SM-LP-REID-GAP’, ‘1994-BHF-SM-LP-REID-CONT’, ‘1994-BHF-SM-LP-AV14-CONT-0.7’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1994-BHF-LP’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro_LP.SetupMicroLP.init_self">
-<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.init_self" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.init_self" title="Link to this definition"></a></dt>
 <dd><p>Initialize variables in self.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro_LP.SetupMicroLP.model">
-<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.model" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.model" title="Link to this definition"></a></dt>
 <dd><p>Attribute model.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#SetupMicroLP.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs" title="Link to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
@@ -117,13 +130,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_micro_LP.models_micro_LP">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro_LP.</span></span><span class="sig-name descname"><span class="pre">models_micro_LP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#models_micro_LP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.models_micro_LP" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_micro_LP.</span></span><span class="sig-name descname"><span class="pre">models_micro_LP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_micro_LP.html#models_micro_LP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_micro_LP.models_micro_LP" title="Link to this definition"></a></dt>
 <dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1994-BHF-SM-LP-AV14-GAP’, ‘1994-BHF-SM-LP-AV14-CONT’,     ‘1994-BHF-SM-LP-REID-GAP’, ‘1994-BHF-SM-LP-REID-CONT’, ‘1994-BHF-SM-LP-AV14-CONT-0.7’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of models.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>
@@ -131,17 +144,19 @@
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupLP.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupMicroLP0_SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupMicroLP0_SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupMicroLP0_SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupMicroLP0_SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
 <p><span class="caption-text">This figure shows the L=0 Landau parameters in SM for different NN interactions obtained
-from BHF calculations.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+from BHF calculations.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../../_images/plot_SetupMicroLP1_SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupMicroLP1_SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupMicroLP1_SM.png"><img alt="map to buried treasure" src="../../_images/plot_SetupMicroLP1_SM.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
 <p><span class="caption-text">This figure shows the L=1 Landau parameters in SM for different NN interactions obtained
-from BHF calculations.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+from BHF calculations.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

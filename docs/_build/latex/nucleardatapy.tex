@@ -10,6 +10,9 @@
 %% let collapsible pdf bookmarks panel have high depth per default
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
+\PassOptionsToPackage{booktabs}{sphinx}
+\PassOptionsToPackage{colorrows}{sphinx}
+
 \PassOptionsToPackage{warn}{textcomp}
 \usepackage[utf8]{inputenc}
 \ifdefined\DeclareUnicodeCharacter
@@ -60,7 +63,7 @@
 
 
 \title{nucleardatapy}
-\date{Jul 18, 2024}
+\date{Nov 07, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -95,7 +98,7 @@ This python toolkit is designed to provide:
 
 \sphinxAtStartPar
 Check out the {\hyperref[\detokenize{source/usage::doc}]{\sphinxcrossref{\DUrole{doc}{Usage}}}} section for further information, including how to
-{\hyperref[\detokenize{source/usage:installation}]{\sphinxcrossref{\DUrole{std,std-ref}{install}}}} the project.
+{\hyperref[\detokenize{source/usage:installation}]{\sphinxcrossref{\DUrole{std}{\DUrole{std-ref}{install}}}}} the project.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
@@ -201,19 +204,21 @@ How to obtain microscopic results for APR equation of state:
 \label{\detokenize{source/api:api}}\label{\detokenize{source/api::doc}}
 
 \begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+\sphinxthistablewithnovlinesstyle
 \centering
 \begin{tabulary}{\linewidth}[t]{\X{1}{2}\X{1}{2}}
-\hline
-
+\sphinxtoprule
+\sphinxtableatstartofbodyhook
 \sphinxAtStartPar
 {\hyperref[\detokenize{source/generated/nucleardatapy:module-nucleardatapy}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{nucleardatapy}}}}}
 &
 \sphinxAtStartPar
 This module provides microscopic, phenomenological and experimental data constraints.
 \\
-\hline
+\sphinxbottomrule
 \end{tabulary}
-\par
+\sphinxtableafterendhook\par
 \sphinxattableend\end{savenotes}
 
 \sphinxstepscope
@@ -297,12 +302,15 @@ A special thanks to all contributors who accepted to share their results in this
 
 
 \section{SetupMicroMatter}
-\label{\detokenize{source/api/setup_micro_matter:setupmicromatter}}\label{\detokenize{source/api/setup_micro_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_matter:module-nucleardatapy.setup_micro_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}}\index{nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}!module@\spxentry{module}}\index{SetupMicroMatter (class in nucleardatapy.setup\_micro\_matter)@\spxentry{SetupMicroMatter}\spxextra{class in nucleardatapy.setup\_micro\_matter}}
+\label{\detokenize{source/api/setup_micro_matter:setupmicromatter}}\label{\detokenize{source/api/setup_micro_matter::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}}\index{nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}!module@\spxentry{module}}\index{SetupMicroMatter (class in nucleardatapy.setup\_micro\_matter)@\spxentry{SetupMicroMatter}\spxextra{class in nucleardatapy.setup\_micro\_matter}}\phantomsection\label{\detokenize{source/api/setup_micro_matter:module-nucleardatapy.setup_micro_matter}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatter}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatter}}}
+{\sphinxparam{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with microscopic results choosen     by the toolkit practitioner.
@@ -323,7 +331,10 @@ This choice is defined in \sphinxtitleref{model}, which can chosen among     the
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.init_self}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{init\_self}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Initialize variables in self.
@@ -335,7 +346,8 @@ Initialize variables in self.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.model}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{model}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{model}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute model.
@@ -347,7 +359,10 @@ Attribute model.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.SetupMicroMatter.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -362,7 +377,10 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.models_micro_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{models\_micro\_matter}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{models\_micro\_matter}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}BONNB’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}NSC93’
@@ -421,12 +439,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 
 \section{SetupMicroMatterBand}
-\label{\detokenize{source/api/setup_micro_matter_band:setupmicromatterband}}\label{\detokenize{source/api/setup_micro_matter_band::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:module-nucleardatapy.setup_micro_matter_band}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}}\index{nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}!module@\spxentry{module}}\index{SetupMicroMatterBand (class in nucleardatapy.setup\_micro\_matter\_band)@\spxentry{SetupMicroMatterBand}\spxextra{class in nucleardatapy.setup\_micro\_matter\_band}}
+\label{\detokenize{source/api/setup_micro_matter_band:setupmicromatterband}}\label{\detokenize{source/api/setup_micro_matter_band::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}}\index{nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}!module@\spxentry{module}}\index{SetupMicroMatterBand (class in nucleardatapy.setup\_micro\_matter\_band)@\spxentry{SetupMicroMatterBand}\spxextra{class in nucleardatapy.setup\_micro\_matter\_band}}\phantomsection\label{\detokenize{source/api/setup_micro_matter_band:module-nucleardatapy.setup_micro_matter_band}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter\_band.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatterBand}}}{\emph{\DUrole{n}{models}\DUrole{o}{=}\DUrole{default_value}{{[}\textquotesingle{}2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM\textquotesingle{}{]}}}, \emph{\DUrole{n}{nden}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{ne}\DUrole{o}{=}\DUrole{default_value}{200}}, \emph{\DUrole{n}{den}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{matter}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}NM\textquotesingle{}}}, \emph{\DUrole{n}{e2a\_min}\DUrole{o}{=}\DUrole{default_value}{\sphinxhyphen{} 20.0}}, \emph{\DUrole{n}{e2a\_max}\DUrole{o}{=}\DUrole{default_value}{50.0}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter\_band.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatterBand}}}
+{\sphinxparam{\DUrole{n}{models}\DUrole{o}{=}\DUrole{default_value}{{[}\textquotesingle{}2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM\textquotesingle{}{]}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nden}\DUrole{o}{=}\DUrole{default_value}{10}}\sphinxparamcomma \sphinxparam{\DUrole{n}{ne}\DUrole{o}{=}\DUrole{default_value}{200}}\sphinxparamcomma \sphinxparam{\DUrole{n}{den}\DUrole{o}{=}\DUrole{default_value}{None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{matter}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}NM\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{e2a\_min}\DUrole{o}{=}\DUrole{default_value}{\sphinxhyphen{}20.0}}\sphinxparamcomma \sphinxparam{\DUrole{n}{e2a\_max}\DUrole{o}{=}\DUrole{default_value}{50.0}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with statistical distributions averaging over
@@ -464,7 +485,8 @@ the models given as inputs and in NM.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.den}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{den}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{den}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute a set of density points.
@@ -476,7 +498,10 @@ Attribute a set of density points.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.init_self}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{init\_self}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Initialize variables in self.
@@ -488,7 +513,8 @@ Initialize variables in self.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.matter}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{matter}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{matter}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute matter str.
@@ -500,7 +526,8 @@ Attribute matter str.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.models}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{models}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{models}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute model.
@@ -512,7 +539,8 @@ Attribute model.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.nden}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nden}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nden}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute number of points in density.
@@ -524,7 +552,10 @@ Attribute number of points in density.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_matter_band:nucleardatapy.setup_micro_matter_band.SetupMicroMatterBand.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -560,12 +591,15 @@ Method which print outputs on terminal’s screen.
 
 
 \section{SetupMicroLP}
-\label{\detokenize{source/api/setup_micro_LP:setupmicrolp}}\label{\detokenize{source/api/setup_micro_LP::doc}}\phantomsection\label{\detokenize{source/api/setup_micro_LP:module-nucleardatapy.setup_micro_LP}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}}\index{nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}!module@\spxentry{module}}\index{SetupMicroLP (class in nucleardatapy.setup\_micro\_LP)@\spxentry{SetupMicroLP}\spxextra{class in nucleardatapy.setup\_micro\_LP}}
+\label{\detokenize{source/api/setup_micro_LP:setupmicrolp}}\label{\detokenize{source/api/setup_micro_LP::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}}\index{nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}!module@\spxentry{module}}\index{SetupMicroLP (class in nucleardatapy.setup\_micro\_LP)@\spxentry{SetupMicroLP}\spxextra{class in nucleardatapy.setup\_micro\_LP}}\phantomsection\label{\detokenize{source/api/setup_micro_LP:module-nucleardatapy.setup_micro_LP}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{SetupMicroLP}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{SetupMicroLP}}}
+{\sphinxparam{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with Landau parameters from microscopic calculations choosen     by the toolkit practitioner.
@@ -586,7 +620,10 @@ This choice is defined in \sphinxtitleref{model}, which can chosen among     the
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.init_self}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{init\_self}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Initialize variables in self.
@@ -598,7 +635,8 @@ Initialize variables in self.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.model}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{model}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{model}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute model.
@@ -610,7 +648,10 @@ Attribute model.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.SetupMicroLP.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -625,7 +666,10 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_micro_LP:nucleardatapy.setup_micro_LP.models_micro_LP}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{models\_micro\_LP}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_LP.}}\sphinxbfcode{\sphinxupquote{models\_micro\_LP}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT’,     ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}GAP’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}REID\sphinxhyphen{}CONT’, ‘1994\sphinxhyphen{}BHF\sphinxhyphen{}SM\sphinxhyphen{}LP\sphinxhyphen{}AV14\sphinxhyphen{}CONT\sphinxhyphen{}0.7’.
@@ -666,12 +710,15 @@ from BHF calculations.}\label{\detokenize{source/api/setup_micro_LP:id2}}\end{fi
 
 
 \section{SetupPhenoMatter}
-\label{\detokenize{source/api/setup_pheno_matter:setupphenomatter}}\label{\detokenize{source/api/setup_pheno_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_pheno_matter:module-nucleardatapy.setup_pheno_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}}\index{nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}!module@\spxentry{module}}\index{SetupPhenoMatter (class in nucleardatapy.setup\_pheno\_matter)@\spxentry{SetupPhenoMatter}\spxextra{class in nucleardatapy.setup\_pheno\_matter}}
+\label{\detokenize{source/api/setup_pheno_matter:setupphenomatter}}\label{\detokenize{source/api/setup_pheno_matter::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}}\index{nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}!module@\spxentry{module}}\index{SetupPhenoMatter (class in nucleardatapy.setup\_pheno\_matter)@\spxentry{SetupPhenoMatter}\spxextra{class in nucleardatapy.setup\_pheno\_matter}}\phantomsection\label{\detokenize{source/api/setup_pheno_matter:module-nucleardatapy.setup_pheno_matter}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{SetupPhenoMatter}}}{\emph{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}Skyrme\textquotesingle{}}}, \emph{\DUrole{n}{param}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}SLY5\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{SetupPhenoMatter}}}
+{\sphinxparam{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}Skyrme\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{param}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}SLY5\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with results based on phenomenological    interactions and choosen by the toolkit practitioner.     This choice is defined in the variables \sphinxtitleref{model} and \sphinxtitleref{param}.
@@ -708,7 +755,8 @@ If \sphinxtitleref{models} == ‘DDRHF’, \sphinxtitleref{param} can be: ‘PKA
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.Esat}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Esat}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Esat}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the NEP.
@@ -720,7 +768,8 @@ Attribute the NEP.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_den}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{esym\_den}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{esym\_den}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the density for the symmetry energy.
@@ -732,7 +781,8 @@ Attribute the density for the symmetry energy.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_e2a}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{esym\_e2a}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{esym\_e2a}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetry energy.
@@ -744,7 +794,8 @@ Attribute the symmetry energy.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.esym_kf}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{esym\_kf}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{esym\_kf}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the Fermi momentum for the symmetry energy.
@@ -756,7 +807,8 @@ Attribute the Fermi momentum for the symmetry energy.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.label}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the label the data is references for figures.
@@ -768,7 +820,8 @@ Attribute providing the label the data is references for figures.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.model}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{model}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{model}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute model.
@@ -780,7 +833,8 @@ Attribute model.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_cs2}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_cs2}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_cs2}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter sound speed (c\_s/c)\textasciicircum{}2.
@@ -792,7 +846,8 @@ Attribute the neutron matter sound speed (c\_s/c)\textasciicircum{}2.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_den}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_den}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_den}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter density.
@@ -804,7 +859,8 @@ Attribute the neutron matter density.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_e2a}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_e2a}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_e2a}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter energy per particle.
@@ -816,7 +872,8 @@ Attribute the neutron matter energy per particle.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_gap}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_gap}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_gap}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter pairing gap.
@@ -828,7 +885,8 @@ Attribute the neutron matter pairing gap.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_kfn}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_kfn}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_kfn}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter neutron Fermi momentum.
@@ -840,7 +898,8 @@ Attribute the neutron matter neutron Fermi momentum.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.nm_pre}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nm\_pre}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nm\_pre}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron matter pressure.
@@ -852,7 +911,8 @@ Attribute the neutron matter pressure.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.note}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the data.
@@ -864,7 +924,8 @@ Attribute providing additional notes about the data.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.param}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{param}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{param}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute param.
@@ -876,7 +937,10 @@ Attribute param.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -888,7 +952,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.ref}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the full reference to the paper to be citted.
@@ -900,7 +965,8 @@ Attribute providing the full reference to the paper to be citted.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_cs2}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_cs2}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_cs2}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter sound speed (c\_s/c)\textasciicircum{}2.
@@ -912,7 +978,8 @@ Attribute the symmetric matter sound speed (c\_s/c)\textasciicircum{}2.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_den}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_den}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_den}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter density.
@@ -924,7 +991,8 @@ Attribute the symmetric matter density.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_e2a}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_e2a}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_e2a}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter energy per particle.
@@ -936,7 +1004,8 @@ Attribute the symmetric matter energy per particle.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_gap}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_gap}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_gap}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter pairing gap.
@@ -948,7 +1017,8 @@ Attribute the symmetric matter pairing gap.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kf}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_kf}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_kf}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter Fermi momentum.
@@ -960,7 +1030,8 @@ Attribute the symmetric matter Fermi momentum.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_kfn}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_kfn}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_kfn}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter neutron Fermi momentum.
@@ -972,7 +1043,8 @@ Attribute the symmetric matter neutron Fermi momentum.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.SetupPhenoMatter.sm_pre}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{sm\_pre}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sm\_pre}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symmetric matter pressure.
@@ -987,7 +1059,10 @@ Attribute the symmetric matter pressure.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.models_pheno_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{models\_pheno\_matter}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{models\_pheno\_matter}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of models available in this toolkit and print them all on the prompt.
@@ -1009,7 +1084,10 @@ list{[}str{]}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_pheno_matter:nucleardatapy.setup_pheno_matter.params_pheno_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{params\_pheno\_matter}}}{\emph{\DUrole{n}{model}}}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_pheno\_matter.}}\sphinxbfcode{\sphinxupquote{params\_pheno\_matter}}}
+{\sphinxparam{\DUrole{n}{model}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list with the parameterizations available in
@@ -1102,12 +1180,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 
 \section{SetupHICMatter}
-\label{\detokenize{source/api/setup_hic_matter:setuphicmatter}}\label{\detokenize{source/api/setup_hic_matter::doc}}\phantomsection\label{\detokenize{source/api/setup_hic_matter:module-nucleardatapy.setup_hic_matter}}\index{module@\spxentry{module}!nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}}\index{nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}!module@\spxentry{module}}\index{SetupHICMatter (class in nucleardatapy.setup\_hic\_matter)@\spxentry{SetupHICMatter}\spxextra{class in nucleardatapy.setup\_hic\_matter}}
+\label{\detokenize{source/api/setup_hic_matter:setuphicmatter}}\label{\detokenize{source/api/setup_hic_matter::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}}\index{nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}!module@\spxentry{module}}\index{SetupHICMatter (class in nucleardatapy.setup\_hic\_matter)@\spxentry{SetupHICMatter}\spxextra{class in nucleardatapy.setup\_hic\_matter}}\phantomsection\label{\detokenize{source/api/setup_hic_matter:module-nucleardatapy.setup_hic_matter}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{SetupHICMatter}}}{\emph{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}DLL\sphinxhyphen{}2002\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{SetupHICMatter}}}
+{\sphinxparam{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}DLL\sphinxhyphen{}2002\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the constraints on the EOS from HIC.
@@ -1131,7 +1212,10 @@ This choice is defined in the variable \sphinxtitleref{constraint}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter.init_self}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{init\_self}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Initialize variables in self.
@@ -1143,7 +1227,10 @@ Initialize variables in self.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.SetupHICMatter.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -1158,7 +1245,10 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_hic_matter:nucleardatapy.setup_hic_matter.constraints_HIC_matter}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{constraints\_HIC\_matter}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_hic\_matter.}}\sphinxbfcode{\sphinxupquote{constraints\_HIC\_matter}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the HIC constraints available in this toolkit
@@ -1190,12 +1280,15 @@ list{[}str{]}.
 
 
 \section{SetupCrust}
-\label{\detokenize{source/api/setup_crust:setupcrust}}\label{\detokenize{source/api/setup_crust::doc}}\phantomsection\label{\detokenize{source/api/setup_crust:module-nucleardatapy.setup_crust}}\index{module@\spxentry{module}!nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}}\index{nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}!module@\spxentry{module}}\index{SetupCrust (class in nucleardatapy.setup\_crust)@\spxentry{SetupCrust}\spxextra{class in nucleardatapy.setup\_crust}}
+\label{\detokenize{source/api/setup_crust:setupcrust}}\label{\detokenize{source/api/setup_crust::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}}\index{nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}!module@\spxentry{module}}\index{SetupCrust (class in nucleardatapy.setup\_crust)@\spxentry{SetupCrust}\spxextra{class in nucleardatapy.setup\_crust}}\phantomsection\label{\detokenize{source/api/setup_crust:module-nucleardatapy.setup_crust}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{SetupCrust}}}{\emph{\DUrole{n}{modcrust}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1973\sphinxhyphen{}Negele\sphinxhyphen{}Vautherin\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{SetupCrust}}}
+{\sphinxparam{\DUrole{n}{modcrust}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1973\sphinxhyphen{}Negele\sphinxhyphen{}Vautherin\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the properties of the crust for the existing models.
@@ -1219,7 +1312,8 @@ This choice is defined in the variable \sphinxtitleref{crust}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.A}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{A}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{A}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute A (mass of the nucleus).
@@ -1231,7 +1325,8 @@ Attribute A (mass of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.N}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{N}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{N}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N (total number of neutrons of the WS cell).
@@ -1243,7 +1338,8 @@ Attribute N (total number of neutrons of the WS cell).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.N_bound}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{N\_bound}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{N\_bound}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N\_bound (number of bound neutrons).
@@ -1255,7 +1351,8 @@ Attribute N\_bound (number of bound neutrons).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.N_g}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{N\_g}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{N\_g}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N\_g (number of neutrons in the gas).
@@ -1267,7 +1364,8 @@ Attribute N\_g (number of neutrons in the gas).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.RWS}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{RWS}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{RWS}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the radius of the WS cell (in fm).
@@ -1279,7 +1377,8 @@ Attribute the radius of the WS cell (in fm).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.Z}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Z}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Z}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Z (charge of the nucleus).
@@ -1291,7 +1390,8 @@ Attribute Z (charge of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.den}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{den}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{den}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the density of the system (in fm\textasciicircum{}\sphinxhyphen{}3).
@@ -1303,7 +1403,8 @@ Attribute the density of the system (in fm\textasciicircum{}\sphinxhyphen{}3).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.den_cgs}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{den\_cgs}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{den\_cgs}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the density of the system (in cm\textasciicircum{}\sphinxhyphen{}3).
@@ -1315,7 +1416,8 @@ Attribute the density of the system (in cm\textasciicircum{}\sphinxhyphen{}3).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.den_g}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{den\_g}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{den\_g}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the approximate density of neutron in the gas (in fm\sphinxhyphen{}3).
@@ -1327,7 +1429,8 @@ Attribute the approximate density of neutron in the gas (in fm\sphinxhyphen{}3).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.e2a_int}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{e2a\_int}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{e2a\_int}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the internal energy (in MeV).
@@ -1339,7 +1442,8 @@ Attribute the internal energy (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.e2a_int2}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{e2a\_int2}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{e2a\_int2}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the energy minus the neutron mass (in MeV).
@@ -1351,7 +1455,8 @@ Attribute the energy minus the neutron mass (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.e2a_int_g}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{e2a\_int\_g}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{e2a\_int\_g}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the internal energy of the gas component (in MeV).
@@ -1363,7 +1468,8 @@ Attribute the internal energy of the gas component (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.e2a_rm}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{e2a\_rm}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{e2a\_rm}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the rest mass energy (in MeV).
@@ -1375,7 +1481,8 @@ Attribute the rest mass energy (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.mu_n}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{mu\_n}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{mu\_n}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the neutron chemical potential (in MeV).
@@ -1387,7 +1494,8 @@ Attribute the neutron chemical potential (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.mu_p}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{mu\_p}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{mu\_p}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the proton chemical potential (in MeV).
@@ -1399,7 +1507,10 @@ Attribute the proton chemical potential (in MeV).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -1411,7 +1522,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.xn}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{xn}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{xn}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the fraction of neutrons.
@@ -1423,7 +1535,8 @@ Attribute the fraction of neutrons.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.xn_bound}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{xn\_bound}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{xn\_bound}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the fraction of bound neutrons.
@@ -1435,7 +1548,8 @@ Attribute the fraction of bound neutrons.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.xp}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{xp}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{xp}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the fraction of protons.
@@ -1447,7 +1561,8 @@ Attribute the fraction of protons.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.SetupCrust.xpn_bound}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{xpn\_bound}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{xpn\_bound}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the approximate ratio of proton to neutron in the nucleus.
@@ -1462,7 +1577,10 @@ Attribute the approximate ratio of proton to neutron in the nucleus.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_crust:nucleardatapy.setup_crust.models_crust}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{models\_crust}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_crust.}}\sphinxbfcode{\sphinxupquote{models\_crust}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the tables available in this toolkit for the experimental masses and
@@ -1493,12 +1611,15 @@ list{[}str{]}.
 
 
 \section{SetupMassesExp}
-\label{\detokenize{source/api/setup_masses_exp:setupmassesexp}}\label{\detokenize{source/api/setup_masses_exp::doc}}\phantomsection\label{\detokenize{source/api/setup_masses_exp:module-nucleardatapy.setup_masses_exp}}\index{module@\spxentry{module}!nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}}\index{nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}!module@\spxentry{module}}\index{SetupMassesExp (class in nucleardatapy.setup\_masses\_exp)@\spxentry{SetupMassesExp}\spxextra{class in nucleardatapy.setup\_masses\_exp}}
+\label{\detokenize{source/api/setup_masses_exp:setupmassesexp}}\label{\detokenize{source/api/setup_masses_exp::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}}\index{nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}!module@\spxentry{module}}\index{SetupMassesExp (class in nucleardatapy.setup\_masses\_exp)@\spxentry{SetupMassesExp}\spxextra{class in nucleardatapy.setup\_masses\_exp}}\phantomsection\label{\detokenize{source/api/setup_masses_exp:module-nucleardatapy.setup_masses_exp}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{SetupMassesExp}}}{\emph{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}AME\textquotesingle{}}}, \emph{\DUrole{n}{version}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2020\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{SetupMassesExp}}}
+{\sphinxparam{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}AME\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{version}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2020\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the experimental nuclear masses from AME mass table.
@@ -1532,7 +1653,8 @@ This choice is defined in the variables \sphinxtitleref{table} and \sphinxtitler
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.Zmax}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Zmax}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Zmax}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 maximum charge of nuclei present in the table.
@@ -1550,7 +1672,8 @@ Attribute Zmax
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.dist_nbNuc}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{dist\_nbNuc}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{dist\_nbNuc}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 attribute number of nuclei discovered per year
@@ -1562,7 +1685,8 @@ attribute number of nuclei discovered per year
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.dist_year}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{dist\_year}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{dist\_year}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 attribute distribution of years
@@ -1574,7 +1698,10 @@ attribute distribution of years
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.drip}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{drip}}}{\emph{\DUrole{n}{Zmax}\DUrole{o}{=}\DUrole{default_value}{95}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{drip}}}
+{\sphinxparam{\DUrole{n}{Zmax}\DUrole{o}{=}\DUrole{default_value}{95}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
@@ -1595,7 +1722,8 @@ Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.flagI}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{flagI}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{flagI}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute I.
@@ -1607,7 +1735,8 @@ Attribute I.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.flagInterp}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{flagInterp}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{flagInterp}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Interp (interpolation). Interp=’y’ is the nucleushas not been measured but is in the table based on interpolation expressions.otherwise Interp = ‘n’ for nuclei produced in laboratory and measured.
@@ -1619,7 +1748,8 @@ Attribute Interp (interpolation). Interp=’y’ is the nucleushas not been meas
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.label}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the label the data is references for figures.
@@ -1631,7 +1761,8 @@ Attribute providing the label the data is references for figures.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nbLine}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nbLine}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nbLine}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute with the number of line in the file.
@@ -1643,7 +1774,8 @@ Attribute with the number of line in the file.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nbNuc}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nbNuc}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nbNuc}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute with the number of nuclei read in the file.
@@ -1655,7 +1787,8 @@ Attribute with the number of nuclei read in the file.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.note}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the data.
@@ -1667,7 +1800,8 @@ Attribute providing additional notes about the data.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucA}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucA}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucA}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute A (mass of the nucleus).
@@ -1679,7 +1813,8 @@ Attribute A (mass of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucBE}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucBE}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucBE}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute BE (Binding Energy) of the nucleus.
@@ -1691,7 +1826,8 @@ Attribute BE (Binding Energy) of the nucleus.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucBE_err}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucBE\_err}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucBE\_err}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute uncertainty in the BE (Binding Energy) of the nucleus.
@@ -1703,7 +1839,8 @@ Attribute uncertainty in the BE (Binding Energy) of the nucleus.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucHT}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucHT}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucHT}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute HT (half\sphinxhyphen{}Time) of the nucleus.
@@ -1715,7 +1852,8 @@ Attribute HT (half\sphinxhyphen{}Time) of the nucleus.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucN}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucN}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucN}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N (number of neutrons of the nucleus).
@@ -1727,7 +1865,8 @@ Attribute N (number of neutrons of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucStbl}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucStbl}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucStbl}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute stbl. stbl=’y’ if the nucleus is stable (according to the table). Otherwise stbl = ‘n’.
@@ -1739,7 +1878,8 @@ Attribute stbl. stbl=’y’ if the nucleus is stable (according to the table). 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucSymb}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucSymb}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucSymb}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute symb (symbol) of the element, e.g., Fe.
@@ -1751,7 +1891,8 @@ Attribute symb (symbol) of the element, e.g., Fe.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucYear}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucYear}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucYear}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute year of the discovery of the nucleus.
@@ -1763,7 +1904,8 @@ Attribute year of the discovery of the nucleus.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.nucZ}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucZ}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucZ}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Z (charge of the nucleus).
@@ -1775,7 +1917,10 @@ Attribute Z (charge of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -1787,7 +1932,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.ref}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the full reference to the paper to be citted.
@@ -1799,7 +1945,10 @@ Attribute providing the full reference to the paper to be citted.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.select}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{select}}}{\emph{\DUrole{n}{Amin}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{Zmin}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{interp}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}n\textquotesingle{}}}, \emph{\DUrole{n}{state}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}gs\textquotesingle{}}}, \emph{\DUrole{n}{nucleus}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}unstable\textquotesingle{}}}, \emph{\DUrole{n}{every}\DUrole{o}{=}\DUrole{default_value}{1}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{select}}}
+{\sphinxparam{\DUrole{n}{Amin}\DUrole{o}{=}\DUrole{default_value}{0}}\sphinxparamcomma \sphinxparam{\DUrole{n}{Zmin}\DUrole{o}{=}\DUrole{default_value}{0}}\sphinxparamcomma \sphinxparam{\DUrole{n}{interp}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}n\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{state}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}gs\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{nucleus}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}unstable\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{every}\DUrole{o}{=}\DUrole{default_value}{1}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which select some nuclei from the table according to some criteria.
@@ -1836,7 +1985,10 @@ It can be set to ‘stable’, ‘longlive’ (with LT\textgreater{}10 min), ‘
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.SetupMassesExp.select_year}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{select\_year}}}{\emph{\DUrole{n}{year\_min}\DUrole{o}{=}\DUrole{default_value}{1940}}, \emph{\DUrole{n}{year\_max}\DUrole{o}{=}\DUrole{default_value}{1960}}, \emph{\DUrole{n}{state}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}gs\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{select\_year}}}
+{\sphinxparam{\DUrole{n}{year\_min}\DUrole{o}{=}\DUrole{default_value}{1940}}\sphinxparamcomma \sphinxparam{\DUrole{n}{year\_max}\DUrole{o}{=}\DUrole{default_value}{1960}}\sphinxparamcomma \sphinxparam{\DUrole{n}{state}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}gs\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which select some nuclei from the table according to the discovery year.
@@ -1844,11 +1996,11 @@ Method which select some nuclei from the table according to the discovery year.
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{year\_min}} \textendash{} 
+\sphinxstyleliteralstrong{\sphinxupquote{year\_min}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{year\_max}} \textendash{} 
+\sphinxstyleliteralstrong{\sphinxupquote{year\_max}}
 
 \item {} 
 \sphinxAtStartPar
@@ -1871,7 +2023,10 @@ Method which select some nuclei from the table according to the discovery year.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.tables_masses_exp}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{tables\_masses\_exp}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{tables\_masses\_exp}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the tables available in this toolkit for the experimental masses and
@@ -1895,7 +2050,10 @@ list{[}str{]}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_exp:nucleardatapy.setup_masses_exp.versions_masses_exp}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{versions\_masses\_exp}}}{\emph{\DUrole{n}{table}}}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_exp.}}\sphinxbfcode{\sphinxupquote{versions\_masses\_exp}}}
+{\sphinxparam{\DUrole{n}{table}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of versions of tables available in
@@ -1939,12 +2097,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 
 \section{SetupMassesTheory}
-\label{\detokenize{source/api/setup_masses_theory:setupmassestheory}}\label{\detokenize{source/api/setup_masses_theory::doc}}\phantomsection\label{\detokenize{source/api/setup_masses_theory:module-nucleardatapy.setup_masses_theory}}\index{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}}\index{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}}\index{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}}
+\label{\detokenize{source/api/setup_masses_theory:setupmassestheory}}\label{\detokenize{source/api/setup_masses_theory::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}}\index{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}}\index{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}}\phantomsection\label{\detokenize{source/api/setup_masses_theory:module-nucleardatapy.setup_masses_theory}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{SetupMassesTheory}}}{\emph{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1995\sphinxhyphen{}DZ\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{SetupMassesTheory}}}
+{\sphinxparam{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1995\sphinxhyphen{}DZ\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the theory nuclear masses.
@@ -1968,7 +2129,10 @@ This choice is defined in the variable \sphinxtitleref{table}.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.diff}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{diff}}}{\emph{\DUrole{n}{table}}, \emph{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{diff}}}
+{\sphinxparam{\DUrole{n}{table}}\sphinxparamcomma \sphinxparam{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method calculates the difference between a given mass
@@ -1997,7 +2161,10 @@ model and table\_ref.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.diff_exp}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{diff\_exp}}}{\emph{\DUrole{n}{table\_exp}}, \emph{\DUrole{n}{version\_exp}}, \emph{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{diff\_exp}}}
+{\sphinxparam{\DUrole{n}{table\_exp}}\sphinxparamcomma \sphinxparam{\DUrole{n}{version\_exp}}\sphinxparamcomma \sphinxparam{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method calculates the difference between a given experimental
@@ -2026,7 +2193,10 @@ mass (identified by \sphinxtitleref{table\_exp} and \sphinxtitleref{version\_exp
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.drip}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{drip}}}{\emph{\DUrole{n}{Zmax}\DUrole{o}{=}\DUrole{default_value}{95}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{drip}}}
+{\sphinxparam{\DUrole{n}{Zmax}\DUrole{o}{=}\DUrole{default_value}{95}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
@@ -2047,7 +2217,10 @@ Method which find the drip\sphinxhyphen{}line nuclei (on the two sides).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.init_self}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{init\_self}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{init\_self}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Initialize variables in self.
@@ -2059,7 +2232,10 @@ Initialize variables in self.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.SetupMassesTheory.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -2074,7 +2250,10 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_masses_theory:nucleardatapy.setup_masses_theory.tables_masses_theory}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{tables\_masses\_theory}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_masses\_theory.}}\sphinxbfcode{\sphinxupquote{tables\_masses\_theory}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the tables available in this toolkit for the masses
@@ -2115,12 +2294,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 
 
 \section{SetupRadCh}
-\label{\detokenize{source/api/setup_rad_ch:setupradch}}\label{\detokenize{source/api/setup_rad_ch::doc}}\phantomsection\label{\detokenize{source/api/setup_rad_ch:module-nucleardatapy.setup_rad_ch}}\index{module@\spxentry{module}!nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}}\index{nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}!module@\spxentry{module}}\index{SetupRadCh (class in nucleardatapy.setup\_rad\_ch)@\spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}}
+\label{\detokenize{source/api/setup_rad_ch:setupradch}}\label{\detokenize{source/api/setup_rad_ch::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}}\index{nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}!module@\spxentry{module}}\index{SetupRadCh (class in nucleardatapy.setup\_rad\_ch)@\spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}}\phantomsection\label{\detokenize{source/api/setup_rad_ch:module-nucleardatapy.setup_rad_ch}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_rad\_ch.}}\sphinxbfcode{\sphinxupquote{SetupRadCh}}}{\emph{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2013\sphinxhyphen{}Angeli\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_rad\_ch.}}\sphinxbfcode{\sphinxupquote{SetupRadCh}}}
+{\sphinxparam{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2013\sphinxhyphen{}Angeli\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with charge radii choosen    from a table.
@@ -2144,7 +2326,8 @@ The tables can chosen among the following ones:    ‘2013\sphinxhyphen{}Angeli�
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.R_unit}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{R\_unit}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{R\_unit}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute radius unit.
@@ -2156,7 +2339,10 @@ Attribute radius unit.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.RadCh_isotopes}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{RadCh\_isotopes}}}{\emph{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{RadCh\_isotopes}}}
+{\sphinxparam{\DUrole{n}{Zref}\DUrole{o}{=}\DUrole{default_value}{50}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This method provide a list if radii for an isotopic chain defined by Zref.
@@ -2168,7 +2354,8 @@ This method provide a list if radii for an isotopic chain defined by Zref.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.label}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the label the data is references for figures.
@@ -2180,7 +2367,8 @@ Attribute providing the label the data is references for figures.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.note}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the data.
@@ -2192,7 +2380,8 @@ Attribute providing additional notes about the data.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucA}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucA}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucA}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute A (mass of the nucleus).
@@ -2204,7 +2393,8 @@ Attribute A (mass of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucN}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucN}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucN}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute N (number of neutrons of the nucleus).
@@ -2216,7 +2406,8 @@ Attribute N (number of neutrons of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucRch}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucRch}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucRch}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribue R\_ch (charge radius) in fm.
@@ -2228,7 +2419,8 @@ Attribue R\_ch (charge radius) in fm.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucRch_err}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucRch\_err}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucRch\_err}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribue uncertainty in R\_ch (charge radius) in fm.
@@ -2240,7 +2432,8 @@ Attribue uncertainty in R\_ch (charge radius) in fm.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucSymb}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucSymb}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucSymb}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute symb (symbol) of the element, e.g., Fe.
@@ -2252,7 +2445,8 @@ Attribute symb (symbol) of the element, e.g., Fe.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.nucZ}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucZ}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucZ}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Z (charge of the nucleus).
@@ -2264,7 +2458,10 @@ Attribute Z (charge of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -2276,7 +2473,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.SetupRadCh.ref}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the full reference to the paper to be citted.
@@ -2291,7 +2489,10 @@ Attribute providing the full reference to the paper to be citted.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_rad_ch:nucleardatapy.setup_rad_ch.tables_rad_ch}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_rad\_ch.}}\sphinxbfcode{\sphinxupquote{tables\_rad\_ch}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_rad\_ch.}}\sphinxbfcode{\sphinxupquote{tables\_rad\_ch}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of the tables available in this toolkit for the charge radiuus and
@@ -2322,12 +2523,15 @@ list{[}str{]}.
 
 
 \section{SetupISGMR}
-\label{\detokenize{source/api/setup_ISGMR:setupisgmr}}\label{\detokenize{source/api/setup_ISGMR::doc}}\phantomsection\label{\detokenize{source/api/setup_ISGMR:module-nucleardatapy.setup_ISGMR}}\index{module@\spxentry{module}!nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}}\index{nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}!module@\spxentry{module}}\index{SetupISGMR (class in nucleardatapy.setup\_ISGMR)@\spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}}
+\label{\detokenize{source/api/setup_ISGMR:setupisgmr}}\label{\detokenize{source/api/setup_ISGMR::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}}\index{nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}!module@\spxentry{module}}\index{SetupISGMR (class in nucleardatapy.setup\_ISGMR)@\spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}}\phantomsection\label{\detokenize{source/api/setup_ISGMR:module-nucleardatapy.setup_ISGMR}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_ISGMR.}}\sphinxbfcode{\sphinxupquote{SetupISGMR}}}{\emph{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_ISGMR.}}\sphinxbfcode{\sphinxupquote{SetupISGMR}}}
+{\sphinxparam{\DUrole{n}{table}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2018\sphinxhyphen{}ISGMR\sphinxhyphen{}GARG\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with microscopic results choosen    by the toolkit practitioner.
@@ -2349,7 +2553,8 @@ The \sphinxtitleref{table} can chosen among the following ones:    ‘2010\sphin
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.E_unit}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{E\_unit}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{E\_unit}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute energy unit.
@@ -2361,7 +2566,8 @@ Attribute energy unit.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.label}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the label the data is references for figures.
@@ -2373,7 +2579,8 @@ Attribute providing the label the data is references for figures.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.note}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the data.
@@ -2385,7 +2592,8 @@ Attribute providing additional notes about the data.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucA}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucA}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucA}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute A (mass of the nucleus).
@@ -2397,7 +2605,8 @@ Attribute A (mass of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_cent}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_cent}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute energy centroid.
@@ -2409,7 +2618,8 @@ Attribute energy centroid.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errm}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errm}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute (\sphinxhyphen{}) uncertainty in the energy centroid.
@@ -2421,7 +2631,8 @@ Attribute (\sphinxhyphen{}) uncertainty in the energy centroid.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errp}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucM12Mm1\_errp}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute (+) uncertainty in the energy centroid.
@@ -2433,7 +2644,8 @@ Attribute (+) uncertainty in the energy centroid.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucSymbol}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucSymbol}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the symbol of the element.
@@ -2445,7 +2657,8 @@ Attribute the symbol of the element.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.nucZ}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{nucZ}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{nucZ}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Z (charge of the nucleus).
@@ -2457,7 +2670,10 @@ Attribute Z (charge of the nucleus).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -2469,7 +2685,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.ref}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the full reference to the paper to be citted.
@@ -2481,7 +2698,8 @@ Attribute providing the full reference to the paper to be citted.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.SetupISGMR.table}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{table}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{table}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute table.
@@ -2496,7 +2714,10 @@ Attribute table.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_ISGMR:nucleardatapy.setup_ISGMR.tables_isgmr}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_ISGMR.}}\sphinxbfcode{\sphinxupquote{tables\_isgmr}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_ISGMR.}}\sphinxbfcode{\sphinxupquote{tables\_isgmr}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of tables available in this toolkit for the ISGMR energy and
@@ -2527,12 +2748,15 @@ list{[}str{]}.
 
 
 \section{SetupEsymLsym}
-\label{\detokenize{source/api/setup_EsymLsym:setupesymlsym}}\label{\detokenize{source/api/setup_EsymLsym::doc}}\phantomsection\label{\detokenize{source/api/setup_EsymLsym:module-nucleardatapy.setup_EsymLsym}}\index{module@\spxentry{module}!nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}}\index{nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}!module@\spxentry{module}}\index{SetupEsymLsym (class in nucleardatapy.setup\_EsymLsym)@\spxentry{SetupEsymLsym}\spxextra{class in nucleardatapy.setup\_EsymLsym}}
+\label{\detokenize{source/api/setup_EsymLsym:setupesymlsym}}\label{\detokenize{source/api/setup_EsymLsym::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}}\index{nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}!module@\spxentry{module}}\index{SetupEsymLsym (class in nucleardatapy.setup\_EsymLsym)@\spxentry{SetupEsymLsym}\spxextra{class in nucleardatapy.setup\_EsymLsym}}\phantomsection\label{\detokenize{source/api/setup_EsymLsym:module-nucleardatapy.setup_EsymLsym}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_EsymLsym.}}\sphinxbfcode{\sphinxupquote{SetupEsymLsym}}}{\emph{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2014\sphinxhyphen{}IAS\textquotesingle{}}}}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_EsymLsym.}}\sphinxbfcode{\sphinxupquote{SetupEsymLsym}}}
+{\sphinxparam{\DUrole{n}{constraint}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}2014\sphinxhyphen{}IAS\textquotesingle{}}}}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the values of Esym and Lsym from the constraint.
@@ -2553,7 +2777,8 @@ The name of the constraint to be chosen in the     following list: ‘2009\sphin
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Esym}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Esym}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Esym.
@@ -2565,7 +2790,8 @@ Attribute Esym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_err}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Esym\_err}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Esym\_err}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute with uncertainty in Esym.
@@ -2577,7 +2803,8 @@ Attribute with uncertainty in Esym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Esym\_max}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Esym\_max}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute max of Esym.
@@ -2589,7 +2816,8 @@ Attribute max of Esym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Esym\_min}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Esym\_min}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute min of Esym.
@@ -2601,7 +2829,8 @@ Attribute min of Esym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Lsym}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Lsym}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute Lsym.
@@ -2613,7 +2842,8 @@ Attribute Lsym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Lsym\_err}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Lsym\_err}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute with uncertainty in Lsym.
@@ -2625,7 +2855,8 @@ Attribute with uncertainty in Lsym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Lsym\_max}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Lsym\_max}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute max of Lsym.
@@ -2637,7 +2868,8 @@ Attribute max of Lsym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{Lsym\_min}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{Lsym\_min}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute min of Lsym.
@@ -2649,7 +2881,8 @@ Attribute min of Lsym.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{alpha}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{alpha}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute the plot alpha
@@ -2661,7 +2894,8 @@ Attribute the plot alpha
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.constraint}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{constraint}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{constraint}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute constraint.
@@ -2673,7 +2907,8 @@ Attribute constraint.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.label}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the label the data is references for figures.
@@ -2685,7 +2920,8 @@ Attribute providing the label the data is references for figures.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.note}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing additional notes about the constraint.
@@ -2697,7 +2933,10 @@ Attribute providing additional notes about the constraint.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{print\_outputs}}}{}{}
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Method which print outputs on terminal’s screen.
@@ -2709,7 +2948,8 @@ Method which print outputs on terminal’s screen.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.SetupEsymLsym.ref}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
 \pysigstopsignatures
 \sphinxAtStartPar
 Attribute providing the full reference to the paper to be citted.
@@ -2724,7 +2964,10 @@ Attribute providing the full reference to the paper to be citted.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{source/api/setup_EsymLsym:nucleardatapy.setup_EsymLsym.constraints_EsymLsym}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_EsymLsym.}}\sphinxbfcode{\sphinxupquote{constraints\_EsymLsym}}}{}{}
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_EsymLsym.}}\sphinxbfcode{\sphinxupquote{constraints\_EsymLsym}}}
+{}
+{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Return a list of constraints available in this toolkit in the     following list: ‘2009\sphinxhyphen{}HIC’, ‘2010\sphinxhyphen{}RNP’, ‘2012\sphinxhyphen{}FRDM’, ‘2013\sphinxhyphen{}NS’,     ‘2014\sphinxhyphen{}IAS’, ‘2014\sphinxhyphen{}IAS+RNP’, ‘2015\sphinxhyphen{}POL\sphinxhyphen{}208PB’, ‘2015\sphinxhyphen{}POL\sphinxhyphen{}120SN’,     ‘2015\sphinxhyphen{}POL\sphinxhyphen{}68NI’, ‘2017\sphinxhyphen{}UG’, ‘2021\sphinxhyphen{}PREXII\sphinxhyphen{}Reed’,     ‘2021\sphinxhyphen{}PREXII\sphinxhyphen{}Reinhard’, ‘2023\sphinxhyphen{}PREXII+CREX\sphinxhyphen{}Zhang’; and     print them all on the prompt.
@@ -2757,15 +3000,15 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \label{\detokenize{index:indices-and-tables}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{genindex}
+\DUrole{xref}{\DUrole{std}{\DUrole{std-ref}{genindex}}}
 
 \item {} 
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{modindex}
+\DUrole{xref}{\DUrole{std}{\DUrole{std-ref}{modindex}}}
 
 \item {} 
 \sphinxAtStartPar
-\DUrole{xref,std,std-ref}{search}
+\DUrole{xref}{\DUrole{std}{\DUrole{std-ref}{search}}}
 
 \end{itemize}
 

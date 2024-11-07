@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.setup_masses_exp &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -44,6 +48,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_LP.html">SetupMicroLP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
@@ -67,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.setup_masses_exp</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.setup_masses_exp</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -119,7 +124,9 @@
     <span class="n">N</span> <span class="o">=</span> <span class="n">Z</span> <span class="o">+</span> <span class="mf">6.e-3</span><span class="o">*</span><span class="n">Z</span><span class="o">*</span><span class="n">Z</span>
     <span class="k">return</span> <span class="n">N</span><span class="p">,</span> <span class="n">Z</span>
 
-<div class="viewcode-block" id="tables_masses_exp"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.tables_masses_exp">[docs]</a><span class="k">def</span> <span class="nf">tables_masses_exp</span><span class="p">():</span>
+<div class="viewcode-block" id="tables_masses_exp">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.tables_masses_exp">[docs]</a>
+<span class="k">def</span> <span class="nf">tables_masses_exp</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of the tables available in this toolkit for the experimental masses and</span>
 <span class="sd">    print them all on the prompt. These tables are the following</span>
@@ -141,7 +148,10 @@
     <span class="c1">#</span>
     <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
 
-<div class="viewcode-block" id="versions_masses_exp"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.versions_masses_exp">[docs]</a><span class="k">def</span> <span class="nf">versions_masses_exp</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="versions_masses_exp">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.versions_masses_exp">[docs]</a>
+<span class="k">def</span> <span class="nf">versions_masses_exp</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of versions of tables available in </span>
 <span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
@@ -166,7 +176,10 @@
     <span class="k">return</span> <span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span></div>
 
 
-<div class="viewcode-block" id="SetupMassesExp"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp">[docs]</a><span class="k">class</span> <span class="nc">SetupMassesExp</span><span class="p">():</span>
+
+<div class="viewcode-block" id="SetupMassesExp">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp">[docs]</a>
+<span class="k">class</span> <span class="nc">SetupMassesExp</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the experimental nuclear masses from AME mass table.</span>
 
@@ -483,7 +496,9 @@
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupMasses()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="SetupMassesExp.print_outputs"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupMassesExp.print_outputs">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.print_outputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">       &quot;&quot;&quot;</span>
@@ -501,8 +516,11 @@
        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
        <span class="c1">#</span>
        <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
        <span class="c1">#</span>
-<div class="viewcode-block" id="SetupMassesExp.select"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="SetupMassesExp.select">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.select">[docs]</a>
+    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which select some nuclei from the table according to some criteria.</span>
 
@@ -632,8 +650,11 @@
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
         <span class="c1">#</span>
-<div class="viewcode-block" id="SetupMassesExp.drip"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.drip">[docs]</a>    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupMassesExp.drip">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.drip">[docs]</a>
+    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which find the drip-line nuclei (on the two sides).</span>
 
@@ -681,8 +702,11 @@
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
         <span class="c1">#</span>
-<div class="viewcode-block" id="SetupMassesExp.select_year"><a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.select_year">[docs]</a>    <span class="k">def</span> <span class="nf">select_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_min</span><span class="o">=</span><span class="mi">1940</span><span class="p">,</span> <span class="n">year_max</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="SetupMassesExp.select_year">
+<a class="viewcode-back" href="../../source/api/setup_masses_exp.html#nucleardatapy.setup_masses_exp.SetupMassesExp.select_year">[docs]</a>
+    <span class="k">def</span> <span class="nf">select_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_min</span><span class="o">=</span><span class="mi">1940</span><span class="p">,</span> <span class="n">year_max</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which select some nuclei from the table according to the discovery year.</span>
 
@@ -783,7 +807,9 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nudy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
         <span class="c1">#</span>
 </pre></div>
 

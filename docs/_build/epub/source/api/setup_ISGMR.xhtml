@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SetupISGMR</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -16,64 +16,22 @@
             
   <section id="setupisgmr">
 <h1>SetupISGMR</h1>
-<span class="target" id="module-nucleardatapy.setup_ISGMR"></span><dl class="py class">
+<dl class="py class" id="module-nucleardatapy.setup_ISGMR">
 <dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">SetupISGMR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2018-ISGMR-GARG'</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Instantiate the object with microscopic results choosen    by the toolkit practitioner.
 This choice is defined in the variable <cite>table</cite>.</p>
 <p>The <cite>table</cite> can chosen among the following ones:    ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.A">
-<span class="sig-name descname"><span class="pre">A</span></span></dt>
-<dd><p>Attribute A (mass of the nucleus).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_cen">
-<span class="sig-name descname"><span class="pre">E_cen</span></span></dt>
-<dd><p>Attribute energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_erra">
-<span class="sig-name descname"><span class="pre">E_erra</span></span></dt>
-<dd><p>Attribute list with + and - uncertainty</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errm">
-<span class="sig-name descname"><span class="pre">E_errm</span></span></dt>
-<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errp">
-<span class="sig-name descname"><span class="pre">E_errp</span></span></dt>
-<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_errs">
-<span class="sig-name descname"><span class="pre">E_errs</span></span></dt>
-<dd><p>Attribute symmetrised uncertainty (average between + and - uncertainty).</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_unit">
 <span class="sig-name descname"><span class="pre">E_unit</span></span></dt>
 <dd><p>Attribute energy unit.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.Z">
-<span class="sig-name descname"><span class="pre">Z</span></span></dt>
-<dd><p>Attribute Z (charge of the nucleus).</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -86,6 +44,42 @@ This choice is defined in the variable <cite>table</cite>.</p>
 <dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.note">
 <span class="sig-name descname"><span class="pre">note</span></span></dt>
 <dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucA">
+<span class="sig-name descname"><span class="pre">nucA</span></span></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_cent</span></span></dt>
+<dd><p>Attribute energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errm</span></span></dt>
+<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errp</span></span></dt>
+<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol">
+<span class="sig-name descname"><span class="pre">nucSymbol</span></span></dt>
+<dd><p>Attribute the symbol of the element.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucZ">
+<span class="sig-name descname"><span class="pre">nucZ</span></span></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -113,12 +107,12 @@ This choice is defined in the variable <cite>table</cite>.</p>
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">tables_isgmr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Return a list of tables available in this toolkit for the ISGMR energy and
 print them all on the prompt. These tables are the following
-ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of tables.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>

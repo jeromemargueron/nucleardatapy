@@ -12,6 +12,7 @@ import nucleardatapy as nuda
 
 nsat = 0.16
 mnuc2 = 939.0
+G = (3 * np.pi**2) ** (5 / 3) / (5 * np.pi**2)
 
 def uncertainty_stat(den):
     return 0.07*(den/nsat)
@@ -20,7 +21,7 @@ def models_micro_matter():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRi', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
@@ -41,7 +42,7 @@ def models_micro_matter():
     #
     if nuda.env.verb: print("\nEnter models_micro_matter()")
     #
-    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2008-BCS-NM', '2008-AFDMC-NM', \
+    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRi', '2008-BCS-NM', '2008-AFDMC-NM', \
              '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
              '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
              '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
@@ -60,6 +61,63 @@ def models_micro_matter():
     if nuda.env.verb: print("Exit models_micro_matter()")
     #
     return models, models_lower
+
+# Define constants
+( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
+( 337.2, -382, 89.8, 0.457, -59.0, -19.1, 214.6, -384, 6.4, 69, -33, 0.35, 0, 0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0 )
+
+# Define functions for APRi
+def Hk(n, x):
+    return G * nuda.cst.hbc**2 / (2 * nuda.cst.mnuc2_approx) * n ** (5 / 3) * ((1 - x) ** (5 / 3) + x ** (5 / 3))
+
+def Hm(n, x):
+    return (
+        G
+        * (
+            p3 * ((1 - x) ** (5 / 3) + x ** (5 / 3))
+            + p5 * ((1 - x) ** (8 / 3) + x ** (8 / 3))
+        )
+        * n ** (8 / 3)
+        * np.exp(-p4 * n)
+    )
+
+def g1L(n):
+    return -(n**2) * (
+        p1 + p2 * n + p6 * n**2 + (p10 + p11 * n) * np.exp(-(p9**2) * n**2)
+    )
+
+def g1H(n):
+    return g1L(n) - n**2 * (p17 * (n - p19) + p21 * (n - p19) ** 2) * np.exp(
+        p18 * (n - p19)
+    )
+
+def g2L(n):
+    return -(n**2) * (p12 / n + p7 + p8 * n + p13 * np.exp(-(p9**2) * n**2))
+
+def g2H(n):
+    return g2L(n) - n**2 * (p15 * (n - p20) + p14 * (n - p20) ** 2) * np.exp(
+        p16 * (n - p20)
+    )
+
+def HdL(n, x):
+    return g1L(n) * (1 - (1 - 2 * x) ** 2) + g2L(n) * (1 - 2 * x) ** 2
+
+def HdH(n, x):
+    return g1H(n) * (1 - (1 - 2 * x) ** 2) + g2H(n) * (1 - 2 * x) ** 2
+
+def HL(n, x):
+    return Hk(n, x) + Hm(n, x) + HdL(n, x)
+
+def HH(n, x):
+    return Hk(n, x) + Hm(n, x) + HdH(n, x)
+
+def EOAL(n, x):
+    return HL(n, x) / n
+
+def EOAH(n, x):
+    return HH(n, x) / n
+
+
 
 def func_GCR_e2a(den,a,alfa,b,beta):
     return a * (den/nsat)**alfa + b * (den/nsat)**beta
@@ -93,7 +151,7 @@ class SetupMicroMatter():
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-iAPR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
@@ -113,12 +171,13 @@ class SetupMicroMatter():
     **Attributes:**
     """
     #
-    def __init__( self, model = '1998-VAR-AM-APR' ):
+    def __init__( self, model = '1998-VAR-AM-APR', var = np.array([[0.1,0.0],[0.2,0.0],[0.3,0.0]]) ):
         """
         Parameters
         ----------
         model : str, optional
         The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
+        den : the denisty and isospin asymmetry if necessary (for interpolation function in APRi for instance)
         """
         #
         if nuda.env.verb: print("Enter SetupMicroMatter()")
@@ -277,6 +336,18 @@ class SetupMicroMatter():
             y = np.insert( self.nm_pre, 0, 0.0 )
             cs_nm_pre = CubicSpline( x, y )
             nm_cs2 = self.nm_kfn / ( 3.0 * self.nm_den ) * cs_nm_pre( self.nm_kfn, 1) / self.nm_h2a
+            #
+        elif model.lower() == '1998-var-am-apri':
+            #
+            self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
+            self.note = "Use interpolation functions suggested in APR paper."
+            self.label = 'APRi-1998'
+            self.linestyle = 'solid'
+            self.den = var[:,0]
+            self.asy = var[:,1]
+            print('den:',self.den)
+            print('asy:',self.asy)
+            self.e2a = EOAH(self.den, self.asy)
             #
         elif model.lower() == '2006-bhf-am':
             #

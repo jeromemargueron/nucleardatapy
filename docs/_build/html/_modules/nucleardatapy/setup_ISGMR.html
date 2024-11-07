@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.setup_ISGMR &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,10 +46,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_band.html">SetupMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eoshic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_LP.html">SetupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
@@ -67,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.setup_ISGMR</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.setup_ISGMR</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -89,7 +94,9 @@
 
 <span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
 
-<div class="viewcode-block" id="tables_isgmr"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.tables_isgmr">[docs]</a><span class="k">def</span> <span class="nf">tables_isgmr</span><span class="p">():</span>
+<div class="viewcode-block" id="tables_isgmr">
+<a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.tables_isgmr">[docs]</a>
+<span class="k">def</span> <span class="nf">tables_isgmr</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of tables available in this toolkit for the ISGMR energy and</span>
 <span class="sd">    print them all on the prompt. These tables are the following</span>
@@ -110,7 +117,10 @@
     <span class="c1">#</span>
     <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
 
-<div class="viewcode-block" id="SetupISGMR"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR">[docs]</a><span class="k">class</span> <span class="nc">SetupISGMR</span><span class="p">():</span>
+
+<div class="viewcode-block" id="SetupISGMR">
+<a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR">[docs]</a>
+<span class="k">class</span> <span class="nc">SetupISGMR</span><span class="p">():</span>
 <span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   Instantiate the object with microscopic results choosen \</span>
 <span class="sd">   by the toolkit practitioner. \</span>
@@ -392,7 +402,9 @@
       <span class="c1">#</span>
       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupISGMR()&quot;</span><span class="p">)</span>
    <span class="c1">#</span>
-<div class="viewcode-block" id="SetupISGMR.print_outputs"><a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupISGMR.print_outputs">
+<a class="viewcode-back" href="../../source/api/setup_ISGMR.html#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">[docs]</a>
+   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
@@ -414,7 +426,9 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   with errp:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">])</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   with errm:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">])</span>
       <span class="c1">#</span>
-      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
       <span class="c1">#</span>
 </pre></div>
 

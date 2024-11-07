@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.setup_EsymLsym &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,13 +46,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro.html">SetupMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_band.html">SetupMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno.html">SetupPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses.html">SetupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_LP.html">SetupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
 </ul>
 
         </div>
@@ -64,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.setup_EsymLsym</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.setup_EsymLsym</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -86,7 +94,9 @@
 
 <span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
 
-<div class="viewcode-block" id="constraints_EsymLsym"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.constraints_EsymLsym">[docs]</a><span class="k">def</span> <span class="nf">constraints_EsymLsym</span><span class="p">():</span>
+<div class="viewcode-block" id="constraints_EsymLsym">
+<a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.constraints_EsymLsym">[docs]</a>
+<span class="k">def</span> <span class="nf">constraints_EsymLsym</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of constraints available in this toolkit in the \</span>
 <span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
@@ -105,6 +115,7 @@
     <span class="n">constraints_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">constraints</span> <span class="p">]</span>
     <span class="k">return</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span></div>
 
+
 <span class="k">def</span> <span class="nf">HIC_Esym</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
     <span class="n">n_sat</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="c1"># in fm-3</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">csk</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="mf">0.6666</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">csp</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="n">gi</span> 
@@ -119,7 +130,9 @@
 <span class="k">def</span> <span class="nf">HIC_Lsym_bound</span><span class="p">(</span><span class="n">Esym</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="n">gi</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="n">Esym</span><span class="p">),</span><span class="n">csk</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">,</span><span class="n">csp</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SetupEsymLsym"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym">[docs]</a><span class="k">class</span> <span class="nc">SetupEsymLsym</span><span class="p">():</span>
+<div class="viewcode-block" id="SetupEsymLsym">
+<a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym">[docs]</a>
+<span class="k">class</span> <span class="nc">SetupEsymLsym</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the values of Esym and Lsym from the constraint.</span>
 
@@ -291,7 +304,7 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NS-2013&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Bayesian analysis of mass and radius measurements of NSs by considering 68\</span><span class="si">% a</span><span class="s2">nd 96\</span><span class="si">% c</span><span class="s2">onfidence values for L.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Bayesian analysis of mass and radius measurements of NSs by considering 68</span><span class="se">\\</span><span class="si">% a</span><span class="s2">nd 96</span><span class="se">\\</span><span class="si">% c</span><span class="s2">onfidence values for L.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">Lsym68_min</span><span class="p">,</span> <span class="n">Lsym68_max</span><span class="p">,</span> <span class="n">Lsym95_min</span><span class="p">,</span> <span class="n">Lsym95_max</span> <span class="o">=</span> \
                 <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym95_max</span> <span class="o">+</span> <span class="n">Lsym95_min</span> <span class="p">)</span>
@@ -380,7 +393,7 @@
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-208pb&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="c1"># 208Pb</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
@@ -397,7 +410,7 @@
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-120sn&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="c1"># 120Sn</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
@@ -414,7 +427,7 @@
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-68ni&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="c1"># 68Ni</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
@@ -507,7 +520,9 @@
 
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupEsymLsym()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="SetupEsymLsym.print_outputs"><a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupEsymLsym.print_outputs">
+<a class="viewcode-back" href="../../source/api/setup_EsymLsym.html#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -521,7 +536,9 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   plot:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
         <span class="c1">#</span>
 </pre></div>
 

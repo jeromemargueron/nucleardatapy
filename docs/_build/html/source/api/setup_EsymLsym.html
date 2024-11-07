@@ -1,21 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupEsymLsym &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -27,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -46,6 +50,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter.html">SetupMicroMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_micro_LP.html">SetupMicroLP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_pheno_matter.html">SetupPhenoMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_hic_matter.html">SetupHICMatter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
@@ -53,7 +58,27 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_masses_theory.html">SetupMassesTheory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_rad_ch.html">SetupRadCh</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_ISGMR.html">SetupISGMR</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEsymLsym</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEsymLsym</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Esym</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_err"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Esym_err</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Esym_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Esym_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Lsym</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Lsym_err</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Lsym_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.Lsym_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.alpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.constraint"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.constraint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.label"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.note"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.note</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.print_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.ref"><code class="docutils literal notranslate"><span class="pre">SetupEsymLsym.ref</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_EsymLsym.constraints_EsymLsym"><code class="docutils literal notranslate"><span class="pre">constraints_EsymLsym()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -69,8 +94,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupEsymLsym</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupEsymLsym</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_EsymLsym.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,99 +106,99 @@
            <div itemprop="articleBody">
              
   <section id="setupesymlsym">
-<h1>SetupEsymLsym<a class="headerlink" href="#setupesymlsym" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-nucleardatapy.setup_EsymLsym"></span><dl class="py class">
+<h1>SetupEsymLsym<a class="headerlink" href="#setupesymlsym" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-nucleardatapy.setup_EsymLsym">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">SetupEsymLsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2014-IAS'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#SetupEsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">SetupEsymLsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2014-IAS'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#SetupEsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym" title="Link to this definition"></a></dt>
 <dd><p>Instantiate the values of Esym and Lsym from the constraint.</p>
 <p>The name of the constraint to be chosen in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2021-PREXII+CREX-Zhang’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>constraint</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>constraint</cite>. Default value: ‘2014-IAS’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym">
-<span class="sig-name descname"><span class="pre">Esym</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Esym</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym" title="Link to this definition"></a></dt>
 <dd><p>Attribute Esym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_err">
-<span class="sig-name descname"><span class="pre">Esym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_err" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Esym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_err" title="Link to this definition"></a></dt>
 <dd><p>Attribute with uncertainty in Esym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max">
-<span class="sig-name descname"><span class="pre">Esym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Esym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_max" title="Link to this definition"></a></dt>
 <dd><p>Attribute max of Esym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min">
-<span class="sig-name descname"><span class="pre">Esym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Esym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Esym_min" title="Link to this definition"></a></dt>
 <dd><p>Attribute min of Esym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym">
-<span class="sig-name descname"><span class="pre">Lsym</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Lsym</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym" title="Link to this definition"></a></dt>
 <dd><p>Attribute Lsym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err">
-<span class="sig-name descname"><span class="pre">Lsym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Lsym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_err" title="Link to this definition"></a></dt>
 <dd><p>Attribute with uncertainty in Lsym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max">
-<span class="sig-name descname"><span class="pre">Lsym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Lsym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_max" title="Link to this definition"></a></dt>
 <dd><p>Attribute max of Lsym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min">
-<span class="sig-name descname"><span class="pre">Lsym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Lsym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.Lsym_min" title="Link to this definition"></a></dt>
 <dd><p>Attribute min of Lsym.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha">
-<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.alpha" title="Link to this definition"></a></dt>
 <dd><p>Attribute the plot alpha</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.constraint">
-<span class="sig-name descname"><span class="pre">constraint</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.constraint" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">constraint</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.constraint" title="Link to this definition"></a></dt>
 <dd><p>Attribute constraint.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.label">
-<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.label" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.label" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.note">
-<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.note" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.note" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the constraint.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#SetupEsymLsym.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#SetupEsymLsym.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.print_outputs" title="Link to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.SetupEsymLsym.ref">
-<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.ref" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.SetupEsymLsym.ref" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the full reference to the paper to be citted.</p>
 </dd></dl>
 
@@ -181,13 +206,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_EsymLsym.constraints_EsymLsym">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">constraints_EsymLsym</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#constraints_EsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.constraints_EsymLsym" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_EsymLsym.</span></span><span class="sig-name descname"><span class="pre">constraints_EsymLsym</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_EsymLsym.html#constraints_EsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_EsymLsym.constraints_EsymLsym" title="Link to this definition"></a></dt>
 <dd><p>Return a list of constraints available in this toolkit in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2023-PREXII+CREX-Zhang’; and     print them all on the prompt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of constraints.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>
@@ -195,9 +220,10 @@
 
 <p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEsymLsym.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupEsymLsym.png"><img alt="map to buried treasure" src="../../_images/plot_SetupEsymLsym.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupEsymLsym.png"><img alt="map to buried treasure" src="../../_images/plot_SetupEsymLsym.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">This figure shows the Esym,2 versus Lsym,2 correlation for the different constraints availble in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-text">This figure shows the Esym,2 versus Lsym,2 correlation for the different constraints availble in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

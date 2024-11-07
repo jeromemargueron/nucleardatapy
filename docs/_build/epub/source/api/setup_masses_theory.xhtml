@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SetupMassesTheory</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -16,14 +16,14 @@
             
   <section id="setupmassestheory">
 <h1>SetupMassesTheory</h1>
-<span class="target" id="module-nucleardatapy.setup_masses_theory"></span><dl class="py class">
+<dl class="py class" id="module-nucleardatapy.setup_masses_theory">
 <dt class="sig sig-object py" id="nucleardatapy.setup_masses_theory.SetupMassesTheory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_masses_theory.</span></span><span class="sig-name descname"><span class="pre">SetupMassesTheory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1995-DZ'</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Instantiate the theory nuclear masses.</p>
 <p>This choice is defined in the variable <cite>table</cite>.</p>
 <p><cite>table</cite> can chosen among the following ones:     [ ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2010-HFB21’,’2011-WS3’, ‘2013-HFB26’ ]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘1995-DZ’.</p>
 </dd>
 </dl>
@@ -34,7 +34,7 @@
 <dd><p>Method calculates the difference between a given mass
 model and table_ref.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>table</strong> (<em>str.</em>) – Fix the table to analyze.</p></li>
 <li><p><strong>Zref</strong> (<em>int</em><em>, </em><em>optional. Default: 50.</em>) – Fix the isotopic chain to study.</p></li>
@@ -50,7 +50,7 @@ model and table_ref.</p>
 <dd><p>Method calculates the difference between a given experimental
 mass (identified by <cite>table_exp</cite> and <cite>version_exp</cite>) and table_ref.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>table</strong> (<em>str.</em>) – Fix the table to analyze.</p></li>
 <li><p><strong>Zref</strong> (<em>int</em><em>, </em><em>optional. Default: 50.</em>) – Fix the isotopic chain to study.</p></li>
@@ -65,7 +65,7 @@ mass (identified by <cite>table_exp</cite> and <cite>version_exp</cite>) and tab
 <span class="sig-name descname"><span class="pre">drip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">95</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Method which find the drip-line nuclei (on the two sides).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Zmax</strong> (<em>int</em><em>, </em><em>optional. Default: 95.</em>) – Fix the maximum charge for the search of the drip line.</p>
 </dd>
 </dl>
@@ -93,10 +93,10 @@ mass (identified by <cite>table_exp</cite> and <cite>version_exp</cite>) and tab
 predicted by theoretical approaches and print them all on the prompt.
 These tables are the following ones:     [ ‘1988-MJ’, ‘1995-DZ’, ‘1995-ETFSI’, ‘1995-FRDM’,     ‘2005-KTUY’, ‘2007-HFB14’, ‘2010-WS3’, ‘2010-HFB21’, ‘2011-WS3’, ‘2013-HFB26’ ]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of tables.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>

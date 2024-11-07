@@ -164,7 +164,7 @@ class SetupISGMR():
          if nuda.env.verb: print('Reads file:',file_in)
          self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
          self.label = 'Garg-Colo-2018'
-         self.note = "Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\star$ indicate that the $\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main'' ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit."
+         self.note = "Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\\star$ indicate that the $\\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main'' ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit."
          #
          nucA=[]; nucZ=[]; nucSymbol=[]; nucEprobe=[]; nucProj=[]; 
          nucE0=[]; nucE0_errp=[]; nucE0_errm=[];

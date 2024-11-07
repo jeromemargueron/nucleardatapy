@@ -2,7 +2,7 @@
 \contentsline {chapter}{\numberline {1}Contents}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Usage}{3}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Installation}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Use nucleardatapy}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.2}Use nucleardatapy}{3}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.1.3}Test nucleardatapy}{4}{subsection.1.1.3}%
 \contentsline {subsection}{\numberline {1.1.4}Get started}{4}{subsection.1.1.4}%
 \contentsline {section}{\numberline {1.2}API}{4}{section.1.2}%
@@ -15,13 +15,13 @@
 \contentsline {chapter}{\numberline {2}Complement}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}SetupMicroMatter}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}SetupMicroMatterBand}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}SetupMicroLP}{13}{section.2.3}%
-\contentsline {section}{\numberline {2.4}SetupPhenoMatter}{14}{section.2.4}%
-\contentsline {section}{\numberline {2.5}SetupHICMatter}{17}{section.2.5}%
+\contentsline {section}{\numberline {2.3}SetupMicroLP}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}SetupPhenoMatter}{13}{section.2.4}%
+\contentsline {section}{\numberline {2.5}SetupHICMatter}{21}{section.2.5}%
 \contentsline {section}{\numberline {2.6}SetupCrust}{22}{section.2.6}%
-\contentsline {section}{\numberline {2.7}SetupMassesExp}{24}{section.2.7}%
-\contentsline {section}{\numberline {2.8}SetupMassesTheory}{28}{section.2.8}%
-\contentsline {section}{\numberline {2.9}SetupRadCh}{29}{section.2.9}%
+\contentsline {section}{\numberline {2.7}SetupMassesExp}{23}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupMassesTheory}{26}{section.2.8}%
+\contentsline {section}{\numberline {2.9}SetupRadCh}{30}{section.2.9}%
 \contentsline {section}{\numberline {2.10}SetupISGMR}{31}{section.2.10}%
 \contentsline {section}{\numberline {2.11}SetupEsymLsym}{33}{section.2.11}%
 \contentsline {chapter}{\numberline {3}Indices and tables}{35}{chapter.3}%
