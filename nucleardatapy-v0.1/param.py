@@ -24,7 +24,7 @@ def tex2str( ele ):
 	"""
 	Transform an element in variable `ele` written in one of the following latex forms: 
 	$5.6$, ${5.6}$, \
-	$8.76\pm1.82$, ${8.76}\pm{1.82}$, \
+	$8.76\\pm1.82$, ${8.76}\\pm{1.82}$, \
 	${21.35}^{+0.37}_{-0.26}$, $21.35^{+0.37}_{-0.26}$, \
 	${21.35}_{-0.26}^{+0.37}$, $21.35_{-0.26}^{+0.37}$.
 
@@ -41,8 +41,8 @@ def tex2str( ele ):
 		#ele1 = ele[2:-2]
 		ele1 = ele.strip('$')
 		#print('ele1:',ele1)
-		if '\pm' in ele1:
-			ele2 = ele1.split('\pm')
+		if '\\pm' in ele1:
+			ele2 = ele1.split('\\pm')
 			cent = ele2[0]
 			errp = ele2[1]
 			errm = errp

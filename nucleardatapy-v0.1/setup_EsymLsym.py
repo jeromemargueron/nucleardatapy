@@ -213,7 +213,7 @@ class SetupEsymLsym():
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)'
             self.label = 'NS-2013'
-            self.note = "Bayesian analysis of mass and radius measurements of NSs by considering 68\% and 96\% confidence values for L."
+            self.note = "Bayesian analysis of mass and radius measurements of NSs by considering 68\\% and 96\\% confidence values for L."
             self.Esym, Lsym68_min, Lsym68_max, Lsym95_min, Lsym95_max = \
                 np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.Lsym = 0.5 * ( Lsym95_max + Lsym95_min )
@@ -302,7 +302,7 @@ class SetupEsymLsym():
         elif constraint.lower() == '2015-pol-208pb':
             #
             # 208Pb
-            self.ref = 'X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
+            self.ref = 'X. Roca-Maza, X. Vi\\~nas, M. Centelles, B.K. Agrawal, G. Col\\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
             self.label = 'POL-2015'
             self.note = "Constraints on the electric dipole polarizability deduced in the associated Ref."
             self.Lsym = 5*random.random() + np.arange( 0.0, 130.0, 10.0 )
@@ -319,7 +319,7 @@ class SetupEsymLsym():
         elif constraint.lower() == '2015-pol-120sn':
             #
             # 120Sn
-            self.ref = 'X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
+            self.ref = 'X. Roca-Maza, X. Vi\\~nas, M. Centelles, B.K. Agrawal, G. Col\\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
             self.label = 'POL-2015'
             self.note = "Constraints on the electric dipole polarizability deduced in the associated Ref."
             self.Lsym = 5*random.random() + np.arange( 0.0, 130.0, 10.0 )
@@ -336,7 +336,7 @@ class SetupEsymLsym():
         elif constraint.lower() == '2015-pol-68ni':
             #
             # 68Ni
-            self.ref = 'X. Roca-Maza, X. Vi\~nas, M. Centelles, B.K. Agrawal, G. Col\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
+            self.ref = 'X. Roca-Maza, X. Vi\\~nas, M. Centelles, B.K. Agrawal, G. Col\\`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)'
             self.label = 'POL-2015'
             self.note = "Constraints on the electric dipole polarizability deduced in the associated Ref."
             self.Lsym = 5*random.random() + np.arange( 0.0, 130.0, 10.0 )
