@@ -35,11 +35,13 @@ def plotMicro_nm_e2a( pname, group, models, band ):
     axs[1,1].set_xlim([0, 1.5])
     axs[1,1].set_ylim([0.2, 0.8])
     #
+    print('\nmodels in NM:',models,'\n')
+    #
     for model in models:
         #
         mic = nuda.SetupMicroMatter( model = model )
-        if mic.nm_e2a is not None: 
-            print('\nmodel:',model,'\n')
+        print('\nmodel:',model,'\n')
+        if mic.nm_e2a is not None:
             if 'NLEFT' in model:
                 axs[0,0].errorbar( mic.esym_den, mic.esym_nm_e2a, yerr=mic.esym_nm_e2a_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
                 axs[0,1].errorbar( mic.esym_nm_kfn, mic.esym_nm_e2a, yerr=mic.esym_nm_e2a_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
@@ -79,6 +81,12 @@ def plotMicro_nm_e2a( pname, group, models, band ):
                     axs[0,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+        elif mic.e2a is not None: 
+            if 'fit' in model:
+                axs[0,0].plot( mic.den, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[0,1].plot( mic.kfn, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[1,0].plot( mic.den, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[1,1].plot( mic.kfn, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         #
         mic.print_outputs( )
         #
@@ -128,11 +136,13 @@ def plotMicro_sm_e2a( pname, group, models, band ):
     axs[1,1].set_xlim([0, 1.5])
     axs[1,1].set_ylim([-2.0, 0.1])
     #
+    print('\nmodels in SM:',models,'\n')
+    #
     for model in models:
         #
         mic = nuda.SetupMicroMatter( model = model )
-        if mic.sm_e2a is not None: 
-            print('\nmodel:',model,'\n')
+        print('\nmodel:',model,'\n')
+        if mic.sm_e2a is not None:
             if 'NLEFT' in model:
                 axs[0,0].errorbar( mic.esym_den, mic.esym_sm_e2a, yerr=mic.esym_sm_e2a_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
                 axs[0,1].errorbar( mic.esym_sm_kfn, mic.esym_sm_e2a, yerr=mic.esym_sm_e2a_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
@@ -172,6 +182,12 @@ def plotMicro_sm_e2a( pname, group, models, band ):
                     axs[0,1].plot( mic.sm_kfn, mic.sm_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,0].plot( mic.sm_den, mic.sm_e2a/nuda.effg(mic.sm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                     axs[1,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.effg(mic.sm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+        elif mic.e2a is not None: 
+            if 'fit' in model:
+                axs[0,0].plot( mic.den, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[0,1].plot( mic.kfn, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[1,0].plot( mic.den, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                axs[1,1].plot( mic.kfn, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         #
         mic.print_outputs( )
         #
@@ -196,55 +212,6 @@ def plotMicro_sm_e2a( pname, group, models, band ):
     plt.close()
 
 
-def plotMicro_nm_gap( pname, models ):
-    #
-    # plot pairing gap in NM
-    #
-    print(f'Plot name: {pname}')
-    #
-    fig, axs = plt.subplots(2,2)
-    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2 )
-    #
-    axs[0,0].set_ylabel(r'$\Delta$ (MeV)')
-    axs[0,0].set_xlim([0, 0.05])
-    axs[0,0].set_ylim([0, 2.8])
-    #
-    axs[0,1].set_xlim([0, 1.6])
-    axs[0,1].set_ylim([0, 2.8])
-    #
-    axs[1,0].set_ylabel(r'$\Delta/E_F$')
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_xlim([0, 0.05])
-    axs[1,0].set_ylim([0, 0.8])
-    #
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
-    axs[1,1].set_xlim([0, 1.6])
-    axs[1,1].set_ylim([0, 0.8])
-    #
-    for model in models:
-        #
-        mic = nuda.SetupMicroMatter( model = model )
-        if mic.gap_nm_gap is not None:
-            if mic.gap_err:
-                axs[0,0].errorbar( mic.gap_nm_den, mic.gap_nm_gap, yerr=mic.gap_nm_gap_err, marker=mic.marker, linestyle='none', label=mic.label )
-                axs[0,1].errorbar( mic.gap_nm_kfn, mic.gap_nm_gap, yerr=mic.gap_nm_gap_err, marker=mic.marker, linestyle='none', label=mic.label )
-                axs[1,0].errorbar( mic.gap_nm_den, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), yerr=mic.gap_nm_gap_err/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-                axs[1,1].errorbar( mic.gap_nm_kfn, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), yerr=mic.gap_nm_gap_err/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-            else:
-                axs[0,0].plot( mic.gap_nm_den, mic.gap_nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
-                axs[0,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
-                axs[1,0].plot( mic.gap_nm_den, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-                axs[1,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-        mic.print_outputs( )
-        #
-    #
-    axs[1,0].legend(loc='upper right',fontsize='8')
-    #
-    plt.savefig(pname)
-    plt.close()
-
-
 def main():
     #
     print(50*'-')
@@ -254,6 +221,10 @@ def main():
     # create the folder where the figures are stored
     #
     os.system('mkdir -p figs/')
+    # 
+    # ===============================
+    # Neutron Matter (NM)
+    # ===============================
     #
     # fix the uncertainty band in NM
     #
@@ -264,35 +235,32 @@ def main():
     # create the groups for the figures
     #
     groups = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    #groups = [ 'VAR' ]
     #groups = [ 'NLEFT' ]
     #
     # list the available models
     #
-    models, models_lower = nuda.models_micro_matter()
-    #
-    # plot pairing gaps in NM
-    #
-    pname = 'figs/plot_SetupMicroMatter_gap_NM.png'
-    plotMicro_nm_gap( pname, models )
+    #models, models_lower = nuda.models_micro_matter()
     #
     # plot E/A in NM
     #
     for i,group in enumerate(groups):
         #
-        # NM results
-        #
         pname = 'figs/plot_SetupMicroMatter_e2a_NM_'+group+'.png'
-        models2 = []
+        print('pname:',pname)
+        #
+        # list the available models in groups
+        #
+        models, models_lower = nuda.models_micro_matter_group_NM( group )
+        #
         print('For group:',group)
         #
-        for j,model in enumerate(models):
-            if group in model and '2BF' not in model:
-                models2.append( model )
-                print('   models:',model)
-        #
-        print('models2:',models2)
-        print('pname:',pname)
-        plotMicro_nm_e2a( pname, group, models2, band )
+        print('models:',models)
+        plotMicro_nm_e2a( pname, group, models, band )
+    #
+    # ===============================
+    # Symmetric Matter (SM)
+    # ===============================
     #
     # fix the uncertainty band in SM
     #
@@ -300,25 +268,27 @@ def main():
     #
     band = nuda.SetupMicroMatterBand( bmodels, matter='SM' )
     #
+    # create the groups for the figures
+    #
+    groups = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    #groups = [ 'VAR' ]
+    #groups = [ 'NLEFT' ]
+    #
     # plot E/A in SM
     #
     for i,group in enumerate(groups):
         #
-        # SM results
-        #
         pname = 'figs/plot_SetupMicroMatter_e2a_SM_'+group+'.png'
+        print('pname:',pname)
         #
-        models2 = []
+        # list the available models in groups
+        #
+        models, models_lower = nuda.models_micro_matter_group_SM( group )
+        #
         print('For group:',group)
         #
-        for j,model in enumerate(models):
-            if group in model and '2BF' not in model and 'NM' not in model:
-                models2.append( model )
-                print('   models:',model)
-        #
-        print('models2:',models2)
-        print('pname:',pname)
-        plotMicro_sm_e2a( pname, group, models2, band )
+        print('models:',models)
+        plotMicro_sm_e2a( pname, group, models, band )
     #
     print(50*'-')
     print("Exit plot_SetupMicro.py:")

@@ -16,7 +16,7 @@ def main():
     #
     #models = [ '1981-VAR-AM-FP' ]
     #models = [ '1998-VAR-AM-APR' ]
-    models = [ '1998-VAR-AM-APRi' ]
+    models = [ '1998-VAR-AM-APRfit' ]
     #models = [ '2010-QMC-NM-AV4' ]
     #models = [ '2012-AFDMC-NM-2' ]
     #models = [ '2016-MBPT-AM' ]

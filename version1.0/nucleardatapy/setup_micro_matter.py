@@ -1,5 +1,6 @@
 import os
 import sys
+import math
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
@@ -12,7 +13,6 @@ import nucleardatapy as nuda
 
 nsat = 0.16
 mnuc2 = 939.0
-G = (3 * np.pi**2) ** (5 / 3) / (5 * np.pi**2)
 
 def uncertainty_stat(den):
     return 0.07*(den/nsat)
@@ -21,7 +21,7 @@ def models_micro_matter():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRi', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
     '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
     '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
@@ -42,7 +42,7 @@ def models_micro_matter():
     #
     if nuda.env.verb: print("\nEnter models_micro_matter()")
     #
-    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRi', '2008-BCS-NM', '2008-AFDMC-NM', \
+    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', '2008-BCS-NM', '2008-AFDMC-NM', \
              '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
              '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
              '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
@@ -62,62 +62,76 @@ def models_micro_matter():
     #
     return models, models_lower
 
-# Define constants
-( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
-( 337.2, -382, 89.8, 0.457, -59.0, -19.1, 214.6, -384, 6.4, 69, -33, 0.35, 0, 0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0 )
+def models_micro_matter_group_SM( group ):
+    """
+    """
+    #
+    if nuda.env.verb: print("\nEnter models_micro_matter_group( group )")
+    #
+    print('For group:',group)
+    #
+    models, models_lower = nuda.models_micro_matter()
+    #
+    models2 = []
+    for j,model in enumerate(models):
+        if group in model and '2BF' not in model and 'SM' in model:
+            models2.append( model )
+            print('   models:',model)
+    #
+    print('models2:',models2)
+    models2_lower = [ item.lower() for item in models2 ]
+    #
+    return models2, models2_lower
 
-# Define functions for APRi
-def Hk(n, x):
-    return G * nuda.cst.hbc**2 / (2 * nuda.cst.mnuc2_approx) * n ** (5 / 3) * ((1 - x) ** (5 / 3) + x ** (5 / 3))
+def models_micro_matter_group_NM( group ):
+    """
+    """
+    #
+    if nuda.env.verb: print("\nEnter models_micro_matter_group( group )")
+    #
+    print('For group:',group)
+    #
+    models, models_lower = nuda.models_micro_matter()
+    #
+    models2 = []
+    for j,model in enumerate(models):
+        if group in model and '2BF' not in model and 'NM' in model:
+            models2.append( model )
+            print('   models:',model)
+    #
+    print('models2:',models2)
+    models2_lower = [ item.lower() for item in models2 ]
+    #
+    return models2, models2_lower
 
-def Hm(n, x):
-    return (
-        G
-        * (
-            p3 * ((1 - x) ** (5 / 3) + x ** (5 / 3))
-            + p5 * ((1 - x) ** (8 / 3) + x ** (8 / 3))
-        )
-        * n ** (8 / 3)
-        * np.exp(-p4 * n)
-    )
+# Define functions for APRfit
 
-def g1L(n):
-    return -(n**2) * (
-        p1 + p2 * n + p6 * n**2 + (p10 + p11 * n) * np.exp(-(p9**2) * n**2)
-    )
-
-def g1H(n):
-    return g1L(n) - n**2 * (p17 * (n - p19) + p21 * (n - p19) ** 2) * np.exp(
-        p18 * (n - p19)
-    )
-
-def g2L(n):
-    return -(n**2) * (p12 / n + p7 + p8 * n + p13 * np.exp(-(p9**2) * n**2))
-
-def g2H(n):
-    return g2L(n) - n**2 * (p15 * (n - p20) + p14 * (n - p20) ** 2) * np.exp(
-        p16 * (n - p20)
-    )
-
-def HdL(n, x):
-    return g1L(n) * (1 - (1 - 2 * x) ** 2) + g2L(n) * (1 - 2 * x) ** 2
-
-def HdH(n, x):
-    return g1H(n) * (1 - (1 - 2 * x) ** 2) + g2H(n) * (1 - 2 * x) ** 2
-
-def HL(n, x):
-    return Hk(n, x) + Hm(n, x) + HdL(n, x)
-
-def HH(n, x):
-    return Hk(n, x) + Hm(n, x) + HdH(n, x)
-
-def EOAL(n, x):
-    return HL(n, x) / n
-
-def EOAH(n, x):
-    return HH(n, x) / n
-
-
+def APRfit_compute( n, x ):
+    p53 = 5.0/3.0
+    p83 = 8.0/3.0
+    asy = 1.0-2.0*x
+    n2 = n * n
+    G = ( 3.0*np.pi**2 )**p53 / ( 5.0*np.pi**2 )
+    Hk = G * nuda.cst.hbc**2 / ( 2.0 * nuda.cst.mnuc2_approx ) * n**p53 * ( (1 - x)**p53 + x**p53 )
+    Hm = G * ( p3 * ( (1-x)**p53 + x**p53 ) + p5 * ( (1-x)**p83 + x**p83 ) ) * n**p83 * np.exp( -p4*n )
+    g1L = -n2 * ( p1 + p2*n + p6*n2 + (p10 + p11*n) * np.exp( -(p9**2)*n2 ) )
+    g2L = -n2 * ( p12/n + p7 + p8*n + p13*np.exp( -(p9**2)*n2 ) )
+    g1H = g1L - n2*( p17*(n-p19) + p21*(n-p19)**2)*np.exp( p18*(n-p19) )
+    g2H = g2L - n2*( p15*(n-p20) + p14*(n-p20)**2)*np.exp( p16*(n-p20) )
+    HdL = g1L * (1.0-asy**2) + g2L * asy**2
+    HdH = g1H * (1.0-asy**2) + g2H * asy**2
+    #
+    HL = Hk + Hm + HdL
+    HH = Hk + Hm + HdH
+    #
+    nt = 0.32-0.12*(1-2*x)**2 # transition density in fm^-3
+    e2v = np.zeros( len(n) )
+    for ind,den in enumerate(n):
+        if den < nt:
+            e2v[ind] = HL[ind]
+        else:
+            e2v[ind] = HH[ind]    
+    return e2v
 
 def func_GCR_e2a(den,a,alfa,b,beta):
     return a * (den/nsat)**alfa + b * (den/nsat)**beta
@@ -171,13 +185,14 @@ class SetupMicroMatter():
     **Attributes:**
     """
     #
-    def __init__( self, model = '1998-VAR-AM-APR', var = np.array([[0.1,0.0],[0.2,0.0],[0.3,0.0]]) ):
+    def __init__( self, model = '1998-VAR-AM-APR', var1 = np.linspace(0.01,0.4,100), var2 = 0.0 ):
         """
         Parameters
         ----------
         model : str, optional
         The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
-        den : the denisty and isospin asymmetry if necessary (for interpolation function in APRi for instance)
+        var1 and var2 : densities (array) and isospin asymmetry (scalar) if necessary (for interpolation function in APRfit for instance)
+        var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])
         """
         #
         if nuda.env.verb: print("Enter SetupMicroMatter()")
@@ -187,6 +202,15 @@ class SetupMicroMatter():
         if nuda.env.verb: print("model:",model)
         #
         self = SetupMicroMatter.init_self( self )
+        #
+        # read var and define den, asy and xpr:
+        self.den = var1[:] # density n_b=n_n+n_p
+        self.kfn = nuda.kf_n( self.den )
+        self.asy = var2 # asymmetry parameter = (n_n-n_p)/n_b
+        self.xpr = ( 1.0 - self.asy ) / 2.0 # proton fraction = n_p/n_b
+        #print('den:',self.den)
+        #print('asy:',self.asy)
+        #print('xpr:',self.xpr)
         #
         models, models_lower = models_micro_matter()
         #
@@ -337,17 +361,32 @@ class SetupMicroMatter():
             cs_nm_pre = CubicSpline( x, y )
             nm_cs2 = self.nm_kfn / ( 3.0 * self.nm_den ) * cs_nm_pre( self.nm_kfn, 1) / self.nm_h2a
             #
-        elif model.lower() == '1998-var-am-apri':
+        elif model.lower() == '1998-var-am-aprfit':
             #
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.note = "Use interpolation functions suggested in APR paper."
-            self.label = 'APRi-1998'
+            self.label = 'APRfit-1998'
             self.linestyle = 'solid'
-            self.den = var[:,0]
-            self.asy = var[:,1]
-            print('den:',self.den)
-            print('asy:',self.asy)
-            self.e2a = EOAH(self.den, self.asy)
+            # Define constants for APRfit and for A18+dv+UIX*
+            global p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21
+            ( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
+            ( 337.2, -382.0, 89.8, 0.457, -59.0, -19.1, 214.6, -384.0, 6.4, 69.0, -33.0, 0.35, 0.0, 0.0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0.0 )
+            #
+            # energy per unit volume
+            self.e2v = APRfit_compute( self.den, self.xpr )
+            # energy per particle
+            self.e2a = self.e2v / self.den
+            # pressure as the first derivative of E/A
+            cs_e2a = CubicSpline( self.den, self.e2a )
+            #pre = n**2 * np.gradient( e2a, n)
+            self.pre = self.den**2 * cs_e2a( self.den, 1 )
+            # chemical potential
+            self.chempot = ( self.e2v + self.pre ) / self.den
+            # enthalpy
+            self.h2a = nuda.cst.mnuc2 + self.chempot
+            # sound speed
+            cs_pre = CubicSpline( self.den, self.pre )
+            self.cs2 = cs_pre( self.den, 1 ) / self.h2a
             #
         elif model.lower() == '2006-bhf-am':
             #
@@ -1641,6 +1680,13 @@ class SetupMicroMatter():
         print("   self.sm_den: ",self.sm_den)
         print("   self.sm_effmass: ",self.sm_effmass)
         #if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
+        if self.den is not None: print(f"   den: {np.round(self.den,3)} in {self.den_unit}")
+        if self.kfn is not None: print(f"   kfn: {np.round(self.den,3)} in {self.kf_unit}")
+        if self.asy is not None: print(f"   asy: {np.round(self.asy,3)}")
+        if self.e2a is not None: print(f"   e2a: {np.round(self.e2a,3)} in {self.e2a_unit}")
+        if self.e2v is not None: print(f"   e2v: {np.round(self.e2v,3)} in {self.e2v_unit}")
+        if self.pre is not None: print(f"   pre: {np.round(self.pre,3)} in {self.pre_unit}")
+        if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)}")
         if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
         if self.sm_kfn is not None: print(f"   sm_kfn: {np.round(self.sm_kfn,3)} in {self.kf_unit}")
         if self.sm_chempot is not None: print(f"   sm_chempot: {np.round(self.sm_chempot,3)} in {self.e2a_unit}")
@@ -1690,6 +1736,20 @@ class SetupMicroMatter():
         self.ref = ''
         #: Attribute providing additional notes about the data.
         self.note = ''
+        #: Attribute the matter density.
+        self.den = None
+        #: Attribute the neutron Fermi momentum.
+        self.kfn = None
+        #: Attribute the matter asymmetry parameter (n_n-n_p)/(n_n+n_p).
+        self.asy = None
+        #: Attribute the energy per particle.
+        self.e2a = None
+        #: Attribute the energy per unit volume.
+        self.e2v = None
+        #: Attribute the pressure.
+        self.pre = None
+        #: Attribute the sound speed.
+        self.cs2 = None
         #: Attribute the neutron matter density.
         self.nm_den = None
         #: Attribute the symmetric matter density.
