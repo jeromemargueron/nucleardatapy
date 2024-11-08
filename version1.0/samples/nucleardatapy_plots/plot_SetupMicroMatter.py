@@ -39,7 +39,7 @@ def plotMicro_nm_e2a( pname, group, models, band ):
     #
     for model in models:
         #
-        mic = nuda.SetupMicroMatter( model = model )
+        mic = nuda.SetupMicroMatter( model = model, var2=1.0 )
         print('\nmodel:',model,'\n')
         if mic.nm_e2a is not None:
             if 'NLEFT' in model:
@@ -83,25 +83,27 @@ def plotMicro_nm_e2a( pname, group, models, band ):
                     axs[1,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         elif mic.e2a is not None: 
             if 'fit' in model:
+                print('den:',mic.den)
+                print('e2a:',mic.e2a)                
                 axs[0,0].plot( mic.den, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                 axs[0,1].plot( mic.kfn, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                 axs[1,0].plot( mic.den, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
                 axs[1,1].plot( mic.kfn, mic.e2a/nuda.effg(mic.kfn), marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         #
-        mic.print_outputs( )
+        #mic.print_outputs( )
         #
-        axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
-        axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )        
-        axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-        axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-        axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-        axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
+    axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )        
+    axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+    axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+    axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
     #
     axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     #if group not in 'BHF':
@@ -140,7 +142,7 @@ def plotMicro_sm_e2a( pname, group, models, band ):
     #
     for model in models:
         #
-        mic = nuda.SetupMicroMatter( model = model )
+        mic = nuda.SetupMicroMatter( model = model, var2=0.0 )
         print('\nmodel:',model,'\n')
         if mic.sm_e2a is not None:
             if 'NLEFT' in model:
@@ -191,18 +193,18 @@ def plotMicro_sm_e2a( pname, group, models, band ):
         #
         mic.print_outputs( )
         #
-        axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
-        axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )        
-        axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-        axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-        axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-        axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-        axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-        axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
+    axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )        
+    axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+    axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
+    axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+    axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
     #
     axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     #if group not in 'BHF':
@@ -246,6 +248,8 @@ def main():
     #
     for i,group in enumerate(groups):
         #
+        print('For group:',group)
+        #
         pname = 'figs/plot_SetupMicroMatter_e2a_NM_'+group+'.png'
         print('pname:',pname)
         #
@@ -253,10 +257,9 @@ def main():
         #
         models, models_lower = nuda.models_micro_matter_group_NM( group )
         #
-        print('For group:',group)
-        #
         print('models:',models)
         plotMicro_nm_e2a( pname, group, models, band )
+        #
     #
     # ===============================
     # Symmetric Matter (SM)
@@ -278,6 +281,8 @@ def main():
     #
     for i,group in enumerate(groups):
         #
+        print('For group:',group)
+        #
         pname = 'figs/plot_SetupMicroMatter_e2a_SM_'+group+'.png'
         print('pname:',pname)
         #
@@ -285,10 +290,10 @@ def main():
         #
         models, models_lower = nuda.models_micro_matter_group_SM( group )
         #
-        print('For group:',group)
-        #
         print('models:',models)
+        #
         plotMicro_sm_e2a( pname, group, models, band )
+        #
     #
     print(50*'-')
     print("Exit plot_SetupMicro.py:")

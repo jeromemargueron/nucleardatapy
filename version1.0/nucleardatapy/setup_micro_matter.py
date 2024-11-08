@@ -66,15 +66,15 @@ def models_micro_matter_group_SM( group ):
     """
     """
     #
-    if nuda.env.verb: print("\nEnter models_micro_matter_group( group )")
+    if nuda.env.verb: print("\nEnter models_micro_matter_group_SM( group )")
     #
-    print('For group:',group)
+    print('For group (in SM):',group)
     #
     models, models_lower = nuda.models_micro_matter()
     #
     models2 = []
     for j,model in enumerate(models):
-        if group in model and '2BF' not in model and 'SM' in model:
+        if group in model and '2BF' not in model and ( 'SM' in model or 'AM' in model ):
             models2.append( model )
             print('   models:',model)
     #
@@ -87,15 +87,15 @@ def models_micro_matter_group_NM( group ):
     """
     """
     #
-    if nuda.env.verb: print("\nEnter models_micro_matter_group( group )")
+    if nuda.env.verb: print("\nEnter models_micro_matter_group_NM( group )")
     #
-    print('For group:',group)
+    print('For group (in NM):',group)
     #
     models, models_lower = nuda.models_micro_matter()
     #
     models2 = []
     for j,model in enumerate(models):
-        if group in model and '2BF' not in model and 'NM' in model:
+        if group in model and '2BF' not in model and ( 'NM' in model or 'AM' in model ):
             models2.append( model )
             print('   models:',model)
     #
@@ -200,13 +200,14 @@ class SetupMicroMatter():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
+        print("model:",model)
         #
         self = SetupMicroMatter.init_self( self )
         #
         # read var and define den, asy and xpr:
         self.den = var1[:] # density n_b=n_n+n_p
-        self.kfn = nuda.kf_n( self.den )
         self.asy = var2 # asymmetry parameter = (n_n-n_p)/n_b
+        self.kfn = nuda.kf_n( (1.0+self.asy) / 2.0 * self.den )
         self.xpr = ( 1.0 - self.asy ) / 2.0 # proton fraction = n_p/n_b
         #print('den:',self.den)
         #print('asy:',self.asy)
@@ -296,7 +297,7 @@ class SetupMicroMatter():
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.note = "write here notes about this EOS."
             self.label = 'APR-1998'
-            self.linestyle = 'solid'
+            self.linestyle = 'dashed'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )

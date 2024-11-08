@@ -14,6 +14,7 @@ def plotMicro_nm_gap( pname, models ):
     # plot pairing gap in NM
     #
     print(f'Plot name: {pname}')
+    print('models:',models)
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
@@ -38,6 +39,7 @@ def plotMicro_nm_gap( pname, models ):
     for model in models:
         #
         mic = nuda.SetupMicroMatter( model = model )
+        #
         if mic.gap_nm_gap is not None:
             if mic.gap_err:
                 axs[0,0].errorbar( mic.gap_nm_den, mic.gap_nm_gap, yerr=mic.gap_nm_gap_err, marker=mic.marker, linestyle='none', label=mic.label )
@@ -49,7 +51,7 @@ def plotMicro_nm_gap( pname, models ):
                 axs[0,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap, marker=mic.marker, linestyle='none', label=mic.label )
                 axs[1,0].plot( mic.gap_nm_den, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
                 axs[1,1].plot( mic.gap_nm_kfn, mic.gap_nm_gap/nuda.eF_n(mic.gap_nm_kfn), marker=mic.marker, linestyle='none', label=mic.label )
-        mic.print_outputs( )
+        #mic.print_outputs( )
         #
     #
     axs[1,0].legend(loc='upper right',fontsize='8')
@@ -80,16 +82,13 @@ def main():
     #
     # list the available models
     #
-    #models, models_lower = nuda.models_micro_matter()
+    models, models_lower = nuda.models_micro_matter()
     #
     # plot pairing gaps in NM
     #
     pname = 'figs/plot_SetupMicroMatter_gap_NM.png'
-    models2 = []
-    for i,group in enumerate(groups):
-        models, models_lower = nuda.models_micro_matter_group_NM( group )
-        models2.append( models )
-    plotMicro_nm_gap( pname, models2 )
+    #
+    plotMicro_nm_gap( pname, models )
     #
     print(50*'-')
     print("Exit plot_SetupMicroGap.py:")
