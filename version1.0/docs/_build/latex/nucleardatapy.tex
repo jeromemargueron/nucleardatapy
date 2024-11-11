@@ -63,7 +63,7 @@
 
 
 \title{nucleardatapy}
-\date{Nov 07, 2024}
+\date{Nov 11, 2024}
 \release{0.1}
 \author{Jérôme Margueron, IRL NPA, USA}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -309,14 +309,14 @@ A special thanks to all contributors who accepted to share their results in this
 \pysigstartsignatures
 \pysiglinewithargsret
 {\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{SetupMicroMatter}}}
-{\sphinxparam{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}}
+{\sphinxparam{\DUrole{n}{model}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{var1}\DUrole{o}{=}\DUrole{default_value}{array({[}0.01, 0.01393939, 0.01787879, 0.02181818, 0.02575758, 0.02969697, 0.03363636, 0.03757576, 0.04151515, 0.04545455, 0.04939394, 0.05333333, 0.05727273, 0.06121212, 0.06515152, 0.06909091, 0.0730303, 0.0769697, 0.08090909, 0.08484848, 0.08878788, 0.09272727, 0.09666667, 0.10060606, 0.10454545, 0.10848485, 0.11242424, 0.11636364, 0.12030303, 0.12424242, 0.12818182, 0.13212121, 0.13606061, 0.14, 0.14393939, 0.14787879, 0.15181818, 0.15575758, 0.15969697, 0.16363636, 0.16757576, 0.17151515, 0.17545455, 0.17939394, 0.18333333, 0.18727273, 0.19121212, 0.19515152, 0.19909091, 0.2030303, 0.2069697, 0.21090909, 0.21484848, 0.21878788, 0.22272727, 0.22666667, 0.23060606, 0.23454545, 0.23848485, 0.24242424, 0.24636364, 0.25030303, 0.25424242, 0.25818182, 0.26212121, 0.26606061, 0.27, 0.27393939, 0.27787879, 0.28181818, 0.28575758, 0.28969697, 0.29363636, 0.29757576, 0.30151515, 0.30545455, 0.30939394, 0.31333333, 0.31727273, 0.32121212, 0.32515152, 0.32909091, 0.3330303, 0.3369697, 0.34090909, 0.34484848, 0.34878788, 0.35272727, 0.35666667, 0.36060606, 0.36454545, 0.36848485, 0.37242424, 0.37636364, 0.38030303, 0.38424242, 0.38818182, 0.39212121, 0.39606061, 0.4{]})}}\sphinxparamcomma \sphinxparam{\DUrole{n}{var2}\DUrole{o}{=}\DUrole{default_value}{0.0}}}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
 Instantiate the object with microscopic results choosen     by the toolkit practitioner.
 
 \sphinxAtStartPar
-This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’
+This choice is defined in \sphinxtitleref{model}, which can chosen among     the following choices:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}iAPR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}
 \sphinxAtStartPar
@@ -383,10 +383,34 @@ Method which print outputs on terminal’s screen.
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
-Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}BONNB’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}NSC93’
+Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}FP’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APR’, ‘1998\sphinxhyphen{}VAR\sphinxhyphen{}AM\sphinxhyphen{}APRfit’, ‘2006\sphinxhyphen{}BHF\sphinxhyphen{}AM*’, ‘2008\sphinxhyphen{}BCS\sphinxhyphen{}NM’, ‘2008\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}1’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}2’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}3’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}4’,     ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}5’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}6’, ‘2012\sphinxhyphen{}AFDMC\sphinxhyphen{}NM\sphinxhyphen{}7’,     ‘2008\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}swave’, ‘2010\sphinxhyphen{}QMC\sphinxhyphen{}NM\sphinxhyphen{}AV4’, ‘2009\sphinxhyphen{}DLQMC\sphinxhyphen{}NM’, ‘2010\sphinxhyphen{}MBPT\sphinxhyphen{}NM’,     ‘2013\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2014\sphinxhyphen{}AFQMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2016\sphinxhyphen{}MBPT\sphinxhyphen{}AM’,     ‘2018\sphinxhyphen{}QMC\sphinxhyphen{}NM’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L59’, ‘2019\sphinxhyphen{}MBPT\sphinxhyphen{}AM\sphinxhyphen{}L69’,     ‘2020\sphinxhyphen{}MBPT\sphinxhyphen{}AM’, ‘2022\sphinxhyphen{}AFDMC\sphinxhyphen{}NM’, ‘2024\sphinxhyphen{}NLEFT\sphinxhyphen{}AM’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}2BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av8p’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}BONN’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}CDBONN’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97a’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97b’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97c’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97d’,     ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97e’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}NSC97f’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BF\sphinxhyphen{}SSCV14’,    ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}Av18’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}BONNB’, ‘2024\sphinxhyphen{}BHF\sphinxhyphen{}AM\sphinxhyphen{}23BFmicro\sphinxhyphen{}NSC93’
 :return: The list of models.
 :rtype: list{[}str{]}.
 
+\end{fulllineitems}
+
+\index{models\_micro\_matter\_group\_NM() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter\_group\_NM()}\spxextra{in module nucleardatapy.setup\_micro\_matter}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.models_micro_matter_group_NM}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{models\_micro\_matter\_group\_NM}}}
+{\sphinxparam{\DUrole{n}{group}}}
+{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{models\_micro\_matter\_group\_SM() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter\_group\_SM()}\spxextra{in module nucleardatapy.setup\_micro\_matter}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_micro_matter:nucleardatapy.setup_micro_matter.models_micro_matter_group_SM}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_micro\_matter.}}\sphinxbfcode{\sphinxupquote{models\_micro\_matter\_group\_SM}}}
+{\sphinxparam{\DUrole{n}{group}}}
+{}
+\pysigstopsignatures
 \end{fulllineitems}
 
 
@@ -2995,6 +3019,834 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupEsymLsym}.png}
 \caption{This figure shows the Esym,2 versus Lsym,2 correlation for the different constraints availble in the nucleardatapy toolkit.}\label{\detokenize{source/api/setup_EsymLsym:id1}}\end{figure}
 
+\sphinxstepscope
+
+
+\section{SetupAstroMasses}
+\label{\detokenize{source/api/setup_astro_masses:setupastromasses}}\label{\detokenize{source/api/setup_astro_masses::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_astro\_masses@\spxentry{nucleardatapy.setup\_astro\_masses}}\index{nucleardatapy.setup\_astro\_masses@\spxentry{nucleardatapy.setup\_astro\_masses}!module@\spxentry{module}}\index{SetupAstroMasses (class in nucleardatapy.setup\_astro\_masses)@\spxentry{SetupAstroMasses}\spxextra{class in nucleardatapy.setup\_astro\_masses}}\phantomsection\label{\detokenize{source/api/setup_astro_masses:module-nucleardatapy.setup_astro_masses}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_masses.}}\sphinxbfcode{\sphinxupquote{SetupAstroMasses}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}J1614\textendash{}2230\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{obs}\DUrole{o}{=}\DUrole{default_value}{1}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the observational mass for a given source and obs.
+
+\sphinxAtStartPar
+This choice is defined in the variables \sphinxtitleref{source} and \sphinxtitleref{obs}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘J1614\textendash{}2230’.
+
+\sphinxAtStartPar
+\sphinxtitleref{obs} depends on the chosen source.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘J1614\textendash{}2230’.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{obs}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the \sphinxtitleref{obs}. Default value: 1.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{label (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.label}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the label the data is references for figures.
+
+\end{fulllineitems}
+
+\index{latexCite (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.latexCite}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{latexCite}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute latexCite.
+
+\end{fulllineitems}
+
+\index{mass (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{mass}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.mass}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{mass}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the observational mass of the source.
+
+\end{fulllineitems}
+
+\index{note (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.note}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing additional notes about the observation.
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_astro\_masses.SetupAstroMasses method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+\index{ref (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.ref}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the full reference to the paper to be citted.
+
+\end{fulllineitems}
+
+\index{sig\_do (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{sig\_do}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_do}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sig\_do}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the negative uncertainty.
+
+\end{fulllineitems}
+
+\index{sig\_up (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{sig\_up}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_up}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sig\_up}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the positive uncertainty.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{SetupAstroMassesAverage (class in nucleardatapy.setup\_astro\_masses)@\spxentry{SetupAstroMassesAverage}\spxextra{class in nucleardatapy.setup\_astro\_masses}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMassesAverage}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_masses.}}\sphinxbfcode{\sphinxupquote{SetupAstroMassesAverage}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}J1614\textendash{}2230\textquotesingle{}}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the observational mass for a given source and averaged over obs.
+
+\sphinxAtStartPar
+This choice is defined in the variable \sphinxtitleref{source}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘J1614\textendash{}2230’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘J1614\textendash{}2230’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{print\_outputs() (nucleardatapy.setup\_astro\_masses.SetupAstroMassesAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMassesAverage method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.SetupAstroMassesAverage.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{astro\_masses() (in module nucleardatapy.setup\_astro\_masses)@\spxentry{astro\_masses()}\spxextra{in module nucleardatapy.setup\_astro\_masses}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.astro_masses}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_masses.}}\sphinxbfcode{\sphinxupquote{astro\_masses}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of the astrophysical sources for which a mass is given
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of sources.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{astro\_masses\_source() (in module nucleardatapy.setup\_astro\_masses)@\spxentry{astro\_masses\_source()}\spxextra{in module nucleardatapy.setup\_astro\_masses}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_masses:nucleardatapy.setup_astro_masses.astro_masses_source}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_masses.}}\sphinxbfcode{\sphinxupquote{astro\_masses\_source}}}
+{\sphinxparam{\DUrole{n}{source}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of observations for a given source and print them all on the prompt.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str.}}) \textendash{} The source for which there are different observations.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of observations.     If source == ‘J1614\textendash{}2230’: 1, 2, 3, 4, 5.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here is a figure which is produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupAstroMasses.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupAstroMasses}.png}
+\caption{The masses measured for massive neutron stars is radio\sphinxhyphen{}astronomy. The different colors correspond to the different sources.}\label{\detokenize{source/api/setup_astro_masses:id1}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupAstroMtot}
+\label{\detokenize{source/api/setup_astro_mtot:setupastromtot}}\label{\detokenize{source/api/setup_astro_mtot::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_astro\_mtot@\spxentry{nucleardatapy.setup\_astro\_mtot}}\index{nucleardatapy.setup\_astro\_mtot@\spxentry{nucleardatapy.setup\_astro\_mtot}!module@\spxentry{module}}\index{SetupAstroMtot (class in nucleardatapy.setup\_astro\_mtot)@\spxentry{SetupAstroMtot}\spxextra{class in nucleardatapy.setup\_astro\_mtot}}\phantomsection\label{\detokenize{source/api/setup_astro_mtot:module-nucleardatapy.setup_astro_mtot}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_mtot.}}\sphinxbfcode{\sphinxupquote{SetupAstroMtot}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}GW170817\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{hyp}\DUrole{o}{=}\DUrole{default_value}{1}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the total mass for a given source and hyptheses.
+
+\sphinxAtStartPar
+This choice is defined in the variables \sphinxtitleref{source} and \sphinxtitleref{hyp}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘GW170817’.
+
+\sphinxAtStartPar
+\sphinxtitleref{hyp} depends on the chosen hypotheses.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘GW170817’.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{hyp}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the \sphinxtitleref{hyp}. Default value: ‘low\sphinxhyphen{}spin+TaylorF2’.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{label (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.label}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the label the data is references for figures.
+
+\end{fulllineitems}
+
+\index{latexCite (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.latexCite}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{latexCite}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute latexCite.
+
+\end{fulllineitems}
+
+\index{mtot (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{mtot}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.mtot}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{mtot}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the observational mass of the source.
+
+\end{fulllineitems}
+
+\index{note (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.note}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing additional notes about the observation.
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+\index{ref (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.ref}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the full reference to the paper to be citted.
+
+\end{fulllineitems}
+
+\index{sig\_do (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{sig\_do}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.sig_do}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sig\_do}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the negative uncertainty.
+
+\end{fulllineitems}
+
+\index{sig\_up (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{sig\_up}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtot.sig_up}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{sig\_up}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the positive uncertainty.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{SetupAstroMtotAverage (class in nucleardatapy.setup\_astro\_mtot)@\spxentry{SetupAstroMtotAverage}\spxextra{class in nucleardatapy.setup\_astro\_mtot}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtotAverage}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_mtot.}}\sphinxbfcode{\sphinxupquote{SetupAstroMtotAverage}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}GW170817\textquotesingle{}}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the total mass for a given source and averaged over hypotheses.
+
+\sphinxAtStartPar
+This choice is defined in the variable \sphinxtitleref{source}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘GW170817’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘GW170817’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{print\_outputs() (nucleardatapy.setup\_astro\_mtot.SetupAstroMtotAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtotAverage method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.SetupAstroMtotAverage.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{astro\_mtot() (in module nucleardatapy.setup\_astro\_mtot)@\spxentry{astro\_mtot()}\spxextra{in module nucleardatapy.setup\_astro\_mtot}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.astro_mtot}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_mtot.}}\sphinxbfcode{\sphinxupquote{astro\_mtot}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of the astrophysical sources for which a mass is given
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of sources.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{astro\_mtot\_source() (in module nucleardatapy.setup\_astro\_mtot)@\spxentry{astro\_mtot\_source()}\spxextra{in module nucleardatapy.setup\_astro\_mtot}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtot:nucleardatapy.setup_astro_mtot.astro_mtot_source}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_mtot.}}\sphinxbfcode{\sphinxupquote{astro\_mtot\_source}}}
+{\sphinxparam{\DUrole{n}{source}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of observations for a given source and print them all on the prompt.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str.}}) \textendash{} The source for which there are different observations.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of observations.     If source == ‘J1614\textendash{}2230’: 1, 2, 3, 4, 5.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here is a figure which is produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupAstroMtot.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupAstroMtot}.png}
+\caption{The total mass measured fo binary neutron star mergers. The different colors correspond to the different sources.}\label{\detokenize{source/api/setup_astro_mtot:id1}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupAstroMtov}
+\label{\detokenize{source/api/setup_astro_mtov:setupastromtov}}\label{\detokenize{source/api/setup_astro_mtov::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_astro\_mtov@\spxentry{nucleardatapy.setup\_astro\_mtov}}\index{nucleardatapy.setup\_astro\_mtov@\spxentry{nucleardatapy.setup\_astro\_mtov}!module@\spxentry{module}}\index{SetupAstroMtov (class in nucleardatapy.setup\_astro\_mtov)@\spxentry{SetupAstroMtov}\spxextra{class in nucleardatapy.setup\_astro\_mtov}}\phantomsection\label{\detokenize{source/api/setup_astro_mtov:module-nucleardatapy.setup_astro_mtov}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtov:nucleardatapy.setup_astro_mtov.SetupAstroMtov}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_mtov.}}\sphinxbfcode{\sphinxupquote{SetupAstroMtov}}}
+{\sphinxparam{\DUrole{n}{sources\_do}\DUrole{o}{=}\DUrole{default_value}{array({[}\textquotesingle{}J1614\textendash{}2230\textquotesingle{}{]}, dtype=\textquotesingle{}\textless{}U10\textquotesingle{})}}\sphinxparamcomma \sphinxparam{\DUrole{n}{sources\_up}\DUrole{o}{=}\DUrole{default_value}{array({[}\textquotesingle{}GW170817\textquotesingle{}{]}, dtype=\textquotesingle{}\textless{}U8\textquotesingle{})}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the observational mass for a given source and obs.
+
+\sphinxAtStartPar
+This choice is defined in the variable \sphinxtitleref{source}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘J1614\textendash{}2230’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘J1614\textendash{}2230’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{print\_outputs() (nucleardatapy.setup\_astro\_mtov.SetupAstroMtov method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtov.SetupAstroMtov method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_mtov:nucleardatapy.setup_astro_mtov.SetupAstroMtov.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here is a figure which is produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupAstroMtov.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupAstroMtov}.png}
+\caption{The probability distribution function for the TOV mass constructed from radio and gravitational\sphinxhyphen{}wave observations.
+The different colors correspond to the different sources.}\label{\detokenize{source/api/setup_astro_mtov:id1}}\end{figure}
+
+\sphinxstepscope
+
+
+\section{SetupAstroGW}
+\label{\detokenize{source/api/setup_astro_gw:setupastrogw}}\label{\detokenize{source/api/setup_astro_gw::doc}}\index{module@\spxentry{module}!nucleardatapy.setup\_astro\_gw@\spxentry{nucleardatapy.setup\_astro\_gw}}\index{nucleardatapy.setup\_astro\_gw@\spxentry{nucleardatapy.setup\_astro\_gw}!module@\spxentry{module}}\index{SetupAstroGW (class in nucleardatapy.setup\_astro\_gw)@\spxentry{SetupAstroGW}\spxextra{class in nucleardatapy.setup\_astro\_gw}}\phantomsection\label{\detokenize{source/api/setup_astro_gw:module-nucleardatapy.setup_astro_gw}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_gw.}}\sphinxbfcode{\sphinxupquote{SetupAstroGW}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}GW170817\textquotesingle{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{hyp}\DUrole{o}{=}\DUrole{default_value}{1}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the tidal deformability for a given source and obs.
+
+\sphinxAtStartPar
+This choice is defined in the variables \sphinxtitleref{source} and \sphinxtitleref{obs}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘GW170817’.
+
+\sphinxAtStartPar
+\sphinxtitleref{obs} depends on the chosen source.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘GW170817’.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{obs}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the \sphinxtitleref{obs}. Default value: 1.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{label (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.label}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{label}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the label the data is references for figures.
+
+\end{fulllineitems}
+
+\index{lambda\_sig\_do (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{lambda\_sig\_do}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_do}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{lambda\_sig\_do}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the upper bound of the tidal deformability for the source.
+
+\end{fulllineitems}
+
+\index{lambda\_sig\_up (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{lambda\_sig\_up}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_up}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{lambda\_sig\_up}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute the lower bound of the tidal deformability for the source.
+
+\end{fulllineitems}
+
+\index{latexCite (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.latexCite}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{latexCite}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute latexCite.
+
+\end{fulllineitems}
+
+\index{note (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.note}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{note}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing additional notes about the data.
+
+\end{fulllineitems}
+
+\index{print\_outputs() (nucleardatapy.setup\_astro\_gw.SetupAstroGW method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+\index{ref (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGW.ref}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{ref}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Attribute providing the full reference to the paper to be citted.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{SetupAstroGWAverage (class in nucleardatapy.setup\_astro\_gw)@\spxentry{SetupAstroGWAverage}\spxextra{class in nucleardatapy.setup\_astro\_gw}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGWAverage}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_gw.}}\sphinxbfcode{\sphinxupquote{SetupAstroGWAverage}}}
+{\sphinxparam{\DUrole{n}{source}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}GW170817\textquotesingle{}}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Instantiate the total mass for a given source and averaged over hypotheses.
+
+\sphinxAtStartPar
+This choice is defined in the variable \sphinxtitleref{source}.
+
+\sphinxAtStartPar
+\sphinxtitleref{source} can chosen among the following ones: ‘GW170817’.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional.}}) \textendash{} Fix the name of \sphinxtitleref{source}. Default value: ‘GW170817’.
+
+\end{description}\end{quote}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Attributes:}
+\index{print\_outputs() (nucleardatapy.setup\_astro\_gw.SetupAstroGWAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGWAverage method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_outputs}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{print\_outputs}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Method which print outputs on terminal’s screen.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{astro\_gw() (in module nucleardatapy.setup\_astro\_gw)@\spxentry{astro\_gw()}\spxextra{in module nucleardatapy.setup\_astro\_gw}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.astro_gw}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_gw.}}\sphinxbfcode{\sphinxupquote{astro\_gw}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of the astrophysical sources for which a mass is given
+\begin{quote}\begin{description}
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of sources.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{astro\_gw\_source() (in module nucleardatapy.setup\_astro\_gw)@\spxentry{astro\_gw\_source()}\spxextra{in module nucleardatapy.setup\_astro\_gw}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{source/api/setup_astro_gw:nucleardatapy.setup_astro_gw.astro_gw_source}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxcode{\sphinxupquote{nucleardatapy.setup\_astro\_gw.}}\sphinxbfcode{\sphinxupquote{astro\_gw\_source}}}
+{\sphinxparam{\DUrole{n}{source}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Return a list of observations for a given source and print them all on the prompt.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{source}} (\sphinxstyleliteralemphasis{\sphinxupquote{str.}}) \textendash{} The source for which there are different hypotheses.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+The list of hypotheses.     If source == ‘GW170817’: 1, 2, 3, 4, 5.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list{[}str{]}.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\sphinxAtStartPar
+Here is a figure which is produced with the Python sample: /sample/nucleardatapy\_plots/plot\_setupAstroGW.py
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.7]{{plot_SetupAstroGW}.png}
+\caption{Estimation of the effective tidal deformability from difference sources (different colors) and different hypotheses on the pulsar spin and the waveform employed for match filtering.}\label{\detokenize{source/api/setup_astro_gw:id1}}\end{figure}
+
 
 \chapter{Indices and tables}
 \label{\detokenize{index:indices-and-tables}}\begin{itemize}
@@ -3018,6 +3870,10 @@ Here are a set of figures which are produced with the Python sample: /sample/nuc
 \let\bigletter\sphinxstyleindexlettergroup
 \bigletter{n}
 \item\relax\sphinxstyleindexentry{nucleardatapy}\sphinxstyleindexpageref{source/generated/nucleardatapy:\detokenize{module-nucleardatapy}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_astro\_gw}\sphinxstyleindexpageref{source/api/setup_astro_gw:\detokenize{module-nucleardatapy.setup_astro_gw}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_astro\_masses}\sphinxstyleindexpageref{source/api/setup_astro_masses:\detokenize{module-nucleardatapy.setup_astro_masses}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_astro\_mtot}\sphinxstyleindexpageref{source/api/setup_astro_mtot:\detokenize{module-nucleardatapy.setup_astro_mtot}}
+\item\relax\sphinxstyleindexentry{nucleardatapy.setup\_astro\_mtov}\sphinxstyleindexpageref{source/api/setup_astro_mtov:\detokenize{module-nucleardatapy.setup_astro_mtov}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_crust}\sphinxstyleindexpageref{source/api/setup_crust:\detokenize{module-nucleardatapy.setup_crust}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_EsymLsym}\sphinxstyleindexpageref{source/api/setup_EsymLsym:\detokenize{module-nucleardatapy.setup_EsymLsym}}
 \item\relax\sphinxstyleindexentry{nucleardatapy.setup\_hic\_matter}\sphinxstyleindexpageref{source/api/setup_hic_matter:\detokenize{module-nucleardatapy.setup_hic_matter}}

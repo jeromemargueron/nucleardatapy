@@ -15,15 +15,19 @@
 \contentsline {chapter}{\numberline {2}Complement}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}SetupMicroMatter}{7}{section.2.1}%
 \contentsline {section}{\numberline {2.2}SetupMicroMatterBand}{8}{section.2.2}%
-\contentsline {section}{\numberline {2.3}SetupMicroLP}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}SetupPhenoMatter}{13}{section.2.4}%
-\contentsline {section}{\numberline {2.5}SetupHICMatter}{21}{section.2.5}%
+\contentsline {section}{\numberline {2.3}SetupMicroLP}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}SetupPhenoMatter}{14}{section.2.4}%
+\contentsline {section}{\numberline {2.5}SetupHICMatter}{17}{section.2.5}%
 \contentsline {section}{\numberline {2.6}SetupCrust}{22}{section.2.6}%
-\contentsline {section}{\numberline {2.7}SetupMassesExp}{23}{section.2.7}%
-\contentsline {section}{\numberline {2.8}SetupMassesTheory}{26}{section.2.8}%
-\contentsline {section}{\numberline {2.9}SetupRadCh}{30}{section.2.9}%
+\contentsline {section}{\numberline {2.7}SetupMassesExp}{25}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupMassesTheory}{27}{section.2.8}%
+\contentsline {section}{\numberline {2.9}SetupRadCh}{29}{section.2.9}%
 \contentsline {section}{\numberline {2.10}SetupISGMR}{31}{section.2.10}%
-\contentsline {section}{\numberline {2.11}SetupEsymLsym}{33}{section.2.11}%
-\contentsline {chapter}{\numberline {3}Indices and tables}{35}{chapter.3}%
-\contentsline {chapter}{Python Module Index}{37}{section*.160}%
-\contentsline {chapter}{Index}{39}{section*.161}%
+\contentsline {section}{\numberline {2.11}SetupEsymLsym}{32}{section.2.11}%
+\contentsline {section}{\numberline {2.12}SetupAstroMasses}{34}{section.2.12}%
+\contentsline {section}{\numberline {2.13}SetupAstroMtot}{36}{section.2.13}%
+\contentsline {section}{\numberline {2.14}SetupAstroMtov}{38}{section.2.14}%
+\contentsline {section}{\numberline {2.15}SetupAstroGW}{38}{section.2.15}%
+\contentsline {chapter}{\numberline {3}Indices and tables}{41}{chapter.3}%
+\contentsline {chapter}{Python Module Index}{43}{section*.206}%
+\contentsline {chapter}{Index}{45}{section*.207}%

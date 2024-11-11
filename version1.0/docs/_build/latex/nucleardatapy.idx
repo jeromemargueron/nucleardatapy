@@ -3,91 +3,93 @@
 \indexentry{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}|hyperpage}{7}
 \indexentry{nucleardatapy.setup\_micro\_matter@\spxentry{nucleardatapy.setup\_micro\_matter}!module@\spxentry{module}|hyperpage}{7}
 \indexentry{SetupMicroMatter (class in nucleardatapy.setup\_micro\_matter)@\spxentry{SetupMicroMatter}\spxextra{class in nucleardatapy.setup\_micro\_matter}|hyperpage}{7}
-\indexentry{init\_self() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}|hyperpage}{7}
-\indexentry{model (nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute}|hyperpage}{7}
-\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}|hyperpage}{7}
-\indexentry{models\_micro\_matter() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter()}\spxextra{in module nucleardatapy.setup\_micro\_matter}|hyperpage}{7}
+\indexentry{init\_self() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}|hyperpage}{8}
+\indexentry{model (nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter attribute}|hyperpage}{8}
+\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_matter.SetupMicroMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter.SetupMicroMatter method}|hyperpage}{8}
+\indexentry{models\_micro\_matter() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter()}\spxextra{in module nucleardatapy.setup\_micro\_matter}|hyperpage}{8}
+\indexentry{models\_micro\_matter\_group\_NM() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter\_group\_NM()}\spxextra{in module nucleardatapy.setup\_micro\_matter}|hyperpage}{8}
+\indexentry{models\_micro\_matter\_group\_SM() (in module nucleardatapy.setup\_micro\_matter)@\spxentry{models\_micro\_matter\_group\_SM()}\spxextra{in module nucleardatapy.setup\_micro\_matter}|hyperpage}{8}
 \indexentry{module@\spxentry{module}!nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}|hyperpage}{8}
 \indexentry{nucleardatapy.setup\_micro\_matter\_band@\spxentry{nucleardatapy.setup\_micro\_matter\_band}!module@\spxentry{module}|hyperpage}{8}
 \indexentry{SetupMicroMatterBand (class in nucleardatapy.setup\_micro\_matter\_band)@\spxentry{SetupMicroMatterBand}\spxextra{class in nucleardatapy.setup\_micro\_matter\_band}|hyperpage}{8}
-\indexentry{den (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{11}
-\indexentry{init\_self() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}|hyperpage}{11}
-\indexentry{matter (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{matter}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{11}
-\indexentry{models (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{models}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{11}
-\indexentry{nden (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{nden}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{11}
-\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}|hyperpage}{11}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}|hyperpage}{11}
-\indexentry{nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}!module@\spxentry{module}|hyperpage}{11}
-\indexentry{SetupMicroLP (class in nucleardatapy.setup\_micro\_LP)@\spxentry{SetupMicroLP}\spxextra{class in nucleardatapy.setup\_micro\_LP}|hyperpage}{11}
-\indexentry{init\_self() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}|hyperpage}{13}
-\indexentry{model (nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute}|hyperpage}{13}
-\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}|hyperpage}{13}
-\indexentry{models\_micro\_LP() (in module nucleardatapy.setup\_micro\_LP)@\spxentry{models\_micro\_LP()}\spxextra{in module nucleardatapy.setup\_micro\_LP}|hyperpage}{13}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}|hyperpage}{13}
-\indexentry{nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}!module@\spxentry{module}|hyperpage}{13}
-\indexentry{SetupPhenoMatter (class in nucleardatapy.setup\_pheno\_matter)@\spxentry{SetupPhenoMatter}\spxextra{class in nucleardatapy.setup\_pheno\_matter}|hyperpage}{13}
-\indexentry{Esat (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{Esat}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{esym\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{esym\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{esym\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{label (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{model (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_cs2 (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_cs2}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_gap (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{nm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{note (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
-\indexentry{param (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{param}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{15}
+\indexentry{den (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{12}
+\indexentry{init\_self() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}|hyperpage}{12}
+\indexentry{matter (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{matter}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{12}
+\indexentry{models (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{models}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{12}
+\indexentry{nden (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute)@\spxentry{nden}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand attribute}|hyperpage}{12}
+\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_matter\_band.SetupMicroMatterBand method}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}|hyperpage}{14}
+\indexentry{nucleardatapy.setup\_micro\_LP@\spxentry{nucleardatapy.setup\_micro\_LP}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{SetupMicroLP (class in nucleardatapy.setup\_micro\_LP)@\spxentry{SetupMicroLP}\spxextra{class in nucleardatapy.setup\_micro\_LP}|hyperpage}{14}
+\indexentry{init\_self() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}|hyperpage}{14}
+\indexentry{model (nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP attribute}|hyperpage}{14}
+\indexentry{print\_outputs() (nucleardatapy.setup\_micro\_LP.SetupMicroLP method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_micro\_LP.SetupMicroLP method}|hyperpage}{14}
+\indexentry{models\_micro\_LP() (in module nucleardatapy.setup\_micro\_LP)@\spxentry{models\_micro\_LP()}\spxextra{in module nucleardatapy.setup\_micro\_LP}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}|hyperpage}{14}
+\indexentry{nucleardatapy.setup\_pheno\_matter@\spxentry{nucleardatapy.setup\_pheno\_matter}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{SetupPhenoMatter (class in nucleardatapy.setup\_pheno\_matter)@\spxentry{SetupPhenoMatter}\spxextra{class in nucleardatapy.setup\_pheno\_matter}|hyperpage}{14}
+\indexentry{Esat (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{Esat}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{esym\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{esym\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{esym\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{esym\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{label (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{model (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{model}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_cs2 (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_cs2}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_gap (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_gap}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{nm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{nm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{note (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
+\indexentry{param (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{param}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
 \indexentry{print\_outputs() (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter method}|hyperpage}{16}
 \indexentry{ref (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
 \indexentry{sm\_cs2 (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_cs2}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
 \indexentry{sm\_den (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_den}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
 \indexentry{sm\_e2a (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_e2a}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
 \indexentry{sm\_gap (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_gap}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
-\indexentry{sm\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
-\indexentry{sm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
-\indexentry{sm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{16}
-\indexentry{models\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{models\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}|hyperpage}{16}
-\indexentry{params\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{params\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}|hyperpage}{16}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}|hyperpage}{21}
-\indexentry{nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}!module@\spxentry{module}|hyperpage}{21}
-\indexentry{SetupHICMatter (class in nucleardatapy.setup\_hic\_matter)@\spxentry{SetupHICMatter}\spxextra{class in nucleardatapy.setup\_hic\_matter}|hyperpage}{21}
-\indexentry{init\_self() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}|hyperpage}{21}
-\indexentry{print\_outputs() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}|hyperpage}{21}
-\indexentry{constraints\_HIC\_matter() (in module nucleardatapy.setup\_hic\_matter)@\spxentry{constraints\_HIC\_matter()}\spxextra{in module nucleardatapy.setup\_hic\_matter}|hyperpage}{21}
+\indexentry{sm\_kf (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kf}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{17}
+\indexentry{sm\_kfn (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_kfn}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{17}
+\indexentry{sm\_pre (nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute)@\spxentry{sm\_pre}\spxextra{nucleardatapy.setup\_pheno\_matter.SetupPhenoMatter attribute}|hyperpage}{17}
+\indexentry{models\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{models\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}|hyperpage}{17}
+\indexentry{params\_pheno\_matter() (in module nucleardatapy.setup\_pheno\_matter)@\spxentry{params\_pheno\_matter()}\spxextra{in module nucleardatapy.setup\_pheno\_matter}|hyperpage}{17}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}|hyperpage}{17}
+\indexentry{nucleardatapy.setup\_hic\_matter@\spxentry{nucleardatapy.setup\_hic\_matter}!module@\spxentry{module}|hyperpage}{17}
+\indexentry{SetupHICMatter (class in nucleardatapy.setup\_hic\_matter)@\spxentry{SetupHICMatter}\spxextra{class in nucleardatapy.setup\_hic\_matter}|hyperpage}{17}
+\indexentry{init\_self() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}|hyperpage}{17}
+\indexentry{print\_outputs() (nucleardatapy.setup\_hic\_matter.SetupHICMatter method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_hic\_matter.SetupHICMatter method}|hyperpage}{17}
+\indexentry{constraints\_HIC\_matter() (in module nucleardatapy.setup\_hic\_matter)@\spxentry{constraints\_HIC\_matter()}\spxextra{in module nucleardatapy.setup\_hic\_matter}|hyperpage}{22}
 \indexentry{module@\spxentry{module}!nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}|hyperpage}{22}
 \indexentry{nucleardatapy.setup\_crust@\spxentry{nucleardatapy.setup\_crust}!module@\spxentry{module}|hyperpage}{22}
 \indexentry{SetupCrust (class in nucleardatapy.setup\_crust)@\spxentry{SetupCrust}\spxextra{class in nucleardatapy.setup\_crust}|hyperpage}{22}
 \indexentry{A (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{A}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
 \indexentry{N (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{N}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
 \indexentry{N\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{N\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
-\indexentry{N\_g (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{N\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
-\indexentry{RWS (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{RWS}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
-\indexentry{Z (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
-\indexentry{den (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{22}
+\indexentry{N\_g (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{N\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
+\indexentry{RWS (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{RWS}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
+\indexentry{Z (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{Z}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
+\indexentry{den (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{den}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{den\_cgs (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{den\_cgs}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{den\_g (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{den\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{e2a\_int (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{e2a\_int}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{e2a\_int2 (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{e2a\_int2}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{e2a\_int\_g (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{e2a\_int\_g}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
 \indexentry{e2a\_rm (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{e2a\_rm}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{mu\_n (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{mu\_n}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{mu\_p (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{mu\_p}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{print\_outputs() (nucleardatapy.setup\_crust.SetupCrust method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_crust.SetupCrust method}|hyperpage}{23}
-\indexentry{xn (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xn}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{xn\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{xp (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xp}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{xpn\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xpn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{23}
-\indexentry{models\_crust() (in module nucleardatapy.setup\_crust)@\spxentry{models\_crust()}\spxextra{in module nucleardatapy.setup\_crust}|hyperpage}{23}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}|hyperpage}{23}
-\indexentry{nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}!module@\spxentry{module}|hyperpage}{23}
-\indexentry{SetupMassesExp (class in nucleardatapy.setup\_masses\_exp)@\spxentry{SetupMassesExp}\spxextra{class in nucleardatapy.setup\_masses\_exp}|hyperpage}{23}
-\indexentry{Zmax (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{Zmax}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{24}
-\indexentry{dist\_nbNuc (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{dist\_nbNuc}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{24}
-\indexentry{dist\_year (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{dist\_year}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{24}
-\indexentry{drip() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{24}
+\indexentry{mu\_n (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{mu\_n}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{mu\_p (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{mu\_p}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{print\_outputs() (nucleardatapy.setup\_crust.SetupCrust method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_crust.SetupCrust method}|hyperpage}{24}
+\indexentry{xn (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xn}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{xn\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{xp (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xp}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{xpn\_bound (nucleardatapy.setup\_crust.SetupCrust attribute)@\spxentry{xpn\_bound}\spxextra{nucleardatapy.setup\_crust.SetupCrust attribute}|hyperpage}{24}
+\indexentry{models\_crust() (in module nucleardatapy.setup\_crust)@\spxentry{models\_crust()}\spxextra{in module nucleardatapy.setup\_crust}|hyperpage}{24}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}|hyperpage}{25}
+\indexentry{nucleardatapy.setup\_masses\_exp@\spxentry{nucleardatapy.setup\_masses\_exp}!module@\spxentry{module}|hyperpage}{25}
+\indexentry{SetupMassesExp (class in nucleardatapy.setup\_masses\_exp)@\spxentry{SetupMassesExp}\spxextra{class in nucleardatapy.setup\_masses\_exp}|hyperpage}{25}
+\indexentry{Zmax (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{Zmax}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
+\indexentry{dist\_nbNuc (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{dist\_nbNuc}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
+\indexentry{dist\_year (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{dist\_year}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
+\indexentry{drip() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{25}
 \indexentry{flagI (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{flagI}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
 \indexentry{flagInterp (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{flagInterp}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
 \indexentry{label (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
@@ -96,31 +98,31 @@
 \indexentry{note (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
 \indexentry{nucA (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucA}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
 \indexentry{nucBE (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucBE}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucBE\_err (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucBE\_err}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucHT (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucHT}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucN (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucN}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucStbl (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucStbl}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucSymb (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucSymb}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucYear (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucYear}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{nucZ (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucZ}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{print\_outputs() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{25}
-\indexentry{ref (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{25}
-\indexentry{select() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{select()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{25}
+\indexentry{nucBE\_err (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucBE\_err}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucHT (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucHT}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucN (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucN}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucStbl (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucStbl}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucSymb (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucSymb}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucYear (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucYear}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{nucZ (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{nucZ}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{print\_outputs() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{26}
+\indexentry{ref (nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp attribute}|hyperpage}{26}
+\indexentry{select() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{select()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{26}
 \indexentry{select\_year() (nucleardatapy.setup\_masses\_exp.SetupMassesExp method)@\spxentry{select\_year()}\spxextra{nucleardatapy.setup\_masses\_exp.SetupMassesExp method}|hyperpage}{26}
-\indexentry{tables\_masses\_exp() (in module nucleardatapy.setup\_masses\_exp)@\spxentry{tables\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}|hyperpage}{26}
-\indexentry{versions\_masses\_exp() (in module nucleardatapy.setup\_masses\_exp)@\spxentry{versions\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}|hyperpage}{26}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}|hyperpage}{26}
-\indexentry{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}|hyperpage}{26}
-\indexentry{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}|hyperpage}{26}
+\indexentry{tables\_masses\_exp() (in module nucleardatapy.setup\_masses\_exp)@\spxentry{tables\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}|hyperpage}{27}
+\indexentry{versions\_masses\_exp() (in module nucleardatapy.setup\_masses\_exp)@\spxentry{versions\_masses\_exp()}\spxextra{in module nucleardatapy.setup\_masses\_exp}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}|hyperpage}{27}
+\indexentry{nucleardatapy.setup\_masses\_theory@\spxentry{nucleardatapy.setup\_masses\_theory}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{SetupMassesTheory (class in nucleardatapy.setup\_masses\_theory)@\spxentry{SetupMassesTheory}\spxextra{class in nucleardatapy.setup\_masses\_theory}|hyperpage}{27}
 \indexentry{diff() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{diff()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{28}
 \indexentry{diff\_exp() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{diff\_exp()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{28}
 \indexentry{drip() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{drip()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{28}
-\indexentry{init\_self() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{28}
-\indexentry{print\_outputs() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{28}
-\indexentry{tables\_masses\_theory() (in module nucleardatapy.setup\_masses\_theory)@\spxentry{tables\_masses\_theory()}\spxextra{in module nucleardatapy.setup\_masses\_theory}|hyperpage}{28}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}|hyperpage}{30}
-\indexentry{nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}!module@\spxentry{module}|hyperpage}{30}
-\indexentry{SetupRadCh (class in nucleardatapy.setup\_rad\_ch)@\spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}|hyperpage}{30}
+\indexentry{init\_self() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{init\_self()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{29}
+\indexentry{print\_outputs() (nucleardatapy.setup\_masses\_theory.SetupMassesTheory method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_masses\_theory.SetupMassesTheory method}|hyperpage}{29}
+\indexentry{tables\_masses\_theory() (in module nucleardatapy.setup\_masses\_theory)@\spxentry{tables\_masses\_theory()}\spxextra{in module nucleardatapy.setup\_masses\_theory}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}|hyperpage}{29}
+\indexentry{nucleardatapy.setup\_rad\_ch@\spxentry{nucleardatapy.setup\_rad\_ch}!module@\spxentry{module}|hyperpage}{29}
+\indexentry{SetupRadCh (class in nucleardatapy.setup\_rad\_ch)@\spxentry{SetupRadCh}\spxextra{class in nucleardatapy.setup\_rad\_ch}|hyperpage}{29}
 \indexentry{R\_unit (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{R\_unit}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
 \indexentry{RadCh\_isotopes() (nucleardatapy.setup\_rad\_ch.SetupRadCh method)@\spxentry{RadCh\_isotopes()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}|hyperpage}{30}
 \indexentry{label (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
@@ -131,29 +133,29 @@
 \indexentry{nucRch\_err (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{nucRch\_err}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
 \indexentry{nucSymb (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{nucSymb}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
 \indexentry{nucZ (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{nucZ}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
-\indexentry{print\_outputs() (nucleardatapy.setup\_rad\_ch.SetupRadCh method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}|hyperpage}{30}
-\indexentry{ref (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{30}
-\indexentry{tables\_rad\_ch() (in module nucleardatapy.setup\_rad\_ch)@\spxentry{tables\_rad\_ch()}\spxextra{in module nucleardatapy.setup\_rad\_ch}|hyperpage}{30}
+\indexentry{print\_outputs() (nucleardatapy.setup\_rad\_ch.SetupRadCh method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh method}|hyperpage}{31}
+\indexentry{ref (nucleardatapy.setup\_rad\_ch.SetupRadCh attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_rad\_ch.SetupRadCh attribute}|hyperpage}{31}
+\indexentry{tables\_rad\_ch() (in module nucleardatapy.setup\_rad\_ch)@\spxentry{tables\_rad\_ch()}\spxextra{in module nucleardatapy.setup\_rad\_ch}|hyperpage}{31}
 \indexentry{module@\spxentry{module}!nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}|hyperpage}{31}
 \indexentry{nucleardatapy.setup\_ISGMR@\spxentry{nucleardatapy.setup\_ISGMR}!module@\spxentry{module}|hyperpage}{31}
 \indexentry{SetupISGMR (class in nucleardatapy.setup\_ISGMR)@\spxentry{SetupISGMR}\spxextra{class in nucleardatapy.setup\_ISGMR}|hyperpage}{31}
 \indexentry{E\_unit (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{E\_unit}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{label (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{note (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{nucA (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucA}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{nucM12Mm1\_cent (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_cent}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{nucM12Mm1\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
-\indexentry{nucM12Mm1\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{31}
+\indexentry{label (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
+\indexentry{note (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
+\indexentry{nucA (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucA}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
+\indexentry{nucM12Mm1\_cent (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_cent}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
+\indexentry{nucM12Mm1\_errm (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errm}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
+\indexentry{nucM12Mm1\_errp (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucM12Mm1\_errp}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
 \indexentry{nucSymbol (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucSymbol}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
 \indexentry{nucZ (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{nucZ}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
 \indexentry{print\_outputs() (nucleardatapy.setup\_ISGMR.SetupISGMR method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR method}|hyperpage}{32}
 \indexentry{ref (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
 \indexentry{table (nucleardatapy.setup\_ISGMR.SetupISGMR attribute)@\spxentry{table}\spxextra{nucleardatapy.setup\_ISGMR.SetupISGMR attribute}|hyperpage}{32}
 \indexentry{tables\_isgmr() (in module nucleardatapy.setup\_ISGMR)@\spxentry{tables\_isgmr()}\spxextra{in module nucleardatapy.setup\_ISGMR}|hyperpage}{32}
-\indexentry{module@\spxentry{module}!nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}|hyperpage}{33}
-\indexentry{nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}!module@\spxentry{module}|hyperpage}{33}
-\indexentry{SetupEsymLsym (class in nucleardatapy.setup\_EsymLsym)@\spxentry{SetupEsymLsym}\spxextra{class in nucleardatapy.setup\_EsymLsym}|hyperpage}{33}
-\indexentry{Esym (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{Esym}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}|hyperpage}{32}
+\indexentry{nucleardatapy.setup\_EsymLsym@\spxentry{nucleardatapy.setup\_EsymLsym}!module@\spxentry{module}|hyperpage}{32}
+\indexentry{SetupEsymLsym (class in nucleardatapy.setup\_EsymLsym)@\spxentry{SetupEsymLsym}\spxextra{class in nucleardatapy.setup\_EsymLsym}|hyperpage}{32}
+\indexentry{Esym (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{Esym}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{32}
 \indexentry{Esym\_err (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{Esym\_err}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
 \indexentry{Esym\_max (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{Esym\_max}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
 \indexentry{Esym\_min (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{Esym\_min}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
@@ -165,6 +167,54 @@
 \indexentry{constraint (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{constraint}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
 \indexentry{label (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
 \indexentry{note (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
-\indexentry{print\_outputs() (nucleardatapy.setup\_EsymLsym.SetupEsymLsym method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym method}|hyperpage}{33}
-\indexentry{ref (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{33}
-\indexentry{constraints\_EsymLsym() (in module nucleardatapy.setup\_EsymLsym)@\spxentry{constraints\_EsymLsym()}\spxextra{in module nucleardatapy.setup\_EsymLsym}|hyperpage}{33}
+\indexentry{print\_outputs() (nucleardatapy.setup\_EsymLsym.SetupEsymLsym method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym method}|hyperpage}{34}
+\indexentry{ref (nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_EsymLsym.SetupEsymLsym attribute}|hyperpage}{34}
+\indexentry{constraints\_EsymLsym() (in module nucleardatapy.setup\_EsymLsym)@\spxentry{constraints\_EsymLsym()}\spxextra{in module nucleardatapy.setup\_EsymLsym}|hyperpage}{34}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_astro\_masses@\spxentry{nucleardatapy.setup\_astro\_masses}|hyperpage}{34}
+\indexentry{nucleardatapy.setup\_astro\_masses@\spxentry{nucleardatapy.setup\_astro\_masses}!module@\spxentry{module}|hyperpage}{34}
+\indexentry{SetupAstroMasses (class in nucleardatapy.setup\_astro\_masses)@\spxentry{SetupAstroMasses}\spxextra{class in nucleardatapy.setup\_astro\_masses}|hyperpage}{34}
+\indexentry{label (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{latexCite (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{mass (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{mass}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{note (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_masses.SetupAstroMasses method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses method}|hyperpage}{35}
+\indexentry{ref (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{sig\_do (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{sig\_do}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{sig\_up (nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute)@\spxentry{sig\_up}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMasses attribute}|hyperpage}{35}
+\indexentry{SetupAstroMassesAverage (class in nucleardatapy.setup\_astro\_masses)@\spxentry{SetupAstroMassesAverage}\spxextra{class in nucleardatapy.setup\_astro\_masses}|hyperpage}{35}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_masses.SetupAstroMassesAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_masses.SetupAstroMassesAverage method}|hyperpage}{35}
+\indexentry{astro\_masses() (in module nucleardatapy.setup\_astro\_masses)@\spxentry{astro\_masses()}\spxextra{in module nucleardatapy.setup\_astro\_masses}|hyperpage}{35}
+\indexentry{astro\_masses\_source() (in module nucleardatapy.setup\_astro\_masses)@\spxentry{astro\_masses\_source()}\spxextra{in module nucleardatapy.setup\_astro\_masses}|hyperpage}{35}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_astro\_mtot@\spxentry{nucleardatapy.setup\_astro\_mtot}|hyperpage}{36}
+\indexentry{nucleardatapy.setup\_astro\_mtot@\spxentry{nucleardatapy.setup\_astro\_mtot}!module@\spxentry{module}|hyperpage}{36}
+\indexentry{SetupAstroMtot (class in nucleardatapy.setup\_astro\_mtot)@\spxentry{SetupAstroMtot}\spxextra{class in nucleardatapy.setup\_astro\_mtot}|hyperpage}{36}
+\indexentry{label (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{36}
+\indexentry{latexCite (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{mtot (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{mtot}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{note (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot method}|hyperpage}{37}
+\indexentry{ref (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{sig\_do (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{sig\_do}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{sig\_up (nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute)@\spxentry{sig\_up}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtot attribute}|hyperpage}{37}
+\indexentry{SetupAstroMtotAverage (class in nucleardatapy.setup\_astro\_mtot)@\spxentry{SetupAstroMtotAverage}\spxextra{class in nucleardatapy.setup\_astro\_mtot}|hyperpage}{37}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_mtot.SetupAstroMtotAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtot.SetupAstroMtotAverage method}|hyperpage}{37}
+\indexentry{astro\_mtot() (in module nucleardatapy.setup\_astro\_mtot)@\spxentry{astro\_mtot()}\spxextra{in module nucleardatapy.setup\_astro\_mtot}|hyperpage}{37}
+\indexentry{astro\_mtot\_source() (in module nucleardatapy.setup\_astro\_mtot)@\spxentry{astro\_mtot\_source()}\spxextra{in module nucleardatapy.setup\_astro\_mtot}|hyperpage}{37}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_astro\_mtov@\spxentry{nucleardatapy.setup\_astro\_mtov}|hyperpage}{38}
+\indexentry{nucleardatapy.setup\_astro\_mtov@\spxentry{nucleardatapy.setup\_astro\_mtov}!module@\spxentry{module}|hyperpage}{38}
+\indexentry{SetupAstroMtov (class in nucleardatapy.setup\_astro\_mtov)@\spxentry{SetupAstroMtov}\spxextra{class in nucleardatapy.setup\_astro\_mtov}|hyperpage}{38}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_mtov.SetupAstroMtov method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_mtov.SetupAstroMtov method}|hyperpage}{38}
+\indexentry{module@\spxentry{module}!nucleardatapy.setup\_astro\_gw@\spxentry{nucleardatapy.setup\_astro\_gw}|hyperpage}{38}
+\indexentry{nucleardatapy.setup\_astro\_gw@\spxentry{nucleardatapy.setup\_astro\_gw}!module@\spxentry{module}|hyperpage}{38}
+\indexentry{SetupAstroGW (class in nucleardatapy.setup\_astro\_gw)@\spxentry{SetupAstroGW}\spxextra{class in nucleardatapy.setup\_astro\_gw}|hyperpage}{38}
+\indexentry{label (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{label}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{lambda\_sig\_do (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{lambda\_sig\_do}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{lambda\_sig\_up (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{lambda\_sig\_up}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{latexCite (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{latexCite}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{note (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{note}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_gw.SetupAstroGW method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW method}|hyperpage}{39}
+\indexentry{ref (nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute)@\spxentry{ref}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGW attribute}|hyperpage}{39}
+\indexentry{SetupAstroGWAverage (class in nucleardatapy.setup\_astro\_gw)@\spxentry{SetupAstroGWAverage}\spxextra{class in nucleardatapy.setup\_astro\_gw}|hyperpage}{39}
+\indexentry{print\_outputs() (nucleardatapy.setup\_astro\_gw.SetupAstroGWAverage method)@\spxentry{print\_outputs()}\spxextra{nucleardatapy.setup\_astro\_gw.SetupAstroGWAverage method}|hyperpage}{40}
+\indexentry{astro\_gw() (in module nucleardatapy.setup\_astro\_gw)@\spxentry{astro\_gw()}\spxextra{in module nucleardatapy.setup\_astro\_gw}|hyperpage}{40}
+\indexentry{astro\_gw\_source() (in module nucleardatapy.setup\_astro\_gw)@\spxentry{astro\_gw\_source()}\spxextra{in module nucleardatapy.setup\_astro\_gw}|hyperpage}{40}

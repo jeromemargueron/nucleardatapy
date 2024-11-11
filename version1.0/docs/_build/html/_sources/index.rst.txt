@@ -49,7 +49,10 @@ Complement
    source/api/setup_rad_ch
    source/api/setup_ISGMR
    source/api/setup_EsymLsym
-
+   source/api/setup_astro_masses
+   source/api/setup_astro_mtot
+   source/api/setup_astro_mtov
+   source/api/setup_astro_gw
 
 Indices and tables
 ------------------
