@@ -23,3 +23,8 @@ from nucleardatapy.setup_masses_exp import *
 from nucleardatapy.setup_masses_theory import *
 #
 from nucleardatapy.setup_crust      import *
+#
+from nucleardatapy.setup_astro_masses import *
+from nucleardatapy.setup_astro_mtot   import *
+from nucleardatapy.setup_astro_mtov   import *
+from nucleardatapy.setup_astro_gw     import *

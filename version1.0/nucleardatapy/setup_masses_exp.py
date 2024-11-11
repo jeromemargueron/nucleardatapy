@@ -6,7 +6,7 @@ import numpy as np  # 1.15.0
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
-import nucleardatapy as nudy
+import nucleardatapy as nuda
 
 CST_AtmMass = 931.494028
 #CST_mpc2 = 938.272081
@@ -48,7 +48,7 @@ def tables_masses_exp():
     :rtype: list[str].
     """
     #
-    if nudy.env.verb: print("\nEnter tables_masses()")
+    if nuda.env.verb: print("\nEnter tables_masses()")
     #
     tables = [ 'AME' ]
     #
@@ -56,7 +56,7 @@ def tables_masses_exp():
     tables_lower = [ item.lower() for item in tables ]
     print('tables available in the toolkit:',tables_lower)
     #
-    if nudy.env.verb: print("Exit tables_masses()")
+    if nuda.env.verb: print("Exit tables_masses()")
     #
     return tables, tables_lower
 
@@ -72,7 +72,7 @@ def versions_masses_exp( table ):
     :rtype: list[str].
     """
     #
-    if nudy.env.verb: print("\nEnter versions_masses()")
+    if nuda.env.verb: print("\nEnter versions_masses()")
     #
     if table.lower()=='ame':
         versions= [ '2020', '2016', '2012' ]
@@ -80,7 +80,7 @@ def versions_masses_exp( table ):
     print('Versions available in the toolkit:',versions)
     versions_lower = [ item.lower() for item in versions ]
     #
-    if nudy.env.verb: print("Exit versions_masses()")
+    if nuda.env.verb: print("Exit versions_masses()")
     #
     return versions, versions_lower
 
@@ -104,7 +104,7 @@ class SetupMassesExp():
     """
     def __init__(self, table = 'AME', version = '2020'):
         #
-        if nudy.env.verb: print("Enter SetupMasses()")
+        if nuda.env.verb: print("Enter SetupMasses()")
         #
         tables, tables_lower = tables_masses_exp()
         if table.lower() not in tables_lower:
@@ -113,7 +113,7 @@ class SetupMassesExp():
             print('-- Exit the code --')
             exit()
         self.table = table
-        if nudy.env.verb: print("table:",table)
+        if nuda.env.verb: print("table:",table)
         #
         versions, versions_lower = versions_masses_exp( table = table )
         if version.lower() not in versions_lower:
@@ -122,7 +122,7 @@ class SetupMassesExp():
             print('-- Exit the code --')
             exit()
         self.version = version
-        if nudy.env.verb: print("version:",version)
+        if nuda.env.verb: print("version:",version)
         #
         #: Attribute A (mass of the nucleus).
         self.nucA = []
@@ -153,21 +153,21 @@ class SetupMassesExp():
         #
         if table.lower()=='ame':
             if version=='2012':
-                file_in = nudy.param.path_data+'nuclei/masses/AME/2012/nubase.mas12.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2012/nubase.mas12.txt'
                 nbLine_skip = 3 # lines in the header to skip
                 cbe = 18 # column giving the binding energy
                 cdbe = 29 # column giving the uncertainty in the binding energy
                 cdbee = 38 # column ??
                 cyear=105 # column for the discovery year
             elif version=='2016':
-                file_in = nudy.param.path_data+'nuclei/masses/AME/2016/nubase2016.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2016/nubase2016.txt'
                 nbLine_skip = 0
                 cbe = 18
                 cdbe = 29
                 cdbee = 38
                 cyear=105 # column for the discovery year
             elif version=='2020':
-                file_in = nudy.param.path_data+'nuclei/masses/AME/2020/nubase_4.mas20.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2020/nubase_4.mas20.txt'
                 nbLine_skip = 26
                 cbe = 18
                 cdbe = 31
@@ -195,7 +195,7 @@ class SetupMassesExp():
                     nbLine = nbLine + 1
                     # skip the header of the file
                     if nbLine < nbLine_skip: continue
-                    if (nudy.env.verb): print('line:'+str(nbLine)+':'+line[0:-2])
+                    if (nuda.env.verb): print('line:'+str(nbLine)+':'+line[0:-2])
                     # if '#' in line[14:40]: continue
                     # Read input file:
                     AA=int(line[0:3])
@@ -205,9 +205,9 @@ class SetupMassesExp():
                     #if nucZ < int(Zmin): continue
                     #if int(Z) != 0 and nucZ != int(Z): continue
                     NN = AA - ZZ
-                    if (nudy.env.verb): print('   nucleus:',AA,ZZ,NN)
+                    if (nuda.env.verb): print('   nucleus:',AA,ZZ,NN)
                     flagI=int(line[7:8]) # if nuci==0: ground-state (GS)
-                    if (nudy.env.verb): print('   flagI:'+str(flagI))
+                    if (nuda.env.verb): print('   flagI:'+str(flagI))
                     # select only GS by skiping all contributions from other states (flagI != 0)
                     #if flagI != 0: continue
                     #
@@ -218,9 +218,9 @@ class SetupMassesExp():
                         symb=name[2:4]
                     else:
                         symb=name[1:3]
-                    if nudy.env.verb: print('   Symbol:',symb)
+                    if nuda.env.verb: print('   Symbol:',symb)
                     isomer=line[16:17]
-                    if nudy.env.verb: print('   Isomer:',isomer)
+                    if nuda.env.verb: print('   Isomer:',isomer)
                     stbl = 'n'
                     ht=line[69:78]
                     htu=line[78:80]
@@ -308,7 +308,7 @@ class SetupMassesExp():
                             exit()
                     hts = ht * fac
                     year=line[cyear:cyear+4]
-                    if nudy.env.verb: print('   year:',year)
+                    if nuda.env.verb: print('   year:',year)
                     # check if there is '#' in the string or if the value is absent:
                     #if ' '*11 in line[18:31]: continue
                     #print("   test:",line[cbe:cdbe],".",(cdbe-cbe))
@@ -332,7 +332,7 @@ class SetupMassesExp():
                         else:
                             year=int(version)+10
                         #if year != ' '*4: nucYear=int(year)
-                    if (nudy.env.verb): print("   ME:",ME,' +- ',ME_err,' keV')
+                    if (nuda.env.verb): print("   ME:",ME,' +- ',ME_err,' keV')
                     # date could be missing even if the mass measurement exists
                     #if ( len(year) == 4 and year == ' '*4 and nucInterp == 'n' ): continue # to be checked
                     #
@@ -363,7 +363,7 @@ class SetupMassesExp():
                     # nucBE = ( nucMass - nucZ * ( CST_mpc2 + CST_mec2 ) - nucN * CST_mnc2 )
                     BE = ME / 1000.0 - ZZ * CST_mHc2 - NN * CST_mnc2
                     BE_err = math.sqrt( Mass_err**2 + ZZ * CST_dmHc2**2 + NN * CST_dmnc2**2 )
-                    if (nudy.env.verb): print("   BE:",BE,' +- ',BE_err)
+                    if (nuda.env.verb): print("   BE:",BE,' +- ',BE_err)
                     # add nucleus to the table
                     self.nucA.append( AA )
                     self.nucZ.append( ZZ )
@@ -399,7 +399,7 @@ class SetupMassesExp():
             self.dist_nbNuc[i_year] += 1
         print( 'dist:',self.dist_nbNuc )
         #
-        if nudy.env.verb: print("Exit SetupMasses()")
+        if nuda.env.verb: print("Exit SetupMasses()")
         #
     #
     def print_outputs( self ):
@@ -408,7 +408,7 @@ class SetupMassesExp():
        """
        print("")
        #
-       if nudy.env.verb: print("Enter print_outputs()")
+       if nuda.env.verb: print("Enter print_outputs()")
        #
        print("- Print output:")
        print("   table:  ",self.table)
@@ -419,7 +419,7 @@ class SetupMassesExp():
        if any(self.nucZ): print(f"   Z: {self.nucZ[0:-1:10]}")
        if any(self.nucA): print(f"   A: {self.nucA[0:-1:10]}")
        #
-       if nudy.env.verb: print("Exit print_outputs()")
+       if nuda.env.verb: print("Exit print_outputs()")
        #
     def select(self, Amin = 0, Zmin = 0, interp = 'n', state= 'gs', nucleus = 'unstable', every = 1):
         """
@@ -442,21 +442,21 @@ class SetupMassesExp():
         """
 
         #
-        if nudy.env.verb: print("Enter select()")
+        if nuda.env.verb: print("Enter select()")
         #
         if interp.lower() not in [ 'y', 'n' ]:
             print('Interp ',interp,' is not "y" or "n".')
             print('-- Exit the code --')
             exit()
         self.nucInterp = interp
-        if nudy.env.verb: print("interp:",interp)
+        if nuda.env.verb: print("interp:",interp)
         #
         if state.lower() not in [ 'gs' ]:
             print('State ',state,' is not "gs".')
             print('-- Exit the code --')
             exit()
         self.state = state
-        if nudy.env.verb: print("state:",state)
+        if nuda.env.verb: print("state:",state)
         #
         nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive' ]
         #
@@ -465,7 +465,7 @@ class SetupMassesExp():
             print('-- Exit the code --')
             exit()
         self.nucleus = nucleus
-        if nudy.env.verb: print("nucleus:",nucleus)
+        if nuda.env.verb: print("nucleus:",nucleus)
         #
         nbNucTot = 0
         nbNucSta = 0
@@ -548,7 +548,7 @@ class SetupMassesExp():
         print('number of nuclei(Sta):',self.sel_nbNucSta)
         print('number of nuclei(Sel):',self.sel_nbNucSel)
         #
-        if nudy.env.verb: print("Exit select()")
+        if nuda.env.verb: print("Exit select()")
         #
         return self
         #
@@ -562,7 +562,7 @@ class SetupMassesExp():
         **Attributes:**
         """
         #
-        if nudy.env.verb: print("Enter drip()")
+        if nuda.env.verb: print("Enter drip()")
         #
         Nstable, Zstable = stable_fit()
         #
@@ -597,7 +597,7 @@ class SetupMassesExp():
         #print('drip: Nmin:',self.drip_Nmin)
         #print('drip: Nmax:',self.drip_Nmax)
         #
-        if nudy.env.verb: print("Exit drip()")
+        if nuda.env.verb: print("Exit drip()")
         #
         return self
         #
@@ -700,7 +700,7 @@ class SetupMassesExp():
         print('number of nuclei(Sta):',self.sel_nbNucSta)
         print('number of nuclei(Sel):',self.sel_nbNucSel)
         #
-        if nudy.env.verb: print("Exit select()")
+        if nuda.env.verb: print("Exit select()")
         #
         return self
         #
