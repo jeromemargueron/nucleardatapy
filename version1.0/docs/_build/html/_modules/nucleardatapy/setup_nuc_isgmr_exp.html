@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_nuc_isgmr_exp &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_LP.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_nuc_isgmr_exp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_nuc_isgmr_exp</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+<div class="viewcode-block" id="nuc_isgmr_exp_tables"><a class="viewcode-back" href="../../source/api/setup_nuc_isgmr_exp.html#nucleardatapy.setup_nuc_isgmr_exp.nuc_isgmr_exp_tables">[docs]</a><span class="k">def</span> <span class="nf">nuc_isgmr_exp_tables</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of tables available in this toolkit for the ISGMR energy and</span>
+<span class="sd">    print them all on the prompt. These tables are the following</span>
+<span class="sd">    ones: &#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;, &#39;2018-ISGMR-GARG-LATEX&#39;.</span>
+
+<span class="sd">    :return: The list of tables.</span>
+<span class="sd">    :rtype: list[str].    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter nuc_isgmr_exp_tables()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2010-ISGMR-LI&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-ISGMR-GARG-LATEX&#39;</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+    <span class="n">tables_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tables</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit nuc_isgmr_exp_tables()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
+
+<div class="viewcode-block" id="SetupNucISGMRExp"><a class="viewcode-back" href="../../source/api/setup_nuc_isgmr_exp.html#nucleardatapy.setup_nuc_isgmr_exp.SetupNucISGMRExp">[docs]</a><span class="k">class</span> <span class="nc">SetupNucISGMRExp</span><span class="p">():</span>
+<span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Instantiate the object with microscopic results choosen \</span>
+<span class="sd">   by the toolkit practitioner. \</span>
+
+<span class="sd">   This choice is defined in the variable `table`.</span>
+
+<span class="sd">   The `table` can chosen among the following ones: \</span>
+<span class="sd">   &#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;.</span>
+
+<span class="sd">   :param table: Fix the name of `table`. Default value: &#39;2018-ISGMR-GARG&#39;, &#39;2018-ISGMR-GARG-LATEX&#39;.</span>
+<span class="sd">   :type table: str, optional. </span>
+
+<span class="sd">   **Attributes:**</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+   <span class="c1">#</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;2018-ISGMR-GARG&#39;</span> <span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Parameters</span>
+<span class="sd">      ----------</span>
+<span class="sd">      table : str, optional</span>
+<span class="sd">      The table to consider. \</span>
+<span class="sd">      Choose between: 2018-ISGMR-GARG (default) and 2010-ISGMR-LI.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter SetupNucISGMRExp()&quot;</span><span class="p">)</span>
+      <span class="c1">#: Attribute table.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="c1">#: Attribute Z (charge of the nucleus).</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute A (mass of the nucleus).</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute the symbol of the element.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucSymbol</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute energy centroid.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute (+) uncertainty in the energy centroid.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#: Attribute (-) uncertainty in the energy centroid.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1">#</span>
+      <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">nuc_isgmr_exp_tables</span><span class="p">()</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables_lower</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+          <span class="n">exit</span><span class="p">()</span>
+      <span class="c1"># dictionary</span>
+      <span class="n">isgmr</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2010-isgmr-li&#39;</span><span class="p">:</span>
+         <span class="c1">#</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2010-ISGMR-Li.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;T. Li, U. Garg, Y. Liu et al., Phys. Rev. C 81, 034309 (2010)&#39;</span>
+         <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Li-Garg-Liu-2010&#39;</span>
+         <span class="c1">#: Attribute providing additional notes about the data.</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
+         <span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="c1">#: Attribute list with + and - uncertainty</span>
+         <span class="c1">#self.E_erra = [ self.E_errp, self.E_errm ]</span>
+         <span class="c1">#: Attribute symmetrised uncertainty (average between + and - uncertainty).</span>
+         <span class="c1">#self.E_errs = 0.5 * ( self.E_errp + self.E_errm )</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span>
+         <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">ZZ</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">isgmr</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ZZ:&#39;</span><span class="p">,</span><span class="n">ZZ</span><span class="p">)</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span> <span class="n">ZZ</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nucSymbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">symbol</span> <span class="p">)</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span>
+            <span class="n">AA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ZZ:&#39;</span><span class="p">,</span><span class="n">ZZ</span><span class="p">,</span><span class="s1">&#39; AA:&#39;</span><span class="p">,</span><span class="n">AA</span><span class="p">,</span><span class="s1">&#39; symbol:&#39;</span><span class="p">,</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  keys:&#39;</span><span class="p">,</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;A&#39;</span> <span class="ow">in</span> <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">AA</span> <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="n">AA</span> <span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+         <span class="c1">#</span>
+      <span class="k">elif</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2018-isgmr-garg&#39;</span><span class="p">:</span>
+         <span class="c1">#</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2018-ISGMR-Garg.dat&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Garg-Colo-2018&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this table.&quot;</span>
+         <span class="n">Z</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="c1">#self.nucE_erra = [ self.E_errp, self.E_errm ]</span>
+         <span class="c1">#self.nucE_errs = 0.5 * ( self.E_errp + self.E_errm )</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span>
+         <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">ZZ</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span> <span class="n">ZZ</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nucSymbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">symbol</span> <span class="p">)</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span>
+            <span class="n">AA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ZZ:&#39;</span><span class="p">,</span><span class="n">ZZ</span><span class="p">,</span><span class="s1">&#39; AA:&#39;</span><span class="p">,</span><span class="n">AA</span><span class="p">,</span><span class="s1">&#39; symbol:&#39;</span><span class="p">,</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="s1">&#39;A&#39;</span> <span class="ow">in</span> <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">AA</span> <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="n">AA</span> <span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">AA</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+         <span class="c1">#</span>
+      <span class="k">elif</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2018-isgmr-garg-latex&#39;</span><span class="p">:</span>
+         <span class="c1">#</span>
+         <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;nuclei/isgmr/2018-ISGMR-Garg.tex&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Garg-Colo-2018&#39;</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $</span><span class="se">\\</span><span class="s2">star$ indicate that the $</span><span class="se">\\</span><span class="s2">Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $</span><span class="se">\\</span><span class="s2">dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main&#39;&#39; ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit.&quot;</span>
+         <span class="c1">#</span>
+         <span class="n">nucA</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucZ</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucSymbol</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucEprobe</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucProj</span><span class="o">=</span><span class="p">[];</span> 
+         <span class="n">nucE0</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucE0_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucE0_errm</span><span class="o">=</span><span class="p">[];</span>
+         <span class="n">nucG</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucG_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucG_errm</span><span class="o">=</span><span class="p">[];</span> 
+         <span class="n">nucEWSR</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucEWSR_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucEWSR_errm</span><span class="o">=</span><span class="p">[];</span> 
+         <span class="n">nucM12M0</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM12M0_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM12M0_errm</span><span class="o">=</span><span class="p">[];</span> 
+         <span class="n">nucM12Mm1</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM12Mm1_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM12Mm1_errm</span><span class="o">=</span><span class="p">[];</span> 
+         <span class="n">nucM32M1</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM32M1_errp</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucM32M1_errm</span><span class="o">=</span><span class="p">[];</span>
+         <span class="n">nucRef</span><span class="o">=</span><span class="p">[];</span>
+         <span class="n">nbk</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">nuc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+               <span class="c1">#print(&#39;line:&#39;,line)</span>
+               <span class="k">if</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> 
+                  <span class="k">continue</span>
+               <span class="n">ele</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>
+               <span class="c1">#print(&#39;ele:&#39;,ele)</span>
+               <span class="c1"># ele[0]: nucleus</span>
+               <span class="k">if</span> <span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;  &#39;</span> <span class="ow">or</span> <span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+                  <span class="n">nucSymbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucSymbol</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+                  <span class="n">nucA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucA</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+                  <span class="n">nucZ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucZ</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+               <span class="k">else</span><span class="p">:</span>
+                  <span class="n">nuc</span> <span class="o">+=</span> <span class="mi">1</span>
+                  <span class="n">symbol</span> <span class="o">=</span> <span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                  <span class="n">ZZ</span><span class="p">,</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">elements</span> <span class="o">==</span> <span class="n">symbol</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                  <span class="n">ZZ</span> <span class="o">+=</span> <span class="mi">1</span>
+                  <span class="n">nucZ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span> <span class="n">ZZ</span> <span class="p">)</span> <span class="p">)</span>
+                  <span class="c1">#print(&#39;Z=&#39;,ZZ,&#39; symbol:&#39;,symbol,&#39;.&#39;)</span>
+                  <span class="n">nucSymbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">symbol</span> <span class="p">)</span>
+                  <span class="n">AA</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span> <span class="p">)</span>
+                  <span class="n">nucA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span> <span class="n">AA</span> <span class="p">)</span> <span class="p">)</span>
+                  <span class="c1">#print(&#39;A=&#39;,AA)</span>
+               <span class="c1"># ele[1]: probe</span>
+               <span class="c1">#print(&#39;ele[1]:&#39;,ele[1])</span>
+               <span class="k">if</span> <span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span> <span class="ow">or</span> <span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;  &#39;</span><span class="p">:</span>
+                  <span class="n">nucEprobe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="kc">None</span> <span class="p">)</span>
+                  <span class="n">nucProj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="kc">None</span> <span class="p">)</span>
+               <span class="k">else</span><span class="p">:</span>
+                  <span class="n">Eprobe</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;MeV&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">)</span>
+                  <span class="n">proj</span> <span class="o">=</span> <span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                  <span class="n">nucEprobe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Eprobe</span> <span class="p">)</span>
+                  <span class="n">nucProj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">proj</span> <span class="p">)</span>
+               <span class="c1"># ele[3]: E0</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucE0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucE0_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucE0_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[3]: Gamma</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucG_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucG_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[4]: EWSR</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucEWSR</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucEWSR_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucEWSR_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[5]: nada</span>
+               <span class="c1"># ele[6]: M12M0</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucM12M0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucM12M0_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucM12M0_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[7]: M12Mm1</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucM12Mm1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucM12Mm1_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucM12Mm1_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[8]: M32M1</span>
+               <span class="n">cent</span><span class="p">,</span> <span class="n">errp</span><span class="p">,</span> <span class="n">errm</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">tex2str</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="p">)</span>
+               <span class="n">nucM32M1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">cent</span> <span class="p">);</span> <span class="n">nucM32M1_errp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errp</span> <span class="p">);</span> <span class="n">nucM32M1_errm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">errm</span> <span class="p">);</span>
+               <span class="c1"># ele[9]: nada</span>
+               <span class="c1"># ele[10]: ref</span>
+               <span class="n">nucRef</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">ele</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="p">)</span>
+               <span class="c1">#print(&#39;nuc:&#39;,nuc,nucA,nucSymbol,nucProbe,nucTarget,nucG,nucEWSR,nucM12M0,nucM12Mm1,nucM32M1,nucRef)</span>
+               <span class="c1">#exit()</span>
+               <span class="n">nbk</span> <span class="o">+=</span> <span class="mi">1</span>
+         <span class="c1">#</span>
+         <span class="n">nbk</span> <span class="o">-=</span> <span class="mi">1</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">number of nuclei:&#39;</span><span class="p">,</span><span class="n">nuc</span><span class="p">)</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">number of entries:&#39;</span><span class="p">,</span><span class="n">nbk</span><span class="p">)</span>
+         <span class="c1">#</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span> <span class="n">nucZ</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">nucA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="c1">#self.nucZ = nucZ</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span> <span class="n">nucZ</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">nucA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span> <span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucSymbol</span> <span class="o">=</span> <span class="n">nucSymbol</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_cent</span> <span class="o">=</span> <span class="n">nucM12Mm1</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errp</span> <span class="o">=</span> <span class="n">nucM12Mm1_errp</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">nucM12Mm1_errm</span> <span class="o">=</span> <span class="n">nucM12Mm1_errm</span>
+         <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">nbk</span><span class="p">:</span>
+            <span class="n">ZZ</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span> <span class="n">nucZ</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">AA</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span> <span class="n">nucA</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">ZZ</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">isgmr</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="s1">&#39;A&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+               <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucSymbol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">nbk</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+               <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nucZ</span><span class="p">[</span><span class="n">l</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nucZ</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">nucA</span><span class="p">[</span><span class="n">l</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nucA</span><span class="p">[</span><span class="n">k</span><span class="p">]):</span>
+                  <span class="k">break</span>
+            <span class="n">kend</span> <span class="o">=</span> <span class="n">l</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span> <span class="n">k</span><span class="p">,</span> <span class="n">kend</span> <span class="p">)</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">kend</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">nucA</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucA</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;Eprobe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucEprobe</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;proj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucProj</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;E0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;E0&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucE0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;E0&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucE0_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> 
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;E0&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucE0_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucG</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucG_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucG_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;EWSR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;EWSR&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucEWSR</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;EWSR&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucEWSR_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;EWSR&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucEWSR_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12M0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12M0&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12M0</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12M0&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12M0_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12M0&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12M0_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12Mm1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12Mm1_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM12Mm1_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M32M1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M32M1&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM32M1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M32M1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM32M1_errp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;M32M1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucM32M1_errm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">isgmr</span><span class="p">[</span><span class="n">ZZ</span><span class="p">][</span><span class="n">AA</span><span class="p">][</span><span class="s1">&#39;ref&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucRef</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span> <span class="o">=</span> <span class="n">isgmr</span>
+      <span class="c1">#</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">keys():&#39;</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="n">isgmr</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Z:&#39;</span><span class="p">,</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">])</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A:&#39;</span><span class="p">,</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+      <span class="k">for</span> <span class="n">Z</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]:</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For Z:&#39;</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="s1">&#39; A:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+      <span class="c1">#print(&#39;\nnucA:&#39;,self.nucA)</span>
+      <span class="c1">#print(&#39;\nnucSymbol:&#39;,self.nucSymbol)</span>
+      <span class="c1">#print(&#39;\nM12Mm1:&#39;,self.nucM12Mm1_cent)</span>
+      <span class="c1">#print(&#39;\nM12Mm1_errp:&#39;,self.nucM12Mm1_errp)</span>
+      <span class="c1">#print(&#39;\nM12Mm1_errm:&#39;,self.nucM12Mm1_errm)</span>
+      <span class="c1">#</span>
+      <span class="c1">#: Attribute energy unit.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">E_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupNucISGMRExp()&quot;</span><span class="p">)</span>
+   <span class="c1">#</span>
+<div class="viewcode-block" id="SetupNucISGMRExp.print_outputs"><a class="viewcode-back" href="../../source/api/setup_nuc_isgmr_exp.html#nucleardatapy.setup_nuc_isgmr_exp.SetupNucISGMRExp.print_outputs">[docs]</a>   <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+      <span class="c1">#</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   table:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Z:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">])</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+      <span class="k">for</span> <span class="n">Z</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]:</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For Z:&#39;</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="s1">&#39; A:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+         <span class="k">for</span> <span class="n">A</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="s1">&#39;A&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Centroid energy:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;cent&#39;</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   with errp:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errp&#39;</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   with errm:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">isgmr</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)][</span><span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">)][</span><span class="s1">&#39;M12Mm1&#39;</span><span class="p">][</span><span class="s1">&#39;errm&#39;</span><span class="p">])</span>
+      <span class="c1">#</span>
+      <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+      <span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

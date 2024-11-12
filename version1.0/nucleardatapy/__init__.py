@@ -5,22 +5,20 @@ from nucleardatapy.cst              import *
 from nucleardatapy.env              import *
 from nucleardatapy.param            import *
 #
-from nucleardatapy.setup_ffg          import *
-from nucleardatapy.setup_micro_matter import *
-from nucleardatapy.setup_micro_matter_band import *
-from nucleardatapy.setup_micro_LP     import *
-from nucleardatapy.setup_pheno_matter import *
-from nucleardatapy.setup_hic_matter   import *
+from nucleardatapy.setup_eos_ffg        import *
+from nucleardatapy.setup_eos_micro      import *
+from nucleardatapy.setup_eos_micro_band import *
+from nucleardatapy.setup_eos_micro_lp   import *
+from nucleardatapy.setup_eos_pheno      import *
+from nucleardatapy.setup_eos_hic        import *
+from nucleardatapy.setup_eos_esym       import *
 #
-from nucleardatapy.setup_EsymLsym   import *
-from nucleardatapy.setup_EsymDen    import *
+from nucleardatapy.setup_CorEsymLsym   import *
 #
-from nucleardatapy.setup_ISGMR      import *
-#
-from nucleardatapy.setup_rad_ch     import *
-#
-from nucleardatapy.setup_masses_exp import *
-from nucleardatapy.setup_masses_theory import *
+from nucleardatapy.setup_nuc_be_exp    import *
+from nucleardatapy.setup_nuc_be_theo   import *
+from nucleardatapy.setup_nuc_rch_exp   import *
+from nucleardatapy.setup_nuc_isgmr_exp import *
 #
 from nucleardatapy.setup_crust      import *
 #

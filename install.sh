@@ -26,6 +26,7 @@ echo ">> create a symbolic link to the current version"
 
 echo ""
 echo ">> copy nucleardatapy toolkit to $LIB/nucleardatapy folder"
+rm -rf $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy/nucleardatapy
 cp -R version$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy

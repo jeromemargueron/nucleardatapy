@@ -25,7 +25,7 @@ def plot_NEP( pname, models_micro, models_pheno ):
     axs[1,0].set_ylabel(r'$n_{sat}$')
     axs[2,0].set_ylabel(r'$K_{sat}$')
     axs[3,0].set_ylabel(r'$Q_{sat}$')
-    axs[4,0].set_ylabel(r'$m_{sat}^*$')
+    axs[4,0].set_ylabel(r'$m_{sat}^{*}$')
     axs[0,1].set_ylabel(r'$E_{sym}$')
     axs[1,1].set_ylabel(r'$L_{sym}$')
     axs[2,1].set_ylabel(r'$K_{sym}$')
@@ -38,12 +38,12 @@ def plot_NEP( pname, models_micro, models_pheno ):
         nsat = []; Esat = []; Ksat = []; Qsat = []; Zsat = []
         Esym = []; Lsym = []; Ksym = []; Qsym = []; Zsym = []
         msat = []; kappas = []; kappav = []
-        params, params_lower = nuda.params_pheno_matter( model = model )
+        params, params_lower = nuda.eos_pheno_params( model = model )
         #
         for param in params:
             #
             print('param:',param)
-            pheno = nuda.SetupPhenoMatter( model = model, param = param )
+            pheno = nuda.SetupEOSPheno( model = model, param = param )
             if pheno.nep:
                 nsat.append( pheno.nsat ); Esat.append( pheno.Esat ); 
                 Ksat.append( pheno.Ksat ); Qsat.append( pheno.Qsat ); 
@@ -94,7 +94,7 @@ def main():
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro_matter()
+    models_micro, models_lower = nuda.eos_pheno_models()
     models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP

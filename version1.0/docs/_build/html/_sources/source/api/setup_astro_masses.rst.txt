@@ -1,7 +1,7 @@
 
-==============
+================
 SetupAstroMasses
-==============
+================
 
 .. currentmodule:: nucleardatapy.setupastromasses
 
