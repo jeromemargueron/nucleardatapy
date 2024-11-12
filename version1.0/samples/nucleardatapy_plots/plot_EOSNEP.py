@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_NEP( pname, models_micro, models_pheno ):
+def plot_EOSNEP( pname, models_micro, models_pheno ):
     #
     # plot sat in the left and sym on the right
     #
@@ -85,7 +85,7 @@ def plot_NEP( pname, models_micro, models_pheno ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_NEP.py:")
+    print("Enter plot_EOSNEP.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -94,16 +94,16 @@ def main():
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.eos_pheno_models()
-    models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    micro_models, micro_models_lower = nuda.eos_micro_models()
+    pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP
     #
-    pname = 'figs/plot_NEP.png'
-    plot_NEP( pname, models_micro, models_pheno )
+    pname = 'figs/plot_EOSNEP.png'
+    plot_EOSNEP( pname, micro_models, pheno_models )
     #
     print(50*'-')
-    print("Exit plot_NEP.py:")
+    print("Exit plot_EOSNEP.py:")
     print(50*'-')
     #
 

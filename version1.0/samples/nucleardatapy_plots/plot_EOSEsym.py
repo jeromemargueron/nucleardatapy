@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_esym( pname, models_micro, models_pheno, band ):
+def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     #
     # plot E/A in NM
     #
@@ -31,7 +31,7 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     #
     for model in models_micro:
         #
-        mic = nuda.SetupMicroMatter( model = model )
+        mic = nuda.SetupEOSMicro( model = model )
         if mic.esym_e2a is not None: 
             print('model:',model)
             if mic.marker:
@@ -53,11 +53,11 @@ def plot_esym( pname, models_micro, models_pheno, band ):
     #
     for model in models_pheno:
         #
-        params, params_lower = nuda.params_pheno_matter( model = model )
+        params, params_lower = nuda.eos_pheno_params( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupPhenoMatter( model = model, param = param )
+            pheno = nuda.SetupEOSPheno( model = model, param = param )
             if pheno.esym_e2a is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
@@ -76,7 +76,7 @@ def plot_esym( pname, models_micro, models_pheno, band ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_Esym.py:")
+    print("Enter plot_EOSEsym.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -87,20 +87,20 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupMicroMatterBand( models, den=den, matter='ESYM' )
+    band = nuda.SetupEOSMicroBand( models, den=den, matter='ESYM' )
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro_matter()
-    models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    micro_models, micro_models_lower = nuda.eos_micro_models()
+    pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym
     #
-    pname = 'figs/plot_Esym.png'
-    plot_esym( pname, models_micro, models_pheno, band )
+    pname = 'figs/plot_EOSEsym.png'
+    plot_EOSEsym( pname, micro_models, pheno_models, band )
     #
     print(50*'-')
-    print("Exit plot_Esym.py:")
+    print("Exit plot_EOSEsym.py:")
     print(50*'-')
     #
 

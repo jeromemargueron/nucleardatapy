@@ -142,7 +142,7 @@ def plot_SetupNucBEExp_year( pname, table, version ):
     axs[0].set_title(r''+table+' mass table version '+version)
     axs[0].set_ylabel(r'number of discovered nuclei')
     axs[0].set_xlabel(r'year')
-    axs[0].set_xlim([1850, 2020])
+    axs[0].set_xlim([1890, 2020])
     #axs.set_yscale('log')
     axs[0].set_ylim([0, 250])
     #axs.text(10,120,'Number of nuclei:')
