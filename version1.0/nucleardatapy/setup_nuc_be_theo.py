@@ -14,7 +14,9 @@ def nuc_be_theo_tables():
     predicted by theoretical approaches and print them all on the prompt. 
     These tables are the following ones: \
     [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
-    '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21', '2011-WS3', '2013-HFB26' ]
+    '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21', '2011-WS3', '2013-HFB22', \
+    '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
+    '2022-BSkG2', '2023-BSkG3', '2024-BSkG4' ]
 
     :return: The list of tables.
     :rtype: list[str].
@@ -23,7 +25,9 @@ def nuc_be_theo_tables():
     if nuda.env.verb: print("\nEnter nuc_be_theo_tables()")
     #
     tables = [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
-       '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB26' ]
+       '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB22', \
+    '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
+    '2022-BSkG2', '2023-BSkG3', '2024-BSkG4' ]
     #
     print('theory tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -241,7 +245,7 @@ class SetupNucBETheo():
             #
         elif table.lower()=='2010-ws3':
             #
-            # read the HFB14 theoretical mass table
+            # read the WS3 theoretical mass table
             #
             file_in = nuda.param.path_data+'nuclei/masses/Theory/2010-WS3.txt'
             if nuda.env.verb: print('Reads file:',file_in)
@@ -257,13 +261,77 @@ class SetupNucBETheo():
             #
         elif table.lower()=='2011-ws3':
             #
-            # read the HFB14 theoretical mass table
+            # read the WS3 theoretical mass table
             #
             file_in = nuda.param.path_data+'nuclei/masses/Theory/2011-WS3.txt'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'M. Liu, N. Wang, Y. Deng, X. Wu, Phys. Rev. C 84, 014333 (2011).'
             self.note = "write here notes about this EOS."
             self.label = 'WS3-2011'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2013-hfb22':
+            #
+            # read the HFB22 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2013-HFB22.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Goriely, N. Chamel, J.M. Pearson, Phys. Rev. C 88, 024308 (2013).'
+            self.note = "write here notes about this EOS."
+            self.label = 'HFB22-2013'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2013-hfb23':
+            #
+            # read the HFB23 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2013-HFB23.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Goriely, N. Chamel, J.M. Pearson, Phys. Rev. C 88, 024308 (2013).'
+            self.note = "write here notes about this EOS."
+            self.label = 'HFB23-2013'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2013-hfb24':
+            #
+            # read the HFB24 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2013-HFB24.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Goriely, N. Chamel, J.M. Pearson, Phys. Rev. C 88, 024308 (2013).'
+            self.note = "write here notes about this EOS."
+            self.label = 'HFB24-2013'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2013-hfb25':
+            #
+            # read the HFB25 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2013-HFB25.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Goriely, N. Chamel, J.M. Pearson, Phys. Rev. C 88, 024308 (2013).'
+            self.note = "write here notes about this EOS."
+            self.label = 'HFB25-2013'
             self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
             self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
@@ -280,6 +348,70 @@ class SetupNucBETheo():
             self.ref = 'S. Goriely, N. Chamel, J.M. Pearson, Phys. Rev. C 88, 024308 (2013).'
             self.note = "write here notes about this EOS."
             self.label = 'HFB26-2013'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2021-bskg1':
+            #
+            # read the BSkG1 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2021-BSkG1.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'G. Scamps, S. Goriely, E. Olsen, M. Bender, and W. Ryssens, EPJA 57, 333 (2021).'
+            self.note = "write here notes about this EOS."
+            self.label = 'BSkG1-2021'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2022-bskg2':
+            #
+            # read the BSkG2 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2022-BSkG2.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'W. Ryssens, G. Scamps, S. Goriely, and M. Bender, EPJA 58, 246 (2022).'
+            self.note = "write here notes about this EOS."
+            self.label = 'BSkG2-2022'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2023-bskg3':
+            #
+            # read the BSkG3 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2023-BSkG3.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'G. Grams, W. Ryssens, G. Scamps, S. Goriely, and N. Chamel, EPJA 59, 270 (2023).'
+            self.note = "write here notes about this EOS."
+            self.label = 'BSkG3-2023'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
+            #
+        elif table.lower()=='2024-bskg4':
+            #
+            # read the BSkG4 theoretical mass table
+            #
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2024-BSkG4.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely, arXiv:2411.08007 (2024).'
+            self.note = "write here notes about this EOS."
+            self.label = 'BSkG4-2024'
             self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
             self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )

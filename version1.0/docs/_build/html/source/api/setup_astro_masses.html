@@ -1,21 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupAstroMasses &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -28,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -45,9 +49,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_LP.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
@@ -56,7 +61,26 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupAstroMasses</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupAstroMasses</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.label"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.latexCite"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.latexCite</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.mass"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.mass</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.note"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.note</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.print_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.ref"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_do"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.sig_do</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_up"><code class="docutils literal notranslate"><span class="pre">SetupAstroMasses.sig_up</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage"><code class="docutils literal notranslate"><span class="pre">SetupAstroMassesAverage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupAstroMassesAverage.print_outputs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.astro_masses"><code class="docutils literal notranslate"><span class="pre">astro_masses()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_masses.astro_masses_source"><code class="docutils literal notranslate"><span class="pre">astro_masses_source()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_mtot.html">SetupAstroMtot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
@@ -76,8 +100,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupAstroMasses</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupAstroMasses</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_astro_masses.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,16 +112,16 @@
            <div itemprop="articleBody">
              
   <section id="setupastromasses">
-<h1>SetupAstroMasses<a class="headerlink" href="#setupastromasses" title="Permalink to this heading"></a></h1>
-<span class="target" id="module-nucleardatapy.setup_astro_masses"></span><dl class="py class">
+<h1>SetupAstroMasses<a class="headerlink" href="#setupastromasses" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-nucleardatapy.setup_astro_masses">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">SetupAstroMasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'J1614–2230'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMasses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">SetupAstroMasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'J1614–2230'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMasses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses" title="Link to this definition"></a></dt>
 <dd><p>Instantiate the observational mass for a given source and obs.</p>
 <p>This choice is defined in the variables <cite>source</cite> and <cite>obs</cite>.</p>
 <p><cite>source</cite> can chosen among the following ones: ‘J1614–2230’.</p>
 <p><cite>obs</cite> depends on the chosen source.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>source</cite>. Default value: ‘J1614–2230’.</p></li>
 <li><p><strong>obs</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the <cite>obs</cite>. Default value: 1.</p></li>
@@ -107,49 +131,49 @@
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.label">
-<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.label" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.label" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.latexCite">
-<span class="sig-name descname"><span class="pre">latexCite</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.latexCite" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">latexCite</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.latexCite" title="Link to this definition"></a></dt>
 <dd><p>Attribute latexCite.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.mass">
-<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.mass" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.mass" title="Link to this definition"></a></dt>
 <dd><p>Attribute the observational mass of the source.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.note">
-<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.note" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.note" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the observation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMasses.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.print_outputs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMasses.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.print_outputs" title="Link to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.ref">
-<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.ref" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.ref" title="Link to this definition"></a></dt>
 <dd><p>Attribute providing the full reference to the paper to be citted.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_do">
-<span class="sig-name descname"><span class="pre">sig_do</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_do" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sig_do</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_do" title="Link to this definition"></a></dt>
 <dd><p>Attribute the negative uncertainty.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_up">
-<span class="sig-name descname"><span class="pre">sig_up</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_up" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sig_up</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMasses.sig_up" title="Link to this definition"></a></dt>
 <dd><p>Attribute the positive uncertainty.</p>
 </dd></dl>
 
@@ -157,19 +181,19 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMassesAverage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">SetupAstroMassesAverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'J1614–2230'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMassesAverage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">SetupAstroMassesAverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'J1614–2230'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMassesAverage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage" title="Link to this definition"></a></dt>
 <dd><p>Instantiate the observational mass for a given source and averaged over obs.</p>
 <p>This choice is defined in the variable <cite>source</cite>.</p>
 <p><cite>source</cite> can chosen among the following ones: ‘J1614–2230’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>source</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>source</cite>. Default value: ‘J1614–2230’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.SetupAstroMassesAverage.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMassesAverage.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage.print_outputs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#SetupAstroMassesAverage.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.SetupAstroMassesAverage.print_outputs" title="Link to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
@@ -177,13 +201,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.astro_masses">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">astro_masses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#astro_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.astro_masses" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">astro_masses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#astro_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.astro_masses" title="Link to this definition"></a></dt>
 <dd><p>Return a list of the astrophysical sources for which a mass is given</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of sources.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list[str].</p>
 </dd>
 </dl>
@@ -191,16 +215,16 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.setup_astro_masses.astro_masses_source">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">astro_masses_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#astro_masses_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.astro_masses_source" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_masses.</span></span><span class="sig-name descname"><span class="pre">astro_masses_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_masses.html#astro_masses_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_masses.astro_masses_source" title="Link to this definition"></a></dt>
 <dd><p>Return a list of observations for a given source and print them all on the prompt.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>source</strong> (<em>str.</em>) – The source for which there are different observations.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The list of observations.     If source == ‘J1614–2230’: 1, 2, 3, 4, 5.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[str].</p>
 </dd>
 </dl>
@@ -208,9 +232,10 @@
 
 <p>Here is a figure which is produced with the Python sample: /sample/nucleardatapy_plots/plot_setupAstroMasses.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupAstroMasses.png"><img alt="map to buried treasure" src="../../_images/plot_SetupAstroMasses.png" style="width: 448.0px; height: 336.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/plot_SetupAstroMasses.png"><img alt="map to buried treasure" src="../../_images/plot_SetupAstroMasses.png" style="width: 448.0px; height: 336.0px;" />
+</a>
 <figcaption>
-<p><span class="caption-text">The masses measured for massive neutron stars is radio-astronomy. The different colors correspond to the different sources.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-text">The masses measured for massive neutron stars is radio-astronomy. The different colors correspond to the different sources.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

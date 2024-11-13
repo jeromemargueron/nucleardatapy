@@ -15,6 +15,8 @@ def main():
     print(50*'-')
     #
     models, models_lower = nuda.eos_micro_models()
+    models.remove('1998-VAR-AM-APRfit')
+    models_lower.remove('1998-var-am-aprfit')
     #
     for model in models:
         #

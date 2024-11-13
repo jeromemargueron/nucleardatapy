@@ -46,12 +46,13 @@ class SetupEOSBeta():
         #
         # read var and define den, asy and xpr:
         self.den = var1[:] # density n_b=n_n+n_p
-        self.kfn = nuda.kf_n( (1.0+self.asy) / 2.0 * self.den )
         #
         if kind == 'micro':
-            models, models_lower = eos_micro_models()
+            models, models_lower = nuda.eos_micro_models()
+            models.remove('1998-VAR-AM-APRfit')
+            models_lower.remove('1998-var-am-aprfit')
         elif kind == 'pheno':
-            models, models_lower = eos_pheno_models()
+            models, models_lower = nuda.eos_pheno_models()
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
@@ -66,15 +67,16 @@ class SetupEOSBeta():
             eos = nuda.SetupEOSPheno( model = model )
             eos.print_outputs( )
 
-        if not (eos.esym_e2a == None):
+        if isinstance(eos.esym_e2a, list ):
             #compute beta equilibrium
-            print('compte beta equilibrium')
+            print('compute beta equilibrium')
             #
             # self.den = eos.esym_den 
             #
             #
             #
             #
+            #self.kfn = nuda.kf_n( self.n_n )
 
 
 

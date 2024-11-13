@@ -51,7 +51,7 @@ def plot_SetupNucBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
     axs.scatter( N_diff, BE_diff, label='AME2020' )
     #
-    axs.legend(loc='upper right',fontsize='10')
+    axs.legend(loc='upper right',fontsize='10', ncol=2)
     #
     plt.savefig(pname)
     plt.close()
