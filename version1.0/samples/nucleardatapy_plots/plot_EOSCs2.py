@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_cs2( pname, models_micro, models_pheno, band ):
+def plot_EOScs2( pname, micro_models, pheno_models, band ):
     #
     # plot pre in NM
     #
@@ -29,9 +29,9 @@ def plot_cs2( pname, models_micro, models_pheno, band ):
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 0.5])
     #
-    for model in models_micro:
+    for model in micro_models:
         #
-        mic = nuda.SetupMicroMatter( model = model )
+        mic = nuda.SetupEOSMicro( model = model )
         if mic.nm_cs2 is not None: 
             print('model:',model)
             if mic.marker:
@@ -51,13 +51,13 @@ def plot_cs2( pname, models_micro, models_pheno, band ):
     axs[0].text(0.05,0.1,'microscopic models',fontsize='10')
     axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    for model in pheno_models:
         #
-        params, params_lower = nuda.params_pheno_matter( model = model )
+        params, params_lower = nuda.eos_pheno_params( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupPhenoMatter( model = model, param = param )
+            pheno = nuda.SetupEOSPheno( model = model, param = param )
             if pheno.nm_pre is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
@@ -76,7 +76,7 @@ def plot_cs2( pname, models_micro, models_pheno, band ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_Cs2.py:")
+    print("Enter plot_EOSCs2.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -87,20 +87,20 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupMicroMatterBand( models, den=den, matter='NM' )
+    band = nuda.SetupEOSMicroBand( models, den=den, matter='NM' )
     #
     # list the available models
     #
-    models_micro, models_lower = nuda.models_micro_matter()
-    models_pheno = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    micro_models, micro_models_lower = nuda.eos_micro_models()
+    pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym
     #
-    pname = 'figs/plot_Cs2.png'
-    plot_cs2( pname, models_micro, models_pheno, band )
+    pname = 'figs/plot_EOSCs2.png'
+    plot_EOScs2( pname, micro_models, pheno_models, band )
     #
     print(50*'-')
-    print("Exit plot_Pre.py:")
+    print("Exit plot_EOSCs2.py:")
     print(50*'-')
     #
 
