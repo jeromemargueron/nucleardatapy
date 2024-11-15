@@ -8,7 +8,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def astro_mtot():
+def astro_mup():
     """
     Return a list of the astrophysical sources for which a mass is given
 
@@ -16,19 +16,19 @@ def astro_mtot():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter astro_mtot()")
+    if nuda.env.verb: print("\nEnter astro_mup()")
     #
-    sources = [ 'GW170817' ]
+    sources = [ 'GW170817', 'GW190814' ]
     #
     #print('sources available in the toolkit:',sources)
     sources_lower = [ item.lower() for item in sources ]
     #print('sources available in the toolkit:',sources_lower)
     #
-    if nuda.env.verb: print("Exit astro_mtot()")
+    if nuda.env.verb: print("Exit astro_mup()")
     #
     return sources, sources_lower
 
-def astro_mtot_source( source ):
+def astro_mup_source( source ):
     """
     Return a list of observations for a given source and print them all on the prompt.
 
@@ -44,16 +44,18 @@ def astro_mtot_source( source ):
     if source.lower()=='gw170817':
         hyps = [ 1, 2, 3, 4 ]
         #hyps = [ 'low-spin+TaylorF2', 'high-spin+TaylorF2', 'low-spin+PhenomPNRT', 'high-spin+PhenomPNRT']
+    elif source.lower()=='gw190814':
+        hyps = [ 1 ]
     #
     #print('Hypotheses available in the toolkit:',hyps)
     #
-    if nuda.env.verb: print("Exit astro_mtot_source()")
+    if nuda.env.verb: print("Exit astro_mup_source()")
     #
     return hyps
 
-class SetupAstroMtot():
+class SetupAstroMup():
     """
-    Instantiate the total mass for a given source and hyptheses.
+    Instantiate the upper mass for a given source and hyptheses.
 
     This choice is defined in the variables `source` and `hyp`.
 
@@ -70,9 +72,9 @@ class SetupAstroMtot():
     """
     def __init__(self, source = 'GW170817', hyp = 1 ):
         #
-        if nuda.env.verb: print("Enter SetupAstroMtot()")
+        if nuda.env.verb: print("Enter SetupAstroMup()")
         #
-        sources, sources_lower = astro_mtot()
+        sources, sources_lower = astro_mup()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
             print('list of sources:',sources)
@@ -81,7 +83,7 @@ class SetupAstroMtot():
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
-        hyps = astro_mtot_source( source = source )
+        hyps = astro_mup_source( source = source )
         if hyp not in hyps:
             print('Hyp ',hyp,' is not in the list of hypotheses.')
             print('list of hyp:',hyps)
@@ -124,9 +126,18 @@ class SetupAstroMtot():
                 self.label = 'GW170817 high-spin Abbott 2019'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+        elif source.lower()=='gw190814':
+            file_in = nuda.param.path_data+'astro/masses/GW190814.dat'
+            if hyp == 1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='B.P. Abbott, R. Abbott, T.D. Abbott, et al., ApJL 892, L3 (2020)'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'GW190814 Abbott 2020'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write here notes about this observation."
         #
         #: Attribute the observational mass of the source.
-        self.mtot = None
+        self.mup = None
         #: Attribute the positive uncertainty.
         self.sig_up = None
         #: Attribute the negative uncertainty.
@@ -141,12 +152,12 @@ class SetupAstroMtot():
                 #print('ele[0]:',ele[0],' hyp:',str(hyp),' ele[:]:',ele[:])
                 #if ele[0].replace("'","") == str(hyp):
                 if int(ele[0]) == hyp:
-                    self.mtot = float(ele[2])
+                    self.mup = float(ele[2])
                     self.sig_up = float(ele[3])
                     self.sig_do = float(ele[4])
                     self.latexCite = ele[5].replace('\n','').replace(' ','')
         #
-        if nuda.env.verb: print("Exit SetupAstroMtot()")
+        if nuda.env.verb: print("Exit SetupAstroMup()")
         #
     #
     def print_outputs( self ):
@@ -160,8 +171,8 @@ class SetupAstroMtot():
        print("- Print output:")
        print("   source:  ",self.source)
        print("   hyp:",self.hyp)
-       print("   mtot:",self.mtot)
-       print("   sigma(mtot):",self.sig_up,self.sig_do)
+       print("   mup:",self.mup)
+       print("   sigma(mup):",self.sig_up,self.sig_do)
        print("   latexCite:",self.latexCite)
        print("   ref:    ",self.ref)
        print("   label:  ",self.label)
@@ -183,9 +194,9 @@ def gauss( ax, mass, sig_up, sig_do ):
         gauss.append( math.exp( -0.5*z**2 ) / norm )
     return gauss
 
-class SetupAstroMtotAverage():
+class SetupAstroMupAverage():
     """
-    Instantiate the total mass for a given source and averaged over hypotheses.
+    Instantiate the upper mass for a given source and averaged over hypotheses.
 
     This choice is defined in the variable `source`.
 
@@ -198,7 +209,7 @@ class SetupAstroMtotAverage():
     """
     def __init__(self, source = 'GW170817' ):
         #
-        if nuda.env.verb: print("Enter SetupAstroMtotAverage()")
+        if nuda.env.verb: print("Enter SetupAstroMupAverage()")
         #
         self.source = source
         self.latexCite = None
@@ -206,39 +217,35 @@ class SetupAstroMtotAverage():
         self.label = source+' average'
         self.note = 'compute the centroid and standard deviation from the obs. data.'
         #
-        hyps = astro_mtot_source( source = source )
+        hyps = astro_mup_source( source = source )
         #
-        # search for the boundary for mtot:
-        mtotmin = 3.0; mtotmax = 0.0;
+        # search for the boundary for mup:
+        mupmin = 3.0; mupmax = 0.0;
         for hyp in hyps:
-            mtot = nuda.SetupAstroMtot( source = source, hyp = hyp )
-            #mtot.print_outputs( )
-            mtotdo = mtot.mtot - 3*mtot.sig_do
-            mtotup = mtot.mtot + 3*mtot.sig_up
-            if mtotdo < mtotmin: mtotmin = mtotdo
-            if mtotup > mtotmax: mtotmax = mtotup
-        #print('mtotmin:',mtotmin)
-        #print('mtotmax:',mtotmax)
+            mup = nuda.SetupAstroMup( source = source, hyp = hyp )
+            #mup.print_outputs( )
+            mupdo = mup.mup - 3*mup.sig_do
+            mupup = mup.mup + 3*mup.sig_up
+            if mupdo < mupmin: mupmin = mupdo
+            if mupup > mupmax: mupmax = mupup
         # construct the distribution of observations in ay
-        ax = np.linspace(mtotmin,mtotmax,300)
+        ax = np.linspace(mupmin,mupmax,300)
         #print('ax:',ax)
         ay = np.zeros(300)
         for hyp in hyps:
             #print('hyp:',hyp)
-            mtot = nuda.SetupAstroMtot( source = source, hyp = hyp )
-            #mtot.print_outputs( )
-            ay += gauss(ax,mtot.mtot,mtot.sig_up,mtot.sig_do)
+            mup = nuda.SetupAstroMup( source = source, hyp = hyp )
+            #mup.print_outputs( )
+            ay += gauss(ax,mup.mup,mup.sig_up,mup.sig_do)
         # determine the centroid and standard deviation from the distribution of obs. 
         nor = sum( ay )
         cen = sum( ay*ax )
         std = sum ( ay*ax**2 )
-        self.mtot_cen = cen / nor
-        self.sig_std = round( math.sqrt( std/nor - self.mtot_cen**2 ), 3 )
-        self.mtot_cen = round( self.mtot_cen, 3)
-        #print('mtot:',self.mtot_cen)
-        #print('std:',self.sig_std)
+        self.mup_cen = cen / nor
+        self.sig_std = round( math.sqrt( std/nor - self.mup_cen**2 ), 3 )
+        self.mup_cen = round( self.mup_cen, 3)
         #
-        if nuda.env.verb: print("Exit SetupAstroMtotAverage()")
+        if nuda.env.verb: print("Exit SetupAstroMupAverage()")
     #
     def print_outputs( self ):
        """
@@ -250,7 +257,7 @@ class SetupAstroMtotAverage():
        #
        print("- Print output:")
        print("   source:  ",self.source)
-       print("   mtot_cen:",self.mtot_cen)
+       print("   mup_cen:",self.mup_cen)
        print("   sig_std:",self.sig_std)
        print("   latexCite:",self.latexCite)
        print("   ref:    ",self.ref)

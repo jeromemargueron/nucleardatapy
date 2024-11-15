@@ -53,8 +53,9 @@ Complement
    source/api/setup_nuc_isgmr_exp
    source/api/setup_crust
    source/api/setup_astro_masses
-   source/api/setup_astro_mtot
+   source/api/setup_astro_mup
    source/api/setup_astro_mtov
+   source/api/setup_astro_mr
    source/api/setup_astro_gw
    source/api/setup_CorEsymLsym
 

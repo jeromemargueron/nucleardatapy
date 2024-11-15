@@ -46,21 +46,25 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter.html">SetupMicroMatter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_matter_band.html">SetupMicroMatterBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_micro_LP.html">SetupMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_pheno_matter.html">SetupPhenoMatter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_hic_matter.html">SetupHICMatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_exp.html">SetupMassesExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_masses_theory.html">SetupMassesTheory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_rad_ch.html">SetupRadCh</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_ISGMR.html">SetupISGMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_EsymLsym.html">SetupEsymLsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtot.html">SetupAstroMtot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
 </ul>
 
         </div>
@@ -174,12 +178,12 @@
             <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_do_tot</span> <span class="o">=</span> <span class="s1">&#39;Lower boundary&#39;</span>
         <span class="c1">#</span>
-        <span class="c1"># upper bound from mtot GW observation</span>
+        <span class="c1"># upper bound from GW observation</span>
         <span class="c1">#</span>
-        <span class="c1">#sources_up = nuda.astro_mtot( )[0]</span>
+        <span class="c1">#sources_up = nuda.astro_mup( )[0]</span>
         <span class="c1">#print(&#39;Complete list of available sources_up:&#39;,sources_up)</span>
         <span class="c1">#</span>
-        <span class="c1">#sources_up = [ &#39;GW170817&#39; ]</span>
+        <span class="c1">#sources_up = [ &#39;GW170817&#39;, &#39;GW190814&#39; ]</span>
         <span class="c1">#</span>
         <span class="c1">#print(&#39;sources_up considered:&#39;,sources_up)</span>
         <span class="c1">#</span>
@@ -190,10 +194,10 @@
         <span class="c1">#</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">source</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sources_up</span><span class="p">):</span>
             <span class="c1">#print(&#39;Call average for source:&#39;, source)</span>
-            <span class="n">avmtot</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroMtotAverage</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+            <span class="n">avmup</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroMupAverage</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
             <span class="c1">#print(&#39;End of call average&#39;)</span>
-            <span class="c1">#avmtot.print_outputs( )</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">proba_up</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_proba_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span> <span class="n">avmtot</span><span class="o">.</span><span class="n">mtot_cen</span><span class="p">,</span> <span class="n">avmtot</span><span class="o">.</span><span class="n">sig_std</span><span class="p">,</span> <span class="n">avmtot</span><span class="o">.</span><span class="n">sig_std</span><span class="p">)</span>
+            <span class="c1">#avmup.print_outputs( )</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">proba_up</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_proba_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span> <span class="n">avmup</span><span class="o">.</span><span class="n">mup_cen</span><span class="p">,</span> <span class="n">avmup</span><span class="o">.</span><span class="n">sig_std</span><span class="p">,</span> <span class="n">avmup</span><span class="o">.</span><span class="n">sig_std</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label_up</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">proba_up_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proba_up_tot</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">proba_up</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
             <span class="c1">#</span>

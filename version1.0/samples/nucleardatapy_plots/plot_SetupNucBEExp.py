@@ -9,6 +9,40 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
+def plot_shells(axs):
+    #
+    # plot shells for isotopes and isotones
+    #
+    axs.plot( [0,40], [7,7], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [0,40], [9,9], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [6,60], [19,19], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [6,60], [21,21], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [12,90], [27,27], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [12,90], [29,29], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [34,138], [49,49], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [34,138], [51,51], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [76,170], [81,81], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [76,170], [83,83], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [126,190], [127,127], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [126,190], [129,129], linestyle='dotted', linewidth=1, color='gray')
+    #
+    # plot shells for isotones
+    #
+    axs.plot( [7,7], [0,24], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [9,9], [0,24], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [19,19], [4,40], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [21,21], [4,40], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [27,27], [4,46], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [29,29], [4,46], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [49,49], [14,60], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [51,51], [14,60], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [81,81], [20,86], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [83,83], [20,86], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [127,127], [40,132], linestyle='dotted', linewidth=1, color='gray')
+    axs.plot( [129,129], [40,132], linestyle='dotted', linewidth=1, color='gray')
+    #
+    return axs
+
 def plot_SetupNucBEExp_chart( pname, table, version ):
     #
     print(50*'-')
@@ -82,35 +116,9 @@ def plot_SetupNucBEExp_chart( pname, table, version ):
     N, Z = nuda.stable_fit()
     axs.plot( N, Z, linestyle='dashed', linewidth=1, color='k')
     #
-    # plot shells for isotopes
+    # plot shells for isotopes and isotones
     #
-    axs.plot( [0,40], [7,7], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [0,40], [9,9], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [6,60], [19,19], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [6,60], [21,21], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [12,90], [27,27], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [12,90], [29,29], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [34,138], [49,49], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [34,138], [51,51], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [76,170], [81,81], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [76,170], [83,83], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [126,190], [127,127], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [126,190], [129,129], linestyle='dotted', linewidth=1, color='gray')
-    #
-    # plot shells for isotones
-    #
-    axs.plot( [7,7], [0,24], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [9,9], [0,24], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [19,19], [4,40], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [21,21], [4,40], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [27,27], [4,46], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [29,29], [4,46], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [49,49], [14,60], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [51,51], [14,60], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [81,81], [20,86], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [83,83], [20,86], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [127,127], [40,132], linestyle='dotted', linewidth=1, color='gray')
-    axs.plot( [129,129], [40,132], linestyle='dotted', linewidth=1, color='gray')
+    axs = plot_shells(axs)
     #
     axs.legend(loc='lower right',fontsize='10')
     #
@@ -167,8 +175,6 @@ def plot_SetupNucBEExp_year( pname, table, version ):
     print(50*'-')
     #
 
-
-
 def main():
     #
     print(50*'-')
@@ -202,8 +208,6 @@ def main():
     print("Exit plot_SetupNucBEExp.py:")
     print(50*'-')
     #
-
-
     
 if __name__ == "__main__":
     main()

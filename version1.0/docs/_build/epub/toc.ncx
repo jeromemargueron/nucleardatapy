@@ -1434,104 +1434,104 @@
     </navPoint>
     <navPoint id="navPoint238" playOrder="204">
       <navLabel>
-        <text>SetupAstroMtot</text>
+        <text>SetupAstroMup</text>
       </navLabel>
-      <content src="source/api/setup_astro_mtot.xhtml" />  
+      <content src="source/api/setup_astro_mup.xhtml" />  
       <navPoint id="navPoint239" playOrder="204">
         <navLabel>
-          <text>SetupAstroMtot</text>
+          <text>SetupAstroMup</text>
         </navLabel>
-        <content src="source/api/setup_astro_mtot.xhtml" />  
+        <content src="source/api/setup_astro_mup.xhtml" />  
       </navPoint>
       <navPoint id="navPoint240" playOrder="205">
         <navLabel>
-          <text>SetupAstroMtot</text>
+          <text>SetupAstroMup</text>
         </navLabel>
-        <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot" />  
+        <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup" />  
         <navPoint id="navPoint241" playOrder="205">
           <navLabel>
-            <text>SetupAstroMtot</text>
+            <text>SetupAstroMup</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup" />  
         </navPoint>
         <navPoint id="navPoint242" playOrder="206">
           <navLabel>
-            <text>SetupAstroMtot.label</text>
+            <text>SetupAstroMup.label</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.label" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.label" />  
         </navPoint>
         <navPoint id="navPoint243" playOrder="207">
           <navLabel>
-            <text>SetupAstroMtot.latexCite</text>
+            <text>SetupAstroMup.latexCite</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.latexCite" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.latexCite" />  
         </navPoint>
         <navPoint id="navPoint244" playOrder="208">
           <navLabel>
-            <text>SetupAstroMtot.mtot</text>
+            <text>SetupAstroMup.mup</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.mtot" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.mup" />  
         </navPoint>
         <navPoint id="navPoint245" playOrder="209">
           <navLabel>
-            <text>SetupAstroMtot.note</text>
+            <text>SetupAstroMup.note</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.note" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.note" />  
         </navPoint>
         <navPoint id="navPoint246" playOrder="210">
           <navLabel>
-            <text>SetupAstroMtot.print_outputs()</text>
+            <text>SetupAstroMup.print_outputs()</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.print_outputs" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.print_outputs" />  
         </navPoint>
         <navPoint id="navPoint247" playOrder="211">
           <navLabel>
-            <text>SetupAstroMtot.ref</text>
+            <text>SetupAstroMup.ref</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.ref" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.ref" />  
         </navPoint>
         <navPoint id="navPoint248" playOrder="212">
           <navLabel>
-            <text>SetupAstroMtot.sig_do</text>
+            <text>SetupAstroMup.sig_do</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.sig_do" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.sig_do" />  
         </navPoint>
         <navPoint id="navPoint249" playOrder="213">
           <navLabel>
-            <text>SetupAstroMtot.sig_up</text>
+            <text>SetupAstroMup.sig_up</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtot.sig_up" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMup.sig_up" />  
         </navPoint>
       </navPoint>
       <navPoint id="navPoint250" playOrder="214">
         <navLabel>
-          <text>SetupAstroMtotAverage</text>
+          <text>SetupAstroMupAverage</text>
         </navLabel>
-        <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtotAverage" />  
+        <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMupAverage" />  
         <navPoint id="navPoint251" playOrder="214">
           <navLabel>
-            <text>SetupAstroMtotAverage</text>
+            <text>SetupAstroMupAverage</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtotAverage" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMupAverage" />  
         </navPoint>
         <navPoint id="navPoint252" playOrder="215">
           <navLabel>
-            <text>SetupAstroMtotAverage.print_outputs()</text>
+            <text>SetupAstroMupAverage.print_outputs()</text>
           </navLabel>
-          <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.SetupAstroMtotAverage.print_outputs" />  
+          <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.SetupAstroMupAverage.print_outputs" />  
         </navPoint>
       </navPoint>
       <navPoint id="navPoint253" playOrder="216">
         <navLabel>
-          <text>astro_mtot()</text>
+          <text>astro_mup()</text>
         </navLabel>
-        <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.astro_mtot" />  
+        <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.astro_mup" />  
       </navPoint>
       <navPoint id="navPoint254" playOrder="217">
         <navLabel>
-          <text>astro_mtot_source()</text>
+          <text>astro_mup_source()</text>
         </navLabel>
-        <content src="source/api/setup_astro_mtot.xhtml#nucleardatapy.setup_astro_mtot.astro_mtot_source" />  
+        <content src="source/api/setup_astro_mup.xhtml#nucleardatapy.setup_astro_mup.astro_mup_source" />  
       </navPoint>
     </navPoint>
     <navPoint id="navPoint255" playOrder="218">
@@ -1566,207 +1566,327 @@
     </navPoint>
     <navPoint id="navPoint260" playOrder="221">
       <navLabel>
+        <text>SetupAstroMR</text>
+      </navLabel>
+      <content src="source/api/setup_astro_mr.xhtml" />  
+      <navPoint id="navPoint261" playOrder="221">
+        <navLabel>
+          <text>SetupAstroMR</text>
+        </navLabel>
+        <content src="source/api/setup_astro_mr.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint262" playOrder="222">
+        <navLabel>
+          <text>SetupAstroMR</text>
+        </navLabel>
+        <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR" />  
+        <navPoint id="navPoint263" playOrder="222">
+          <navLabel>
+            <text>SetupAstroMR</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR" />  
+        </navPoint>
+        <navPoint id="navPoint264" playOrder="223">
+          <navLabel>
+            <text>SetupAstroMR.label</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.label" />  
+        </navPoint>
+        <navPoint id="navPoint265" playOrder="224">
+          <navLabel>
+            <text>SetupAstroMR.latexCite</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.latexCite" />  
+        </navPoint>
+        <navPoint id="navPoint266" playOrder="225">
+          <navLabel>
+            <text>SetupAstroMR.mass</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.mass" />  
+        </navPoint>
+        <navPoint id="navPoint267" playOrder="226">
+          <navLabel>
+            <text>SetupAstroMR.mass_sig_do</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.mass_sig_do" />  
+        </navPoint>
+        <navPoint id="navPoint268" playOrder="227">
+          <navLabel>
+            <text>SetupAstroMR.mass_sig_up</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.mass_sig_up" />  
+        </navPoint>
+        <navPoint id="navPoint269" playOrder="228">
+          <navLabel>
+            <text>SetupAstroMR.note</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.note" />  
+        </navPoint>
+        <navPoint id="navPoint270" playOrder="229">
+          <navLabel>
+            <text>SetupAstroMR.print_outputs()</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.print_outputs" />  
+        </navPoint>
+        <navPoint id="navPoint271" playOrder="230">
+          <navLabel>
+            <text>SetupAstroMR.rad</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.rad" />  
+        </navPoint>
+        <navPoint id="navPoint272" playOrder="231">
+          <navLabel>
+            <text>SetupAstroMR.rad_sig_do</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.rad_sig_do" />  
+        </navPoint>
+        <navPoint id="navPoint273" playOrder="232">
+          <navLabel>
+            <text>SetupAstroMR.rad_sig_up</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.rad_sig_up" />  
+        </navPoint>
+        <navPoint id="navPoint274" playOrder="233">
+          <navLabel>
+            <text>SetupAstroMR.ref</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMR.ref" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint275" playOrder="234">
+        <navLabel>
+          <text>SetupAstroMRAverage</text>
+        </navLabel>
+        <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMRAverage" />  
+        <navPoint id="navPoint276" playOrder="234">
+          <navLabel>
+            <text>SetupAstroMRAverage</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMRAverage" />  
+        </navPoint>
+        <navPoint id="navPoint277" playOrder="235">
+          <navLabel>
+            <text>SetupAstroMRAverage.print_outputs()</text>
+          </navLabel>
+          <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.SetupAstroMRAverage.print_outputs" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint278" playOrder="236">
+        <navLabel>
+          <text>astro_mr()</text>
+        </navLabel>
+        <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.astro_mr" />  
+      </navPoint>
+      <navPoint id="navPoint279" playOrder="237">
+        <navLabel>
+          <text>astro_mr_source()</text>
+        </navLabel>
+        <content src="source/api/setup_astro_mr.xhtml#nucleardatapy.setup_astro_mr.astro_mr_source" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint280" playOrder="238">
+      <navLabel>
         <text>SetupAstroGW</text>
       </navLabel>
       <content src="source/api/setup_astro_gw.xhtml" />  
-      <navPoint id="navPoint261" playOrder="221">
+      <navPoint id="navPoint281" playOrder="238">
         <navLabel>
           <text>SetupAstroGW</text>
         </navLabel>
         <content src="source/api/setup_astro_gw.xhtml" />  
       </navPoint>
-      <navPoint id="navPoint262" playOrder="222">
+      <navPoint id="navPoint282" playOrder="239">
         <navLabel>
           <text>SetupAstroGW</text>
         </navLabel>
         <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW" />  
-        <navPoint id="navPoint263" playOrder="222">
+        <navPoint id="navPoint283" playOrder="239">
           <navLabel>
             <text>SetupAstroGW</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW" />  
         </navPoint>
-        <navPoint id="navPoint264" playOrder="223">
+        <navPoint id="navPoint284" playOrder="240">
           <navLabel>
             <text>SetupAstroGW.label</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.label" />  
         </navPoint>
-        <navPoint id="navPoint265" playOrder="224">
+        <navPoint id="navPoint285" playOrder="241">
           <navLabel>
             <text>SetupAstroGW.lambda_sig_do</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_do" />  
         </navPoint>
-        <navPoint id="navPoint266" playOrder="225">
+        <navPoint id="navPoint286" playOrder="242">
           <navLabel>
             <text>SetupAstroGW.lambda_sig_up</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_up" />  
         </navPoint>
-        <navPoint id="navPoint267" playOrder="226">
+        <navPoint id="navPoint287" playOrder="243">
           <navLabel>
             <text>SetupAstroGW.latexCite</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.latexCite" />  
         </navPoint>
-        <navPoint id="navPoint268" playOrder="227">
+        <navPoint id="navPoint288" playOrder="244">
           <navLabel>
             <text>SetupAstroGW.note</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.note" />  
         </navPoint>
-        <navPoint id="navPoint269" playOrder="228">
+        <navPoint id="navPoint289" playOrder="245">
           <navLabel>
             <text>SetupAstroGW.print_outputs()</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.print_outputs" />  
         </navPoint>
-        <navPoint id="navPoint270" playOrder="229">
+        <navPoint id="navPoint290" playOrder="246">
           <navLabel>
             <text>SetupAstroGW.ref</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGW.ref" />  
         </navPoint>
       </navPoint>
-      <navPoint id="navPoint271" playOrder="230">
+      <navPoint id="navPoint291" playOrder="247">
         <navLabel>
           <text>SetupAstroGWAverage</text>
         </navLabel>
         <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGWAverage" />  
-        <navPoint id="navPoint272" playOrder="230">
+        <navPoint id="navPoint292" playOrder="247">
           <navLabel>
             <text>SetupAstroGWAverage</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGWAverage" />  
         </navPoint>
-        <navPoint id="navPoint273" playOrder="231">
+        <navPoint id="navPoint293" playOrder="248">
           <navLabel>
             <text>SetupAstroGWAverage.print_outputs()</text>
           </navLabel>
           <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_outputs" />  
         </navPoint>
       </navPoint>
-      <navPoint id="navPoint274" playOrder="232">
+      <navPoint id="navPoint294" playOrder="249">
         <navLabel>
           <text>astro_gw()</text>
         </navLabel>
         <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.astro_gw" />  
       </navPoint>
-      <navPoint id="navPoint275" playOrder="233">
+      <navPoint id="navPoint295" playOrder="250">
         <navLabel>
           <text>astro_gw_source()</text>
         </navLabel>
         <content src="source/api/setup_astro_gw.xhtml#nucleardatapy.setup_astro_gw.astro_gw_source" />  
       </navPoint>
     </navPoint>
-    <navPoint id="navPoint276" playOrder="234">
+    <navPoint id="navPoint296" playOrder="251">
       <navLabel>
         <text>SetupCorEsymLsym</text>
       </navLabel>
       <content src="source/api/setup_CorEsymLsym.xhtml" />  
-      <navPoint id="navPoint277" playOrder="234">
+      <navPoint id="navPoint297" playOrder="251">
         <navLabel>
           <text>SetupCorEsymLsym</text>
         </navLabel>
         <content src="source/api/setup_CorEsymLsym.xhtml" />  
       </navPoint>
-      <navPoint id="navPoint278" playOrder="235">
+      <navPoint id="navPoint298" playOrder="252">
         <navLabel>
           <text>CorEsymLsym_constraints()</text>
         </navLabel>
         <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.CorEsymLsym_constraints" />  
       </navPoint>
-      <navPoint id="navPoint279" playOrder="236">
+      <navPoint id="navPoint299" playOrder="253">
         <navLabel>
           <text>SetupCorEsymLsym</text>
         </navLabel>
         <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym" />  
-        <navPoint id="navPoint280" playOrder="236">
+        <navPoint id="navPoint300" playOrder="253">
           <navLabel>
             <text>SetupCorEsymLsym</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym" />  
         </navPoint>
-        <navPoint id="navPoint281" playOrder="237">
+        <navPoint id="navPoint301" playOrder="254">
           <navLabel>
             <text>SetupCorEsymLsym.Esym</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym" />  
         </navPoint>
-        <navPoint id="navPoint282" playOrder="238">
+        <navPoint id="navPoint302" playOrder="255">
           <navLabel>
             <text>SetupCorEsymLsym.Esym_err</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_err" />  
         </navPoint>
-        <navPoint id="navPoint283" playOrder="239">
+        <navPoint id="navPoint303" playOrder="256">
           <navLabel>
             <text>SetupCorEsymLsym.Esym_max</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_max" />  
         </navPoint>
-        <navPoint id="navPoint284" playOrder="240">
+        <navPoint id="navPoint304" playOrder="257">
           <navLabel>
             <text>SetupCorEsymLsym.Esym_min</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_min" />  
         </navPoint>
-        <navPoint id="navPoint285" playOrder="241">
+        <navPoint id="navPoint305" playOrder="258">
           <navLabel>
             <text>SetupCorEsymLsym.Lsym</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym" />  
         </navPoint>
-        <navPoint id="navPoint286" playOrder="242">
+        <navPoint id="navPoint306" playOrder="259">
           <navLabel>
             <text>SetupCorEsymLsym.Lsym_err</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_err" />  
         </navPoint>
-        <navPoint id="navPoint287" playOrder="243">
+        <navPoint id="navPoint307" playOrder="260">
           <navLabel>
             <text>SetupCorEsymLsym.Lsym_max</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_max" />  
         </navPoint>
-        <navPoint id="navPoint288" playOrder="244">
+        <navPoint id="navPoint308" playOrder="261">
           <navLabel>
             <text>SetupCorEsymLsym.Lsym_min</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_min" />  
         </navPoint>
-        <navPoint id="navPoint289" playOrder="245">
+        <navPoint id="navPoint309" playOrder="262">
           <navLabel>
             <text>SetupCorEsymLsym.alpha</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.alpha" />  
         </navPoint>
-        <navPoint id="navPoint290" playOrder="246">
+        <navPoint id="navPoint310" playOrder="263">
           <navLabel>
             <text>SetupCorEsymLsym.constraint</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.constraint" />  
         </navPoint>
-        <navPoint id="navPoint291" playOrder="247">
+        <navPoint id="navPoint311" playOrder="264">
           <navLabel>
             <text>SetupCorEsymLsym.label</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.label" />  
         </navPoint>
-        <navPoint id="navPoint292" playOrder="248">
+        <navPoint id="navPoint312" playOrder="265">
           <navLabel>
             <text>SetupCorEsymLsym.note</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.note" />  
         </navPoint>
-        <navPoint id="navPoint293" playOrder="249">
+        <navPoint id="navPoint313" playOrder="266">
           <navLabel>
             <text>SetupCorEsymLsym.print_outputs()</text>
           </navLabel>
           <content src="source/api/setup_CorEsymLsym.xhtml#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.print_outputs" />  
         </navPoint>
-        <navPoint id="navPoint294" playOrder="250">
+        <navPoint id="navPoint314" playOrder="267">
           <navLabel>
             <text>SetupCorEsymLsym.ref</text>
           </navLabel>

@@ -10,7 +10,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_astro_mtot( pname, sources ):
+def plot_astro_mup( pname, sources ):
     #
     # plot
     #
@@ -30,22 +30,22 @@ def plot_astro_mtot( pname, sources ):
         xlabel.append( source )
         ilabel.append( isource )
         #
-        # get mtot associated to `source` and `hyp`
+        # get mup associated to `source` and `hyp`
         #
-        hyps = nuda.astro_mtot_source( source = source )
+        hyps = nuda.astro_mup_source( source = source )
         print('hyps:',hyps)
         #
         ihyp = 0
         for hyp in hyps:
-            mtot = nuda.SetupAstroMtot( source = source, hyp = hyp )
+            mup = nuda.SetupAstroMup( source = source, hyp = hyp )
             #mass.print_outputs( )
             #
-            axs.errorbar( isource+ihyp/10, mtot.mtot, yerr=np.array([(mtot.sig_do,mtot.sig_up)]).T, label=mtot.label, color=nuda.param.col[isource], marker='s', linestyle = 'solid', linewidth = 1 )
+            axs.errorbar( isource+ihyp/10, mup.mup, yerr=np.array([(mup.sig_do,mup.sig_up)]).T, label=mup.label, color=nuda.param.col[isource], marker='s', linestyle = 'solid', linewidth = 1 )
             #
             ihyp += 1
-        avmtot = nuda.SetupAstroMtotAverage( source = source )
+        avmup = nuda.SetupAstroMupAverage( source = source )
         #avmass.print_outputs( )
-        axs.errorbar( isource+ihyp/10, avmtot.mtot_cen, yerr=avmtot.sig_std, label=avmtot.label, color=nuda.param.col[isource], marker='o', linestyle = 'solid', linewidth = 3 )
+        axs.errorbar( isource+ihyp/10, avmup.mup_cen, yerr=avmup.sig_std, label=avmup.label, color=nuda.param.col[isource], marker='o', linestyle = 'solid', linewidth = 3 )
         #
         isource += 1
     #
@@ -61,25 +61,25 @@ def plot_astro_mtot( pname, sources ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_SetupAstroMtot.py:")
+    print("Enter plot_SetupAstroMup.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
     #
     os.system('mkdir -p figs/')
     #
-    sources = nuda.astro_mtot( )[0]
+    sources = nuda.astro_mup( )[0]
     print('Complete list of available sources:',sources)
     #
-    sources = [ 'GW170817' ]
+    sources = [ 'GW170817', 'GW190814' ]
     #
     print('sources considered:',sources)
     #
-    pname = 'figs/plot_SetupAstroMtot.png'
-    plot_astro_mtot( pname, sources )
+    pname = 'figs/plot_SetupAstroMup.png'
+    plot_astro_mup( pname, sources )
     #
     print(50*'-')
-    print("Exit plot_SetupAstroMtot.py:")
+    print("Exit plot_SetupAstroMup.py:")
     print(50*'-')
     #
 

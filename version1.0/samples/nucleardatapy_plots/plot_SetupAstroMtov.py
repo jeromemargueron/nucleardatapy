@@ -70,10 +70,10 @@ def main():
     #
     # sources up
     #
-    sources_up = nuda.astro_mtot( )[0]
+    sources_up = nuda.astro_mup( )[0]
     print('Complete list of available sources_up:',sources_up)
     #
-    #sources_up = [ 'GW170817' ]
+    #sources_up = [ 'GW170817', 'GW190814' ]
     #
     print('sources_up considered:',sources_up)
     #

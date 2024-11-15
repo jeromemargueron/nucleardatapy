@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_astro_mr &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.setup_astro_mr</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_astro_mr</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+<div class="viewcode-block" id="astro_mr">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.astro_mr">[docs]</a>
+<span class="k">def</span> <span class="nf">astro_mr</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the astrophysical sources for which a mass is given</span>
+
+<span class="sd">    :return: The list of sources.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter astro_mr()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;J0030+0451&#39;</span><span class="p">,</span> <span class="s1">&#39;J0740+6620&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;sources available in the toolkit:&#39;,sources)</span>
+    <span class="n">sources_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sources</span> <span class="p">]</span>
+    <span class="c1">#print(&#39;sources available in the toolkit:&#39;,sources_lower)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit astro_mr()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">sources</span><span class="p">,</span> <span class="n">sources_lower</span></div>
+
+
+<div class="viewcode-block" id="astro_mr_source">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.astro_mr_source">[docs]</a>
+<span class="k">def</span> <span class="nf">astro_mr_source</span><span class="p">(</span> <span class="n">source</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of observations for a given source and print them all on the prompt.</span>
+
+<span class="sd">    :param source: The source for which there are different observations.</span>
+<span class="sd">    :type source: str.</span>
+<span class="sd">    :return: The list of observations. \</span>
+<span class="sd">    If source == &#39;J1614–2230&#39;: 1, 2, 3, 4, 5.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter astro_mr_source()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;j0030+0451&#39;</span><span class="p">:</span>
+        <span class="n">obss</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;j0740+6620&#39;</span><span class="p">:</span>
+        <span class="n">obss</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;Observations available in the toolkit:&#39;,obss)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit astro_mr_source()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">obss</span></div>
+
+
+<div class="viewcode-block" id="SetupAstroMR">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.SetupAstroMR">[docs]</a>
+<span class="k">class</span> <span class="nc">SetupAstroMR</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the observational mass for a given source and obs.</span>
+
+<span class="sd">    This choice is defined in the variables `source` and `obs`.</span>
+
+<span class="sd">    `source` can chosen among the following ones: &#39;J1614–2230&#39;.</span>
+
+<span class="sd">    `obs` depends on the chosen source.</span>
+
+<span class="sd">    :param source: Fix the name of `source`. Default value: &#39;J1614–2230&#39;.</span>
+<span class="sd">    :type source: str, optional. </span>
+<span class="sd">    :param obs: Fix the `obs`. Default value: 1.</span>
+<span class="sd">    :type obs: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;J0030+0451&#39;</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupAstroMR()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">sources</span><span class="p">,</span> <span class="n">sources_lower</span> <span class="o">=</span> <span class="n">astro_mr</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sources_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Source &#39;</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="s1">&#39; is not in the list of sources.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of sources:&#39;</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;source:&quot;</span><span class="p">,</span><span class="n">source</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">obss</span> <span class="o">=</span> <span class="n">astro_mr_source</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">obs</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obss</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Obs &#39;</span><span class="p">,</span><span class="n">obs</span><span class="p">,</span><span class="s1">&#39; is not in the list of obs.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of obs:&#39;</span><span class="p">,</span><span class="n">obss</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;obs:&quot;</span><span class="p">,</span><span class="n">obs</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;j0030+0451&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;astro/NICER/J0030+0451.dat&#39;</span>
+            <span class="k">if</span> <span class="n">obs</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;M.C. Miller, F.K. Lamb, A.J. Dittmann, aet al., ApJL 887, L24 (2019).&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;J0030 Miller 2019&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the observation.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+            <span class="k">elif</span> <span class="n">obs</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;T.E. Riley, A.L. Watts, S. Bogdanov, P.S. Ray, et al., ApJ 887, L21 (2019).&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;J0030 Riley 2019&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the observation.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+        <span class="k">elif</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;j0740+6620&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;astro/NICER/J0740+6620.dat&#39;</span>
+            <span class="k">if</span> <span class="n">obs</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;M.C. Miller, F.K. Lamb, A.J. Dittmann, S. Bogdanov, et al., ApJL 918, L28 (2021).&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;J0740 Miller 2021&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the observation.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+            <span class="k">elif</span> <span class="n">obs</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;T.E. Riley, A.L. Watts, P.S. Ray, S. Bogdanov, et al., ApJL 918, L27 (2021).&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;J0740 Riley 2021&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the observation.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the observational mass of the source.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the positive uncertainty.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the negative uncertainty.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_do</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the observational mass of the source.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the positive uncertainty.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the negative uncertainty.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_do</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute latexCite.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">ele</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                <span class="c1">#print(&#39;ele[0]:&#39;,ele[0],&#39; obs:&#39;,obs,&#39; ele[:]:&#39;,ele[:])</span>
+                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">obs</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_up</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_do</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_up</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_do</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="n">ele</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupAstroMR()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroMR.print_outputs">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.SetupAstroMR.print_outputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   source:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   obs:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">obs</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   mass:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sigma(mass):&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_up</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_do</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   rad:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sigma(mass):&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_up</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_do</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   latexCite:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
+       <span class="c1">#</span>
+       
+<span class="k">def</span> <span class="nf">gauss</span><span class="p">(</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">sig_up</span><span class="p">,</span> <span class="n">sig_do</span> <span class="p">):</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span>
+    <span class="n">gauss</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">mass</span><span class="p">:</span> 
+            <span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mass</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sig_do</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">sig_do</span> <span class="o">*</span> <span class="n">fac</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mass</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sig_up</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">sig_up</span> <span class="o">*</span> <span class="n">fac</span>
+        <span class="n">gauss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">norm</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">gauss</span>
+
+<div class="viewcode-block" id="SetupAstroMRAverage">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.SetupAstroMRAverage">[docs]</a>
+<span class="k">class</span> <span class="nc">SetupAstroMRAverage</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the observational mass for a given source and averaged over obs.</span>
+
+<span class="sd">    This choice is defined in the variable `source`.</span>
+
+<span class="sd">    `source` can chosen among the following ones: &#39;J1614–2230&#39;.</span>
+
+<span class="sd">    :param source: Fix the name of `source`. Default value: &#39;J1614–2230&#39;.</span>
+<span class="sd">    :type source: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;J1614–2230&#39;</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupAstroMRAverage()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">source</span><span class="o">+</span><span class="s1">&#39; average&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;compute the centroid and standard deviation from the obs. data.&#39;</span>
+        <span class="c1">#</span>
+        <span class="n">obss</span> <span class="o">=</span> <span class="n">astro_mr_source</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;obss:&#39;,obss)</span>
+        <span class="c1">#</span>
+        <span class="c1"># search for the boundary for the masses:</span>
+        <span class="n">mmin</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">mmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">obss</span><span class="p">:</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroMR</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span> <span class="p">)</span>
+            <span class="c1">#mass.print_outputs( )</span>
+            <span class="n">mdo</span> <span class="o">=</span> <span class="n">mass</span><span class="o">.</span><span class="n">mass</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">mass</span><span class="o">.</span><span class="n">sig_do</span>
+            <span class="n">mup</span> <span class="o">=</span> <span class="n">mass</span><span class="o">.</span><span class="n">mass</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">mass</span><span class="o">.</span><span class="n">sig_up</span>
+            <span class="k">if</span> <span class="n">mdo</span> <span class="o">&lt;</span> <span class="n">mmin</span><span class="p">:</span> <span class="n">mmin</span> <span class="o">=</span> <span class="n">mdo</span>
+            <span class="k">if</span> <span class="n">mup</span> <span class="o">&gt;</span> <span class="n">mmax</span><span class="p">:</span> <span class="n">mmax</span> <span class="o">=</span> <span class="n">mup</span>
+        <span class="c1">#print(&#39;mmin:&#39;,mmin)</span>
+        <span class="c1">#print(&#39;mmax:&#39;,mmax)</span>
+        <span class="c1"># construct the distribution of observations in ay</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mmin</span><span class="p">,</span><span class="n">mmax</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+        <span class="c1">#print(&#39;ax:&#39;,ax)</span>
+        <span class="n">ay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">obss</span><span class="p">:</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroMR</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span> <span class="p">)</span>
+            <span class="c1">#mass.print_outputs( )</span>
+            <span class="n">ay</span> <span class="o">+=</span> <span class="n">gauss</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">mass</span><span class="o">.</span><span class="n">mass</span><span class="p">,</span><span class="n">mass</span><span class="o">.</span><span class="n">sig_up</span><span class="p">,</span><span class="n">mass</span><span class="o">.</span><span class="n">sig_do</span><span class="p">)</span>
+        <span class="c1"># determine the centroid and standard deviation from the distribution of obs. </span>
+        <span class="n">nor</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">ay</span> <span class="p">)</span>
+        <span class="n">cen</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">ay</span><span class="o">*</span><span class="n">ax</span> <span class="p">)</span>
+        <span class="n">std</span> <span class="o">=</span> <span class="nb">sum</span> <span class="p">(</span> <span class="n">ay</span><span class="o">*</span><span class="n">ax</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_cen</span> <span class="o">=</span> <span class="n">cen</span> <span class="o">/</span> <span class="n">nor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sig_std</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">std</span><span class="o">/</span><span class="n">nor</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_cen</span><span class="o">**</span><span class="mi">2</span> <span class="p">),</span> <span class="mi">3</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_cen</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_cen</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="c1">#print(&#39;mass:&#39;,self.mass_cen)</span>
+        <span class="c1">#print(&#39;std:&#39;,self.sig_std)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupAstroMRAverage()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroMRAverage.print_outputs">
+<a class="viewcode-back" href="../../source/api/setup_astro_mr.html#nucleardatapy.setup_astro_mr.SetupAstroMRAverage.print_outputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   source:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   mass_cen:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_cen</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   mass_sig_std:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_sig_std</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   rad_cen:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_cen</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   rad_sig_std:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rad_sig_std</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   latexCite:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
+       <span class="c1">#</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -24,7 +24,8 @@ from nucleardatapy.setup_nuc_isgmr_exp  import *
 #
 from nucleardatapy.setup_crust          import *
 #
-from nucleardatapy.setup_astro_masses   import *
-from nucleardatapy.setup_astro_mtot     import *
-from nucleardatapy.setup_astro_mtov     import *
-from nucleardatapy.setup_astro_gw       import *
+from nucleardatapy.setup_astro_masses import *
+from nucleardatapy.setup_astro_mup    import *
+from nucleardatapy.setup_astro_mtov   import *
+from nucleardatapy.setup_astro_mr     import *
+from nucleardatapy.setup_astro_gw     import *

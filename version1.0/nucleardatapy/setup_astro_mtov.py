@@ -82,12 +82,12 @@ class SetupAstroMtov():
             #
         self.label_do_tot = 'Lower boundary'
         #
-        # upper bound from mtot GW observation
+        # upper bound from GW observation
         #
-        #sources_up = nuda.astro_mtot( )[0]
+        #sources_up = nuda.astro_mup( )[0]
         #print('Complete list of available sources_up:',sources_up)
         #
-        #sources_up = [ 'GW170817' ]
+        #sources_up = [ 'GW170817', 'GW190814' ]
         #
         #print('sources_up considered:',sources_up)
         #
@@ -98,10 +98,10 @@ class SetupAstroMtov():
         #
         for ind,source in enumerate(sources_up):
             #print('Call average for source:', source)
-            avmtot = nuda.SetupAstroMtotAverage( source = source )
+            avmup = nuda.SetupAstroMupAverage( source = source )
             #print('End of call average')
-            #avmtot.print_outputs( )
-            self.proba_up[ind] = compute_proba_up(self.mass, avmtot.mtot_cen, avmtot.sig_std, avmtot.sig_std)
+            #avmup.print_outputs( )
+            self.proba_up[ind] = compute_proba_up(self.mass, avmup.mup_cen, avmup.sig_std, avmup.sig_std)
             self.label_up.append( str(source) )
             self.proba_up_tot = self.proba_up_tot * self.proba_up[ind]
             #
