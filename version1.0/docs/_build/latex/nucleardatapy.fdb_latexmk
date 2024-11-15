@@ -1,11 +1,11 @@
 # Fdb version 4
-["makeindex nucleardatapy.idx"] 1731530940.64742 "nucleardatapy.idx" "nucleardatapy.ind" "nucleardatapy" 1731530950.98846 0
-  "nucleardatapy.idx" 1731530950.42456 44751 5c147c5e574e8c0a7398bc4154d1d82f "pdflatex"
+["makeindex nucleardatapy.idx"] 1731629326.31623 "nucleardatapy.idx" "nucleardatapy.ind" "nucleardatapy" 1731629331.6562 0
+  "nucleardatapy.idx" 1731629331.11925 43575 85a7f08409efba0fea7eaaf26a747b59 "pdflatex"
   (generated)
   "nucleardatapy.ilg"
   "nucleardatapy.ind"
   (rewritten before read)
-["pdflatex"] 1731530946.045 "nucleardatapy.tex" "nucleardatapy.pdf" "nucleardatapy" 1731530950.98884 0
+["pdflatex"] 1731629326.72846 "nucleardatapy.tex" "nucleardatapy.pdf" "nucleardatapy" 1731629331.65668 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free1.enc" 1622837620 3042 0e2b14b9be7d01075a4c4591d5d1781b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc" 1529098226 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
@@ -166,11 +166,11 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1727717970.18158 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1727717935 8221417 7243a497e7565e1079ac5820cd2c025a ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "nucleardatapy.aux" 1731530950.414 63048 61d5a455aade1295167b9deba0c23905 "pdflatex"
-  "nucleardatapy.ind" 1731530941.06333 28945 c79a08c5dd644a23e5e9b7bc186c60a5 "makeindex nucleardatapy.idx"
-  "nucleardatapy.out" 1731530950.42396 4007 f07b7c5c02eb9c5fa415a263c96f185a "pdflatex"
-  "nucleardatapy.tex" 1731530934.7512 204725 64da76896d9c425c180b93487cd3fcc6 ""
-  "nucleardatapy.toc" 1731530950.42467 2570 a1b09fbac2b583adc6212492bf92f2d6 "pdflatex"
+  "nucleardatapy.aux" 1731629331.10905 64784 d1c534b880002bb77f8758fa7f1f4725 "pdflatex"
+  "nucleardatapy.ind" 1731629326.71597 28230 69a175f20daad3020b4ba40880246ad0 "makeindex nucleardatapy.idx"
+  "nucleardatapy.out" 1731629331.11862 4229 b688f2a5c4768097e117642751f172eb "pdflatex"
+  "nucleardatapy.tex" 1731629320.45667 208547 1ea4d2075cd5272448e96cdae622a369 ""
+  "nucleardatapy.toc" 1731629331.11939 2718 75f0b8bfcf12f5822c5610dce9cdc78f "pdflatex"
   "plot_EOSNEP.png" 1731449092.64786 32318 c1be6b0b700ddc532cd161fb169b1548 ""
   "plot_SetupAstroGW.png" 1731341791.12544 32118 989ccf0ec73f26ba1f3ba6bbd79d0f49 ""
   "plot_SetupAstroMasses.png" 1731341791.12686 52974 580bd3fdbca7ca298f9153af0365145b ""
@@ -178,6 +178,10 @@
   "plot_SetupAstroMtov.png" 1731341791.12819 59294 a924b6fa4a4dc38e75b82ada43904fbf ""
   "plot_SetupCorEsymLsym.png" 1731431142.48441 66881 74bd53e2ccf9ee99c1fe51199d9e9e1c ""
   "plot_SetupCrust.png" 1731530741.67036 99305 b401f32e259bfaa486f3afb040510328 ""
+  "plot_SetupEOSAM.png" 1731628770.10109 127528 43f1668a5419290aad07c57b567679a3 ""
+  "plot_SetupEOSBeta_xe.png" 1731624977.3023 103284 e3622342fcb9434d5a919743fa0f0f68 ""
+  "plot_SetupEOSBeta_xmu.png" 1731624979.60685 74735 558547bfedaad90446b1b645afbe707b ""
+  "plot_SetupEOSBeta_xp.png" 1731624974.98541 126714 05fe7d4748374959a61c4e5abc1115ad ""
   "plot_SetupEOSEsym_-200.png" 1731431142.48485 56416 e7ba4f108a9fe834ff989b8c3e82ec61 ""
   "plot_SetupEOSEsym_0.png" 1731431142.48527 52570 1ee947c3e4d24adfc7ae78d2561f04d0 ""
   "plot_SetupEOSEsym_200.png" 1731431142.48571 57702 a80bc74e0634fa752776a50feaf16a76 ""
@@ -209,7 +213,7 @@
   "plot_SetupNucISGMRExp.png" 1731431142.50467 22208 95ffc300462e80dfd35160a9f1275f38 ""
   "plot_SetupNucRchExp.png" 1731431142.50504 28473 bc12fb2bfa2dd3d192b2f614698ca559 ""
   "sphinx.sty" 1731014603.66197 54119 967a674353157928503df7cae9b6165e ""
-  "sphinxhighlight.sty" 1731530934.35398 7553 83fb52292c17957d9f4aadcb28c57a87 ""
+  "sphinxhighlight.sty" 1731629320.05752 7553 83fb52292c17957d9f4aadcb28c57a87 ""
   "sphinxlatexadmonitions.sty" 1731014603.6635 19110 2855832b1a32f04033523b9919260ac9 ""
   "sphinxlatexcontainers.sty" 1731014603.66389 900 d61f923db071a7b54d3cee8a1e6935d3 ""
   "sphinxlatexgraphics.sty" 1731014603.66432 4918 c9266041d02bc615d54b890e96e3acd3 ""
@@ -224,7 +228,7 @@
   "sphinxlatexstyletext.sty" 1731014603.66867 6759 9e932c65374cfb62686485d331bc975c ""
   "sphinxlatextables.sty" 1731014603.66941 57643 7f1013c2fa11942370d867527bdda568 ""
   "sphinxmanual.cls" 1727717459.00053 4241 7b0d7a37df7b5715fb0dbd585c52ecdb ""
-  "sphinxmessages.sty" 1731530934.80313 745 3f5fcd6cdd7964ed608767954a8ced6f ""
+  "sphinxmessages.sty" 1731629320.5154 745 3f5fcd6cdd7964ed608767954a8ced6f ""
   "sphinxoptionsgeometry.sty" 1731014603.67024 2060 6c27b3eba37bde592ae8908ab2c1ac0f ""
   "sphinxoptionshyperref.sty" 1731014603.67067 1093 e468489bae7631a7f387b4b0f7bc15d4 ""
   "sphinxpackageboxes.sty" 1731014603.67125 36106 1be2053eb1cb9b083b3a75e3657bcb24 ""

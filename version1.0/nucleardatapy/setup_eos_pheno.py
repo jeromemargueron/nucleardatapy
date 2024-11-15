@@ -19,7 +19,7 @@ def eos_pheno_models():
     if nuda.env.verb: print("\nEnter eos_pheno_models()")
     #
     models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
-    print('Phenomenological models available in the toolkit:',models)
+    #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
     if nuda.env.verb: print("Exit eos_pheno_models()")
@@ -49,7 +49,7 @@ def eos_pheno_params( model ):
     #
     if nuda.env.verb: print("\nEnter eos_pheno_params()")
     #
-    print('For model:',model)
+    #print('For model:',model)
     if model.lower() == 'skyrme':
         params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
             'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
@@ -63,7 +63,7 @@ def eos_pheno_params( model ):
         params = [ 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99' ]
     elif model.lower() == 'ddrhf':
         params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
-    print('Parameters available in the toolkit:',params)
+    #print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
     #
     if nuda.env.verb: print("Exit eos_pheno_params()")
@@ -105,46 +105,13 @@ class SetupEOSPheno():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
+        print("-> model:",model)
         #: Attribute param.
         self.param = param
         if nuda.env.verb: print("param:",param)
+        print("-> param:",param)
         #
-        #: Attribute the neutron matter density.
-        self.nm_den = []
-        #: Attribute the symmetric matter density.
-        self.sm_den = []
-        #: Attribute the neutron matter neutron Fermi momentum.
-        self.nm_kfn = []
-        #: Attribute the symmetric matter neutron Fermi momentum.
-        self.sm_kfn = []
-        #: Attribute the symmetric matter Fermi momentum.
-        self.sm_kf = []
-        #: Attribute the neutron matter energy per particle.
-        self.nm_e2a = []
-        #: Attribute the symmetric matter energy per particle.
-        self.sm_e2a = []
-        #: Attribute the neutron matter pairing gap.
-        self.nm_gap = []
-        #: Attribute the symmetric matter pairing gap.
-        self.sm_gap = []
-        #: Attribute the neutron matter pressure.
-        self.nm_pre = []
-        #: Attribute the symmetric matter pressure.
-        self.sm_pre = []
-        #: Attribute the neutron matter sound speed (c_s/c)^2.
-        self.nm_cs2 = []
-        #: Attribute the symmetric matter sound speed (c_s/c)^2.
-        self.sm_cs2 = []
-        #: Attribute the density for the symmetry energy.
-        self.esym_den = []
-        #: Attribute the Fermi momentum for the symmetry energy.
-        self.esym_kf = []
-        #: Attribute the symmetry energy.
-        self.esym_e2a = []
-        #: Attribute the NEP.
-        self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
-        self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
-        self.msat = None; self.kappas = None; self.pappav = None; 
+        self = SetupEOSPheno.init_self( self )
         #
         models, models_lower = eos_pheno_models( )
         #
@@ -171,7 +138,7 @@ class SetupEOSPheno():
             if nuda.env.verb: print('Reads file2:',file_in2)
             if nuda.env.verb: print('Reads file2:',file_in3)
             #: Attribute providing the full reference to the paper to be citted.
-            self.ref = ''
+            #self.ref = ''
             #: Attribute providing the label the data is references for figures.
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
@@ -187,7 +154,10 @@ class SetupEOSPheno():
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
-            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
+            self.esym_e2a_sm = self.sm_e2a
+            self.esym_e2a_nm = cs_nm_e2a( self.sm_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
             if param in name:
                 self.nep = True
@@ -210,7 +180,7 @@ class SetupEOSPheno():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             if nuda.env.verb: print('Reads file3:',file_in3)
-            self.ref = ''
+            #self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
@@ -225,7 +195,10 @@ class SetupEOSPheno():
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
-            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
+            self.esym_e2a_sm = self.sm_e2a
+            self.esym_e2a_nm = cs_nm_e2a( self.sm_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
             if param in name:
                 self.nep = True
@@ -244,7 +217,7 @@ class SetupEOSPheno():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             if nuda.env.verb: print('Reads file3:',file_in3)
-            self.ref = ''
+            #self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
@@ -259,7 +232,10 @@ class SetupEOSPheno():
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
-            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
+            self.esym_e2a_sm = self.sm_e2a
+            self.esym_e2a_nm = cs_nm_e2a( self.sm_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
             if param in name:
                 self.nep = True
@@ -278,7 +254,7 @@ class SetupEOSPheno():
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             if nuda.env.verb: print('Reads file3:',file_in3)
-            self.ref = ''
+            #self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
@@ -293,7 +269,10 @@ class SetupEOSPheno():
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_e2a, 0, 0.0 )
             cs_nm_e2a = CubicSpline( x, y )
-            self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
+            self.esym_e2a_sm = self.sm_e2a
+            self.esym_e2a_nm = cs_nm_e2a( self.sm_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.sm_den ) - self.sm_e2a
             #
             if param in name:
                 self.nep = True
@@ -341,4 +320,63 @@ class SetupEOSPheno():
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
-
+    def init_self( self ):
+        """
+        Initialize variables in self.
+        """
+        #
+        if nuda.env.verb: print("Enter init_self()")
+        #
+        #: Attribute the neutron matter density.
+        self.nm_den = []
+        #: Attribute the symmetric matter density.
+        self.sm_den = []
+        #: Attribute the neutron matter neutron Fermi momentum.
+        self.nm_kfn = []
+        #: Attribute the symmetric matter neutron Fermi momentum.
+        self.sm_kfn = []
+        #: Attribute the symmetric matter Fermi momentum.
+        self.sm_kf = []
+        #: Attribute the neutron matter energy per particle.
+        self.nm_e2a = []
+        #: Attribute the symmetric matter energy per particle.
+        self.sm_e2a = []
+        #: Attribute the neutron matter pairing gap.
+        self.nm_gap = []
+        #: Attribute the symmetric matter pairing gap.
+        self.sm_gap = []
+        #: Attribute the neutron matter pressure.
+        self.nm_pre = []
+        #: Attribute the symmetric matter pressure.
+        self.sm_pre = []
+        #: Attribute the neutron matter sound speed (c_s/c)^2.
+        self.nm_cs2 = []
+        #: Attribute the symmetric matter sound speed (c_s/c)^2.
+        self.sm_cs2 = []
+        #: Attribute the density for the symmetry energy.
+        self.esym_den = []
+        #: Attribute the Fermi momentum for the symmetry energy.
+        self.esym_kf = []
+        #: Attribute the symmetry energy.
+        self.esym_e2a = []
+        #: Attribute the NEP.
+        self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
+        self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
+        self.msat = None; self.kappas = None; self.kappav = None; 
+        #
+        #: Attribute the plot linestyle.
+        self.linestyle = 'solid'
+        #: Attribute providing the full reference to the paper to be citted.
+        self.ref = ''
+        #: Attribute providing additional notes about the data.
+        self.note = ''
+        #: Attribute the plot label data.
+        self.label = ''
+        #: Attribute the plot marker.
+        self.marker = None
+        #: Attribute the plot every data.
+        self.every = 1
+        #
+        if nuda.env.verb: print("Exit init_self()")
+        #
+        return self        

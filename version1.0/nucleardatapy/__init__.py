@@ -8,6 +8,7 @@ from nucleardatapy.param            import *
 from nucleardatapy.setup_eos_ffg        import *
 from nucleardatapy.setup_eos_micro      import *
 from nucleardatapy.setup_eos_micro_band import *
+from nucleardatapy.setup_eos_am         import *
 from nucleardatapy.setup_eos_beta       import *
 from nucleardatapy.setup_eos_micro_lp   import *
 from nucleardatapy.setup_eos_pheno      import *

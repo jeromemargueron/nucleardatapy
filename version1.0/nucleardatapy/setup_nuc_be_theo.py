@@ -16,7 +16,7 @@ def nuc_be_theo_tables():
     [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
     '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21', '2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
-    '2022-BSkG2', '2023-BSkG3', '2024-BSkG4' ]
+    '2022-BSkG2', '2023-BSkG3' ]
 
     :return: The list of tables.
     :rtype: list[str].
@@ -27,7 +27,7 @@ def nuc_be_theo_tables():
     tables = [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
        '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
-    '2022-BSkG2', '2023-BSkG3', '2024-BSkG4' ]
+    '2022-BSkG2', '2023-BSkG3' ]
     #
     print('theory tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -403,21 +403,21 @@ class SetupNucBETheo():
             self.nucBE = self.nucBE2A * self.nucA
             self.Zmax = int( max( self.nucZ ) )
             #
-        elif table.lower()=='2024-bskg4':
+        #elif table.lower()=='2024-bskg4':
             #
             # read the BSkG4 theoretical mass table
             #
-            file_in = nuda.param.path_data+'nuclei/masses/Theory/2024-BSkG4.txt'
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely, arXiv:2411.08007 (2024).'
-            self.note = "write here notes about this EOS."
-            self.label = 'BSkG4-2024'
-            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
-            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
-            self.nucA = self.nucZ + self.nucN
-            self.nucBE = self.nucBE2A * self.nucA
-            self.Zmax = int( max( self.nucZ ) )
+            #file_in = nuda.param.path_data+'nuclei/masses/Theory/2024-BSkG4.txt'
+            #if nuda.env.verb: print('Reads file:',file_in)
+            #self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely, arXiv:2411.08007 (2024).'
+            #self.note = "write here notes about this EOS."
+            #self.label = 'BSkG4-2024'
+            #self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            #self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            #self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            #self.nucA = self.nucZ + self.nucN
+            #self.nucBE = self.nucBE2A * self.nucA
+            #self.Zmax = int( max( self.nucZ ) )
             #
         #
         if nuda.env.verb: print("Exit SetupNucBETheo()")

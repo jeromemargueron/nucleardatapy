@@ -18,18 +18,20 @@
 \contentsline {section}{\numberline {2.3}SetupEOSMicroBand}{14}{section.2.3}%
 \contentsline {section}{\numberline {2.4}SetupEOSMicroLP}{15}{section.2.4}%
 \contentsline {section}{\numberline {2.5}SetupEOSPheno}{17}{section.2.5}%
-\contentsline {section}{\numberline {2.6}SetupEOSHIC}{20}{section.2.6}%
-\contentsline {section}{\numberline {2.7}SetupEOSEsym}{25}{section.2.7}%
-\contentsline {section}{\numberline {2.8}SetupNucBEExp}{26}{section.2.8}%
-\contentsline {section}{\numberline {2.9}SetupNucBETheo}{30}{section.2.9}%
-\contentsline {section}{\numberline {2.10}SetupNucRchExp}{32}{section.2.10}%
-\contentsline {section}{\numberline {2.11}SetupNucISGMRExp}{34}{section.2.11}%
-\contentsline {section}{\numberline {2.12}SetupCrust}{36}{section.2.12}%
-\contentsline {section}{\numberline {2.13}SetupAstroMasses}{37}{section.2.13}%
-\contentsline {section}{\numberline {2.14}SetupAstroMtot}{40}{section.2.14}%
-\contentsline {section}{\numberline {2.15}SetupAstroMtov}{41}{section.2.15}%
-\contentsline {section}{\numberline {2.16}SetupAstroGW}{42}{section.2.16}%
-\contentsline {section}{\numberline {2.17}SetupCorEsymLsym}{43}{section.2.17}%
-\contentsline {chapter}{\numberline {3}Indices and tables}{47}{chapter.3}%
-\contentsline {chapter}{Python Module Index}{49}{section*.247}%
-\contentsline {chapter}{Index}{51}{section*.248}%
+\contentsline {section}{\numberline {2.6}SetupEOSAM}{24}{section.2.6}%
+\contentsline {section}{\numberline {2.7}SetupEOSBeta}{24}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupEOSHIC}{26}{section.2.8}%
+\contentsline {section}{\numberline {2.9}SetupEOSEsym}{28}{section.2.9}%
+\contentsline {section}{\numberline {2.10}SetupNucBEExp}{29}{section.2.10}%
+\contentsline {section}{\numberline {2.11}SetupNucBETheo}{33}{section.2.11}%
+\contentsline {section}{\numberline {2.12}SetupNucRchExp}{35}{section.2.12}%
+\contentsline {section}{\numberline {2.13}SetupNucISGMRExp}{37}{section.2.13}%
+\contentsline {section}{\numberline {2.14}SetupCrust}{39}{section.2.14}%
+\contentsline {section}{\numberline {2.15}SetupAstroMasses}{40}{section.2.15}%
+\contentsline {section}{\numberline {2.16}SetupAstroMtot}{43}{section.2.16}%
+\contentsline {section}{\numberline {2.17}SetupAstroMtov}{44}{section.2.17}%
+\contentsline {section}{\numberline {2.18}SetupAstroGW}{45}{section.2.18}%
+\contentsline {section}{\numberline {2.19}SetupCorEsymLsym}{46}{section.2.19}%
+\contentsline {chapter}{\numberline {3}Indices and tables}{49}{chapter.3}%
+\contentsline {chapter}{Python Module Index}{51}{section*.240}%
+\contentsline {chapter}{Index}{53}{section*.241}%

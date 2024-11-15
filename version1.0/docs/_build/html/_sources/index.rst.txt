@@ -43,6 +43,8 @@ Complement
    source/api/setup_eos_micro_band
    source/api/setup_eos_micro_lp
    source/api/setup_eos_pheno
+   source/api/setup_eos_am
+   source/api/setup_eos_beta
    source/api/setup_eos_hic
    source/api/setup_eos_esym
    source/api/setup_nuc_be_exp

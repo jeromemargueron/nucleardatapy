@@ -9,7 +9,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def plot_err( pname, models ):
+def plot_EOSMicroErr( pname, models ):
     #
     # plot err/e in NM
     #
@@ -28,7 +28,7 @@ def plot_err( pname, models ):
     #
     for model in models:
         #
-        mic = nuda.SetupMicroMatter( model = model )
+        mic = nuda.SetupEOSMicro( model = model )
         mic.print_outputs( )
         if mic.nm_e2a is not None: 
             print('model:',model)
@@ -43,7 +43,7 @@ def plot_err( pname, models ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_SetupMicroMatterErr.py:")
+    print("Enter plot_SetupEOSMicroErr.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -54,11 +54,11 @@ def main():
     #
     # plot errors in NM
     #
-    pname = 'figs/plot_SetupMicroMatter_err_NM.png'
-    plot_err( pname, models )
+    pname = 'figs/plot_SetupEOSMicro_NM_err.png'
+    plot_EOSMicroErr( pname, models )
     #
     print(50*'-')
-    print("Exit plot_SetupMicroMatterErr.py:")
+    print("Exit plot_SetupEOSMicroErr.py:")
     print(50*'-')
     #
 

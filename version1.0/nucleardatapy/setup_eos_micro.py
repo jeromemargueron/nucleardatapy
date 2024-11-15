@@ -200,7 +200,7 @@ class SetupEOSMicro():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
-        print("model:",model)
+        print("-> model:",model)
         #
         self = SetupEOSMicro.init_self( self )
         #
@@ -230,6 +230,8 @@ class SetupEOSMicro():
             self.ref = 'Friedman and Pandharipande, Nucl. Phys. A. 361, 502 (1981)'
             self.note = "write here notes about this EOS."
             self.label = 'FP-1981'
+            self.marker = 'o'
+            #self.linestyle = 'dashed'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -264,7 +266,10 @@ class SetupEOSMicro():
             kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
             self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
-            self.esym_e2a = cs_nm_e2a( 2**nuda.cst.third * self.esym_kf ) - cs_sm_e2a( self.esym_kf )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_kf )
+            self.esym_e2a_nm = cs_nm_e2a( 2**nuda.cst.third * self.esym_kf )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( 2**nuda.cst.third * self.esym_kf ) - cs_sm_e2a( self.esym_kf )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( 2**nuda.cst.third * self.esym_kf )**2 + \
                 cs_sm_e2a_err( self.esym_kf )**2 )
             #
@@ -297,7 +302,8 @@ class SetupEOSMicro():
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.note = "write here notes about this EOS."
             self.label = 'APR-1998'
-            self.linestyle = 'dashed'
+            self.marker = '^'
+            #self.linestyle = 'dashed'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
@@ -338,7 +344,10 @@ class SetupEOSMicro():
             kf_step = ( self.esym_kf_max - self.esym_kf_min ) / float( self.nesym )
             self.esym_kf = self.esym_kf_min + np.arange(self.nesym+1) * kf_step
             self.esym_den = nuda.den( self.esym_kf )
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( 2**nuda.cst.third * self.esym_kf )**2 + \
                 cs_sm_e2a_err( self.esym_kf )**2 )
             #
@@ -367,6 +376,7 @@ class SetupEOSMicro():
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.note = "Use interpolation functions suggested in APR paper."
             self.label = 'APRfit-1998'
+            self.marker = None
             self.linestyle = 'solid'
             # Define constants for APRfit and for A18+dv+UIX*
             global p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21
@@ -400,7 +410,8 @@ class SetupEOSMicro():
             self.ref = 'L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
             self.note = ""
             self.label = 'BHF-2006'
-            self.linestyle = 'solid'
+            self.marker = 'o'
+            #self.linestyle = 'solid'
             #
         elif model.lower() == '2008-bcs-nm':
             #
@@ -409,8 +420,8 @@ class SetupEOSMicro():
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
             self.note = ""
             self.label = 'BCS-2008'
-            self.linestyle = 'dotted'
-            #self.marker = None
+            self.marker = 'o'
+            #self.linestyle = 'dotted'
             self.gap_err = False
             self.marker = '.'
             self.nm_kfn, self.gap_nm_gap, self.nm_chempot, self.nm_effmass \
@@ -427,8 +438,8 @@ class SetupEOSMicro():
             self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005); A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
             self.note = ""
             self.label = 'AFDMC-2008'
-            self.linestyle = 'solid'
             self.marker = 'D'
+            #self.linestyle = 'solid'
             self.nm_kfn, self.gap_nm_gap, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -493,8 +504,8 @@ class SetupEOSMicro():
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.note = ""
             self.label = 'QMC-swave-2008'
-            self.linestyle = 'solid'
             self.marker = 'o'
+            #self.linestyle = 'solid'
             self.err = True
             self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -539,7 +550,8 @@ class SetupEOSMicro():
             self.ref = 'S. Gandolfi, A.Y. Illarionov, F. Pederiva, K.E. Schmidt, S. Fantoni, Phys. Rev. C 80, 045802 (2009).'
             self.note = ""
             self.label = 'AFDMC-2009'
-            self.linestyle = 'solid'
+            self.marker = 'o'
+            #self.linestyle = 'solid'
             self.err = True
             self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -578,8 +590,8 @@ class SetupEOSMicro():
             self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
             self.note = ""
             self.label = 'dLQMC-2009'
-            self.linestyle = 'solid'
             self.marker = 'v'
+            #self.linestyle = 'solid'
             self.err = True
             self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -624,8 +636,8 @@ class SetupEOSMicro():
             self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
             self.note = ""
             self.label = 'QMC-AV4-2008'
-            self.linestyle = 'solid'
             self.marker = 's'
+            #self.linestyle = 'solid'
             self.err = True
             self.gap_err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -668,7 +680,8 @@ class SetupEOSMicro():
             self.ref = 'K. Hebeler, et al, Phys. Rev. Lett. 105, 161102 (2010)'
             self.note = "chiral NN forces with SRG and leading 3N forces."
             self.label = 'MBPT-2010'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
             self.nm_den_min = min( self.nm_den ); self.nm_den_max = max( self.nm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -689,7 +702,8 @@ class SetupEOSMicro():
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
             self.note = "We do not have the data for this model, but we have a fit of the data."
             self.label = 'AFDMC-2012-'+str(k)
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #name = np.loadtxt( file_in, usecols=(5), unpack = True )
             nmodel = np.size(alfa)
@@ -733,7 +747,8 @@ class SetupEOSMicro():
             self.ref = 'I. Tews et al., PRL 110, 032504 (2013)'
             self.note = "write here notes about this EOS."
             self.label = 'QMC-2013'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -766,7 +781,8 @@ class SetupEOSMicro():
             self.ref = 'G. Wlazłowski, J.W. Holt, S. Moroz, A. Bulgac, and K.J. Roche Phys. Rev. Lett. 113, 182503 (2014)'
             self.note = "write here notes about this EOS."
             self.label = 'AFQMC-2014'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -806,7 +822,8 @@ class SetupEOSMicro():
             self.ref = ' I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016).'
             self.note = ""
             self.label = 'QMC-2016'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -844,7 +861,8 @@ class SetupEOSMicro():
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. C 93, 054314 (2016).'
             self.note = ""
             self.label = 'MBPT-2016'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.err = True
             # read the results for the 7 hamiltonians
             length = np.zeros( (11), dtype=int )
@@ -936,7 +954,10 @@ class SetupEOSMicro():
             self.esym_kf = nuda.kf( self.esym_den )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
             #print('esym:',self.esym_e2a)
             #
@@ -965,7 +986,8 @@ class SetupEOSMicro():
             self.ref = 'I. Tews, J. Carlson, S. Gandolfi, S. Reddy, Astroph. J. 860(2), 149 (2018).'
             self.note = ""
             self.label = 'QMC-2018'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -1008,7 +1030,8 @@ class SetupEOSMicro():
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
             self.note = ""
             self.label = 'MBPT-2019-L59'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
@@ -1055,7 +1078,10 @@ class SetupEOSMicro():
             self.esym_kf = nuda.kf( self.esym_den )
             #print('kf:',self.esym_kf)
             #print('den:',self.esym_den)
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
             #print('esym:',self.esym_e2a)
             #
@@ -1088,7 +1114,8 @@ class SetupEOSMicro():
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
             self.note = ""
             self.label = 'MBPT-2019-L69'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
@@ -1130,7 +1157,10 @@ class SetupEOSMicro():
             den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
             self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
             #
             # chemical potential
@@ -1162,7 +1192,8 @@ class SetupEOSMicro():
             self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
             self.note = ""
             self.label = 'MBPT-2020'
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.every = 4
             self.err = True
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
@@ -1208,7 +1239,10 @@ class SetupEOSMicro():
             den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
             self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
             #
             # chemical potential
@@ -1241,7 +1275,7 @@ class SetupEOSMicro():
             self.label = 'AFDMC+corr.-2022'
             self.linestyle = 'solid'
             self.marker = 'o'
-            self.linestyle = 'solid'
+            #self.linestyle = 'solid'
             self.every = 1
             self.err = True
             self.gap_err = True
@@ -1284,7 +1318,7 @@ class SetupEOSMicro():
             self.note = ""
             self.label = 'NLEFT-2024'
             self.marker = 's'
-            self.linestyle = 'solid'
+            #self.linestyle = 'solid'
             self.every = 1
             self.err = True
             #
@@ -1431,6 +1465,8 @@ class SetupEOSMicro():
             self.esym_sm_e2a = func_e2a_NLEFT2024( self.esym_sm_kfn, *self.sm_pfit )
             self.esym_sm_e2a_min = self.esym_sm_e2a.copy()
             self.esym_sm_e2a_max = self.esym_sm_e2a.copy()
+            self.esym_e2a_sm = self.esym_sm_e2a
+            self.esym_e2a_nm = self.esym_nm_e2a
             self.esym_e2a_fit = self.esym_nm_e2a - self.esym_sm_e2a
             self.esym_e2a_fit_min = self.esym_e2a_fit.copy()
             self.esym_e2a_fit_max = self.esym_e2a_fit.copy()
@@ -1589,7 +1625,8 @@ class SetupEOSMicro():
             if nuda.env.verb: print('Reads file:',file_in2)
             self.ref = 'I. Vida\\~na, J. Margueron, H.J. Schulze, Universe 10, 5 (2024).'
             self.note = ""
-            self.linestyle = 'solid'
+            self.marker = 's'
+            #self.linestyle = 'solid'
             self.every = 4
             self.err = False
             #
@@ -1634,7 +1671,10 @@ class SetupEOSMicro():
             den_step = ( self.esym_den_max - self.esym_den_min ) / float( self.nesym )
             self.esym_den = self.esym_den_min + np.arange(self.nesym+1) * den_step
             self.esym_kf = nuda.kf( self.esym_den )
-            self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
+            self.esym_e2a_sm = cs_sm_e2a( self.esym_den )
+            self.esym_e2a_nm = cs_nm_e2a( self.esym_den )
+            self.esym_e2a = self.esym_e2a_nm - self.esym_e2a_sm
+            #self.esym_e2a = cs_nm_e2a( self.esym_den ) - cs_sm_e2a( self.esym_den )
             self.esym_e2a_err = np.sqrt( cs_nm_e2a_err( self.esym_den )**2 + cs_sm_e2a_err( self.esym_den )**2 )
             #
             # chemical potential in SM and NM
@@ -1872,7 +1912,7 @@ class SetupEOSMicro():
         #: Attribute the uncertainty in the energy per particle for esym.
         self.esym_e2a_err = None
         #: Attribute the plot linestyle.
-        self.linestyle = 'solid'
+        self.linestyle = None
         #: Attribute the plot to discriminate True uncertainties from False ones.
         self.err = False
         #: Attribute the plot to discriminate True uncertainties from False ones.
