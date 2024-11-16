@@ -19,6 +19,19 @@ e = 1.602176634e-19 # electron charge in Coulomb
 c = 299.792458e6 # speed of light in m s^-1
 c2 = c*c
 Nc = 3 # Number of colors
+#
+# astrophysics
+#
+G_cgs    = 6.67259e-8  # Grav. const in cm^3/g/s^2
+G_si     = 6.67259e-11 # Grav. const in m^3/Kg/s^2
+Msol_cgs = 1.99e33     # solar mass in g
+Msol_si  = 1.99e30     # solar mass in Kg
+Rsol_cgs = 6.96e10     # solar radius in cm
+Rsol_si  = 6.96e8      # solar radius in m
+rshsol_si = 2 * G_si * Msol_si / c2 # Schw. radius of the sun in m
+#
+# integers
+#
 one = 1.0
 two = 2.0
 three = 3.0

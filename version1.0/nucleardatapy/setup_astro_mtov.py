@@ -9,8 +9,6 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-#def proba(amass, avmass, sig_low, sig_up):
-
 def compute_proba_do( amass, mass_cen, sig_up, sig_do ):
     fac = math.sqrt( 2 )
     prob = []
@@ -113,22 +111,38 @@ class SetupAstroMtov():
         if nuda.env.verb: print("Exit SetupAstroMtov()")
         #
     #
-    def print_outputs( self ):
-       """
-       Method which print outputs on terminal's screen.
-       """
-       print("")
-       #
-       if nuda.env.verb: print("Enter print_outputs()")
-       #
-       print("- Print output:")
-       print("   sources:  ",self.sources)
-       print("   mass:",self.mass)
-       print("   proba_tot:",self.proba_tot)
-       #print("   sigmas:",self.sig_low,self.sig_up)
-       #print("   label:  ",self.label)
-       #print("   note:   ",self.note)
-       #
-       if nuda.env.verb: print("Exit print_outputs()")
-       #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   sources_do:  ",self.sources_do)
+            print("   sources_up:  ",self.sources_up)
+            print("   mass:",self.mass)
+            print("   proba_tot:",self.proba_tot)
+        else:
+            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.sources_do} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
+        else:
+            print(f"- No  table for sources {self.sources_do} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
        

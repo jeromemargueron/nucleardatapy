@@ -74,6 +74,8 @@ class SetupAstroMup():
         #
         if nuda.env.verb: print("Enter SetupAstroMup()")
         #
+        # some checks
+        #
         sources, sources_lower = astro_mup()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
@@ -92,9 +94,10 @@ class SetupAstroMup():
         self.hyp = hyp
         if nuda.env.verb: print("hyp:",hyp)
         #
+        # fix `file_in` and some properties of the object
+        #
         if source.lower()=='gw170817':
             file_in = nuda.param.path_data+'astro/masses/GW170817.dat'
-            #if hyp=='low-spin+TaylorF2':
             if hyp == 1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.P. Abbott, R. Abbott, T.D. Abbott, et al., PRL 119, 161101 (2017)'
@@ -102,7 +105,7 @@ class SetupAstroMup():
                 self.label = 'GW170817 low-spin Abbott 2017'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
-            #elif hyp=='high-spin+TaylorF2':
+                self.marker = 'o'
             elif hyp == 2:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.P. Abbott, R. Abbott, T.D. Abbott, et al., PRL 119, 161101 (2017)'
@@ -110,7 +113,7 @@ class SetupAstroMup():
                 self.label = 'GW170817 high-spin Abbott 2017'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
-            #elif hyp=='low-spin+PhenomPNRT':
+                self.marker = 's'
             elif hyp == 3:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref=' B.P. Abbott, R. Abbott, T.D. Abbott, F. Acernese, et al., PRX 9, 011001 (2019)'
@@ -118,7 +121,7 @@ class SetupAstroMup():
                 self.label = 'GW170817 low-spin Abbott 2019'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
-            #elif hyp=='high-spin+PhenomPNRT':
+                self.marker = 'o'
             elif hyp == 4:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref=' B.P. Abbott, R. Abbott, T.D. Abbott, F. Acernese, et al., PRX 9, 011001 (2019)'
@@ -126,6 +129,7 @@ class SetupAstroMup():
                 self.label = 'GW170817 high-spin Abbott 2019'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 's'
         elif source.lower()=='gw190814':
             file_in = nuda.param.path_data+'astro/masses/GW190814.dat'
             if hyp == 1:
@@ -135,6 +139,7 @@ class SetupAstroMup():
                 self.label = 'GW190814 Abbott 2020'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         #
         #: Attribute the observational mass of the source.
         self.mup = None
@@ -144,6 +149,8 @@ class SetupAstroMup():
         self.sig_do = None
         #: Attribute latexCite.
         self.latexCite = None
+        #
+        # read file from `file_in`
         #
         with open(file_in,'r') as file:
             for line in file:
@@ -160,39 +167,45 @@ class SetupAstroMup():
         if nuda.env.verb: print("Exit SetupAstroMup()")
         #
     #
-    def print_outputs( self ):
-       """
-       Method which print outputs on terminal's screen.
-       """
-       print("")
-       #
-       if nuda.env.verb: print("Enter print_outputs()")
-       #
-       print("- Print output:")
-       print("   source:  ",self.source)
-       print("   hyp:",self.hyp)
-       print("   mup:",self.mup)
-       print("   sigma(mup):",self.sig_up,self.sig_do)
-       print("   latexCite:",self.latexCite)
-       print("   ref:    ",self.ref)
-       print("   label:  ",self.label)
-       print("   note:   ",self.note)
-       #
-       if nuda.env.verb: print("Exit print_outputs()")
-       #
-
-def gauss( ax, mass, sig_up, sig_do ):
-    fac = math.sqrt( 2*math.pi )
-    gauss = []
-    for x in ax:
-        if x < mass: 
-            z = ( x - mass ) / sig_do
-            norm = sig_do * fac
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   hyp:",self.hyp)
+            print("   mup:",self.mup)
+            print("   sigma(mup):",self.sig_up,self.sig_do)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
         else:
-            z = ( x - mass ) / sig_up
-            norm = sig_up * fac
-        gauss.append( math.exp( -0.5*z**2 ) / norm )
-    return gauss
+            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & {self.hyp} & ${self.mup:.2f}^{{{+self.sig_up}}}_{{{-self.sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+        else:
+            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
+
 
 class SetupAstroMupAverage():
     """
@@ -247,23 +260,53 @@ class SetupAstroMupAverage():
         #
         if nuda.env.verb: print("Exit SetupAstroMupAverage()")
     #
-    def print_outputs( self ):
-       """
-       Method which print outputs on terminal's screen.
-       """
-       print("")
-       #
-       if nuda.env.verb: print("Enter print_outputs()")
-       #
-       print("- Print output:")
-       print("   source:  ",self.source)
-       print("   mup_cen:",self.mup_cen)
-       print("   sig_std:",self.sig_std)
-       print("   latexCite:",self.latexCite)
-       print("   ref:    ",self.ref)
-       print("   label:  ",self.label)
-       print("   note:   ",self.note)
-       #
-       if nuda.env.verb: print("Exit print_outputs()")
-       #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   mup_cen:",self.mup_cen)
+            print("   sig_std:",self.sig_std)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
+        else:
+            print(f"- No output for source {self.source} (average). To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & {self.hyp} & ${self.mup_cen:.2f}\pm{+self.sig_std}$ & \cite{{{self.latexCite}}} \\\\")
+        else:
+            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
 
+def gauss( ax, mass, sig_up, sig_do ):
+    fac = math.sqrt( 2*math.pi )
+    gauss = []
+    for x in ax:
+        if x < mass: 
+            z = ( x - mass ) / sig_do
+            norm = sig_do * fac
+        else:
+            z = ( x - mass ) / sig_up
+            norm = sig_up * fac
+        gauss.append( math.exp( -0.5*z**2 ) / norm )
+    return gauss

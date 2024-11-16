@@ -79,6 +79,8 @@ class SetupAstroMasses():
         #
         if nuda.env.verb: print("Enter SetupAstroMasses()")
         #
+        # some checks
+        #
         sources, sources_lower = astro_masses()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
@@ -97,6 +99,8 @@ class SetupAstroMasses():
         self.obs = obs
         if nuda.env.verb: print("obs:",obs)
         #
+        # fix `file_in` and some properties of the object
+        #
         if source.lower()=='j1614–2230':
             file_in = nuda.param.path_data+'astro/masses/J1614–2230.dat'
             if obs==1:
@@ -106,6 +110,7 @@ class SetupAstroMasses():
                 self.label = 'J1614–2230 Demorest 2010'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
             elif obs==2:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='E. Fonseca, et al., ApJ 832(2), 167 (2016)'
@@ -113,6 +118,7 @@ class SetupAstroMasses():
                 self.label = 'J1614–2230 Fonseca 2016'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 's'
             elif obs==3:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='Z. Arzoumanian, et al., ApJ Suppl. 235(2), 37 (2018)'
@@ -120,6 +126,7 @@ class SetupAstroMasses():
                 self.label = 'J1614–2230 Arzoumanian 2018'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
             elif obs==4:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M. Alam, Z. Arzoumanian, P. Baker, H. Blumer et al., ApJ Suppl. 252(1) (2021)'
@@ -127,6 +134,7 @@ class SetupAstroMasses():
                 self.label = 'J1614–2230 Alam 2021'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 's'
             elif obs==5:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G. Agazie, M.F. Alam, A. Anumarlapudi, A.M. Archibald et al., ApJ Lett. 951, L9 (2023)'
@@ -134,6 +142,7 @@ class SetupAstroMasses():
                 self.label = 'J1614–2230 Agazie 2023'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         elif source.lower()=='j0348+0432':
             file_in = nuda.param.path_data+'astro/masses/J0348+0432.dat'
             if obs==1:
@@ -143,6 +152,7 @@ class SetupAstroMasses():
                 self.label = 'J0348+0432 Antoniadis 2013'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         elif source.lower()=='j2215+5135':
             file_in = nuda.param.path_data+'astro/masses/J2215+5135.dat'
             if obs==1:
@@ -152,6 +162,7 @@ class SetupAstroMasses():
                 self.label = 'J2215+5135 Linares 2018'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         elif source.lower()=='j1600+3053':
             file_in = nuda.param.path_data+'astro/masses/J1600+3053.dat'
             if obs==1:
@@ -161,6 +172,7 @@ class SetupAstroMasses():
                 self.label = 'J1600+3053 Arzoumanian 2018'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         elif source.lower()=='j0740+6620':
             file_in = nuda.param.path_data+'astro/masses/J0740+6620.dat'
             if obs==1:
@@ -170,6 +182,7 @@ class SetupAstroMasses():
                 self.label = 'J0740+6620 Cromartie 2019'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
             elif obs==2:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='E. Fonseca, H.T. Cromartie, T.T. Pennucci, P.S. Ray, 915, L12 (2021)'
@@ -177,6 +190,7 @@ class SetupAstroMasses():
                 self.label = 'J0740+6620 Fonseca 2021'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 's'
             elif obs==3:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G. Agazie, M.F. Alam, A. Anumarlapudi, A.M. Archibald et al., ApJ Lett. 951, L9 (2023)'
@@ -184,6 +198,7 @@ class SetupAstroMasses():
                 self.label = 'J0740+6620 Agazie 2023'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write here notes about this observation."
+                self.marker = 'o'
         #
         #: Attribute the observational mass of the source.
         self.mass = None
@@ -193,6 +208,8 @@ class SetupAstroMasses():
         self.sig_do = None
         #: Attribute latexCite.
         self.latexCite = None
+        #
+        # read file from `file_in`
         #
         with open(file_in,'r') as file:
             for line in file:
@@ -208,39 +225,44 @@ class SetupAstroMasses():
         if nuda.env.verb: print("Exit SetupAstroMasses()")
         #
     #
-    def print_outputs( self ):
-       """
-       Method which print outputs on terminal's screen.
-       """
-       print("")
-       #
-       if nuda.env.verb: print("Enter print_outputs()")
-       #
-       print("- Print output:")
-       print("   source:  ",self.source)
-       print("   obs:",self.obs)
-       print("   mass:",self.mass)
-       print("   sigma(mass):",self.sig_up,self.sig_do)
-       print("   latexCite:",self.latexCite)
-       print("   ref:    ",self.ref)
-       print("   label:  ",self.label)
-       print("   note:   ",self.note)
-       #
-       if nuda.env.verb: print("Exit print_outputs()")
-       #
-       
-def gauss( ax, mass, sig_up, sig_do ):
-    fac = math.sqrt( 2*math.pi )
-    gauss = []
-    for x in ax:
-        if x < mass: 
-            z = ( x - mass ) / sig_do
-            norm = sig_do * fac
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   obs:",self.obs)
+            print("   mass:",self.mass)
+            print("   sigma(mass):",self.sig_up,self.sig_do)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
         else:
-            z = ( x - mass ) / sig_up
-            norm = sig_up * fac
-        gauss.append( math.exp( -0.5*z**2 ) / norm )
-    return gauss
+            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+        else:
+            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
 
 class SetupAstroMassesAverage():
     """
@@ -299,23 +321,54 @@ class SetupAstroMassesAverage():
         #
         if nuda.env.verb: print("Exit SetupAstroMassesAverage()")
     #
-    def print_outputs( self ):
-       """
-       Method which print outputs on terminal's screen.
-       """
-       print("")
-       #
-       if nuda.env.verb: print("Enter print_outputs()")
-       #
-       print("- Print output:")
-       print("   source:  ",self.source)
-       print("   mass_cen:",self.mass_cen)
-       print("   sig_std:",self.sig_std)
-       print("   latexCite:",self.latexCite)
-       print("   ref:    ",self.ref)
-       print("   label:  ",self.label)
-       print("   note:   ",self.note)
-       #
-       if nuda.env.verb: print("Exit print_outputs()")
-       #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   mass_cen:",self.mass_cen)
+            print("   sig_std:",self.sig_std)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
+        else:
+            print(f"- No output for source {self.source} (average). To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ \\\\")
+        else:
+            print(f"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
 
+
+def gauss( ax, mass, sig_up, sig_do ):
+    fac = math.sqrt( 2*math.pi )
+    gauss = []
+    for x in ax:
+        if x < mass: 
+            z = ( x - mass ) / sig_do
+            norm = sig_do * fac
+        else:
+            z = ( x - mass ) / sig_up
+            norm = sig_up * fac
+        gauss.append( math.exp( -0.5*z**2 ) / norm )
+    return gauss

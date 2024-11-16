@@ -153,21 +153,21 @@ class SetupNucBEExp():
         #
         if table.lower()=='ame':
             if version=='2012':
-                file_in = nuda.param.path_data+'nuclei/masses/AME/2012/nubase.mas12.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2012_nubase.mas12.txt'
                 nbLine_skip = 3 # lines in the header to skip
                 cbe = 18 # column giving the binding energy
                 cdbe = 29 # column giving the uncertainty in the binding energy
                 cdbee = 38 # column ??
                 cyear=105 # column for the discovery year
             elif version=='2016':
-                file_in = nuda.param.path_data+'nuclei/masses/AME/2016/nubase2016.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2016_nubase2016.txt'
                 nbLine_skip = 0
                 cbe = 18
                 cdbe = 29
                 cdbee = 38
                 cyear=105 # column for the discovery year
             elif version=='2020':
-                file_in = nuda.param.path_data+'nuclei/masses/AME/2020/nubase_4.mas20.txt'
+                file_in = nuda.param.path_data+'nuclei/masses/AME/2020_nubase_4.mas20.txt'
                 nbLine_skip = 26
                 cbe = 18
                 cdbe = 31
