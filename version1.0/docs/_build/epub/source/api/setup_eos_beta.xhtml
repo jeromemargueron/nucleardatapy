@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SetupEOSBeta</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupeosbeta">
+<h1>SetupEOSBeta</h1>
+<dl class="py class" id="module-nucleardatapy.setup_eos_beta">
+<dt class="sig sig-object py" id="nucleardatapy.setup_eos_beta.SetupEOSBeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_eos_beta.</span></span><span class="sig-name descname"><span class="pre">SetupEOSBeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'micro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.01393939,</span> <span class="pre">0.01787879,</span> <span class="pre">0.02181818,</span> <span class="pre">0.02575758,</span> <span class="pre">0.02969697,</span> <span class="pre">0.03363636,</span> <span class="pre">0.03757576,</span> <span class="pre">0.04151515,</span> <span class="pre">0.04545455,</span> <span class="pre">0.04939394,</span> <span class="pre">0.05333333,</span> <span class="pre">0.05727273,</span> <span class="pre">0.06121212,</span> <span class="pre">0.06515152,</span> <span class="pre">0.06909091,</span> <span class="pre">0.0730303,</span> <span class="pre">0.0769697,</span> <span class="pre">0.08090909,</span> <span class="pre">0.08484848,</span> <span class="pre">0.08878788,</span> <span class="pre">0.09272727,</span> <span class="pre">0.09666667,</span> <span class="pre">0.10060606,</span> <span class="pre">0.10454545,</span> <span class="pre">0.10848485,</span> <span class="pre">0.11242424,</span> <span class="pre">0.11636364,</span> <span class="pre">0.12030303,</span> <span class="pre">0.12424242,</span> <span class="pre">0.12818182,</span> <span class="pre">0.13212121,</span> <span class="pre">0.13606061,</span> <span class="pre">0.14,</span> <span class="pre">0.14393939,</span> <span class="pre">0.14787879,</span> <span class="pre">0.15181818,</span> <span class="pre">0.15575758,</span> <span class="pre">0.15969697,</span> <span class="pre">0.16363636,</span> <span class="pre">0.16757576,</span> <span class="pre">0.17151515,</span> <span class="pre">0.17545455,</span> <span class="pre">0.17939394,</span> <span class="pre">0.18333333,</span> <span class="pre">0.18727273,</span> <span class="pre">0.19121212,</span> <span class="pre">0.19515152,</span> <span class="pre">0.19909091,</span> <span class="pre">0.2030303,</span> <span class="pre">0.2069697,</span> <span class="pre">0.21090909,</span> <span class="pre">0.21484848,</span> <span class="pre">0.21878788,</span> <span class="pre">0.22272727,</span> <span class="pre">0.22666667,</span> <span class="pre">0.23060606,</span> <span class="pre">0.23454545,</span> <span class="pre">0.23848485,</span> <span class="pre">0.24242424,</span> <span class="pre">0.24636364,</span> <span class="pre">0.25030303,</span> <span class="pre">0.25424242,</span> <span class="pre">0.25818182,</span> <span class="pre">0.26212121,</span> <span class="pre">0.26606061,</span> <span class="pre">0.27,</span> <span class="pre">0.27393939,</span> <span class="pre">0.27787879,</span> <span class="pre">0.28181818,</span> <span class="pre">0.28575758,</span> <span class="pre">0.28969697,</span> <span class="pre">0.29363636,</span> <span class="pre">0.29757576,</span> <span class="pre">0.30151515,</span> <span class="pre">0.30545455,</span> <span class="pre">0.30939394,</span> <span class="pre">0.31333333,</span> <span class="pre">0.31727273,</span> <span class="pre">0.32121212,</span> <span class="pre">0.32515152,</span> <span class="pre">0.32909091,</span> <span class="pre">0.3330303,</span> <span class="pre">0.3369697,</span> <span class="pre">0.34090909,</span> <span class="pre">0.34484848,</span> <span class="pre">0.34878788,</span> <span class="pre">0.35272727,</span> <span class="pre">0.35666667,</span> <span class="pre">0.36060606,</span> <span class="pre">0.36454545,</span> <span class="pre">0.36848485,</span> <span class="pre">0.37242424,</span> <span class="pre">0.37636364,</span> <span class="pre">0.38030303,</span> <span class="pre">0.38424242,</span> <span class="pre">0.38818182,</span> <span class="pre">0.39212121,</span> <span class="pre">0.39606061,</span> <span class="pre">0.4])</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p></li>
+<li><p><strong>kind</strong> (<em>str</em><em>, </em><em>optional.</em>) – chose between ‘micro’ and ‘pheno’.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_eos_beta.SetupEOSBeta.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_eos_beta.SetupEOSBeta.model">
+<span class="sig-name descname"><span class="pre">model</span></span></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_eos_beta.SetupEOSBeta.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEOSBeta.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_SetupEOSBeta_xp.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the proton fraction at beta-equilibrium. (left) Microscopic models and (right) phenomenological models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="map to buried treasure" src="../../_images/plot_SetupEOSBeta_xe.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the electron fraction at beta-equilibrium. (left) Microscopic models and (right) phenomenological models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="map to buried treasure" src="../../_images/plot_SetupEOSBeta_xmu.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the muon fraction at beta-equilibrium. (left) Microscopic models and (right) phenomenological models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

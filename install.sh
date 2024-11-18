@@ -1,7 +1,7 @@
 #/bin/sh
 
 # version number
-VER=0.1
+VER=1.0
 
 # Folder where libraries are installed:
 LIB=$HOME/mylib
@@ -21,25 +21,25 @@ echo ">> -----------------------------------"
 echo ""
 echo ""
 echo ">> create a symbolic link to the current version"
-rm nucleardatapy
-ln -s nucleardatapy-v$VER nucleardatapy
+#rm nucleardatapy
+#ln -s nucleardatapy-v$VER nucleardatapy
 
 echo ""
 echo ">> copy nucleardatapy toolkit to $LIB/nucleardatapy folder"
+rm -rf $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy/nucleardatapy
-cp -R nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
-cp -R data $LIB/nucleardatapy/
+cp -R version$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
+cp -R version$VER/data $LIB/nucleardatapy/
 
 echo ""
 echo ">> copy nucleardatapy samples to $SAMPLES/samples/ folder"
 mkdir -p  $SAMPLES/samples
-cp -R samples/nucleardatapy_samples $SAMPLES/samples/
+cp -R version$VER/samples/nucleardatapy_samples $SAMPLES/samples/
 
 echo ""
 echo ">> copy nucleardatapy plots to $SAMPLES/samples folder"
-cp -R samples/nucleardatapy_plots $SAMPLES/samples/
-
+cp -R version$VER/samples/nucleardatapy_plots $SAMPLES/samples/
 
 echo ""
 echo ">> You should create the following global variables:"

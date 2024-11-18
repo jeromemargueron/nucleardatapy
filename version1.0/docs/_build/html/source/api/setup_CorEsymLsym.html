@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupCorEsymLsym &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="SetupAstroGW" href="setup_astro_gw.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupCorEsymLsym</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.CorEsymLsym_constraints"><code class="docutils literal notranslate"><span class="pre">CorEsymLsym_constraints()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Esym</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_err"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Esym_err</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_max"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Esym_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_min"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Esym_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Lsym</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_err"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Lsym_err</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_max"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Lsym_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_min"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.Lsym_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.alpha"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.alpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.constraint"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.constraint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.label"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.note"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.note</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.print_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.ref"><code class="docutils literal notranslate"><span class="pre">SetupCorEsymLsym.ref</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupCorEsymLsym</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_CorEsymLsym.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setupcoresymlsym">
+<h1>SetupCorEsymLsym<a class="headerlink" href="#setupcoresymlsym" title="Link to this heading"></a></h1>
+<dl class="py function" id="module-nucleardatapy.setup_CorEsymLsym">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.CorEsymLsym_constraints">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_CorEsymLsym.</span></span><span class="sig-name descname"><span class="pre">CorEsymLsym_constraints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_CorEsymLsym.html#CorEsymLsym_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.CorEsymLsym_constraints" title="Link to this definition"></a></dt>
+<dd><p>Return a list of constraints available in this toolkit in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2023-PREXII+CREX-Zhang’; and     print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of constraints.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_CorEsymLsym.</span></span><span class="sig-name descname"><span class="pre">SetupCorEsymLsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2014-IAS'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_CorEsymLsym.html#SetupCorEsymLsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym" title="Link to this definition"></a></dt>
+<dd><p>Instantiate the values of Esym and Lsym from the constraint.</p>
+<p>The name of the constraint to be chosen in the     following list: ‘2009-HIC’, ‘2010-RNP’, ‘2012-FRDM’, ‘2013-NS’,     ‘2014-IAS’, ‘2014-IAS+RNP’, ‘2015-POL-208PB’, ‘2015-POL-120SN’,     ‘2015-POL-68NI’, ‘2017-UG’, ‘2021-PREXII-Reed’,     ‘2021-PREXII-Reinhard’, ‘2021-PREXII+CREX-Zhang’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>constraint</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>constraint</cite>. Default value: ‘2014-IAS’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym">
+<span class="sig-name descname"><span class="pre">Esym</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym" title="Link to this definition"></a></dt>
+<dd><p>Attribute Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_err">
+<span class="sig-name descname"><span class="pre">Esym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_err" title="Link to this definition"></a></dt>
+<dd><p>Attribute with uncertainty in Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_max">
+<span class="sig-name descname"><span class="pre">Esym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_max" title="Link to this definition"></a></dt>
+<dd><p>Attribute max of Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_min">
+<span class="sig-name descname"><span class="pre">Esym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Esym_min" title="Link to this definition"></a></dt>
+<dd><p>Attribute min of Esym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym">
+<span class="sig-name descname"><span class="pre">Lsym</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym" title="Link to this definition"></a></dt>
+<dd><p>Attribute Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_err">
+<span class="sig-name descname"><span class="pre">Lsym_err</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_err" title="Link to this definition"></a></dt>
+<dd><p>Attribute with uncertainty in Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_max">
+<span class="sig-name descname"><span class="pre">Lsym_max</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_max" title="Link to this definition"></a></dt>
+<dd><p>Attribute max of Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_min">
+<span class="sig-name descname"><span class="pre">Lsym_min</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.Lsym_min" title="Link to this definition"></a></dt>
+<dd><p>Attribute min of Lsym.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.alpha" title="Link to this definition"></a></dt>
+<dd><p>Attribute the plot alpha</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.constraint">
+<span class="sig-name descname"><span class="pre">constraint</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.constraint" title="Link to this definition"></a></dt>
+<dd><p>Attribute constraint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.label" title="Link to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.note" title="Link to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the constraint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_CorEsymLsym.html#SetupCorEsymLsym.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.print_outputs" title="Link to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_CorEsymLsym.SetupCorEsymLsym.ref" title="Link to this definition"></a></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupCorEsymLsym.py</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_SetupCorEsymLsym.png"><img alt="map to buried treasure" src="../../_images/plot_SetupCorEsymLsym.png" style="width: 448.0px; height: 336.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the Esym,2 versus Lsym,2 correlation for the different constraints availble in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_astro_gw.html" class="btn btn-neutral float-left" title="SetupAstroGW" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

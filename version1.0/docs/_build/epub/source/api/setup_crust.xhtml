@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SetupCrust</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupcrust">
+<h1>SetupCrust</h1>
+<dl class="py class" id="module-nucleardatapy.setup_crust">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_crust.</span></span><span class="sig-name descname"><span class="pre">SetupCrust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modcrust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1973-Negele-Vautherin'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the properties of the crust for the existing models.</p>
+<p>This choice is defined in the variable <cite>crust</cite>.</p>
+<p><cite>crust</cite> can chosen among the following ones: ‘Negele-Vautherin-1973’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>crust</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>crust</cite>. Default value: ‘Negele-Vautherin-1973’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.A">
+<span class="sig-name descname"><span class="pre">A</span></span></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N">
+<span class="sig-name descname"><span class="pre">N</span></span></dt>
+<dd><p>Attribute N (total number of neutrons of the WS cell).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N_bound">
+<span class="sig-name descname"><span class="pre">N_bound</span></span></dt>
+<dd><p>Attribute N_bound (number of bound neutrons).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N_g">
+<span class="sig-name descname"><span class="pre">N_g</span></span></dt>
+<dd><p>Attribute N_g (number of neutrons in the gas).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.RWS">
+<span class="sig-name descname"><span class="pre">RWS</span></span></dt>
+<dd><p>Attribute the radius of the WS cell (in fm).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den">
+<span class="sig-name descname"><span class="pre">den</span></span></dt>
+<dd><p>Attribute the density of the system (in fm^-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den_cgs">
+<span class="sig-name descname"><span class="pre">den_cgs</span></span></dt>
+<dd><p>Attribute the density of the system (in cm^-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den_g">
+<span class="sig-name descname"><span class="pre">den_g</span></span></dt>
+<dd><p>Attribute the approximate density of neutron in the gas (in fm-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int">
+<span class="sig-name descname"><span class="pre">e2a_int</span></span></dt>
+<dd><p>Attribute the internal energy (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int2">
+<span class="sig-name descname"><span class="pre">e2a_int2</span></span></dt>
+<dd><p>Attribute the energy minus the neutron mass (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int_g">
+<span class="sig-name descname"><span class="pre">e2a_int_g</span></span></dt>
+<dd><p>Attribute the internal energy of the gas component (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_rm">
+<span class="sig-name descname"><span class="pre">e2a_rm</span></span></dt>
+<dd><p>Attribute the rest mass energy (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.mu_n">
+<span class="sig-name descname"><span class="pre">mu_n</span></span></dt>
+<dd><p>Attribute the neutron chemical potential (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.mu_p">
+<span class="sig-name descname"><span class="pre">mu_p</span></span></dt>
+<dd><p>Attribute the proton chemical potential (in MeV).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xn">
+<span class="sig-name descname"><span class="pre">xn</span></span></dt>
+<dd><p>Attribute the fraction of neutrons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xn_bound">
+<span class="sig-name descname"><span class="pre">xn_bound</span></span></dt>
+<dd><p>Attribute the fraction of bound neutrons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xp">
+<span class="sig-name descname"><span class="pre">xp</span></span></dt>
+<dd><p>Attribute the fraction of protons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xpn_bound">
+<span class="sig-name descname"><span class="pre">xpn_bound</span></span></dt>
+<dd><p>Attribute the approximate ratio of proton to neutron in the nucleus.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.models_crust">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_crust.</span></span><span class="sig-name descname"><span class="pre">models_crust</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list of the tables available in this toolkit for the experimental masses and
+print them all on the prompt. These tables are the following
+ones: ‘Negele-Vautheron-1973’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_SetupCrust.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Properties of the crust as given by the models available in the nuda toolkit.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

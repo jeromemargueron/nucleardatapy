@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupCrust &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SetupAstroMasses" href="setup_astro_masses.html" />
+    <link rel="prev" title="SetupNucISGMRExp" href="setup_nuc_isgmr_exp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupCrust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust"><code class="docutils literal notranslate"><span class="pre">SetupCrust</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.A"><code class="docutils literal notranslate"><span class="pre">SetupCrust.A</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.A_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.A_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.I_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.I_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.N"><code class="docutils literal notranslate"><span class="pre">SetupCrust.N</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.N_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.N_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.N_g"><code class="docutils literal notranslate"><span class="pre">SetupCrust.N_g</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.RWS"><code class="docutils literal notranslate"><span class="pre">SetupCrust.RWS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.Rcl"><code class="docutils literal notranslate"><span class="pre">SetupCrust.Rcl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.Z"><code class="docutils literal notranslate"><span class="pre">SetupCrust.Z</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.Z_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.Z_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.den"><code class="docutils literal notranslate"><span class="pre">SetupCrust.den</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.den_cgs"><code class="docutils literal notranslate"><span class="pre">SetupCrust.den_cgs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.den_g"><code class="docutils literal notranslate"><span class="pre">SetupCrust.den_g</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int"><code class="docutils literal notranslate"><span class="pre">SetupCrust.e2a_int</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int2"><code class="docutils literal notranslate"><span class="pre">SetupCrust.e2a_int2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int_g"><code class="docutils literal notranslate"><span class="pre">SetupCrust.e2a_int_g</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.e2a_rm"><code class="docutils literal notranslate"><span class="pre">SetupCrust.e2a_rm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.mu_n"><code class="docutils literal notranslate"><span class="pre">SetupCrust.mu_n</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.mu_p"><code class="docutils literal notranslate"><span class="pre">SetupCrust.mu_p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.n_g"><code class="docutils literal notranslate"><span class="pre">SetupCrust.n_g</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupCrust.print_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.xn"><code class="docutils literal notranslate"><span class="pre">SetupCrust.xn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.xn_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.xn_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.xp"><code class="docutils literal notranslate"><span class="pre">SetupCrust.xp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.xp_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.xp_bound</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_crust.SetupCrust.xpn_bound"><code class="docutils literal notranslate"><span class="pre">SetupCrust.xpn_bound</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_crust.models_crust"><code class="docutils literal notranslate"><span class="pre">models_crust()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SetupCrust</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_crust.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setupcrust">
+<h1>SetupCrust<a class="headerlink" href="#setupcrust" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-nucleardatapy.setup_crust">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_crust.</span></span><span class="sig-name descname"><span class="pre">SetupCrust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modcrust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1973-Negele-Vautherin'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_crust.html#SetupCrust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust" title="Link to this definition"></a></dt>
+<dd><p>Instantiate the properties of the crust for the existing models.</p>
+<p>This choice is defined in the variable <cite>crust</cite>.</p>
+<p><cite>crust</cite> can chosen among the following ones: ‘Negele-Vautherin-1973’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>crust</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>crust</cite>. Default value: ‘Negele-Vautherin-1973’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.A">
+<span class="sig-name descname"><span class="pre">A</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.A" title="Link to this definition"></a></dt>
+<dd><p>Attribute A (total number of nucleons of the WS cell).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.A_bound">
+<span class="sig-name descname"><span class="pre">A_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.A_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute A_bound (mass of the cluster).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.I_bound">
+<span class="sig-name descname"><span class="pre">I_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.I_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute the asymmetry parameter for bound particles.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N">
+<span class="sig-name descname"><span class="pre">N</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.N" title="Link to this definition"></a></dt>
+<dd><p>Attribute N (total number of neutrons of the WS cell).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N_bound">
+<span class="sig-name descname"><span class="pre">N_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.N_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute N_bound (number of neutrons in the cluster).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.N_g">
+<span class="sig-name descname"><span class="pre">N_g</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.N_g" title="Link to this definition"></a></dt>
+<dd><p>Attribute N_g (number of neutrons in the gas).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.RWS">
+<span class="sig-name descname"><span class="pre">RWS</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.RWS" title="Link to this definition"></a></dt>
+<dd><p>Attribute the radius of the WS cell (in fm).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.Rcl">
+<span class="sig-name descname"><span class="pre">Rcl</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.Rcl" title="Link to this definition"></a></dt>
+<dd><p>Attribute the radius of the cluster (in fm).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.Z" title="Link to this definition"></a></dt>
+<dd><p>Attribute Z (total number of protons of the WS cell).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.Z_bound">
+<span class="sig-name descname"><span class="pre">Z_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.Z_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute Z_bound (charge of the cluster).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den">
+<span class="sig-name descname"><span class="pre">den</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.den" title="Link to this definition"></a></dt>
+<dd><p>Attribute the density of the system (in fm^-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den_cgs">
+<span class="sig-name descname"><span class="pre">den_cgs</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.den_cgs" title="Link to this definition"></a></dt>
+<dd><p>Attribute the density of the system (in cm^-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.den_g">
+<span class="sig-name descname"><span class="pre">den_g</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.den_g" title="Link to this definition"></a></dt>
+<dd><p>Attribute the approximate density of neutron in the gas (in fm-3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int">
+<span class="sig-name descname"><span class="pre">e2a_int</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int" title="Link to this definition"></a></dt>
+<dd><p>Attribute the internal energy (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int2">
+<span class="sig-name descname"><span class="pre">e2a_int2</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int2" title="Link to this definition"></a></dt>
+<dd><p>Attribute the energy minus the neutron mass (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_int_g">
+<span class="sig-name descname"><span class="pre">e2a_int_g</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.e2a_int_g" title="Link to this definition"></a></dt>
+<dd><p>Attribute the internal energy of the gas component (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.e2a_rm">
+<span class="sig-name descname"><span class="pre">e2a_rm</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.e2a_rm" title="Link to this definition"></a></dt>
+<dd><p>Attribute the rest mass energy (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.mu_n">
+<span class="sig-name descname"><span class="pre">mu_n</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.mu_n" title="Link to this definition"></a></dt>
+<dd><p>Attribute the neutron chemical potential (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.mu_p">
+<span class="sig-name descname"><span class="pre">mu_p</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.mu_p" title="Link to this definition"></a></dt>
+<dd><p>Attribute the proton chemical potential (in MeV).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.n_g">
+<span class="sig-name descname"><span class="pre">n_g</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.n_g" title="Link to this definition"></a></dt>
+<dd><p>Attribute n_g (neutron density in the gas).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_crust.html#SetupCrust.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.print_outputs" title="Link to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xn">
+<span class="sig-name descname"><span class="pre">xn</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.xn" title="Link to this definition"></a></dt>
+<dd><p>Attribute the fraction of neutrons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xn_bound">
+<span class="sig-name descname"><span class="pre">xn_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.xn_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute the fraction of bound neutrons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xp">
+<span class="sig-name descname"><span class="pre">xp</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.xp" title="Link to this definition"></a></dt>
+<dd><p>Attribute the fraction of protons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xp_bound">
+<span class="sig-name descname"><span class="pre">xp_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.xp_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute the fraction of bound protons.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.SetupCrust.xpn_bound">
+<span class="sig-name descname"><span class="pre">xpn_bound</span></span><a class="headerlink" href="#nucleardatapy.setup_crust.SetupCrust.xpn_bound" title="Link to this definition"></a></dt>
+<dd><p>Attribute the approximate ratio of proton to neutron in the nucleus.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_crust.models_crust">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_crust.</span></span><span class="sig-name descname"><span class="pre">models_crust</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_crust.html#models_crust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_crust.models_crust" title="Link to this definition"></a></dt>
+<dd><p>Return a list of the tables available in this toolkit for the experimental masses and
+print them all on the prompt. These tables are the following
+ones: ‘Negele-Vautheron-1973’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_SetupCrust.png"><img alt="map to buried treasure" src="../../_images/plot_SetupCrust.png" style="width: 448.0px; height: 336.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Properties of the crust as given by the models available in the nuda toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_nuc_isgmr_exp.html" class="btn btn-neutral float-left" title="SetupNucISGMRExp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_astro_masses.html" class="btn btn-neutral float-right" title="SetupAstroMasses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

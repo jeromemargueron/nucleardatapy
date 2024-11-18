@@ -1,0 +1,38 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Contents}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Usage}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Installation}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Use nucleardatapy}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Test nucleardatapy}{4}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Get started}{4}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}API}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}nucleardatapy}{4}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Miscelaneous}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Contributing}{4}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}License}{5}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Report issues}{5}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Thanks}{5}{subsection.1.3.4}%
+\contentsline {chapter}{\numberline {2}Complement}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}SetupEOSFFG}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}SetupEOSMicro}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}SetupEOSMicroBand}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}SetupEOSMicroLP}{15}{section.2.4}%
+\contentsline {section}{\numberline {2.5}SetupEOSPheno}{17}{section.2.5}%
+\contentsline {section}{\numberline {2.6}SetupEOSAM}{24}{section.2.6}%
+\contentsline {section}{\numberline {2.7}SetupEOSBeta}{24}{section.2.7}%
+\contentsline {section}{\numberline {2.8}SetupEOSHIC}{26}{section.2.8}%
+\contentsline {section}{\numberline {2.9}SetupEOSEsym}{28}{section.2.9}%
+\contentsline {section}{\numberline {2.10}SetupNucBEExp}{29}{section.2.10}%
+\contentsline {section}{\numberline {2.11}SetupNucBETheo}{33}{section.2.11}%
+\contentsline {section}{\numberline {2.12}SetupNucRchExp}{35}{section.2.12}%
+\contentsline {section}{\numberline {2.13}SetupNucISGMRExp}{37}{section.2.13}%
+\contentsline {section}{\numberline {2.14}SetupCrust}{39}{section.2.14}%
+\contentsline {section}{\numberline {2.15}SetupAstroMasses}{40}{section.2.15}%
+\contentsline {section}{\numberline {2.16}SetupAstroMup}{43}{section.2.16}%
+\contentsline {section}{\numberline {2.17}SetupAstroMtov}{44}{section.2.17}%
+\contentsline {section}{\numberline {2.18}SetupAstroMR}{45}{section.2.18}%
+\contentsline {section}{\numberline {2.19}SetupAstroGW}{47}{section.2.19}%
+\contentsline {section}{\numberline {2.20}SetupCorEsymLsym}{48}{section.2.20}%
+\contentsline {chapter}{\numberline {3}Indices and tables}{51}{chapter.3}%
+\contentsline {chapter}{Python Module Index}{53}{section*.257}%
+\contentsline {chapter}{Index}{55}{section*.258}%

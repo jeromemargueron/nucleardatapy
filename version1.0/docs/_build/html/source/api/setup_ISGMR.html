@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupISGMR &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_LP.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SetupISGMR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_ISGMR.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setupisgmr">
+<h1>SetupISGMR<a class="headerlink" href="#setupisgmr" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.setup_ISGMR"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">SetupISGMR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2018-ISGMR-GARG'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#SetupISGMR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with microscopic results choosen    by the toolkit practitioner.
+This choice is defined in the variable <cite>table</cite>.</p>
+<p>The <cite>table</cite> can chosen among the following ones:    ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.E_unit">
+<span class="sig-name descname"><span class="pre">E_unit</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.E_unit" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute energy unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.label" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.note" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucA">
+<span class="sig-name descname"><span class="pre">nucA</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucA" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_cent</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_cent" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errm</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errm" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errp</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucM12Mm1_errp" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol">
+<span class="sig-name descname"><span class="pre">nucSymbol</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucSymbol" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute the symbol of the element.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.nucZ">
+<span class="sig-name descname"><span class="pre">nucZ</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.nucZ" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#SetupISGMR.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.ref" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.SetupISGMR.table">
+<span class="sig-name descname"><span class="pre">table</span></span><a class="headerlink" href="#nucleardatapy.setup_ISGMR.SetupISGMR.table" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute table.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.setup_ISGMR.tables_isgmr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_ISGMR.</span></span><span class="sig-name descname"><span class="pre">tables_isgmr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_ISGMR.html#tables_isgmr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_ISGMR.tables_isgmr" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of tables available in this toolkit for the ISGMR energy and
+print them all on the prompt. These tables are the following
+ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_SetupISGMR.png"><img alt="map to buried treasure" src="../../_images/plot_SetupISGMR.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">ISGMR energies available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
