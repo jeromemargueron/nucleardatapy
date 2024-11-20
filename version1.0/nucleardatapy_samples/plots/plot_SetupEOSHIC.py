@@ -53,6 +53,7 @@ def main():
     os.system('mkdir -p figs/')
     #
     constraints, constraints_lower = nuda.eos_hic_constraints()
+   
     #constraints = [ '2014-IAS' ]
     #
     pname = 'figs/plot_SetupEOSHIC.png'

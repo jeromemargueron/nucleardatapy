@@ -14,7 +14,7 @@ def eos_hic_constraints():
     Return a list of the HIC constraints available in this toolkit 
     for the equation of state in SM and NM and print them all on 
     the prompt. These constraints are the following
-    ones: [ 'DLL-2002', 'FOPI-2016' ].
+    ones: [ '2002-DLL', '2016-FOPI' ].
 
     :return: The list of constraints.
     :rtype: list[str].
@@ -22,9 +22,10 @@ def eos_hic_constraints():
     #
     if nuda.env.verb: print("\nEnter eos_hic_constraints()")
     #
-    constraints = [ 'DLL-2002', 'FOPI-2016' ]
+    constraints = [ '2002-DLL', '2016-FOPI' ]
     #
     print('HIC constraints available in the toolkit:',constraints)
+
     constraints_lower = [ item.lower() for item in constraints ]
     if nuda.env.verb: print('HIC constraints available in the toolkit:',constraints_lower)
     #
@@ -39,18 +40,19 @@ class SetupEOSHIC():
 
     This choice is defined in the variable `constraint`.
 
-    `constraint` can chosen among the following ones: [ 'DLL-2002', 'FOPI-2016' ].
+    `constraint` can chosen among the following ones: [ '2002-DLL', '2016-FOPI' ].
 
-    :param constraint: Fix the name of `constraint`. Default value: 'DLL-2002'.
+    :param constraint: Default value: '2002-DLL'.
     :type constraint: str, optional. 
 
     **Attributes:**
     """
-    def __init__(self, constraint = 'DLL-2002'):
+    def __init__(self, constraint = '2002-DLL'):
         #
         if nuda.env.verb: print("Enter SetupEOSHIC()")
         #
         self.constraint = constraint
+        print(constraint)
         if nuda.env.verb: print("constraint:",constraint)
         #
         self = SetupEOSHIC.init_self( self )
@@ -63,7 +65,7 @@ class SetupEOSHIC():
             exit()
         #
         #
-        if constraint.lower()=='dll-2002':
+        if constraint.lower()=='2002-dll':
             #
             file_in1 = nuda.param.path_data+'matter/hic/2002-DLL-SM.dat'
             file_in2 = nuda.param.path_data+'matter/hic/2002-DLL-NM-soft.dat'
@@ -88,7 +90,7 @@ class SetupEOSHIC():
             self.nm_pre_up = self.nm_pre_so_up
             self.nm_pre_lo = self.nm_pre_so_lo
             #
-        elif constraint.lower()=='fopi-2016':
+        elif constraint.lower()=='2016-fopi':
             #
             file_in = nuda.param.path_data+'matter/hic/2016-FOPI.dat'
             #if nuda.env.verb: print('Reads file:',file_in)
