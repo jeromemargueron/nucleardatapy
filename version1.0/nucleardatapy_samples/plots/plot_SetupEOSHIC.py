@@ -4,7 +4,18 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 #plt.rcParams.update({'font.size': 16})
+# Set clean font settings
+# Set 'DejaVu Sans' as the font
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['mathtext.fontset'] = 'stixsans'
+plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 
+# Print the font directories being used by Matplotlib
+import matplotlib.font_manager as fm
+
+font_dirs = fm.findSystemFonts(fontpaths=None, fontext='ttf')
+#print(font_dirs)
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
@@ -14,29 +25,53 @@ def plot_SetupEOSHIC( pname, constraints ):
     #
     # plot
     #
-    fig, axs = plt.subplots(1,2)
+    fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
     #
-    axs[0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
-    axs[1].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
-    axs[0].set_ylabel(r'$E/A_{SM}$ (MeV)',fontsize='12')
-    axs[1].set_ylabel(r'$p_{SM}$ (MeV fm${-3}$)',fontsize='12')
+    axs[0][0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
+    axs[1][0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
+    axs[1][0].set_ylabel(r'$E/A_{SM}$ (MeV)',fontsize='12')
+
+    axs[0][0].set_ylabel(r'$p_{SM}$ (MeV fm$^{-3}$)',fontsize='12')
+    #axs[0][1].set_ylabel(r'$p_{Asy}$ (MeV fm$^{-3}$)',fontsize='12')
+    axs[0][1].set_ylabel(r'$p_{NM}$ (MeV fm$^{-3}$)',fontsize='12')
     #axs.set_xlim([0.09, 0.27])
-    #axs.set_ylim([10, 60])
+    axs[0][0].set_xlim([0.16, 0.8])
+    axs[0][0].set_ylim([0.5, 400])
+    axs[0][1].set_xlim([0.16, 0.8])
+    axs[0][1].set_ylim([0.5, 400])
+
+    axs[1][0].set_xlim([0.0, 0.42])
+    axs[1][0].set_ylim([-25, 30])
+    axs[0][0].set_yscale('log')
+    axs[0][1].set_yscale('log')
     #
     for constraint in constraints:
         #
         hic = nuda.SetupEOSHIC( constraint = constraint )
         #
-        if hic.sm_e2a is not None:
-            axs[0].fill_between( hic.den, y1=hic.sm_e2a_lo, y2=hic.sm_e2a_up, label=hic.label, alpha=hic.alpha )
+        
+
         if hic.sm_pre is not None:
-            axs[1].fill_between( hic.den, y1=hic.sm_pre_lo, y2=hic.sm_pre_up, label=hic.label, alpha=hic.alpha )
+            axs[0][0].fill_between( hic.den, y1=hic.sm_pre_lo, y2=hic.sm_pre_up, label=hic.label, alpha=hic.alpha*0.8, color = hic.color )
+
+        if hic.sm_e2a is not None:
+            axs[1][0].fill_between( hic.den_e2a, y1=hic.sm_e2a_lo, y2=hic.sm_e2a_up, label=hic.label, alpha=hic.alpha, color ='magenta' )
+
+        if hic.nm_pre is not None:
+            axs[0][1].fill_between( hic.den, y1=hic.nm_pre_lo, y2=hic.nm_pre_up, label=hic.label_so, alpha=0.2, color ='b' )
+            axs[0][1].fill_between( hic.den, y1=hic.nm_pre_st_lo, y2=hic.nm_pre_st_up, label=hic.label_st, alpha=0.2, color ='g' )
+
+        if hic.sym_enr is not None:
+            axs[1][1].fill_between( hic.den, y1=hic.sym_enr_lo, y2=hic.sym_enr_up, label=hic.label, alpha=hic.alpha*0.7, color = hic.color )
+
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
-    axs[0].legend(loc='lower right',fontsize='8')
-    axs[1].legend(loc='lower right',fontsize='8')
+    axs[0][0].legend(loc='lower right',fontsize='8')
+    axs[0][1].legend(loc='lower right',fontsize='8')
+    axs[1][0].legend(loc='lower right',fontsize='8')
+    axs[1][1].legend(loc='lower right',fontsize='8')
     #
     plt.savefig(pname)
     plt.close()
