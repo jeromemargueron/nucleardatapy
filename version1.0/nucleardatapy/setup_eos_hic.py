@@ -23,7 +23,7 @@ def eos_hic_constraints():
     if nuda.env.verb: print("\nEnter eos_hic_constraints()")
     #
     constraints = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2011-FOPI-LAND'
-                   , '2016-ASY-EOS' ]
+                   , '2016-ASY-EOS', '2021-SPIRIT' ]
     #
     print('HIC constraints available in the toolkit:',constraints)
 
@@ -41,7 +41,9 @@ class SetupEOSHIC():
 
     This choice is defined in the variable `constraint`.
 
-    `constraint` can chosen among the following ones: [ '2002-DLL', '2016-FOPI' ].
+    `constraint` can chosen among the following ones: 
+    [ '2002-DLL', '2016-FOPI', '2002-KAON', '2011-FOPI_LAND'
+     , '2016-ASY_EOS', '2021-SPIRIT' ].
 
     :param constraint: Default value: '2002-DLL'.
     :type constraint: str, optional. 
@@ -154,7 +156,16 @@ class SetupEOSHIC():
             self.sym_enr = nuda.cst.half * ( self.sym_enr_up + self.sym_enr_lo )
             self.sym_enr_err = nuda.cst.half * ( self.sym_enr_up - self.sym_enr_lo )
                        
-
+        elif constraint.lower()=='2021-spirit':
+            file_in = nuda.param.path_data+'matter/hic/2021-SPIRIT.dat'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'J. Estee et al., Phys. Rev. Lett. 126, 162701 (2021).'
+            self.note = "write here notes about this constraint."
+            self.label = 'SPIRIT-2016'
+            self.color = 'blue'
+            den2densat, den2densat_err, self.sym_enr_spirit, self.sym_enr_spirit_err, self.sym_pre_spirit, self.sym_pre_spirit_err = np.loadtxt( file_in, usecols=(0,1,2,3,4,5), unpack = True )
+            self.den_spirit = den2densat * nuda.cst.nsat # in fm-3
+            self.den_spirit_err = den2densat_err * nuda.cst.nsat # in fm-3
     #
     def print_outputs( self ):
        """
@@ -241,6 +252,8 @@ class SetupEOSHIC():
         self.sym_enr = None
         #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.sym_enr_err = None
+        #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        self.sym_enr_spirit = None
         #: Attribute the plot linestyle.
         self.linestyle = 'solid'
         #: Attribute plot label.

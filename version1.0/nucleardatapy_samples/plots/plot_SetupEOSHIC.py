@@ -70,6 +70,10 @@ def plot_SetupEOSHIC( pname, constraints ):
         if hic.sym_enr is not None:
             axs[1][1].fill_between( hic.den, y1=hic.sym_enr_lo, y2=hic.sym_enr_up, label=hic.label, alpha=hic.alpha*0.7, color = hic.color )
 
+        if hic.sym_enr_spirit is not None:
+            axs[1][1].errorbar( hic.den_spirit, hic.sym_enr_spirit, xerr = hic.den_spirit_err, yerr=hic.sym_enr_spirit_err, fmt='o', 
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 )
+
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs[0][0].legend(loc='lower right',fontsize='8')
