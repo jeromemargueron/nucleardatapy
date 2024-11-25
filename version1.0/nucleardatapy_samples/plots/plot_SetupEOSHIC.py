@@ -31,7 +31,9 @@ def plot_SetupEOSHIC( pname, constraints ):
     #
     axs[0][0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
     axs[1][0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
+    axs[1][1].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
     axs[1][0].set_ylabel(r'$E/A_{SM}$ (MeV)',fontsize='12')
+    axs[1][1].set_ylabel(r'Symmetry energy (MeV)',fontsize='12')
 
     axs[0][0].set_ylabel(r'$p_{SM}$ (MeV fm$^{-3}$)',fontsize='12')
     #axs[0][1].set_ylabel(r'$p_{Asy}$ (MeV fm$^{-3}$)',fontsize='12')
@@ -40,7 +42,9 @@ def plot_SetupEOSHIC( pname, constraints ):
     axs[0][0].set_xlim([0.16, 0.8])
     axs[0][0].set_ylim([0.5, 400])
     axs[0][1].set_xlim([0.16, 0.8])
+    axs[1][1].set_xlim([0.0, 0.32])
     axs[0][1].set_ylim([0.5, 400])
+    axs[1][1].set_ylim([0.0, 80])
 
     axs[1][0].set_xlim([0.0, 0.42])
     axs[1][0].set_ylim([-25, 30])
