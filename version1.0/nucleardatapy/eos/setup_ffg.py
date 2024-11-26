@@ -52,7 +52,7 @@ def eF_n( kf_n ):
     :type kf_n: float or numpy vector of real numbers.
 
     """
-    return np.sqrt(nuda.cst.mnuc2**2 + (nuda.cst.hbc*kf_n)**2) - nuda.cst.mnuc2
+    return np.sqrt(nuda.cst.mnc2**2 + (nuda.cst.hbc*kf_n)**2) - nuda.cst.mnc2
 
 def eF_n_nr( kf_n ):
     """
@@ -64,7 +64,7 @@ def eF_n_nr( kf_n ):
     """
     return nuda.cst.half * nuda.cst.h2m * kf_n**2
 
-def effg_NM( kf_n ):
+def effg_NM_nr( kf_n ):
     """
     Free Fermi gas energy as a function of the neutron Fermi momentum.
 
@@ -74,7 +74,7 @@ def effg_NM( kf_n ):
     """
     return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf_n**2
 
-def effg_SM( kf ):
+def effg_SM_nr( kf ):
     """
     Free Fermi gas energy as a function of the Fermi momentum in SM.
 
@@ -84,7 +84,7 @@ def effg_SM( kf ):
     """
     return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf**2
 
-def effg( kf ):
+def effg_nr( kf ):
     """
     Free Fermi gas energy as a function of the Fermi momentum.
 
@@ -94,7 +94,7 @@ def effg( kf ):
     """
     return nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * kf**2
 
-def esymffg( kf ):
+def esymffg_nr( kf ):
     """
     Free Fermi gas symmetry energy as a function of the Fermi momentum.
 
@@ -102,9 +102,36 @@ def esymffg( kf ):
     :type kf: float or numpy vector of real numbers.
 
     """
-    return effg( kf ) * ( nuda.cst.two**nuda.cst.twoThird - 1.0 )
+    return effg_nr( kf ) * ( nuda.cst.two**nuda.cst.twoThird - 1.0 )
 
-class setupFFG():
+# FFG energy
+def feden(gam, kf, mc2):
+#    if kf > 1e-12:
+    pf = nuda.cst.hbc * kf
+    if mc2 == 0.0:
+        term = 2.0 * pf**4
+        #return gam / (2.0 * nuda.cst.pi) * (nuda.cst.hbc*kf)**4 / 4.0
+    else:
+        ef = np.sqrt( pf * pf + mc2 * mc2 )
+        r = ( pf + ef ) / mc2
+        #term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r) - 8.0 / 3.0 * pf**3 * mc2
+        term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r)
+    return gam * term / (32.0 * nuda.cst.pi2 * nuda.cst.hbc**3 )
+
+# FFG pressure
+def fpres(gam, kf, mc2):
+#    if kf > 1e-12:
+    pf = nuda.cst.hbc * kf
+    if mc2 == 0.0:
+        term = 2.0 * pf**4
+        #return gam / (2.0 * nuda.cst.pi) * kf**4 / 12.0
+    else:
+        ef = np.sqrt( pf * pf + mc2 * mc2 )
+        r = ( pf + ef ) / mc2
+        term = 2.0 * pf**3 * ef - 3.0 * pf * ef * mc2**2 + 3.0 * mc2**4 * np.log(r)
+    return gam * term / ( 48.0 * nuda.cst.pi2 * nuda.cst.hbc**3 )
+
+class setupFFGNuc():
     """
     Instantiate the object with free Fermi gas (FFG) quantities.
 
@@ -127,7 +154,7 @@ class setupFFG():
 
         """
         #
-        if nuda.env.verb: print("Enter setupFFG()")
+        if nuda.env.verb: print("Enter setupFFGNuc()")
         #
         #: Attribute providing the label the data is references for figures.
         self.label = r'FFG $\,\delta=$'+str(delta[0])
@@ -137,31 +164,43 @@ class setupFFG():
         self.den = den 
         #: Attribute isospin parameter
         self.delta = delta 
+        # Attribute the neutron fraction
+        self.x_n = nuda.cst.half * ( nuda.cst.one + delta )
+        # Attribute the proton fraction
+        self.x_p = nuda.cst.half * ( nuda.cst.one - delta )
         #: Attribute neutron density
-        self.den_n = nuda.cst.half * ( nuda.cst.one + delta ) * den
+        self.den_n = self.x_n * den
         #: Attribute proton density
-        self.den_p = nuda.cst.half * ( nuda.cst.one - delta ) * den
-        #: Attribute Fermi momentum
+        self.den_p = self.x_p * den
+        #: Attribute Fermi momentum for a Fermi system with degeneracy = 4
         self.kf = (1.5 * nuda.cst.pi2 * self.den)**nuda.cst.third
-        #: Attribute neutron Fermi momentum
+        #: Attribute neutron Fermi momentum (degeneracy = 2)
         self.kf_n = (nuda.cst.three * nuda.cst.pi2 * self.den_n)**nuda.cst.third
-        #: Attribute proton Fermi momentum
+        #: Attribute proton Fermi momentum (degeneracy = 2)
         self.kf_p = (nuda.cst.three * nuda.cst.pi2 * self.den_p)**nuda.cst.third
-        #: Attribute neutron Fermi energy
-        self.eF_n = np.sqrt( nuda.cst.mnuc2**2 + (nuda.cst.hbc*self.kf_n)**2 ) - nuda.cst.mnuc2
-        self.eF_n_nr = nuda.cst.half * nuda.cst.h2m * self.kf_n**nuda.cst.two
-        #: Attribute proton Fermi energy
-        self.eF_p = np.sqrt( nuda.cst.mnuc2**2 + (nuda.cst.hbc*self.kf_p)**2 ) - nuda.cst.mnuc2
-        self.eF_p_nr = nuda.cst.half * nuda.cst.h2m * self.kf_p**nuda.cst.two
-        #: Attribute FFG energy per particle
+        #: Attribute neutron Fermi energy (degeneracy = 2)
+        self.eF_n = np.sqrt( nuda.cst.mnc2**2 + (nuda.cst.hbc*self.kf_n)**2 )
+        self.eF_n_int = np.sqrt( nuda.cst.mnc2**2 + (nuda.cst.hbc*self.kf_n)**2 ) - nuda.cst.mnc2
+        self.eF_n_int_nr = nuda.cst.half * nuda.cst.h2m * self.kf_n**nuda.cst.two
+        #: Attribute proton Fermi energy (degeneracy = 2)
+        self.eF_p = np.sqrt( nuda.cst.mpc2**2 + (nuda.cst.hbc*self.kf_p)**2 )
+        self.eF_p_int = np.sqrt( nuda.cst.mpc2**2 + (nuda.cst.hbc*self.kf_p)**2 ) - nuda.cst.mpc2
+        self.eF_p_int_nr = nuda.cst.half * nuda.cst.h2m * self.kf_p**nuda.cst.two
+        #: Attribute FFG energy per particle (degeneracy = 2)
+        e2v_n = feden( 2.0, self.kf_n, nuda.cst.mnc2)
+        e2v_p = feden( 2.0, self.kf_p, nuda.cst.mpc2)
+        self.e2v = e2v_n + e2v_p
+        self.e2a = e2v_n / self.den_n + e2v_p / self.den_p
+        self.e2a_int = self.e2a - self.x_n * nuda.cst.mnc2 - self.x_p * nuda.cst.mpc2
         self.e2a_int_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            nuda.cst.half * \
            ( (nuda.cst.one+delta)**nuda.cst.fiveThird + \
              (nuda.cst.one-delta)**nuda.cst.fiveThird )
-        #: Attribute FFG energy per unit volum
+        #: Attribute FFG energy per unit volum (degeneracy = 2)
+        self.e2v_int = self.e2a_int * self.den
         self.e2v_int_nr = self.e2a_int_nr * self.den
-        #: Attribute FFG symmetry energy
+        #: Attribute FFG symmetry energy (degeneracy = 2)
         self.esym_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            ( nuda.cst.two**nuda.cst.twoThird - nuda.cst.one )
@@ -173,7 +212,8 @@ class setupFFG():
         self.esym4_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
            5.0/243.0
-        #: Attribute FFG pressure
+        #: Attribute FFG pressure (degeneracy = 2)
+        self.pre = fpres( 2.0, self.kf_n, nuda.cst.mnc2) + fpres( 2.0, self.kf_p, nuda.cst.mpc2) 
         self.pre_nr = nuda.cst.twoThird * self.e2v_int_nr
         #
         self.den_unit = 'fm$^{-3}$'
@@ -181,7 +221,7 @@ class setupFFG():
         self.e2a_unit = 'MeV'
         self.pre_unit = 'MeV fm$^{-3}$'
         #
-        if nuda.env.verb: print("Exit setupFFG()")
+        if nuda.env.verb: print("Exit setupFFGNuc()")
     #
     def print_outputs( self ):
         """
@@ -199,4 +239,80 @@ class setupFFG():
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
+
+class setupFFGLep():
+    """
+    Instantiate the object with free Fermi gas (FFG) quantities.
+
+    :param den: density or densities for which the FFG quantities are calculated.
+    :type den: float or numpy vector of floats. 
+    :param delta: isospin density or densities for which the FFG quantities are calculated.
+    :type delta: float or numpy vector of floats. 
+    **Attributes:**
+    
+    """
+    #
+    def __init__( self, den_e, den_mu ):
+        """
+        Parameters
+        ----------
+        den_e : float or numpy array of floats.
+        Density or densities for the electron component.
+        den_mu : float or numpy array of floats.
+        Density or densities for the muon component.
+
+        """
+        #
+        if nuda.env.verb: print("Enter setupFFGLep()")
+        #
+        #: Attribute providing the label the data is references for figures.
+        self.label = r'FFG e+$\mu$'
+        #: Attribute providing additional notes about the data.
+        self.note = ""
+        #: Attribute electron density
+        self.den_e = den_e
+        #: Attribute muon density
+        self.den_mu = den_mu
+        #: Attribute electron Fermi momentum (degeneracy = 2)
+        self.kf_e = (nuda.cst.three * nuda.cst.pi2 * self.den_e)**nuda.cst.third
+        #: Attribute muon Fermi momentum (degeneracy = 2)
+        self.kf_mu = (nuda.cst.three * nuda.cst.pi2 * self.den_mu)**nuda.cst.third
+        #: Attribute electon Fermi energy (degeneracy = 2)
+        self.eF_e = np.sqrt( nuda.cst.mec2**2 + (nuda.cst.hbc*self.kf_e)**2 )
+        #: Attribute muon Fermi energy (degeneracy = 2)
+        self.eF_mu = np.sqrt( nuda.cst.mmuc2**2 + (nuda.cst.hbc*self.kf_mu)**2 )
+        #: Attribute FFG energy per particle (degeneracy = 2)
+        e2v_e = feden( 2.0, self.kf_e, nuda.cst.mec2)
+        e2v_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2)
+        self.e2v = e2v_e + e2v_mu
+        self.e2a = e2v_e / self.den_e + e2v_mu / self.den_mu
+        self.e2a_int = self.e2a - (self.den_e*nuda.cst.mec2 + self.den_mu*nuda.cst.mmuc2)/(self.den_e+self.den_mu)
+        #: Attribute FFG pressure (degeneracy = 2)
+        self.pre = fpres( 2.0, self.kf_e, nuda.cst.mec2) + fpres( 2.0, self.kf_mu, nuda.cst.mmuc2) 
+        #
+        self.den_unit = 'fm$^{-3}$'
+        self.kf_unit = 'fm$^{-1}$'
+        self.e2a_unit = 'MeV'
+        self.pre_unit = 'MeV fm$^{-3}$'
+        #
+        if nuda.env.verb: print("Exit setupFFGLep()")
+    #
+    def print_outputs( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_outputs()")
+        #
+        print("- Print output:")
+        if self.den_e is not None: print(f"   den_e: {np.round(self.den_e,2)} in {self.den_unit}")
+        if self.den_mu is not None: print(f"   den_mu: {np.round(self.den_mu,2)}")
+        if self.kf_e is not None: print(f"   kf_e: {np.round(self.kf_e,2)} in {self.kf_unit}")
+        if self.e2a is not None: print(f"   e2a: {np.round(self.e2a,2)} in {self.e2a_unit}")
+        #
+        if nuda.env.verb: print("Exit print_outputs()")
+        #
+
+
 

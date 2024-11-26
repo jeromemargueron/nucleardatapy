@@ -148,16 +148,16 @@ def func_GCR_cs2(den,a,alfa,b,beta):
 def func_e2a_NLEFT2024( kfn, b, c, d ):
     a = 1.0
     func = a + b*kfn + c*kfn**2 + d*kfn**3
-    return func * nuda.effg( kfn )
+    return func * nuda.effg_nr( kfn )
 
 def func_pre_NLEFT2024( kfn, den, b, c, d ):
     func = nuda.cst.two + nuda.cst.three * b * kfn + \
        nuda.cst.four * c * kfn**2 + nuda.cst.five * d * kfn**3
-    return func * nuda.cst.third * den * nuda.effg( kfn )
+    return func * nuda.cst.third * den * nuda.effg_nr( kfn )
 
 def func_dpredn_NLEFT2024( kfn, den, b, c, d ):
     func = nuda.cst.four + 9.0 * b * kfn + 20.0 * c * kfn**2 + 25.0 * d * kfn**3
-    return func_pre_NLEFT2024( kfn, den, b, c, d ) / den + func * nuda.effg( kfn ) / 9.0
+    return func_pre_NLEFT2024( kfn, den, b, c, d ) / den + func * nuda.effg_nr( kfn ) / 9.0
 
 class setupMicro():
     """
@@ -348,8 +348,8 @@ class setupMicro():
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_e2a     = e2effg * nuda.effg_nr( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg_nr( self.nm_kfn )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -393,8 +393,8 @@ class setupMicro():
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = np.array( e2effg * nuda.effg( self.nm_kfn ) )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_e2a     = np.array( e2effg * nuda.effg_nr( self.nm_kfn ) )
+            self.nm_e2a_err = e2effg_err * nuda.effg_nr( self.nm_kfn )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -416,8 +416,8 @@ class setupMicro():
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = np.array( e2effg * nuda.effg( self.nm_kfn ) )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_e2a     = np.array( e2effg * nuda.effg_nr( self.nm_kfn ) )
+            self.nm_e2a_err = e2effg_err * nuda.effg_nr( self.nm_kfn )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -788,8 +788,8 @@ class setupMicro():
             # read e2a
             self.nm_kfn, e2effg, e2effg_err = np.loadtxt( file_in, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a = e2effg * nuda.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
+            self.nm_e2a = e2effg * nuda.effg_nr( self.nm_kfn )
+            self.nm_e2a_err = e2effg_err * nuda.effg_nr( self.nm_kfn )
             #
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den

@@ -16,8 +16,8 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(1,2)
-    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.4, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E/A$')
@@ -39,7 +39,8 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
             axs[0].plot( am.den, am.e2a, marker='o', linestyle=am.linestyle, label=am.label, markevery=am.every )
     axs[0].text(0.05,5,'microscopic models',fontsize='10')
     axs[0].text(0.05,2,'for $\delta=$'+str(asy),fontsize='10')
-    axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    axs[0].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
     #
     for model in models_pheno:
         #
@@ -61,6 +62,9 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
     axs[1].text(0.05,2,'for $\delta=$'+str(asy),fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    axs[1].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
+    #fig.legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
+    #plt.tight_layout(rect=[0,0,1,0.95])
     #
     plt.savefig(pname)
     plt.close()
