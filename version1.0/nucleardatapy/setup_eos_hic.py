@@ -44,7 +44,7 @@ class SetupEOSHIC():
 
     `constraint` can chosen among the following ones: 
     [ '2002-DLL', '2016-FOPI', '2002-KAON', '2011-FOPI_LAND'
-     , '2016-ASY_EOS', '2021-SPIRIT' ].
+     , '2016-ASY_EOS', '2021-SPIRIT' ,'2019-NP-RATIO','2009-ISO-DIFF'].
 
     :param constraint: Default value: '2002-DLL'.
     :type constraint: str, optional. 
@@ -78,7 +78,7 @@ class SetupEOSHIC():
             if nuda.env.verb: print('Reads file:',file_in2)
             if nuda.env.verb: print('Reads file:',file_in3)
             self.ref = 'P. Danielewicz, R. Lacey, and W. Lynch, Science, 298, 1592 (2002).'
-            self.note = "write here notes about this constraint."
+            self.note = "Flow data used to contraint EOS of symmetric matter"
             self.label = 'DLL-2002'
             self.label_so = 'DLL-2002-Asy_soft'
             self.label_st = 'DLL-2002-Asy_stiff'
@@ -106,7 +106,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2002-KAON.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'C. Fuchs, PPNP 56,1 (2006); W. Lynch et al., PPNP 62, 427 (2009).'
-            self.note = "write here notes about this constraint."
+            self.note = "Kaon yield ratios studied to contraint symmetric EOS."
             self.label = 'KAON-2002'
             self.color = 'cyan'
             den2densat, self.sm_pre_lo, self.sm_pre_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -121,7 +121,7 @@ class SetupEOSHIC():
             file_in2 = nuda.param.path_data+'matter/hic/2016-FOPI-SM.dat'
             #if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A. Le Fevre, Y. Leifels, W. Reisdorf, J. Aichelin, and C. Hartnack, Nuclear Physics A 945, 112 (2016).'
-            self.note = "write here notes about this constraint."
+            self.note = "Elliptical flow data is used to constraint symmetric matter EOS"
             self.label = 'FOPI-2016'
             self.color = 'magenta'
             den2densat_e2a, self.sm_e2a, self.sm_e2a_err = np.loadtxt( file_in1, usecols=(0,1,2), unpack = True )
@@ -137,7 +137,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2009-iso-diff.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'M. B. Tsang et al., Phys. Rev. Lett. 102, 122701 (2009); W. Lynch, M. B. Tsang, Phys. Lett. B 830, 137098 (2022).'
-            self.note = "write here notes about this constraint."
+            self.note = "Isospin diffusion data studied to constraint symmetry energy at sub-saturation."
             self.label = 'Iso Diff-2009'
             self.color = 'k'
             den2densat, den2densat_err, self.sym_enr_isodiff, self.sym_enr_isodiff_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -148,7 +148,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2011-FOPI-LAND.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = ' P. Russotto et al., Physics Letters B 697, 471 (2011).'
-            self.note = "write here notes about this constraint."
+            self.note = "Sura-saturation information on symmtery energy usinf n/p elliptical flows"
             self.label = 'FOPI-LAND-2011'
             self.color = 'yellow'
             den2densat, self.sym_enr_lo, self.sym_enr_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -160,7 +160,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2016-ASY-EOS.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Russotto et al., Phys. Rev. C 94, 034608 (2016).'
-            self.note = "write here notes about this constraint."
+            self.note = "Sura-saturation information on symmtery energy usinf n/p elliptical flows."
             self.label = 'ASY-EOS-2016'
             self.color = 'red'
             den2densat, self.sym_enr_lo, self.sym_enr_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -172,7 +172,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2019-n2p-ratio.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Morfouace et al., Phys. Lett. B 799, 135045 (2019).'
-            self.note = "write here notes about this constraint."
+            self.note = "n/p spectral ratios to constraint symmetry energy at sub-saturation densities"
             self.label = 'n/p ratio-2019'
             self.color = 'green'
             den2densat, den2densat_err, self.sym_enr_np, self.sym_enr_np_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -183,7 +183,7 @@ class SetupEOSHIC():
             file_in = nuda.param.path_data+'matter/hic/2021-SPIRIT.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'J. Estee et al., Phys. Rev. Lett. 126, 162701 (2021).'
-            self.note = "write here notes about this constraint."
+            self.note = "Pion double ratios is studied in neutron rich and poor colliding nuclei."
             self.label = 'SPIRIT-2016'
             self.color = 'blue'
             den2densat, den2densat_err, self.sym_enr_spirit, self.sym_enr_spirit_err, self.sym_pre_spirit, self.sym_pre_spirit_err = np.loadtxt( file_in, usecols=(0,1,2,3,4,5), unpack = True )
