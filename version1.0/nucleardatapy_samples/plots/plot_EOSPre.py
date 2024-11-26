@@ -4,6 +4,11 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['mathtext.fontset'] = 'stixsans'
+plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
+
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
@@ -15,9 +20,9 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
     #
     print(f'Plot name: {pname}')
     #
-    fig, axs = plt.subplots(1,2)
+    fig, axs = plt.subplots(1,2, figsize=(8,8))
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.08, right=None, top=0.62, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$p_{NM}(n)$')
@@ -48,8 +53,11 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
     #axs[0].fill_between( band.den, y1=(band.pre-band.pre_std), y2=(band.pre+band.pre_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[0].plot( band.den, (band.pre-band.pre_std), color='k', linestyle='dashed' )
     #axs[0].plot( band.den, (band.pre+band.pre_std), color='k', linestyle='dashed' )
-    axs[0].text(0.05,5,'microscopic models',fontsize='10')
-    axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    axs[0].set_title('microscopic models',fontsize='10')
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #fig.legend(loc='upper center', fontsize='8', ncol=4, bbox_to_anchor=(0.5, 1.00), 
+    #       columnspacing=0.5, frameon=False)    
+
     #
     for model in pheno_models:
         #
@@ -66,7 +74,9 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-    axs[1].text(0.05,5,'phenomenological models',fontsize='10')
+    axs[1].set_title('phenomenological models',fontsize='10')
+    fig.legend(loc='upper center', fontsize='8', ncol=6, bbox_to_anchor=(0.5, 1.00), 
+           columnspacing=0.45, frameon=False) 
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
