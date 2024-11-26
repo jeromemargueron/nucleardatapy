@@ -67,18 +67,21 @@ def plot_SetupEOSHIC( pname, constraints ):
             axs[0][1].fill_between( hic.den, y1=hic.nm_pre_lo, y2=hic.nm_pre_up, label=hic.label_so, alpha=0.2, color ='b' )
             axs[0][1].fill_between( hic.den, y1=hic.nm_pre_st_lo, y2=hic.nm_pre_st_up, label=hic.label_st, alpha=0.2, color ='g' )
 
+        if hic.sym_enr_isodiff is not None:
+            axs[1][1].errorbar( hic.den_isodiff, hic.sym_enr_isodiff, xerr = hic.den_isodiff_err, yerr=hic.sym_enr_isodiff_err, fmt='o', 
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 , markersize =3)
+            
         if hic.sym_enr is not None:
             axs[1][1].fill_between( hic.den, y1=hic.sym_enr_lo, y2=hic.sym_enr_up, label=hic.label, alpha=hic.alpha*0.7, color = hic.color )
+
+        if hic.sym_enr_np is not None:
+            axs[1][1].errorbar( hic.den_np, hic.sym_enr_np, xerr = hic.den_np_err, yerr=hic.sym_enr_np_err, fmt='o', 
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1, markersize =3 )
 
         if hic.sym_enr_spirit is not None:
             axs[1][1].errorbar( hic.den_spirit, hic.sym_enr_spirit, xerr = hic.den_spirit_err, yerr=hic.sym_enr_spirit_err, fmt='o', 
                                label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 , markersize =3)
-        if hic.sym_enr_isodiff is not None:
-            axs[1][1].errorbar( hic.den_isodiff, hic.sym_enr_isodiff, xerr = hic.den_isodiff_err, yerr=hic.sym_enr_isodiff_err, fmt='o', 
-                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 , markersize =3)
-        if hic.sym_enr_np is not None:
-            axs[1][1].errorbar( hic.den_np, hic.sym_enr_np, xerr = hic.den_np_err, yerr=hic.sym_enr_np_err, fmt='o', 
-                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1, markersize =3 )
+
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs[0][0].legend(loc='lower right',fontsize='8')

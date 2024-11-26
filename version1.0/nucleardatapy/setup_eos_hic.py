@@ -23,8 +23,8 @@ def eos_hic_constraints():
     #
     if nuda.env.verb: print("\nEnter eos_hic_constraints()")
     #
-    constraints = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2011-FOPI-LAND'
-                   , '2016-ASY-EOS', '2021-SPIRIT','2019-NP-RATIO','2009-ISO-DIFF' ]
+    constraints = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2009-ISO-DIFF' ,'2011-FOPI-LAND'
+                   , '2016-ASY-EOS','2019-NP-RATIO', '2021-SPIRIT']
     #
     print('HIC constraints available in the toolkit:',constraints)
 
@@ -43,8 +43,8 @@ class SetupEOSHIC():
     This choice is defined in the variable `constraint`.
 
     `constraint` can chosen among the following ones: 
-    [ '2002-DLL', '2016-FOPI', '2002-KAON', '2011-FOPI_LAND'
-     , '2016-ASY_EOS', '2021-SPIRIT' ,'2019-NP-RATIO','2009-ISO-DIFF'].
+    [ '2002-DLL', '2016-FOPI', '2002-KAON','2009-ISO-DIFF', '2011-FOPI_LAND'
+     , '2016-ASY_EOS','2019-NP-RATIO', '2021-SPIRIT' ].
 
     :param constraint: Default value: '2002-DLL'.
     :type constraint: str, optional. 
@@ -184,7 +184,7 @@ class SetupEOSHIC():
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'J. Estee et al., Phys. Rev. Lett. 126, 162701 (2021).'
             self.note = "Pion double ratios is studied in neutron rich and poor colliding nuclei."
-            self.label = 'SPIRIT-2016'
+            self.label = 'SPIRIT-2021'
             self.color = 'blue'
             den2densat, den2densat_err, self.sym_enr_spirit, self.sym_enr_spirit_err, self.sym_pre_spirit, self.sym_pre_spirit_err = np.loadtxt( file_in, usecols=(0,1,2,3,4,5), unpack = True )
             self.den_spirit = den2densat * nuda.cst.nsat # in fm-3
@@ -208,10 +208,22 @@ class SetupEOSHIC():
        print("   label:   ",self.label)
        print("   note:    ",self.note)
        if self.den is not None: print(f"   den: {self.den} in {self.den_unit}.")
+       if self.den_isodiff is not None: print(f"   den: {self.den_isodiff} in {self.den_unit}.")
+       if self.den_np is not None: print(f"   den: {self.den_np} in {self.den_unit}.")
+       if self.den_spirit is not None: print(f"   den: {self.den_spirit} in {self.den_unit}.")
        if self.sm_pre is not None: print(f"   sm_pre: {self.sm_pre} in {self.pre_unit}.")
        if self.sm_pre_err is not None: print(f"   sm_pre_err: {self.sm_pre_err} in {self.pre_unit}.")
        if self.nm_pre is not None: print(f"   nm_pre: {self.nm_pre} in {self.pre_unit}.")
        if self.nm_pre_err is not None: print(f"   nm_pre_err: {self.nm_pre_err} in {self.pre_unit}.")
+       if self.sym_enr is not None: print(f"   nm_pre_err: {self.sym_enr} in {self.e2a_unit}.")
+       if self.sym_enr_err is not None: print(f"   nm_pre_err: {self.sym_enr_err} in {self.e2a_unit}.")
+       if self.sym_enr_spirit is not None: print(f"   nm_pre_err: {self.sym_enr_spirit} in {self.e2a_unit}.")
+       if self.sym_enr_spirit_err is not None: print(f"   nm_pre_err: {self.sym_enr_spirit_err} in {self.e2a_unit}.")
+       if self.sym_enr_isodiff is not None: print(f"   nm_pre_err: {self.sym_enr_isodiff} in {self.e2a_unit}.")
+       if self.sym_enr_isodiff_err is not None: print(f"   nm_pre_err: {self.sym_enr_isodiff_err} in {self.e2a_unit}.")
+       if self.sym_enr_np is not None: print(f"   nm_pre_err: {self.sym_enr_np} in {self.e2a_unit}.")
+       if self.sym_enr_np_err is not None: print(f"   nm_pre_err: {self.sym_enr_np_err} in {self.e2a_unit}.")
+
        #
        if nuda.env.verb: print("Exit print_outputs()")
        #
@@ -226,14 +238,14 @@ class SetupEOSHIC():
         #: Attribute providing the full reference to the paper to be citted.
         self.ref = ''
         #: Attribute providing additional notes about the data.
-        self.note = ''
+        self.note = 'HIC constraints'
         #: Attribute the density of the system (in fm^-3).
         self.den = None
-        #: Attribute the upper limit of the energy per particle in SM (in MeV fm-3).
+        #: Attribute the upper limit of the energy per particle in SM (in MeV).
         self.sm_e2a_up = None
-        #: Attribute the lower limit of the energy per particle in SM (in MeV fm-3).
+        #: Attribute the lower limit of the energy per particle in SM (in MeV).
         self.sm_e2a_lo = None
-        #: Attribute the energy per particle in SM (in MeV fm-3).
+        #: Attribute the energy per particle in SM (in MeV).
         self.sm_e2a = None
         #: Attribute the uncertainty in the energy per particle in SM (in MeV fm-3).
         self.sm_e2a_err = None
@@ -253,38 +265,44 @@ class SetupEOSHIC():
         self.nm_pre = None
         #: Attribute the uncertainty of the pressure in NM (in MeV fm-3).
         self.nm_pre_err = None
-        #: Attribute the upper limit of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the upper limit of the pressure in NM for asy-soft EOS (in MeV fm-3).
         self.nm_pre_so_up = None
-        #: Attribute the lower limit of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the lower limit of the pressure in NM for asy-soft EOS (in MeV fm-3).
         self.nm_pre_so_lo = None
-        #: Attribute the upper limit of the pressure in NM for azy-stiff EOS (in MeV fm-3).
+        #: Attribute the upper limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st_up = None
-        #: Attribute the lower limit of the pressure in NM for azy-stiff EOS (in MeV fm-3).
+        #: Attribute the lower limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st_lo = None
-        #: Attribute the centroid of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the centroid of the pressure in NM for asy-soft EOS (in MeV fm-3).
         self.nm_pre_so = None
-        #: Attribute the uncertainty of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the uncertainty of the pressure in NM for asy-soft EOS (in MeV fm-3).
         self.nm_pre_so_err = None
         #: Attribute the centroid of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st = None
         #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st_err = None
-        #: Attribute the lower limit of the pressure in NM for azy-stiff EOS (in MeV fm-3).
+        #: Attribute the lower limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st_lo = None
-        #: Attribute the centroid of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
         self.sym_enr_lo = None
-        #: Attribute the uncertainty of the pressure in NM for azy-soft EOS (in MeV fm-3).
+        #: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
         self.sym_enr_up = None
-        #: Attribute the centroid of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        #: Attribute the centroids of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
         self.sym_enr = None
-        #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        #: Attribute the uncertainty of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
         self.sym_enr_err = None
-        #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        #: Attribute the centroid of the symmetry energy for SPIRIT constraints (in MeV).
         self.sym_enr_spirit = None
-        #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        #: Attribute the uncertainty of the symmetry energy for SPIRIT constraints (in MeV).
+        self.sym_enr_spirit_err = None
+        #: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).
         self.sym_enr_isodiff = None
-        #: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).
+        #: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).
+        self.sym_enr_isodiff_err = None
+        #: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).
         self.sym_enr_np = None
+        #: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).
+        self.sym_enr_np_err = None
         #: Attribute the plot linestyle.
         self.linestyle = 'solid'
         #: Attribute plot label.
