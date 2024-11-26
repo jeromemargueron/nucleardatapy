@@ -4,6 +4,11 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['mathtext.fontset'] = 'stixsans'
+plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
+
 nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 sys.path.insert(0, nucleardatapy_tk)
 
@@ -29,7 +34,7 @@ def plot_SetupNucBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.1, right=None, top=0.80, wspace=0.3, hspace=0.3)
     #
     axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
     axs.set_ylabel(r'$E-E_{DZ}$ (MeV)',fontsize='12')
@@ -51,7 +56,8 @@ def plot_SetupNucBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
     axs.scatter( N_diff, BE_diff, label='AME2020' )
     #
-    axs.legend(loc='upper right',fontsize='10', ncol=2)
+    #axs.legend(loc='upper right',fontsize='10', ncol=2)
+    fig.legend(loc='upper center', fontsize='8', ncol=5, bbox_to_anchor=(0.5, 1.00), frameon=False)    
     #
     plt.savefig(pname)
     plt.close()
