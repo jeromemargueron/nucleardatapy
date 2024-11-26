@@ -3,15 +3,15 @@ import os
 import sys
 import numpy as np
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupMicroMatter.py:")
+    print("Enter sample_SetupEOSMicro.py:")
     print(50*'-')
     #
     keys = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
@@ -21,11 +21,11 @@ def main():
     #
     for key in keys:
         #
-        mic = nuda.SetupMicroMatter( model = key )
+        mic = nuda.eos.Micro( model = key )
         nuda.print_outputs()
     #
     print(50*'-')
-    print("Exit sample_SetupMicroMatter.py:")
+    print("Exit sample_SetupEOSMicro.py:")
     print(50*'-')
     #
     

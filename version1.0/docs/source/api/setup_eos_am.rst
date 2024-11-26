@@ -6,12 +6,12 @@ SetupEOSAM
 .. currentmodule:: nucleardatapy.setupeosam
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_eos_am
+.. automodule:: nucleardatapy.eos.setup_am
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEOSAM.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupAM.py
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSAM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupAM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

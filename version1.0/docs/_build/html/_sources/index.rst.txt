@@ -42,7 +42,10 @@ Complement
    source/api/setup_eos_micro
    source/api/setup_eos_micro_band
    source/api/setup_eos_micro_lp
+   source/api/setup_eos_micro_gap
+   source/api/setup_eos_micro_esym
    source/api/setup_eos_pheno
+   source/api/setup_eos_pheno_esym
    source/api/setup_eos_am
    source/api/setup_eos_beta
    source/api/setup_eos_hic
@@ -50,6 +53,7 @@ Complement
    source/api/setup_nuc_be_exp
    source/api/setup_nuc_be_theo
    source/api/setup_nuc_rch_exp
+   source/api/setup_nuc_rch_theo
    source/api/setup_nuc_isgmr_exp
    source/api/setup_crust
    source/api/setup_astro_masses
@@ -57,7 +61,7 @@ Complement
    source/api/setup_astro_mtov
    source/api/setup_astro_mr
    source/api/setup_astro_gw
-   source/api/setup_CorEsymLsym
+   source/api/setup_corr_EsymLsym
 
 Indices and tables
 ------------------

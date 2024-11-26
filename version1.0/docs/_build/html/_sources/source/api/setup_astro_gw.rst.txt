@@ -6,12 +6,12 @@ SetupAstroGW
 .. currentmodule:: nucleardatapy.setupastrogw
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_astro_gw
+.. automodule:: nucleardatapy.astro.setup_gw
 	:members:
 
-Here is a figure which is produced with the Python sample: /sample/nucleardatapy_plots/plot_setupAstroGW.py
+Here is a figure which is produced with the Python sample: /nucleardatapy_sample/plots/plot_astro_setupGW.py
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupAstroGW.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_astro_setupGW.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

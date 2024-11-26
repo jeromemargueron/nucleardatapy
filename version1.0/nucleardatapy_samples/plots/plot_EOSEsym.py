@@ -4,8 +4,8 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -31,20 +31,20 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     #
     for model in models_micro:
         #
-        mic = nuda.SetupEOSMicro( model = model )
-        if mic.esym_e2a is not None: 
+        esym = nuda.eos.setupMicroEsym( model = model )
+        if esym.esym is not None: 
             print('model:',model)
-            if mic.marker:
-                if mic.err:
-                    axs[0].errorbar( mic.esym_den, mic.esym_e2a, yerr=mic.esym_e2a_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+            if esym.marker:
+                if esym.err:
+                    axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, label=esym.label, errorevery=esym.every )
                 else:
-                    axs[0].plot( mic.esym_den, mic.esym_e2a, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, label=esym.label, markevery=esym.every )
             else:
-                if mic.err:
-                    axs[0].errorbar( mic.esym_den, mic.esym_e2a, yerr=mic.esym_e2a_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                if esym.err:
+                    axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, label=esym.label, errorevery=esym.every )
                 else:
-                    axs[0].plot( mic.esym_den, mic.esym_e2a, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-        mic.print_outputs( )
+                    axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, label=esym.label, markevery=esym.every )
+        if nuda.env.verb: esym.print_outputs( )
     axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
@@ -53,16 +53,16 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     #
     for model in models_pheno:
         #
-        params, params_lower = nuda.eos_pheno_params( model = model )
+        params, params_lower = nuda.eos.pheno_params( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupEOSPheno( model = model, param = param )
-            if pheno.esym_e2a is not None: 
+            esym = nuda.eos.setupPhenoEsym( model = model, param = param )
+            if esym.esym is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
-                axs[1].plot( pheno.esym_den, pheno.esym_e2a, label=pheno.label )
-            pheno.print_outputs( )
+                axs[1].plot( esym.den, esym.esym, label=pheno.label )
+            if nuda.env.verb: esym.print_outputs( )
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
@@ -87,11 +87,11 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupEOSMicroBand( models, den=den, matter='ESYM' )
+    band = nuda.eos.setupMicroBand( models, den=den, matter='ESYM' )
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.eos_micro_models()
+    micro_models, micro_models_lower = nuda.eos.micro_models()
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym

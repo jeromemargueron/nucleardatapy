@@ -6,10 +6,12 @@ SetupCrust
 .. currentmodule:: nucleardatapy.setupCrust
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_crust
+.. automodule:: nucleardatapy.crust.setup_crust
 	:members:
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupCrust.png
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_crust_setupCrust.py
+
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_crust_setupCrust.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

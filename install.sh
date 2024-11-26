@@ -43,9 +43,14 @@ cp -R version$VER/samples/nucleardatapy_plots $SAMPLES/samples/
 
 echo ""
 echo ">> You should create the following global variables:"
-echo ">> export NUCLEARDATAPY_TK=$HOME/mylib/nucleardatapy"
+echo ">> export NUCLEARDATAPY_TK=${HOME}/mylib/nucleardatapy"
 echo ""
-echo ">> To make you life simpler, just copy this last command to one of the following file in your home (depending on your OS): .profile, .zprofile, .bashrc, .bashrc_profile."
+echo ">> You can also add this link to PYTHONPATH:"
+echo ">> export PYTHONPATH=\${NUCLEARDATAPY_TK}"
+echo ""
+echo ">> To make you life simpler, just copy this last commands "
+echo ">> to the following file (depending on your OS): "
+echo ">> .profile, .zprofile, .bashrc, .bashrc_profile."
 echo ""
 
 

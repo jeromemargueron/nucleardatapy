@@ -4,8 +4,8 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -38,12 +38,12 @@ def plot_EOSNEP( pname, models_micro, models_pheno ):
         nsat = []; Esat = []; Ksat = []; Qsat = []; Zsat = []
         Esym = []; Lsym = []; Ksym = []; Qsym = []; Zsym = []
         msat = []; kappas = []; kappav = []
-        params, params_lower = nuda.eos_pheno_params( model = model )
+        params, params_lower = nuda.eos.pheno_params( model = model )
         #
         for param in params:
             #
             print('param:',param)
-            pheno = nuda.SetupEOSPheno( model = model, param = param )
+            pheno = nuda.eos.setupPheno( model = model, param = param )
             if pheno.nep:
                 nsat.append( pheno.nsat ); Esat.append( pheno.Esat ); 
                 Ksat.append( pheno.Ksat ); Qsat.append( pheno.Qsat ); 
@@ -94,7 +94,7 @@ def main():
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.eos_micro_models()
+    micro_models, micro_models_lower = nuda.eos.micro_models()
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP

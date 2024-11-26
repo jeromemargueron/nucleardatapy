@@ -1,26 +1,25 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupAstroGW &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SetupCorEsymLsym" href="setup_CorEsymLsym.html" />
-    <link rel="prev" title="SetupAstroMtov" href="setup_astro_mtov.html" /> 
+    <link rel="prev" title="SetupAstroMR" href="setup_astro_mr.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,15 +27,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            nucleardatapy
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -53,37 +48,25 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupAstroGW</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.label"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.label</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_do"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.lambda_sig_do</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_up"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.lambda_sig_up</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.latexCite"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.latexCite</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.note"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.note</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.print_outputs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.ref"><code class="docutils literal notranslate"><span class="pre">SetupAstroGW.ref</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGWAverage"><code class="docutils literal notranslate"><span class="pre">SetupAstroGWAverage</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupAstroGWAverage.print_outputs()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.astro_gw"><code class="docutils literal notranslate"><span class="pre">astro_gw()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_astro_gw.astro_gw_source"><code class="docutils literal notranslate"><span class="pre">astro_gw_source()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupAstroGW</a></li>
 </ul>
 
         </div>
@@ -99,8 +82,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">SetupAstroGW</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SetupAstroGW</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_astro_gw.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -111,16 +94,47 @@
            <div itemprop="articleBody">
              
   <section id="setupastrogw">
-<h1>SetupAstroGW<a class="headerlink" href="#setupastrogw" title="Link to this heading"></a></h1>
-<dl class="py class" id="module-nucleardatapy.setup_astro_gw">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_gw.</span></span><span class="sig-name descname"><span class="pre">SetupAstroGW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GW170817'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hyp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#SetupAstroGW"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW" title="Link to this definition"></a></dt>
+<h1>SetupAstroGW<a class="headerlink" href="#setupastrogw" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.astro.setup_gw"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.gw_hyps">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.astro.setup_gw.</span></span><span class="sig-name descname"><span class="pre">gw_hyps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#gw_hyps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.gw_hyps" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of observations for a given source and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str.</em>) – The source for which there are different hypotheses.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of hypotheses.     If source == ‘GW170817’: 1, 2, 3, 4, 5.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.gw_sources">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.astro.setup_gw.</span></span><span class="sig-name descname"><span class="pre">gw_sources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#gw_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.gw_sources" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of the astrophysical sources for which a mass is given</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of sources.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.astro.setup_gw.</span></span><span class="sig-name descname"><span class="pre">setupGW</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GW170817'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hyp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGW"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the tidal deformability for a given source and obs.</p>
 <p>This choice is defined in the variables <cite>source</cite> and <cite>obs</cite>.</p>
 <p><cite>source</cite> can chosen among the following ones: ‘GW170817’.</p>
 <p><cite>obs</cite> depends on the chosen source.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>source</cite>. Default value: ‘GW170817’.</p></li>
 <li><p><strong>obs</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the <cite>obs</cite>. Default value: 1.</p></li>
@@ -128,107 +142,81 @@
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGW.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.init_self" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.label">
-<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.label" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.label" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_do">
-<span class="sig-name descname"><span class="pre">lambda_sig_do</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_do" title="Link to this definition"></a></dt>
-<dd><p>Attribute the upper bound of the tidal deformability for the source.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_up">
-<span class="sig-name descname"><span class="pre">lambda_sig_up</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.lambda_sig_up" title="Link to this definition"></a></dt>
-<dd><p>Attribute the lower bound of the tidal deformability for the source.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.latexCite">
-<span class="sig-name descname"><span class="pre">latexCite</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.latexCite" title="Link to this definition"></a></dt>
-<dd><p>Attribute latexCite.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.note">
-<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.note" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.note" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the data.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#SetupAstroGW.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.print_outputs" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.print_output">
+<span class="sig-name descname"><span class="pre">print_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGW.print_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.print_output" title="Permalink to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.print_table">
+<span class="sig-name descname"><span class="pre">print_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGW.print_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.print_table" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs in table format (latex) on terminal’s screen.</p>
+</dd></dl>
+
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGW.ref">
-<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGW.ref" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGW.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGW.ref" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing the full reference to the paper to be citted.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGWAverage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_gw.</span></span><span class="sig-name descname"><span class="pre">SetupAstroGWAverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GW170817'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#SetupAstroGWAverage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGWAverage" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGWAverage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.astro.setup_gw.</span></span><span class="sig-name descname"><span class="pre">setupGWAverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GW170817'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGWAverage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGWAverage" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the total mass for a given source and averaged over hypotheses.</p>
 <p>This choice is defined in the variable <cite>source</cite>.</p>
 <p><cite>source</cite> can chosen among the following ones: ‘GW170817’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>source</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>source</cite>. Default value: ‘GW170817’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#SetupAstroGWAverage.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_outputs" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGWAverage.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGWAverage.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGWAverage.init_self" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGWAverage.print_output">
+<span class="sig-name descname"><span class="pre">print_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGWAverage.print_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGWAverage.print_output" title="Permalink to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.astro.setup_gw.setupGWAverage.print_table">
+<span class="sig-name descname"><span class="pre">print_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/astro/setup_gw.html#setupGWAverage.print_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.astro.setup_gw.setupGWAverage.print_table" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs in table format (latex) on terminal’s screen.</p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.astro_gw">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_gw.</span></span><span class="sig-name descname"><span class="pre">astro_gw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#astro_gw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.astro_gw" title="Link to this definition"></a></dt>
-<dd><p>Return a list of the astrophysical sources for which a mass is given</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The list of sources.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list[str].</p>
-</dd>
-</dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_astro_gw.astro_gw_source">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_astro_gw.</span></span><span class="sig-name descname"><span class="pre">astro_gw_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_astro_gw.html#astro_gw_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_astro_gw.astro_gw_source" title="Link to this definition"></a></dt>
-<dd><p>Return a list of observations for a given source and print them all on the prompt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>source</strong> (<em>str.</em>) – The source for which there are different hypotheses.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The list of hypotheses.     If source == ‘GW170817’: 1, 2, 3, 4, 5.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str].</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p>Here is a figure which is produced with the Python sample: /sample/nucleardatapy_plots/plot_setupAstroGW.py</p>
+<p>Here is a figure which is produced with the Python sample: /nucleardatapy_sample/plots/plot_astro_setupGW.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupAstroGW.png"><img alt="map to buried treasure" src="../../_images/plot_SetupAstroGW.png" style="width: 448.0px; height: 336.0px;" />
-</a>
+<a class="reference internal image-reference" href="../../_images/plot_astro_setupGW.png"><img alt="map to buried treasure" src="../../_images/plot_astro_setupGW.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Estimation of the effective tidal deformability from difference sources (different colors) and different hypotheses on the pulsar spin and the waveform employed for match filtering.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-text">Estimation of the effective tidal deformability from difference sources (different colors) and different hypotheses on the pulsar spin and the waveform employed for match filtering.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -237,8 +225,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_astro_mtov.html" class="btn btn-neutral float-left" title="SetupAstroMtov" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="setup_CorEsymLsym.html" class="btn btn-neutral float-right" title="SetupCorEsymLsym" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_astro_mr.html" class="btn btn-neutral float-left" title="SetupAstroMR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
