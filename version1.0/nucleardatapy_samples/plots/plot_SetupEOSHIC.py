@@ -72,14 +72,19 @@ def plot_SetupEOSHIC( pname, constraints ):
 
         if hic.sym_enr_spirit is not None:
             axs[1][1].errorbar( hic.den_spirit, hic.sym_enr_spirit, xerr = hic.den_spirit_err, yerr=hic.sym_enr_spirit_err, fmt='o', 
-                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 )
-
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 , markersize =3)
+        if hic.sym_enr_isodiff is not None:
+            axs[1][1].errorbar( hic.den_isodiff, hic.sym_enr_isodiff, xerr = hic.den_isodiff_err, yerr=hic.sym_enr_isodiff_err, fmt='o', 
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1 , markersize =3)
+        if hic.sym_enr_np is not None:
+            axs[1][1].errorbar( hic.den_np, hic.sym_enr_np, xerr = hic.den_np_err, yerr=hic.sym_enr_np_err, fmt='o', 
+                               label=hic.label, color = hic.color, capsize=2, capthick=1, elinewidth=1, markersize =3 )
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs[0][0].legend(loc='lower right',fontsize='8')
     axs[0][1].legend(loc='lower right',fontsize='8')
     axs[1][0].legend(loc='lower right',fontsize='8')
-    axs[1][1].legend(loc='lower right',fontsize='8')
+    axs[1][1].legend(loc='upper left',fontsize='8')
     #
     plt.savefig(pname)
     plt.close()
