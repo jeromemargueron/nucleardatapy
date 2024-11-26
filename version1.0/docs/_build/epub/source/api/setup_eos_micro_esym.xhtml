@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupEOSMicroEsym</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupeosmicroesym">
+<h1>SetupEOSMicroEsym</h1>
+<span class="target" id="module-nucleardatapy.eos.setup_micro_esym"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_esym.micro_esym_models">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro_esym.</span></span><span class="sig-name descname"><span class="pre">micro_esym_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APRfit’, ‘2006-BHF-AM*’,     2016-MBPT-AM’, 2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,    ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’,    ‘2024-BHF-AM-23BFmicro-Av18’, ‘2024-BHF-AM-23BFmicro-BONNB’, ‘2024-BHF-AM-23BFmicro-NSC93’
+:return: The list of models.
+:rtype: list[str].</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_esym.setupMicroEsym">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro_esym.</span></span><span class="sig-name descname"><span class="pre">setupMicroEsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.03052632,</span> <span class="pre">0.05105263,</span> <span class="pre">0.07157895,</span> <span class="pre">0.09210526,</span> <span class="pre">0.11263158,</span> <span class="pre">0.13315789,</span> <span class="pre">0.15368421,</span> <span class="pre">0.17421053,</span> <span class="pre">0.19473684,</span> <span class="pre">0.21526316,</span> <span class="pre">0.23578947,</span> <span class="pre">0.25631579,</span> <span class="pre">0.27684211,</span> <span class="pre">0.29736842,</span> <span class="pre">0.31789474,</span> <span class="pre">0.33842105,</span> <span class="pre">0.35894737,</span> <span class="pre">0.37947368,</span> <span class="pre">0.4])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-iAPR’, ‘2006-BHF-AM*’,     ‘2016-MBPT-AM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,     ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_esym.setupMicroEsym.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_esym.setupMicroEsym.model">
+<span class="sig-name descname"><span class="pre">model</span></span></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_esym.setupMicroEsym.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupMicroEsym.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicroEsym.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the symmetry energy as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

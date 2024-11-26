@@ -1,21 +1,21 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SetupNucBEExp &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -28,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            nucleardatapy
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -53,51 +49,25 @@
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupNucBEExp</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.Zmax"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.Zmax</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_nbNuc"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.dist_nbNuc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_year"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.dist_year</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.drip"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.drip()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagI"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.flagI</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagInterp"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.flagInterp</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.label"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.label</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbLine"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nbLine</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbNuc"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nbNuc</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.note"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.note</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucA"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucA</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucBE</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE_err"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucBE_err</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucHT"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucHT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucN"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucN</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucStbl"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucStbl</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucSymb"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucSymb</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucYear"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucYear</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucZ"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.nucZ</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.print_outputs"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.print_outputs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.ref"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.ref</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.select()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select_year"><code class="docutils literal notranslate"><span class="pre">SetupNucBEExp.select_year()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.nuc_be_exp_tables"><code class="docutils literal notranslate"><span class="pre">nuc_be_exp_tables()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nucleardatapy.setup_nuc_be_exp.nuc_be_exp_versions"><code class="docutils literal notranslate"><span class="pre">nuc_be_exp_versions()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
 </ul>
 
         </div>
@@ -113,8 +83,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">SetupNucBEExp</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SetupNucBEExp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_nuc_be_exp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -125,16 +95,50 @@
            <div itemprop="articleBody">
              
   <section id="setupnucbeexp">
-<h1>SetupNucBEExp<a class="headerlink" href="#setupnucbeexp" title="Link to this heading"></a></h1>
-<dl class="py class" id="module-nucleardatapy.setup_nuc_be_exp">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_nuc_be_exp.</span></span><span class="sig-name descname"><span class="pre">SetupNucBEExp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2020'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#SetupNucBEExp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp" title="Link to this definition"></a></dt>
+<h1>SetupNucBEExp<a class="headerlink" href="#setupnucbeexp" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.nuc.setup_be_exp"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.be_exp_tables">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_be_exp.</span></span><span class="sig-name descname"><span class="pre">be_exp_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#be_exp_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.be_exp_tables" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of the tables available in this toolkit for the experimental masses and
+print them all on the prompt. These tables are the following
+ones: ‘AME’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.be_exp_versions">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_be_exp.</span></span><span class="sig-name descname"><span class="pre">be_exp_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#be_exp_versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.be_exp_versions" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of versions of tables available in
+this toolkit for a given model and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str.</em>) – The table for which there are different versions.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of versions.     If table == ‘AME’: ‘2020’, ‘2016’, ‘2012’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_be_exp.</span></span><span class="sig-name descname"><span class="pre">setupBEExp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2020'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#setupBEExp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate the experimental nuclear masses from AME mass table.</p>
 <p>This choice is defined in the variables <cite>table</cite> and <cite>version</cite>.</p>
 <p><cite>table</cite> can chosen among the following ones: ‘AME’.</p>
 <p><cite>version</cite> can be chosen among the following choices: ‘2020’, ‘2016’, ‘2012’.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘AME’.</p></li>
 <li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>version</cite>. Default value: 2020’.</p></li>
@@ -143,34 +147,34 @@
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.Zmax">
-<span class="sig-name descname"><span class="pre">Zmax</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.Zmax" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.Zmax">
+<span class="sig-name descname"><span class="pre">Zmax</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.Zmax" title="Permalink to this definition"></a></dt>
 <dd><p>maximum charge of nuclei present in the table.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>Attribute Zmax</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_nbNuc">
-<span class="sig-name descname"><span class="pre">dist_nbNuc</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_nbNuc" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.dist_nbNuc">
+<span class="sig-name descname"><span class="pre">dist_nbNuc</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.dist_nbNuc" title="Permalink to this definition"></a></dt>
 <dd><p>attribute number of nuclei discovered per year</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_year">
-<span class="sig-name descname"><span class="pre">dist_year</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.dist_year" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.dist_year">
+<span class="sig-name descname"><span class="pre">dist_year</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.dist_year" title="Permalink to this definition"></a></dt>
 <dd><p>attribute distribution of years</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.drip">
-<span class="sig-name descname"><span class="pre">drip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#SetupNucBEExp.drip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.drip" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.drip">
+<span class="sig-name descname"><span class="pre">drip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Zmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">95</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#setupBEExp.drip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.drip" title="Permalink to this definition"></a></dt>
 <dd><p>Method which find the drip-line nuclei (on the two sides).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>Zmax</strong> (<em>int</em><em>, </em><em>optional. Default: 95.</em>) – Fix the maximum charge for the search of the drip line.</p>
 </dd>
 </dl>
@@ -178,113 +182,113 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagI">
-<span class="sig-name descname"><span class="pre">flagI</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagI" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.flagI">
+<span class="sig-name descname"><span class="pre">flagI</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.flagI" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute I.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagInterp">
-<span class="sig-name descname"><span class="pre">flagInterp</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.flagInterp" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.flagInterp">
+<span class="sig-name descname"><span class="pre">flagInterp</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.flagInterp" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute Interp (interpolation). Interp=’y’ is the nucleushas not been measured but is in the table based on interpolation expressions.otherwise Interp = ‘n’ for nuclei produced in laboratory and measured.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.label">
-<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.label" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.label" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing the label the data is references for figures.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbLine">
-<span class="sig-name descname"><span class="pre">nbLine</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbLine" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nbLine">
+<span class="sig-name descname"><span class="pre">nbLine</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nbLine" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute with the number of line in the file.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbNuc">
-<span class="sig-name descname"><span class="pre">nbNuc</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nbNuc" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nbNuc">
+<span class="sig-name descname"><span class="pre">nbNuc</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nbNuc" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute with the number of nuclei read in the file.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.note">
-<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.note" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.note" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing additional notes about the data.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucA">
-<span class="sig-name descname"><span class="pre">nucA</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucA" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucA">
+<span class="sig-name descname"><span class="pre">nucA</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucA" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute A (mass of the nucleus).</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE">
-<span class="sig-name descname"><span class="pre">nucBE</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucBE">
+<span class="sig-name descname"><span class="pre">nucBE</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucBE" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute BE (Binding Energy) of the nucleus.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE_err">
-<span class="sig-name descname"><span class="pre">nucBE_err</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucBE_err" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucBE_err">
+<span class="sig-name descname"><span class="pre">nucBE_err</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucBE_err" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute uncertainty in the BE (Binding Energy) of the nucleus.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucHT">
-<span class="sig-name descname"><span class="pre">nucHT</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucHT" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucHT">
+<span class="sig-name descname"><span class="pre">nucHT</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucHT" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute HT (half-Time) of the nucleus.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucN">
-<span class="sig-name descname"><span class="pre">nucN</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucN" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucN">
+<span class="sig-name descname"><span class="pre">nucN</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucN" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute N (number of neutrons of the nucleus).</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucStbl">
-<span class="sig-name descname"><span class="pre">nucStbl</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucStbl" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucStbl">
+<span class="sig-name descname"><span class="pre">nucStbl</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucStbl" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute stbl. stbl=’y’ if the nucleus is stable (according to the table). Otherwise stbl = ‘n’.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucSymb">
-<span class="sig-name descname"><span class="pre">nucSymb</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucSymb" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucSymb">
+<span class="sig-name descname"><span class="pre">nucSymb</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucSymb" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute symb (symbol) of the element, e.g., Fe.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucYear">
-<span class="sig-name descname"><span class="pre">nucYear</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucYear" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucYear">
+<span class="sig-name descname"><span class="pre">nucYear</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucYear" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute year of the discovery of the nucleus.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucZ">
-<span class="sig-name descname"><span class="pre">nucZ</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.nucZ" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.nucZ">
+<span class="sig-name descname"><span class="pre">nucZ</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.nucZ" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute Z (charge of the nucleus).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.print_outputs">
-<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#SetupNucBEExp.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.print_outputs" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#setupBEExp.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.print_outputs" title="Permalink to this definition"></a></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.ref">
-<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.ref" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.ref" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute providing the full reference to the paper to be citted.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unstable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#SetupNucBEExp.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Amin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nucleus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unstable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#setupBEExp.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.select" title="Permalink to this definition"></a></dt>
 <dd><p>Method which select some nuclei from the table according to some criteria.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interp</strong> (<em>str</em><em>, </em><em>optional. Default = 'n'.</em>) – If interp=’n’, exclude the interpolated nuclei from the selected ones.         If interp=’y’ consider them in the table, in addition to the others.</p></li>
 <li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
@@ -299,14 +303,14 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select_year">
-<span class="sig-name descname"><span class="pre">select_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1940</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1960</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#SetupNucBEExp.select_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.SetupNucBEExp.select_year" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.setupBEExp.select_year">
+<span class="sig-name descname"><span class="pre">select_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1940</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1960</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gs'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#setupBEExp.select_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.setupBEExp.select_year" title="Permalink to this definition"></a></dt>
 <dd><p>Method which select some nuclei from the table according to the discovery year.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>year_min</strong></p></li>
-<li><p><strong>year_max</strong></p></li>
+<li><p><strong>year_min</strong> – </p></li>
+<li><p><strong>year_max</strong> – </p></li>
 <li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
 </ul>
 </dd>
@@ -316,53 +320,17 @@
 
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.nuc_be_exp_tables">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_nuc_be_exp.</span></span><span class="sig-name descname"><span class="pre">nuc_be_exp_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#nuc_be_exp_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.nuc_be_exp_tables" title="Link to this definition"></a></dt>
-<dd><p>Return a list of the tables available in this toolkit for the experimental masses and
-print them all on the prompt. These tables are the following
-ones: ‘AME’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The list of tables.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list[str].</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_nuc_be_exp.nuc_be_exp_versions">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_nuc_be_exp.</span></span><span class="sig-name descname"><span class="pre">nuc_be_exp_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/setup_nuc_be_exp.html#nuc_be_exp_versions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.setup_nuc_be_exp.nuc_be_exp_versions" title="Link to this definition"></a></dt>
-<dd><p>Return a list of versions of tables available in
-this toolkit for a given model and print them all on the prompt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>table</strong> (<em>str.</em>) – The table for which there are different versions.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The list of versions.     If table == ‘AME’: ‘2020’, ‘2016’, ‘2012’.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list[str].</p>
-</dd>
-</dl>
-</dd></dl>
-
-<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupNucBEExp.py</p>
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupBEExp.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_SetupNucBEExp_AME_2020.png"><img alt="map to buried treasure" src="../../_images/plot_SetupNucBEExp_AME_2020.png" style="width: 448.0px; height: 336.0px;" />
-</a>
+<a class="reference internal image-reference" href="../../_images/plot_nuc_setupBEExp_AME_2020.png"><img alt="map to buried treasure" src="../../_images/plot_nuc_setupBEExp_AME_2020.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half-times of nuclei.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-text">The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half-times of nuclei.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../../_images/plot_SetupNucBEExp_AME_2020_year.png"><img alt="map to buried treasure" src="../../_images/plot_SetupNucBEExp_AME_2020_year.png" style="width: 448.0px; height: 336.0px;" />
-</a>
+<a class="reference internal image-reference" href="../../_images/plot_nuc_setupBEExp_AME_2020_year.png"><img alt="map to buried treasure" src="../../_images/plot_nuc_setupBEExp_AME_2020_year.png" style="width: 448.0px; height: 336.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Histogram showing the distribution of nuclei per discovery year, since the first one discovered in 1851.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-text">Histogram showing the distribution of nuclei per discovery year, since the first one discovered in 1851.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>

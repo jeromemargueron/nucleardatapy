@@ -1,20 +1,20 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.setup_astro_mtov &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -25,15 +25,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            nucleardatapy
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,7 +46,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
@@ -58,10 +57,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
@@ -80,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">nucleardatapy.setup_astro_mtov</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_astro_mtov</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -102,8 +103,6 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
-
-<span class="c1">#def proba(amass, avmass, sig_low, sig_up):</span>
 
 <span class="k">def</span> <span class="nf">compute_proba_do</span><span class="p">(</span> <span class="n">amass</span><span class="p">,</span> <span class="n">mass_cen</span><span class="p">,</span> <span class="n">sig_up</span><span class="p">,</span> <span class="n">sig_do</span> <span class="p">):</span>
     <span class="n">fac</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
@@ -131,9 +130,7 @@
         <span class="n">prob</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span><span class="o">-</span><span class="n">special</span><span class="o">.</span><span class="n">erf</span><span class="p">(</span><span class="n">z</span><span class="p">))</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">prob</span>
 
-<div class="viewcode-block" id="SetupAstroMtov">
-<a class="viewcode-back" href="../../source/api/setup_astro_mtov.html#nucleardatapy.setup_astro_mtov.SetupAstroMtov">[docs]</a>
-<span class="k">class</span> <span class="nc">SetupAstroMtov</span><span class="p">():</span>
+<div class="viewcode-block" id="SetupAstroMtov"><a class="viewcode-back" href="../../source/api/setup_astro_mtov.html#nucleardatapy.setup_astro_mtov.SetupAstroMtov">[docs]</a><span class="k">class</span> <span class="nc">SetupAstroMtov</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the observational mass for a given source and obs.</span>
 
@@ -209,28 +206,40 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupAstroMtov()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="SetupAstroMtov.print_outputs">
-<a class="viewcode-back" href="../../source/api/setup_astro_mtov.html#nucleardatapy.setup_astro_mtov.SetupAstroMtov.print_outputs">[docs]</a>
-    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
-<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
-<span class="sd">       &quot;&quot;&quot;</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-       <span class="c1">#</span>
-       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
-       <span class="c1">#</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sources:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   mass:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   proba_tot:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">proba_tot</span><span class="p">)</span>
-       <span class="c1">#print(&quot;   sigmas:&quot;,self.sig_low,self.sig_up)</span>
-       <span class="c1">#print(&quot;   label:  &quot;,self.label)</span>
-       <span class="c1">#print(&quot;   note:   &quot;,self.note)</span>
-       <span class="c1">#</span>
-       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
-</div>
-
-       <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroMtov.print_output"><a class="viewcode-back" href="../../source/api/setup_astro_mtov.html#nucleardatapy.setup_astro_mtov.SetupAstroMtov.print_output">[docs]</a>    <span class="k">def</span> <span class="nf">print_output</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_output()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_output</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sources_do:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_do</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sources_up:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_up</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   mass:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   proba_tot:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">proba_tot</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No output for source </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">. To get output, write &#39;verb_output = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_output()&quot;</span><span class="p">)</span></div>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroMtov.print_table"><a class="viewcode-back" href="../../source/api/setup_astro_mtov.html#nucleardatapy.setup_astro_mtov.SetupAstroMtov.print_table">[docs]</a>    <span class="k">def</span> <span class="nf">print_table</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs in table format (latex) on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_table()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_table</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- table: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_do</span><span class="si">}</span><span class="s2"> &amp; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_up</span><span class="si">}</span><span class="s2"> &amp; $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$ &amp; \cite</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="si">}</span><span class="se">}}</span><span class="s2"> </span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No  table for sources </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_do</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sources_up</span><span class="si">}</span><span class="s2">. To get  table, write  &#39;verb_table = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_table()&quot;</span><span class="p">)</span></div></div>
+        <span class="c1">#</span>
        
 </pre></div>
 

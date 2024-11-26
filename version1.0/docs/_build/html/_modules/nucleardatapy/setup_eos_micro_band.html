@@ -1,20 +1,20 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../">
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.setup_eos_micro_band &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -25,15 +25,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            nucleardatapy
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,17 +46,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtot.html">SetupAstroMtot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
 </ul>
@@ -78,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">nucleardatapy.setup_eos_micro_band</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_eos_micro_band</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -104,9 +107,7 @@
     <span class="n">fac</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="n">e_err</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span> <span class="n">e</span> <span class="o">-</span> <span class="n">e_cent</span> <span class="p">)</span> <span class="o">/</span> <span class="n">e_err</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">fac</span>
 
-<div class="viewcode-block" id="SetupEOSMicroBand">
-<a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand">[docs]</a>
-<span class="k">class</span> <span class="nc">SetupEOSMicroBand</span><span class="p">():</span>
+<div class="viewcode-block" id="SetupEOSMicroBand"><a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand">[docs]</a><span class="k">class</span> <span class="nc">SetupEOSMicroBand</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the object with statistical distributions averaging over</span>
 <span class="sd">    the models given as inputs and in NM.</span>
@@ -206,11 +207,18 @@
             <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
                 <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupEOSMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
                 <span class="k">if</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nm&#39;</span><span class="p">:</span>
-                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_den_max</span> <span class="p">)</span>
+                    <span class="n">nm_den_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_den</span> <span class="p">)</span>
+                    <span class="n">nm_den_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_den</span> <span class="p">)</span>
+                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nm_den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nm_den_max</span> <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;sm&#39;</span><span class="p">:</span>
-                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_den_max</span> <span class="p">)</span>
+                    <span class="n">sm_den_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_den</span> <span class="p">)</span>
+                    <span class="n">sm_den_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_den</span> <span class="p">)</span>
+                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sm_den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sm_den_max</span> <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;esym&#39;</span><span class="p">:</span>
-                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">esym_den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">mic</span><span class="o">.</span><span class="n">esym_den_max</span> <span class="p">)</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupEOSMicroEsym</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+                    <span class="n">den_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="n">esym</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span>
+                    <span class="n">den_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">esym</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span>
+                    <span class="n">den_min_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">den_min</span> <span class="p">);</span> <span class="n">den_max_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">den_max</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">den_min_tmp</span> <span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_max</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="n">den_max_tmp</span> <span class="p">);</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;den_max:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">den_max</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;den_min:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">den_min</span><span class="p">)</span>
@@ -282,9 +290,7 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupEOSMicroBand()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-<div class="viewcode-block" id="SetupEOSMicroBand.print_outputs">
-<a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand.print_outputs">[docs]</a>
-    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupEOSMicroBand.print_outputs"><a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -302,11 +308,8 @@
         <span class="c1">#if self.sm_den is not None: print(f&quot;   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}&quot;)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
-
         <span class="c1">#</span>
-<div class="viewcode-block" id="SetupEOSMicroBand.init_self">
-<a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand.init_self">[docs]</a>
-    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="SetupEOSMicroBand.init_self"><a class="viewcode-back" href="../../source/api/setup_eos_micro_band.html#nucleardatapy.setup_eos_micro_band.SetupEOSMicroBand.init_self">[docs]</a>    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize variables in self.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -320,9 +323,7 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span>        </div>
-</div>
-
+        <span class="k">return</span> <span class="bp">self</span>        </div></div>
 </pre></div>
 
            </div>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>SetupEOSMicro</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -16,90 +16,90 @@
             
   <section id="setupeosmicro">
 <h1>SetupEOSMicro</h1>
-<dl class="py class" id="module-nucleardatapy.setup_eos_micro">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.SetupEOSMicro">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_eos_micro.</span></span><span class="sig-name descname"><span class="pre">SetupEOSMicro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.01393939,</span> <span class="pre">0.01787879,</span> <span class="pre">0.02181818,</span> <span class="pre">0.02575758,</span> <span class="pre">0.02969697,</span> <span class="pre">0.03363636,</span> <span class="pre">0.03757576,</span> <span class="pre">0.04151515,</span> <span class="pre">0.04545455,</span> <span class="pre">0.04939394,</span> <span class="pre">0.05333333,</span> <span class="pre">0.05727273,</span> <span class="pre">0.06121212,</span> <span class="pre">0.06515152,</span> <span class="pre">0.06909091,</span> <span class="pre">0.0730303,</span> <span class="pre">0.0769697,</span> <span class="pre">0.08090909,</span> <span class="pre">0.08484848,</span> <span class="pre">0.08878788,</span> <span class="pre">0.09272727,</span> <span class="pre">0.09666667,</span> <span class="pre">0.10060606,</span> <span class="pre">0.10454545,</span> <span class="pre">0.10848485,</span> <span class="pre">0.11242424,</span> <span class="pre">0.11636364,</span> <span class="pre">0.12030303,</span> <span class="pre">0.12424242,</span> <span class="pre">0.12818182,</span> <span class="pre">0.13212121,</span> <span class="pre">0.13606061,</span> <span class="pre">0.14,</span> <span class="pre">0.14393939,</span> <span class="pre">0.14787879,</span> <span class="pre">0.15181818,</span> <span class="pre">0.15575758,</span> <span class="pre">0.15969697,</span> <span class="pre">0.16363636,</span> <span class="pre">0.16757576,</span> <span class="pre">0.17151515,</span> <span class="pre">0.17545455,</span> <span class="pre">0.17939394,</span> <span class="pre">0.18333333,</span> <span class="pre">0.18727273,</span> <span class="pre">0.19121212,</span> <span class="pre">0.19515152,</span> <span class="pre">0.19909091,</span> <span class="pre">0.2030303,</span> <span class="pre">0.2069697,</span> <span class="pre">0.21090909,</span> <span class="pre">0.21484848,</span> <span class="pre">0.21878788,</span> <span class="pre">0.22272727,</span> <span class="pre">0.22666667,</span> <span class="pre">0.23060606,</span> <span class="pre">0.23454545,</span> <span class="pre">0.23848485,</span> <span class="pre">0.24242424,</span> <span class="pre">0.24636364,</span> <span class="pre">0.25030303,</span> <span class="pre">0.25424242,</span> <span class="pre">0.25818182,</span> <span class="pre">0.26212121,</span> <span class="pre">0.26606061,</span> <span class="pre">0.27,</span> <span class="pre">0.27393939,</span> <span class="pre">0.27787879,</span> <span class="pre">0.28181818,</span> <span class="pre">0.28575758,</span> <span class="pre">0.28969697,</span> <span class="pre">0.29363636,</span> <span class="pre">0.29757576,</span> <span class="pre">0.30151515,</span> <span class="pre">0.30545455,</span> <span class="pre">0.30939394,</span> <span class="pre">0.31333333,</span> <span class="pre">0.31727273,</span> <span class="pre">0.32121212,</span> <span class="pre">0.32515152,</span> <span class="pre">0.32909091,</span> <span class="pre">0.3330303,</span> <span class="pre">0.3369697,</span> <span class="pre">0.34090909,</span> <span class="pre">0.34484848,</span> <span class="pre">0.34878788,</span> <span class="pre">0.35272727,</span> <span class="pre">0.35666667,</span> <span class="pre">0.36060606,</span> <span class="pre">0.36454545,</span> <span class="pre">0.36848485,</span> <span class="pre">0.37242424,</span> <span class="pre">0.37636364,</span> <span class="pre">0.38030303,</span> <span class="pre">0.38424242,</span> <span class="pre">0.38818182,</span> <span class="pre">0.39212121,</span> <span class="pre">0.39606061,</span> <span class="pre">0.4])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
-<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-iAPR’, ‘2006-BHF-AM*’, ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2012-AFDMC-NM-1’, ‘2012-AFDMC-NM-2’, ‘2012-AFDMC-NM-3’, ‘2012-AFDMC-NM-4’,     ‘2012-AFDMC-NM-5’, ‘2012-AFDMC-NM-6’, ‘2012-AFDMC-NM-7’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,     ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’</p>
+<span class="target" id="module-nucleardatapy.eos.setup_micro"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.micro_models">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APRfit’, ‘2006-BHF-AM*’,     ‘2012-AFDMC-NM-1’, ‘2012-AFDMC-NM-2’, ‘2012-AFDMC-NM-3’, ‘2012-AFDMC-NM-4’,     ‘2012-AFDMC-NM-5’, ‘2012-AFDMC-NM-6’, ‘2012-AFDMC-NM-7’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,    ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’,    ‘2024-BHF-AM-23BFmicro-Av18’, ‘2024-BHF-AM-23BFmicro-BONNB’, ‘2024-BHF-AM-23BFmicro-NSC93’,    ‘2024-DMC-NM’</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of models.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.micro_models_group_NM">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_group_NM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.micro_models_group_SM">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_group_SM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.setupMicro">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro.</span></span><span class="sig-name descname"><span class="pre">setupMicro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.03052632,</span> <span class="pre">0.05105263,</span> <span class="pre">0.07157895,</span> <span class="pre">0.09210526,</span> <span class="pre">0.11263158,</span> <span class="pre">0.13315789,</span> <span class="pre">0.15368421,</span> <span class="pre">0.17421053,</span> <span class="pre">0.19473684,</span> <span class="pre">0.21526316,</span> <span class="pre">0.23578947,</span> <span class="pre">0.25631579,</span> <span class="pre">0.27684211,</span> <span class="pre">0.29736842,</span> <span class="pre">0.31789474,</span> <span class="pre">0.33842105,</span> <span class="pre">0.35894737,</span> <span class="pre">0.37947368,</span> <span class="pre">0.4])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-iAPR’, ‘2006-BHF-AM*’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2012-AFDMC-NM-1’, ‘2012-AFDMC-NM-2’, ‘2012-AFDMC-NM-3’, ‘2012-AFDMC-NM-4’,     ‘2012-AFDMC-NM-5’, ‘2012-AFDMC-NM-6’, ‘2012-AFDMC-NM-7’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,     ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’, ‘2025-DMC-NM’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p>
 </dd>
 </dl>
 <p><strong>Attributes:</strong></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.SetupEOSMicro.init_self">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.setupMicro.init_self">
 <span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Initialize variables in self.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.SetupEOSMicro.model">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.setupMicro.model">
 <span class="sig-name descname"><span class="pre">model</span></span></dt>
 <dd><p>Attribute model.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.SetupEOSMicro.print_outputs">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro.setupMicro.print_outputs">
 <span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Method which print outputs on terminal’s screen.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.eos_micro_models">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_eos_micro.</span></span><span class="sig-name descname"><span class="pre">eos_micro_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APRfit’, ‘2006-BHF-AM*’, ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2012-AFDMC-NM-1’, ‘2012-AFDMC-NM-2’, ‘2012-AFDMC-NM-3’, ‘2012-AFDMC-NM-4’,     ‘2012-AFDMC-NM-5’, ‘2012-AFDMC-NM-6’, ‘2012-AFDMC-NM-7’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,    ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’,    ‘2024-BHF-AM-23BFmicro-Av18’, ‘2024-BHF-AM-23BFmicro-BONNB’, ‘2024-BHF-AM-23BFmicro-NSC93’
-:return: The list of models.
-:rtype: list[str].</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.eos_micro_models_group_NM">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_eos_micro.</span></span><span class="sig-name descname"><span class="pre">eos_micro_models_group_NM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="nucleardatapy.setup_eos_micro.eos_micro_models_group_SM">
-<span class="sig-prename descclassname"><span class="pre">nucleardatapy.setup_eos_micro.</span></span><span class="sig-name descname"><span class="pre">eos_micro_models_group_SM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<p>Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEOSMicro.py</p>
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupMicro.py</p>
 <figure class="align-default" id="id1">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_e2a_NM_VAR.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_e2a_NM_VAR.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the variational models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_e2a_NM_AFDMC.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_e2a_NM_AFDMC.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the AFDMC models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_e2a_NM_BHF.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_e2a_NM_BHF.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the BHF models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_e2a_NM_QMC.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_e2a_NM_QMC.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the QMC models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_e2a_NM_MBPT.png" style="width: 448.0px; height: 336.0px;" />
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_e2a_NM_MBPT.png" style="width: 448.0px; height: 336.0px;" />
 <figcaption>
 <p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.</span></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id6">
-<img alt="map to buried treasure" src="../../_images/plot_SetupEOSMicro_gap_NM.png" style="width: 448.0px; height: 336.0px;" />
-<figcaption>
-<p><span class="caption-text">This figure shows the pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.</span></p>
 </figcaption>
 </figure>
 </section>

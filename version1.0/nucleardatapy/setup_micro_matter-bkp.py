@@ -5,8 +5,8 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 

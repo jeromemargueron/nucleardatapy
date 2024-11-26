@@ -6,60 +6,72 @@ SetupEOSPheno
 .. currentmodule:: nucleardatapy.setupeospheno
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_eos_pheno
+.. automodule:: nucleardatapy.eos.setup_pheno
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEOSPheno.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupPheno.py
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-NLRH-E-NM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-NLRH-E-NM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-NLRH-E-SM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-NLRH-E-SM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on non-linear meson(s) relativistic Hartree (NLRH) approach available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-DDRH-E-NM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-DDRH-E-NM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-DDRH-E-SM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-DDRH-E-SM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree (DDRH) approach available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-DDRHF-E-NM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-DDRHF-E-NM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-DDRHF-E-SM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-DDRHF-E-SM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on density-dependent relativistic Hartree-Fock (DDRHF) approach available in the nucleardatapy toolkit.	
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-Skyrme-E-NM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-Skyrme-E-NM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
-	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.
+	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interactions available in the nucleardatapy toolkit.
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSPheno-Skyrme-E-SM.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-Skyrme-E-SM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
-	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interaction available in the nucleardatapy toolkit.	
+	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the standard Skyrme interactions available in the nucleardatapy toolkit.	
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_EOSNEP.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-ESkyrme-E-NM.png
+	:scale: 70 %
+	:alt: map to buried treasure
+
+	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the extended ESkyrme interactions available in the nucleardatapy toolkit.
+
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupPheno-ESkyrme-E-SM.png
+	:scale: 70 %
+	:alt: map to buried treasure
+
+	This figure shows the energy in symmetric matter (SM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the complete list of phenomenological models based on the extended ESkyrme interactions available in the nucleardatapy toolkit.	
+
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_EOSNEP.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

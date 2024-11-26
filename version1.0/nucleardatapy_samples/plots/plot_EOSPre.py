@@ -4,8 +4,8 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -31,7 +31,7 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
     #
     for model in micro_models:
         #
-        mic = nuda.SetupEOSMicro( model = model )
+        mic = nuda.eos.setupMicro( model = model )
         if mic.nm_pre is not None: 
             print('model:',model)
             if mic.marker:
@@ -44,7 +44,7 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
                     axs[0].errorbar( mic.nm_den, mic.nm_pre, yerr=mic.nm_pre_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
                 else:
                     axs[0].plot( mic.nm_den, mic.nm_pre, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
-        mic.print_outputs( )
+        if nuda.env.verb: mic.print_outputs( )
     #axs[0].fill_between( band.den, y1=(band.pre-band.pre_std), y2=(band.pre+band.pre_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[0].plot( band.den, (band.pre-band.pre_std), color='k', linestyle='dashed' )
     #axs[0].plot( band.den, (band.pre+band.pre_std), color='k', linestyle='dashed' )
@@ -53,16 +53,16 @@ def plot_EOSpre( pname, micro_models, pheno_models, band ):
     #
     for model in pheno_models:
         #
-        params, params_lower = nuda.eos_pheno_params( model = model )
+        params, params_lower = nuda.eos.pheno_params( model = model )
         #
         for param in params:
             #
-            pheno = nuda.SetupEOSPheno( model = model, param = param )
+            pheno = nuda.eos.setupPheno( model = model, param = param )
             if pheno.nm_pre is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
                 axs[1].plot( pheno.nm_den, pheno.nm_pre, label=pheno.label )
-            pheno.print_outputs( )
+            if nuda.env.verb: pheno.print_outputs( )
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
@@ -87,11 +87,11 @@ def main():
     #
     den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    band = nuda.SetupEOSMicroBand( models, den=den, matter='NM' )
+    band = nuda.eos.setupMicroBand( models, den=den, matter='NM' )
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.eos_micro_models()
+    micro_models, micro_models_lower = nuda.eos.micro_models()
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym

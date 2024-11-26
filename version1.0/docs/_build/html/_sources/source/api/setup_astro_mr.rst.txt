@@ -6,12 +6,12 @@ SetupAstroMR
 .. currentmodule:: nucleardatapy.setupastromr
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_astro_mr
+.. automodule:: nucleardatapy.astro.setup_mr
 	:members:
 
-Here is a figure which is produced with the Python sample: /sample/nucleardatapy_plots/plot_setupAstroMR.py
+Here is a figure which is produced with the Python sample: /nucleardatapy_sample/plots/plot_astro_setupMR.py
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupAstroMR.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_astro_setupMR.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

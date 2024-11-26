@@ -3,8 +3,8 @@ import os
 import sys
 import numpy as np
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -50,7 +50,7 @@ def main():
     for model in models:
         #
         mic = nuda.SetupMicroMatter( model = model )
-        mic.print_outputs( )
+        if nuda.env.verb_output: mic.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_SetupMicroMatter.py:")
