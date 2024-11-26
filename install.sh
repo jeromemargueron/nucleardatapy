@@ -8,7 +8,7 @@ LIB=$HOME/mylib
 
 # Folder where the samples are stored:
 # By default, it can be $LIB, but it is not necessary.
-SAMPLES=$LIB/nucleardatapy
+SAMPLES=$LIB/nucleardatapy_samples
 
 echo ""
 echo ">> -----------------------------------"
@@ -33,13 +33,9 @@ cp -R version$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
 cp -R version$VER/data $LIB/nucleardatapy/
 
 echo ""
-echo ">> copy nucleardatapy samples to $SAMPLES/samples/ folder"
-mkdir -p  $SAMPLES/samples
-cp -R version$VER/samples/nucleardatapy_samples $SAMPLES/samples/
-
-echo ""
-echo ">> copy nucleardatapy plots to $SAMPLES/samples folder"
-cp -R version$VER/samples/nucleardatapy_plots $SAMPLES/samples/
+echo ">> copy nucleardatapy samples to $SAMPLES/ folder"
+mkdir -p  $SAMPLES
+cp -R version$VER/nucleardatapy_samples/ $SAMPLES/
 
 echo ""
 echo ">> You should create the following global variables:"
