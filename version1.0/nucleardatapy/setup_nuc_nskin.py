@@ -1,0 +1,358 @@
+import os
+import sys
+import math
+import numpy as np  # 1.15.0
+
+nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+sys.path.insert(0, nucleardatapy_tk)
+
+import nucleardatapy as nuda
+
+def nuc_nskin():
+    """
+    Return a list of the nuclei (source) for which a neutron skin is given
+
+    :return: The list of nuclei.
+    :rtype: list[str].
+    """
+    #
+    if nuda.env.verb: print("\nEnter nuc_nskin()")
+    #
+    sources = [ '48Ca', '208Pb' ]
+    #
+    #print('sources available in the toolkit:',sources)
+    sources_lower = [ item.lower() for item in sources ]
+    #print('sources available in the toolkit:',sources_lower)
+    #
+    if nuda.env.verb: print("Exit nuc_nskin()")
+    #
+    return sources, sources_lower
+
+def nuc_nskin_source( source ):
+    """
+    Return a list of values for a given source (nuclei) and print them all on the prompt.
+
+    :param source: The nuclei for which there are different calculations.
+    :type source: str.
+    :return: The list of calculations. \
+    If source == '208Pb': 1, 2, 3, 4, 5,...,22
+    :rtype: list[str].
+    """
+    #
+    if nuda.env.verb: print("\nEnter nuc_nskin_source()")
+    #
+    if source.lower()=='48Ca':
+        obss = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
+    elif source.lower()=='208Pb':
+        obss = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+    #
+    #print('Calculations available in the toolkit:',obss)
+    #
+    if nuda.env.verb: print("Exit nuc_nskin_source()")
+    #
+    return obss
+
+class SetupNeutronSkin():
+    """
+    Instantiate the neutron skin calculations for a given source and obs.
+
+    This choice is defined in the variables `source` and `obs`.
+
+    `source` can chosen among the following ones: '48Ca'.
+
+    `obs` depends on the chosen source.
+
+    :param source: Fix the name of `source`. Default value: ''.
+    :type source: str, optional. 
+    :param obs: Fix the `obs`. Default value: 1.
+    :type obs: str, optional. 
+
+    **Attributes:**
+    """
+    def __init__(self, source = '48Ca', obs = 1 ):
+        #
+        if nuda.env.verb: print("Enter SetupNeutronSkin()")
+        #
+        # some checks
+        #
+        sources, sources_lower = nuc_nskin()
+        if source.lower() not in sources_lower:
+            print('Source ',source,' is not in the list of sources.')
+            print('list of sources:',sources)
+            print('-- Exit the code --')
+            exit()
+        self.source = source
+        if nuda.env.verb: print("source:",source)
+        #
+        obss = astro_mr_source( source = source )
+        if obs not in obss:
+            print('Obs ',obs,' is not in the list of obs.')
+            print('list of obs:',obss)
+            print('-- Exit the code --')
+            exit()
+        self.obs = obs
+        if nuda.env.verb: print("obs:",obs)
+        #
+        # fix `file_in` and some properties of the object
+        #
+        if source.lower()=='48Ca':
+            file_in = nuda.param.path_data+'nuclei/nskin/48Ca.dat'  
+            if obs==1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='J.C. Lombardi, R.N. Boyd, R. Arking, and A.B. Robbins, NPA 188, 103 (1972).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'Lombardi 1972'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "write notes about this calculation."
+                self.marker = 'o'
+            elif obs==2:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='I. Brissaud, Y. Le Bornec, B. Tatischeff, et al., NPA 191, 145 (1972).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'Brissaud 1972'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this calculation."
+                self.marker = 's'
+        elif source.lower()=='j0740+6620':
+            file_in = nuda.param.path_data+'astro/NICER/J0740+6620.dat'
+            if obs==1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, S. Bogdanov, et al., ApJL 918, L28 (2021).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0740 Miller 2021'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this calculation."
+                self.marker = 'o'
+            elif obs==2:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='T.E. Riley, A.L. Watts, P.S. Ray, S. Bogdanov, et al., ApJL 918, L27 (2021).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0740 Riley 2021'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this calculation."
+                self.marker = 's'
+        #
+        #: Attribute the observational mass of the source.
+        self.mass = None
+        #: Attribute the positive uncertainty.
+        self.mass_sig_up = None
+        #: Attribute the negative uncertainty.
+        self.mass_sig_do = None
+        #: Attribute the observational mass of the source.
+        self.rad = None
+        #: Attribute the positive uncertainty.
+        self.rad_sig_up = None
+        #: Attribute the negative uncertainty.
+        self.rad_sig_do = None
+        #: Attribute latexCite.
+        self.latexCite = None
+        #
+        # read file from `file_in`
+        #
+        with open(file_in,'r') as file:
+            for line in file:
+                if '#' in line: continue
+                ele = line.split(',')
+                #print('ele[0]:',ele[0],' obs:',obs,' ele[:]:',ele[:])
+                if int(ele[0]) == obs:
+                    self.rad = float(ele[1])
+                    self.rad_sig_up = float(ele[2])
+                    self.rad_sig_do = float(ele[3])
+                    self.mass = float(ele[4])
+                    self.mass_sig_up = float(ele[5])
+                    self.mass_sig_do = float(ele[6])
+                    self.latexCite = ele[10].replace('\n','').replace(' ','')
+        #
+        # compute compactness
+        #
+        # fix the boundary for the masses and the radii:
+        mmin = self.mass - 3*self.mass_sig_do
+        mmax = self.mass + 3*self.mass_sig_up
+        rmin = self.rad - 3*self.rad_sig_do
+        rmax = self.rad + 3*self.rad_sig_up
+        #print('Sch rad of the sun:',nuda.cst.rshsol_si)
+        # construct the distribution of observations in ay
+        #ar = np.linspace(rmin,rmax,300); ar=np.array( ar / nuda.cst.rshsol_si * 1.e3 )
+        ar = np.linspace(rmin,rmax,300); ar=np.array( ar )
+        am = np.linspace(mmin,mmax,300); am=np.array( am )
+        #ac = 0.5 * am / ar
+        ac = 0.5 * nuda.cst.rshsol_si / 1.e3 * am / ar
+        ayr = gauss(ar,self.rad,self.rad_sig_up,self.rad_sig_do); ayr=np.array( ayr )
+        aym = gauss(am,self.mass,self.mass_sig_up,self.mass_sig_do); aym=np.array( aym )
+        ayc = aym * ayr 
+        # determine the centroid and standard deviation for the compactness
+        noc = sum( ayc )
+        cenc = sum( ayc*ac )
+        stdc = sum ( ayc*ac**2 )
+        self.comp_cen = cenc / noc
+        self.comp_sig_std = round( math.sqrt( stdc/noc - self.comp_cen**2 ), 3 )
+        self.comp_cen = round( self.comp_cen, 3)
+        #
+        if nuda.env.verb: print("Exit SetupAstroMR()")
+        #
+    #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   obs:",self.obs)
+            print("   mass:",self.mass,' in Mo')
+            print("   sigma(mass):",self.mass_sig_up,self.mass_sig_do,' in Mo')
+            print("   rad:",self.rad,' in km')
+            print("   sigma(mass):",self.rad_sig_up,self.rad_sig_do,' in km')
+            print("   compactness:",self.comp_cen)
+            print("   sigma(comp):",self.comp_sig_std)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
+        else:
+            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & ${{{self.rad:.2f}}}^{{{+self.rad_sig_up}}}_{{{-self.rad_sig_do}}}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \cite{{{self.latexCite}}} \\\\")
+        else:
+            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
+
+class SetupAstroMRAverage():
+    """
+    Instantiate the observational mass for a given source and averaged over obs.
+
+    This choice is defined in the variable `source`.
+
+    `source` can chosen among the following ones: 'J1614–2230'.
+
+    :param source: Fix the name of `source`. Default value: 'J1614–2230'.
+    :type source: str, optional. 
+
+    **Attributes:**
+    """
+    def __init__(self, source = 'J1614–2230' ):
+        #
+        if nuda.env.verb: print("Enter SetupAstroMRAverage()")
+        #
+        self.source = source
+        self.latexCite = None
+        self.ref = None
+        self.label = source+' average'
+        self.note = 'compute the centroid and standard deviation over several obs. data.'
+        #
+        obss = astro_mr_source( source = source )
+        #
+        # search for the boundary for the masses and the radii:
+        mmin = 3.0; mmax = 0.0;
+        rmin = 30.0; rmax = 0.0;
+        for obs in obss:
+            mr = nuda.SetupAstroMR( source = source, obs = obs )
+            mdo = mr.mass - 3*mr.mass_sig_do
+            mup = mr.mass + 3*mr.mass_sig_up
+            if mdo < mmin: mmin = mdo
+            if mup > mmax: mmax = mup
+            rdo = mr.rad - 3*mr.rad_sig_do
+            rup = mr.rad + 3*mr.rad_sig_up
+            if rdo < rmin: rmin = rdo
+            if rup > rmax: rmax = rup
+        # construct the distribution of observations in ay
+        ar = np.linspace(rmin,rmax,300); ar=np.array( ar )
+        am = np.linspace(mmin,mmax,300); am=np.array( am )
+        ac = 0.5 * nuda.cst.rshsol_si / 1.e3 * am / ar
+        ayr = np.zeros(300); ayr=np.array( ayr )
+        aym = np.zeros(300); aym=np.array( aym )
+        for obs in obss:
+            mr = nuda.SetupAstroMR( source = source, obs = obs )
+            ayr += gauss(ar,mr.rad,mr.rad_sig_up,mr.rad_sig_do)
+            aym += gauss(am,mr.mass,mr.mass_sig_up,mr.mass_sig_do)
+        ayc = aym * ayr 
+        # determine the centroid and standard deviation from the distribution of obs. 
+        nor = sum( ayr )
+        nom = sum( aym )
+        noc = sum( ayc )
+        cenr = sum( ayr*ar )
+        cenm = sum( aym*am )
+        cenc = sum( ayc*ac )
+        stdr = sum ( ayr*ar**2 )
+        stdm = sum ( aym*am**2 )
+        stdc = sum ( ayc*ac**2 )
+        self.rad_cen = cenr / nor
+        self.mass_cen = cenm / nom
+        self.comp_cen = cenc / noc
+        self.rad_sig_std = round( math.sqrt( stdr/nor - self.rad_cen**2 ), 3 )
+        self.mass_sig_std = round( math.sqrt( stdm/nom - self.mass_cen**2 ), 3 )
+        self.comp_sig_std = round( math.sqrt( stdc/noc - self.comp_cen**2 ), 3 )
+        self.rad_cen = round( self.rad_cen, 3)
+        self.mass_cen = round( self.mass_cen, 3)
+        self.comp_cen = round( self.comp_cen, 3)
+        #
+        if nuda.env.verb: print("Exit SetupAstroMRAverage()")
+    #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output (average):")
+            print("   source:  ",self.source)
+            print("   mass_cen:",self.mass_cen,' in Mo')
+            print("   mass_sig_std:",self.mass_sig_std,' in Mo')
+            print("   rad_cen:",self.rad_cen,' in km')
+            print("   rad_sig_std:",self.rad_sig_std,' in km')
+            print("   compactness:",self.comp_cen)
+            print("   sigma(comp):",self.comp_sig_std)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
+        else:
+            print(f"- No output for source {self.source} (average). To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+    def print_table( self ):
+        """
+        Method which print outputs in table format (latex) on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_table()")
+        #
+        if nuda.env.verb_table:
+            print(f"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ & ${self.rad_cen:.2f}\pm{self.rad_sig_std}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \\\\")
+        else:
+            print(f"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_table()")
+        #
+
+def gauss( ax, cent, sig_up, sig_do ):
+    fac = math.sqrt( 2*math.pi )
+    gauss = []
+    for x in ax:
+        if x < cent: 
+            z = ( x - cent ) / sig_do
+            norm = sig_do * fac
+        else:
+            z = ( x - cent ) / sig_up
+            norm = sig_up * fac
+        gauss.append( math.exp( -0.5*z**2 ) / norm )
+    return gauss
+
