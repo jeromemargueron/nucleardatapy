@@ -498,7 +498,7 @@ class SetupNeutronSkin():
         if nuda.env.verb: print("Enter print_table()")
         #
         if nuda.env.verb_table:
-            print(f"- table: {self.source} & {self.obs} & ${self.nrad:.2f}^{{{+self.nrad_sig_up}}}_{{{-self.nrad_sig_do}}}$ & ${{{self.prad:.2f}}}^{{{+self.prad_sig_up}}}_{{{-self.prad_sig_do}}}$ & ${self.nskin:.2f}^{{{+self.nskin_sig_up}}}_{{{-self.nskin_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(f"- table: {self.source} & {self.obs} & ${self.nrad:.2f}^{{{+self.nrad_sig_up}}}_{{{-self.nrad_sig_do}}}$ & ${{{self.prad:.2f}}}^{{{+self.prad_sig_up}}}_{{{-self.prad_sig_do}}}$ & ${self.nskin:.2f}^{{{+self.nskin_sig_up}}}_{{{-self.nskin_sig_do}}}$ & \\cite{{{self.latexCite}}} \\\\")
         else:
             print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
