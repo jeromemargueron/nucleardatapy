@@ -128,7 +128,7 @@ class SetupNeutronSkin():
                 self.label = 'Alkhazov 1977'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this calculation."
-              self.marker = 's'              
+                self.marker = 's'              
             elif obs==5:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M.J. Jakobson, G.R. Burleson, J.R. Calarco, et al., PRL 38, 21 (1977).'
