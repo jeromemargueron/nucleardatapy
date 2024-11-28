@@ -343,7 +343,7 @@ class SetupNeutronSkin():
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Abrahamyan, Z. Ahmed, H. Albataineh, et al., PRL 108, 112502 (2012).'
                 #: Attribute providing the label the data is references for figures.
-                self.label = 'Abrahamyan 2012'
+                self.label = 'PREX Abrahamyan 2012'
                 #: Attribute providing additional notes about the calervation.
                 self.note = "write notes about this calculation."
                 self.marker = 'o'    
