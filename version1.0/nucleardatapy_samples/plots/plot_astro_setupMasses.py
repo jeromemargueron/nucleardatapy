@@ -16,11 +16,11 @@ def plot_astro_setupMasses( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.7, wspace=0.3, hspace=0.3)
     #
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
     axs.set_xlim([0.8, 5.5])
-    axs.set_ylim([1.4, 3.4])
+    axs.set_ylim([1.7, 3.5])
     #
     isource = 1
     xlabel = []
@@ -50,7 +50,8 @@ def plot_astro_setupMasses( pname, sources ):
     #
     axs.set_xticks( ilabel )
     axs.set_xticklabels( xlabel )
-    axs.legend(loc='upper left',fontsize='8', ncol=2)
+    #axs.legend(loc='upper left',fontsize='8', ncol=2)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
     #
     plt.savefig(pname)
     plt.close()

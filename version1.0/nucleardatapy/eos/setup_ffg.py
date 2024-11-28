@@ -106,30 +106,48 @@ def esymffg_nr( kf ):
 
 # FFG energy
 def feden(gam, kf, mc2):
-#    if kf > 1e-12:
-    pf = nuda.cst.hbc * kf
-    if mc2 == 0.0:
-        term = 2.0 * pf**4
+    den = gam * kf**3 / ( 6 * nuda.cst.pi2 )
+    e2v = []
+    e2a = []
+    for ind, val_kf in enumerate(kf):
+        if val_kf > 1e-12:
+            pf = nuda.cst.hbc * val_kf
+            if mc2 == 0.0:
+                term = 2.0 * pf**4
         #return gam / (2.0 * nuda.cst.pi) * (nuda.cst.hbc*kf)**4 / 4.0
-    else:
-        ef = np.sqrt( pf * pf + mc2 * mc2 )
-        r = ( pf + ef ) / mc2
+            else:
+                ef = np.sqrt( pf * pf + mc2 * mc2 )
+                r = ( pf + ef ) / mc2
         #term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r) - 8.0 / 3.0 * pf**3 * mc2
-        term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r)
-    return gam * term / (32.0 * nuda.cst.pi2 * nuda.cst.hbc**3 )
+                term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r)
+            e2v.append( gam * term / (16.0 * nuda.cst.pi2 * nuda.cst.hbc**3 ) )
+            e2a.append( e2v[-1] / den[ind] )
+        else:
+            e2v.append( 0.0 )
+            e2a.append( 0.0 )
+    e2v = np.array( e2v )
+    e2a = np.array( e2a )
+    return e2v, e2a
 
 # FFG pressure
 def fpres(gam, kf, mc2):
-#    if kf > 1e-12:
-    pf = nuda.cst.hbc * kf
-    if mc2 == 0.0:
-        term = 2.0 * pf**4
+    pre = []
+    for val_kf in kf:
+        if val_kf > 1e-12:
+            pf = nuda.cst.hbc * val_kf
+            if mc2 == 0.0:
+                term = 2.0 * pf**4
         #return gam / (2.0 * nuda.cst.pi) * kf**4 / 12.0
-    else:
-        ef = np.sqrt( pf * pf + mc2 * mc2 )
-        r = ( pf + ef ) / mc2
-        term = 2.0 * pf**3 * ef - 3.0 * pf * ef * mc2**2 + 3.0 * mc2**4 * np.log(r)
-    return gam * term / ( 48.0 * nuda.cst.pi2 * nuda.cst.hbc**3 )
+            else:
+                ef = np.sqrt( pf * pf + mc2 * mc2 )
+                r = ( pf + ef ) / mc2
+                #term = 2.0 * pf**3 * ef - 3.0 * pf * ef * mc2**2 + 3.0 * mc2**4 * np.log(r)
+                term = 2.0 * pf * ef**3 - 5.0 * pf * ef * mc2**2 + 3.0 * mc2**4 * np.log(r)
+            pre.append( gam * term / (48.0 * nuda.cst.pi2 * nuda.cst.hbc**3 ) )
+        else:
+            pre.append( 0.0 )
+    pre = np.array( pre )
+    return pre
 
 class setupFFGNuc():
     """
@@ -165,9 +183,9 @@ class setupFFGNuc():
         #: Attribute isospin parameter
         self.delta = delta 
         # Attribute the neutron fraction
-        self.x_n = nuda.cst.half * ( nuda.cst.one + delta )
+        self.x_n = nuda.cst.half * ( nuda.cst.one + self.delta )
         # Attribute the proton fraction
-        self.x_p = nuda.cst.half * ( nuda.cst.one - delta )
+        self.x_p = nuda.cst.half * ( nuda.cst.one - self.delta )
         #: Attribute neutron density
         self.den_n = self.x_n * den
         #: Attribute proton density
@@ -187,10 +205,10 @@ class setupFFGNuc():
         self.eF_p_int = np.sqrt( nuda.cst.mpc2**2 + (nuda.cst.hbc*self.kf_p)**2 ) - nuda.cst.mpc2
         self.eF_p_int_nr = nuda.cst.half * nuda.cst.h2m * self.kf_p**nuda.cst.two
         #: Attribute FFG energy per particle (degeneracy = 2)
-        e2v_n = feden( 2.0, self.kf_n, nuda.cst.mnc2)
-        e2v_p = feden( 2.0, self.kf_p, nuda.cst.mpc2)
+        e2v_n, e2a_n = feden( 2.0, self.kf_n, nuda.cst.mnc2)
+        e2v_p, e2a_p = feden( 2.0, self.kf_p, nuda.cst.mpc2)
         self.e2v = e2v_n + e2v_p
-        self.e2a = e2v_n / self.den_n + e2v_p / self.den_p
+        self.e2a = self.x_n * e2a_n + self.x_p * e2a_p
         self.e2a_int = self.e2a - self.x_n * nuda.cst.mnc2 - self.x_p * nuda.cst.mpc2
         self.e2a_int_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \

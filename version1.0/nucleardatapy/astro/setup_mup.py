@@ -219,7 +219,7 @@ class setupMupAverage():
 
     **Attributes:**
     """
-    def __init__(self, source = 'GW170817' ):
+    def __init__(self, source = 'GW170817', hyps = [ 1 ] ):
         #
         if nuda.env.verb: print("Enter SetupAstroMupAverage()")
         #
@@ -229,7 +229,7 @@ class setupMupAverage():
         self.label = source+' average'
         self.note = 'compute the centroid and standard deviation from the obs. data.'
         #
-        hyps = mup_hyps( source = source )
+        #hyps = mup_hyps( source = source )
         #
         # search for the boundary for mup:
         mupmin = 3.0; mupmax = 0.0;

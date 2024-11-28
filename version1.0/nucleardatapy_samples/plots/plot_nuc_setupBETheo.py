@@ -25,7 +25,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
     axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
     axs.set_ylabel(r'$E-E_{DZ}$ (MeV)',fontsize='12')
@@ -47,7 +47,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
     axs.scatter( N_diff, BE_diff, label='AME2020' )
     #
-    axs.legend(loc='upper right',fontsize='10', ncol=2)
+    axs.legend(loc='upper right',fontsize='10', ncol=4)
     #
     plt.savefig(pname)
     plt.close()

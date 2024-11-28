@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_EOSEsym( pname, models_micro, models_pheno, band ):
+def plot_eos_Esym( pname, models_micro, models_pheno, band ):
     #
     # plot E/A in NM
     #
@@ -17,7 +17,7 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_{sym}(n)$')
@@ -49,7 +49,7 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[0].text(0.05,5,'microscopic models',fontsize='10')
-    axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     for model in models_pheno:
         #
@@ -61,7 +61,7 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
             if esym.esym is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
-                axs[1].plot( esym.den, esym.esym, label=pheno.label )
+                axs[1].plot( esym.den, esym.esym, label=esym.label )
             if nuda.env.verb: esym.print_outputs( )
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
@@ -69,6 +69,7 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
     axs[1].text(0.05,5,'phenomenological models',fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname)
     plt.close()
@@ -76,7 +77,7 @@ def plot_EOSEsym( pname, models_micro, models_pheno, band ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_EOSEsym.py:")
+    print("Enter plot_eos_Esym.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -91,16 +92,16 @@ def main():
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.eos.micro_models()
+    micro_models, micro_models_lower = nuda.eos.micro_esym_models()
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym
     #
-    pname = 'figs/plot_EOSEsym.png'
-    plot_EOSEsym( pname, micro_models, pheno_models, band )
+    pname = 'figs/plot_eos_Esym.png'
+    plot_eos_Esym( pname, micro_models, pheno_models, band )
     #
     print(50*'-')
-    print("Exit plot_EOSEsym.py:")
+    print("Exit plot_eos_Esym.py:")
     print(50*'-')
     #
 

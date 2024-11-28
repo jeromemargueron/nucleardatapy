@@ -59,7 +59,6 @@ class setupBeta():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
-        print("model:",model)
         #
         self = setupBeta.init_self( self )
         #
@@ -103,19 +102,19 @@ class setupBeta():
             x_mu = 0.0
             for ind,den in enumerate(esym.den):
                 x_e, x_mu =  fsolve(beta_eq, (x_e, x_mu), args=(den,esym.esym[ind]) )
-                print(f' ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_e:{x_e:.3f}, x_mu:{x_mu:.3f}')
+                #print(f' ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_e:{x_e:.3f}, x_mu:{x_mu:.3f}')
                 self.x_e.append( x_e )
                 self.x_mu.append( x_mu )
             self.x_e = np.array( self.x_e, dtype = float )
             self.x_mu = np.array( self.x_mu, dtype = float )
-            print('x_e:',self.x_e)
-            print('x_mu:',self.x_mu)
+            #print('x_e:',self.x_e)
+            #print('x_mu:',self.x_mu)
             self.x_p = self.x_e + self.x_mu
             self.x_n = 1.0 - self.x_p
             self.asy = self.x_n - self.x_p
             self.n_n = self.x_n * self.den
             self.n_p = self.x_p * self.den
-            print('n_n:',self.n_n)
+            #print('n_n:',self.n_n)
             self.kfn = nuda.kf_n( self.n_n )
             #
             # Thermodynamical variables (with contributions from nucleons and leptons)

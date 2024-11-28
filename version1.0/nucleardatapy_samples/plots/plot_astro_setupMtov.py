@@ -16,7 +16,7 @@ def plot_astro_setupMtov( pname, sources_do, sources_up ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
     axs.set_xlabel(r'M$_\mathrm{tov}$ (M$_\odot$)',fontsize='12')
     axs.set_ylabel(r'probability (non-normalised)',fontsize='12')
@@ -41,7 +41,8 @@ def plot_astro_setupMtov( pname, sources_do, sources_up ):
     #
     axs.plot(prob.mass, prob.proba_tot, label=prob.label_tot, color=nuda.param.col[0], linestyle='solid', linewidth = 3 )
     #
-    axs.legend( loc='upper left',fontsize='8', ncol=1 )
+    #axs.legend( loc='upper left',fontsize='8', ncol=1 )
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname)
     plt.close()

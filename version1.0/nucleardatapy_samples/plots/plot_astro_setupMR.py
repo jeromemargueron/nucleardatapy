@@ -16,12 +16,12 @@ def plot_astro_setupMR( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
     axs.set_xlabel(r'$R$ (km)',fontsize='12')
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
-    axs.set_xlim([10, 17])
-    axs.set_ylim([0.8, 2.6])
+    axs.set_xlim([11, 16.5])
+    axs.set_ylim([1.1, 2.2])
     #
     isource = 1
     xlabel = []
@@ -49,7 +49,8 @@ def plot_astro_setupMR( pname, sources ):
         axs.errorbar( mrav.rad_cen, mrav.mass_cen, xerr=mrav.rad_sig_std, yerr=mrav.mass_sig_std, ms=12, label=mrav.label, color=nuda.param.col[isource], marker='^', linestyle = 'solid', linewidth = 3 )
         isource += 1
     #
-    axs.legend(loc='upper left',fontsize='8', ncol=2)
+    #axs.legend(loc='upper left',fontsize='8', ncol=2)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
     #
     plt.savefig(pname)
     plt.close()

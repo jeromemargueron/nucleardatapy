@@ -10,27 +10,27 @@ from scipy import special
 import nucleardatapy as nuda
 
 def compute_proba_do( amass, mass_cen, sig_up, sig_do ):
-    fac = math.sqrt( 2 )
+    fac = math.sqrt( 2.0 )
     prob = []
     for m in amass:
         if m < mass_cen: 
-            z = ( m - mass_cen ) / sig_do
+            z = ( m - mass_cen ) / sig_do / fac
             norm = sig_do * fac
         else:
-            z = ( m - mass_cen ) / sig_up
+            z = ( m - mass_cen ) / sig_up / fac
             norm = sig_up * fac
         prob.append( 0.5 * ( special.erf(z)+1) )
     return prob
 
 def compute_proba_up( amass, mass_cen, sig_up, sig_do ):
-    fac = math.sqrt( 2 )
+    fac = math.sqrt( 2.0 )
     prob = []
     for m in amass:
         if m < mass_cen: 
-            z = ( m - mass_cen ) / sig_do
+            z = ( m - mass_cen ) / sig_do / fac
             norm = sig_do * fac
         else:
-            z = ( m - mass_cen ) / sig_up
+            z = ( m - mass_cen ) / sig_up / fac
             norm = sig_up * fac
         prob.append( 0.5 * ( 1-special.erf(z)) )
     return prob
@@ -95,8 +95,11 @@ class setupMtov():
         self.label_up = []
         #
         for ind,source in enumerate(sources_up):
-            #print('Call average for source:', source)
-            avmup = nuda.setupMupAverage( source = source )
+            print('Call average for source:', source)
+            hyps = nuda.astro.mup_hyps( source = source )
+            if source=='GW170817': hyps = [ 3, 4 ]
+            print('   hyps:',hyps)
+            avmup = nuda.setupMupAverage( source = source, hyps = hyps )
             #print('End of call average')
             #avmup.print_outputs( )
             self.proba_up[ind] = compute_proba_up(self.mass, avmup.mup_cen, avmup.sig_std, avmup.sig_std)

@@ -91,6 +91,7 @@ class setupMicroGap():
             self.note = ""
             self.label = 'BCS-2008'
             self.marker = 'o'
+            self.every = 1
             #self.linestyle = 'dotted'
             self.gap_err = False
             self.nm_kfn_1s0, self.nm_gap_1s0, self.nm_chempot, self.nm_effmass \
@@ -107,6 +108,7 @@ class setupMicroGap():
             self.note = ""
             self.label = 'AFDMC-2008'
             self.marker = 'D'
+            self.every = 1
             #self.linestyle = 'solid'
             self.gap_err = False
             self.nm_kfn_1s0, self.nm_gap_1s0, self.nm_chempot, self.nm_effmass \
@@ -123,6 +125,7 @@ class setupMicroGap():
             self.note = ""
             self.label = 'QMC-swave-2008'
             self.marker = 'o'
+            self.every = 1
             #self.linestyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -139,6 +142,7 @@ class setupMicroGap():
             self.note = ""
             self.label = 'dLQMC-2009'
             self.marker = 'v'
+            self.every = 1
             #self.linestyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -155,6 +159,7 @@ class setupMicroGap():
             self.note = ""
             self.label = 'QMC-AV4-2008'
             self.marker = 's'
+            self.every = 1
             #self.linestyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
@@ -169,7 +174,7 @@ class setupMicroGap():
             self.note = ""
             self.marker = 's'
             #self.linestyle = 'solid'
-            self.every = 4
+            self.every = 2
             self.err = True
             if model.lower() == '2017-mbpt-nm-gap-emg-450-500-n2lo':
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv')

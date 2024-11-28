@@ -23,7 +23,7 @@ def EsymLsym_constraints():
     constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
              '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
               '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang' ]
-    print('Constraints available in the toolkit:',constraints)
+    #print('Constraints available in the toolkit:',constraints)
     constraints_lower = [ item.lower() for item in constraints ]
     return constraints, constraints_lower
 
@@ -142,7 +142,7 @@ class setupEsymLsym():
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
-            print('length(Esym)',len(self.Esym))
+            #print('length(Esym)',len(self.Esym))
             for ind,Esym in enumerate(self.Esym):
                 if ind < len(self.Esym)-1:
                     self.cont_Esym.append((self.Esym[ind], self.Esym[ind+1]))
@@ -154,8 +154,8 @@ class setupEsymLsym():
                 self.cont_Lsym.append((Lsym_min[ind], Lsym_min[ind-1]))
             self.cont_Esym.append((self.Esym[0], self.Esym[0]))
             self.cont_Lsym.append((Lsym_min[0], Lsym_max[0]))
-            print('coutour Esym:',self.cont_Esym)
-            print('coutour Lsym:',self.cont_Lsym)
+            #print('coutour Esym:',self.cont_Esym)
+            #print('coutour Lsym:',self.cont_Lsym)
         #
         elif constraint.lower() == '2012-frdm':
             #
@@ -176,7 +176,7 @@ class setupEsymLsym():
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
-            print('length(Esym)',len(self.Esym))
+            #print('length(Esym)',len(self.Esym))
             for ind,Esym in enumerate(self.Esym):
                 if ind < len(self.Esym)-1:
                     self.cont_Esym.append((self.Esym[ind], self.Esym[ind+1]))
@@ -188,8 +188,8 @@ class setupEsymLsym():
                 self.cont_Lsym.append((Lsym_min[ind], Lsym_min[ind-1]))
             self.cont_Esym.append((self.Esym[0], self.Esym[0]))
             self.cont_Lsym.append((Lsym_min[0], Lsym_max[0]))
-            print('coutour Esym:',self.cont_Esym)
-            print('coutour Lsym:',self.cont_Lsym)
+            #print('coutour Esym:',self.cont_Esym)
+            #print('coutour Lsym:',self.cont_Lsym)
         #
         elif constraint.lower() == '2013-ns':
             #
@@ -210,7 +210,7 @@ class setupEsymLsym():
             # setup list with contour in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
-            print('length(Esym)',len(self.Esym))
+            #print('length(Esym)',len(self.Esym))
             for ind,Esym in enumerate(self.Esym):
                 if ind < len(self.Esym)-1:
                     self.cont_Esym.append((self.Esym[ind], self.Esym[ind+1]))
@@ -222,8 +222,8 @@ class setupEsymLsym():
                 self.cont_Lsym.append((Lsym95_min[ind], Lsym95_min[ind-1]))
             self.cont_Esym.append((self.Esym[0], self.Esym[0]))
             self.cont_Lsym.append((Lsym95_min[0], Lsym95_max[0]))
-            print('coutour Esym:',self.cont_Esym)
-            print('coutour Lsym:',self.cont_Lsym)
+            #print('coutour Esym:',self.cont_Esym)
+            #print('coutour Lsym:',self.cont_Lsym)
         #
         elif constraint.lower() == '2014-ias':
             #
@@ -246,7 +246,7 @@ class setupEsymLsym():
             # setup list with contour for IAS contraint in Esym-Lsym coordinates
             self.cont_Esym = []
             self.cont_Lsym = []
-            print('length(Esym)',len(self.Esym))
+            #print('length(Esym)',len(self.Esym))
             for ind,Esym in enumerate(self.Esym):
                 if ind < len(self.Esym)-1:
                     self.cont_Esym.append((self.Esym[ind], self.Esym[ind+1]))

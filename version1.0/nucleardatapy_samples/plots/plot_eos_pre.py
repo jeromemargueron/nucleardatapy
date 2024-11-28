@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_EOScs2( pname, micro_models, pheno_models, band ):
+def plot_eos_pre( pname, micro_models, pheno_models, band ):
     #
     # plot pre in NM
     #
@@ -17,39 +17,39 @@ def plot_EOScs2( pname, micro_models, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$c_{s,NM}^2(n)$')
+    axs[0].set_ylabel(r'$p_{NM}(n)$')
     axs[0].set_xlim([0, 0.3])
-    axs[0].set_ylim([0, 0.5])
+    axs[0].set_ylim([0, 20])
     #
     axs[1].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1].set_ylabel(r'$c_{s,NM}^2(n)$')
+    axs[1].set_ylabel(r'$p_{NM}(n)$')
     axs[1].set_xlim([0, 0.3])
-    axs[1].set_ylim([0, 0.5])
+    axs[1].set_ylim([0, 20])
     #
     for model in micro_models:
         #
         mic = nuda.eos.setupMicro( model = model )
-        if mic.nm_cs2 is not None: 
+        if mic.nm_pre is not None: 
             print('model:',model)
             if mic.marker:
                 if mic.err:
-                    axs[0].errorbar( mic.nm_den, mic.nm_cs2, yerr=mic.nm_cs2_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
+                    axs[0].errorbar( mic.nm_den, mic.nm_pre, yerr=mic.nm_pre_err, marker=mic.marker, linestyle=None, label=mic.label, errorevery=mic.every )
                 else:
-                    axs[0].plot( mic.nm_den, mic.nm_cs2, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
+                    axs[0].plot( mic.nm_den, mic.nm_pre, marker=mic.marker, linestyle=None, label=mic.label, markevery=mic.every )
             else:
                 if mic.err:
-                    axs[0].errorbar( mic.nm_den, mic.nm_cs2, yerr=mic.nm_cs2_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[0].errorbar( mic.nm_den, mic.nm_pre, yerr=mic.nm_pre_err, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
                 else:
-                    axs[0].plot( mic.nm_den, mic.nm_cs2, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
+                    axs[0].plot( mic.nm_den, mic.nm_pre, marker=mic.marker, linestyle=mic.linestyle, label=mic.label, markevery=mic.every )
         if nuda.env.verb: mic.print_outputs( )
     #axs[0].fill_between( band.den, y1=(band.pre-band.pre_std), y2=(band.pre+band.pre_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[0].plot( band.den, (band.pre-band.pre_std), color='k', linestyle='dashed' )
     #axs[0].plot( band.den, (band.pre+band.pre_std), color='k', linestyle='dashed' )
-    axs[0].text(0.05,0.1,'microscopic models',fontsize='10')
-    axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    axs[0].text(0.05,5,'microscopic models',fontsize='10')
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     for model in pheno_models:
         #
@@ -61,14 +61,15 @@ def plot_EOScs2( pname, micro_models, pheno_models, band ):
             if pheno.nm_pre is not None: 
                 print('model:',model,' param:',param)
                 #pheno.label=None
-                axs[1].plot( pheno.nm_den, pheno.nm_cs2, label=pheno.label )
+                axs[1].plot( pheno.nm_den, pheno.nm_pre, label=pheno.label )
             if nuda.env.verb: pheno.print_outputs( )
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-    axs[1].text(0.05,0.1,'phenomenological models',fontsize='10')
+    axs[1].text(0.05,5,'phenomenological models',fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname)
     plt.close()
@@ -76,7 +77,7 @@ def plot_EOScs2( pname, micro_models, pheno_models, band ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_EOSCs2.py:")
+    print("Enter plot_eos_pre.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -96,11 +97,11 @@ def main():
     #
     # plot Esym
     #
-    pname = 'figs/plot_EOSCs2.png'
-    plot_EOScs2( pname, micro_models, pheno_models, band )
+    pname = 'figs/plot_eos_pre.png'
+    plot_eos_pre( pname, micro_models, pheno_models, band )
     #
     print(50*'-')
-    print("Exit plot_EOSCs2.py:")
+    print("Exit plot_eos_pre.py:")
     print(50*'-')
     #
 
