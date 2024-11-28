@@ -1,4 +1,4 @@
-# num, Rn, sig+Rn, sig-Rn, Rp, sig+Rp, sig-Rp, Rskin, sig+Rskin, sig-Rskin, latexCite
+# cal, Rn, sig+Rn, sig-Rn, Rp, sig+Rp, sig-Rp, Rskin, sig+Rskin, sig-Rskin, latexCite
 # all in fm
 # Rskin = Rn - Rp
 1, 3.78, 0.09, 0.09, 3.38, , , 0.39, 0.10, 0.10,              JCLombardi:1972    
