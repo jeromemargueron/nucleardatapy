@@ -17,7 +17,7 @@ def plot_crust_setupCrust( pname, models ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_{int}(n)$')
@@ -33,13 +33,15 @@ def plot_crust_setupCrust( pname, models ):
     #
     for model in models:
         #
+        print('model:',model)
         crust = nuda.crust.setupCrust( model = model )
         if crust.e2a_int is not None: 
-            axs[0].plot( crust.den, crust.e2a_int, label=crust.label )
+            axs[0].plot( crust.den, crust.e2a_int, label=crust.label, linestyle=crust.linestyle )
         if crust.Z is not None: 
-            axs[1].plot( crust.den, crust.Z, label=crust.label )
-    axs[0].legend(loc='upper left',fontsize='8', ncol=1)
+            axs[1].plot( crust.den, crust.Z, linestyle=crust.linestyle )
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=1)
     #axs[1].legend(loc='upper left',fontsize='8', ncol=1)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.01,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname)
     plt.close()

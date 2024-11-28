@@ -41,9 +41,9 @@ class setupEsym():
         self.note = el.note
         self.alpha = el.alpha
         self.plot = False
-        print('Esym:',el.Esym)
-        print('Lsym_min:',el.Lsym_min)
-        print('Lsym_max:',el.Lsym_max)
+        #print('Esym:',el.Esym)
+        #print('Lsym_min:',el.Lsym_min)
+        #print('Lsym_max:',el.Lsym_max)
         #cons.print_outputs( )
         #
         nden = 10

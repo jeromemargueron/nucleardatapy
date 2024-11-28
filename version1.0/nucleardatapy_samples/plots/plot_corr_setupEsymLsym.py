@@ -38,11 +38,11 @@ def plot_corr_setupEsymLsym( pname, constraints ):
     #
     for constraint in constraints:
         #
-        #print('constraint:',key)
+        print('constraint:',constraint)
         el = nuda.corr.setupEsymLsym( constraint = constraint )
-        print('Esym:',el.Esym,'+-',el.Esym_err)
-        print('Lsym:',el.Lsym,'+-',el.Lsym_err)
-        print('len(Esym):',el.Esym.size)
+        if nuda.env.verb: print('Esym:',el.Esym,'+-',el.Esym_err)
+        if nuda.env.verb: print('Lsym:',el.Lsym,'+-',el.Lsym_err)
+        if nuda.env.verb: print('len(Esym):',el.Esym.size)
         #
         if el.plot == 'point_err_xy':
             axs.errorbar( el.Esym, el.Lsym, xerr=el.Esym_err, yerr=el.Lsym_err, linestyle='solid', label=el.label )
@@ -58,7 +58,7 @@ def plot_corr_setupEsymLsym( pname, constraints ):
             #axs.errorbar( el.Esym, el.Lsym, yerr=el.Lsym_err, linestyle='solid', label=el.label )
         if nuda.env.verb: el.print_outputs( )
     #
-    axs.legend(loc='lower right',fontsize='8')
+    axs.legend(loc='lower right',fontsize='9')
     #
     plt.savefig(pname)
     plt.close()

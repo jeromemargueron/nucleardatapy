@@ -18,7 +18,7 @@ def micro_esym_models():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', '2006-BHF-AM*', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
     2016-MBPT-AM', 2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2024-NLEFT-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
@@ -35,7 +35,7 @@ def micro_esym_models():
     #
     if nuda.env.verb: print("\nEnter micro_esym_models()")
     #
-    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', \
+    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
                '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
              '2020-MBPT-AM', '2024-NLEFT-AM', \
             '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
@@ -58,7 +58,7 @@ class setupMicroEsym():
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-iAPR', '2006-BHF-AM*', \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
     '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2024-NLEFT-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
@@ -139,6 +139,7 @@ class setupMicroEsym():
         self.note = mic.note
         self.label = mic.label
         self.marker = mic.marker
+        self.every = 2*mic.every
         self.linestyle = mic.linestyle
         self.err = True
         #

@@ -16,7 +16,7 @@ def plot_astro_setupGW( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.07, right=None, top=0.8, wspace=0.3, hspace=0.3)
     #
     axs.set_ylabel(r'$\tilde{\Lambda}_{90\%}$',fontsize='12')
     axs.set_xlim([0.8, 2.5])
@@ -51,7 +51,13 @@ def plot_astro_setupGW( pname, sources ):
     #
     axs.set_xticks( ilabel )
     axs.set_xticklabels( xlabel )
-    axs.legend(loc='upper left',fontsize='8', ncol=2)
+    #axs.legend(loc='upper left',fontsize='8', ncol=2)
+    #ax_right
+    #ax_left
+    #upper_right_display=ax_right.transAxes.transform((1,1))
+    #upper_right_axes00=ax_left.transAxes.inverted().transform(upper_right_display)
+    #axs.legend(loc='lower left',bbox_to_anchor=(0,1.02,upper_right_axes00[0],1),mode='expand',columnspacing=0,fontsize='8', ncol=2)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
     #
     plt.savefig(pname)
     plt.close()

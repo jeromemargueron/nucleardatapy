@@ -28,7 +28,7 @@ def plot_eos_setupMicroLP0_SM( pname, models ):
     axs[0,1].set_ylim([-1, 2])
     #
     axs[1,0].set_ylabel(r'$F_0^\prime$')
-    axs[1,0].set_xlabel(r'k_F (fm$^{-1}$)')
+    axs[1,0].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,0].set_xlim([0, 2.0])
     axs[1,0].set_ylim([-1, 2])
     #
@@ -83,7 +83,7 @@ def plot_eos_setupMicroLP1_SM( pname, models ):
     axs[0,1].set_ylim([-1.5, 1])
     #
     axs[1,0].set_ylabel(r'$F_1^\prime$')
-    axs[1,0].set_xlabel(r'k_F (fm$^{-1}$)')
+    axs[1,0].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,0].set_xlim([0, 2.0])
     axs[1,0].set_ylim([-1.5, 1])
     #

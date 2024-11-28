@@ -67,7 +67,8 @@ def pheno_params( model ):
         params = [ 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99' ]
     elif model.lower() == 'ddrhf':
         params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
-    #print('Parameters available in the toolkit:',params)
+    print('For model:',model)
+    print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
     #
     if nuda.env.verb: print("Exit pheno_params()")
@@ -170,16 +171,21 @@ class setupPheno():
             #
             file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrme/'+param+'-SM.dat')
             file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrme/'+param+'-NM.dat')
+            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrmeNEP.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
+            if nuda.env.verb: print('Reads file2:',file_in3)
             #: Attribute providing the full reference to the paper to be citted.
             #self.ref = ''
             #: Attribute providing the label the data is references for figures.
-            self.label = 'SKY-'+param
+            self.label = 'ESKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_e2a, self.sm_pre = np.loadtxt( file_in1, usecols=(0,1,2), comments='#', unpack = True )
             self.nm_den, self.nm_e2a, self.nm_pre = np.loadtxt( file_in2, usecols=(0,1,2), comments='#', unpack = True )
+            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
+            self.sm_kf = self.sm_kfn
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kf = self.sm_kfn
@@ -195,6 +201,15 @@ class setupPheno():
             y = np.insert( self.nm_pre, 0, 0.0 )
             cs_nm_pre = CubicSpline( x, y )
             self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #
+            if param in name:
+                self.nep = True
+                ind = np.where(name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = 'None'
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = 'None'; self.Zsym = 'None'
+                self.msat = msat[ind][0]; self.kappas = 'None'; self.kappav = 'None';
+            else:
+                self.nep = False
             #
 #        elif model.lower() == 'gogny':
             #
@@ -374,4 +389,30 @@ class setupPheno():
         #
         if nuda.env.verb: print("Exit init_self()")
         #
-        return self        
+        return self
+
+def checkPheno(obj,band,matter):
+    '''
+    check if the phenomenological EOS is inside the band
+    return True if inside the band
+           otherwise return False
+    '''
+    if matter.lower() == 'nm':
+        x = np.insert( obj.nm_den, 0, 0.0 )
+        y = np.insert( obj.nm_e2a, 0, 0.0 )
+    elif matter.lower() == 'sm':
+        x = np.insert( obj.sm_den, 0, 0.0 )
+        y = np.insert( obj.sm_e2a, 0, 0.0 )
+    elif matter.lower() == 'esym':
+        x = np.insert( obj.den, 0, 0.0 )
+        y = np.insert( obj.esym, 0, 0.0 )
+    else:
+        print('checkPheno: issue with matter:',matter)
+        exit()
+    cs_e2a = CubicSpline( x, y )
+    flag = True
+    for ind,den in enumerate(band.den):
+        if abs(cs_e2a(den)-band.e2a[ind]) > band.e2a_std[ind]:
+            flag = False
+    return flag
+

@@ -22,13 +22,13 @@ def plot_eos_setupPheno_E( models, band, matter ):
         #
         fig, axs = plt.subplots(2,2)
         fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-        fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.98, wspace=0.25, hspace=0.25)
+        fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.88, wspace=0.25, hspace=0.25)
         #
         axs[0,0].set_xlim([0, 0.3])
         axs[1,0].set_xlabel(r'n (fm$^{-3}$)',fontsize='12')
         axs[1,0].set_xlim([0, 0.3])
         axs[0,1].set_xlim([0.5, 1.5])
-        axs[1,1].set_xlabel(r'k_F (fm$^{-1}$)',fontsize='12')
+        axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)',fontsize='12')
         axs[1,1].set_xlim([0.5, 1.5])
         #
         if matter.lower() == 'nm':
@@ -52,18 +52,26 @@ def plot_eos_setupPheno_E( models, band, matter ):
             #
             pheno = nuda.eos.setupPheno( model = model, param = param )
             if matter.lower() == 'nm':
-                #pass
                 if any(pheno.nm_e2a): 
-                    axs[0,0].plot( pheno.nm_den, pheno.nm_e2a, linestyle='solid', label=pheno.label )
-                    axs[0,1].plot( pheno.nm_kfn, pheno.nm_e2a, linestyle='solid', label=pheno.label )
-                    axs[1,0].plot( pheno.nm_den, pheno.nm_e2a/nuda.effg(pheno.nm_kfn), linestyle='solid', label=pheno.label )
-                    axs[1,1].plot( pheno.nm_kfn, pheno.nm_e2a/nuda.effg(pheno.nm_kfn), linestyle='solid', label=pheno.label )
+                    if model == 'Skyrme' and not nuda.eos.checkPheno(pheno,band,matter):
+                        axs[0,0].plot( pheno.nm_den, pheno.nm_e2a, linestyle='solid' )
+                    else:
+                        axs[0,0].plot( pheno.nm_den, pheno.nm_e2a, linestyle='solid', label=pheno.label )
+                        #print('model:',model,' param:',param,' inside band')
+                    axs[0,1].plot( pheno.nm_kfn, pheno.nm_e2a, linestyle='solid' )
+                    axs[1,0].plot( pheno.nm_den, pheno.nm_e2a/nuda.effg_nr(pheno.nm_kfn), linestyle='solid' )
+                    axs[1,1].plot( pheno.nm_kfn, pheno.nm_e2a/nuda.effg_nr(pheno.nm_kfn), linestyle='solid' )
             elif matter.lower() == 'sm':
                 if any(pheno.sm_e2a): 
-                    axs[0,0].plot( pheno.sm_den, pheno.sm_e2a, linestyle='solid', label=pheno.label )
-                    axs[0,1].plot( pheno.sm_kf, pheno.sm_e2a, linestyle='solid', label=pheno.label )
-                    axs[1,0].plot( pheno.sm_den, pheno.sm_e2a/nuda.effg(pheno.sm_kf), linestyle='solid', label=pheno.label )
-                    axs[1,1].plot( pheno.sm_kf, pheno.sm_e2a/nuda.effg(pheno.sm_kf), linestyle='solid', label=pheno.label )
+                    if model == 'Skyrme' and not nuda.eos.checkPheno(pheno,band,matter):
+                        axs[0,0].plot( pheno.sm_den, pheno.sm_e2a, linestyle='solid' )
+                    else:
+                        axs[0,0].plot( pheno.sm_den, pheno.sm_e2a, linestyle='solid', label=pheno.label )
+                        #print('model:',model,' param:',param,' inside band')
+                    #axs[0,0].plot( pheno.sm_den, pheno.sm_e2a, linestyle='solid', label=pheno.label )
+                    axs[0,1].plot( pheno.sm_kf, pheno.sm_e2a, linestyle='solid' )
+                    axs[1,0].plot( pheno.sm_den, pheno.sm_e2a/nuda.effg_nr(pheno.sm_kf), linestyle='solid' )
+                    axs[1,1].plot( pheno.sm_kf, pheno.sm_e2a/nuda.effg_nr(pheno.sm_kf), linestyle='solid' )
             if nuda.env.verb_output: pheno.print_outputs( )
         if matter.lower() == 'nm':
             axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
@@ -72,12 +80,12 @@ def plot_eos_setupPheno_E( models, band, matter ):
             axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha )
             axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
             axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-            axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-            axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha )
-            axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+            axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color=band.color, alpha=band.alpha )
+            axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color=band.color, alpha=band.alpha )
+            axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
         elif matter.lower() == 'sm':
             axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
             axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
@@ -85,15 +93,17 @@ def plot_eos_setupPheno_E( models, band, matter ):
             axs[0,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
             axs[0,1].plot( band.kfn, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
             axs[0,1].plot( band.kfn, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
-            axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha, visible=True )
-            axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg(band.kfn), color=band.color, alpha=band.alpha, visible=True )
-            axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
-            axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg(band.kfn), color='k', linestyle='dashed' )
+            axs[1,0].fill_between( band.den, y1=(band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color=band.color, alpha=band.alpha, visible=True )
+            axs[1,0].plot( band.den, (band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,0].plot( band.den, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,1].fill_between( band.kfn, y1=(band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), y2=(band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color=band.color, alpha=band.alpha, visible=True )
+            axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
+            axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
         #
-        if model != 'Skyrme':
-            axs[0,0].legend(loc='upper right',fontsize='8', ncol=2)
+        #if model != 'Skyrme':
+        #    axs[0,0].legend(loc='upper right',fontsize='8', ncol=2)
+        fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
+        #
         #
         plt.savefig(pname)
         plt.close()

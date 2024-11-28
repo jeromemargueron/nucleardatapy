@@ -27,15 +27,15 @@ def plot_eos_setupEsym( pname, constraints, Ksym ):
         #
         esym = nuda.eos.setupEsym( constraint = constraint , Ksym=Ksym )
         #
-        print('Den:',esym.esym_den)
-        print('Esym_max:',esym.esym_e2a_max)
-        print('Esym_min:',esym.esym_e2a_min)
+        #print('Den:',esym.esym_den)
+        #print('Esym_max:',esym.esym_e2a_max)
+        #print('Esym_min:',esym.esym_e2a_min)
         #
         if esym.plot:
             axs.fill_between( esym.esym_den, y1=esym.esym_e2a_min, y2=esym.esym_e2a_max, label=esym.label, alpha=esym.alpha )
     #
     axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
-    axs.legend(loc='lower right',fontsize='8')
+    axs.legend(loc='lower right',fontsize='9')
     #
     plt.savefig(pname)
     plt.close()

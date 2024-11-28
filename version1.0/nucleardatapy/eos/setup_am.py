@@ -41,7 +41,6 @@ class setupAM():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
-        print("model:",model)
         #
         self = setupAM.init_self( self )
         #
@@ -78,12 +77,12 @@ class setupAM():
         if esym.esym is not None:
             self.den = esym.den
             self.esym = esym.esym
-            print('esym:',self.esym)
+            #print('esym:',self.esym)
             self.x_n = ( 1.0 + self.asy ) / 2.0
             self.x_p = ( 1.0 - self.asy ) / 2.0
             self.n_n = self.x_n * self.den
             self.n_p = self.x_p * self.den
-            print('n_n:',self.n_n)
+            #print('n_n:',self.n_n)
             self.kfn = nuda.kf_n( self.n_n )
             #
             # Thermodynamical variables (with contributions from nucleons only)
