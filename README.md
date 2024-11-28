@@ -23,7 +23,14 @@ Create an environement variable that will be used by python:
 export NUCLEARDATAPY_TK=/path/to/nucleardatapy
 ```
 
-Put this command in your `.profile` or `.zprofile` or `.bashrc` for instance (depending on your OS).
+Add this environement variable to the one of python:
+```
+export PYTHONPATH=$NUCLEARDATAPY_TK
+```
+
+In this way, your library will be visible everywhere in your computer.
+
+Put these commands in your `.profile` or `.zprofile` or `.bashrc` for instance (depending on your OS).
 
 The first time, you should run again the `.zprofile` for instance:
 

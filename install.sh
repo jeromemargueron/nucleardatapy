@@ -8,7 +8,7 @@ LIB=$HOME/mylib
 
 # Folder where the samples are stored:
 # By default, it can be $LIB, but it is not necessary.
-SAMPLES=$LIB/nucleardatapy
+SAMPLES=$LIB/nucleardatapy_samples
 
 echo ""
 echo ">> -----------------------------------"
@@ -33,19 +33,20 @@ cp -R version$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
 cp -R version$VER/data $LIB/nucleardatapy/
 
 echo ""
-echo ">> copy nucleardatapy samples to $SAMPLES/samples/ folder"
-mkdir -p  $SAMPLES/samples
-cp -R version$VER/samples/nucleardatapy_samples $SAMPLES/samples/
-
-echo ""
-echo ">> copy nucleardatapy plots to $SAMPLES/samples folder"
-cp -R version$VER/samples/nucleardatapy_plots $SAMPLES/samples/
+echo ">> copy nucleardatapy samples to $SAMPLES/ folder"
+mkdir -p  $SAMPLES
+cp -R version$VER/nucleardatapy_samples/ $SAMPLES/
 
 echo ""
 echo ">> You should create the following global variables:"
-echo ">> export NUCLEARDATAPY_TK=$HOME/mylib/nucleardatapy"
+echo ">> export NUCLEARDATAPY_TK=${HOME}/mylib/nucleardatapy"
 echo ""
-echo ">> To make you life simpler, just copy this last command to one of the following file in your home (depending on your OS): .profile, .zprofile, .bashrc, .bashrc_profile."
+echo ">> You can also add this link to PYTHONPATH:"
+echo ">> export PYTHONPATH=\${NUCLEARDATAPY_TK}"
+echo ""
+echo ">> To make you life simpler, just copy this last commands "
+echo ">> to the following file (depending on your OS): "
+echo ">> .profile, .zprofile, .bashrc, .bashrc_profile."
 echo ""
 
 

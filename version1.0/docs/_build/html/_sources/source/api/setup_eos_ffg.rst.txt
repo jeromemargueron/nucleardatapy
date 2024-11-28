@@ -6,12 +6,12 @@ SetupEOSFFG
 .. currentmodule:: nucleardatapy.setupeosffg
 
 .. Don't include inherited members to keep the doc short
-.. automodule:: nucleardatapy.setup_eos_ffg
+.. automodule:: nucleardatapy.eos.setup_ffg
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /sample/nucleardatapy_plots/plot_setupEOSMicro.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupFFG.py
 
-.. figure:: ../../../samples/nucleardatapy_plots/figs/plot_SetupEOSFFG.png
+.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_eos_setupFFG.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
