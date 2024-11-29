@@ -103,144 +103,144 @@ class SetupNeutronSkin():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Lombardi 1972'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "write notes about this calculation."
+                self.note = "10.8-16.3 MeV p elastic scattering."
                 self.marker = 'o'
             elif cal==2:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='I. Brissaud, Y. Le Bornec, B. Tatischeff, et al., NPA 191, 145 (1972).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brissaud 1972'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
+                #: Attribute providing additional notes about the calculation.
+                self.note = "166 MeV α elastic scattering."
                 self.marker = 's'
             elif cal==3:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G.D. Alkhazov, T. Bauer, R. Beurtey, et al., NPA 274, 443 (1976).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Alkhazov 1976'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'              
+                #: Attribute providing additional notes about the for.
+                self.note = "1044 MeV p elastic scattering."
+                self.marker = 'v'              
             elif cal==4:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G.D. Alkhazov, T. Bauer, R. Bertini et al., NPA 280, 365 (1977).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Alkhazov 1977'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'              
+                #: Attribute providing additional notes about the .
+                self.note = "1370 MeV α elastic scattering ."
+                self.marker = '^'              
             elif cal==5:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M.J. Jakcalon, G.R. Burleson, J.R. Calarco, et al., PRL 38, 21 (1977).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Jakcalon 1977'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'            
+                #: Attribute providing additional notes about the calculation.
+                self.note = "π− and π+ scattering ."
+                self.marker = '>'            
             elif cal==6:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Chaumeaux, V. Layly, R. Schaeffer, PLB 72, 5 (1977).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Chaumeaux 1977'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'   
+                #: Attribute providing additional notes about the calculation.
+                self.note = "1040 MeV p elastic scattering."
+                self.marker = '<'   
             elif cal==7:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='E. Friedman, H.J. Gils, H. Rebel, Z. Majka, PRL 41, 18 (1978).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Friedman 1978'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'         
+                #: Attribute providing additional notes about the calculation.
+                self.note = "104 MeV αelastic scattering."
+                self.marker = 'p'         
             elif cal==8:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='I. Brissaud, X. Campi, PLB 96, 145 (1979).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brissaud 1979'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'        
+                #: Attribute providing additional notes about the calculation.
+                self.note = "1040 MeV p scattering ."
+                self.marker = 'h'        
             elif cal==9:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G. Igo, G.S. Adams, T.S. Bauer, et al., PLB 81, 151 (1979).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Igo 1979'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "800 MeV ⃗p+48Ca."
+                self.marker = 'H'
             elif cal==10:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='K.G. Boyer, W.J. Braithwaite, W.B. Cottingame, et al., PRC 29, 182 (1984).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Boyer 1984'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "π− and π+ scattering ."
+                self.marker = 'o'
             elif cal==11:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='F.J. Hartmann, R. Schmidt, B. Ketzer, et al., PRC 65, 014306 (2001).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Hartmann 2001'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "analysis of antiprotonic atoms."
+                self.marker = 's'
             elif cal==12:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.C. Clark, L.J. Kerr, S. Ham, PRC 67, 054605 (2003).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Clark 2003'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "500-1040 MeV p scattering."
+                self.marker = 'v'
             elif cal==13:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J. Piekarewicz, B. K. Agrawal, G. Colò, et al., PRC 85, 041302(R) (2012).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Piekarewicz 2012'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "electric dipole polarizability - reanalsis of Tamii 2011."
+                self.marker = '^'
             elif cal==14:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J. Birkhan, M. Miorelli, S. Bacca, et al., PRL 118, 252501 (2017).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Birkhan 2017'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "electric dipole polarizability."
+                self.marker = '>'
             elif cal==15:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M.H. Mahzoon, M.C. Atkinson, R.J. Charity, W.H. Dickhoff, PRL 119, 222503 (2017).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Mahzoon 2017'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "n+48Ca and p+48Ca scattering."
+                self.marker = '<'
             elif cal==16:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M. Tanaka, M. Takechi, A. Homma, et al., PRL 124, 102501 (2020).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tanaka 2020'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "48Ca+12C interaction cross section."
+                self.marker = 'p'
             elif cal==17:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Tagami, T. Wakasa, M. Takechi, et al., Results in Physics 33, 105155 (2022).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tagami 2022'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "p+48Ca and 48Ca+12C scattering."
+                self.marker = 'h'
             elif cal==18:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='D. Adhikari, H. Albataineh, D. Androic, et al., PRL 129, 042501 (2022).'
                 #: Attribute providing the label the data is references for figures.
-                self.label = 'CREX Adhikari 2022'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'                                       
+                self.label = 'Adhikari 2022'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "CREX."
+                self.marker = 'H'                                       
         elif source.lower()=='208Pb':
             file_in = nuda.param.path_data+'nuclei/nskin/208Pb.dat'
             if cal==1:
@@ -248,177 +248,177 @@ class SetupNeutronSkin():
                 self.ref='A. Krasznahorkay, J. Bacelar, J.A. Bordewijk, et al., PRL 66, 1287 (1991).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 1991'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
+                #: Attribute providing additional notes about the calculation.
+                self.note = "giant dipole resonance; 120 MeV α-scattering."
                 self.marker = 'o'
             elif cal==2:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='V.E. Starodubsky and N.M. Hintz, PRC 49, 2118 (1994).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Starodubsky 1994'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
+                #: Attribute providing additional notes about the calculation.
+                self.note = "elastic p scattering at 650 MeV."
                 self.marker = 's'
             elif cal==3:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Karataglidis, K. Amos, B.A. Brown, and P.K. Deb, PRC 65, 044306 (2002).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Karataglidis 2002'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'  
+                #: Attribute providing additional notes about the calculation.
+                self.note = "elastic p and n scattering at 40, 65, 200 MeV."
+                self.marker = 'v'  
             elif cal==4:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Krasznahorkay, H. Akimune, A.M. van den Berg, et al., NPA 731, 224 (2004).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 2004'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "giant dipole resonance; 196 MeV α-scattering."
+                self.marker = '^'    
             elif cal==5:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B. Kłos, A. Trzcińska, J. Jastrzębski, et al., PRC 76, 014311 (2007).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Kłos 2007'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "antiprotonic atoms."
+                self.marker = '>'    
             elif cal==6:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Wycech, F.J. Hartmann, J. Jastrzębsk, et al., PRC 76, 034316 (2007).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Wycech 2007'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "antiprotonic atoms."
+                self.marker = '<'    
             elif cal==7:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.A. Brown, G. Shen, G.C. Hillhouse, J. Meng, and A. Trzcińska, PRC 76, 034305 (2007).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brown 2007'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "antiprotonic atoms."
+                self.marker = 'p'    
             elif cal==8:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Klimkiewicz, N. Paar, P. Adrich, et al., PRC 76, 051603(R) (2007).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Klimkiewicz 2007'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "strength of pigmy dipole resonance."
+                self.marker = 'h'    
             elif cal==9:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J. Zenihiro, H. Sakaguchi, T. Murakami, et al., PRC 82, 044611 (2010).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Zenihiro 2010'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "elastic p scattering at 295 MeV."
+                self.marker = 'H'    
             elif cal==10:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Carbone, G. Colò, A. Bracco, et al., PRC 81, 041301(R) (2010).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Carbone 2010'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "strength of pigmy dipole resonance."
+                self.marker = 'D'    
             elif cal==11:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Tamii, I. Poltoratska, P. von Neumann-Cosel, et al., PRL 107, 062502 (2011).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tamii 2011'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "electric dipole polarizability ."
+                self.marker = 'x'    
             elif cal==12:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J. Piekarewicz, B.K. Agrawal, G. Colò, et al., PRC 85, 041302(R) (2012).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Piekarewicz 2012'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "electric dipole polarizability - reanalsis of Tamii 2011."
+                self.marker = 'o'    
             elif cal==13:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Abrahamyan, Z. Ahmed, H. Albataineh, et al., PRL 108, 112502 (2012).'
                 #: Attribute providing the label the data is references for figures.
-                self.label = 'PREX Abrahamyan 2012'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                self.label = 'Abrahamyan 2012'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "PREX-1: parity violating e− scattering."
+                self.marker = 's'    
             elif cal==14:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Krasznahorkay, N. Paar, D. Vretenar, and M.N. Harakeh, Physica Scripta T154, 014018 (2013).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 2013'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "anti-analog giant dipole resonance."
+                self.marker = 'v'    
             elif cal==15:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J. Yasuda, T. Wakasa, M. Okamoto, et al., Prog. Theor. Exp. Phys 2013, 063D02 (2013).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Yasuda 2013'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "anti-analog giant dipole resonance."
+                self.marker = '^'    
             elif cal==16:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='C.M. Tarbert, D.P. Watts, D.I. Glazier, et al., PRL 112, 242502 (2014).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tarbert 2014'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "coherent π0 production."
+                self.marker = '>'    
             elif cal==17:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Tamii, P. von Neumann-Cosel, and I. Poltoratska, Eur. Phys. J. A. 50, 28 (2014).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tamii 2014'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "by ⃗p-scattering at 295 MeV."
+                self.marker = '<'    
             elif cal==18:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='F.J. Fattoyev, J. Piekarewicz, and C.J. Horowitz, PRL 120, 172702 (2018).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Fattoyev 2018'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's' 
+                #: Attribute providing additional notes about the calculation.
+                self.note = "analysis of LIGO-Virgo (GW170817) data."
+                self.marker = 'p' 
             elif cal==19:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.T. Reed, F.J. Fattoyev, C.J. Horowitz, and J. Piekarewicz, PRL 126, 172503 (2021).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Reed 2021'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "analysis of NICER data."
+                self.marker = 'h'    
             elif cal==20:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='S. Tagami, T. Wakasa, J. Matsui, et al., PRC 104, 024606 (2021).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tagami 2021'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'    
+                #: Attribute providing additional notes about the calculation.
+                self.note = "p+208Pb reaction cross section at 30 - 100 MeV."
+                self.marker = 'H'    
             elif cal==21:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='D. Adhikari, H. Albataineh, D. Androic, et al., PRL 126, 172502 (2021).'
                 #: Attribute providing the label the data is references for figures.
-                self.label = 'PREX2 Adhikari 2021'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 'o'    
+                self.label = 'Adhikari 2021'
+                #: Attribute providing additional notes about the calculation.
+                self.note = "PREX-2: parity violating e− scattering."
+                self.marker = 'D'    
             elif cal==22:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='G. Giacalone, G. Nijs, and W. van der Schee, PRL 131, 202302 (2023).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Giacalone 2023'
-                #: Attribute providing additional notes about the calervation.
-                self.note = "write notes about this calculation."
-                self.marker = 's'                                  
+                #: Attribute providing additional notes about the calculation.
+                self.note = "208Pb+208Pb at LHC."
+                self.marker = 'x'                                  
         #
         #: Attribute the neutron radius of the source.
         self.nrad = None
