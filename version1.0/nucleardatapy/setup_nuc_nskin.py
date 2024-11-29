@@ -20,36 +20,34 @@ def nuc_nskin():
     #
     sources = [ '48Ca', '208Pb' ]
     #
-    #print('sources available in the toolkit:',sources)
+    # print('sources available in the toolkit:',sources)
     sources_lower = [ item.lower() for item in sources ]
-    #print('sources available in the toolkit:',sources_lower)
+    # print('sources available in the toolkit:',sources_lower)
     #
     if nuda.env.verb: print("Exit nuc_nskin()")
     #
     return sources, sources_lower
 
-def nuc_nskin_source( source ):
+def nuc_nskin_source(source):
     """
-    Return a list of values for a given source (nuclei) and print them all on the prompt.
+    Return a list of values for a given source (nuclei).
 
     :param source: The nuclei for which there are different calculations.
     :type source: str.
-    :return: The list of calculations. \
-    If source == '208Pb': 1, 2, 3, 4, 5,...,22
-    :rtype: list[str].
+    :return: The list of calculations.
+    :rtype: list[int].
     """
-    #
     if nuda.env.verb: print("\nEnter nuc_nskin_source()")
-    #
-    if source.lower()=='48Ca':
-        cals = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
-    elif source.lower()=='208Pb':
-        cals = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
-    #
-    #print('Calculations available in the toolkit:',cals)
-    #
+
+    cals = []
+    if source.lower() == '48ca':
+        cals = list(range(1, 19))  
+    elif source.lower() == '208pb':
+        cals = list(range(1, 23))
+    else:
+        raise ValueError(f"Source '{source}' is not supported. Supported sources are: '48Ca' and '208Pb'.")
+
     if nuda.env.verb: print("Exit nuc_nskin_source()")
-    #
     return cals
 
 class SetupNeutronSkin():
@@ -84,7 +82,7 @@ class SetupNeutronSkin():
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
-        cals = astro_mr_source( source = source )
+        cals = nuc_nskin_source( source = source )
         if cal not in cals:
             print('cal ',cal,' is not in the list of cal.')
             print('list of cal:',cals)
@@ -95,8 +93,23 @@ class SetupNeutronSkin():
         #
         # fix `file_in` and some properties of the object
         #
+        file_in = None
+        if source.lower() == '48ca':
+            file_in = nuda.param.path_data + 'nuclei/nskin/48Ca.dat'
+        elif source.lower() == '208pb':
+            file_in = nuda.param.path_data + 'nuclei/nskin/208Pb.dat'
+        else:
+            raise ValueError(f"Unsupported source '{source}'. Expected '48Ca' or '208Pb'.")
+        if file_in is None:
+            raise RuntimeError("file_in was not initialized.")
+        # 
+        # Initialize object attributes with some defaults or handle cases where cal is not matched
+        self.ref = None
+        self.label = None
+        self.note = None
+        self.marker = None
+        # 
         if source.lower()=='48Ca':
-            file_in = nuda.param.path_data+'nuclei/nskin/48Ca.dat'  
             if cal==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J.C. Lombardi, R.N. Boyd, R. Arking, and A.B. Robbins, NPA 188, 103 (1972).'
@@ -242,7 +255,6 @@ class SetupNeutronSkin():
                 self.note = "CREX."
                 self.marker = 'H'                                       
         elif source.lower()=='208Pb':
-            file_in = nuda.param.path_data+'nuclei/nskin/208Pb.dat'
             if cal==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Krasznahorkay, J. Bacelar, J.A. Bordewijk, et al., PRL 66, 1287 (1991).'
@@ -418,7 +430,7 @@ class SetupNeutronSkin():
                 self.label = 'Giacalone 2023'
                 #: Attribute providing additional notes about the calculation.
                 self.note = "208Pb+208Pb at LHC."
-                self.marker = 'x'                                  
+                self.marker = 'x'                          
         #
         #: Attribute the neutron radius of the source.
         self.nrad = None
@@ -443,21 +455,27 @@ class SetupNeutronSkin():
         #
         # read file from `file_in`
         #
+        # Helper function for safe conversion
+        def safe_float(value):
+            stripped_value = value.strip()
+            return float(stripped_value) if stripped_value else None
+        # 
         with open(file_in,'r') as file:
             for line in file:
                 if '#' in line: continue
                 ele = line.split(',')
-                #print('ele[0]:',ele[0],' cal:',cal,' ele[:]:',ele[:])
-                if int(ele[0]) == cal:
-                    self.nrad = float(ele[1])
-                    self.nrad_sig_up = float(ele[2])
-                    self.nrad_sig_do = float(ele[3])
-                    self.prad = float(ele[4])
-                    self.prad_sig_up = float(ele[5])
-                    self.prad_sig_do = float(ele[6])
-                    self.nskin = float(ele[7])
-                    self.nskin_sig_up = float(ele[8])
-                    self.nskin_sig_do = float(ele[9])
+                a = ele[0]
+                # print('ele[0]:',ele[0],' cal:',cal,' ele[:]:',ele[:])
+                if int(a) == cal:
+                    self.nrad = safe_float(ele[1])
+                    self.nrad_sig_up = safe_float(ele[2])
+                    self.nrad_sig_do = safe_float(ele[3])
+                    self.prad = safe_float(ele[4])
+                    self.prad_sig_up = safe_float(ele[5])
+                    self.prad_sig_do = safe_float(ele[6])
+                    self.nskin = safe_float(ele[7])
+                    self.nskin_sig_up = safe_float(ele[8])
+                    self.nskin_sig_do = safe_float(ele[9])
                     self.latexCite = ele[10].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit SetupNeutronSkin()")
@@ -490,17 +508,4 @@ class SetupNeutronSkin():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
-        """
-        Method which print outputs in table format (latex) on terminal's screen.
-        """
-        #
-        if nuda.env.verb: print("Enter print_table()")
-        #
-        if nuda.env.verb_table:
-            print(f"- table: {self.source} & {self.cal} & ${self.nrad:.2f}^{{{+self.nrad_sig_up}}}_{{{-self.nrad_sig_do}}}$ & ${{{self.prad:.2f}}}^{{{+self.prad_sig_up}}}_{{{-self.prad_sig_do}}}$ & ${self.nskin:.2f}^{{{+self.nskin_sig_up}}}_{{{-self.nskin_sig_do}}}$ & \\cite{{{self.latexCite}}} \\\\")
-        else:
-            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
-        #
-        if nuda.env.verb: print("Exit print_table()")
-        #
+
