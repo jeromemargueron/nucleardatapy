@@ -8,7 +8,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def nuc_nskin():
+def nuc_nskin_exp():
     """
     Return a list of the nuclei (source) for which a neutron skin is given
 
@@ -16,7 +16,7 @@ def nuc_nskin():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter nuc_nskin()")
+    if nuda.env.verb: print("\nEnter nuc_nskin_exp()")
     #
     sources = [ '48Ca', '208Pb' ]
     #
@@ -24,11 +24,11 @@ def nuc_nskin():
     sources_lower = [ item.lower() for item in sources ]
     # print('sources available in the toolkit:',sources_lower)
     #
-    if nuda.env.verb: print("Exit nuc_nskin()")
+    if nuda.env.verb: print("Exit nuc_nskin_exp()")
     #
     return sources, sources_lower
 
-def nuc_nskin_source(source):
+def nuc_nskin_exp_source(source):
     """
     Return a list of values for a given source (nuclei).
 
@@ -37,7 +37,7 @@ def nuc_nskin_source(source):
     :return: The list of calculations.
     :rtype: list[int].
     """
-    if nuda.env.verb: print("\nEnter nuc_nskin_source()")
+    if nuda.env.verb: print("\nEnter nuc_nskin_exp_source()")
 
     cals = []
     if source.lower() == '48ca':
@@ -50,7 +50,7 @@ def nuc_nskin_source(source):
     if nuda.env.verb: print("Exit nuc_nskin_source()")
     return cals
 
-class SetupNeutronSkin():
+class SetupNeutronSkinExp():
     """
     Instantiate the neutron skin calculations for a given source and cal.
 
@@ -73,7 +73,7 @@ class SetupNeutronSkin():
         #
         # some checks
         #
-        sources, sources_lower = nuc_nskin()
+        sources, sources_lower = nuc_nskin_exp()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
             print('list of sources:',sources)
@@ -82,7 +82,7 @@ class SetupNeutronSkin():
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
-        cals = nuc_nskin_source( source = source )
+        cals = nuc_nskin_exp_source( source = source )
         if cal not in cals:
             print('cal ',cal,' is not in the list of cal.')
             print('list of cal:',cals)

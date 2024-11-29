@@ -11,10 +11,10 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupNucNskin.py:")
+    print("Enter sample_SetupNucNskinExp.py:")
     print(50*'-')
     #
-    sources, sources_lower = nuda.nuc_nskin( )[0]
+    sources, sources_lower = nuda.nuc_nskin_exp( )[0]
     print('Complete list of available sources:', sources )
     #
     sources = ['48Ca', '208Pb']
@@ -26,16 +26,16 @@ def main():
         # get the neutron skin associated to `source` and `cal`
         #
         # 
-        cals = nuda.nuc_nskin_source( source = source )
+        cals = nuda.nuc_nskin_exp_source( source = source )
         print(f'source: {source}, cals: {cals}')
         #
         for cal in cals:
-            nskin = nuda.SetupNeutronSkin( source = source, cal = cal )
+            nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
             nskin.print_output( )
             #
     #
     print(50*'-')
-    print("Exit sample_SetupNucNskin.py:")
+    print("Exit sample_SetupNucNskinExp.py:")
     print(50*'-')
     #
     
