@@ -21,7 +21,8 @@ from nucleardatapy.setup_nuc_be_exp     import *
 from nucleardatapy.setup_nuc_be_theo    import *
 from nucleardatapy.setup_nuc_rch_exp    import *
 from nucleardatapy.setup_nuc_isgmr_exp  import *
-from nucleardatapy.setup_nuc_nskin      import *
+from nucleardatapy.setup_nuc_nskin_exp  import *
+from nucleardatapy.setup_nuc_nskin_the  import *
 #
 from nucleardatapy.setup_crust          import *
 #
