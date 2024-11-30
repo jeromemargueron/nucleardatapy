@@ -14,7 +14,7 @@ def main():
     print("Enter sample_SetupNucNskinExp.py:")
     print(50*'-')
     #
-    sources, sources_lower = nuda.nuc_nskin_exp( )[0]
+    sources, sources_lower = nuda.nskin_exp( )[0]
     print('Complete list of available sources:', sources )
     #
     sources = ['48Ca', '208Pb']
@@ -26,12 +26,12 @@ def main():
         # get the neutron skin associated to `source` and `cal`
         #
         # 
-        cals = nuda.nuc_nskin_exp_source( source = source )
+        cals = nuda.nskin_exp_source( source = source )
         print(f'source: {source}, cals: {cals}')
         #
         for cal in cals:
             nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
-            nskin.print_output( )
+            if nuda.env.verb_output: nskin.print_outputs( )
             #
     #
     print(50*'-')

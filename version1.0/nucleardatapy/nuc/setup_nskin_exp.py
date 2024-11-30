@@ -8,7 +8,7 @@ sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
-def nuc_nskin_exp():
+def nskin_exp():
     """
     Return a list of the nuclei (source) for which a neutron skin is given
 
@@ -16,7 +16,7 @@ def nuc_nskin_exp():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter nuc_nskin_exp()")
+    if nuda.env.verb: print("\nEnter nskin_exp()")
     #
     sources = [ '48Ca', '208Pb' ]
     #
@@ -24,11 +24,11 @@ def nuc_nskin_exp():
     sources_lower = [ item.lower() for item in sources ]
     # print('sources available in the toolkit:',sources_lower)
     #
-    if nuda.env.verb: print("Exit nuc_nskin_exp()")
+    if nuda.env.verb: print("Exit nskin_exp()")
     #
     return sources, sources_lower
 
-def nuc_nskin_exp_source(source):
+def nskin_exp_source(source):
     """
     Return a list of values for a given source (nuclei).
 
@@ -37,7 +37,7 @@ def nuc_nskin_exp_source(source):
     :return: The list of calculations.
     :rtype: list[int].
     """
-    if nuda.env.verb: print("\nEnter nuc_nskin_exp_source()")
+    if nuda.env.verb: print("\nEnter nskin_exp_source()")
 
     cals = []
     if source.lower() == '48ca':
@@ -47,7 +47,7 @@ def nuc_nskin_exp_source(source):
     else:
         raise ValueError(f"Source '{source}' is not supported. Supported sources are: '48Ca' and '208Pb'.")
 
-    if nuda.env.verb: print("Exit nuc_nskin_source()")
+    if nuda.env.verb: print("Exit nskin_source()")
     return cals
 
 class SetupNeutronSkinExp():
@@ -73,7 +73,7 @@ class SetupNeutronSkinExp():
         #
         # some checks
         #
-        sources, sources_lower = nuc_nskin_exp()
+        sources, sources_lower = nskin_exp()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
             print('list of sources:',sources)
@@ -82,7 +82,7 @@ class SetupNeutronSkinExp():
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
-        cals = nuc_nskin_exp_source( source = source )
+        cals = nskin_exp_source( source = source )
         if cal not in cals:
             print('cal ',cal,' is not in the list of cal.')
             print('list of cal:',cals)
@@ -481,29 +481,26 @@ class SetupNeutronSkinExp():
         if nuda.env.verb: print("Exit SetupNeutronSkin()")
         #
     #
-    def print_output( self ):
+    def print_outputs( self ):
         """
         Method which print outputs on terminal's screen.
         """
         #
         if nuda.env.verb: print("Enter print_output()")
         #
-        if nuda.env.verb_output:
-            print("- Print output:")
-            print("   source:  ",self.source)
-            print("   cal:",self.cal)
-            print("   Rn:",self.nrad,' in fm')
-            print("   sigma(Rn):",self.nrad_sig_up,self.nrad_sig_do,' in fm')
-            print("   Rp:",self.prad,' in fm')
-            print("   sigma(Rp):",self.prad_sig_up,self.prad_sig_do,' in fm')
-            print("   Rskin:",self.nskin,' in fm')
-            print("   sigma(Rskin):",self.nskin_sig_up,self.nskin_sig_do,' in fm')
-            print("   latexCite:",self.latexCite)
-            print("   ref:    ",self.ref)
-            print("   label:  ",self.label)
-            print("   note:   ",self.note)
-        else:
-            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        print("- Print output:")
+        print("   source:  ",self.source)
+        print("   cal:",self.cal)
+        print("   Rn:",self.nrad,' in fm')
+        print("   sigma(Rn):",self.nrad_sig_up,self.nrad_sig_do,' in fm')
+        print("   Rp:",self.prad,' in fm')
+        print("   sigma(Rp):",self.prad_sig_up,self.prad_sig_do,' in fm')
+        print("   Rskin:",self.nskin,' in fm')
+        print("   sigma(Rskin):",self.nskin_sig_up,self.nskin_sig_do,' in fm')
+        print("   latexCite:",self.latexCite)
+        print("   ref:    ",self.ref)
+        print("   label:  ",self.label)
+        print("   note:   ",self.note)
         #
         if nuda.env.verb: print("Exit print_output()")
         #
