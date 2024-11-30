@@ -26,8 +26,6 @@ def hic_constraints():
     constraints = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2009-ISO-DIFF' ,'2011-FOPI-LAND'
                    , '2016-ASY-EOS','2019-NP-RATIO', '2021-SPIRIT']
     #
-    print('HIC constraints available in the toolkit:',constraints)
-
     constraints_lower = [ item.lower() for item in constraints ]
     if nuda.env.verb: print('HIC constraints available in the toolkit:',constraints_lower)
     #
