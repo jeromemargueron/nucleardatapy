@@ -3,15 +3,15 @@ import os
 import sys
 import numpy as np
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+# sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupNucNskinExp.py:")
+    print("Enter sample_nuc_setupNucNskinExp.py:")
     print(50*'-')
     #
     sources, sources_lower = nuda.nskin_exp( )[0]
@@ -35,7 +35,7 @@ def main():
             #
     #
     print(50*'-')
-    print("Exit sample_SetupNucNskinExp.py:")
+    print("Exit sample_nuc_setupNucNskinExp.py:")
     print(50*'-')
     #
     
