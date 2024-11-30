@@ -12,8 +12,8 @@
     <dc:publisher>Jérôme Margueron, IRL NPA, USA</dc:publisher>
     <dc:rights>2024, Jérôme Margueron, IRL NPA, USA</dc:rights>
     <dc:identifier id="unknown">unknown</dc:identifier>
-    <dc:date>2024-11-15T23:59:35Z</dc:date>
-    <meta property="dcterms:modified">2024-11-15T23:59:35Z</meta>
+    <dc:date>2024-11-25T23:07:54Z</dc:date>
+    <meta property="dcterms:modified">2024-11-25T23:07:54Z</meta>
     <meta property="ibooks:version"></meta>
     <meta property="ibooks:specified-fonts">true</meta>
     <meta property="ibooks:binding">true</meta>
@@ -47,177 +47,239 @@
     <item id="epub-22" href="_images/plot_SetupEOSMicroBand_Esym.png" media-type="image/png" />
     <item id="epub-23" href="_images/plot_SetupEOSMicroBand_NM.png" media-type="image/png" />
     <item id="epub-24" href="_images/plot_SetupEOSMicroBand_SM.png" media-type="image/png" />
-    <item id="epub-25" href="_images/plot_SetupEOSMicroLP0_SM.png" media-type="image/png" />
-    <item id="epub-26" href="_images/plot_SetupEOSMicroLP1_SM.png" media-type="image/png" />
-    <item id="epub-27" href="_images/plot_SetupEOSMicro_e2a_NM_AFDMC.png" media-type="image/png" />
-    <item id="epub-28" href="_images/plot_SetupEOSMicro_e2a_NM_BHF.png" media-type="image/png" />
-    <item id="epub-29" href="_images/plot_SetupEOSMicro_e2a_NM_MBPT.png" media-type="image/png" />
-    <item id="epub-30" href="_images/plot_SetupEOSMicro_e2a_NM_QMC.png" media-type="image/png" />
-    <item id="epub-31" href="_images/plot_SetupEOSMicro_e2a_NM_VAR.png" media-type="image/png" />
-    <item id="epub-32" href="_images/plot_SetupEOSMicro_gap_NM.png" media-type="image/png" />
-    <item id="epub-33" href="_images/plot_SetupEOSPheno-DDRH-E-NM.png" media-type="image/png" />
-    <item id="epub-34" href="_images/plot_SetupEOSPheno-DDRH-E-SM.png" media-type="image/png" />
-    <item id="epub-35" href="_images/plot_SetupEOSPheno-DDRHF-E-NM.png" media-type="image/png" />
-    <item id="epub-36" href="_images/plot_SetupEOSPheno-DDRHF-E-SM.png" media-type="image/png" />
-    <item id="epub-37" href="_images/plot_SetupEOSPheno-NLRH-E-NM.png" media-type="image/png" />
-    <item id="epub-38" href="_images/plot_SetupEOSPheno-NLRH-E-SM.png" media-type="image/png" />
-    <item id="epub-39" href="_images/plot_SetupEOSPheno-Skyrme-E-NM.png" media-type="image/png" />
-    <item id="epub-40" href="_images/plot_SetupEOSPheno-Skyrme-E-SM.png" media-type="image/png" />
-    <item id="epub-41" href="_images/plot_SetupEsymLsym.png" media-type="image/png" />
-    <item id="epub-42" href="_images/plot_SetupHICMatter.png" media-type="image/png" />
-    <item id="epub-43" href="_images/plot_SetupISGMR.png" media-type="image/png" />
-    <item id="epub-44" href="_images/plot_SetupMassesAME.png" media-type="image/png" />
-    <item id="epub-45" href="_images/plot_SetupMassesExp_AME_2020.png" media-type="image/png" />
-    <item id="epub-46" href="_images/plot_SetupMassesExp_AME_2020_year.png" media-type="image/png" />
-    <item id="epub-47" href="_images/plot_SetupMassesTheory_Zref20.png" media-type="image/png" />
-    <item id="epub-48" href="_images/plot_SetupMassesTheory_Zref50.png" media-type="image/png" />
-    <item id="epub-49" href="_images/plot_SetupMasses_AME_2020.png" media-type="image/png" />
-    <item id="epub-50" href="_images/plot_SetupMasses_AME_2020_year.png" media-type="image/png" />
-    <item id="epub-51" href="_images/plot_SetupMicroBand_Esym.png" media-type="image/png" />
-    <item id="epub-52" href="_images/plot_SetupMicroBand_NM.png" media-type="image/png" />
-    <item id="epub-53" href="_images/plot_SetupMicroBand_SM.png" media-type="image/png" />
-    <item id="epub-54" href="_images/plot_SetupMicroLP0_SM.png" media-type="image/png" />
-    <item id="epub-55" href="_images/plot_SetupMicroLP1_SM.png" media-type="image/png" />
-    <item id="epub-56" href="_images/plot_SetupMicroMatterBand_Esym.png" media-type="image/png" />
-    <item id="epub-57" href="_images/plot_SetupMicroMatterBand_NM.png" media-type="image/png" />
-    <item id="epub-58" href="_images/plot_SetupMicroMatterBand_SM.png" media-type="image/png" />
-    <item id="epub-59" href="_images/plot_SetupMicroMatter_e2a_NM_AFDMC.png" media-type="image/png" />
-    <item id="epub-60" href="_images/plot_SetupMicroMatter_e2a_NM_BHF.png" media-type="image/png" />
-    <item id="epub-61" href="_images/plot_SetupMicroMatter_e2a_NM_MBPT.png" media-type="image/png" />
-    <item id="epub-62" href="_images/plot_SetupMicroMatter_e2a_NM_QMC.png" media-type="image/png" />
-    <item id="epub-63" href="_images/plot_SetupMicroMatter_e2a_NM_VAR.png" media-type="image/png" />
-    <item id="epub-64" href="_images/plot_SetupMicroMatter_gap_NM.png" media-type="image/png" />
-    <item id="epub-65" href="_images/plot_SetupMicro_e2a_NM_AFDMC.png" media-type="image/png" />
-    <item id="epub-66" href="_images/plot_SetupMicro_e2a_NM_BHF.png" media-type="image/png" />
-    <item id="epub-67" href="_images/plot_SetupMicro_e2a_NM_MBPT.png" media-type="image/png" />
-    <item id="epub-68" href="_images/plot_SetupMicro_e2a_NM_QMC.png" media-type="image/png" />
-    <item id="epub-69" href="_images/plot_SetupMicro_e2a_NM_VAR.png" media-type="image/png" />
-    <item id="epub-70" href="_images/plot_SetupMicro_e2a_nm.png" media-type="image/png" />
-    <item id="epub-71" href="_images/plot_SetupMicro_gap_nm.png" media-type="image/png" />
-    <item id="epub-72" href="_images/plot_SetupNucBEExp_AME_2020.png" media-type="image/png" />
-    <item id="epub-73" href="_images/plot_SetupNucBEExp_AME_2020_year.png" media-type="image/png" />
-    <item id="epub-74" href="_images/plot_SetupNucBETheo_Zref20.png" media-type="image/png" />
-    <item id="epub-75" href="_images/plot_SetupNucBETheo_Zref50.png" media-type="image/png" />
-    <item id="epub-76" href="_images/plot_SetupNucISGMRExp.png" media-type="image/png" />
-    <item id="epub-77" href="_images/plot_SetupNucRchExp.png" media-type="image/png" />
-    <item id="epub-78" href="_images/plot_SetupPheno-DDRH-E-NM.png" media-type="image/png" />
-    <item id="epub-79" href="_images/plot_SetupPheno-DDRH-E-SM.png" media-type="image/png" />
-    <item id="epub-80" href="_images/plot_SetupPheno-DDRH-ENM.png" media-type="image/png" />
-    <item id="epub-81" href="_images/plot_SetupPheno-DDRH-ESM.png" media-type="image/png" />
-    <item id="epub-82" href="_images/plot_SetupPheno-DDRHF-E-NM.png" media-type="image/png" />
-    <item id="epub-83" href="_images/plot_SetupPheno-DDRHF-E-SM.png" media-type="image/png" />
-    <item id="epub-84" href="_images/plot_SetupPheno-DDRHF-ENM.png" media-type="image/png" />
-    <item id="epub-85" href="_images/plot_SetupPheno-DDRHF-ESM.png" media-type="image/png" />
-    <item id="epub-86" href="_images/plot_SetupPheno-NLRH-E-NM.png" media-type="image/png" />
-    <item id="epub-87" href="_images/plot_SetupPheno-NLRH-E-SM.png" media-type="image/png" />
-    <item id="epub-88" href="_images/plot_SetupPheno-NLRH-ENM.png" media-type="image/png" />
-    <item id="epub-89" href="_images/plot_SetupPheno-NLRH-ESM.png" media-type="image/png" />
-    <item id="epub-90" href="_images/plot_SetupPheno-Skyrme-E-NM.png" media-type="image/png" />
-    <item id="epub-91" href="_images/plot_SetupPheno-Skyrme-E-SM.png" media-type="image/png" />
-    <item id="epub-92" href="_images/plot_SetupPheno-Skyrme-ENM.png" media-type="image/png" />
-    <item id="epub-93" href="_images/plot_SetupPheno-Skyrme-ESM.png" media-type="image/png" />
-    <item id="epub-94" href="_images/plot_SetupPhenoMatter-DDRH-E-NM.png" media-type="image/png" />
-    <item id="epub-95" href="_images/plot_SetupPhenoMatter-DDRH-E-SM.png" media-type="image/png" />
-    <item id="epub-96" href="_images/plot_SetupPhenoMatter-DDRHF-E-NM.png" media-type="image/png" />
-    <item id="epub-97" href="_images/plot_SetupPhenoMatter-DDRHF-E-SM.png" media-type="image/png" />
-    <item id="epub-98" href="_images/plot_SetupPhenoMatter-NLRH-E-NM.png" media-type="image/png" />
-    <item id="epub-99" href="_images/plot_SetupPhenoMatter-NLRH-E-SM.png" media-type="image/png" />
-    <item id="epub-100" href="_images/plot_SetupPhenoMatter-Skyrme-E-NM.png" media-type="image/png" />
-    <item id="epub-101" href="_images/plot_SetupPhenoMatter-Skyrme-E-SM.png" media-type="image/png" />
-    <item id="epub-102" href="_images/plot_SetupRadCh.png" media-type="image/png" />
-    <item id="epub-103" href="_static/basic.css" media-type="text/css" />
-    <item id="epub-104" href="_static/epub.css" media-type="text/css" />
-    <item id="epub-105" href="_static/file.png" media-type="image/png" />
-    <item id="epub-106" href="_static/minus.png" media-type="image/png" />
-    <item id="epub-107" href="_static/plus.png" media-type="image/png" />
-    <item id="epub-108" href="_static/pygments.css" media-type="text/css" />
-    <item id="epub-109" href="source/api.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-110" href="source/miscelaneous.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-111" href="source/usage.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-112" href="source/api/setup_CorEsymLsym.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-113" href="source/api/setup_EsymLsym.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-114" href="source/api/setup_ISGMR.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-115" href="source/api/setup_astro_gw.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-116" href="source/api/setup_astro_masses.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-117" href="source/api/setup_astro_mr.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-118" href="source/api/setup_astro_mtot.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-119" href="source/api/setup_astro_mtov.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-120" href="source/api/setup_astro_mup.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-121" href="source/api/setup_band.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-122" href="source/api/setup_crust.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-123" href="source/api/setup_eos_am.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-124" href="source/api/setup_eos_beta.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-125" href="source/api/setup_eos_esym.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-126" href="source/api/setup_eos_ffg.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-127" href="source/api/setup_eos_hic.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-128" href="source/api/setup_eos_micro.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-129" href="source/api/setup_eos_micro_band.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-130" href="source/api/setup_eos_micro_lp.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-131" href="source/api/setup_eos_pheno.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-132" href="source/api/setup_eoshic.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-133" href="source/api/setup_hic_matter.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-134" href="source/api/setup_masses.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-135" href="source/api/setup_masses_exp.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-136" href="source/api/setup_masses_theory.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-137" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-138" href="source/api/setup_micro_LP.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-139" href="source/api/setup_micro_band.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-140" href="source/api/setup_micro_matter.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-141" href="source/api/setup_micro_matter_band.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-142" href="source/api/setup_nuc_be_exp.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-143" href="source/api/setup_nuc_be_theo.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-144" href="source/api/setup_nuc_isgmr_exp.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-145" href="source/api/setup_nuc_rch_exp.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-146" href="source/api/setup_pheno.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-147" href="source/api/setup_pheno_matter.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-148" href="source/api/setup_rad_ch.xhtml" media-type="application/xhtml+xml" />
-    <item id="epub-149" href="source/generated/nucleardatapy.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-25" href="_images/plot_SetupEOSMicroEsym.png" media-type="image/png" />
+    <item id="epub-26" href="_images/plot_SetupEOSMicroLP0_SM.png" media-type="image/png" />
+    <item id="epub-27" href="_images/plot_SetupEOSMicroLP1_SM.png" media-type="image/png" />
+    <item id="epub-28" href="_images/plot_SetupEOSMicro_e2a_NM_AFDMC.png" media-type="image/png" />
+    <item id="epub-29" href="_images/plot_SetupEOSMicro_e2a_NM_BHF.png" media-type="image/png" />
+    <item id="epub-30" href="_images/plot_SetupEOSMicro_e2a_NM_MBPT.png" media-type="image/png" />
+    <item id="epub-31" href="_images/plot_SetupEOSMicro_e2a_NM_QMC.png" media-type="image/png" />
+    <item id="epub-32" href="_images/plot_SetupEOSMicro_e2a_NM_VAR.png" media-type="image/png" />
+    <item id="epub-33" href="_images/plot_SetupEOSMicro_gap_1s0_NM.png" media-type="image/png" />
+    <item id="epub-34" href="_images/plot_SetupEOSMicro_gap_NM.png" media-type="image/png" />
+    <item id="epub-35" href="_images/plot_SetupEOSPheno-DDRH-E-NM.png" media-type="image/png" />
+    <item id="epub-36" href="_images/plot_SetupEOSPheno-DDRH-E-SM.png" media-type="image/png" />
+    <item id="epub-37" href="_images/plot_SetupEOSPheno-DDRHF-E-NM.png" media-type="image/png" />
+    <item id="epub-38" href="_images/plot_SetupEOSPheno-DDRHF-E-SM.png" media-type="image/png" />
+    <item id="epub-39" href="_images/plot_SetupEOSPheno-ESkyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-40" href="_images/plot_SetupEOSPheno-ESkyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-41" href="_images/plot_SetupEOSPheno-NLRH-E-NM.png" media-type="image/png" />
+    <item id="epub-42" href="_images/plot_SetupEOSPheno-NLRH-E-SM.png" media-type="image/png" />
+    <item id="epub-43" href="_images/plot_SetupEOSPheno-Skyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-44" href="_images/plot_SetupEOSPheno-Skyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-45" href="_images/plot_SetupEOSPhenoEsym.png" media-type="image/png" />
+    <item id="epub-46" href="_images/plot_SetupEsymLsym.png" media-type="image/png" />
+    <item id="epub-47" href="_images/plot_SetupHICMatter.png" media-type="image/png" />
+    <item id="epub-48" href="_images/plot_SetupISGMR.png" media-type="image/png" />
+    <item id="epub-49" href="_images/plot_SetupMassesAME.png" media-type="image/png" />
+    <item id="epub-50" href="_images/plot_SetupMassesExp_AME_2020.png" media-type="image/png" />
+    <item id="epub-51" href="_images/plot_SetupMassesExp_AME_2020_year.png" media-type="image/png" />
+    <item id="epub-52" href="_images/plot_SetupMassesTheory_Zref20.png" media-type="image/png" />
+    <item id="epub-53" href="_images/plot_SetupMassesTheory_Zref50.png" media-type="image/png" />
+    <item id="epub-54" href="_images/plot_SetupMasses_AME_2020.png" media-type="image/png" />
+    <item id="epub-55" href="_images/plot_SetupMasses_AME_2020_year.png" media-type="image/png" />
+    <item id="epub-56" href="_images/plot_SetupMicroBand_Esym.png" media-type="image/png" />
+    <item id="epub-57" href="_images/plot_SetupMicroBand_NM.png" media-type="image/png" />
+    <item id="epub-58" href="_images/plot_SetupMicroBand_SM.png" media-type="image/png" />
+    <item id="epub-59" href="_images/plot_SetupMicroLP0_SM.png" media-type="image/png" />
+    <item id="epub-60" href="_images/plot_SetupMicroLP1_SM.png" media-type="image/png" />
+    <item id="epub-61" href="_images/plot_SetupMicroMatterBand_Esym.png" media-type="image/png" />
+    <item id="epub-62" href="_images/plot_SetupMicroMatterBand_NM.png" media-type="image/png" />
+    <item id="epub-63" href="_images/plot_SetupMicroMatterBand_SM.png" media-type="image/png" />
+    <item id="epub-64" href="_images/plot_SetupMicroMatter_e2a_NM_AFDMC.png" media-type="image/png" />
+    <item id="epub-65" href="_images/plot_SetupMicroMatter_e2a_NM_BHF.png" media-type="image/png" />
+    <item id="epub-66" href="_images/plot_SetupMicroMatter_e2a_NM_MBPT.png" media-type="image/png" />
+    <item id="epub-67" href="_images/plot_SetupMicroMatter_e2a_NM_QMC.png" media-type="image/png" />
+    <item id="epub-68" href="_images/plot_SetupMicroMatter_e2a_NM_VAR.png" media-type="image/png" />
+    <item id="epub-69" href="_images/plot_SetupMicroMatter_gap_NM.png" media-type="image/png" />
+    <item id="epub-70" href="_images/plot_SetupMicro_e2a_NM_AFDMC.png" media-type="image/png" />
+    <item id="epub-71" href="_images/plot_SetupMicro_e2a_NM_BHF.png" media-type="image/png" />
+    <item id="epub-72" href="_images/plot_SetupMicro_e2a_NM_MBPT.png" media-type="image/png" />
+    <item id="epub-73" href="_images/plot_SetupMicro_e2a_NM_QMC.png" media-type="image/png" />
+    <item id="epub-74" href="_images/plot_SetupMicro_e2a_NM_VAR.png" media-type="image/png" />
+    <item id="epub-75" href="_images/plot_SetupMicro_e2a_nm.png" media-type="image/png" />
+    <item id="epub-76" href="_images/plot_SetupMicro_gap_nm.png" media-type="image/png" />
+    <item id="epub-77" href="_images/plot_SetupNucBEExp_AME_2020.png" media-type="image/png" />
+    <item id="epub-78" href="_images/plot_SetupNucBEExp_AME_2020_year.png" media-type="image/png" />
+    <item id="epub-79" href="_images/plot_SetupNucBETheo_Zref20.png" media-type="image/png" />
+    <item id="epub-80" href="_images/plot_SetupNucBETheo_Zref50.png" media-type="image/png" />
+    <item id="epub-81" href="_images/plot_SetupNucISGMRExp.png" media-type="image/png" />
+    <item id="epub-82" href="_images/plot_SetupNucRchExp.png" media-type="image/png" />
+    <item id="epub-83" href="_images/plot_SetupNucRchTheo.png" media-type="image/png" />
+    <item id="epub-84" href="_images/plot_SetupPheno-DDRH-E-NM.png" media-type="image/png" />
+    <item id="epub-85" href="_images/plot_SetupPheno-DDRH-E-SM.png" media-type="image/png" />
+    <item id="epub-86" href="_images/plot_SetupPheno-DDRH-ENM.png" media-type="image/png" />
+    <item id="epub-87" href="_images/plot_SetupPheno-DDRH-ESM.png" media-type="image/png" />
+    <item id="epub-88" href="_images/plot_SetupPheno-DDRHF-E-NM.png" media-type="image/png" />
+    <item id="epub-89" href="_images/plot_SetupPheno-DDRHF-E-SM.png" media-type="image/png" />
+    <item id="epub-90" href="_images/plot_SetupPheno-DDRHF-ENM.png" media-type="image/png" />
+    <item id="epub-91" href="_images/plot_SetupPheno-DDRHF-ESM.png" media-type="image/png" />
+    <item id="epub-92" href="_images/plot_SetupPheno-NLRH-E-NM.png" media-type="image/png" />
+    <item id="epub-93" href="_images/plot_SetupPheno-NLRH-E-SM.png" media-type="image/png" />
+    <item id="epub-94" href="_images/plot_SetupPheno-NLRH-ENM.png" media-type="image/png" />
+    <item id="epub-95" href="_images/plot_SetupPheno-NLRH-ESM.png" media-type="image/png" />
+    <item id="epub-96" href="_images/plot_SetupPheno-Skyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-97" href="_images/plot_SetupPheno-Skyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-98" href="_images/plot_SetupPheno-Skyrme-ENM.png" media-type="image/png" />
+    <item id="epub-99" href="_images/plot_SetupPheno-Skyrme-ESM.png" media-type="image/png" />
+    <item id="epub-100" href="_images/plot_SetupPhenoMatter-DDRH-E-NM.png" media-type="image/png" />
+    <item id="epub-101" href="_images/plot_SetupPhenoMatter-DDRH-E-SM.png" media-type="image/png" />
+    <item id="epub-102" href="_images/plot_SetupPhenoMatter-DDRHF-E-NM.png" media-type="image/png" />
+    <item id="epub-103" href="_images/plot_SetupPhenoMatter-DDRHF-E-SM.png" media-type="image/png" />
+    <item id="epub-104" href="_images/plot_SetupPhenoMatter-NLRH-E-NM.png" media-type="image/png" />
+    <item id="epub-105" href="_images/plot_SetupPhenoMatter-NLRH-E-SM.png" media-type="image/png" />
+    <item id="epub-106" href="_images/plot_SetupPhenoMatter-Skyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-107" href="_images/plot_SetupPhenoMatter-Skyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-108" href="_images/plot_SetupRadCh.png" media-type="image/png" />
+    <item id="epub-109" href="_images/plot_astro_setupGW.png" media-type="image/png" />
+    <item id="epub-110" href="_images/plot_astro_setupMR.png" media-type="image/png" />
+    <item id="epub-111" href="_images/plot_astro_setupMasses.png" media-type="image/png" />
+    <item id="epub-112" href="_images/plot_astro_setupMtov.png" media-type="image/png" />
+    <item id="epub-113" href="_images/plot_astro_setupMup.png" media-type="image/png" />
+    <item id="epub-114" href="_images/plot_corr_setupEsymLsym.png" media-type="image/png" />
+    <item id="epub-115" href="_images/plot_crust_setupCrust.png" media-type="image/png" />
+    <item id="epub-116" href="_images/plot_eos_setupAM.png" media-type="image/png" />
+    <item id="epub-117" href="_images/plot_eos_setupBeta_xe.png" media-type="image/png" />
+    <item id="epub-118" href="_images/plot_eos_setupBeta_xmu.png" media-type="image/png" />
+    <item id="epub-119" href="_images/plot_eos_setupBeta_xp.png" media-type="image/png" />
+    <item id="epub-120" href="_images/plot_eos_setupEsym_-200.png" media-type="image/png" />
+    <item id="epub-121" href="_images/plot_eos_setupEsym_0.png" media-type="image/png" />
+    <item id="epub-122" href="_images/plot_eos_setupEsym_200.png" media-type="image/png" />
+    <item id="epub-123" href="_images/plot_eos_setupFFG.png" media-type="image/png" />
+    <item id="epub-124" href="_images/plot_eos_setupHIC.png" media-type="image/png" />
+    <item id="epub-125" href="_images/plot_eos_setupMicroBand_Esym.png" media-type="image/png" />
+    <item id="epub-126" href="_images/plot_eos_setupMicroBand_NM.png" media-type="image/png" />
+    <item id="epub-127" href="_images/plot_eos_setupMicroBand_SM.png" media-type="image/png" />
+    <item id="epub-128" href="_images/plot_eos_setupMicroEsym.png" media-type="image/png" />
+    <item id="epub-129" href="_images/plot_eos_setupMicroLP0_SM.png" media-type="image/png" />
+    <item id="epub-130" href="_images/plot_eos_setupMicroLP1_SM.png" media-type="image/png" />
+    <item id="epub-131" href="_images/plot_eos_setupMicro_e2a_NM_AFDMC.png" media-type="image/png" />
+    <item id="epub-132" href="_images/plot_eos_setupMicro_e2a_NM_BHF.png" media-type="image/png" />
+    <item id="epub-133" href="_images/plot_eos_setupMicro_e2a_NM_MBPT.png" media-type="image/png" />
+    <item id="epub-134" href="_images/plot_eos_setupMicro_e2a_NM_QMC.png" media-type="image/png" />
+    <item id="epub-135" href="_images/plot_eos_setupMicro_e2a_NM_VAR.png" media-type="image/png" />
+    <item id="epub-136" href="_images/plot_eos_setupMicro_gap_1s0_NM.png" media-type="image/png" />
+    <item id="epub-137" href="_images/plot_eos_setupPheno-DDRH-E-NM.png" media-type="image/png" />
+    <item id="epub-138" href="_images/plot_eos_setupPheno-DDRH-E-SM.png" media-type="image/png" />
+    <item id="epub-139" href="_images/plot_eos_setupPheno-DDRHF-E-NM.png" media-type="image/png" />
+    <item id="epub-140" href="_images/plot_eos_setupPheno-DDRHF-E-SM.png" media-type="image/png" />
+    <item id="epub-141" href="_images/plot_eos_setupPheno-ESkyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-142" href="_images/plot_eos_setupPheno-ESkyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-143" href="_images/plot_eos_setupPheno-NLRH-E-NM.png" media-type="image/png" />
+    <item id="epub-144" href="_images/plot_eos_setupPheno-NLRH-E-SM.png" media-type="image/png" />
+    <item id="epub-145" href="_images/plot_eos_setupPheno-Skyrme-E-NM.png" media-type="image/png" />
+    <item id="epub-146" href="_images/plot_eos_setupPheno-Skyrme-E-SM.png" media-type="image/png" />
+    <item id="epub-147" href="_images/plot_eos_setupPhenoEsym.png" media-type="image/png" />
+    <item id="epub-148" href="_images/plot_nuc_setupBEExp_AME_2020.png" media-type="image/png" />
+    <item id="epub-149" href="_images/plot_nuc_setupBEExp_AME_2020_year.png" media-type="image/png" />
+    <item id="epub-150" href="_images/plot_nuc_setupBETheo_Zref20.png" media-type="image/png" />
+    <item id="epub-151" href="_images/plot_nuc_setupBETheo_Zref50.png" media-type="image/png" />
+    <item id="epub-152" href="_images/plot_nuc_setupISGMRExp.png" media-type="image/png" />
+    <item id="epub-153" href="_images/plot_nuc_setupRchExp.png" media-type="image/png" />
+    <item id="epub-154" href="_images/plot_nuc_setupRchTheo.png" media-type="image/png" />
+    <item id="epub-155" href="_static/basic.css" media-type="text/css" />
+    <item id="epub-156" href="_static/epub.css" media-type="text/css" />
+    <item id="epub-157" href="_static/file.png" media-type="image/png" />
+    <item id="epub-158" href="_static/minus.png" media-type="image/png" />
+    <item id="epub-159" href="_static/plus.png" media-type="image/png" />
+    <item id="epub-160" href="_static/pygments.css" media-type="text/css" />
+    <item id="epub-161" href="source/api.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-162" href="source/miscelaneous.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-163" href="source/usage.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-164" href="source/api/setup_CorEsymLsym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-165" href="source/api/setup_EsymLsym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-166" href="source/api/setup_ISGMR.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-167" href="source/api/setup_astro_gw.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-168" href="source/api/setup_astro_masses.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-169" href="source/api/setup_astro_mr.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-170" href="source/api/setup_astro_mtot.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-171" href="source/api/setup_astro_mtov.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-172" href="source/api/setup_astro_mup.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-173" href="source/api/setup_band.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-174" href="source/api/setup_corr_EsymLsym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-175" href="source/api/setup_crust.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-176" href="source/api/setup_eos_am.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-177" href="source/api/setup_eos_beta.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-178" href="source/api/setup_eos_esym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-179" href="source/api/setup_eos_ffg.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-180" href="source/api/setup_eos_hic.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-181" href="source/api/setup_eos_micro.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-182" href="source/api/setup_eos_micro_band.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-183" href="source/api/setup_eos_micro_esym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-184" href="source/api/setup_eos_micro_gap.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-185" href="source/api/setup_eos_micro_lp.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-186" href="source/api/setup_eos_pheno.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-187" href="source/api/setup_eos_pheno_esym.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-188" href="source/api/setup_eoshic.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-189" href="source/api/setup_hic_matter.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-190" href="source/api/setup_masses.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-191" href="source/api/setup_masses_exp.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-192" href="source/api/setup_masses_theory.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-193" href="source/api/setup_micro.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-194" href="source/api/setup_micro_LP.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-195" href="source/api/setup_micro_band.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-196" href="source/api/setup_micro_matter.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-197" href="source/api/setup_micro_matter_band.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-198" href="source/api/setup_nuc_be_exp.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-199" href="source/api/setup_nuc_be_theo.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-200" href="source/api/setup_nuc_isgmr_exp.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-201" href="source/api/setup_nuc_rch_exp.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-202" href="source/api/setup_nuc_rch_theo.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-203" href="source/api/setup_pheno.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-204" href="source/api/setup_pheno_matter.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-205" href="source/api/setup_rad_ch.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-206" href="source/generated/nucleardatapy.xhtml" media-type="application/xhtml+xml" />
   </manifest>
   <spine toc="ncx" page-progression-direction="ltr">
     <itemref idref="epub-1" />
-    <itemref idref="epub-111" />
-    <itemref idref="epub-109" />
-    <itemref idref="epub-149" />
-    <itemref idref="epub-110" />
-    <itemref idref="epub-126" />
-    <itemref idref="epub-128" />
-    <itemref idref="epub-129" />
-    <itemref idref="epub-130" />
-    <itemref idref="epub-131" />
-    <itemref idref="epub-123" />
-    <itemref idref="epub-124" />
-    <itemref idref="epub-127" />
-    <itemref idref="epub-125" />
-    <itemref idref="epub-142" />
-    <itemref idref="epub-143" />
-    <itemref idref="epub-145" />
-    <itemref idref="epub-144" />
-    <itemref idref="epub-122" />
-    <itemref idref="epub-116" />
-    <itemref idref="epub-120" />
-    <itemref idref="epub-119" />
-    <itemref idref="epub-117" />
-    <itemref idref="epub-115" />
-    <itemref idref="epub-112" />
+    <itemref idref="epub-163" />
+    <itemref idref="epub-161" />
+    <itemref idref="epub-206" />
+    <itemref idref="epub-162" />
+    <itemref idref="epub-179" />
+    <itemref idref="epub-181" />
+    <itemref idref="epub-182" />
+    <itemref idref="epub-185" />
+    <itemref idref="epub-184" />
+    <itemref idref="epub-183" />
+    <itemref idref="epub-186" />
+    <itemref idref="epub-187" />
+    <itemref idref="epub-176" />
+    <itemref idref="epub-177" />
+    <itemref idref="epub-180" />
+    <itemref idref="epub-178" />
+    <itemref idref="epub-198" />
+    <itemref idref="epub-199" />
+    <itemref idref="epub-201" />
+    <itemref idref="epub-202" />
+    <itemref idref="epub-200" />
+    <itemref idref="epub-175" />
+    <itemref idref="epub-168" />
+    <itemref idref="epub-172" />
+    <itemref idref="epub-171" />
+    <itemref idref="epub-169" />
+    <itemref idref="epub-167" />
+    <itemref idref="epub-174" />
     <itemref idref="epub-2" />
     <itemref idref="epub-0" />
-    <itemref idref="epub-113" linear="no" />
-    <itemref idref="epub-114" linear="no" />
-    <itemref idref="epub-118" linear="no" />
-    <itemref idref="epub-121" linear="no" />
-    <itemref idref="epub-132" linear="no" />
-    <itemref idref="epub-133" linear="no" />
-    <itemref idref="epub-134" linear="no" />
-    <itemref idref="epub-135" linear="no" />
-    <itemref idref="epub-136" linear="no" />
-    <itemref idref="epub-137" linear="no" />
-    <itemref idref="epub-138" linear="no" />
-    <itemref idref="epub-139" linear="no" />
-    <itemref idref="epub-140" linear="no" />
-    <itemref idref="epub-141" linear="no" />
-    <itemref idref="epub-146" linear="no" />
-    <itemref idref="epub-147" linear="no" />
-    <itemref idref="epub-148" linear="no" />
+    <itemref idref="epub-164" linear="no" />
+    <itemref idref="epub-165" linear="no" />
+    <itemref idref="epub-166" linear="no" />
+    <itemref idref="epub-170" linear="no" />
+    <itemref idref="epub-173" linear="no" />
+    <itemref idref="epub-188" linear="no" />
+    <itemref idref="epub-189" linear="no" />
+    <itemref idref="epub-190" linear="no" />
+    <itemref idref="epub-191" linear="no" />
+    <itemref idref="epub-192" linear="no" />
+    <itemref idref="epub-193" linear="no" />
+    <itemref idref="epub-194" linear="no" />
+    <itemref idref="epub-195" linear="no" />
+    <itemref idref="epub-196" linear="no" />
+    <itemref idref="epub-197" linear="no" />
+    <itemref idref="epub-203" linear="no" />
+    <itemref idref="epub-204" linear="no" />
+    <itemref idref="epub-205" linear="no" />
   </spine>
   <guide>
     <reference type="toc" title="Table of Contents" href="index.xhtml" />

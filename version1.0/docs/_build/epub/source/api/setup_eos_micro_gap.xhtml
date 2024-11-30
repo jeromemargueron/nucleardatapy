@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupEOSMicroGap</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupeosmicrogap">
+<h1>SetupEOSMicroGap</h1>
+<span class="target" id="module-nucleardatapy.eos.setup_micro_gap"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_gap.micro_gap_models">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro_gap.</span></span><span class="sig-name descname"><span class="pre">micro_gap_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2008-QMC-NM-swave’, ‘2009-DLQMC-NM’, ‘2010-QMC-NM-AV4’, ‘2017-MBPT-NM-GAP-EMG-450-500-N2LO’,     ‘2017-MBPT-NM-GAP-EMG-450-500-N3LO’, ‘2017-MBPT-NM-GAP-EMG-450-700-N2LO’,     ‘2017-MBPT-NM-GAP-EMG-450-700-N3LO’, ‘2017-MBPT-NM-GAP-EM-500-N2LO’, ‘2017-MBPT-NM-GAP-EM-500-N3LO’,     ‘2022-AFDMC-NM’
+:return: The list of models.
+:rtype: list[str].</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_gap.setupMicroGap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro_gap.</span></span><span class="sig-name descname"><span class="pre">setupMicroGap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2008-BCS-NM'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘2008-BCS-NM’, ‘2008-AFDMC-NM’,     ‘2008-QMC-NM-swave’, ‘2009-DLQMC-NM’, ‘2010-QMC-NM-AV4’, ‘2017-MBPT-NM-GAP-EMG-450-500-N2LO’,     ‘2017-MBPT-NM-GAP-EMG-450-500-N3LO’, ‘2017-MBPT-NM-GAP-EMG-450-700-N2LO’,     ‘2017-MBPT-NM-GAP-EMG-450-700-N3LO’, ‘2017-MBPT-NM-GAP-EM-500-N2LO’, ‘2017-MBPT-NM-GAP-EM-500-N3LO’,     ‘2022-AFDMC-NM’
+:param model: Fix the name of model. Default value: ‘2008-BCS-NM’.
+:type model: str, optional.</p>
+<p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_gap.setupMicroGap.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_gap.setupMicroGap.model">
+<span class="sig-name descname"><span class="pre">model</span></span></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_gap.setupMicroGap.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupMicroGap.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_eos_setupMicro_gap_1s0_NM.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the 1S0 pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

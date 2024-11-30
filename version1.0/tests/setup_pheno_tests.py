@@ -5,8 +5,9 @@ import numpy as np
 
 import os
 import sys
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+
+#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -15,7 +16,7 @@ apr_e2a = np.array([-6.48, -12.13, -15.04, -16.00, -15.09, -12.88, -5.03, 2.12, 
 
 class SetupMicroTestCase(unittest.TestCase):
 	def setUp(self):
-		self.pheno = nuda.SetupPheno( model = 'Skyrme', param = 'SLy5' )
+		self.pheno = nuda.eos.Pheno( model = 'Skyrme', param = 'SLy5' )
 	def test_apr_den(self):
 		den = self.pheno.sm_den
 		self.assertEqual(den[3], apr_den[3])
