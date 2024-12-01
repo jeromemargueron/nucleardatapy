@@ -27,7 +27,7 @@ def main():
              #
              if nuda.env.verb: print('in Sample: model, param, nucleus',model,param,nucleus)
              val = nuda.SetupNeutronSkinTheo( model = model, param = param, nucleus = nucleus )
-             if nuda.env.verb_output: val.print_outputs( )
+             val.print_outputs( )
              
     #
     print(50*'-')

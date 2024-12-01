@@ -31,7 +31,7 @@ def main():
         #
         for cal in cals:
             nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
-            if nuda.env.verb_output: nskin.print_outputs( )
+            nskin.print_outputs( )
             #
     #
     print(50*'-')
