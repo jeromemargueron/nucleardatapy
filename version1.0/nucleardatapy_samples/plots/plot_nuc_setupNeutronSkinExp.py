@@ -90,12 +90,12 @@ def plot_neutron_skin_for_each_source():
 
         # X-axis configuration
         ax.set_xticks(x_positions)
-        ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=12)
+        ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=15)
 
         # Y-axis configuration and layout
         # Increase font size for y-axis numbers
-        ax.tick_params(axis='y', labelsize=12)  # Adjust the font size as desired
-        ax.set_ylabel(rf"$R_{{\rm{{skin}}}}$ {SOURCE_LABELS_LATEX[source]} (fm)", fontsize=14)
+        ax.tick_params(axis='y', labelsize=15)  # Adjust the font size as desired
+        ax.set_ylabel(rf"$R_{{\rm{{skin}}}}$ {SOURCE_LABELS_LATEX[source]} (fm)", fontsize=15)
         # ax.set_xlabel(f"References for {SOURCE_LABELS_LATEX[source]}", fontsize=14)
         # ax.grid(True, linestyle="--", alpha=0.5)
 
@@ -103,7 +103,7 @@ def plot_neutron_skin_for_each_source():
         # ax.legend(loc="upper left", bbox_to_anchor=(1, 1), fontsize=10)
 
         # Add subplot label (e.g., "(a)", "(b)") in the top right corner
-        ax.text(0.95, 0.95, subplot_labels[idx], transform=ax.transAxes, fontsize=14,
+        ax.text(0.95, 0.95, subplot_labels[idx], transform=ax.transAxes, fontsize=15,
                 verticalalignment='top', horizontalalignment='right')
 
         # Add minor ticks on y-axis

@@ -2,6 +2,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
+from matplotlib.ticker import AutoMinorLocator  # Import para minor ticks
+
 #plt.rcParams.update({'font.size': 16})
 
 # nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
@@ -111,9 +113,9 @@ def plot_neutron_skin_for_each_source_and_param():
 
         ax.set_ylim([0, 0.5])
         ax.set_xticks(xexp)
-        ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=12)
-        ax.set_ylabel(rf"$R_{{\rm{{skin}}}}$ {SOURCE_LABELS_LATEX[source]} (fm)", fontsize=14)
-        ax.text(0.95, 0.95, subplot_labels[idx], transform=ax.transAxes, fontsize=14, verticalalignment='top', horizontalalignment='right')
+        ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=15)
+        ax.set_ylabel(rf"$R_{{\rm{{skin}}}}$ {SOURCE_LABELS_LATEX[source]} (fm)", fontsize=15)
+        ax.text(0.95, 0.95, subplot_labels[idx], transform=ax.transAxes, fontsize=15, verticalalignment='top', horizontalalignment='right')
         
         # Add minor ticks on y-axis
         ax.yaxis.set_minor_locator(AutoMinorLocator())
