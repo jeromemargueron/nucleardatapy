@@ -110,145 +110,145 @@
       <navLabel>
         <text>SetupEOSFFG</text>
       </navLabel>
-      <content src="source/api/setup_eos_ffg.xhtml" />  
+      <content src="source/api/setup_matter_ffg.xhtml" />  
     </navPoint>
     <navPoint id="navPoint18" playOrder="15">
       <navLabel>
         <text>SetupEOSMicro</text>
       </navLabel>
-      <content src="source/api/setup_eos_micro.xhtml" />  
+      <content src="source/api/setup_matter_micro.xhtml" />  
     </navPoint>
     <navPoint id="navPoint19" playOrder="16">
       <navLabel>
         <text>SetupEOSMicroBand</text>
       </navLabel>
-      <content src="source/api/setup_eos_micro_band.xhtml" />  
+      <content src="source/api/setup_matter_micro_band.xhtml" />  
     </navPoint>
     <navPoint id="navPoint20" playOrder="17">
       <navLabel>
         <text>SetupEOSMicroLP</text>
       </navLabel>
-      <content src="source/api/setup_eos_micro_lp.xhtml" />  
+      <content src="source/api/setup_matter_micro_lp.xhtml" />  
     </navPoint>
     <navPoint id="navPoint21" playOrder="18">
       <navLabel>
         <text>SetupEOSMicroGap</text>
       </navLabel>
-      <content src="source/api/setup_eos_micro_gap.xhtml" />  
+      <content src="source/api/setup_matter_micro_gap.xhtml" />  
     </navPoint>
     <navPoint id="navPoint22" playOrder="19">
       <navLabel>
         <text>SetupEOSMicroEsym</text>
       </navLabel>
-      <content src="source/api/setup_eos_micro_esym.xhtml" />  
+      <content src="source/api/setup_matter_micro_esym.xhtml" />  
     </navPoint>
     <navPoint id="navPoint23" playOrder="20">
       <navLabel>
         <text>SetupEOSPheno</text>
       </navLabel>
-      <content src="source/api/setup_eos_pheno.xhtml" />  
+      <content src="source/api/setup_matter_pheno.xhtml" />  
     </navPoint>
     <navPoint id="navPoint24" playOrder="21">
       <navLabel>
         <text>SetupEOSPhenoEsym</text>
       </navLabel>
-      <content src="source/api/setup_eos_pheno_esym.xhtml" />  
+      <content src="source/api/setup_matter_pheno_esym.xhtml" />  
     </navPoint>
     <navPoint id="navPoint25" playOrder="22">
+      <navLabel>
+        <text>SetupEOSHIC</text>
+      </navLabel>
+      <content src="source/api/setup_matter_hic.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint26" playOrder="23">
       <navLabel>
         <text>SetupEOSAM</text>
       </navLabel>
       <content src="source/api/setup_eos_am.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint26" playOrder="23">
+    <navPoint id="navPoint27" playOrder="24">
       <navLabel>
         <text>SetupEOSBeta</text>
       </navLabel>
       <content src="source/api/setup_eos_beta.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint27" playOrder="24">
-      <navLabel>
-        <text>SetupEOSHIC</text>
-      </navLabel>
-      <content src="source/api/setup_eos_hic.xhtml" />  
-    </navPoint>
     <navPoint id="navPoint28" playOrder="25">
-      <navLabel>
-        <text>SetupEOSEsym</text>
-      </navLabel>
-      <content src="source/api/setup_eos_esym.xhtml" />  
-    </navPoint>
-    <navPoint id="navPoint29" playOrder="26">
       <navLabel>
         <text>SetupNucBEExp</text>
       </navLabel>
       <content src="source/api/setup_nuc_be_exp.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint30" playOrder="27">
+    <navPoint id="navPoint29" playOrder="26">
       <navLabel>
         <text>SetupNucBETheo</text>
       </navLabel>
       <content src="source/api/setup_nuc_be_theo.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint31" playOrder="28">
+    <navPoint id="navPoint30" playOrder="27">
       <navLabel>
         <text>SetupNucRchExp</text>
       </navLabel>
       <content src="source/api/setup_nuc_rch_exp.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint32" playOrder="29">
+    <navPoint id="navPoint31" playOrder="28">
       <navLabel>
         <text>SetupNucRchTheo</text>
       </navLabel>
       <content src="source/api/setup_nuc_rch_theo.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint33" playOrder="30">
+    <navPoint id="navPoint32" playOrder="29">
       <navLabel>
         <text>SetupNucISGMRExp</text>
       </navLabel>
       <content src="source/api/setup_nuc_isgmr_exp.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint34" playOrder="31">
+    <navPoint id="navPoint33" playOrder="30">
       <navLabel>
         <text>SetupCrust</text>
       </navLabel>
       <content src="source/api/setup_crust.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint35" playOrder="32">
+    <navPoint id="navPoint34" playOrder="31">
       <navLabel>
         <text>SetupAstroMasses</text>
       </navLabel>
       <content src="source/api/setup_astro_masses.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint36" playOrder="33">
+    <navPoint id="navPoint35" playOrder="32">
       <navLabel>
         <text>SetupAstroMup</text>
       </navLabel>
       <content src="source/api/setup_astro_mup.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint37" playOrder="34">
+    <navPoint id="navPoint36" playOrder="33">
       <navLabel>
         <text>SetupAstroMtov</text>
       </navLabel>
       <content src="source/api/setup_astro_mtov.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint38" playOrder="35">
+    <navPoint id="navPoint37" playOrder="34">
       <navLabel>
         <text>SetupAstroMR</text>
       </navLabel>
       <content src="source/api/setup_astro_mr.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint39" playOrder="36">
+    <navPoint id="navPoint38" playOrder="35">
       <navLabel>
         <text>SetupAstroGW</text>
       </navLabel>
       <content src="source/api/setup_astro_gw.xhtml" />  
     </navPoint>
-    <navPoint id="navPoint40" playOrder="37">
+    <navPoint id="navPoint39" playOrder="36">
       <navLabel>
         <text>SetupCorrEsymLsym</text>
       </navLabel>
       <content src="source/api/setup_corr_EsymLsym.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint40" playOrder="37">
+      <navLabel>
+        <text>SetupCORREsym</text>
+      </navLabel>
+      <content src="source/api/setup_corr_Esym.xhtml" />  
     </navPoint>
   </navMap>
 </ncx>

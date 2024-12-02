@@ -42,18 +42,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
@@ -65,6 +64,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
 </ul>
 
         </div>
@@ -116,14 +117,14 @@
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter models_crust()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1973-Negele-Vautherin&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1S&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1M&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1MS&#39;</span><span class="p">,</span>\
-    <span class="s1">&#39;2022-crustGMSR_BSK14&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_BSK16&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_DHSL59&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_DHSL69&#39;</span><span class="p">,</span>\
-    <span class="s1">&#39;2022-crustGMSR_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H1&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H2&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H3&#39;</span><span class="p">,</span> \
-    <span class="s1">&#39;2022-crustGMSR_H4&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H5&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H7&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_LNS5&#39;</span><span class="p">,</span> \
-    <span class="s1">&#39;2022-crustGMSR_RATP&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_SGII&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_SLY5&#39;</span> <span class="p">]</span>
+    <span class="s1">&#39;2022-crustGMRS-BSK14&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-BSK16&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-DHSL59&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-DHSL69&#39;</span><span class="p">,</span>\
+    <span class="s1">&#39;2022-crustGMRS-F0&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-H1&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-H2&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-H3&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;2022-crustGMRS-H4&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-H5&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-H7&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-LNS5&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;2022-crustGMRS-RATP&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-SGII&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMRS-SLY5&#39;</span> <span class="p">]</span>
     <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crust models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="c1">#print(&#39;crust models available in the toolkit:&#39;,models)</span>
     <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crust models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models_lower</span><span class="p">)</span>
+    <span class="c1">#print(&#39;crust models available in the toolkit:&#39;,models_lower)</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit crust_models()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
@@ -215,7 +216,7 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;semiclassical variational Wigner-Kirkwood method along with shell and pairing corrections calculated with the Strutinsky integral method and the BCS approximation.&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dashed&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="s1">&#39;CMondal:2020&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="c1"># in fm-3</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_e</span> \
@@ -233,12 +234,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
             <span class="c1">#</span>
-        <span class="k">elif</span> <span class="s1">&#39;2022-crustGMSR&#39;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">elif</span> <span class="s1">&#39;2022-crustgmrs&#39;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
             <span class="c1">#</span>
             <span class="c1">#</span>
-            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_bsk14&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_BSK14.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR BSK14 2022&#39;</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-bsk14&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-BSK14.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS BSK14 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1679927159410228</span> <span class="c1"># in MeV/fm3</span>
@@ -249,9 +250,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">15.799976089478367</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.32687267610704895</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.6209998100288209E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_bsk16&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_BSK16.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR BSK16 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-bsk16&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-BSK16.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS BSK16 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5282142292259004E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1476234649744690</span> <span class="c1"># in MeV/fm3</span>
@@ -262,9 +263,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">16.920900617363277</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.36795626298336570</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.4609997888086361E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_dhsl59&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_DHSL59.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR DHSL59 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-dhsl59&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-DHSL59.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS DHSL59 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.7840639496076998</span> <span class="c1"># in MeV/fm3</span>
@@ -275,9 +276,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.733669529186933</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.33617646422062142</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.2109998203862921E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_dhsl69&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_DHSL69.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR DHSL69 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-dhsl69&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-DHSL69.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS DHSL69 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4301212474202996E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.3077129271105594</span> <span class="c1"># in MeV/fm3</span>
@@ -288,9 +289,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.399615979167670</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.38035277580973315</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.3209998176074584E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_f0&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_F0.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR F0 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-f0&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-F0.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS F0 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4950843283419027E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0656453875088161</span> <span class="c1"># in MeV/fm3</span>
@@ -301,9 +302,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">18.078177464065167</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.33181818756433845</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.3309997920927123E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h1&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H1.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H1 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h1&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H1.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H1 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5957995753211628E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0757265666560816</span> <span class="c1"># in MeV/fm3</span>
@@ -314,9 +315,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.803660783830789</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48159809254574409</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.5909997602624350E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h2&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H2.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H2 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h2&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H2.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H2 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4301212474202996E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">6.7775868042313050</span> <span class="c1"># in MeV/fm3</span>
@@ -327,9 +328,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.632170792314291</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48032175761400209</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.2909997678410725E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h3&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H3.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H3 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h3&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H3.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H3 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4623885640591057E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">6.9757456948608496</span> <span class="c1"># in MeV/fm3</span>
@@ -340,9 +341,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.236262111228385</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.40705940455120337</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.4509997890612573E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h4&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H4.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H4 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h4&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H4.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H4 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5282142292259004E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1798191275380834</span> <span class="c1"># in MeV/fm3</span>
@@ -353,9 +354,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">18.131463559875652</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.47616516763123967</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.0609997736513612E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h5&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H5.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H5 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H5 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.8468963604916567E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.9585404850864840</span> <span class="c1"># in MeV/fm3</span>
@@ -366,9 +367,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">19.069132247958592</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.46337573665856840</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.7009997827457261E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h7&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H7.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H7 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-h7&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-H7.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS H7 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">3.2914459584803760E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">8.4098882517442597</span> <span class="c1"># in MeV/fm3</span>
@@ -379,9 +380,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">19.885261960955020</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48143960493062543</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.3109997925979548E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_lns5&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_LNS5.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR LNS5 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-lns5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-LNS5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS LNS5 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.2220830810240075</span> <span class="c1"># in MeV/fm3</span>
@@ -392,9 +393,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">14.391278079363289</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.26627562388273884</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.0409998246808533E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_ratp&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_RATP.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR RATP 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-ratp&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-RATP.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS RATP 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1702995055472227</span> <span class="c1"># in MeV/fm3</span>
@@ -405,9 +406,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">16.557394274307612</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.35277408994086884</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.6009997852719386E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_sgii&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_SGII.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR SGII 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-sgii&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-SGII.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS SGII 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.2454048591257214</span> <span class="c1"># in MeV/fm3</span>
@@ -418,9 +419,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">13.413876317015074</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.20198467236572187</span> <span class="c1"># in MeV/fm3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">6.5309998375645370E-002</span> <span class="c1"># in MeV</span>
-            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_sly5&#39;</span><span class="p">:</span>
-                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_SLY5.dat&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR SLy5 2022&#39;</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustgmrs-sly5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMRS-SLY5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMRS SLy5 2022&#39;</span>
                 <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4623885640591057E-004</span> <span class="c1"># in fm-3</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0872886477160133</span> <span class="c1"># in MeV/fm3</span>
@@ -434,7 +435,7 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;G. Grams, J. Margueron, R. Somasundaram, and S. Reddy, EPJA 58, 56 (2022).&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dotted&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="s1">&#39;GGrams:2022&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Acl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Zcl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xe</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ng</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>

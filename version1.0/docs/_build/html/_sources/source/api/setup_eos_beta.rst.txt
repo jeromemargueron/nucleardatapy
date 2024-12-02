@@ -3,7 +3,7 @@
 SetupEOSBeta
 ================
 
-.. currentmodule:: nucleardatapy.setupeosbeta
+.. currentmodule:: nucleardatapy.eos.setupbeta
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.eos.setup_beta

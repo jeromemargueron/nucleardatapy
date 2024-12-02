@@ -3,7 +3,7 @@
 SetupEOSAM
 ================
 
-.. currentmodule:: nucleardatapy.setupeosam
+.. currentmodule:: nucleardatapy.eos.setupam
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.eos.setup_am

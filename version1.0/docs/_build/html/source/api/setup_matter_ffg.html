@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupEOSFFG &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SetupEOSMicro" href="setup_matter_micro.html" />
+    <link rel="prev" title="Miscelaneous" href="../miscelaneous.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">SetupCORREsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SetupEOSFFG</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_matter_ffg.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setupeosffg">
+<h1>SetupEOSFFG<a class="headerlink" href="#setupeosffg" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.matter.setup_ffg"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.den">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">den</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#den"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.den" title="Permalink to this definition"></a></dt>
+<dd><p>Density as a function of the Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.den_n">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">den_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf_n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#den_n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.den_n" title="Permalink to this definition"></a></dt>
+<dd><p>Neutron density as a function of the neutron Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.eF_n">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">eF_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf_n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#eF_n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.eF_n" title="Permalink to this definition"></a></dt>
+<dd><p>Neutron Fermi energy as a function of the neutron Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.eF_n_nr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">eF_n_nr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf_n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#eF_n_nr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.eF_n_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Non-relativistic neutron Fermi energy as a function of the neutron Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.effg_NM_nr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">effg_NM_nr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf_n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#effg_NM_nr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.effg_NM_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Free Fermi gas energy as a function of the neutron Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.effg_SM_nr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">effg_SM_nr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#effg_SM_nr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.effg_SM_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Free Fermi gas energy as a function of the Fermi momentum in SM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.effg_nr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">effg_nr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#effg_nr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.effg_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Free Fermi gas energy as a function of the Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.esymffg_nr">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">esymffg_nr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#esymffg_nr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.esymffg_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Free Fermi gas symmetry energy as a function of the Fermi momentum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kf</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – Fermi momentum.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.kf">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">kf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">den</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#kf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.kf" title="Permalink to this definition"></a></dt>
+<dd><p>Fermi momentum as a function of the density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>den</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – density.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.kf_n">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">kf_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">den_n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#kf_n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.kf_n" title="Permalink to this definition"></a></dt>
+<dd><p>Neutron Fermi momentum as a function of the neutron density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>den_n</strong> (<em>float</em><em> or </em><em>numpy vector of real numbers.</em>) – neutron density.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">setupFFGLep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">den_e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">den_mu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#setupFFGLep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with free Fermi gas (FFG) quantities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>den</strong> (<em>float</em><em> or </em><em>numpy vector of floats.</em>) – density or densities for which the FFG quantities are calculated.</p></li>
+<li><p><strong>delta</strong> (<em>float</em><em> or </em><em>numpy vector of floats.</em>) – isospin density or densities for which the FFG quantities are calculated.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.den_e">
+<span class="sig-name descname"><span class="pre">den_e</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.den_e" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute electron density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.den_mu">
+<span class="sig-name descname"><span class="pre">den_mu</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.den_mu" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute muon density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.eF_e">
+<span class="sig-name descname"><span class="pre">eF_e</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.eF_e" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute electon Fermi energy (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.eF_mu">
+<span class="sig-name descname"><span class="pre">eF_mu</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.eF_mu" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute muon Fermi energy (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.kf_e">
+<span class="sig-name descname"><span class="pre">kf_e</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.kf_e" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute electron Fermi momentum (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.kf_mu">
+<span class="sig-name descname"><span class="pre">kf_mu</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.kf_mu" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute muon Fermi momentum (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.label" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.note" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.pre">
+<span class="sig-name descname"><span class="pre">pre</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.pre" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG pressure (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGLep.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#setupFFGLep.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGLep.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_ffg.</span></span><span class="sig-name descname"><span class="pre">setupFFGNuc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">den</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#setupFFGNuc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with free Fermi gas (FFG) quantities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>den</strong> (<em>float</em><em> or </em><em>numpy vector of floats.</em>) – density or densities for which the FFG quantities are calculated.</p></li>
+<li><p><strong>delta</strong> (<em>float</em><em> or </em><em>numpy vector of floats.</em>) – isospin density or densities for which the FFG quantities are calculated.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.delta" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute isospin parameter</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.den">
+<span class="sig-name descname"><span class="pre">den</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.den" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute isoscalar density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.den_n">
+<span class="sig-name descname"><span class="pre">den_n</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.den_n" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.den_p">
+<span class="sig-name descname"><span class="pre">den_p</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.den_p" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute proton density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.e2v_int">
+<span class="sig-name descname"><span class="pre">e2v_int</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.e2v_int" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG energy per unit volum (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.eF_n">
+<span class="sig-name descname"><span class="pre">eF_n</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.eF_n" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron Fermi energy (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.eF_p">
+<span class="sig-name descname"><span class="pre">eF_p</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.eF_p" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute proton Fermi energy (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.esym2_nr">
+<span class="sig-name descname"><span class="pre">esym2_nr</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.esym2_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG quadratic contribution to the symmetry energy</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.esym4_nr">
+<span class="sig-name descname"><span class="pre">esym4_nr</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.esym4_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG quartic contribution to the symmetry energy</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.esym_nr">
+<span class="sig-name descname"><span class="pre">esym_nr</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.esym_nr" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG symmetry energy (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.kf">
+<span class="sig-name descname"><span class="pre">kf</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.kf" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute Fermi momentum for a Fermi system with degeneracy = 4</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.kf_n">
+<span class="sig-name descname"><span class="pre">kf_n</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.kf_n" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute neutron Fermi momentum (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.kf_p">
+<span class="sig-name descname"><span class="pre">kf_p</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.kf_p" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute proton Fermi momentum (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.label">
+<span class="sig-name descname"><span class="pre">label</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.label" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.note">
+<span class="sig-name descname"><span class="pre">note</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.note" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.pre">
+<span class="sig-name descname"><span class="pre">pre</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.pre" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute FFG pressure (degeneracy = 2)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_ffg.setupFFGNuc.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_ffg.html#setupFFGNuc.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_ffg.setupFFGNuc.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupFFGNuc.py</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupFFGNuc.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupFFGNuc.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">This figure shows the free Fermi gas energy (top) and pressure (bottom) in symmetric matter (SM) (Blue solid line) and neutron matter (NM) (orange dashed line) as function of the particle density (left) and Fermi momentum (right).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../miscelaneous.html" class="btn btn-neutral float-left" title="Miscelaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_matter_micro.html" class="btn btn-neutral float-right" title="SetupEOSMicro" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
