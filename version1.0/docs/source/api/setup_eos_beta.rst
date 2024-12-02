@@ -1,6 +1,6 @@
 
 ================
-SetupEOSBeta
+eos.setupBeta
 ================
 
 .. currentmodule:: nucleardatapy.eos.setupbeta

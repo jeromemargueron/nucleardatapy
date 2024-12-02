@@ -1,7 +1,7 @@
 
-================
-SetupEOSMicro
-================
+==================
+matter.setupMicro
+==================
 
 .. currentmodule:: nucleardatapy.matter.setupmicro
 

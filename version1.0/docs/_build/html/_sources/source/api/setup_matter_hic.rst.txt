@@ -1,7 +1,7 @@
 
-==============
-SetupEOSHIC
-==============
+================
+matter.setupHIC
+================
 
 .. currentmodule:: nucleardatapy.matter.setupHIC
 

@@ -1,7 +1,7 @@
 
-=================
-SetupCorrEsymLsym
-=================
+===================
+corr.setupEsymLsym
+===================
 
 .. currentmodule:: nucleardatapy.corr.setupesymlsym
 

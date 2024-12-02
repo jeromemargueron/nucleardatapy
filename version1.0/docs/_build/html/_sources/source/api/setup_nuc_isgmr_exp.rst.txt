@@ -1,9 +1,9 @@
 
-================
-SetupNucISGMRExp
-================
+==================
+nuc.setupISGMRExp
+==================
 
-.. currentmodule:: nucleardatapy.setupNucISGMRExp
+.. currentmodule:: nucleardatapy.nucsetupISGMRExp
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.nuc.setup_isgmr_exp

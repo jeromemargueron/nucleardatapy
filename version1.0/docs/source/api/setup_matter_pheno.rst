@@ -1,7 +1,7 @@
 
-================
-SetupEOSPheno
-================
+==================
+matter.setupPheno
+==================
 
 .. currentmodule:: nucleardatapy.matter.setuppheno
 

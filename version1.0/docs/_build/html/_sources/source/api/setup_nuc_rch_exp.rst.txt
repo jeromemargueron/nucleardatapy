@@ -1,9 +1,9 @@
 
-==============
-SetupNucRchExp
-==============
+================
+nuc.setupRchExp
+================
 
-.. currentmodule:: nucleardatapy.setupnucrchexp
+.. currentmodule:: nucleardatapy.nuc.setuprchexp
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.nuc.setup_rch_exp

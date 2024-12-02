@@ -1,6 +1,6 @@
 
 ================
-SetupEOSFFG
+matter.setupFFG
 ================
 
 .. currentmodule:: nucleardatapy.mattersetupffg

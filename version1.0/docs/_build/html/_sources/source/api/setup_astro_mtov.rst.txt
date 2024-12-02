@@ -1,9 +1,9 @@
 
-==============
-SetupAstroMtov
-==============
+================
+astro.setupMtov
+================
 
-.. currentmodule:: nucleardatapy.setupastromtov
+.. currentmodule:: nucleardatapy.astro.setupmtov
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.astro.setup_mtov

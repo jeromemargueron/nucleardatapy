@@ -1,9 +1,9 @@
 
 =================
-SetupNucBETheo
+nuc.setupBETheo
 =================
 
-.. currentmodule:: nucleardatapy.setupnucbetheo
+.. currentmodule:: nucleardatapy.nuc.setupbetheo
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.nuc.setup_be_theo

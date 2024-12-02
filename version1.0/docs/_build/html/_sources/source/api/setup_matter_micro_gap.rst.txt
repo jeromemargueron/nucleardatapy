@@ -1,7 +1,7 @@
 
-================
-SetupEOSMicroGap
-================
+=====================
+matter.setupMicroGap
+=====================
 
 .. currentmodule:: nucleardatapy.matter.setupmicrogap
 

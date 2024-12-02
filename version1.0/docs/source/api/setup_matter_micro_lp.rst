@@ -1,7 +1,7 @@
 
-===============
-SetupEOSMicroLP
-===============
+====================
+matter.setupMicroLP
+====================
 
 .. currentmodule:: nucleardatapy.matter.setupmicrolp
 

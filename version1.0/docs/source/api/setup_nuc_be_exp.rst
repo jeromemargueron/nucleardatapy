@@ -1,9 +1,9 @@
 
-==============
-SetupNucBEExp
-==============
+===============
+nuc.setupBEExp
+===============
 
-.. currentmodule:: nucleardatapy.setupnucbeexp
+.. currentmodule:: nucleardatapy.nucsetupbeexp
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.nuc.setup_be_exp

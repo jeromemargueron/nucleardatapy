@@ -1,9 +1,9 @@
 
-================
-SetupAstroMasses
-================
+==================
+astro.setupMasses
+==================
 
-.. currentmodule:: nucleardatapy.setupastromasses
+.. currentmodule:: nucleardatapy.astro.setupmasses
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.astro.setup_masses

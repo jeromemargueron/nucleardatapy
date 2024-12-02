@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SetupEOSPhenoEsym &mdash; nucleardatapy 0.1 documentation</title>
+  <title>matter.setupPhenoEsym &mdash; nucleardatapy 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SetupEOSHIC" href="setup_matter_hic.html" />
-    <link rel="prev" title="SetupEOSPheno" href="setup_matter_pheno.html" /> 
+    <link rel="next" title="matter.setupHIC" href="setup_matter_hic.html" />
+    <link rel="prev" title="matter.setupPheno" href="setup_matter_pheno.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,30 +45,30 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEOSPhenoEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">SetupCORREsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">corr.setupEsym</a></li>
 </ul>
 
         </div>
@@ -85,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupEOSPhenoEsym</li>
+      <li>matter.setupPhenoEsym</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_matter_pheno_esym.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,8 +95,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setupeosphenoesym">
-<h1>SetupEOSPhenoEsym<a class="headerlink" href="#setupeosphenoesym" title="Permalink to this heading"></a></h1>
+  <section id="matter-setupphenoesym">
+<h1>matter.setupPhenoEsym<a class="headerlink" href="#matter-setupphenoesym" title="Permalink to this heading"></a></h1>
 <span class="target" id="module-nucleardatapy.matter.setup_pheno_esym"></span><dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.pheno_esym_models">
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_pheno_esym.</span></span><span class="sig-name descname"><span class="pre">pheno_esym_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#pheno_esym_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.pheno_esym_models" title="Permalink to this definition"></a></dt>
@@ -186,8 +186,8 @@ this toolkit for a given model and print them all on the prompt.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_matter_pheno.html" class="btn btn-neutral float-left" title="SetupEOSPheno" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="setup_matter_hic.html" class="btn btn-neutral float-right" title="SetupEOSHIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_matter_pheno.html" class="btn btn-neutral float-left" title="matter.setupPheno" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_matter_hic.html" class="btn btn-neutral float-right" title="matter.setupHIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

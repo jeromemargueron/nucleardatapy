@@ -1,9 +1,9 @@
 
 ==============
-SetupCORREsym
+corr.setupEsym
 ==============
 
-.. currentmodule:: nucleardatapy.corrsetupEsym
+.. currentmodule:: nucleardatapy.corr.setupEsym
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.corr.setup_Esym

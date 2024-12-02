@@ -1,7 +1,7 @@
 
-====================
-SetupEOSMicroBand
-====================
+======================
+matter.setupMicroBand
+======================
 
 .. currentmodule:: nucleardatapy.matter.setupmicroband
 

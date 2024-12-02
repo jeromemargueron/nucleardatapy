@@ -1,7 +1,7 @@
 
-=================
-SetupEOSMicroEsym
-=================
+======================
+matter.setupMicroEsym
+======================
 
 .. currentmodule:: nucleardatapy.matter.setupmicroesym
 

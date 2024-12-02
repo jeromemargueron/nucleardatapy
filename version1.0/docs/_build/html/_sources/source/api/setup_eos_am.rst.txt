@@ -1,6 +1,6 @@
 
 ================
-SetupEOSAM
+eos.setupAM
 ================
 
 .. currentmodule:: nucleardatapy.eos.setupam

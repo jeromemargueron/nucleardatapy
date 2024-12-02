@@ -1,7 +1,7 @@
 
-=================
-SetupEOSPhenoEsym
-=================
+======================
+matter.setupPhenoEsym
+======================
 
 .. currentmodule:: nucleardatapy.matter.setupphenoesym
 

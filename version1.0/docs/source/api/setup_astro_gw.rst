@@ -1,9 +1,9 @@
 
 ==============
-SetupAstroGW
+astro.setupGW
 ==============
 
-.. currentmodule:: nucleardatapy.setupastrogw
+.. currentmodule:: nucleardatapy.astro.setupgw
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.astro.setup_gw
