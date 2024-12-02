@@ -12,7 +12,7 @@ import random
 
 import nucleardatapy as nuda
 
-def beta_eq(var,*args):
+def func_betaeq(var,*args):
     x_e, x_mu = var
     den, esym = args
     n_e = x_e * den
@@ -30,7 +30,7 @@ def beta_eq(var,*args):
         eq2 = kFmu - math.sqrt( kFe**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
     return (eq1,eq2)
 
-class setupBeta():
+class setupAMBeq():
     """
     Instantiate the object with microscopic results choosen \
     by the toolkit practitioner.
@@ -54,23 +54,23 @@ class setupBeta():
         var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])
         """
         #
-        if nuda.env.verb: print("Enter setupBeta()")
+        if nuda.env.verb: print("Enter setupAMBeq()")
         #
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
         #
-        self = setupBeta.init_self( self )
+        self = setupAMBeq.init_self( self )
         #
         # read var and define den, asy and xpr:
         self.den = var1[:] # density n_b=n_n+n_p
         #
         if kind == 'micro':
-            models, models_lower = nuda.eos.micro_esym_models()
-            models.remove('1998-VAR-AM-APRfit')
-            models_lower.remove('1998-var-am-aprfit')
+            models, models_lower = nuda.matter.micro_esym_models()
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
         elif kind == 'pheno':
-            models, models_lower = nuda.eos.pheno_esym_models()
+            models, models_lower = nuda.matter.pheno_esym_models()
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
@@ -79,17 +79,19 @@ class setupBeta():
             exit()
         #
         if kind == 'micro':
-            esym = nuda.eos.setupMicroEsym( model = model )
+            esym = nuda.matter.setupMicroEsym( model = model )
             #eos.print_outputs( )
         elif kind == 'pheno':
-            esym = nuda.eos.setupPhenoEsym( model = model, param = param )
+            esym = nuda.matter.setupPhenoEsym( model = model, param = param )
             #eos.print_outputs( )
         self.label = esym.label
         self.every = esym.every
         self.linestyle = esym.linestyle
         self.marker = esym.marker
         #print('type esym:',type(esym.esym))
-
+        #
+        # lepton fractions
+        #
         #if isinstance(esym.esym, np.ndarray ):
         if esym.esym is not None:
             self.den = esym.den
@@ -101,7 +103,7 @@ class setupBeta():
             #x_e = 0.1
             x_mu = 0.0
             for ind,den in enumerate(esym.den):
-                x_e, x_mu =  fsolve(beta_eq, (x_e, x_mu), args=(den,esym.esym[ind]) )
+                x_e, x_mu =  fsolve(func_betaeq, (x_e, x_mu), args=(den,esym.esym[ind]) )
                 #print(f' ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_e:{x_e:.3f}, x_mu:{x_mu:.3f}')
                 self.x_e.append( x_e )
                 self.x_mu.append( x_mu )
@@ -116,16 +118,25 @@ class setupBeta():
             self.n_p = self.x_p * self.den
             #print('n_n:',self.n_n)
             self.kfn = nuda.kf_n( self.n_n )
+            self.n_e = self.x_e * self.den
+            self.n_mu = self.x_mu * self.den
             #
-            # Thermodynamical variables (with contributions from nucleons and leptons)
-            # self.e2a_nuc = eos.e2a
-            # self.e2a_lep = 
-            # self.e2a = self.e2a_nuc + self.e2a_lep
-            # self.e2v = self.e2a * self.den
-            # self.pre_nuc = eos.pre
-            # self.pre_lep = 
-            # self.pre = self.pre_nuc + self.pre_lep
-            # self.pre
+            # Thermodynamical variables
+            self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
+            self.e2v_nuc = self.e2a_nuc * self.den
+            self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
+            lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
+            self.e2a_el = lep.e2a_el
+            self.e2a_mu = lep.e2a_mu
+            self.e2a_lep = lep.e2a_lep
+            self.e2v_lep = lep.e2v_lep
+            self.pre_el = lep.pre_el
+            self.pre_mu = lep.pre_mu
+            self.pre_lep = lep.pre_lep
+            #
+            self.e2a_tot = self.e2a_nuc + self.e2a_lep
+            self.e2v_tot = self.e2v_nuc + self.e2v_lep
+            self.pre_tot = self.pre_nuc + self.pre_lep
             # self.h2a
             # self.h2v
             # self.cs2
@@ -137,7 +148,7 @@ class setupBeta():
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
-        if nuda.env.verb: print("Exit setupMicro()")
+        if nuda.env.verb: print("Exit setupAMBeq()")
         #
     def print_outputs( self ):
         """

@@ -3,4 +3,5 @@ This module provides microscopic, phenomenological and experimental data constra
 """
 #
 from nucleardatapy.eos.setup_am         import *
-from nucleardatapy.eos.setup_beta       import *
+from nucleardatapy.eos.setup_am_Leq      import *
+from nucleardatapy.eos.setup_am_Beq      import *

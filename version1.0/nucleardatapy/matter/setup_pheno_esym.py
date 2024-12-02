@@ -195,10 +195,14 @@ class setupPhenoEsym():
         self.e2a_sm = cs_sm_e2a( self.den )
         self.e2a_nm = cs_nm_e2a( self.den )
         self.esym = self.e2a_nm - self.e2a_sm
+        self.sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
+        self.sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.sm_pre
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.esym_unit = 'MeV'
+        self.e2v_unit = 'MeV fm$^{-3}$'
+        self.pre_unit = 'MeV fm$^{-3}$'
         #
         if nuda.env.verb: print("Exit SetupEOSPhenoEsym()")
         #

@@ -10,10 +10,8 @@ import nucleardatapy as nuda
 
 def main():
     #
-    asy = 0.25
     print(50*'-')
-    print("Enter sample_eos_setupAM.py:")
-    print("for asymmetry parameter: asy=",asy)
+    print("Enter sample_eos_setupAMBeq.py:")
     print(50*'-')
     #
     # ==============
@@ -23,12 +21,13 @@ def main():
     models, models_lower = nuda.matter.micro_esym_models()
     models.remove('1998-VAR-AM-APR-fit')
     models_lower.remove('1998-var-am-apr-fit')
-    #models = [ '1998-VAR-AM-APR' ]
+    models = [ '1998-VAR-AM-APR' ]
     #
     for model in models:
         #
-        mic = nuda.eos.setupAM( model = model, kind='micro', asy = asy )
+        mic = nuda.eos.setupAMBeq( model = model, kind='micro' )
         if nuda.env.verb_output: mic.print_outputs( )
+        #
     #
     # ==============
     # pheno models
@@ -42,11 +41,12 @@ def main():
         #
         for param in params:
             #
-            pheno = nuda.eos.setupAM( model = model, param = param, kind='pheno', asy = asy )
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind='pheno' )
             if nuda.env.verb_output: pheno.print_outputs( )
+            #
     #
     print(50*'-')
-    print("Exit sample_eos_setupAM.py:")
+    print("Exit sample_eos_setupAMBeq.py:")
     print(50*'-')
     #
     

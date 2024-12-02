@@ -12,7 +12,23 @@ import random
 
 import nucleardatapy as nuda
 
-class setupAM():
+def func_am(var,*args):
+    x_mu = var
+    den, x_p = args
+    x_e = x_p - x_mu
+    n_e = x_e * den
+    kFe = ( 3 * nuda.cst.pi2 * n_e )**nuda.cst.third
+    mu_e = nuda.cst.hbc * kFe
+    if mu_e < nuda.cst.mmuc2:
+        x_mu = 0.0
+        eq = 0.0
+    else:
+        n_mu = x_mu * den
+        kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
+        eq = kFmu - math.sqrt( kFe**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
+    return eq
+
+class setupAMLeq():
     """
     Instantiate the object with microscopic results choosen \
     by the toolkit practitioner.
@@ -25,7 +41,7 @@ class setupAM():
     **Attributes:**
     """
     #
-    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0, x_mu = 0.0, var1 = np.linspace(0.01,0.4,100) ):
+    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0, var1 = np.linspace(0.01,0.4,100) ):
         """
         Parameters
         ----------
@@ -36,13 +52,13 @@ class setupAM():
         var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])
         """
         #
-        if nuda.env.verb: print("Enter setupAM()")
+        if nuda.env.verb: print("Enter setupAMLeq()")
         #
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
         #
-        self = setupAM.init_self( self )
+        self = setupAMLeq.init_self( self )
         #
         # read var and define den, asy and xpr:
         self.den = np.array( var1, dtype=float ) # density n_b=n_n+n_p
@@ -80,24 +96,44 @@ class setupAM():
         #print('esym:',self.esym)
         self.x_n = ( 1.0 + self.asy ) / 2.0
         self.x_p = ( 1.0 - self.asy ) / 2.0
-        self.x_mu = x_mu
-        self.x_e = self.x_p - self.x_mu
         self.n_n = self.x_n * self.den
         self.n_p = self.x_p * self.den
+        #print('n_n:',self.n_n)
         self.kfn = nuda.kf_n( self.n_n )
+        self.x_e = []
+        self.x_mu = []
+        x_mu = 0.0
+        #print('den:',self.den)
+        #print('x_p:',self.x_p)
+        for ind,den in enumerate(esym.den):
+            x_mu =  fsolve(func_am, (x_mu), args=(self.den[ind],self.x_p) )
+            #print('x_mu:',x_mu[0])
+            #print(f' ind:{ind}, den:{den:.3f}, x_p:{self.x_p:.3f}, x_e:{self.x_p-x_mu[0]:.3f}, x_mu:{x_mu[0]:.3f}')
+            self.x_mu.append( x_mu[0] )
+            self.x_e.append( self.x_p - x_mu[0] )
+        self.x_e = np.array( self.x_e, dtype = float )
+        self.x_mu = np.array( self.x_mu, dtype = float )
+        #print('x_e:',self.x_e)
+        #print('x_mu:',self.x_mu)
         self.n_e = self.x_e * self.den
         self.n_mu = self.x_mu * self.den
         #
         # Thermodynamical variables
         self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
         self.e2v_nuc = self.e2a_nuc * self.den
+        self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
         lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
         self.e2a_el = lep.e2a_el
         self.e2a_mu = lep.e2a_mu
-        self.e2a_lep = lep.e2a_el + lep.e2a_mu
+        self.e2a_lep = lep.e2a_lep
+        self.e2v_lep = lep.e2v_lep
         self.pre_el = lep.pre_el
         self.pre_mu = lep.pre_mu
-        self.pre_lep = lep.pre_el + lep.pre_mu
+        self.pre_lep = lep.pre_lep
+        #
+        self.e2a_tot = self.e2a_nuc + self.e2a_lep
+        self.e2v_tot = self.e2v_nuc + self.e2v_lep
+        self.pre_tot = self.pre_nuc + self.pre_lep
         # self.h2a
         # self.h2v
         # self.cs2
@@ -109,7 +145,7 @@ class setupAM():
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
-        if nuda.env.verb: print("Exit setupAM()")
+        if nuda.env.verb: print("Exit setupAMLeq()")
         #
     def print_outputs( self ):
         """

@@ -157,7 +157,7 @@ class setupMicroEsym():
         y_err = np.insert( nm_e2a_err, 0, 0.0 )
         cs_nm_e2a_err = CubicSpline( x, y_err )
         #
-        # density for Esym (no extroplation, only interpolation)
+        # density for Esym (no extrapolation, only interpolation)
         #
         self.den_min = max( min( nm_den), min( sm_den) )
         self.den_max = min( max( nm_den), max( sm_den) )
@@ -172,10 +172,14 @@ class setupMicroEsym():
         self.e2a_nm = cs_nm_e2a( self.den )
         self.esym = self.e2a_nm - self.e2a_sm
         self.esym_err = np.sqrt( cs_nm_e2a_err( self.den )**2 + cs_sm_e2a_err( self.den )**2 )
+        self.sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
+        self.sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.sm_pre
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.esym_unit = 'MeV'
+        self.e2v_unit = 'MeV fm$^{-3}$'
+        self.pre_unit = 'MeV fm$^{-3}$'
         #
         if nuda.env.verb: print("Exit setupMicroEsym()")
         #
