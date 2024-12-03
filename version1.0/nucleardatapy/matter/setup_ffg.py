@@ -300,12 +300,12 @@ class setupFFGLep():
         #: Attribute muon Fermi energy (degeneracy = 2)
         self.eF_mu = np.sqrt( nuda.cst.mmuc2**2 + (nuda.cst.hbc*self.kf_mu)**2 )
         #: Attribute FFG energy per particle (degeneracy = 2)
-        self.e2v_el = feden( 2.0, self.kf_e, nuda.cst.mec2)
-        self.e2v_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2)
+        self.e2v_el, self.e2a_el = feden( 2.0, self.kf_e, nuda.cst.mec2)
+        self.e2v_mu, self.e2a_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2)
         self.e2v_lep = self.e2v_el + self.e2v_mu
-        self.e2a_el = self.e2v_el / self.den_e
+        #self.e2a_el = self.e2v_el / self.den_e
         self.e2a_el_int = self.e2a_el - nuda.cst.mec2*self.den_e/(self.den_e+self.den_mu)
-        self.e2a_mu = self.e2v_mu / self.den_mu
+        #self.e2a_mu = self.e2v_mu / self.den_mu
         self.e2a_mu_int = self.e2a_mu - nuda.cst.mmuc2*self.den_mu/(self.den_e+self.den_mu)
         self.e2a_lep = self.e2a_el + self.e2a_mu
         self.e2a_int = self.e2a_el_int + self.e2a_mu_int
