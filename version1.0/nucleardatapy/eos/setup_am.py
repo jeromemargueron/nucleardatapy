@@ -25,7 +25,7 @@ class setupAM():
     **Attributes:**
     """
     #
-    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0, var1 = np.linspace(0.01,0.4,100) ):
+    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0, x_mu = 0.0, var1 = np.linspace(0.01,0.4,100) ):
         """
         Parameters
         ----------
@@ -45,15 +45,15 @@ class setupAM():
         self = setupAM.init_self( self )
         #
         # read var and define den, asy and xpr:
-        self.den = var1[:] # density n_b=n_n+n_p
-        self.asy = asy
+        self.den = np.array( var1, dtype=float ) # density n_b=n_n+n_p
+        self.asy = float(asy)
         #
         if kind == 'micro':
-            models, models_lower = nuda.eos.micro_models()
-            models.remove('1998-VAR-AM-APRfit')
-            models_lower.remove('1998-var-am-aprfit')
+            models, models_lower = nuda.matter.micro_esym_models()
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
         elif kind == 'pheno':
-            models, models_lower = nuda.eos.pheno_models()
+            models, models_lower = nuda.matter.pheno_esym_models()
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
@@ -62,36 +62,45 @@ class setupAM():
             exit()
         #
         if kind == 'micro':
-            esym = nuda.eos.setupMicroEsym( model = model )
+            esym = nuda.matter.setupMicroEsym( model = model )
             #eos.print_outputs( )
         elif kind == 'pheno':
-            esym = nuda.eos.setupPhenoEsym( model = model, param = param )
+            esym = nuda.matter.setupPhenoEsym( model = model, param = param )
             #eos.print_outputs( )
+        else:
+            print('Issue with variable kind=',kind)
+            exit()
         self.label = esym.label
         self.every = esym.every
         self.linestyle = esym.linestyle
         self.marker = esym.marker
         #print('type esym:',type(esym.esym))
-
-        #if isinstance(esym.esym, np.ndarray ):
-        if esym.esym is not None:
-            self.den = esym.den
-            self.esym = esym.esym
-            #print('esym:',self.esym)
-            self.x_n = ( 1.0 + self.asy ) / 2.0
-            self.x_p = ( 1.0 - self.asy ) / 2.0
-            self.n_n = self.x_n * self.den
-            self.n_p = self.x_p * self.den
-            #print('n_n:',self.n_n)
-            self.kfn = nuda.kf_n( self.n_n )
-            #
-            # Thermodynamical variables (with contributions from nucleons only)
-            self.e2a = esym.e2a_sm + esym.esym * self.asy**2
-            self.e2v = self.e2a * self.den
-            #self.pre = eos.pre
-            # self.h2a
-            # self.h2v
-            # self.cs2
+        self.den = esym.den
+        self.esym = esym.esym
+        #print('esym:',self.esym)
+        self.x_n = ( 1.0 + self.asy ) / 2.0
+        self.x_p = ( 1.0 - self.asy ) / 2.0
+        self.x_mu = x_mu
+        self.x_e = self.x_p - self.x_mu
+        self.n_n = self.x_n * self.den
+        self.n_p = self.x_p * self.den
+        self.kfn = nuda.kf_n( self.n_n )
+        self.n_e = self.x_e * self.den
+        self.n_mu = self.x_mu * self.den
+        #
+        # Thermodynamical variables
+        self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
+        self.e2v_nuc = self.e2a_nuc * self.den
+        lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
+        self.e2a_el = lep.e2a_el
+        self.e2a_mu = lep.e2a_mu
+        self.e2a_lep = lep.e2a_el + lep.e2a_mu
+        self.pre_el = lep.pre_el
+        self.pre_mu = lep.pre_mu
+        self.pre_lep = lep.pre_el + lep.pre_mu
+        # self.h2a
+        # self.h2v
+        # self.cs2
 
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'

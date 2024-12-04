@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
+def plot_eos_setupAM_e( pname, models_micro, models_pheno, asy ):
     #
     # E/A for a given asymmetry parameter asy
     #
@@ -36,7 +36,9 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
         #
         if am.esym is not None: 
             print('model:',model)
-            axs[0].plot( am.den, am.e2a, marker='o', linestyle=am.linestyle, label=am.label, markevery=am.every )
+            #print('den:',am.den)
+            #print('e2a:',am.e2a_nuc)
+            axs[0].plot( am.den, am.e2a_nuc, marker='o', linestyle=am.linestyle, label=am.label, markevery=am.every )
     axs[0].text(0.02,12,'microscopic models',fontsize='10')
     axs[0].text(0.02,10,'for $\delta=$'+str(asy),fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
@@ -44,7 +46,7 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
     #
     for model in models_pheno:
         #
-        params, params_lower = nuda.eos.pheno_esym_params( model = model )
+        params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
@@ -52,7 +54,7 @@ def plot_eos_setupAM( pname, models_micro, models_pheno, asy ):
             if am.esym is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( am.den, am.e2a, linestyle=am.linestyle, label=am.label, markevery=am.every )
+                axs[1].plot( am.den, am.e2a_nuc, linestyle=am.linestyle, label=am.label, markevery=am.every )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
@@ -91,17 +93,17 @@ def main():
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.eos.micro_esym_models()
+    micro_models, micro_models_lower = nuda.matter.micro_esym_models()
     micro_models.remove('1998-VAR-AM-APR-fit')
     micro_models_lower.remove('1998-var-am-apr-fit')
     #micro_models = [ '1998-VAR-AM-APR' ]
-    #pheno_models, pheno_models_lower = nuda.eos_pheno_esym_models()
+    #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot E/A for a given asymmetric parameter asy
     #
-    pname = 'figs/plot_eos_setupAM.png'
-    plot_eos_setupAM( pname, micro_models, pheno_models, asy )
+    pname = 'figs/plot_eos_setupAM_e.png'
+    plot_eos_setupAM_e( pname, micro_models, pheno_models, asy )
     #
     print(50*'-')
     print("Exit plot_eos_setupAM.py:")

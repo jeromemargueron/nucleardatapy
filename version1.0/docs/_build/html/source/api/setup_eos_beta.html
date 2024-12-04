@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SetupEOSBeta &mdash; nucleardatapy 0.1 documentation</title>
+  <title>eos.setupBeta &mdash; nucleardatapy 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SetupEOSHIC" href="setup_eos_hic.html" />
-    <link rel="prev" title="SetupEOSAM" href="setup_eos_am.html" /> 
+    <link rel="next" title="nuc.setupBEExp" href="setup_nuc_be_exp.html" />
+    <link rel="prev" title="eos.setupAM" href="setup_eos_am.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,29 +45,30 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">corr.setupEsym</a></li>
 </ul>
 
         </div>
@@ -84,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupEOSBeta</li>
+      <li>eos.setupBeta</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_eos_beta.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,8 +95,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setupeosbeta">
-<h1>SetupEOSBeta<a class="headerlink" href="#setupeosbeta" title="Permalink to this heading"></a></h1>
+  <section id="eos-setupbeta">
+<h1>eos.setupBeta<a class="headerlink" href="#eos-setupbeta" title="Permalink to this heading"></a></h1>
 <span class="target" id="module-nucleardatapy.eos.setup_beta"></span><dl class="py class">
 <dt class="sig sig-object py" id="nucleardatapy.eos.setup_beta.setupBeta">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_beta.</span></span><span class="sig-name descname"><span class="pre">setupBeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'micro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.01393939,</span> <span class="pre">0.01787879,</span> <span class="pre">0.02181818,</span> <span class="pre">0.02575758,</span> <span class="pre">0.02969697,</span> <span class="pre">0.03363636,</span> <span class="pre">0.03757576,</span> <span class="pre">0.04151515,</span> <span class="pre">0.04545455,</span> <span class="pre">0.04939394,</span> <span class="pre">0.05333333,</span> <span class="pre">0.05727273,</span> <span class="pre">0.06121212,</span> <span class="pre">0.06515152,</span> <span class="pre">0.06909091,</span> <span class="pre">0.0730303,</span> <span class="pre">0.0769697,</span> <span class="pre">0.08090909,</span> <span class="pre">0.08484848,</span> <span class="pre">0.08878788,</span> <span class="pre">0.09272727,</span> <span class="pre">0.09666667,</span> <span class="pre">0.10060606,</span> <span class="pre">0.10454545,</span> <span class="pre">0.10848485,</span> <span class="pre">0.11242424,</span> <span class="pre">0.11636364,</span> <span class="pre">0.12030303,</span> <span class="pre">0.12424242,</span> <span class="pre">0.12818182,</span> <span class="pre">0.13212121,</span> <span class="pre">0.13606061,</span> <span class="pre">0.14,</span> <span class="pre">0.14393939,</span> <span class="pre">0.14787879,</span> <span class="pre">0.15181818,</span> <span class="pre">0.15575758,</span> <span class="pre">0.15969697,</span> <span class="pre">0.16363636,</span> <span class="pre">0.16757576,</span> <span class="pre">0.17151515,</span> <span class="pre">0.17545455,</span> <span class="pre">0.17939394,</span> <span class="pre">0.18333333,</span> <span class="pre">0.18727273,</span> <span class="pre">0.19121212,</span> <span class="pre">0.19515152,</span> <span class="pre">0.19909091,</span> <span class="pre">0.2030303,</span> <span class="pre">0.2069697,</span> <span class="pre">0.21090909,</span> <span class="pre">0.21484848,</span> <span class="pre">0.21878788,</span> <span class="pre">0.22272727,</span> <span class="pre">0.22666667,</span> <span class="pre">0.23060606,</span> <span class="pre">0.23454545,</span> <span class="pre">0.23848485,</span> <span class="pre">0.24242424,</span> <span class="pre">0.24636364,</span> <span class="pre">0.25030303,</span> <span class="pre">0.25424242,</span> <span class="pre">0.25818182,</span> <span class="pre">0.26212121,</span> <span class="pre">0.26606061,</span> <span class="pre">0.27,</span> <span class="pre">0.27393939,</span> <span class="pre">0.27787879,</span> <span class="pre">0.28181818,</span> <span class="pre">0.28575758,</span> <span class="pre">0.28969697,</span> <span class="pre">0.29363636,</span> <span class="pre">0.29757576,</span> <span class="pre">0.30151515,</span> <span class="pre">0.30545455,</span> <span class="pre">0.30939394,</span> <span class="pre">0.31333333,</span> <span class="pre">0.31727273,</span> <span class="pre">0.32121212,</span> <span class="pre">0.32515152,</span> <span class="pre">0.32909091,</span> <span class="pre">0.3330303,</span> <span class="pre">0.3369697,</span> <span class="pre">0.34090909,</span> <span class="pre">0.34484848,</span> <span class="pre">0.34878788,</span> <span class="pre">0.35272727,</span> <span class="pre">0.35666667,</span> <span class="pre">0.36060606,</span> <span class="pre">0.36454545,</span> <span class="pre">0.36848485,</span> <span class="pre">0.37242424,</span> <span class="pre">0.37636364,</span> <span class="pre">0.38030303,</span> <span class="pre">0.38424242,</span> <span class="pre">0.38818182,</span> <span class="pre">0.39212121,</span> <span class="pre">0.39606061,</span> <span class="pre">0.4])</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/eos/setup_beta.html#setupBeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.eos.setup_beta.setupBeta" title="Permalink to this definition"></a></dt>
@@ -154,8 +155,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_eos_am.html" class="btn btn-neutral float-left" title="SetupEOSAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="setup_eos_hic.html" class="btn btn-neutral float-right" title="SetupEOSHIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_eos_am.html" class="btn btn-neutral float-left" title="eos.setupAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_nuc_be_exp.html" class="btn btn-neutral float-right" title="nuc.setupBEExp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

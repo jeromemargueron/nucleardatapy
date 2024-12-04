@@ -20,9 +20,9 @@ def main():
     # micro models
     # ==============
     #
-    models, models_lower = nuda.eos.micro_esym_models()
-    models.remove('1998-VAR-AM-APRfit')
-    models_lower.remove('1998-var-am-aprfit')
+    models, models_lower = nuda.matter.micro_esym_models()
+    models.remove('1998-VAR-AM-APR-fit')
+    models_lower.remove('1998-var-am-apr-fit')
     #models = [ '1998-VAR-AM-APR' ]
     #
     for model in models:
@@ -34,11 +34,11 @@ def main():
     # pheno models
     # ==============
     #
-    models, models_lower = nuda.eos.pheno_esym_models()
+    models, models_lower = nuda.matter.pheno_esym_models()
     #
     for model in models:
         #
-        params, params_lower = nuda.eos.pheno_esym_params( model = model )
+        params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #

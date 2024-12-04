@@ -1,9 +1,9 @@
 
 ================
-SetupAstroMR
+astro.setupMR
 ================
 
-.. currentmodule:: nucleardatapy.setupastromr
+.. currentmodule:: nucleardatapy.astro.setupmr
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.astro.setup_mr

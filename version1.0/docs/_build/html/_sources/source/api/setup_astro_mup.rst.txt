@@ -1,9 +1,9 @@
 
 ==============
-SetupAstroMup
+astro.setupMup
 ==============
 
-.. currentmodule:: nucleardatapy.setupastromup
+.. currentmodule:: nucleardatapy.astro.setupmup
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.astro.setup_mup

@@ -42,18 +42,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
@@ -65,6 +64,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
 </ul>
 
         </div>
@@ -313,7 +314,7 @@
 
 <span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;GW170817&#39;</span> <span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;GW170817&#39;</span><span class="p">,</span> <span class="n">hyps</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="p">):</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupAstroMupAverage()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -323,7 +324,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">source</span><span class="o">+</span><span class="s1">&#39; average&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;compute the centroid and standard deviation from the obs. data.&#39;</span>
         <span class="c1">#</span>
-        <span class="n">hyps</span> <span class="o">=</span> <span class="n">mup_hyps</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+        <span class="c1">#hyps = mup_hyps( source = source )</span>
         <span class="c1">#</span>
         <span class="c1"># search for the boundary for mup:</span>
         <span class="n">mupmin</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">mupmax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>

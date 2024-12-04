@@ -5,6 +5,8 @@ from nucleardatapy.cst     import *
 from nucleardatapy.env     import *
 from nucleardatapy.param   import *
 #
+from nucleardatapy.matter  import *
+#
 from nucleardatapy.eos     import *
 #
 from nucleardatapy.corr    import *

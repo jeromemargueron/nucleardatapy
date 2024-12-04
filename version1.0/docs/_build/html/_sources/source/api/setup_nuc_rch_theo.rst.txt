@@ -1,9 +1,9 @@
 
-===============
-SetupNucRchTheo
-===============
+=================
+nuc.setupRchTheo
+=================
 
-.. currentmodule:: nucleardatapy.setupnucrchtheo
+.. currentmodule:: nucleardatapy.nucsetuprchtheo
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.nuc.setup_rch_theo

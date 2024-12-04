@@ -42,18 +42,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
@@ -65,6 +64,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
 </ul>
 
         </div>
@@ -153,7 +154,6 @@
         <span class="c1">#: Attribute model.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="n">setupBeta</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
         <span class="c1">#</span>
@@ -197,19 +197,19 @@
             <span class="n">x_mu</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">den</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">esym</span><span class="o">.</span><span class="n">den</span><span class="p">):</span>
                 <span class="n">x_e</span><span class="p">,</span> <span class="n">x_mu</span> <span class="o">=</span>  <span class="n">fsolve</span><span class="p">(</span><span class="n">beta_eq</span><span class="p">,</span> <span class="p">(</span><span class="n">x_e</span><span class="p">,</span> <span class="n">x_mu</span><span class="p">),</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">den</span><span class="p">,</span><span class="n">esym</span><span class="o">.</span><span class="n">esym</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span> <span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; ind:</span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s1">, den:</span><span class="si">{</span><span class="n">den</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, esym:</span><span class="si">{</span><span class="n">esym</span><span class="o">.</span><span class="n">esym</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">, x_e:</span><span class="si">{</span><span class="n">x_e</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, x_mu:</span><span class="si">{</span><span class="n">x_mu</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="c1">#print(f&#39; ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_e:{x_e:.3f}, x_mu:{x_mu:.3f}&#39;)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_e</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">x_e</span> <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">x_mu</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_e</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_e:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">x_e</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x_mu:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span><span class="p">)</span>
+            <span class="c1">#print(&#39;x_e:&#39;,self.x_e)</span>
+            <span class="c1">#print(&#39;x_mu:&#39;,self.x_mu)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_e</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">n_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">n_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;n_n:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n_n</span><span class="p">)</span>
+            <span class="c1">#print(&#39;n_n:&#39;,self.n_n)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">kfn</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_n</span> <span class="p">)</span>
             <span class="c1">#</span>
             <span class="c1"># Thermodynamical variables (with contributions from nucleons and leptons)</span>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SetupNucBEExp &mdash; nucleardatapy 0.1 documentation</title>
+  <title>nuc.setupBEExp &mdash; nucleardatapy 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SetupNucBETheo" href="setup_nuc_be_theo.html" />
-    <link rel="prev" title="SetupEOSEsym" href="setup_eos_esym.html" /> 
+    <link rel="next" title="nuc.setupBETheo" href="setup_nuc_be_theo.html" />
+    <link rel="prev" title="eos.setupBeta" href="setup_eos_beta.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,29 +45,30 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupNucBEExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">corr.setupEsym</a></li>
 </ul>
 
         </div>
@@ -84,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SetupNucBEExp</li>
+      <li>nuc.setupBEExp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/source/api/setup_nuc_be_exp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,8 +95,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setupnucbeexp">
-<h1>SetupNucBEExp<a class="headerlink" href="#setupnucbeexp" title="Permalink to this heading"></a></h1>
+  <section id="nuc-setupbeexp">
+<h1>nuc.setupBEExp<a class="headerlink" href="#nuc-setupbeexp" title="Permalink to this heading"></a></h1>
 <span class="target" id="module-nucleardatapy.nuc.setup_be_exp"></span><dl class="py function">
 <dt class="sig sig-object py" id="nucleardatapy.nuc.setup_be_exp.be_exp_tables">
 <span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_be_exp.</span></span><span class="sig-name descname"><span class="pre">be_exp_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_be_exp.html#be_exp_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_be_exp.be_exp_tables" title="Permalink to this definition"></a></dt>
@@ -292,13 +293,11 @@ this toolkit for a given model and print them all on the prompt.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interp</strong> (<em>str</em><em>, </em><em>optional. Default = 'n'.</em>) – If interp=’n’, exclude the interpolated nuclei from the selected ones.         If interp=’y’ consider them in the table, in addition to the others.</p></li>
 <li><p><strong>state</strong> (<em>str</em><em>, </em><em>optional. Default 'gs'.</em>) – select the kind of state. If state=’gs’, select nuclei measured in their ground state.</p></li>
-<li><p><strong>nucleus</strong> (<em>str</em><em>, </em><em>optional. Default 'unstable'.</em>) – ‘unstable’.</p></li>
+<li><p><strong>nucleus</strong> (<em>str</em><em>, </em><em>optional. Default 'unstable'.         It can be set to 'stable'</em><em>, </em><em>'longlive'</em><em> (</em><em>with LT&gt;10 min</em><em>)</em><em>, </em><em>'shortlive'</em><em> (</em><em>with 10min&gt;LT&gt;1 ns</em><em>)</em><em>,         </em><em>'veryshortlive'</em><em> (</em><em>with LT&lt; 1ns</em><em>)</em>) – ‘unstable’.</p></li>
+<li><p><strong>every</strong> (<em>int</em><em>, </em><em>optional. Default every = 1.</em>) – consider only 1 out of <cite>every</cite> nuclei in the table.</p></li>
 </ul>
 </dd>
 </dl>
-<p>It can be set to ‘stable’, ‘longlive’ (with LT&gt;10 min), ‘shortlive’ (with 10min&gt;LT&gt;1 ns),         ‘veryshortlive’ (with LT&lt; 1ns)
-:param every: consider only 1 out of <cite>every</cite> nuclei in the table.
-:type every: int, optional. Default every = 1.</p>
 <p><strong>Attributes:</strong></p>
 </dd></dl>
 
@@ -339,8 +338,8 @@ this toolkit for a given model and print them all on the prompt.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="setup_eos_esym.html" class="btn btn-neutral float-left" title="SetupEOSEsym" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="setup_nuc_be_theo.html" class="btn btn-neutral float-right" title="SetupNucBETheo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="setup_eos_beta.html" class="btn btn-neutral float-left" title="eos.setupBeta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_nuc_be_theo.html" class="btn btn-neutral float-right" title="nuc.setupBETheo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -432,7 +432,7 @@ class setupBEExp():
         :param state: select the kind of state. If state='gs', select nuclei measured in their ground state.
         :type state: str, optional. Default 'gs'.
         :param nucleus: 'unstable'.
-        :type nucleus: str, optional. Default 'unstable'.
+        :type nucleus: str, optional. Default 'unstable'. \
         It can be set to 'stable', 'longlive' (with LT>10 min), 'shortlive' (with 10min>LT>1 ns), \
         'veryshortlive' (with LT< 1ns)
         :param every: consider only 1 out of `every` nuclei in the table.

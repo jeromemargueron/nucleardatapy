@@ -42,18 +42,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
@@ -65,6 +64,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
 </ul>
 
         </div>
@@ -102,7 +103,7 @@
 
 <span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
 
-<div class="viewcode-block" id="EsymLsym_constraints"><a class="viewcode-back" href="../../../source/api/setup_CorEsymLsym.html#nucleardatapy.corr.setup_EsymLsym.EsymLsym_constraints">[docs]</a><span class="k">def</span> <span class="nf">EsymLsym_constraints</span><span class="p">():</span>
+<div class="viewcode-block" id="EsymLsym_constraints"><a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.EsymLsym_constraints">[docs]</a><span class="k">def</span> <span class="nf">EsymLsym_constraints</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of constraints available in this toolkit in the \</span>
 <span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
@@ -117,7 +118,7 @@
     <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2009-HIC&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-RNP&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-FRDM&#39;</span><span class="p">,</span> <span class="s1">&#39;2013-NS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS+RNP&#39;</span><span class="p">,</span> \
              <span class="s1">&#39;2015-POL-208PB&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-120SN&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-68NI&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-UG&#39;</span><span class="p">,</span> \
               <span class="s1">&#39;2021-PREXII-Reed&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-PREXII-Reinhard&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-PREXII+CREX-Zhang&#39;</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Constraints available in the toolkit:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+    <span class="c1">#print(&#39;Constraints available in the toolkit:&#39;,constraints)</span>
     <span class="n">constraints_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">constraints</span> <span class="p">]</span>
     <span class="k">return</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span></div>
 
@@ -135,7 +136,7 @@
 <span class="k">def</span> <span class="nf">HIC_Lsym_bound</span><span class="p">(</span><span class="n">Esym</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="n">gi</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="n">Esym</span><span class="p">),</span><span class="n">csk</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">,</span><span class="n">csp</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="setupEsymLsym"><a class="viewcode-back" href="../../../source/api/setup_CorEsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym">[docs]</a><span class="k">class</span> <span class="nc">setupEsymLsym</span><span class="p">():</span>
+<div class="viewcode-block" id="setupEsymLsym"><a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym">[docs]</a><span class="k">class</span> <span class="nc">setupEsymLsym</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the values of Esym and Lsym from the constraint.</span>
 
@@ -236,7 +237,7 @@
             <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length(Esym)&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">))</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
             <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
@@ -248,8 +249,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Esym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Lsym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="p">)</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
         <span class="c1">#</span>
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2012-frdm&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
@@ -270,7 +271,7 @@
             <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length(Esym)&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">))</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
             <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
@@ -282,8 +283,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Esym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Lsym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="p">)</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
         <span class="c1">#</span>
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2013-ns&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
@@ -304,7 +305,7 @@
             <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length(Esym)&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">))</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
             <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
@@ -316,8 +317,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym95_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym95_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Esym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coutour Lsym:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="p">)</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
         <span class="c1">#</span>
         <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2014-ias&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
@@ -340,7 +341,7 @@
             <span class="c1"># setup list with contour for IAS contraint in Esym-Lsym coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length(Esym)&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">))</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
             <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
@@ -507,7 +508,7 @@
 
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupEsymLsym()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupEsymLsym.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_CorEsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupEsymLsym.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -523,7 +524,7 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
         <span class="c1">#</span>
-<div class="viewcode-block" id="setupEsymLsym.init_self"><a class="viewcode-back" href="../../../source/api/setup_CorEsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.init_self">[docs]</a>    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupEsymLsym.init_self"><a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.init_self">[docs]</a>    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize variables in self.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
