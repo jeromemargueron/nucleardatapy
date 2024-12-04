@@ -15,8 +15,7 @@ def micro_gap_models():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '2008-BCS-NM', '2008-AFDMC-NM', \
-    '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+    '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
     '2022-AFDMC-NM' \
@@ -27,11 +26,10 @@ def micro_gap_models():
     #
     if nuda.env.verb: print("\nEnter micro_gap_models()")
     #
-    models = [ '2008-BCS-NM', '2008-AFDMC-NM', \
-             '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
-             '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
-             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
-             '2022-AFDMC-NM' ]
+    models = [ '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+            '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
+            '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
+            '2022-AFDMC-NM' ]
     if nuda.env.verb: print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
@@ -46,8 +44,7 @@ class setupMicroGap():
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-    '2008-BCS-NM', '2008-AFDMC-NM', \
-    '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+    '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
     '2022-AFDMC-NM' \
@@ -177,26 +174,32 @@ class setupMicroGap():
             self.every = 2
             self.err = True
             if model.lower() == '2017-mbpt-nm-gap-emg-450-500-n2lo':
+                self.label = 'BCS-EMG450-500-N2LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_gap_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv')
             elif model.lower() == '2017-mbpt-nm-gap-emg-450-500-n3lo':
+                self.label = 'BCS-EMG450-500-N3LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_gap_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_500_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv')
             elif model.lower() == '2017-mbpt-nm-gap-emg-450-700-n2lo':
+                self.label = 'BCS-EMG450-700-N2LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_gap_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv')
             elif model.lower() == '2017-mbpt-nm-gap-emg-450-700-n3lo':
+                self.label = 'BCS-EMG450-700-N3LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_gap_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EGM450_700_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv')
             elif model.lower() == '2017-mbpt-nm-gap-em-500-n2lo':
+                self.label = 'BCS-EM500-N2LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_gap_1S0_HF_spectrum_N2LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv')
             elif model.lower() == '2017-mbpt-nm-gap-em-500-n3lo':
+                self.label = 'BCS-EM500-N3LO-2017'
                 file_effmass = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_1s0 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_gap_1S0_HF_spectrum_N3LO_3N_forces.csv')
                 file_3pf2 = os.path.join(nuda.param.path_data,'matter/micro/2017-Drischler/N3LO_EM500_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv')
@@ -204,7 +207,6 @@ class setupMicroGap():
                 print('Reads file_effmass:',file_in_effmass)
                 print('Reads file_1s0:    ',file_in_1s0)
                 print('Reads file_3pf2:   ',file_in_3pf2)
-            self.label = 'MBPT-2017'
             self.nm_kfn_effmass, effmass_lo, effmass_up \
                 = np.loadtxt( file_effmass, usecols = (0, 1, 2), delimiter=',', comments='#', unpack = True)
             self.nm_den_effmass = nuda.den_n( self.nm_kfn_effmass )
