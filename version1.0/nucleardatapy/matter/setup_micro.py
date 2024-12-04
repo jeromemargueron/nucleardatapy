@@ -22,8 +22,10 @@ def micro_models():
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
     '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
-    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
+    '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
+    '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
+    '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
+    '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
@@ -44,12 +46,14 @@ def micro_models():
     if nuda.env.verb: print("\nEnter micro_models()")
     #
     models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
-             '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
-             #'2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-             #'2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
-             '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-             '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-             '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
+            '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
+            '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
+            '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
+            '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
+            '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7',
+            '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+            '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
+            '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
             '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
             '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -127,12 +131,23 @@ def APRfit_compute( n, x ):
     HH = Hk + Hm + HdH
     #
     nt = 0.32-0.12*(1-2*x)**2 # transition density in fm^-3
+    #print('nt:',nt)
     e2v = np.zeros( len(n) )
     for ind,den in enumerate(n):
         if den < nt:
             e2v[ind] = HL[ind]
+            indref = ind
+            #print(ind,den,HL[ind],' low')
         else:
-            e2v[ind] = HH[ind]    
+            e2v[ind] = HH[ind]
+            #print(ind,den,HH[ind],' high')
+    #print('indref:',indref,'/',len(n))
+    #imin = max( 0, indref-2 )
+    #imax = min( len(n), indref+3 )
+    #for ind in range(imin,imax+1):
+        #xh = ( n[ind] - n[imin] ) / ( n[imax] - n[imin] )
+        #print('ind:',ind,' xh',xh)
+        #e2v[ind] = (1-xh)*e2v[imin] + xh*e2v[imax]
     return e2v
 
 def func_GCR_e2a(den,a,alfa,b,beta):
@@ -169,8 +184,10 @@ class setupMicro():
     the following choices: \
     '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
-    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
+    '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
+    '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
+    '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
+    '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
@@ -454,6 +471,40 @@ class setupMicro():
             # chemical potential
             #self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
             #
+        elif '2012-afdmc-nm-res' in model.lower():
+            #
+            self.flag_nm = True
+            self.flag_sm = False
+            self.flag_kf = False
+            self.flag_den = True
+            #
+            # We do not have the data for this model, but we have a fit of the data
+            k=int(model.split(sep='-')[4])
+            print('k:',k)
+            file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM-'+str(k)+'.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
+            self.note = "We do not have the data for this model, but we have a fit of the data."
+            self.label = 'AFDMC-2012-'+str(k)
+            self.marker = 's'
+            self.every = 1
+            self.linestyle = 'None'
+            if k in [ 1, 7 ]:
+                self.nm_den, ETOT, ETOT_ERR = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            elif k in [ 2, 3, 4, 5, 6 ]:
+                V0, MU, self.nm_den, ETOT, ETOT_ERR = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
+            else:
+                print('The value of k is no correct ',k)
+                exit()
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.nm_e2a     = ETOT# / 66.0
+            self.nm_e2a_err = ETOT_ERR# / 66.0
+            self.nm_e2v     = self.nm_den * self.nm_e2a
+            self.nm_e2v_err = self.nm_den * self.nm_e2a_err
+            #self.nm_pre =
+            #self.nm_chempot = 
+            #self.nm_cs2 = 
+            #
         elif '2012-afdmc-nm-fit' in model.lower():
             #
             self.flag_nm = True
@@ -462,16 +513,16 @@ class setupMicro():
             self.flag_den = False
             #
             # We do not have the data for this model, but we have a fit of the data
-            k=int(model.split(sep='-')[3])
-            #print('k:',k)
+            k=int(model.split(sep='-')[4])
+            print('k:',k)
             file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM-fit.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
             self.note = "We do not have the data for this model, but we have a fit of the data."
-            self.label = 'AFDMC-2012-'+str(k)
+            self.label = 'AFDMC-2012-'+str(k)+'-FIT'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #name = np.loadtxt( file_in, usecols=(5), unpack = True )
             nmodel = np.size(alfa)

@@ -29,11 +29,11 @@ def plot_matter_setupMicro_nm_e2a( pname, group, models, band ):
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$E_{NM}/E_{FFG,NR}$')
     axs[1,0].set_xlim([0, 0.3])
-    axs[1,0].set_ylim([0.2, 0.8])
+    axs[1,0].set_ylim([0.3, 0.8])
     #
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,1].set_xlim([0.5, 2.0])
-    axs[1,1].set_ylim([0.2, 0.8])
+    axs[1,1].set_ylim([0.3, 0.8])
     #
     #print('\nmodels in NM:',models,'\n')
     #
@@ -41,7 +41,7 @@ def plot_matter_setupMicro_nm_e2a( pname, group, models, band ):
         #
         mic = nuda.matter.setupMicro( model = model, var2=1.0 )
         print('model:',model)
-        if mic.nm_e2a is not None:
+        if mic.nm_e2a is not None and 'FIT' not in model:
             if 'NLEFT' in model:
                 axs[0,0].errorbar( mic.nm_den, mic.nm_e2adata, yerr=mic.nm_e2adata_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
                 axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2adata, yerr=mic.nm_e2adata_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
