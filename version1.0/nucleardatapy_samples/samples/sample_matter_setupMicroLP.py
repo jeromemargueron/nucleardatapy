@@ -18,6 +18,7 @@ def main():
     #
     for model in models:
         #
+        print('Model:',model)
         mic = nuda.matter.setupMicroLP( model = model )
         if nuda.env.verb_output: mic.print_outputs( )
     #
