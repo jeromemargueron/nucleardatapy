@@ -48,9 +48,9 @@ def plot_matter_setupMicroLP0_SM( pname, models ):
                 axs[1,0].errorbar( mic.sm_kfn, mic.sm_LP['Fp'][0], yerr=mic.sm_LP_Fp_err[0], marker=mic.marker, linestyle='none', label=mic.label )
                 axs[1,1].errorbar( mic.sm_kfn, mic.sm_LP['Gp'][0], yerr=mic.sm_LP_Gp_err[0], marker=mic.marker, linestyle='none', label=mic.label )
             else:
-                print('kFn:',mic.sm_kfn)
-                print('F0:',mic.sm_LP['F'][0])
-                print('G0p:',mic.sm_LP['Gp'][0])
+                #print('kFn:',mic.sm_kfn)
+                #print('F0:',mic.sm_LP['F'][0])
+                #print('G0p:',mic.sm_LP['Gp'][0])
                 axs[0,0].scatter( mic.sm_kfn, mic.sm_LP['F'][0], marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
                 axs[0,1].scatter( mic.sm_kfn, mic.sm_LP['G'][0], marker=mic.marker, linestyle=mic.linestyle, label=mic.label )
                 axs[1,0].scatter( mic.sm_kfn, mic.sm_LP['Fp'][0], marker=mic.marker, linestyle=mic.linestyle, label=mic.label )

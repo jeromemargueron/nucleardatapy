@@ -19,8 +19,16 @@ def main():
     for model in models:
         #
         print('Model:',model)
-        mic = nuda.matter.setupMicroLP( model = model )
-        if nuda.env.verb_output: mic.print_outputs( )
+        lp = nuda.matter.setupMicroLP( model = model )
+        print('LP in SM:')
+        print('kfn:',lp.sm_kfn)
+        print('F0:',lp.sm_LP['F'][0])
+        print('G0:',lp.sm_LP['G'][0])
+        print('LP in NM:')
+        print('kfn:',lp.nm_kfn)
+        print('F0:',lp.nm_LP['F'][0])
+        print('G0:',lp.nm_LP['G'][0])
+        if nuda.env.verb_output: lp.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_matter_setupMicroLP.py:")

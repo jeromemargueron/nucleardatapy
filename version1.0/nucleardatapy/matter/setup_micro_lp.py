@@ -5,16 +5,13 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-nsat = 0.16
-mnuc2 = 939.0
+#nsat = 0.16
+#mnuc2 = 939.0
 
 def uncertainty_stat(den):
-    return 0.07*(den/nsat)
+    return 0.07*(den/nuda.cst.nsat)
 
 def micro_LP_models():
     """
@@ -75,16 +72,6 @@ class setupMicroLP():
             print('-- Exit the code --')
             exit()
         #
-        self.sm_LP = {}
-        self.nm_LP = {}
-        #
-        self.sm_LP['F'] = {}
-        self.sm_LP['G'] = {}
-        self.sm_LP['Fp'] = {}
-        self.sm_LP['Gp'] = {}
-        self.nm_LP['F'] = {}
-        self.nm_LP['G'] = {}
-        #
         if '1994-bhf-sm-lp' in model.lower():
             #
             file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/1994-BHF-SM.dat')
@@ -96,12 +83,6 @@ class setupMicroLP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             #
             lp1, lp2, lp3, lp4, lp5 = np.loadtxt( file_in, usecols=(1,2,3,4,5), unpack = True )
-            #self.sm_LP_F = np.array( (8), dtype=float )
-            #self.sm_LP_G = np.array( (5), dtype=float )
-            #self.sm_LP_Fp = np.array( (5), dtype=float )
-            #self.sm_LP_Gp = np.array( (5), dtype=float )
-            #self.nm_LP_F = np.array( (8,10), dtype=float )
-            #self.nm_LP_G = np.array( (8,10), dtype=float )
             #
             if model.lower() == '1994-bhf-sm-lp-av14-gap':
                 self.label = 'BHF-AV14Gap-1994'
@@ -128,10 +109,6 @@ class setupMicroLP():
                     self.sm_LP['Gp'][ell] = lp2[18+ell]
                     self.nm_LP['F'][ell]  = None
                     self.nm_LP['G'][ell]  = None
-                #self.sm_LP_F  = lp2[0:8]
-                #self.sm_LP_G  = lp2[8:13]
-                #self.sm_LP_Fp = lp2[13:18]
-                #self.sm_LP_Gp = lp2[18:23]
                 self.sm_kfn  = lp2[23]
                 self.sm_effmass = lp2[24]
                 self.Ksat = lp2[25]
@@ -147,10 +124,6 @@ class setupMicroLP():
                     self.sm_LP['Gp'][ell] = lp3[18+ell]
                     self.nm_LP['F'][ell]  = None
                     self.nm_LP['G'][ell]  = None
-                #self.sm_LP_F  = lp3[0:8]
-                #self.sm_LP_G  = lp3[8:13]
-                #self.sm_LP_Fp = lp3[13:18]
-                #self.sm_LP_Gp = lp3[18:23]
                 self.sm_kfn  = lp3[23]
                 self.sm_effmass = lp3[24]
                 self.Ksat = lp3[25]
@@ -166,10 +139,6 @@ class setupMicroLP():
                     self.sm_LP['Gp'][ell] = lp4[18+ell]
                     self.nm_LP['F'][ell]  = None
                     self.nm_LP['G'][ell]  = None
-                #self.sm_LP_F  = lp4[0:8]
-                #self.sm_LP_G  = lp4[8:13]
-                #self.sm_LP_Fp = lp4[13:18]
-                #self.sm_LP_Gp = lp4[18:23]
                 self.sm_kfn  = lp4[23]
                 self.sm_effmass = lp4[24]
                 self.Ksat = lp4[25]
@@ -185,17 +154,13 @@ class setupMicroLP():
                     self.sm_LP['Gp'][ell] = lp5[18+ell]
                     self.nm_LP['F'][ell]  = None
                     self.nm_LP['G'][ell]  = None
-                #self.sm_LP_F  = lp5[0:8]
-                #self.sm_LP_G  = lp5[8:13]
-                #self.sm_LP_Fp = lp5[13:18]
-                #self.sm_LP_Gp = lp5[18:23]
                 self.sm_kfn  = lp5[23]
                 self.sm_effmass = lp5[24]
                 self.Ksat = lp5[25]
                 self.Esym2 = lp5[26]
                 self.sm_effMass = lp5[27]
-            print('F:',self.sm_LP['F'][0])
-            print('G:',self.sm_LP['G'][0])
+            #print('F:',self.sm_LP['F'][0])
+            #print('G:',self.sm_LP['G'][0])
         #
         elif model.lower() == '2007-bhf-nm-lp-bonnc':
             #
@@ -210,7 +175,7 @@ class setupMicroLP():
             #
             self.nm_kfn, self.nm_effmass, lp_f, lp_g, self.nm_gap, self.nm_Tc = \
               np.loadtxt( file_in, usecols=(0,1,2,3,4,5), comments='#', unpack = True, dtype=float )
-            print('kfn:',self.nm_kfn)
+            #print('kfn:',self.nm_kfn)
             for ell in range(0,8):
                 self.sm_LP['F'][ell]  = None
                 self.sm_LP['G'][ell]  = None
@@ -220,8 +185,8 @@ class setupMicroLP():
                 self.nm_LP['G'][ell]  = None
             self.nm_LP['F'][0]  = lp_f
             self.nm_LP['G'][0]  = lp_g
-            print('F:',self.nm_LP['F'][0])
-            print('G:',self.nm_LP['G'][0])
+            #print('F:',self.nm_LP['F'][0])
+            #print('G:',self.nm_LP['G'][0])
             #
         self.kfn_unit = 'fm$^{-1}$'
         self.gap_unit = 'MeV'
@@ -272,6 +237,15 @@ class setupMicroLP():
         self.ref = ''
         #: Attribute providing additional notes about the data.
         self.note = ''
+        #: Attribute the plot linestyle.
+        self.linestyle = 'solid'
+        #: Attribute the plot to discriminate True uncertainties from False ones.
+        self.err = False
+        #: Attribute the plot label data.
+        self.label = ''
+        #: Attribute the plot marker data.
+        self.marker = ''
+        #
         #: Attribute the neutron matter density.
         self.nm_den = None
         #: Attribute the symmetric matter density.
@@ -280,10 +254,17 @@ class setupMicroLP():
         self.nm_kfn = None
         #: Attribute the symmetric matter neutron Fermi momentum.
         self.sm_kfn = None
-        #: Attribute the symmetric matter Fermi momentum.
-        self.nm_kf = None
-        #: Attribute the symmetric matter Fermi momentum.
-        self.sm_kf = None
+        #
+        self.sm_LP = {}
+        self.nm_LP = {}
+        #
+        self.sm_LP['F'] = {}
+        self.sm_LP['G'] = {}
+        self.sm_LP['Fp'] = {}
+        self.sm_LP['Gp'] = {}
+        self.nm_LP['F'] = {}
+        self.nm_LP['G'] = {}
+        #
         #: Attribute the neutron matter effective mass (from the spe).
         self.nm_effmass = None
         #: Attribute the symmetric matter effective mass.
@@ -294,14 +275,6 @@ class setupMicroLP():
         self.Esym2 = None
         #: Attribute the incompressibility modulus
         self.Ksat = None
-        #: Attribute the plot linestyle.
-        self.linestyle = 'solid'
-        #: Attribute the plot to discriminate True uncertainties from False ones.
-        self.err = False
-        #: Attribute the plot label data.
-        self.label = ''
-        #: Attribute the plot marker data.
-        self.marker = ''
         #
         if nuda.env.verb: print("Exit init_self()")
         #
