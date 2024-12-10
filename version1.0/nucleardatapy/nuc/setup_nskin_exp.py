@@ -67,7 +67,7 @@ class SetupNeutronSkinExp():
 
     **Attributes:**
     """
-    def __init__(self, source = '48Ca', cal = 1 ):
+    def __init__(self, source = '208Pb', cal = 1 ):
         #
         if nuda.env.verb: print("Enter SetupNeutronSkin()")
         #
@@ -505,4 +505,97 @@ class SetupNeutronSkinExp():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
+class setupNeutronSkinAverage():
+    """
+    Instantiate the experimental/analitical data for a given source and averaged over cal.
+
+    This choice is defined in the variable `source`.
+
+    `source` can chosen among the following ones: '48Ca'.
+
+    :param source: Fix the name of `source`. Default value: '208Pb'.
+    :type source: str, optional. 
+
+    **Attributes:**
+    """
+    def __init__(self, source = '208Pb' ):
+        #
+        if nuda.env.verb: print("Enter setupNeutronSkinAverage()")
+        #
+        self.source = source
+        self.latexCite = None
+        self.ref = None
+        self.label = source+' average'
+        self.note = 'compute the centroid and standard deviation from the cal. data.'
+        #
+        cals = nskin_exp( source = source )
+        # print('cals:',cals)
+        #
+        # search for the boundary for the neutron skin:
+        nsmin = 0.5; nsmax = 0.0;
+        for cal in cals:
+            nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
+            #nskin.print_outputs( )
+            nsdo = nskin.nskin - 0.5*nskin.nskin_sig_do
+            nsup = nskin.nskin + 0.5*nskin.nskin_sig_up
+            if nsdo < nsmin: nsmin = nsdo
+            if nsup > nsmax: nsmax = nsup
+        #print('nsmin:',nsmin)
+        #print('nsmax:',nsmax)
+        # construct the distribution of calervations in ay
+        ax = np.linspace(nsmin,nsmax,300)
+        #print('ax:',ax)
+        ay = np.zeros(300)
+        for cal in cals:
+            nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
+            #nskin.print_outputs( )
+            ay += gauss(ax,nskin.nskin,nskin.nskin_sig_up,nskin.nskin_sig_do)
+        # determine the centroid and standard deviation from the distribution of cal. 
+        nor = sum( ay )
+        cen = sum( ay*ax )
+        std = sum ( ay*ax**2 )
+        self.nskin_cen = cen / nor
+        self.sig_std = round( math.sqrt( std/nor - self.nskin_cen**2 ), 3 )
+        self.nskin_cen = round( self.nskin_cen, 3)
+        #print('nskin:',self.nskin_cen)
+        #print('std:',self.sig_std)
+        #
+        if nuda.env.verb: print("Exit setupNeutronSkinAverage()")
+    #
+    def print_output( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        print("")
+        #
+        if nuda.env.verb: print("Enter print_output()")
+        #
+        if nuda.env.verb_output:
+            print("- Print output:")
+            print("   source:  ",self.source)
+            print("   nskin_cen:",self.nskin_cen)
+            print("   sig_std:",self.sig_std)
+            print("   latexCite:",self.latexCite)
+            print("   ref:    ",self.ref)
+            print("   label:  ",self.label)
+            print("   note:   ",self.note)
+        else:
+            print(f"- No output for source {self.source} (average). To get output, write 'verb_output = True' in env.py.")
+        #
+        if nuda.env.verb: print("Exit print_output()")
+        #
+    #
+
+def gauss( ax, nskin, sig_up, sig_do ):
+    fac = math.sqrt( 2*math.pi )
+    gauss = []
+    for x in ax:
+        if x < nskin: 
+            z = ( x - nskin ) / sig_do
+            norm = sig_do * fac
+        else:
+            z = ( x - nskin ) / sig_up
+            norm = sig_up * fac
+        gauss.append( math.exp( -0.5*z**2 ) / norm )
+    return gauss
 

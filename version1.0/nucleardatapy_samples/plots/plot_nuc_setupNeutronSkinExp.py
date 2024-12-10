@@ -85,6 +85,11 @@ def plot_neutron_skin_for_each_source():
             if err_up >= 1000:
                 ax.plot([x], [y + adjusted_err_up], marker="^", color="grey", markersize=8)
 
+        nsav = nuda.nuc.setupNeutronSkinAverage(source=source)
+        if nsav.nskin_cen is not None:
+            ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
+                       color='red', marker='o', linestyle='solid', linewidth=3)        
+ 
         # Fixed y-axis configuration
         ax.set_ylim([0, 0.5])  # Fixed scale from 0 to 0.5 on the y-axis
 
