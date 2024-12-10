@@ -101,6 +101,11 @@ def plot_neutron_skin_for_each_source_and_param():
             if err_up >= 1000:
                 ax.plot([x], [y + adjusted_err_up], marker="^", color="black", markersize=8)
 
+               nsav = nuda.nuc.setupNeutronSkinAverage(source=source)
+        if nsav.nskin_cen is not None:
+            ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
+                       color='red', marker='o', linestyle='solid', linewidth=3)           
+
         for i, (x, y, marker, color) in enumerate(zip(xtheo, combined_rskin, combined_markers, combined_colors)):
             ax.plot(x, y, marker=marker, markersize=8, color=color)
 

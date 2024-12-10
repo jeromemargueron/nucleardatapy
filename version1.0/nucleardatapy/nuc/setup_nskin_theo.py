@@ -3,17 +3,8 @@ import sys
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
-
-import nucleardatapy as nuda
-
-import os
-import numpy as np
-
-# Suponha que 'nucleardatapy_tk' já está configurado no ambiente
-nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nucleardatapy_tk)
+# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+# sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 

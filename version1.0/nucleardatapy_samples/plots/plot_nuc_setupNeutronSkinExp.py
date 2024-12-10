@@ -23,7 +23,7 @@ def plot_neutron_skin_for_each_source():
     Generates neutron skin (R_skin) plots for each nucleus using data from the `SetupNeutronSkinExp` class.
     """
     # Retrieve available sources (e.g., '48Ca', '208Pb')
-    sources, _ = nuda.nuc.nskin_exp()
+    sources, _ = nuda.nskin_exp()
 
 # Labels for the subplots
     subplot_labels = ["(a)", "(b)"]  # Adjust this list based on the number of sources
