@@ -5,29 +5,28 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-nsat = 0.16
-mnuc2 = 939.0
+#nsat = 0.16
+#mnuc2 = 939.0
 
 def uncertainty_stat(den):
-    return 0.07*(den/nsat)
+    return 0.07*(den/nuda.cst.nsat)
 
 def micro_LP_models():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
     '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
-    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7'.
+    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7', \
+    '2007-BHF-NM-LP-BONNC'.
 
     :return: The list of models.
     :rtype: list[str].
     """
     models = [ '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
-    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7' ]
+    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7', \
+    '2007-BHF-NM-LP-BONNC' ]
     if nuda.env.verb: print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     return models, models_lower
@@ -40,7 +39,8 @@ class setupMicroLP():
     This choice is defined in `model`, which can chosen among \
     the following choices: \
     '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
-    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7'.
+    '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7',\
+    '2007-BHF-NM-LP-BONNC'.
 
     :param model: Fix the name of model. Default value: '1994-BHF-LP'.
     :type model: str, optional. 
@@ -83,73 +83,114 @@ class setupMicroLP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             #
             lp1, lp2, lp3, lp4, lp5 = np.loadtxt( file_in, usecols=(1,2,3,4,5), unpack = True )
-            self.sm_LP_F = np.array( (8), dtype=float )
-            self.sm_LP_G = np.array( (5), dtype=float )
-            self.sm_LP_Fp = np.array( (5), dtype=float )
-            self.sm_LP_Gp = np.array( (5), dtype=float )
+            #
             if model.lower() == '1994-bhf-sm-lp-av14-gap':
-                self.sm_LP_F  = lp1[0:8]
-                self.sm_LP_G  = lp1[8:13]
-                self.sm_LP_Fp = lp1[13:18]
-                self.sm_LP_Gp = lp1[18:23]
+                self.label = 'BHF-AV14Gap-1994'
+                self.marker = 'o'
+                for ell in range(0,8):
+                    self.sm_LP['F'][ell]  = lp1[ell]
+                    self.sm_LP['G'][ell]  = lp1[8+ell]
+                    self.sm_LP['Fp'][ell] = lp1[13+ell]
+                    self.sm_LP['Gp'][ell] = lp1[18+ell]
+                    self.nm_LP['F'][ell]  = None
+                    self.nm_LP['G'][ell]  = None
                 self.sm_kfn  = lp1[23]
                 self.sm_effmass = lp1[24]
                 self.Ksat = lp1[25]
                 self.Esym2 = lp1[26]
                 self.sm_effMass = lp1[27]
-                self.label = 'BHF-AV14Gap-1994'
-                self.marker = 'o'
             elif model.lower() == '1994-bhf-sm-lp-av14-cont':
-                self.sm_LP_F  = lp2[0:8]
-                self.sm_LP_G  = lp2[8:13]
-                self.sm_LP_Fp = lp2[13:18]
-                self.sm_LP_Gp = lp2[18:23]
+                self.label = 'BHF-AV14Cont-1994'
+                self.marker = 'o'
+                for ell in range(0,8):
+                    self.sm_LP['F'][ell]  = lp2[ell]
+                    self.sm_LP['G'][ell]  = lp2[8+ell]
+                    self.sm_LP['Fp'][ell] = lp2[13+ell]
+                    self.sm_LP['Gp'][ell] = lp2[18+ell]
+                    self.nm_LP['F'][ell]  = None
+                    self.nm_LP['G'][ell]  = None
                 self.sm_kfn  = lp2[23]
                 self.sm_effmass = lp2[24]
                 self.Ksat = lp2[25]
                 self.Esym2 = lp2[26]
                 self.sm_effMass = lp2[27]
-                self.label = 'BHF-AV14Cont-1994'
-                self.marker = 'o'
             elif model.lower() == '1994-bhf-sm-lp-reid-gap':
-                self.sm_LP_F  = lp3[0:8]
-                self.sm_LP_G  = lp3[8:13]
-                self.sm_LP_Fp = lp3[13:18]
-                self.sm_LP_Gp = lp3[18:23]
+                self.label = 'BHF-ReidGap-1994'
+                self.marker = 'o'
+                for ell in range(0,8):
+                    self.sm_LP['F'][ell]  = lp3[ell]
+                    self.sm_LP['G'][ell]  = lp3[8+ell]
+                    self.sm_LP['Fp'][ell] = lp3[13+ell]
+                    self.sm_LP['Gp'][ell] = lp3[18+ell]
+                    self.nm_LP['F'][ell]  = None
+                    self.nm_LP['G'][ell]  = None
                 self.sm_kfn  = lp3[23]
                 self.sm_effmass = lp3[24]
                 self.Ksat = lp3[25]
                 self.Esym2 = lp3[26]
                 self.sm_effMass = lp3[27]
-                self.label = 'BHF-ReidGap-1994'
-                self.marker = 'o'
             elif model.lower() == '1994-bhf-sm-lp-reid-cont':
-                self.sm_LP_F  = lp4[0:8]
-                self.sm_LP_G  = lp4[8:13]
-                self.sm_LP_Fp = lp4[13:18]
-                self.sm_LP_Gp = lp4[18:23]
+                self.label = 'BHF-ReidCont-1994'
+                self.marker = 'o'
+                for ell in range(0,8):
+                    self.sm_LP['F'][ell]  = lp4[ell]
+                    self.sm_LP['G'][ell]  = lp4[8+ell]
+                    self.sm_LP['Fp'][ell] = lp4[13+ell]
+                    self.sm_LP['Gp'][ell] = lp4[18+ell]
+                    self.nm_LP['F'][ell]  = None
+                    self.nm_LP['G'][ell]  = None
                 self.sm_kfn  = lp4[23]
                 self.sm_effmass = lp4[24]
                 self.Ksat = lp4[25]
                 self.Esym2 = lp4[26]
                 self.sm_effMass = lp4[27]
-                self.label = 'BHF-ReidCont-1994'
-                self.marker = 'o'
             elif model.lower() == '1994-bhf-sm-lp-av14-cont-0.7':
-                self.sm_LP_F  = lp5[0:8]
-                self.sm_LP_G  = lp5[8:13]
-                self.sm_LP_Fp = lp5[13:18]
-                self.sm_LP_Gp = lp5[18:23]
+                self.label = 'BHF-AV14Cont-0.7-1994'
+                self.marker = 'o'
+                for ell in range(0,8):
+                    self.sm_LP['F'][ell]  = lp5[ell]
+                    self.sm_LP['G'][ell]  = lp5[8+ell]
+                    self.sm_LP['Fp'][ell] = lp5[13+ell]
+                    self.sm_LP['Gp'][ell] = lp5[18+ell]
+                    self.nm_LP['F'][ell]  = None
+                    self.nm_LP['G'][ell]  = None
                 self.sm_kfn  = lp5[23]
                 self.sm_effmass = lp5[24]
                 self.Ksat = lp5[25]
                 self.Esym2 = lp5[26]
                 self.sm_effMass = lp5[27]
-                self.label = 'BHF-AV14Cont-0.7-1994'
-                self.marker = 'o'
+            #print('F:',self.sm_LP['F'][0])
+            #print('G:',self.sm_LP['G'][0])
+        #
+        elif model.lower() == '2007-bhf-nm-lp-bonnc':
+            #
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2007-BHF-NM.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'Armen Sedrakian, Herbert Müther, Peter Schuck, Phys Rev C 76, 055805 (2007)'
+            self.note = "write here notes about this EOS."
+            self.err = False
+            #
+            self.label = 'BHF-BonnC-2007'
+            self.marker = 's'
+            #
+            self.nm_kfn, self.nm_effmass, lp_f, lp_g, self.nm_gap, self.nm_Tc = \
+              np.loadtxt( file_in, usecols=(0,1,2,3,4,5), comments='#', unpack = True, dtype=float )
+            #print('kfn:',self.nm_kfn)
+            for ell in range(0,8):
+                self.sm_LP['F'][ell]  = None
+                self.sm_LP['G'][ell]  = None
+                self.sm_LP['Fp'][ell] = None
+                self.sm_LP['Gp'][ell] = None
+                self.nm_LP['F'][ell]  = None
+                self.nm_LP['G'][ell]  = None
+            self.nm_LP['F'][0]  = lp_f
+            self.nm_LP['G'][0]  = lp_g
+            #print('F:',self.nm_LP['F'][0])
+            #print('G:',self.nm_LP['G'][0])
             #
         self.kfn_unit = 'fm$^{-1}$'
-        self.Ksat_unit = 'MeV'
+        self.gap_unit = 'MeV'
+        self.tc_unit  = 'MeV'
         #
         if nuda.env.verb: print("Exit setupMicroLP()")
         #
@@ -167,15 +208,21 @@ class setupMicroLP():
         print("   marker:",self.marker)
         print("   note:  ",self.note)
         #if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
+        print('in SM:')
         if self.sm_kfn is not None: print("   sm_kfn: ",self.sm_kfn)
         if self.sm_effmass is not None: print("   sm_effmass: ",self.sm_effmass)
+        if self.sm_effMass is not None: print("   sm_effMass: ",self.sm_effMass)
         if self.Ksat is not None: print("   Ksat: ",self.Ksat)
         if self.Esym2 is not None: print("   Esym2: ",self.Esym2)
-        if self.sm_effMass is not None: print("   sm_effMass: ",self.sm_effMass)
-        if self.sm_LP_F is not None: print(f"   sm_LP_F: {np.round(self.sm_LP_F,3)}")
-        if self.sm_LP_G is not None: print(f"   sm_LP_G: {np.round(self.sm_LP_G,3)}")
-        if self.sm_LP_Fp is not None: print(f"   sm_LP_Fp: {np.round(self.sm_LP_Fp,3)}")
-        if self.sm_LP_Gp is not None: print(f"   sm_LP_Gp: {np.round(self.sm_LP_Gp,3)}")
+        if self.sm_LP['F'] is not None: print(f"   F: {np.round(self.sm_LP['F'],3)}")
+        if self.sm_LP['G'] is not None: print(f"   G: {np.round(self.sm_LP['G'],3)}")
+        if self.sm_LP['Fp'] is not None: print(f"   Fp: {np.round(self.sm_LP['Fp'],3)}")
+        if self.sm_LP['Gp'] is not None: print(f"   Gp: {np.round(self.sm_LP['Gp'],3)}")
+        print('in NM:')
+        if self.nm_kfn is not None: print("   nm_kfn: ",self.nm_kfn)
+        if self.nm_effmass is not None: print("   nm_effmass: ",self.nm_effmass)
+        if self.nm_LP['F'] is not None: print(f"   F: {np.round(self.nm_LP['F'],3)}")
+        if self.nm_LP['G'] is not None: print(f"   G: {np.round(self.nm_LP['G'],3)}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
@@ -190,6 +237,15 @@ class setupMicroLP():
         self.ref = ''
         #: Attribute providing additional notes about the data.
         self.note = ''
+        #: Attribute the plot linestyle.
+        self.linestyle = 'solid'
+        #: Attribute the plot to discriminate True uncertainties from False ones.
+        self.err = False
+        #: Attribute the plot label data.
+        self.label = ''
+        #: Attribute the plot marker data.
+        self.marker = ''
+        #
         #: Attribute the neutron matter density.
         self.nm_den = None
         #: Attribute the symmetric matter density.
@@ -198,10 +254,17 @@ class setupMicroLP():
         self.nm_kfn = None
         #: Attribute the symmetric matter neutron Fermi momentum.
         self.sm_kfn = None
-        #: Attribute the symmetric matter Fermi momentum.
-        self.nm_kf = None
-        #: Attribute the symmetric matter Fermi momentum.
-        self.sm_kf = None
+        #
+        self.sm_LP = {}
+        self.nm_LP = {}
+        #
+        self.sm_LP['F'] = {}
+        self.sm_LP['G'] = {}
+        self.sm_LP['Fp'] = {}
+        self.sm_LP['Gp'] = {}
+        self.nm_LP['F'] = {}
+        self.nm_LP['G'] = {}
+        #
         #: Attribute the neutron matter effective mass (from the spe).
         self.nm_effmass = None
         #: Attribute the symmetric matter effective mass.
@@ -212,14 +275,6 @@ class setupMicroLP():
         self.Esym2 = None
         #: Attribute the incompressibility modulus
         self.Ksat = None
-        #: Attribute the plot linestyle.
-        self.linestyle = 'solid'
-        #: Attribute the plot to discriminate True uncertainties from False ones.
-        self.err = False
-        #: Attribute the plot label data.
-        self.label = ''
-        #: Attribute the plot marker data.
-        self.marker = ''
         #
         if nuda.env.verb: print("Exit init_self()")
         #
