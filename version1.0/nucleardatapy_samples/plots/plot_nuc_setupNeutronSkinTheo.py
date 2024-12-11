@@ -103,8 +103,8 @@ def plot_neutron_skin_for_each_source_and_param():
         nsav = nuda.nuc.setupNeutronSkinAverage(source=source)
         if nsav.nskin_cen is not None:
             ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
-                       color='red', marker='o', markersize=12, linestyle='solid', linewidth=3)           
-        labels.append(nsav.label)
+                       color='k', marker='o', markersize=10, linestyle='solid', linewidth=3)           
+        # labels.append(nsav.label)
 
         for i, (x, y, marker, color) in enumerate(zip(xtheo, combined_rskin, combined_markers, combined_colors)):
             ax.plot(x, y, marker=marker, markersize=8, color=color)

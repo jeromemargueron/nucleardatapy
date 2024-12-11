@@ -89,7 +89,7 @@ def plot_neutron_skin_for_each_source():
         # print('label:', nsav.label)
         if nsav.nskin_cen is not None:
             ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
-                       color='red', marker='o', linestyle='solid', linewidth=3)        
+                       color='red', marker='o', markersize=10, linestyle='solid', linewidth=3)        
         labels.append(nsav.label)
         # Fixed y-axis configuration
         ax.set_ylim([0, 0.5])  # Fixed scale from 0 to 0.5 on the y-axis
