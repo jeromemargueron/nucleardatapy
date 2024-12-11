@@ -109,7 +109,7 @@ class SetupNeutronSkinExp():
         self.note = None
         self.marker = None
         # 
-        if source.lower()=='48Ca':
+        if source.lower()=='48ca':
             if cal==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='J.C. Lombardi, R.N. Boyd, R. Arking, and A.B. Robbins, NPA 188, 103 (1972).'
@@ -254,7 +254,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing additional notes about the calculation.
                 self.note = "CREX."
                 self.marker = 'H'                                       
-        elif source.lower()=='208Pb':
+        elif source.lower()=='208pb':
             if cal==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='A. Krasznahorkay, J. Bacelar, J.A. Bordewijk, et al., PRL 66, 1287 (1991).'
@@ -526,16 +526,21 @@ class setupNeutronSkinAverage():
         self.latexCite = None
         self.ref = None
         self.label = source+' average'
-        self.note = 'compute the centroid and standard deviation from the cal. data.'
+        self.note = 'compute the centroid and standard deviation from the data.'
         #
-        cals = nskin_exp( source = source )
+        cals = nskin_exp_source( source = source )
         # print('cals:',cals)
         #
         # search for the boundary for the neutron skin:
         nsmin = 0.5; nsmax = 0.0;
         for cal in cals:
             nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
-            #nskin.print_outputs( )
+            # nskin.print_outputs( )
+            # print(f"Valor de nskin_sig_do: {nskin.nskin_sig_do}")
+            if nskin.nskin_sig_do is None or nskin.nskin_sig_do >= 1000:
+               nskin.nskin_sig_do = 0
+            if nskin.nskin_sig_up is None or nskin.nskin_sig_up >= 1000:
+               nskin.nskin_sig_up = 0   
             nsdo = nskin.nskin - 0.5*nskin.nskin_sig_do
             nsup = nskin.nskin + 0.5*nskin.nskin_sig_up
             if nsdo < nsmin: nsmin = nsdo
@@ -586,16 +591,20 @@ class setupNeutronSkinAverage():
         #
     #
 
-def gauss( ax, nskin, sig_up, sig_do ):
+def gauss( ax, nskin, nskin_sig_up, nskin_sig_do ):
+    if nskin_sig_do is None or nskin_sig_do == 0 or nskin_sig_do >= 1000:
+        nskin_sig_do = 0.0001
+    if nskin_sig_up is None or nskin_sig_up == 0 or nskin_sig_up >= 1000:
+        nskin_sig_up = 0.0001
     fac = math.sqrt( 2*math.pi )
     gauss = []
     for x in ax:
         if x < nskin: 
-            z = ( x - nskin ) / sig_do
-            norm = sig_do * fac
+            z = ( x - nskin ) / nskin_sig_do
+            norm = nskin_sig_do * fac
         else:
-            z = ( x - nskin ) / sig_up
-            norm = sig_up * fac
+            z = ( x - nskin ) / nskin_sig_up
+            norm = nskin_sig_up * fac
         gauss.append( math.exp( -0.5*z**2 ) / norm )
     return gauss
 

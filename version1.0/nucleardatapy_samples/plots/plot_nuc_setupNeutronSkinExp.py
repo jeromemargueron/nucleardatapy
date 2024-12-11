@@ -66,7 +66,7 @@ def plot_neutron_skin_for_each_source():
 
         # Plot configuration
         fig, ax = plt.subplots(figsize=(10, 8))
-        x_positions = range(len(labels))  # X-axis positions
+        x_positions = range(len(labels)+1)   # X-axis positions
 
         # Add each point to the plot with vertical error bars
         for i, (x, y, err_down, err_up, marker) in enumerate(zip(x_positions, rskin_values, error_lower, error_upper, markers)):
@@ -86,10 +86,11 @@ def plot_neutron_skin_for_each_source():
                 ax.plot([x], [y + adjusted_err_up], marker="^", color="grey", markersize=8)
 
         nsav = nuda.nuc.setupNeutronSkinAverage(source=source)
+        # print('label:', nsav.label)
         if nsav.nskin_cen is not None:
             ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
                        color='red', marker='o', linestyle='solid', linewidth=3)        
- 
+        labels.append(nsav.label)
         # Fixed y-axis configuration
         ax.set_ylim([0, 0.5])  # Fixed scale from 0 to 0.5 on the y-axis
 
