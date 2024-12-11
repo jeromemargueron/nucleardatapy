@@ -116,7 +116,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Lombardi 1972'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "10.8-16.3 MeV p elastic scattering."
+                self.note = "10.8-16.3 MeV p elastic scattering. This study investigates nuclear sizes in calcium isotopes through proton elastic scattering, providing optical-model fits and analyzing differential cross-sections to determine mean square radii of neutron and proton distributions."
                 self.marker = 'o'
             elif cal==2:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -124,7 +124,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brissaud 1972'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "166 MeV α elastic scattering."
+                self.note = "166 MeV α elastic scattering. This paper presents neutron radii measurements of various nuclei using elastic scattering of 166 MeV alpha particles and optical potential analysis."
                 self.marker = 's'
             elif cal==3:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -132,7 +132,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Alkhazov 1976'
                 #: Attribute providing additional notes about the for.
-                self.note = "1044 MeV p elastic scattering."
+                self.note = "1044 MeV p elastic scattering. This research analyzes elastic and inelastic scattering of 1.044 GeV protons by calcium isotopes and titanium, utilizing Glauber theory to derive neutron and nuclear matter densities."
                 self.marker = 'v'              
             elif cal==4:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -140,15 +140,15 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Alkhazov 1977'
                 #: Attribute providing additional notes about the .
-                self.note = "1370 MeV α elastic scattering ."
+                self.note = "1370 MeV α elastic scattering . This study examines elastic and inelastic scattering of 1.37 GeV alpha particles on calcium isotopes, revealing diffraction patterns sensitive to nuclear matter distributions. Glauber theory analyses align with neutron density trends from proton scattering, offering insights into neutron-proton distribution variations across isotopes."
                 self.marker = '^'              
             elif cal==5:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='M.J. Jakcalon, G.R. Burleson, J.R. Calarco, et al., PRL 38, 21 (1977).'
+                self.ref='M.J. Jakobson, G.R. Burleson, J.R. Calarco, et al., PRL 38, 21 (1977).'
                 #: Attribute providing the label the data is references for figures.
-                self.label = 'Jakcalon 1977'
+                self.label = 'Jakobson 1977'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "π− and π+ scattering ."
+                self.note = "π− and π+ scattering. This study measures total cross-section differences for pions on calcium isotopes to determine neutron radius differences."
                 self.marker = '>'            
             elif cal==6:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -156,7 +156,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Chaumeaux 1977'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "1040 MeV p elastic scattering."
+                self.note = "1040 MeV p elastic scattering. This study uses 1 GeV proton scattering to determine neutron densities in calcium and nickel isotopes, incorporating spin-orbit contributions for improved precision."
                 self.marker = '<'   
             elif cal==7:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -164,7 +164,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Friedman 1978'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "104 MeV αelastic scattering."
+                self.note = "104 MeV αelastic scattering. This study analyzes elastic scattering of 104 MeV alpha particles on 40Ca and 48Ca, determining a neutron-proton radius difference."
                 self.marker = 'p'         
             elif cal==8:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -172,7 +172,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brissaud 1979'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "1040 MeV p scattering ."
+                self.note = "1040 MeV p scattering. This study investigates neutron densities in calcium isotopes using 600 MeV and 1 GeV proton elastic scattering within the Glauber model framework."
                 self.marker = 'h'        
             elif cal==9:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -180,7 +180,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Igo 1979'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "800 MeV ⃗p+48Ca."
+                self.note = "800 MeV ⃗p+48Ca. This work presents elastic scattering data for 800 MeV protons on calcium isotopes, analyzed using a first-order spin-dependent optical potential."
                 self.marker = 'H'
             elif cal==10:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -188,7 +188,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Boyer 1984'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "π− and π+ scattering ."
+                self.note = "π− and π+ scattering. This work investigates pion elastic and inelastic scattering on calcium and iron isotopes at multiple energies, utilizing Kisslinger potentials and transition densities."
                 self.marker = 'o'
             elif cal==11:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -196,7 +196,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Hartmann 2001'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "analysis of antiprotonic atoms."
+                self.note = "analysis of antiprotonic atoms. This study utilizes antiprotonic x-rays to examine neutron density distributions at the nuclear periphery for calcium isotopes."
                 self.marker = 's'
             elif cal==12:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -204,7 +204,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Clark 2003'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "500-1040 MeV p scattering."
+                self.note = "500-1040 MeV p scattering. This study uses a global analysis of intermediate-energy proton-nucleus elastic scattering with a relativistic impulse approximation to derive energy-independent neutron densities for 40Ca, 48Ca, and 208Pb."
                 self.marker = 'v'
             elif cal==13:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -212,7 +212,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Piekarewicz 2012'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "electric dipole polarizability - reanalsis of Tamii 2011."
+                self.note = "electric dipole polarizability - reanalsis of Tamii 2011. This study explores the correlation between electric dipole polarizability and neutron skin thickness in 48Ca, 132Sn, and 208Pb using nuclear energy density functionals."
                 self.marker = '^'
             elif cal==14:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -220,7 +220,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Birkhan 2017'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "electric dipole polarizability."
+                self.note = "electric dipole polarizability. This study measures the electric dipole polarizability of 48Ca using proton inelastic scattering."
                 self.marker = '>'
             elif cal==15:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -228,7 +228,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Mahzoon 2017'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "n+48Ca and p+48Ca scattering."
+                self.note = "n+48Ca and p+48Ca scattering. This study applies a nonlocal dispersive optical-model analysis to neutron and proton scattering data on 48Ca, yielding a neutron skin thickness"
                 self.marker = '<'
             elif cal==16:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -236,7 +236,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tanaka 2020'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "48Ca+12C interaction cross section."
+                self.note = "48Ca+12C interaction cross section. This study measures interaction cross-sections of 42−51Ca isotopes on a carbon target at 280 MeV/nucleon, revealing a significant increase in matter radii beyond N=28."
                 self.marker = 'p'
             elif cal==17:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -244,7 +244,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tagami 2022'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "p+48Ca and 48Ca+12C scattering."
+                self.note = "p+48Ca and 48Ca+12C scattering. This study uses p+48Ca and 48Ca+12C scattering data to determine the neutron skin thickness of 48Ca, applying the Kyushu gg-matrix folding model."
                 self.marker = 'h'
             elif cal==18:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -252,7 +252,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Adhikari 2022'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "CREX."
+                self.note = "CREX. This study reports a precise parity-violating electron scattering measurement on 48Ca, determining the weak form factor and a neutron skin thickness."
                 self.marker = 'H'                                       
         elif source.lower()=='208pb':
             if cal==1:
@@ -261,7 +261,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 1991'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "giant dipole resonance; 120 MeV α-scattering."
+                self.note = "giant dipole resonance; 120 MeV α-scattering. This study uses inelastic alpha scattering to excite the isovector giant dipole resonance (GDR) and determine the relative neutron-proton radius difference in 116Sn, 120Sn, and 208Pb."
                 self.marker = 'o'
             elif cal==2:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -269,7 +269,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Starodubsky 1994'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "elastic p scattering at 650 MeV."
+                self.note = "elastic p scattering at 650 MeV. This study analyzes neutron densities in 206,207,208Pb using elastic proton scattering at 650 MeV. Through a Fourier-Bessel expansion method and comparisons with Hartree-Fock calculations, it was found the neutron skin thickness."
                 self.marker = 's'
             elif cal==3:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -277,7 +277,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Karataglidis 2002'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "elastic p and n scattering at 40, 65, 200 MeV."
+                self.note = "elastic p and n scattering at 40, 65, 200 MeV. This study uses intermediate-energy nucleon elastic scattering data to evaluate neutron densities in 208Pb with coordinate space nonlocal optical potentials."
                 self.marker = 'v'  
             elif cal==4:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -285,7 +285,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 2004'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "giant dipole resonance; 196 MeV α-scattering."
+                self.note = "giant dipole resonance; 196 MeV α-scattering. This study uses inelastic alpha and spin-dipole resonance (SDR) scattering to measure neutron skin thicknesses in Sn and Pb isotopes."
                 self.marker = '^'    
             elif cal==5:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -293,7 +293,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Kłos 2007'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "antiprotonic atoms."
+                self.note = "antiprotonic atoms. This study uses antiprotonic x-ray data from 208Pb and 209Bi to extract neutron density distributions."
                 self.marker = '>'    
             elif cal==6:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -301,7 +301,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Wycech 2007'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "antiprotonic atoms."
+                self.note = "antiprotonic atoms. This study uses antiprotonic x-ray data to determine neutron density distributions and mean square radii in various isotopes."
                 self.marker = '<'    
             elif cal==7:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -309,7 +309,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Brown 2007'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "antiprotonic atoms."
+                self.note = "antiprotonic atoms. This study uses antiprotonic x-ray data and theoretical models to deduce the neutron skin thickness in 208Pb."
                 self.marker = 'p'    
             elif cal==8:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -317,7 +317,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Klimkiewicz 2007'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "strength of pigmy dipole resonance."
+                self.note = "strength of pigmy dipole resonance. This study explores the relationship between pygmy dipole resonances and neutron skin thicknesses in neutron-rich nuclei."
                 self.marker = 'h'    
             elif cal==9:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -325,7 +325,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Zenihiro 2010'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "elastic p scattering at 295 MeV."
+                self.note = "elastic p scattering at 295 MeV. This study utilizes 295 MeV proton elastic scattering on 204,206,208Pb to determine neutron densities."
                 self.marker = 'H'    
             elif cal==10:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -333,7 +333,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Carbone 2010'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "strength of pigmy dipole resonance."
+                self.note = "strength of pigmy dipole resonance. This study examines correlations between pygmy dipole resonances, neutron skin thickness, and the symmetry energy slope parameter L, using experimental data and random phase approximation models."
                 self.marker = 'D'    
             elif cal==11:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -341,7 +341,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tamii 2011'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "electric dipole polarizability ."
+                self.note = "electric dipole polarizability. This study measures the complete electric dipole response in 208Pb208Pb using polarized proton inelastic scattering, determining a neutron skin thickness."
                 self.marker = 'x'    
             elif cal==12:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -349,7 +349,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Piekarewicz 2012'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "electric dipole polarizability - reanalsis of Tamii 2011."
+                self.note = "electric dipole polarizability - reanalsis of Tamii 2011. This study explores the correlation between electric dipole polarizability and neutron skin thickness in 48Ca, 132Sn, and 208Pb using nuclear energy density functionals."
                 self.marker = 'o'    
             elif cal==13:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -357,7 +357,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Abrahamyan 2012'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "PREX-1: parity violating e− scattering."
+                self.note = "PREX-1: parity violating e− scattering. This study provides the first parity-violating electron scattering measurement of the neutron skin thickness in 208Pb."
                 self.marker = 's'    
             elif cal==14:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -365,7 +365,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Krasznahorkay 2013'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "anti-analog giant dipole resonance."
+                self.note = "anti-analog giant dipole resonance. This study determines the neutron skin thickness of 208Pb using the energy of the anti-analogue giant dipole resonance (AGDR)."
                 self.marker = 'v'    
             elif cal==15:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -373,7 +373,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Yasuda 2013'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "anti-analog giant dipole resonance."
+                self.note = "anti-analog giant dipole resonance. This study extracts the energy difference between the anti-analog giant dipole resonance (AGDR) and the isobaric analog state (IAS) in 208Pb"
                 self.marker = '^'    
             elif cal==16:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -381,7 +381,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tarbert 2014'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "coherent π0 production."
+                self.note = "coherent π0 production. This study uses coherent pion photoproduction to measure the neutron skin thickness of 208Pb."
                 self.marker = '>'    
             elif cal==17:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -389,7 +389,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tamii 2014'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "by ⃗p-scattering at 295 MeV."
+                self.note = "by ⃗p-scattering at 295 MeV. This study determines the electric dipole polarizability of 208Pb using proton inelastic scattering,"
                 self.marker = '<'    
             elif cal==18:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -397,7 +397,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Fattoyev 2018'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "analysis of LIGO-Virgo (GW170817) data."
+                self.note = "analysis of LIGO-Virgo (GW170817) data. This study combines constraints from GW170817 gravitational wave observations with laboratory measurements to establish limits on the neutron skin thickness of 208Pb."
                 self.marker = 'p' 
             elif cal==19:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -405,7 +405,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Reed 2021'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "analysis of NICER data."
+                self.note = "This study analyzes the updated PREX-2 neutron skin measurement for 208Pb."
                 self.marker = 'h'    
             elif cal==20:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -413,7 +413,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Tagami 2021'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "p+208Pb reaction cross section at 30 - 100 MeV."
+                self.note = "p+208Pb reaction cross section at 30 - 100 MeV. This study utilizes proton scattering reaction cross-section data at 30–100 MeV for 208Pb, combined with the Kyushu gg-matrix folding model, to determine a neutron skin thickness"
                 self.marker = 'H'    
             elif cal==21:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -421,7 +421,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Adhikari 2021'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "PREX-2: parity violating e− scattering."
+                self.note = "PREX-2: parity violating e− scattering. This study reports a parity-violating electron scattering experiment on 208Pb."
                 self.marker = 'D'    
             elif cal==22:
                 #: Attribute providing the full reference to the paper to be citted.
@@ -429,7 +429,7 @@ class SetupNeutronSkinExp():
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Giacalone 2023'
                 #: Attribute providing additional notes about the calculation.
-                self.note = "208Pb+208Pb at LHC."
+                self.note = "208Pb+208Pb at LHC. This study determines the neutron skin thickness of 208Pb using ultrarelativistic 208Pb+208Pb collisions at the LHC."
                 self.marker = 'x'                          
         #
         #: Attribute the neutron radius of the source.
