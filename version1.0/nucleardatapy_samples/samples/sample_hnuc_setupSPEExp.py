@@ -11,15 +11,17 @@ def main():
     print("Enter sample_hnuc_setupSPEExp.py:")
     print(50*'-')
     #
-    #tables = [ '2013-Angeli' ]
-    tables, tables_lower = nuda.hnuc.spe_exp_tables()
+    tables = [ '2016-GHM-piK' ]
+    #tables, tables_lower = nuda.hnuc.spe_exp_tables()
     #
+    print('run over tables:',tables)
     for table in tables:
         #
         hnuc = nuda.hnuc.setupSPEExp( table = table )
         print('Z:',hnuc.Z)
         print('A:',hnuc.A)
         print('spe:',hnuc.spe)
+        print('spe_err:',hnuc.spe_err)
         if nuda.env.verb_output: hnuc.print_outputs( )
     #
     print(50*'-')

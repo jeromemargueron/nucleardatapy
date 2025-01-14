@@ -17,11 +17,12 @@ def plot_hnuc_setupSPEExp( pname, tables ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_ylabel(r's.p.e. (MeV)')
-    axs.set_xlabel(r'A')
-    #axs[0].set_xlim([88, 96])
-    #axs[0].set_ylim([4.2, 4.5])
+    axs.set_ylabel(r'Binding Energy (MeV)')
+    axs.set_xlabel(r'$A^{-2/3}$')
+    axs.set_xlim([0.0, 0.28])
+    axs.set_ylim([-5.0, 35.0])
     #
+    axs.plot( [0.0,0.28], [0.0,0.0], color='k', linestyle='dashed' )
     for table in tables:
         #
         hnuc = nuda.hnuc.setupSPEExp( table = table )
@@ -36,7 +37,13 @@ def plot_hnuc_setupSPEExp( pname, tables ):
         #lmin = min(hnuc.spe.keys())
         #lmax = max(hnuc.spe.keys())
         for ell in range(hnuc.lmin,hnuc.lmax+1):
-            axs.plot( hnuc.A[ell], hnuc.spe[ell], marker=hnuc.marker[ell], label=hnuc.label+', l='+str(ell) )
+            x = np.array( hnuc.A[ell], dtype=float)
+            y = np.array( hnuc.spe[ell], dtype=float)
+            dy = np.array( hnuc.spe_err[ell], dtype=float)
+            if ell == 0:
+                axs.errorbar( x**(-0.6666), -y, yerr=dy, marker=hnuc.marker[ell], color=hnuc.color, label=hnuc.label, ms=4, ls='none' )
+            else:
+                axs.errorbar( x**(-0.6666), -y, yerr=dy, marker=hnuc.marker[ell], color=hnuc.color, ms=4, ls='none' )
         #
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')

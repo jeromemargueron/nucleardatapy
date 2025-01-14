@@ -16,7 +16,7 @@ def spe_exp_tables():
     #
     if nuda.env.verb: print("\nEnter spe_exp_tables()")
     #
-    tables = [ '2018' ]
+    tables = [ '2016-GHM-piK', '2016-GHM-eeK', '2016-GHM-emul', '2016-GHM-Kpi' ]
     #
     print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -42,7 +42,7 @@ class setupSPEExp():
    **Attributes:**
    """
    #
-   def __init__( self, table = '2018' ):
+   def __init__( self, table = '2016-GHM-piK' ):
       """
       Parameters
       ----------
@@ -62,6 +62,7 @@ class setupSPEExp():
       nucsps = []
       nucell = []
       nucspe = []
+      nucspe_err = []
       #
       tables, tables_lower = spe_exp_tables()
       #
@@ -71,74 +72,130 @@ class setupSPEExp():
          print('-- Exit the code --')
          exit()
       #
-      if table.lower() == '2018':
+      if table.lower() == '2016-ghm-pik':
          #
-         file_in = os.path.join(nuda.param.path_data,'hnuclei/2018.csv')
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-GHM-piK.csv')
          if nuda.env.verb: print('Reads file:',file_in)
          #: Attribute providing the full reference to the paper to be citted.
-         self.ref = ''
+         self.ref = 'Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)'
          #: Attribute providing the label the data is references for figures.
-         self.label = '2018'
+         self.label = "GHM 2016 ($\pi$,K)"
          #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
+         #: Attribute color of points
+         self.color='k'
+         #: marker shape
+         self.mark='s'
          #
-         with open(file_in,'r') as file:
-            for line in file:
-               #print('line:',line)
-               if '#' in line:
-                  continue
-               #print('line:',line)
-               linesplit = line.split(',')
-               #print('split:',linesplit)
-               #print('line.split:',linesplit)
-               if len(linesplit) > 1:
-                  nucZ.append(linesplit[0])
-                  nucSymb.append(linesplit[1])
-                  nucN.append(linesplit[2])
-                  nucsps.append(linesplit[3])
-                  nucell.append(linesplit[4])
-                  nucspe.append(linesplit[5])
-               else:
-                  break
-               #
-         nucZ = np.array( nucZ, dtype = int )
-         nucN = np.array( nucN, dtype = int )
-         nucA = nucZ + nucN + np.ones(len(nucN))
-         nucell = np.array( nucell, dtype = int )
-         nucspe = np.array( nucspe, dtype = float )
+      elif table.lower() == '2016-ghm-eek':
          #
-         self.lmin = min(nucell)
-         self.lmax = max(nucell)
-         # create dictionary spe
-         self.marker = {}
-         #: Attribute A (mass of the nucleus).
-         self.A = {}
-         #: Attribute Z (charge of the nucleus).
-         self.Z = {}
-         #: Attribute N (number of neutrons of the nucleus).
-         self.N = {}
-         #: Attribue spe in MeV.
-         self.spe = {}
-         for ell in range(self.lmin,self.lmax+1):
-            #print('ell:',ell)
-            self.marker[ell] = 's'
-            self.A[ell] = []
-            self.Z[ell] = []
-            self.N[ell] = []
-            self.spe[ell] = []
-            for ind,lstt in enumerate(nucell):
-               if ell == lstt:
-                  self.A[ell].append(nucA[ind])
-                  self.Z[ell].append(nucZ[ind])
-                  self.N[ell].append(nucN[ind])
-                  self.spe[ell].append(nucspe[ind])
-            print('ell:',ell,' A:',self.A[ell],' spe:',self.spe[ell])
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-GHM-eeK.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)'
+         #: Attribute providing the label the data is references for figures.
+         self.label = "GHM 2016 (e,e'K)"
+         #: Attribute providing additional notes about the data.
+         self.note = "write here notes about this table."
+         #: Attribute color of points
+         self.color='red'
+         #: marker shape
+         self.mark='o'
          #
+      elif table.lower() == '2016-ghm-emul':
+         #
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-GHM-emul.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)'
+         #: Attribute providing the label the data is references for figures.
+         self.label = "GHM 2016 Emulsion"
+         #: Attribute providing additional notes about the data.
+         self.note = "write here notes about this table."
+         #: Attribute color of points
+         self.color='blue'
+         #: marker shape
+         self.mark='^'
+         #
+      elif table.lower() == '2016-ghm-kpi':
+         #
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-GHM-Kpi.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)'
+         #: Attribute providing the label the data is references for figures.
+         self.label = "GHM 2016 (K,$\pi$)"
+         #: Attribute providing additional notes about the data.
+         self.note = "write here notes about this table."
+         #: Attribute color of points
+         self.color='magenta'
+         #: marker shape
+         self.mark='D'
+         #
+      #
+      with open(file_in,'r') as file:
+         for line in file:
+            #print('line:',line)
+            if '#' in line:
+               continue
+            #print('line:',line)
+            linesplit = line.split(',')
+            #print('split:',linesplit)
+            #print('line.split:',linesplit)
+            if len(linesplit) > 1:
+               nucZ.append(linesplit[0])
+               nucSymb.append(linesplit[1])
+               nucN.append(linesplit[2])
+               nucsps.append(linesplit[3])
+               nucell.append(linesplit[4])
+               nucspe.append(linesplit[5])
+               nucspe_err.append(linesplit[6])
+            else:
+               break
+            #
+      nucZ = np.array( nucZ, dtype = int )
+      nucN = np.array( nucN, dtype = int )
+      nucA = nucZ + nucN + np.ones(len(nucN))
+      nucell = np.array( nucell, dtype = int )
+      nucspe = np.array( nucspe, dtype = float )
+      nucspe_err = np.array( nucspe_err, dtype = float )
+      #
+      self.lmin = min(nucell)
+      self.lmax = max(nucell)
+      # create dictionary spe
+      self.marker = {}
+      #: Attribute A (mass of the nucleus).
+      self.A = {}
+      #: Attribute Z (charge of the nucleus).
+      self.Z = {}
+      #: Attribute N (number of neutrons of the nucleus).
+      self.N = {}
+      #: Attribue spe in MeV.
+      self.spe = {}
+      #: Attribue spe error in MeV.
+      self.spe_err = {}
+      for ell in range(self.lmin,self.lmax+1):
+         #print('ell:',ell)
+         self.marker[ell] = self.mark
+         self.A[ell] = []
+         self.Z[ell] = []
+         self.N[ell] = []
+         self.spe[ell] = []
+         self.spe_err[ell] = []
+         for ind,lstt in enumerate(nucell):
+            if ell == lstt:
+               self.A[ell].append(nucA[ind])
+               self.Z[ell].append(nucZ[ind])
+               self.N[ell].append(nucN[ind])
+               self.spe[ell].append(nucspe[ind])
+               self.spe_err[ell].append(nucspe_err[ind])
+         print('ell:',ell,' A:',self.A[ell],' spe:',self.spe[ell],'+-',self.spe_err[ell],' MeV')
+      #
       #: Attribute spe unit.
       self.spe_unit = 'MeV'
       #
       if nuda.env.verb: print("Exit setupSPEExp()")
-   #
+      #
    #
    def print_outputs( self ):
       """
@@ -159,6 +216,7 @@ class setupSPEExp():
          if any(self.Z): print(f"   Z: {self.Z[ell]}")
          if any(self.N): print(f"   N: {self.N[ell]}")
          if any(self.spe): print(f"   spe: {self.spe[ell]}")
+         if any(self.spe_err): print(f"   spe_err: {self.spe_err[ell]}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #
