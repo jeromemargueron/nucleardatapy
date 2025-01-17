@@ -4,12 +4,9 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-def plot_matter_NEP( pname, models_micro, models_pheno ):
+def plot_matter_NEP( pname, models ):
     #
     # plot sat in the left and sym on the right
     #
@@ -33,40 +30,26 @@ def plot_matter_NEP( pname, models_micro, models_pheno ):
     #
     # Built distribution of NEP
     #
-    for model in models_pheno:
+    for model in models:
         #
         nsat = []; Esat = []; Ksat = []; Qsat = []; Zsat = []
         Esym = []; Lsym = []; Ksym = []; Qsym = []; Zsym = []
         msat = []; kappas = []; kappav = []
-        params, params_lower = nuda.matter.pheno_params( model = model )
+        params, params_lower = nuda.matter.nep_params( model = model )
         #
         for param in params:
             #
             print('param:',param)
-            pheno = nuda.matter.setupPheno( model = model, param = param )
-            if pheno.nep:
-                nsat.append( pheno.nsat ); Esat.append( pheno.Esat ); 
-                Ksat.append( pheno.Ksat ); Qsat.append( pheno.Qsat ); 
-                Zsat.append( pheno.Zsat ); msat.append( pheno.msat ); 
-                Esym.append( pheno.Esym ); Lsym.append( pheno.Lsym ); 
-                Ksym.append( pheno.Ksym ); Qsym.append( pheno.Qsym ); 
-                Zsym.append( pheno.Zsym ); kappas.append( pheno.kappas ); 
-                kappav.append( pheno.kappav ); 
+            nep = nuda.matter.setupNEP( model = model, param = param )
+            if nep.nep:
+                nsat.append( nep.nsat ); Esat.append( nep.Esat ); 
+                Ksat.append( nep.Ksat ); Qsat.append( nep.Qsat ); 
+                Zsat.append( nep.Zsat ); msat.append( nep.msat ); 
+                Esym.append( nep.Esym ); Lsym.append( nep.Lsym ); 
+                Ksym.append( nep.Ksym ); Qsym.append( nep.Qsym ); 
+                Zsym.append( nep.Zsym ); kappas.append( nep.kappas ); 
+                kappav.append( nep.kappav ); 
             #
-        #if model == 'Skyrme':
-        #    Esat = np.array( Esat ) / 10.0
-        #    nsat = np.array( nsat ) / 10.0
-        #    Ksat = np.array( Ksat ) / 10.0
-        #    Qsat = np.array( Qsat ) / 10.0
-        #    Zsat = np.array( Zsat ) / 10.0
-        #    Esym = np.array( Esym ) / 10.0
-        #    Lsym = np.array( Lsym ) / 10.0
-        #    Ksym = np.array( Ksym ) / 10.0
-        #    Qsym = np.array( Qsym ) / 10.0
-        #    Zsym = np.array( Zsym ) / 10.0
-        #    msat = np.array( msat ) / 10.0
-        #    kappas = np.array( kappas ) / 10.0
-        #    kappav = np.array( kappav ) / 10.0
         axs[0,0].hist( nsat, bins=10, label=model )
         axs[1,0].hist( Esat, bins=10, label=model )
         axs[2,0].hist( Ksat, bins=10, label=model )
@@ -94,13 +77,13 @@ def main():
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.matter.micro_models()
-    pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    models, models_lower = nuda.matter.nep_models()
     #
     # plot distribution of NEP
     #
     pname = 'figs/plot_matter_NEP.png'
-    plot_matter_NEP( pname, micro_models, pheno_models )
+    plot_matter_NEP( pname, models )
     #
     print(50*'-')
     print("Exit plot_matter_NEP.py:")

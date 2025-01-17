@@ -8,7 +8,7 @@ from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
-def pheno_models():
+def nep_models():
     """
     Return a list of models available in this toolkit and print them all on the prompt.
 
@@ -26,7 +26,7 @@ def pheno_models():
     #
     return models, models_lower
 
-def pheno_params( model ):
+def nep_params( model ):
     """
     Return a list with the parameterizations available in 
     this toolkit for a given model and print them all on the prompt.
@@ -50,7 +50,7 @@ def pheno_params( model ):
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter pheno_params()")
+    if nuda.env.verb: print("\nEnter nep_params()")
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
@@ -62,12 +62,12 @@ def pheno_params( model ):
             'UNEDF0', 'UNEDF1' ]
     elif model.lower() == 'eskyrme':
         params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
+    elif model.lower() == 'gogny':
+        params = [ 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' ]
     elif model.lower() == 'fayans':
         params = [ 'SLy4', 'SkM*', 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)', \
             'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
             'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60' ]
-    elif model.lower() == 'gogny':
-        params = [ 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' ]
     elif model.lower() == 'nlrh':
         params = [ 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1' ]
     elif model.lower() == 'ddrh':
@@ -78,11 +78,11 @@ def pheno_params( model ):
     #print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
     #
-    if nuda.env.verb: print("Exit pheno_params()")
+    if nuda.env.verb: print("Exit nep_params()")
     #
     return params, params_lower
 
-class setupPheno():
+class setupNEP():
     """
     Instantiate the object with results based on phenomenological\
     interactions and choosen by the toolkit practitioner. \
@@ -115,7 +115,7 @@ class setupPheno():
     #
     def __init__( self, model = 'Skyrme', param = 'SLY5' ):
         #
-        if nuda.env.verb: print("\nEnter setupPheno()")
+        if nuda.env.verb: print("\nEnter setupNEP()")
         #
         #: Attribute model.
         self.model = model
@@ -126,9 +126,9 @@ class setupPheno():
         if nuda.env.verb: print("param:",param)
         #print("-> param:",param)
         #
-        self = setupPheno.init_self( self )
+        self = setupNEP.init_self( self )
         #
-        models, models_lower = pheno_models( )
+        models, models_lower = nep_models( )
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
@@ -136,7 +136,7 @@ class setupPheno():
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = pheno_params( model = model )
+        params, params_lower = nep_params( model = model )
         #
         if param.lower() not in params_lower:
             print('The param set ',param,' is not in the list of param.')
@@ -146,24 +146,17 @@ class setupPheno():
         #
         if model.lower() == 'skyrme':
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/Skyrme/'+param+'-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/Skyrme/'+param+'-NM.dat')
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/SkyrmeNEP.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            if nuda.env.verb: print('Reads file2:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPSkyrme.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             #: Attribute providing the full reference to the paper to be citted.
             #self.ref = ''
             #: Attribute providing the label the data is references for figures.
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            self.sm_kf = self.sm_kfn
+                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
@@ -176,42 +169,20 @@ class setupPheno():
         #
         elif model.lower() == 'eskyrme':
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrme/'+param+'-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrme/'+param+'-NM.dat')
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/ESkyrmeNEP.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            if nuda.env.verb: print('Reads file2:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPESkyrme.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             #: Attribute providing the full reference to the paper to be citted.
             #self.ref = ''
             #: Attribute providing the label the data is references for figures.
             self.label = 'ESKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_e2a, self.sm_pre = np.loadtxt( file_in1, usecols=(0,1,2), comments='#', unpack = True )
-            self.nm_den, self.nm_e2a, self.nm_pre = np.loadtxt( file_in2, usecols=(0,1,2), comments='#', unpack = True )
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
-            nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            self.sm_kf = self.sm_kfn
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.sm_kf = self.sm_kfn
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = 'None'
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = 'None'; self.Zsym = 'None'
                 self.msat = msat[ind][0]; self.kappas = 'None'; self.kappav = 'None';
@@ -220,17 +191,16 @@ class setupPheno():
             #
         elif model.lower() == 'gogny':
             #
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/GognyNEP.dat')
-            if nuda.env.verb: print('Reads file3:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPGogny.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.label = 'Gogny-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
-            Ksat, Qsat = np.loadtxt( file_in3, usecols=(1,2), comments='#', unpack = True )
-            ind = np.where( name == param )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            Ksat, Qsat = np.loadtxt( file_in, usecols=(1,2), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];
             else:
                 self.nep = False
@@ -238,19 +208,18 @@ class setupPheno():
             #
         elif model.lower() == 'fayans':
             #
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/FayansNEP.dat')
-            if nuda.env.verb: print('Reads file3:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPFayans.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             self.label = 'Fayans-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
-                = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
+                = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             kappas = 1.0-1.0/msat
-            ind = np.where( name == param )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];  
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; 
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
@@ -259,26 +228,18 @@ class setupPheno():
             #
         elif model.lower() == 'nlrh':
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/nlrh/'+param+'-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/nlrh/'+param+'-NM.dat')
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/nlrhNEP.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            if nuda.env.verb: print('Reads file3:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPnlrh.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             #self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            ind = np.where( name == param )
-            self.sm_kf = self.sm_kfn
+                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
@@ -287,26 +248,18 @@ class setupPheno():
             #
         elif model.lower() == 'ddrh':
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/ddrh/'+param+'-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/ddrh/'+param+'-NM.dat')
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/ddrhNEP.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            if nuda.env.verb: print('Reads file3:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPddrh.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             #self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            ind = np.where(name == param )
-            self.sm_kf = self.sm_kfn
+                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
@@ -315,26 +268,18 @@ class setupPheno():
             #
         elif model.lower() == 'ddrhf':
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/pheno/ddrhf/'+param+'-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/pheno/ddrhf/'+param+'-NM.dat')
-            file_in3 = os.path.join(nuda.param.path_data,'matter/pheno/ddrhfNEP.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            if nuda.env.verb: print('Reads file3:',file_in3)
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPddrhf.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
             #self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            name = np.loadtxt( file_in3, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in3, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            ind = np.where(name == param )
-            self.sm_kf = self.sm_kfn
+                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
+                ind = np.where( name == param )
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
@@ -347,7 +292,7 @@ class setupPheno():
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
-        if nuda.env.verb: print("Exit SetupEOSPheno()")
+        if nuda.env.verb: print("Exit SetupNEP()")
     #
     def print_outputs( self ):
         """
@@ -395,35 +340,6 @@ class setupPheno():
         self.label = ''
         #: Attribute the plot marker.
         self.marker = None
-        #: Attribute the plot every data.
-        self.every = 1
-        #
-        #: Attribute the neutron matter density.
-        self.nm_den = []
-        #: Attribute the symmetric matter density.
-        self.sm_den = []
-        #: Attribute the neutron matter neutron Fermi momentum.
-        self.nm_kfn = []
-        #: Attribute the symmetric matter neutron Fermi momentum.
-        self.sm_kfn = []
-        #: Attribute the symmetric matter Fermi momentum.
-        self.sm_kf = []
-        #: Attribute the neutron matter energy per particle.
-        self.nm_e2a = []
-        #: Attribute the symmetric matter energy per particle.
-        self.sm_e2a = []
-        #: Attribute the neutron matter pairing gap.
-        self.nm_gap = []
-        #: Attribute the symmetric matter pairing gap.
-        self.sm_gap = []
-        #: Attribute the neutron matter pressure.
-        self.nm_pre = []
-        #: Attribute the symmetric matter pressure.
-        self.sm_pre = []
-        #: Attribute the neutron matter sound speed (c_s/c)^2.
-        self.nm_cs2 = []
-        #: Attribute the symmetric matter sound speed (c_s/c)^2.
-        self.sm_cs2 = []
         #: Attribute the NEP.
         self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
         self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
@@ -432,28 +348,3 @@ class setupPheno():
         if nuda.env.verb: print("Exit init_self()")
         #
         return self
-
-def checkPheno(obj,band,matter):
-    '''
-    Check if the phenomenological EOS is inside the band.
-    Return True if inside the band, otherwise return False.
-    '''
-    if matter.lower() == 'nm':
-        x = np.insert( obj.nm_den, 0, 0.0 )
-        y = np.insert( obj.nm_e2a, 0, 0.0 )
-    elif matter.lower() == 'sm':
-        x = np.insert( obj.sm_den, 0, 0.0 )
-        y = np.insert( obj.sm_e2a, 0, 0.0 )
-    elif matter.lower() == 'esym':
-        x = np.insert( obj.den, 0, 0.0 )
-        y = np.insert( obj.esym, 0, 0.0 )
-    else:
-        print('checkPheno: issue with matter:',matter)
-        exit()
-    cs_e2a = CubicSpline( x, y )
-    flag = True
-    for ind,den in enumerate(band.den):
-        if abs(cs_e2a(den)-band.e2a[ind]) > band.e2a_std[ind]:
-            flag = False
-    return flag
-
