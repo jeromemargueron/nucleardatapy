@@ -33,7 +33,7 @@ def plot_corr_setupKsatQsat( pname, constraints ):
 #    axs.tick_params(axis = 'both', which='major', length=10, width=1, direction='inout', right = True, left = True, bottom = True, top = True)
 #    axs.tick_params(axis = 'both', which='minor', length=5,  width=1, direction='in', right = True, left = True, bottom = True, top = True )
     #
-    for constraint in constraints:
+    for k,constraint in enumerate(constraints):
         #
         print('constraint:',constraint)
         kq = nuda.corr.setupKsatQsat( constraint = constraint )
@@ -41,8 +41,16 @@ def plot_corr_setupKsatQsat( pname, constraints ):
         if nuda.env.verb: print('Qsat:',kq.Qsat)
         if nuda.env.verb: print('len(Ksat):',kq.Ksat.size)
         #
-        axs.scatter( kq.Ksat, kq.Qsat, label=kq.label )
-        axs.plot( kq.Ksat, nuda.corr.flinear(kq.Ksat,kq.m,kq.c) )
+        if k == 2:
+            kk = 0
+        else:
+            kk = k
+        axs.scatter( kq.Ksat, kq.Qsat, label=kq.label, color=nuda.param.col[kk], marker=kq.marker )
+        x = np.linspace(min(kq.Ksat),max(kq.Ksat),10)
+        if k == 3 or k == 4 or k == 5:
+            axs.plot( x, nuda.corr.flinear(x,kq.m,kq.c), color=nuda.param.col[kk], linestyle='dashed' )
+        else:
+            axs.plot( x, nuda.corr.flinear(x,kq.m,kq.c), color=nuda.param.col[kk], linestyle='solid' )
         #
         if nuda.env.verb: kq.print_outputs( )
     #
@@ -61,7 +69,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    #constraints = [ '2024-DFT-SKY', '2024-DFT-ESKY', '2024-DFT-DDRH', \
+    #constraints = [ '2024-DFT-SKY', '2024-DFT-SKY2', '2024-DFT-ESKY', '2024-DFT-DDRH', \
     #           '2024-DFT-NLRH', '2024-DFT-DDRHF', '2024-DFT-Gogny', \
     #           '2024-DFT-xEFT' ]
     constraints, constraints_lower = nuda.corr.KsatQsat_constraints()

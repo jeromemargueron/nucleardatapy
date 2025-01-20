@@ -15,7 +15,7 @@ def KsatQsat_constraints():
     :return: The list of constraints.
     :rtype: list[str].
     """
-    constraints = [ '2024-DFT-SKY', '2024-DFT-ESKY', '2024-DFT-DDRH', \
+    constraints = [ '2024-DFT-SKY', '2024-DFT-SKY2', '2024-DFT-ESKY', '2024-DFT-DDRH', \
     '2024-DFT-NLRH', '2024-DFT-DDRHF', '2024-DFT-Fayans' , '2024-DFT-Gogny' ]
     #print('Constraints available in the toolkit:',constraints)
     constraints_lower = [ item.lower() for item in constraints ]
@@ -64,62 +64,80 @@ class setupKsatQsat():
                 self.label = 'Skyrme-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from Skyrme DFT."
+                # fix the marker style
+                self.marker = '*'
                 # fix model variable
                 model = 'Skyrme'
-                #
+            elif constraint.lower() == '2024-dft-sky2':
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'Skyrme2-2024'
+                #: Attribute providing additional notes about the constraint.
+                self.note = "constraints from Skyrme DFT."
+                # fix the marker style
+                self.marker = '+'
+                # fix model variable
+                model = 'Skyrme2'
             elif constraint.lower() == '2024-dft-esky':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'ESkyrme-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from ESkyrme DFT."
+                # fix the marker style
+                self.marker = 'x'
                 # fix model variable
                 model = 'ESkyrme'
-                #
             elif constraint.lower() == '2024-dft-ddrh':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'DDRH-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from DDRH DFT."
+                # fix the marker style
+                self.marker = 'o'
                 # fix model variable
                 model = 'DDRH'
-                #
             elif constraint.lower() == '2024-dft-nlrh':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'NLRH-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from NLRH DFT."
+                # fix the marker style
+                self.marker = '*'
                 # fix model variable
                 model = 'NLRH'
-                #
             elif constraint.lower() == '2024-dft-ddrhf':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'DDRHF-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from DDRHF DFT."
+                # fix the marker style
+                self.marker = 'x'
                 # fix model variable
                 model = 'DDRHF'
-                #
             elif constraint.lower() == '2024-dft-fayans':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Fayans-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from Fayans DFT."
+                # fix the marker style
+                self.marker = '^'
                 # fix model variable
                 model = 'Fayans'
-                #
             elif constraint.lower() == '2024-dft-gogny':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'Gogny-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from Gogny DFT."
+                # fix the marker style
+                self.marker = '<'
                 # fix model variable
                 model = 'Gogny'
-                #
             elif constraint.lower() == '2024-dft-xeft':
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'xEFT-2024'
                 #: Attribute providing additional notes about the constraint.
                 self.note = "constraints from xEFT DFT."
+                # fix the marker style
+                self.marker = 'D'
                 # fix model variable
                 model = '2016-MBPT-AM'
                 #

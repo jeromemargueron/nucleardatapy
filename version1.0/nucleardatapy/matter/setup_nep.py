@@ -19,6 +19,7 @@ def nep_models():
     if nuda.env.verb: print("\nEnter pheno_models()")
     #
     models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models = [ 'Skyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
@@ -60,14 +61,16 @@ def nep_params( model ):
             'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
             'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
             'UNEDF0', 'UNEDF1' ]
+    elif model.lower() == 'skyrme2':
+        params = [ 'SLy4', 'SkM*', 'SV-min', 'SV-bas', 'SV-K218', \
+            'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
+            'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60']
     elif model.lower() == 'eskyrme':
         params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
     elif model.lower() == 'gogny':
         params = [ 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' ]
     elif model.lower() == 'fayans':
-        params = [ 'SLy4', 'SkM*', 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)', \
-            'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
-            'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60' ]
+        params = [ 'Fy(IVP)', 'Fy(Dr,HFB)', 'Fy(std)']
     elif model.lower() == 'nlrh':
         params = [ 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1' ]
     elif model.lower() == 'ddrh':
@@ -94,8 +97,15 @@ class setupNEP():
     'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
     'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. 
 
+    If `models` == 'Skyrme2', `param` can be: 'SLy4', 'SkM*', \
+    'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', \
+    'SV-mas08', 'SV-mas10','SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', \
+    'SV-kap20', 'SV-kap60'.
+
     If `models` == 'ESkyrme', `param` can be: 'BSk22', 'BSk24', 'BSk25', \
     'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3'.
+
+    If `models` == 'Fayans', `param` can be: 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)'.
 
     If `models` == 'NLRH', `param` can be: 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. 
 
@@ -157,6 +167,8 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
@@ -164,9 +176,33 @@ class setupNEP():
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
             else:
                 self.nep = False
         #
+        elif model.lower() == 'skyrme2':
+            #
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPSkyrme2.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.label = 'Skyrme2-'+param
+            self.note = "write here notes about this EOS."
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
+                = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
+            kappas = 1.0/msat - 1.0
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+            #
+            if param in name:
+                self.nep = True
+                ind = np.where( name == param )
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];  
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; 
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+            else:
+                self.nep = False
+            #
         elif model.lower() == 'eskyrme':
             #
             file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPESkyrme.dat')
@@ -179,13 +215,17 @@ class setupNEP():
             self.note = "write here notes about this EOS."
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
+            kappas = 1.0/msat - 1.0
+            #kappasym = kappas - kappav
+            #Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
                 ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = 'None'
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = 'None'; self.Zsym = 'None'
-                self.msat = msat[ind][0]; self.kappas = 'None'; self.kappav = 'None';
+                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = None
+                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = None; self.Zsym = None
+                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = None;
+                self.kappasym = None; self.Dmsat = None
             else:
                 self.nep = False
             #
@@ -202,6 +242,10 @@ class setupNEP():
                 self.nep = True
                 ind = np.where( name == param )
                 self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];
+                self.nsat = None; self.Esat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None
+                self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None
+                self.msat = None; self.kappas = None; self.kappav = None;
+                self.kappasym = None; self.Dmsat = None
             else:
                 self.nep = False
 #            pass
@@ -215,7 +259,9 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
                 = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            kappas = 1.0-1.0/msat
+            kappas = 1.0/msat - 1.0
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
@@ -223,6 +269,7 @@ class setupNEP():
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];  
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; 
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
             else:
                 self.nep = False
             #
@@ -236,6 +283,8 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
@@ -243,6 +292,7 @@ class setupNEP():
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
             else:
                 self.nep = False
             #
@@ -256,6 +306,8 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
@@ -263,6 +315,7 @@ class setupNEP():
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
             else:
                 self.nep = False
             #
@@ -276,6 +329,8 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
@@ -283,6 +338,7 @@ class setupNEP():
                 self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
                 self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
                 self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
+                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
             else:
                 self.nep = False
             #
@@ -316,7 +372,7 @@ class setupNEP():
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
         print(' NEP:')
-        if self.Esat is not None:
+        if self.nep:
             print(' sat:',self.Esat,self.nsat,self.Ksat,self.Qsat,self.Zsat)
             print(' sym:',self.Esym,self.Lsym,self.Ksym,self.Qsym,self.Zsym)
             print(' ms:',self.msat,self.kappas,self.kappav)
@@ -344,6 +400,7 @@ class setupNEP():
         self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
         self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
         self.msat = None; self.kappas = None; self.kappav = None; 
+        self.kappasym = None; self.Dmsat = None;
         #
         if nuda.env.verb: print("Exit init_self()")
         #
