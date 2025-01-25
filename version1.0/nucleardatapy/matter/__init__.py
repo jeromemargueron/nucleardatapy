@@ -11,3 +11,6 @@ from nucleardatapy.matter.setup_micro_lp   import *
 from nucleardatapy.matter.setup_pheno      import *
 from nucleardatapy.matter.setup_pheno_esym import *
 from nucleardatapy.matter.setup_hic        import *
+from nucleardatapy.matter.setup_nep        import *
+from nucleardatapy.matter.setup_nep_dist   import *
+from nucleardatapy.matter.setup_nep_model_dist import *

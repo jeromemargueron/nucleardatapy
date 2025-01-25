@@ -23,7 +23,7 @@ def plot_neutron_skin_for_each_source():
     Generates neutron skin (R_skin) plots for each nucleus using data from the `SetupNeutronSkinExp` class.
     """
     # Retrieve available sources (e.g., '48Ca', '208Pb')
-    sources, _ = nuda.nuc.nskin_exp()
+    sources, _ = nuda.nskin_exp()
 
 # Labels for the subplots
     subplot_labels = ["(a)", "(b)"]  # Adjust this list based on the number of sources
@@ -66,7 +66,7 @@ def plot_neutron_skin_for_each_source():
 
         # Plot configuration
         fig, ax = plt.subplots(figsize=(10, 8))
-        x_positions = range(len(labels))  # X-axis positions
+        x_positions = range(len(labels)+1)   # X-axis positions
 
         # Add each point to the plot with vertical error bars
         for i, (x, y, err_down, err_up, marker) in enumerate(zip(x_positions, rskin_values, error_lower, error_upper, markers)):
@@ -85,6 +85,12 @@ def plot_neutron_skin_for_each_source():
             if err_up >= 1000:
                 ax.plot([x], [y + adjusted_err_up], marker="^", color="grey", markersize=8)
 
+        nsav = nuda.nuc.setupNeutronSkinAverage(source=source)
+        # print('label:', nsav.label)
+        if nsav.nskin_cen is not None:
+            ax.errorbar(len(labels), nsav.nskin_cen, yerr=nsav.sig_std, label=nsav.label, 
+                       color='red', marker='o', markersize=10, linestyle='solid', linewidth=3)        
+        labels.append(nsav.label)
         # Fixed y-axis configuration
         ax.set_ylim([0, 0.5])  # Fixed scale from 0 to 0.5 on the y-axis
 
