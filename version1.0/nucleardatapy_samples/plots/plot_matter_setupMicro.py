@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_matter_setupMicro_nm_e2a( pname, group, models, band ):
+def plot_matter_setupMicro_nm_e2a( pname, mb, models, band ):
     #
     # plot E/A in NM
     #
@@ -99,7 +99,7 @@ def plot_matter_setupMicro_nm_e2a( pname, group, models, band ):
     axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
     #
     #axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
-    #if group not in 'BHF':
+    #if mb not in 'BHF':
     #    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     #
     #plt.tight_layout(pad=3.0)
@@ -108,7 +108,7 @@ def plot_matter_setupMicro_nm_e2a( pname, group, models, band ):
     plt.savefig(pname)
     plt.close()
 
-def plot_matter_setupMicro_sm_e2a( pname, group, models, band ):
+def plot_matter_setupMicro_sm_e2a( pname, mb, models, band ):
     #
     # plot E/A in SM
     #
@@ -204,7 +204,7 @@ def plot_matter_setupMicro_sm_e2a( pname, group, models, band ):
     axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.effg_nr(band.kfn), color='k', linestyle='dashed' )
     #
     #axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
-    #if group not in 'BHF':
+    #if mb not in 'BHF':
     #    axs[0,1].legend(loc='upper left',fontsize='8', ncol=2)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),fontsize='8',ncol=3,frameon=False)
     #
@@ -232,11 +232,12 @@ def main():
     #
     band = nuda.matter.setupMicroBand( bmodels )
     #
-    # create the groups for the figures
+    # create the classes for the figures
     #
-    groups = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
-    #groups = [ 'VAR' ]
-    #groups = [ 'NLEFT' ]
+    #mbs = nuda.matter.micro_mbs()
+    mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    #mbs = [ 'VAR' ]
+    #mbs = [ 'NLEFT' ]
     #
     # list the available models
     #
@@ -244,19 +245,19 @@ def main():
     #
     # plot E/A in NM
     #
-    for i,group in enumerate(groups):
+    for i,mb in enumerate(mbs):
         #
-        print('For group:',group)
+        print('For mb:',mb)
         #
-        pname = 'figs/plot_matter_setupMicro_e2a_NM_'+group+'.png'
+        pname = 'figs/plot_matter_setupMicro_e2a_NM_'+mb+'.png'
         print('pname:',pname)
         #
-        # list the available models in groups
+        # list the available models in mb
         #
-        models, models_lower = nuda.matter.micro_models_group_NM( group )
+        models, models_lower = nuda.matter.micro_models_mb_NM( mb )
         #
         print('models:',models)
-        plot_matter_setupMicro_nm_e2a( pname, group, models, band )
+        plot_matter_setupMicro_nm_e2a( pname, mb, models, band )
         #
     #
     # ===============================
@@ -269,28 +270,29 @@ def main():
     #
     band = nuda.matter.setupMicroBand( bmodels, matter='SM' )
     #
-    # create the groups for the figures
+    # create the classes for the figures
     #
-    groups = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
-    #groups = [ 'VAR' ]
-    #groups = [ 'NLEFT' ]
+    #mbs = nuda.matter.micro_mbs()
+    mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    #mbs = [ 'VAR' ]
+    #mbs = [ 'NLEFT' ]
     #
     # plot E/A in SM
     #
-    for i,group in enumerate(groups):
+    for i,mb in enumerate( mbs ):
         #
-        print('For group:',group)
+        print('For mb:',mb)
         #
-        pname = 'figs/plot_matter_setupMicro_e2a_SM_'+group+'.png'
+        pname = 'figs/plot_matter_setupMicro_e2a_SM_'+mb+'.png'
         print('pname:',pname)
         #
-        # list the available models in groups
+        # list the available models in clas
         #
-        models, models_lower = nuda.matter.micro_models_group_SM( group )
+        models, models_lower = nuda.matter.micro_models_mb_SM( mb )
         #
         print('models:',models)
         #
-        plot_matter_setupMicro_sm_e2a( pname, group, models, band )
+        plot_matter_setupMicro_sm_e2a( pname, mb, models, band )
         #
     #
     print(50*'-')

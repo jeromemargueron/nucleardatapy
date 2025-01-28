@@ -17,7 +17,128 @@ import nucleardatapy as nuda
 def uncertainty_stat(den):
     return 0.07*(den/nuda.cst.nsat)
 
+def micro_mbs():
+    """
+    Return a list of many-bodys (mbs) approaches available in this toolkit and print them all on the prompt.
+
+    :return: The list of models with can be 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
+    :rtype: list[str].
+    """
+    #
+    if nuda.env.verb: print("\nEnter micro_mbs()")
+    #
+    mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    mbs_lower = [ item.lower() for item in mbs ]
+    #
+    if nuda.env.verb: print("Exit micro_mbs()")
+    #
+    return mbs, mbs_lower
+
+def micro_models_mb( mb ):
+    """
+    Return a list with the name of the models available in this toolkit \
+    for a given mb appoach and print them all on the prompt. 
+
+    :param mb: The mb approach for which there are parametrizations. \
+    They should be chosen among the following options: 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
+    :type mb: str.
+    :return: The list of parametrizations. \
+
+    These models are the following ones: \
+    If `mb` == 'VAR': \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
+    If `mb` == 'AFDMC': \
+    '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
+    '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
+    '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
+    '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
+    '2022-AFDMC-NM',
+    If `mb` == 'BHF': \
+    '2006-BHF-AM*', \
+    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
+    '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
+    If `mb` == 'QMC': \
+    '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM',  \
+    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+    '2018-QMC-NM', '2024-QMC-NM', \
+    If `mb` == 'MBPT': \
+    '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
+    If `mb` == 'NLEFT': \
+    '2024-NLEFT-AM', \
+    """
+    #
+    if nuda.env.verb: print("\nEnter micro_models_mb()")
+    #
+    #print('mb:',mb)
+    if mb.lower() == 'var':
+        models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit' ]
+    elif mb.lower() == 'afdmc':
+        models = [ '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
+            '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
+            '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
+            '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2014-AFQMC-NM', '2022-AFDMC-NM' ]
+    elif mb.lower() == 'bhf':
+        models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+            '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
+    elif mb.lower() == 'qmc':
+        models = [ '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', \
+            '2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+            '2018-QMC-NM', '2024-QMC-NM' ]
+    elif mb.lower() == 'mbpt':
+        models = [ '2010-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
+    elif mb.lower() == 'nleft':
+        models = [ '2024-NLEFT-AM' ]
+    #
+    if nuda.env.verb: print('models available in the toolkit:',models)
+    #
+    models_lower = [ item.lower() for item in models ]
+    #
+    if nuda.env.verb: print("\nExit micro_models_mb()")
+    #
+    return models, models_lower
+
+def micro_models_mbs( mbs ):
+    #
+    if nuda.env.verb: print("\nEnter micro_models_mbs()")
+    #
+    #print('mbs:',mbs)
+    #
+    models = []
+    for mb in mbs:
+        new_models, new_models_lower = micro_models_mb( mb )
+        models.extend( new_models )
+    #
+    if nuda.env.verb: print('models available in the toolkit:',models)
+    #
+    models_lower = [ item.lower() for item in models ]
+    #
+    if nuda.env.verb: print("Exit micro_models_mbs()")
+    #
+    return models, models_lower
+
 def micro_models():
+    #
+    if nuda.env.verb: print("\nEnter micro_models()")
+    #
+    mbs, mbs_lower = micro_mbs()
+    #print('mbs:',mbs)
+    #
+    models, models_lower = micro_models_mbs( mbs )
+    #
+    if nuda.env.verb: print("Exit micro_models()")
+    #
+    return models, models_lower
+
+def micro_models_old():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
@@ -43,7 +164,7 @@ def micro_models():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter micro_models()")
+    if nuda.env.verb: print("\nEnter micro_models_old()")
     #
     models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
             '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
@@ -68,19 +189,19 @@ def micro_models():
     #
     return models, models_lower
 
-def micro_models_group_SM( group ):
+def micro_models_mb_SM( mb ):
     """
     """
     #
-    if nuda.env.verb: print("\nEnter micro_models_group_SM( group )")
+    if nuda.env.verb: print("\nEnter micro_models_mb_SM()")
     #
-    print('For group (in SM):',group)
+    print('For mb (in SM):',mb)
     #
     models, models_lower = micro_models()
     #
     models2 = []
     for j,model in enumerate(models):
-        if group in model and '2BF' not in model and ( 'SM' in model or 'AM' in model ):
+        if mb in model and '2BF' not in model and ( 'SM' in model or 'AM' in model ):
             models2.append( model )
             #print('   models:',model)
     #
@@ -89,19 +210,19 @@ def micro_models_group_SM( group ):
     #
     return models2, models2_lower
 
-def micro_models_group_NM( group ):
+def micro_models_mb_NM( mb ):
     """
     """
     #
-    if nuda.env.verb: print("\nEnter micro_models_group_NM( group )")
+    if nuda.env.verb: print("\nEnter micro_models_mb_NM()")
     #
-    print('For group (in NM):',group)
+    print('For mb (in NM):',mb)
     #
     models, models_lower = micro_models()
     #
     models2 = []
     for j,model in enumerate(models):
-        if group in model and '2BF' not in model and ( 'NM' in model or 'AM' in model ):
+        if mb in model and '2BF' not in model and ( 'NM' in model or 'AM' in model ):
             models2.append( model )
             #print('   models:',model)
     #

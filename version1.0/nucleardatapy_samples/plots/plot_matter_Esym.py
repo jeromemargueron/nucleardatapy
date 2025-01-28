@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_matter_Esym( pname, models_micro, models_pheno, band ):
+def plot_matter_Esym( pname, micro_mbs, pheno_models, band ):
     #
     # plot E/A in NM
     #
@@ -29,39 +29,72 @@ def plot_matter_Esym( pname, models_micro, models_pheno, band ):
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 60])
     #
-    for model in models_micro:
+    mb_check = []
+    k = 0
+    #
+    for mb in micro_mbs:
         #
-        esym = nuda.matter.setupMicroEsym( model = model )
-        if esym.esym is not None: 
-            print('model:',model)
-            if esym.marker:
-                if esym.err:
-                    axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, label=esym.label, errorevery=esym.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        for model in models:
+            #
+            esym = nuda.matter.setupMicroEsym( model = model )
+            #
+            if esym.esym is not None:
+                print('mb:',mb,'model:',model)
+                if mb in mb_check:
+                    if esym.marker:
+                        if esym.err:
+                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, errorevery=esym.every, color=nuda.param.col[k] )
+                        else:
+                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, markevery=esym.every, color=nuda.param.col[k] )
+                    else:
+                        if esym.err:
+                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, errorevery=esym.every, color=nuda.param.col[k] )
+                        else:
+                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, markevery=esym.every, color=nuda.param.col[k] )
                 else:
-                    axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, label=esym.label, markevery=esym.every )
-            else:
-                if esym.err:
-                    axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, label=esym.label, errorevery=esym.every )
-                else:
-                    axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, label=esym.label, markevery=esym.every )
-        if nuda.env.verb: esym.print_outputs( )
+                    mb_check.append(mb)
+                    k += 1
+                    if esym.marker:
+                        if esym.err:
+                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, label=mb, errorevery=esym.every, color=nuda.param.col[k] )
+                        else:
+                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, label=mb, markevery=esym.every, color=nuda.param.col[k] )
+                    else:
+                        if esym.err:
+                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, label=mb, errorevery=esym.every, color=nuda.param.col[k] )
+                        else:
+                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, label=mb, markevery=esym.every, color=nuda.param.col[k] )
+                    #axs[0].plot( esym.den, esym.esym, color=nuda.param.col[k], label=mb )
+            if nuda.env.verb: esym.print_outputs( )
     axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[0].text(0.05,5,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    k = 0
+    #
+    for model in pheno_models:
         #
         params, params_lower = nuda.matter.pheno_params( model = model )
         #
         for param in params:
             #
             esym = nuda.matter.setupPhenoEsym( model = model, param = param )
+            #
             if esym.esym is not None: 
                 print('model:',model,' param:',param)
+                if model in model_check:
+                    axs[1].plot( esym.den, esym.esym, color=nuda.param.col[k] )
+                else:
+                    model_check.append(model)
+                    k += 1
+                    axs[1].plot( esym.den, esym.esym, color=nuda.param.col[k], label=model )
                 #pheno.label=None
-                axs[1].plot( esym.den, esym.esym, label=esym.label )
+                #axs[1].plot( esym.den, esym.esym, label=esym.label )
             if nuda.env.verb: esym.print_outputs( )
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
@@ -92,13 +125,13 @@ def main():
     #
     # list the available models
     #
-    micro_models, micro_models_lower = nuda.matter.micro_esym_models()
+    micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()    
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym
     #
     pname = 'figs/plot_matter_Esym.png'
-    plot_matter_Esym( pname, micro_models, pheno_models, band )
+    plot_matter_Esym( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')
     print("Exit plot_matter_Esym.py:")

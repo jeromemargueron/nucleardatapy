@@ -14,7 +14,109 @@ import nucleardatapy as nuda
 nsat = 0.16
 mnuc2 = 939.0
 
+def micro_esym_mbs():
+    """
+    Return a list of many-bodys (mbs) approaches available in this toolkit and print them all on the prompt.
+
+    :return: The list of models with can be 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
+    :rtype: list[str].
+    """
+    #
+    if nuda.env.verb: print("\nEnter micro_mbs()")
+    #
+    mbs = [ 'VAR', 'BHF', 'MBPT', 'NLEFT' ]
+    mbs_lower = [ item.lower() for item in mbs ]
+    #
+    if nuda.env.verb: print("Exit micro_mbs()")
+    #
+    return mbs, mbs_lower
+
+def micro_esym_models_mb( mb ):
+    """
+    Return a list with the name of the models available in this toolkit \
+    for a given mb appoach and print them all on the prompt. 
+
+    :param mb: The mb approach for which there are parametrizations. \
+    They should be chosen among the following options: 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
+    :type mb: str.
+    :return: The list of parametrizations. \
+
+    These models are the following ones: \
+    If `mb` == 'VAR': \
+    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
+    If `mb` == 'BHF': \
+    '2006-BHF-AM*', \
+    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
+    '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
+    If `mb` == 'MBPT': \
+    '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
+    If `mb` == 'NLEFT': \
+    '2024-NLEFT-AM', \
+    """
+    #
+    if nuda.env.verb: print("\nEnter micro_models_mb()")
+    #
+    #print('mb:',mb)
+    if mb.lower() == 'var':
+        models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit' ]
+    elif mb.lower() == 'bhf':
+        models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+            '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
+            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
+            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
+    elif mb.lower() == 'mbpt':
+        models = [ '2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
+    elif mb.lower() == 'nleft':
+        models = [ '2024-NLEFT-AM' ]
+    #
+    if nuda.env.verb: print('models available in the toolkit:',models)
+    #
+    models_lower = [ item.lower() for item in models ]
+    #
+    if nuda.env.verb: print("\nExit micro_models_mb()")
+    #
+    return models, models_lower
+
+def micro_esym_models_mbs( mbs ):
+    #
+    if nuda.env.verb: print("\nEnter micro_esym_models_mbs()")
+    #
+    #print('mbs:',mbs)
+    #
+    models = []
+    for mb in mbs:
+        new_models, new_models_lower = micro_esym_models_mb( mb )
+        models.extend( new_models )
+    #
+    if nuda.env.verb: print('models available in the toolkit:',models)
+    #
+    models_lower = [ item.lower() for item in models ]
+    #
+    if nuda.env.verb: print("Exit micro_esym_models_mb()")
+    #
+    return models, models_lower
+
 def micro_esym_models():
+    #
+    if nuda.env.verb: print("\nEnter micro_esym_models()")
+    #
+    mbs, mbs_lower = micro_esym_mbs()
+    #print('mbs:',mbs)
+    #
+    models, models_lower = micro_esym_models_mbs( mbs )
+    #
+    if nuda.env.verb: print("Exit micro_esym_models()")
+    #
+    return models, models_lower
+
+def micro_esym_models_old():
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
@@ -122,6 +224,7 @@ class setupMicroEsym():
             nm_e2a_err = mic.e2a_err
             #
         else:
+            #
             mic = nuda.matter.setupMicro( model = model )
             sm_den = mic.sm_den
             sm_e2a = mic.sm_e2a
@@ -130,6 +233,7 @@ class setupMicroEsym():
             nm_e2a = mic.nm_e2a
             nm_e2a_err = mic.nm_e2a_err
             #mic.print_outputs( )
+            #
         #
         # ===========================
         # compute the symmetry energy
