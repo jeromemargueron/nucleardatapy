@@ -81,7 +81,7 @@ def micro_models_mb( mb ):
         models = [ '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
             '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
             '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
-            '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2014-AFQMC-NM', '2022-AFDMC-NM' ]
+            '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM' ]
     elif mb.lower() == 'bhf':
         models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
@@ -91,7 +91,7 @@ def micro_models_mb( mb ):
             '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
     elif mb.lower() == 'qmc':
         models = [ '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', \
-            '2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+            '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
             '2018-QMC-NM', '2024-QMC-NM' ]
     elif mb.lower() == 'mbpt':
         models = [ '2010-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
@@ -188,6 +188,28 @@ def micro_models_old():
     if nuda.env.verb: print("Exit micro_models()")
     #
     return models, models_lower
+
+def micro_models_mb_matter( mb, matter ):
+    """
+    matter can be 'sm', 'SM' or 'nm', 'NM'
+    """
+    #
+    if nuda.env.verb: print("\nEnter micro_models_mb_matter()")
+    #
+    print('For mb (in SM):',mb)
+    #
+    models, models_lower = micro_models()
+    #
+    models2 = []
+    for j,model in enumerate(models):
+        if mb in model and '2BF' not in model and ( matter.upper() in model or 'AM' in model ):
+            models2.append( model )
+            #print('   models:',model)
+    #
+    print('models2:',models2)
+    models2_lower = [ item.lower() for item in models2 ]
+    #
+    return models2, models2_lower
 
 def micro_models_mb_SM( mb ):
     """
