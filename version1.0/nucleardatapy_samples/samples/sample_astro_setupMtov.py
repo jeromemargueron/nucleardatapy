@@ -16,7 +16,7 @@ def main():
     #
     # sources down
     #
-    sources_do = nuda.astro.masses_sources( )[0]
+    sources_do, sources_do_lower = nuda.astro.masses_sources( )
     print('Complete list of available sources_low:',sources_do)
     #
     sources_do = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
@@ -26,7 +26,7 @@ def main():
     #
     # sources up
     #
-    sources_up = nuda.astro.mup_sources( )[0]
+    sources_up, sources_up_lower = nuda.astro.mup_sources( )
     print('Complete list of available sources_up:',sources_up)
     #
     #sources_up = [ 'GW170817' ]

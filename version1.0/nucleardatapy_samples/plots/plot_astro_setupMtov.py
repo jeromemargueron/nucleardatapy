@@ -5,12 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 #plt.rcParams.update({'font.size': 16})
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-def plot_astro_setupMtov( pname, sources_do, sources_up ):
+def plot_astro_setupMtov( pname, sources_do1, sources_do2, sources_up1, sources_up2, sources_up3 ):
     #
     # plot pdf versus mass
     #
@@ -23,26 +20,31 @@ def plot_astro_setupMtov( pname, sources_do, sources_up ):
     axs.set_xlim([1.6, 3.4])
     axs.set_ylim([0.0, 1.0])
     #
-    prob = nuda.astro.setupMtov( sources_do, sources_up )
+    prob0 = nuda.astro.setupMtov( sources_do1, sources_up1 )
+    prob1 = nuda.astro.setupMtov( sources_do2, sources_up1 )
+    prob2 = nuda.astro.setupMtov( sources_do2, sources_up2 )
+    prob3 = nuda.astro.setupMtov( sources_do2, sources_up3 )
     #
-    for ind,source in enumerate(sources_do):
+    for ind,source in enumerate(sources_do1):
         #
         print(f'source: {source}')
-        axs.plot(prob.mass, prob.proba_do[ind], label=prob.label_do[ind], color=nuda.param.col[ind], linestyle='dashed', linewidth = 1 )
+        axs.plot(prob0.mass, prob0.proba_do[ind], label=prob0.label_do[ind], color=nuda.param.col[ind], linestyle='dashed', linewidth = 1 )
         #
-    axs.plot(prob.mass, prob.proba_do_tot, label=prob.label_do_tot, marker = 'o', markevery=10, color=nuda.param.col[0], linestyle='None' )
+    axs.plot(prob1.mass, prob1.proba_do_tot, label=prob1.label_do_tot, marker = 'o', markevery=10, color=nuda.param.col[0], linestyle='None' )
     #
-    for ind,source in enumerate(sources_up):
+    for ind,source in enumerate(sources_up1):
         #
         print(f'source: {source}')
-        axs.plot(prob.mass, prob.proba_up[ind], label=prob.label_up[ind], color=nuda.param.col[ind], linestyle='dotted', linewidth = 1 )
+        axs.plot(prob1.mass, prob1.proba_up[ind], label=prob1.label_up[ind], color=nuda.param.col[ind], linestyle='dotted', linewidth = 1 )
         #
-    axs.plot(prob.mass, prob.proba_up_tot, label=prob.label_up_tot, marker = 's', markevery=10, color=nuda.param.col[0], linestyle='None' )
+    axs.plot(prob1.mass, prob1.proba_up_tot, label=prob1.label_up_tot, marker = 's', markevery=10, color=nuda.param.col[0], linestyle='None' )
     #
-    axs.plot(prob.mass, prob.proba_tot, label=prob.label_tot, color=nuda.param.col[0], linestyle='solid', linewidth = 3 )
+    axs.plot(prob1.mass, prob1.proba_tot, label=prob1.label_tot, color=nuda.param.col[0], linestyle='solid', linewidth = 3 )
+    axs.plot(prob2.mass, prob2.proba_tot, label=prob2.label_tot, color=nuda.param.col[0], linestyle='dashed', linewidth = 3 )
+    axs.plot(prob3.mass, prob3.proba_tot, label=prob3.label_tot, color=nuda.param.col[0], linestyle='dotted', linewidth = 3 )
     #
     #axs.legend( loc='upper left',fontsize='8', ncol=1 )
-    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.4,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname)
     plt.close()
@@ -60,27 +62,31 @@ def main():
     #
     # sources low
     #
-    sources_do = nuda.astro.masses_sources( )[0]
+    sources_do, sources_do_lower = nuda.astro.masses_sources( )
     print('Complete list of available sources_do:',sources_do)
     #
-    sources_do = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
-    #sources_do = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J0740+6620' ]
+    sources_do1 = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
+    sources_do2 = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J0740+6620' ]
     #
-    print('sources_low considered:',sources_do)
+    print('sources_low considered:',sources_do2)
     #
     # sources up
     #
-    sources_up = nuda.astro.mup_sources( )[0]
-    print('Complete list of available sources_up:',sources_up)
+    sources_up1, sources_up_lower = nuda.astro.mup_sources( )
+    print('Complete list of available sources_up1:',sources_up1)
     #
-    #sources_up = [ 'GW170817', 'GW190814' ]
+    sources_up2 = [ 'GW170817' ]
     #
-    print('sources_up considered:',sources_up)
+    print('sources_up2 considered:',sources_up2)
+    #
+    sources_up3 = [ ]
+    #
+    print('sources_up3 considered:',sources_up3)
     #
     # plot the results:
     #
     pname = 'figs/plot_astro_setupMtov.png'
-    plot_astro_setupMtov( pname, sources_do, sources_up )
+    plot_astro_setupMtov( pname, sources_do1, sources_do2, sources_up1, sources_up2, sources_up3 )
     #
     print(50*'-')
     print("Exit plot_astro_setupMtov.py:")

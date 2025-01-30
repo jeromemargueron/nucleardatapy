@@ -66,7 +66,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    sources = nuda.astro.mr_sources( )[0]
+    sources, sources_lower = nuda.astro.mr_sources( )
     print('Complete list of available sources:',sources)
     #
     sources = [ 'J0030+0451', 'J0740+6620' ]

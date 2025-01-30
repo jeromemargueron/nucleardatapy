@@ -5,9 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 #plt.rcParams.update({'font.size': 16})
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def plot_astro_setupMasses( pname, sources ):
@@ -67,7 +64,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    sources = nuda.astro.masses_sources( )[0]
+    sources, sources_lower = nuda.astro.masses_sources( )
     print('Complete list of available sources:',sources)
     #
     sources = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
