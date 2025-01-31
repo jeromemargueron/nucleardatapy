@@ -37,7 +37,7 @@ def plot_matter_setupMicroErr( pname, models ):
     #
     axs.legend(loc='upper left',fontsize='12', ncol=3)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

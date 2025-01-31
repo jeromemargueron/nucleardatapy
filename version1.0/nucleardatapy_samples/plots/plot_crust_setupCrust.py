@@ -43,7 +43,7 @@ def plot_crust_setupCrust( pname, models ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=1)
     fig.legend(loc='upper left',bbox_to_anchor=(0.01,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

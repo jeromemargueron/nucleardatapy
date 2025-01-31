@@ -17,25 +17,30 @@ def plot_matter_setupMicroLP0_SM( pname, models ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.12, right=0.98, top=0.98, wspace=0.4, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.05 )
     #
     axs[0,0].set_ylabel(r'$F_0$')
     axs[0,0].set_xlim([0, 2.0])
-    axs[0,0].set_ylim([-1, 2])
+    axs[0,0].set_ylim([-1, 1.8])
     #
     axs[0,1].set_ylabel(r'$G_0$')
     axs[0,1].set_xlim([0, 2.0])
-    axs[0,1].set_ylim([-1, 2])
+    axs[0,1].set_ylim([-1, 1.8])
     #
     axs[1,0].set_ylabel(r'$F_0^\prime$')
     axs[1,0].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,0].set_xlim([0, 2.0])
-    axs[1,0].set_ylim([-1, 2])
+    axs[1,0].set_ylim([-1, 1.8])
     #
     axs[1,1].set_ylabel(r'$G_0^\prime$')
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,1].set_xlim([0, 2.0])
-    axs[1,1].set_ylim([-1, 2])
+    axs[1,1].set_ylim([-1, 1.8])
+    #
+    axs[0,0].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('y', labelleft=False)
+    axs[1,1].tick_params('y', labelleft=False)
     #
     for model in models:
         #
@@ -61,7 +66,7 @@ def plot_matter_setupMicroLP0_SM( pname, models ):
     #
     axs[0,0].legend(loc='upper left',fontsize='8', ncol=1)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def plot_matter_setupMicroLP1_SM( pname, models ):
@@ -72,25 +77,30 @@ def plot_matter_setupMicroLP1_SM( pname, models ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.12, right=0.98, top=0.98, wspace=0.4, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.05 )
     #
     axs[0,0].set_ylabel(r'$F_1$')
     axs[0,0].set_xlim([0, 2.0])
-    axs[0,0].set_ylim([-1.5, 1])
+    axs[0,0].set_ylim([-1.4, 1])
     #
     axs[0,1].set_ylabel(r'$G_1$')
     axs[0,1].set_xlim([0, 2.0])
-    axs[0,1].set_ylim([-1.5, 1])
+    axs[0,1].set_ylim([-1.4, 1])
     #
     axs[1,0].set_ylabel(r'$F_1^\prime$')
     axs[1,0].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,0].set_xlim([0, 2.0])
-    axs[1,0].set_ylim([-1.5, 1])
+    axs[1,0].set_ylim([-1.4, 1])
     #
     axs[1,1].set_ylabel(r'$G_1^\prime$')
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     axs[1,1].set_xlim([0, 2.0])
-    axs[1,1].set_ylim([-1.5, 1])
+    axs[1,1].set_ylim([-1.4, 1])
+    #
+    axs[0,0].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('y', labelleft=False)
+    axs[1,1].tick_params('y', labelleft=False)
     #
     for model in models:
         #
@@ -113,7 +123,7 @@ def plot_matter_setupMicroLP1_SM( pname, models ):
     #
     axs[0,0].legend(loc='upper left',fontsize='8', ncol=1)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def plot_matter_setupMicroLP0_NM( pname, models ):
@@ -156,7 +166,7 @@ def plot_matter_setupMicroLP0_NM( pname, models ):
     #
     axs[0].legend(loc='upper left',fontsize='8', ncol=1)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

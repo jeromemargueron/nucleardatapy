@@ -85,7 +85,7 @@ def plot_nuc_setupISGMRExp( pname, tables ):
     #
     axs[0].legend(loc='upper right',fontsize='xx-small')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

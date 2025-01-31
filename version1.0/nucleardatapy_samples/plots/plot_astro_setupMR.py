@@ -63,7 +63,7 @@ def plot_astro_setupMR( pname, sources, sources_av ):
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
     axs.legend(loc='lower center',bbox_to_anchor=(0.48,1.01),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

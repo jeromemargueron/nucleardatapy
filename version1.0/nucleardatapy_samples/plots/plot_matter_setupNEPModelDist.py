@@ -59,7 +59,7 @@ def plot_matter_setupNEPModelDist( pname, models ):
     #axs[0,0].legend(loc='lower right',fontsize='10',ncol=2)
     fig.legend(loc='upper left',bbox_to_anchor=(0.01,0.98),columnspacing=2,fontsize='8',ncol=7,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def main():

@@ -16,18 +16,19 @@ def plot_matter_Esym( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(1,2)
-    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3 )
+    #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_{sym}(n)$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 60])
     #
     axs[1].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1].set_ylabel(r'$e_{sym}(n)$')
-    axs[1].set_xlim([0, 0.3])
+    #axs[1].set_ylabel(r'$e_{sym}(n)$')
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 60])
+    axs[1].tick_params('y', labelleft=False)
     #
     mb_check = []
     k = 0
@@ -102,9 +103,10 @@ def plot_matter_Esym( pname, micro_mbs, pheno_models, band ):
     axs[1].text(0.05,5,'phenomenological models',fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
-    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.2,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
-    plt.savefig(pname)
+    #plt.tight_layout()
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

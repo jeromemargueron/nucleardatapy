@@ -57,7 +57,7 @@ def plot_eos_setupAMLeq_xe( pname, models_micro, models_pheno ):
     #
     axs[1].text(0.08,0.22,'phenomenological models',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def plot_eos_setupAMLeq_xmu( pname, models_micro, models_pheno ):
@@ -107,7 +107,7 @@ def plot_eos_setupAMLeq_xmu( pname, models_micro, models_pheno ):
     #
     axs[1].text(0.08,0.12,'phenomenological models',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def plot_eos_setupAMLeq_xexmu( pname, models_micro, models_pheno ):
@@ -161,7 +161,7 @@ def plot_eos_setupAMLeq_xexmu( pname, models_micro, models_pheno ):
         axs.text(0.05,0.35,'$x_e$',fontsize='14')
         axs.text(0.02,0.10,'$x_\mu$',fontsize='14')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 

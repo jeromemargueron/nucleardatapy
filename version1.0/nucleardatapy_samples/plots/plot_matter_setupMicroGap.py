@@ -56,7 +56,7 @@ def plot_matter_setupMicro_nm_gap_1s0( pname, models ):
     #axs[1,0].legend(loc='upper right',fontsize='8')
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def plot_matter_setupMicro_nm_gap_3pf2( pname, models ):
@@ -106,7 +106,7 @@ def plot_matter_setupMicro_nm_gap_3pf2( pname, models ):
     #axs[1,0].legend(loc='upper right',fontsize='8')
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def main():

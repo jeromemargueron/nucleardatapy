@@ -14,21 +14,25 @@ def plot_matter_setupMicro_e2a( pname, mb, models, band, matter ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.85, wspace=0.2, hspace=0.2 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.85, wspace=0.05, hspace=0.05 )
     #
     axs[0,0].set_ylabel(r'$E_{NM}/A$ (MeV)')
-    axs[0,0].set_xlim([0, 0.3])
+    axs[0,0].set_xlim([0, 0.33])
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$E_{NM}/E_{FFG,NR}$')
-    axs[1,0].set_xlim([0, 0.3])
+    axs[1,0].set_xlim([0, 0.33])
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
+    axs[0,1].tick_params('y', labelleft=False)
+    axs[1,1].tick_params('y', labelleft=False)
+    axs[0,0].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('x', labelbottom=False)
     if matter.lower() == 'nm':
         axs[0,0].set_ylim([0, 35])
         axs[0,1].set_xlim([0.5, 2.0])
         axs[0,1].set_ylim([0, 35])
-        axs[1,0].set_ylim([0.3, 0.8])
+        axs[1,0].set_ylim([0.3, 0.84])
         axs[1,1].set_xlim([0.5, 2.0])
-        axs[1,1].set_ylim([0.3, 0.8])
+        axs[1,1].set_ylim([0.3, 0.84])
         delta = 1.0
     elif matter.lower() == 'sm':
         axs[0,0].set_ylim([-20, 10])
@@ -143,7 +147,7 @@ def plot_matter_setupMicro_e2a( pname, mb, models, band, matter ):
     #plt.tight_layout(pad=3.0)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def main():

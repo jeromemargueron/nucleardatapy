@@ -50,7 +50,7 @@ def plot_astro_setupMasses( pname, sources ):
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
     axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

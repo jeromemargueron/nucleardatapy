@@ -56,7 +56,7 @@ def plot_corr_setupKsatQsat( pname, constraints ):
     #
     axs.legend(loc='upper left',ncol=3, fontsize='9')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

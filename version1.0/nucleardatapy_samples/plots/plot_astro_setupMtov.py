@@ -18,7 +18,7 @@ def plot_astro_setupMtov( pname, sources_do1, sources_do2, sources_up1, sources_
     axs.set_xlabel(r'M$_\mathrm{tov}$ (M$_\odot$)',fontsize='12')
     axs.set_ylabel(r'probability (non-normalised)',fontsize='12')
     axs.set_xlim([1.6, 3.4])
-    axs.set_ylim([0.0, 1.0])
+    axs.set_ylim([0.0, 1.03])
     #
     prob0 = nuda.astro.setupMtov( sources_do1, sources_up1 )
     prob1 = nuda.astro.setupMtov( sources_do2, sources_up1 )
@@ -39,14 +39,14 @@ def plot_astro_setupMtov( pname, sources_do1, sources_do2, sources_up1, sources_
         #
     axs.plot(prob1.mass, prob1.proba_up_tot, label=prob1.label_up_tot, marker = 's', markevery=10, color=nuda.param.col[0], linestyle='None' )
     #
-    axs.plot(prob1.mass, prob1.proba_tot, label=prob1.label_tot, color=nuda.param.col[0], linestyle='solid', linewidth = 3 )
-    axs.plot(prob2.mass, prob2.proba_tot, label=prob2.label_tot, color=nuda.param.col[0], linestyle='dashed', linewidth = 3 )
-    axs.plot(prob3.mass, prob3.proba_tot, label=prob3.label_tot, color=nuda.param.col[0], linestyle='dotted', linewidth = 3 )
+    axs.plot(prob1.mass, prob1.proba_tot, label=prob1.label_tot, color=nuda.param.col[1], linestyle=(1, (2, 10)), linewidth = 3 )
+    axs.plot(prob2.mass, prob2.proba_tot, label=prob2.label_tot, color=nuda.param.col[1], linestyle=(1, (3, 9)), linewidth = 3 )
+    axs.plot(prob3.mass, prob3.proba_tot, label=prob3.label_tot, color=nuda.param.col[1], linestyle=(1, (4, 8)), linewidth = 3 )
     #
     #axs.legend( loc='upper left',fontsize='8', ncol=1 )
     axs.legend(loc='lower center',bbox_to_anchor=(0.4,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 
@@ -66,7 +66,7 @@ def main():
     print('Complete list of available sources_do:',sources_do)
     #
     sources_do1 = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
-    sources_do2 = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J0740+6620' ]
+    sources_do2 = [ 'J1614–2230', 'J0348+0432', 'J0740+6620' ]
     #
     print('sources_low considered:',sources_do2)
     #

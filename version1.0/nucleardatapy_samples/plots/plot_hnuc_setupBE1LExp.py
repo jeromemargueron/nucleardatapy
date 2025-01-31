@@ -41,7 +41,7 @@ def plot_hnuc_setupBE1LExp( pname, tables ):
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs.legend(loc='upper right',fontsize='8',ncol=2)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

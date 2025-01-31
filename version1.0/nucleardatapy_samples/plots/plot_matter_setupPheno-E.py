@@ -22,22 +22,27 @@ def plot_matter_setupPheno_E( models, band, matter ):
         #
         fig, axs = plt.subplots(2,2)
         fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-        fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.88, wspace=0.25, hspace=0.25)
+        fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.88, wspace=0.05, hspace=0.05)
         #
-        axs[0,0].set_xlim([0, 0.3])
+        axs[0,0].set_xlim([0, 0.33])
         axs[1,0].set_xlabel(r'n (fm$^{-3}$)',fontsize='12')
-        axs[1,0].set_xlim([0, 0.3])
+        axs[1,0].set_xlim([0, 0.33])
         axs[0,1].set_xlim([0.5, 1.5])
         axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)',fontsize='12')
         axs[1,1].set_xlim([0.5, 1.5])
+        #
+        axs[0,0].tick_params('x', labelbottom=False)
+        axs[0,1].tick_params('x', labelbottom=False)
+        axs[0,1].tick_params('y', labelleft=False)
+        axs[1,1].tick_params('y', labelleft=False)
         #
         if matter.lower() == 'nm':
             axs[0,0].set_ylabel(r'$E_{NM}/A$ (MeV)',fontsize='12')
             axs[0,0].set_ylim([0, 35])
             axs[0,1].set_ylim([0, 15])
             axs[1,0].set_ylabel(r'$E_{NM}/E_{FFG,NM}$',fontsize='12')
-            axs[1,0].set_ylim([0.2, 0.8])
-            axs[1,1].set_ylim([0.2, 0.8])
+            axs[1,0].set_ylim([0.2, 0.84])
+            axs[1,1].set_ylim([0.2, 0.84])
         elif matter.lower() == 'sm':
             axs[0,0].set_ylabel(r'$E_{SM}/A$ (MeV)',fontsize='12')
             axs[0,0].set_ylim([-20, 10])
@@ -105,7 +110,7 @@ def plot_matter_setupPheno_E( models, band, matter ):
         fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
         #
         #
-        plt.savefig(pname)
+        plt.savefig(pname, dpi=300)
         plt.close()
     #
 

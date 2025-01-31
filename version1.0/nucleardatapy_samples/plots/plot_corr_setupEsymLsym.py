@@ -60,7 +60,7 @@ def plot_corr_setupEsymLsym( pname, constraints ):
     #
     axs.legend(loc='lower right',fontsize='9')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
 
 def main():

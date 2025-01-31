@@ -71,7 +71,7 @@ def plot_matter_pre( pname, micro_models, pheno_models, band ):
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

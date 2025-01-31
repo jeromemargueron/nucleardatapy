@@ -13,7 +13,7 @@ def plot_matter_setupFFGNuc( pname ):
     #
     # plot E_FFG in NM and SM
     #
-    den = np.linspace(0.01,0.3,10)
+    den = np.linspace(0.01,0.35,10)
     kf = np.linspace(0.5,2.0,10)
     denkf = nuda.matter.den( kf )
     delta0 = np.zeros(den.size)
@@ -21,25 +21,27 @@ def plot_matter_setupFFGNuc( pname ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.2, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.2 )
     #
     axs[0,0].set_ylabel(r'$e_{FFG}$')
-    axs[0,0].set_xlim([0, 0.3])
+    axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([0, 50])
     #
     axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$p_{FFG}$ (MeV fm$^{-3}$)')
-    axs[1,0].set_xlim([0, 0.3])
+    axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([0, 10])
     #
     #axs[0,1].set_ylabel(r'$\Delta/E_F$')
     axs[0,1].set_xlim([0.5, 2.0])
     axs[0,1].set_ylim([0, 50])
+    axs[0,1].tick_params('y', labelleft=False)
     #
     axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
     #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
     axs[1,1].set_xlim([0.5, 2.0])
     axs[1,1].set_ylim([0, 10])
+    axs[1,1].tick_params('y', labelleft=False)
     #
     ffg0 = nuda.matter.setupFFGNuc( den, delta0 )
     ffg0kf = nuda.matter.setupFFGNuc( denkf, delta0 )
@@ -80,7 +82,7 @@ def plot_matter_setupFFGNuc( pname ):
     #axs[1,0].legend(loc='upper right',fontsize='xx-small')
     fig.legend(loc='upper left',bbox_to_anchor=(0.2,0.97),fontsize='6',ncol=4,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
     #
 

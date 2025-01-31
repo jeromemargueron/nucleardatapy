@@ -37,7 +37,7 @@ def plot_corr_setupEsym( pname, constraints, Ksym ):
     axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs.legend(loc='lower right',fontsize='9')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

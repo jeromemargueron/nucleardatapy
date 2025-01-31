@@ -76,7 +76,7 @@ def plot_matter_setupMicroBand( pname, models, den, matter ):
     elif matter.lower() == 'esym':
         axs[0].legend(loc='upper left',fontsize='12', ncol=1)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():
