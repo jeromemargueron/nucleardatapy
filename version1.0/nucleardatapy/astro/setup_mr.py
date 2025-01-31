@@ -18,7 +18,7 @@ def mr_sources():
     #
     if nuda.env.verb: print("\nEnter astro_mr()")
     #
-    sources = [ 'J0030+0451', 'J0740+6620' ]
+    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
     #
     #print('sources available in the toolkit:',sources)
     sources_lower = [ item.lower() for item in sources ]
@@ -42,9 +42,11 @@ def mr_obss( source ):
     if nuda.env.verb: print("\nEnter astro_mr_source()")
     #
     if source.lower()=='j0030+0451':
-        obss = [ 1, 2 ]
+        obss = [ 1, 2, 3, 4 ]
     elif source.lower()=='j0740+6620':
         obss = [ 1, 2 ]
+    elif source.lower()=='j0437-4715':
+        obss = [ 1 ]
     #
     #print('Observations available in the toolkit:',obss)
     #
@@ -113,6 +115,22 @@ class setupMR():
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this observation."
                 self.marker = 's'
+            elif obs==3:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0030 Vinciguerra 2024a'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 'x'
+            elif obs==4:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0030 Vinciguerra 2024b'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 'x'
         elif source.lower()=='j0740+6620':
             file_in = nuda.param.path_data+'astro/NICER/J0740+6620.dat'
             if obs==1:
@@ -131,6 +149,16 @@ class setupMR():
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this observation."
                 self.marker = 's'
+        elif source.lower()=='j0437-4715':
+            file_in = nuda.param.path_data+'astro/NICER/J0437-4715.dat'
+            if obs==1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='D. Choudhury, T. Salmi, S. Vinciguerra, T.E. Riley, et al., ApJL 971, L20 (2024).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0437 Choudhury 2024'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 'o'
         #
         #: Attribute the observational mass of the source.
         self.mass = None
@@ -246,7 +274,7 @@ class setupMRAverage():
 
     **Attributes:**
     """
-    def __init__(self, source = 'J1614–2230' ):
+    def __init__(self, source = 'J1614–2230', obss = [ 1, 2 ] ):
         #
         if nuda.env.verb: print("Enter SetupAstroMRAverage()")
         #
@@ -256,7 +284,7 @@ class setupMRAverage():
         self.label = source+' average'
         self.note = 'compute the centroid and standard deviation over several obs. data.'
         #
-        obss = mr_obss( source = source )
+        #obss = mr_obss( source = source )
         #
         # search for the boundary for the masses and the radii:
         mmin = 3.0; mmax = 0.0;

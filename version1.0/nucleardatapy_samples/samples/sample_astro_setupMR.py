@@ -3,9 +3,6 @@ import os
 import sys
 import numpy as np
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def main():
@@ -17,7 +14,7 @@ def main():
     sources, sources_lower = nuda.astro.mr_sources( )
     print('Complete list of available sources:', sources )
     #
-    sources = [ 'J0030+0451', 'J0740+6620' ]
+    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
     #
     print('sources considered:',sources)
     #
@@ -33,9 +30,21 @@ def main():
             if nuda.env.verb_output: mr.print_output( )
             if nuda.env.verb_table: mr.print_table( )
             #
+    #
+    # Average
+    #
+    sources_av = [ 'J0030+0451', 'J0740+6620' ]
+    #
+    for source in sources_av:
+        #
+        # get the mass associated to `source` and `obs`
+        #
+        obss = nuda.astro.mr_obss( source = source )
+        print(f'source: {source}, obss: {obss}')
         mrav = nuda.astro.setupMRAverage( source = source )
         if nuda.env.verb_output: mrav.print_output( )
         if nuda.env.verb_table: mrav.print_table( )
+        #
     #
     print(50*'-')
     print("Exit sample_astro_setupMR.py:")
