@@ -28,7 +28,7 @@ def main():
         for obs in obss:
             mr = nuda.astro.setupMR( source = source, obs = obs )
             if nuda.env.verb_output: mr.print_output( )
-            if nuda.env.verb_table: mr.print_table( )
+            if nuda.env.verb_latex: mr.print_latex( )
             #
     #
     # Average
@@ -43,7 +43,7 @@ def main():
         print(f'source: {source}, obss: {obss}')
         mrav = nuda.astro.setupMRAverage( source = source )
         if nuda.env.verb_output: mrav.print_output( )
-        if nuda.env.verb_table: mrav.print_table( )
+        if nuda.env.verb_latex: mrav.print_latex( )
         #
     #
     print(50*'-')

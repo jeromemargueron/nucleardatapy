@@ -356,19 +356,19 @@ class setupMRAverage():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(f"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ & ${self.rad_cen:.2f}\pm{self.rad_sig_std}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \\\\")
         else:
-            print(f"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
+            print(f"- No table for source {self.source} (average). To get table, write 'verb_latex = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
 
 def gauss( ax, cent, sig_up, sig_do ):

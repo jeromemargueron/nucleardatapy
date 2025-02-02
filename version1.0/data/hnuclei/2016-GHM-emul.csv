@@ -1,9 +1,0 @@
-# single-particle energies for L-hypernuclei using emulsion
-# From Tab. IV presented in Ref. Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)
-# Z, name, N, sp state, l, spe (MeV), err (MeV)
- 4, Be,   2, 1s, 0,   -5.16, 0.08
- 3, Li,   4, 1s, 0,   -6.80, 0.03
- 6,  C,   5, 1p, 1,   -0.14, 0.05
- 5,  B,   6, 1s, 0,  -11.37, 0.06
- 6,  C,   6, 1s, 0,  -11.69, 0.12
- 6,  C,   6, 1p, 1,   -0.80, 0.30
