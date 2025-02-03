@@ -6,9 +6,9 @@ import nucleardatapy as nuda
 
 def plot_hnuc_masses( pname, table1L, table2L, table1Xi ):
     #
-    hnuc1L = nuda.hnuc.setupBE1LExp( table = table1L )
-    hnuc2L = nuda.hnuc.setupBE2LExp( table = table2L )
-    hnuc1Xi = nuda.hnuc.setupBE1XiExp( table = table1Xi )
+    hnuc1L = nuda.hnuc.setupRE1LExp( table = table1L )
+    hnuc2L = nuda.hnuc.setupRE2LExp( table = table2L )
+    hnuc1Xi = nuda.hnuc.setupRE1XiExp( table = table1Xi )
     #
     # plot
     #
@@ -20,8 +20,8 @@ def plot_hnuc_masses( pname, table1L, table2L, table1Xi ):
     axs.set_xlabel(r'Neutron number $N$')
     axs.set_yscale('log')
     axs.set_xscale('log')
-    axs.set_xlim([1.0, 140])
-    axs.set_ylim([1.0, 90.0])
+    axs.set_xlim([0.8, 140])
+    axs.set_ylim([0.8, 90.0])
     #
     axs.scatter( hnuc1L.N,      hnuc1L.Z,      marker='s', s=12, color=nuda.param.col[0], label=r'1$\Lambda$ from table '+table1L )
     axs.scatter( hnuc2L.N+0.05, hnuc2L.Z+0.05, marker='s', s=12, color=nuda.param.col[1], label=r'2$\Lambda$ from table '+table2L )

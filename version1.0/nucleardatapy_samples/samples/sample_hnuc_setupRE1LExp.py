@@ -8,26 +8,26 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_hnuc_setupBE1XiExp.py:")
+    print("Enter sample_hnuc_setupRE1LExp.py:")
     print(50*'-')
     #
-    tables = [ '2015-1Xi-Nakazawa' ]
-    #tables, tables_lower = nuda.hnuc.be1Xi_exp_tables()
+    tables = [ '2016-1L-GHM' ]
+    #tables, tables_lower = nuda.hnuc.re1L_exp_tables()
     #
     print('run over tables:',tables)
     for table in tables:
         #
-        hnuc = nuda.hnuc.setupBE1XiExp( table = table )
-        print('  A:',hnuc.A)
+        hnuc = nuda.hnuc.setupRE1LExp( table = table )
         print('  Z:',hnuc.Z)
+        print('  A:',hnuc.A)
         print(' ch:',hnuc.ch)
-        print('lbe:',hnuc.xibe)
-        print('lbe_err:',hnuc.xibe_err)
+        print('lre:',hnuc.lre)
+        print('lre_err:',hnuc.lre_err)
         if nuda.env.verb_output: hnuc.print_outputs( )
         if nuda.env.verb_latex:  hnuc.print_latex( )
     #
     print(50*'-')
-    print("Exit sample_hnuc_setupBE1XiExp.py:")
+    print("Exit sample_hnuc_setupRE1LExp.py:")
     print(50*'-')
     #
     

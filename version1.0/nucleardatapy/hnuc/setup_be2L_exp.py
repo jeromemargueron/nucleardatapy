@@ -4,7 +4,7 @@ import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
-def be2L_exp_tables():
+def re2L_exp_tables():
     """
     Return a list of the tables available in this toolkit for the charge radiuus and
     print them all on the prompt.  These tables are the following
@@ -14,7 +14,7 @@ def be2L_exp_tables():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter be2L_exp_tables()")
+    if nuda.env.verb: print("\nEnter re2L_exp_tables()")
     #
     tables = [ '2013-2L-Ahn' ]
     #
@@ -22,11 +22,11 @@ def be2L_exp_tables():
     tables_lower = [ item.lower() for item in tables ]
     #print('tables available in the toolkit:',tables_lower)
     #
-    if nuda.env.verb: print("Exit be2L_exp_tables()")
+    if nuda.env.verb: print("Exit re2L_exp_tables()")
     #
     return tables, tables_lower
 
-class setupBE2LExp():
+class setupRE2LExp():
    """
    Instantiate the object with binding energies given \
    from a table.
@@ -50,12 +50,12 @@ class setupBE2LExp():
       The model to consider. Choose between: 2018 (default), , ...
       """
       #
-      if nuda.env.verb: print("\nEnter setupBE2LExp()")
+      if nuda.env.verb: print("\nEnter setupRE2LExp()")
       #
       self.table = table
       if nuda.env.verb: print("table:",table)
       #
-      tables, tables_lower = be2L_exp_tables()
+      tables, tables_lower = re2L_exp_tables()
       #
       if table.lower() not in tables_lower:
          print('Table ',table,' is not in the list of tables.')
@@ -69,10 +69,10 @@ class setupBE2LExp():
       nucSymb = []
       nucN = []
       nucA = []
-      nuclbe = []
-      nuclbe_err = []
-      nucldbe = []
-      nucldbe_err = []
+      nuclre = []
+      nuclre_err = []
+      nucldre = []
+      nucldre_err = []
       probe = []
       label = []
       color = []
@@ -98,10 +98,10 @@ class setupBE2LExp():
                nucZ.append(linesplit[0].strip())
                nucSymb.append(linesplit[1].strip())
                nucN.append(linesplit[2].strip())
-               nuclbe.append(linesplit[3].strip())
-               nuclbe_err.append(linesplit[4].strip())
-               nucldbe.append(linesplit[5].strip())
-               nucldbe_err.append(linesplit[6].strip())
+               nuclre.append(linesplit[3].strip())
+               nuclre_err.append(linesplit[4].strip())
+               nucldre.append(linesplit[5].strip())
+               nucldre_err.append(linesplit[6].strip())
                probe.append(linesplit[6].strip().strip('\n'))
                if probe[-1] == 'emul':
                   label.append("Ahn-2013 Emul")
@@ -125,13 +125,13 @@ class setupBE2LExp():
       #: symbol representing the nucleus
       self.symb = nucSymb
       #: Attribute 2L binding energy in MeV.
-      self.llbe = np.array( nuclbe, dtype = float )
+      self.llre = np.array( nuclre, dtype = float )
       #: Attribute 2L binding energy error in MeV.
-      self.llbe_err = np.array( nuclbe_err, dtype = float )
+      self.llre_err = np.array( nuclre_err, dtype = float )
       #: Attribute 2L bond energy in MeV.
-      self.lldbe = np.array( nucldbe, dtype = float )
+      self.lldre = np.array( nucldre, dtype = float )
       #: Attribute 2L bond energy error in MeV.
-      self.lldbe_err = np.array( nucldbe_err, dtype = float )
+      self.lldre_err = np.array( nucldre_err, dtype = float )
       #: Attribute the probe.
       self.probe = probe
       #: Attribute the label for the data referenced in figures.
@@ -150,7 +150,7 @@ class setupBE2LExp():
       #for i in range(self.nbdata):
       #   print('i:',i,' ell:',self.ell[i],' A:',self.A[i],' lbe:',self.lbe[i],'+-',self.lbe_err[i],' in ',self.lbe_unit)
       #
-      if nuda.env.verb: print("Exit setupBE2LExp()")
+      if nuda.env.verb: print("Exit setupRE2LExp()")
       #
    #
    def print_outputs( self ):
@@ -173,10 +173,10 @@ class setupBE2LExp():
       if any(self.S): print(f"   S: {self.S}")
       if any(self.ch): print(f"  ch: {self.ch}")
       if any(self.symb): print(f" symb: {self.symb}")
-      if any(self.llbe): print(f" be: {self.llbe}")
-      if any(self.llbe_err): print(f" be_err: {self.llbe_err}")
-      if any(self.lldbe): print(f" dbe: {self.lldbe}")
-      if any(self.lldbe_err): print(f" dbe_err: {self.lldbe_err}")
+      if any(self.llre): print(f" be: {self.llre}")
+      if any(self.llre_err): print(f" be_err: {self.llre_err}")
+      if any(self.lldre): print(f" dbe: {self.lldre}")
+      if any(self.lldre_err): print(f" dbe_err: {self.lldre_err}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #
@@ -190,10 +190,10 @@ class setupBE2LExp():
       #
       if nuda.env.verb_latex:
          print(f"- table: {self.table}")
-         print(f" index & A & Z & S & ch & symb & $BE$  & $\Delta BE$ & Ref. \\\\")
+         print(f" index & Z & N & S & ch & symb & $RE$  & $\Delta RE$ & Ref. \\\\")
          print(f"       &   &   &   &    &      & (MeV) & (MeV)       & \\\\")
          for ind,A in enumerate(self.A):
-            print(f" {ind} & {self.A[ind]} & {self.Z[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.llbe[ind]:.3f}\pm {self.llbe_err[ind]:.3f}$ & ${self.lldbe[ind]:.3f}\pm {self.lldbe_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
+            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.llre[ind]:.3f}\pm {self.llre_err[ind]:.3f}$ & ${self.lldre[ind]:.3f}\pm {self.lldre_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

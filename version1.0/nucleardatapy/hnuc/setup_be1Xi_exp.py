@@ -4,7 +4,7 @@ import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
-def be1Xi_exp_tables():
+def re1Xi_exp_tables():
     """
     Return a list of the tables available in this toolkit for the charge radiuus and
     print them all on the prompt.  These tables are the following
@@ -14,7 +14,7 @@ def be1Xi_exp_tables():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter be1Xi_exp_tables()")
+    if nuda.env.verb: print("\nEnter re1Xi_exp_tables()")
     #
     tables = [ '2015-1Xi-Nakazawa' ]
     #
@@ -22,11 +22,11 @@ def be1Xi_exp_tables():
     tables_lower = [ item.lower() for item in tables ]
     #print('tables available in the toolkit:',tables_lower)
     #
-    if nuda.env.verb: print("Exit be1Xi_exp_tables()")
+    if nuda.env.verb: print("Exit re1Xi_exp_tables()")
     #
     return tables, tables_lower
 
-class setupBE1XiExp():
+class setupRE1XiExp():
    """
    Instantiate the object with binding energies given \
    from a table.
@@ -50,12 +50,12 @@ class setupBE1XiExp():
       The model to consider. Choose between: 2015-Nakazawa (default), , ...
       """
       #
-      if nuda.env.verb: print("\nEnter setupBE1XiExp()")
+      if nuda.env.verb: print("\nEnter setupRE1XiExp()")
       #
       self.table = table
       if nuda.env.verb: print("table:",table)
       #
-      tables, tables_lower = be1Xi_exp_tables()
+      tables, tables_lower = re1Xi_exp_tables()
       #
       if table.lower() not in tables_lower:
          print('Table ',table,' is not in the list of tables.')
@@ -69,8 +69,8 @@ class setupBE1XiExp():
       nucSymb = []
       nucN = []
       nucA = []
-      nucxibe = []
-      nucxibe_err = []
+      nucxire = []
+      nucxire_err = []
       probe = []
       label = []
       color = []
@@ -96,8 +96,8 @@ class setupBE1XiExp():
                nucZ.append(linesplit[0].strip())
                nucSymb.append(linesplit[1].strip())
                nucN.append(linesplit[2].strip())
-               nucxibe.append(linesplit[3].strip())
-               nucxibe_err.append(linesplit[4].strip())
+               nucxire.append(linesplit[3].strip())
+               nucxire_err.append(linesplit[4].strip())
                probe.append(linesplit[5].strip().strip('\n'))
                if probe[-1] == 'emul':
                   label.append("Nakazawa-2015 Emul")
@@ -121,9 +121,9 @@ class setupBE1XiExp():
       #: symbol representing the nucleus
       self.symb = nucSymb
       #: Attribute 1L binding energy in MeV.
-      self.xibe = np.array( nucxibe, dtype = float )
+      self.xire = np.array( nucxire, dtype = float )
       #: Attribute 1L binding energy error in MeV.
-      self.xibe_err = np.array( nucxibe_err, dtype = float )
+      self.xire_err = np.array( nucxire_err, dtype = float )
       #: Attribute the probe.
       self.probe = probe
       #: Attribute the label for the data referenced in figures.
@@ -134,14 +134,14 @@ class setupBE1XiExp():
       self.mark = mark
       #
       self.nbdata = len(self.N)
-      self.xibe_unit = 'MeV'
+      self.e_unit = 'MeV'
       #
       # check and print
       #
       #for i in range(self.nbdata):
       #   print('i:',i,' ell:',self.ell[i],' A:',self.A[i],' lbe:',self.lbe[i],'+-',self.lbe_err[i],' in ',self.lbe_unit)
       #
-      if nuda.env.verb: print("Exit setupBE1XiExp()")
+      if nuda.env.verb: print("Exit setupRE1XiExp()")
       #
    #
    def print_outputs( self ):
@@ -164,8 +164,8 @@ class setupBE1XiExp():
       if any(self.S): print(f"   S: {self.S}")
       if any(self.ch): print(f"  ch: {self.ch}")
       if any(self.symb): print(f" symb: {self.symb}")
-      if any(self.lbe): print(f" xibe: {self.xibe}")
-      if any(self.lbe_err): print(f" xibe_err: {self.xibe_err}")
+      if any(self.lre): print(f" xibe: {self.xire}")
+      if any(self.lre_err): print(f" xibe_err: {self.xire_err}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #
@@ -180,10 +180,10 @@ class setupBE1XiExp():
       #
       if nuda.env.verb_latex:
          print(f"- table: {self.table}")
-         print(f" index & A & Z & S & ch & symb & BE    & & Ref. \\\\")
+         print(f" index & Z & N & S & ch & symb & RE    & & Ref. \\\\")
          print(f"       &   &   &   &    &      & (MeV) & & \\\\")
          for ind,A in enumerate(self.A):
-            print(f" {ind} & {self.A[ind]} & {self.Z[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.xibe[ind]:.3f}\pm {self.xibe_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
+            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.xire[ind]:.3f}\pm {self.xire_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

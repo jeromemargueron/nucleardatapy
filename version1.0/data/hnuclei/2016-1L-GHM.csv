@@ -1,22 +1,39 @@
 # Binding energies for L-hypernuclei
 # From Tab. IV presented in Ref. Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)
-# Z, name,   N, sp state,     LBE,   err,  probe
+# Z, name,   N, sp state,     LRE,   err,  probe
 #                           (MeV), (MeV),
+  1,    H,   1,       1s,    0.13,  0.05,  emul1
+  1,    H,   2,       1s,    2.04,  0.04,  emul1
+  2,   He,   1,       1s,    2.39,  0.03,  emul1
+  2,   He,   2,       1s,    3.12,  0.20,  emul1
+  2,   He,   3,       1s,    4.18,  0.10,  emul1
   2,   He,   4,       1s,    5.55,  0.15,  eeK
-  3,   Li,   4,       1s,    6.80,  0.03,  emul
-  4,   Be,   2,       1s,    5.16,  0.08,  emul
+  2,   He,   5,       1s,    7.16,  0.70,  emul
+  3,   Li,   3,       1s,    5.58,  0.03,  emul1
+  3,   Li,   4,       1s,    6.80,  0.03,  emul1
+  3,   Li,   5,       1s,    8.50,  0.12,  emul1
+  4,   Be,   2,       1s,    5.16,  0.08,  emul1
+  4,   Be,   3,       1s,    6.84,  0.03,  emul1
+  4,   Be,   4,       1s,    6.71,  0.04,  emul1
   4,   Be,   5,       1s,    8.55,  0.13,  eeK
+  4,   Be,   5,       1s,    9.11,  0.22,  emul1
+  5,    B,   3,       1s,    8.29,  0.18,  emul1
   5,    B,   4,       1s,    8.70,  0.30,  piK
-  5,    B,   6,       1s,   11.37,  0.06,  emul
+  5,    B,   4,       1s,    8.89,  0.12,  emul1
+  5,    B,   5,       1s,   10.24,  0.05,  emul1
+  5,    B,   6,       1s,   11.37,  0.06,  emul1
   5,    B,   6,       1s,   11.52,  0.02,  eeK
   5,    B,   6,       1p,    0.54,  0.04,  eeK
   6,    C,   5,       1s,   11.36,  0.20,  piK
+  6,    C,   5,       1s,   10.76,  0.19,  emul1
   6,    C,   5,       1p,    0.36,  0.20,  piK
   6,    C,   5,       1p,    0.14,  0.05,  emul
   6,    C,   6,       1s,   12.00,  0.20,  piK
+  6,    C,   6,       1s,   11.69,  0.12,  emul1
   6,    C,   6,       1s,   11.69,  0.12,  emul
   6,    C,   6,       1p,    1.10,  0.20,  piK
   6,    C,   6,       1p,    0.80,  0.30,  emul
+  6,    C,   7,       1s,   12.17,  0.33,  emul1
   7,    N,   8,       1s,   13.76,  0.16,  eeK
   7,    N,   8,       1p,    2.84,  0.18,  eeK
   8,    O,   7,       1s,   13.00,  0.20,  piK

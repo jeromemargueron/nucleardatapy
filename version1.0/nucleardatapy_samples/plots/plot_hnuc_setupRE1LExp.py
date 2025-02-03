@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_hnuc_setupBE1LExp( pname, tables ):
+def plot_hnuc_setupRE1LExp( pname, tables ):
     #
     # plot
     #
@@ -22,15 +22,15 @@ def plot_hnuc_setupBE1LExp( pname, tables ):
     axs.plot( [0.0,0.28], [0.0,0.0], color='k', linestyle='dashed' )
     for table in tables:
         #
-        hnuc = nuda.hnuc.setupBE1LExp( table = table )
+        hnuc = nuda.hnuc.setupRE1LExp( table = table )
         #
         lab = []
         for i in range(hnuc.nbdata):
             if hnuc.label[i] not in lab:
                 lab.append(hnuc.label[i])
-                axs.errorbar( hnuc.A[i]**(-0.6666), hnuc.lbe[i], yerr=hnuc.lbe_err[i], marker=hnuc.mark[i], color=hnuc.color[i], label=hnuc.label[i], ms=4, ls='none' )
+                axs.errorbar( hnuc.A[i]**(-0.6666), hnuc.lre[i], yerr=hnuc.lre_err[i], marker=hnuc.mark[i], color=hnuc.color[i], label=hnuc.label[i], ms=4, ls='none' )
             else:
-                axs.errorbar( hnuc.A[i]**(-0.6666), hnuc.lbe[i], yerr=hnuc.lbe_err[i], marker=hnuc.mark[i], color=hnuc.color[i], ms=4, ls='none' )                
+                axs.errorbar( hnuc.A[i]**(-0.6666), hnuc.lre[i], yerr=hnuc.lre_err[i], marker=hnuc.mark[i], color=hnuc.color[i], ms=4, ls='none' )                
         #
         axs.text(0.01,26.5,'1s')
         axs.text(0.01,22,'1p')
@@ -49,21 +49,21 @@ def plot_hnuc_setupBE1LExp( pname, tables ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_hnuc_setupBE1LExp.py:")
+    print("Enter plot_hnuc_setupRE1LExp.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
     #
     os.system('mkdir -p figs/')
     #
-    tables, tables_lower = nuda.hnuc.be1L_exp_tables()
+    tables, tables_lower = nuda.hnuc.re1L_exp_tables()
     #
-    pname = 'figs/plot_hnuc_setupBE1LExp.png'
+    pname = 'figs/plot_hnuc_setupRE1LExp.png'
     #
-    plot_hnuc_setupBE1LExp( pname, tables )
+    plot_hnuc_setupRE1LExp( pname, tables )
     #
     print(50*'-')
-    print("Exit plot_hnuc_setupBE1LExp.py:")
+    print("Exit plot_hnuc_setupRE1LExp.py:")
     print(50*'-')
     #
 
