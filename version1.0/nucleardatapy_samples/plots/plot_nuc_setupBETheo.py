@@ -49,7 +49,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     axs.legend(loc='upper right',fontsize='10', ncol=4)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

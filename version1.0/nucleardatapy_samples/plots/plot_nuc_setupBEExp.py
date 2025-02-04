@@ -122,7 +122,7 @@ def plot_nuc_setupBEExp_chart( pname, table, version ):
     #
     axs.legend(loc='lower right',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=300)
     plt.close()
     #
     print(50*'-')
@@ -167,7 +167,7 @@ def plot_nuc_setupBEExp_year( pname, table, version ):
     #
     #axs.legend(loc='lower right',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
     print(50*'-')

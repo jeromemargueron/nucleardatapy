@@ -3,9 +3,6 @@ import sys
 import math
 import numpy as np  # 1.15.0
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def masses_sources():

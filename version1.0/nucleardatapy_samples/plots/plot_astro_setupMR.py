@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_astro_setupMR( pname, sources ):
+def plot_astro_setupMR( pname, sources, sources_av ):
     #
     # plot Mass versus Radius
     #
@@ -20,8 +20,8 @@ def plot_astro_setupMR( pname, sources ):
     #
     axs.set_xlabel(r'$R$ (km)',fontsize='12')
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
-    axs.set_xlim([11, 16.5])
-    axs.set_ylim([1.1, 2.2])
+    axs.set_xlim([10.5, 16.5])
+    axs.set_ylim([1.15, 2.2])
     #
     isource = 1
     xlabel = []
@@ -40,19 +40,30 @@ def plot_astro_setupMR( pname, sources ):
             mr = nuda.astro.setupMR( source = source, obs = obs )
             if nuda.env.verb_output: mr.print_output( )
             if nuda.env.verb_table: mr.print_table( )
-            axs.errorbar( mr.rad, mr.mass, xerr=np.array([(mr.rad_sig_do,mr.rad_sig_up)]).T, yerr=np.array([(mr.mass_sig_do,mr.mass_sig_up)]).T, label=mr.label, color=nuda.param.col[isource], marker=mr.marker, linestyle = 'solid', linewidth = 1 )
+            if source.lower() == 'j0030+0451' and obs == 3:
+                axs.errorbar( mr.rad, mr.mass, xerr=np.array([(mr.rad_sig_do,mr.rad_sig_up)]).T, yerr=np.array([(mr.mass_sig_do,mr.mass_sig_up)]).T, label=mr.label, color=nuda.param.col[isource], marker=mr.marker, linewidth = 1 )
+            elif source.lower() == 'j0030+0451' and obs == 4:
+                axs.errorbar( mr.rad, mr.mass, xerr=np.array([(mr.rad_sig_do,mr.rad_sig_up)]).T, yerr=np.array([(mr.mass_sig_do,mr.mass_sig_up)]).T, label=mr.label, color=nuda.param.col[isource], marker=mr.marker, linewidth = 1 )
+            else:
+                axs.errorbar( mr.rad, mr.mass, xerr=np.array([(mr.rad_sig_do,mr.rad_sig_up)]).T, yerr=np.array([(mr.mass_sig_do,mr.mass_sig_up)]).T, label=mr.label, color=nuda.param.col[isource], marker=mr.marker, linewidth = 1 )
             iobs += 1
             #
-        mrav = nuda.astro.setupMRAverage( source = source )
+        isource += 1
+        #
+    isource = 1
+    for source in sources_av:
+        if source.lower() == 'j0030+0451': obss = [ 1, 2 ]
+        if source.lower() == 'j0740+6620': obss = [ 1, 2 ]
+        mrav = nuda.astro.setupMRAverage( source = source, obss = obss )
         if nuda.env.verb_output: mrav.print_output( )
         if nuda.env.verb_table: mrav.print_table( )
         axs.errorbar( mrav.rad_cen, mrav.mass_cen, xerr=mrav.rad_sig_std, yerr=mrav.mass_sig_std, ms=12, label=mrav.label, color=nuda.param.col[isource], marker='^', linestyle = 'solid', linewidth = 3 )
         isource += 1
     #
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
-    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.48,1.01),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 
@@ -66,15 +77,16 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    sources = nuda.astro.mr_sources( )[0]
+    sources, sources_lower = nuda.astro.mr_sources( )
     print('Complete list of available sources:',sources)
     #
-    sources = [ 'J0030+0451', 'J0740+6620' ]
+    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
+    sources_av = [ 'J0030+0451', 'J0740+6620' ]
     #
     print('sources considered:',sources)
     #
     pname = 'figs/plot_astro_setupMR.png'
-    plot_astro_setupMR( pname, sources )
+    plot_astro_setupMR( pname, sources, sources_av )
     #
     print(50*'-')
     print("Exit plot_astro_setupMR.py:")

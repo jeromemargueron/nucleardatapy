@@ -70,7 +70,7 @@ def plot_nuc_setupRchExp( pname, tables ):
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs[0].legend(loc='upper left',fontsize='8')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 

@@ -14,10 +14,10 @@ def main():
     print("Enter sample_astro_setupMasses.py:")
     print(50*'-')
     #
-    sources = nuda.masses_sources( )[0]
+    sources, sources_lower = nuda.masses_sources( )
     print('Complete list of available sources:', sources )
     #
-    sources = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
+    #sources = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
     sources = [ 'J1614–2230', 'J1600+3053', 'J0740+6620' ]
     #
     print('sources considered:',sources)

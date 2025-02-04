@@ -17,7 +17,7 @@ def plot_eos_setupAM_e( pname, models_micro, models_pheno, asy ):
     #
     fig, axs = plt.subplots(1,2)
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.95, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.95, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E/A$')
@@ -25,9 +25,10 @@ def plot_eos_setupAM_e( pname, models_micro, models_pheno, asy ):
     axs[0].set_ylim([-13, 15])
     #
     axs[1].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1].set_ylabel(r'$E/A$')
+    #axs[1].set_ylabel(r'$E/A$')
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([-13, 15])
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -68,7 +69,7 @@ def plot_eos_setupAM_e( pname, models_micro, models_pheno, asy ):
     #fig.legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
     #plt.tight_layout(rect=[0,0,1,0.95])
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

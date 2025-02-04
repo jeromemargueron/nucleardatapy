@@ -121,7 +121,7 @@ def plot_neutron_skin_for_each_source():
         os.makedirs(output_dir, exist_ok=True)
         fig_name = f"{output_dir}plot_nuc_setup_nskin_exp-{source}.png"
         plt.tight_layout()
-        plt.savefig(fig_name)
+        plt.savefig(fig_name, dpi=200)
         plt.close()
         
         print(f"Plot saved: {fig_name}")

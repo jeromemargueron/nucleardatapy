@@ -4,7 +4,7 @@ import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
-def be1L_exp_tables():
+def re1L_exp_tables():
     """
     Return a list of the tables available in this toolkit for the charge radiuus and
     print them all on the prompt.  These tables are the following
@@ -14,20 +14,20 @@ def be1L_exp_tables():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter be1L_exp_tables()")
+    if nuda.env.verb: print("\nEnter re1L_exp_tables()")
     #
-    tables = [ '2016-GHM' ]
+    tables = [ '2016-1L-GHM' ]
     #tables = [ '2016-GHM-piK', '2016-GHM-eeK', '2016-GHM-emul', '2016-GHM-Kpi' ]
     #
     #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     #print('tables available in the toolkit:',tables_lower)
     #
-    if nuda.env.verb: print("Exit be1L_exp_tables()")
+    if nuda.env.verb: print("Exit re1L_exp_tables()")
     #
     return tables, tables_lower
 
-class setupBE1LExp():
+class setupRE1LExp():
    """
    Instantiate the object with binding energies given \
    from a table.
@@ -43,7 +43,7 @@ class setupBE1LExp():
    **Attributes:**
    """
    #
-   def __init__( self, table = '2016-GHM' ):
+   def __init__( self, table = '2016-1L-GHM' ):
       """
       Parameters
       ----------
@@ -51,12 +51,12 @@ class setupBE1LExp():
       The model to consider. Choose between: 2018 (default), , ...
       """
       #
-      if nuda.env.verb: print("\nEnter setupBE1LExp()")
+      if nuda.env.verb: print("\nEnter setupRE1LExp()")
       #
       self.table = table
       if nuda.env.verb: print("table:",table)
       #
-      tables, tables_lower = be1L_exp_tables()
+      tables, tables_lower = re1L_exp_tables()
       #
       if table.lower() not in tables_lower:
          print('Table ',table,' is not in the list of tables.')
@@ -72,19 +72,20 @@ class setupBE1LExp():
       nucA = []
       nucsps = []
       nucell = []
-      nuclbe = []
-      nuclbe_err = []
+      nuclre = []
+      nuclre_err = []
       probe = []
       label = []
       color = []
       mark = []
       #
-      if table.lower() == '2016-ghm':
+      if table.lower() == '2016-1l-ghm':
          #
-         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-GHM.csv')
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2016-1L-GHM.csv')
          if nuda.env.verb: print('Reads file:',file_in)
          #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'Gal, Hungerford, and Millener, Rev. Mod. Phys. 88, 1 (2016)'
+         self.keyref = 'AGal:2016'
          #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
          #
@@ -114,8 +115,8 @@ class setupBE1LExp():
                elif nucsps[-1] == '1g':
                   nucell.append(4)
                #print('sps:',nucsps[-1])
-               nuclbe.append(linesplit[4].strip())
-               nuclbe_err.append(linesplit[5].strip())
+               nuclre.append(linesplit[4].strip())
+               nuclre_err.append(linesplit[5].strip())
                probe.append(linesplit[6].strip().strip('\n'))
                if probe[-1] == 'piK':
                   label.append("GHM-2016 ($\pi$,K)")
@@ -128,6 +129,10 @@ class setupBE1LExp():
                elif probe[-1] == 'emul':
                   label.append("GHM-2016 Emul")
                   color.append('blue')
+                  mark.append('^')
+               elif probe[-1] == 'emul1':
+                  label.append("GHM-2016 Emul1")
+                  color.append('pink')
                   mark.append('^')
                elif probe[-1] == 'Kpi':
                   label.append("GHM-2016 (K,$\pi$)")
@@ -143,15 +148,21 @@ class setupBE1LExp():
       #: Attribute N (number of neutrons of the nucleus).
       self.N = np.array( nucN, dtype = int )
       #: Attribute A (mass of the nucleus).
-      self.A = self.Z + self.N + np.ones(len(self.N))
+      self.A = self.Z + self.N + np.ones(len(self.N),dtype=int)
+      #: charge of the hypernuclei (=Z, since Lamnda is charged 0)
+      self.ch = self.Z
+      #: Strangness number
+      self.S = -2*np.ones(len(self.N),dtype=int)
+      #: symbol representing the nucleus
+      self.symb = nucSymb
       #: Attribute the angular momentum of the state.
       self.sps = nucsps
       #: Attribute the angular momentum of the state.
       self.ell = np.array( nucell, dtype = int )
       #: Attribute 1L binding energy in MeV.
-      self.lbe = np.array( nuclbe, dtype = float )
+      self.lre = np.array( nuclre, dtype = float )
       #: Attribute 1L binding energy error in MeV.
-      self.lbe_err = np.array( nuclbe_err, dtype = float )
+      self.lre_err = np.array( nuclre_err, dtype = float )
       #: Attribute the probe.
       self.probe = probe
       #: Attribute the label for the data referenced in figures.
@@ -166,14 +177,14 @@ class setupBE1LExp():
       #print('ell min/max:',self.lmin,self.lmax)
       self.nbdata = len(self.N)
       #: Attribute lbe unit.
-      self.lbe_unit = 'MeV'
+      self.e_unit = 'MeV'
       #
       # check and print
       #
       #for i in range(self.nbdata):
       #   print('i:',i,' ell:',self.ell[i],' A:',self.A[i],' lbe:',self.lbe[i],'+-',self.lbe_err[i],' in ',self.lbe_unit)
       #
-      if nuda.env.verb: print("Exit setupBE1LExp()")
+      if nuda.env.verb: print("Exit setupRE1LExp()")
       #
    #
    def print_outputs( self ):
@@ -192,10 +203,31 @@ class setupBE1LExp():
       if any(self.A): print(f"   A: {self.A}")
       if any(self.Z): print(f"   Z: {self.Z}")
       if any(self.N): print(f"   N: {self.N}")
+      if any(self.S): print(f"   S: {self.S}")
+      if any(self.ch): print(f"  ch: {self.ch}")
+      if any(self.symb): print(f" symb: {self.symb}")
       if any(self.ell): print(f" ell: {self.ell}")
-      if any(self.lbe): print(f" spe: {self.lbe}")
-      if any(self.lbe_err): print(f" spe_err: {self.lbe_err}")
+      if any(self.lre): print(f"  re: {self.lre}")
+      if any(self.lre_err): print(f" re_err: {self.lre_err}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #
-
+   def print_latex( self ):
+      """
+      Method which print outputs on terminal's screen in Latex format.
+      """
+      print("")
+      #
+      if nuda.env.verb: print("Enter print_latex()")
+      #
+      if nuda.env.verb_latex:
+         print(f"- table: {self.table}")
+         print(f" index & Z & N & S & ch & symb & $RE$  & Ref. \\\\")
+         print(f"       &   &   &   &    &      & (MeV) &      \\\\")
+         for ind,A in enumerate(self.A):
+            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.lre[ind]:.3f}\pm {self.lre_err[ind]:.3f}$ & \cite{{"+self.keyref+"} \\\\")
+      else:
+         print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
+      #
+      if nuda.env.verb: print("Exit print_latex()")
+      #

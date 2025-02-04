@@ -57,7 +57,7 @@ def plot_astro_setupMup( pname, sources ):
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
     axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8',ncol=2,frameon=False)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
     #
 
@@ -71,7 +71,7 @@ def main():
     #
     os.system('mkdir -p figs/')
     #
-    sources = nuda.astro.mup_sources( )[0]
+    sources, sources_lower = nuda.astro.mup_sources( )
     print('Complete list of available sources:',sources)
     #
     sources = [ 'GW170817', 'GW190814' ]

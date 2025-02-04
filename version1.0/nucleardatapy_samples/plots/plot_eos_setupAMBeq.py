@@ -1,11 +1,7 @@
 
 import os
-import sys
 import numpy as np
 import matplotlib.pyplot as plt
-
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -23,11 +19,15 @@ def plot_eos_setupAMBeq_xp( pname, models_micro, models_pheno ):
     axs[0].set_ylabel(r'proton fraction $x_p$')
     axs[0].set_xlim([0, 0.3])
     axs[0].set_ylim([0, 0.2])
+    axs[0].set_tick_params('y', right=True)
+    axs[0].set_tick_params('x', top=True)
     #
     axs[1].set_xlabel(r'n (fm$^{-3}$)')
     #axs[1].set_ylabel(r'proton fraction $x_p$')
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 0.2])
+    #setp(axs[1].get_yticklabels(), visible=False)
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -60,7 +60,7 @@ def plot_eos_setupAMBeq_xp( pname, models_micro, models_pheno ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def plot_eos_setupAMBeq_xe( pname, models_micro, models_pheno ):
@@ -82,6 +82,7 @@ def plot_eos_setupAMBeq_xe( pname, models_micro, models_pheno ):
     #axs[1].set_ylabel(r'electron fraction $x_e$')
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 0.2])
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -109,7 +110,7 @@ def plot_eos_setupAMBeq_xe( pname, models_micro, models_pheno ):
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def plot_eos_setupAMBeq_xmu( pname, models_micro, models_pheno ):
@@ -131,6 +132,7 @@ def plot_eos_setupAMBeq_xmu( pname, models_micro, models_pheno ):
     #axs[1].set_ylabel(r'muon fraction $x_\mu$')
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 0.2])
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -140,7 +142,7 @@ def plot_eos_setupAMBeq_xmu( pname, models_micro, models_pheno ):
         if beta.esym is not None: 
             print('model:',model)
             axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
-    axs[0].text(0.02,0.8,'microscopic models',fontsize='10')
+    axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     for model in models_pheno:
@@ -158,7 +160,7 @@ def plot_eos_setupAMBeq_xmu( pname, models_micro, models_pheno ):
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
-    plt.savefig(pname)
+    plt.savefig(pname, dpi=200)
     plt.close()
 
 def main():

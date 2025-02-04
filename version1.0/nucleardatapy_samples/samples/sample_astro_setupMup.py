@@ -14,7 +14,7 @@ def main():
     print("Enter sample_astro_setupMup.py:")
     print(50*'-')
     #
-    sources = nuda.astro.mup_sources( )[0]
+    sources, sources_lower = nuda.astro.mup_sources( )
     print('Complete list of available sources:',sources)
     #
     sources = [ 'GW170817', 'GW190814' ]
