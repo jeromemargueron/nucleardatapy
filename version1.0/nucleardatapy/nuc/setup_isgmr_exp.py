@@ -21,9 +21,9 @@ def isgmr_exp_tables():
     if nuda.env.verb: print("\nEnter isgmr_exp_tables()")
     #
     tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-LATEX' ]
-    print('tables available in the toolkit:',tables)
+    #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
-    print('tables available in the toolkit:',tables_lower)
+    #print('tables available in the toolkit:',tables_lower)
     #
     if nuda.env.verb: print("Exit isgmr_exp_tables()")
     #
@@ -106,13 +106,13 @@ class setupISGMRExp():
          for k,ZZ in enumerate(self.nucZ):
             if str(ZZ) not in isgmr.keys():
                isgmr[str(ZZ)] = {}
-            print('ZZ:',ZZ)
+            #print('ZZ:',ZZ)
             symbol = nuda.param.elements[ ZZ-1 ]
             self.nucSymbol.append( symbol )
             isgmr[str(ZZ)]['symbol'] = symbol
             AA = self.nucA[k]
             print('ZZ:',ZZ,' AA:',AA,' symbol:',isgmr[str(ZZ)]['symbol'])
-            print('  keys:',isgmr[str(ZZ)].keys())
+            #print('  keys:',isgmr[str(ZZ)].keys())
             if 'A' in isgmr[str(ZZ)].keys():
                isgmr[str(ZZ)]['A'].append( AA )
             else:
@@ -166,7 +166,7 @@ class setupISGMRExp():
          self.label = 'Garg-Colo-2018'
          self.note = "Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\\star$ indicate that the $\\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main'' ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit."
          #
-         nucA=[]; nucZ=[]; nucSymbol=[]; nucEprobe=[]; nucProj=[]; 
+         nucA=[]; nucZ=[]; nucN=[]; nucSymbol=[]; nucEprobe=[]; nucProj=[]; 
          nucE0=[]; nucE0_errp=[]; nucE0_errm=[];
          nucG=[]; nucG_errp=[]; nucG_errm=[]; 
          nucEWSR=[]; nucEWSR_errp=[]; nucEWSR_errm=[]; 
@@ -188,27 +188,32 @@ class setupISGMRExp():
                   nucSymbol.append( nucSymbol[-1] )
                   nucA.append( nucA[-1] )
                   nucZ.append( nucZ[-1] )
+                  nucN.append( nucN[-1] )
                else:
                   nuc += 1
                   symbol = ele[0].split('$')[2].strip()
-                  ZZ, = np.where( nuda.param.elements == symbol )[0]
-                  ZZ += 1
-                  nucZ.append( str( ZZ ) )
-                  #print('Z=',ZZ,' symbol:',symbol,'.')
-                  nucSymbol.append( symbol )
+                  ZZ, = np.where( nuda.param.elements == symbol )[0] + 1
                   AA = int( ele[0].split('$')[1].strip('^').strip('{').strip('}') )
+                  NN = AA - ZZ
+                  #ZZ += 1
+                  #print('Z=',ZZ,' symbol:',symbol,' A=',AA,' N=',NN)
+                  nucSymbol.append( symbol )
                   nucA.append( str( AA ) )
+                  nucZ.append( str( ZZ ) )
+                  nucN.append( str( NN ) )
                   #print('A=',AA)
+               #print('Z=',nucZ[-1],' symbol:',nucSymbol[-1],' A=',nucA[-1],' N=',nucN[-1])
                # ele[1]: probe
                #print('ele[1]:',ele[1])
                if ele[1] == ' ' or ele[1] == '  ':
-                  nucEprobe.append( None )
-                  nucProj.append( None )
+                  nucEprobe.append( nucEprobe[-1] )
+                  nucProj.append( nucProj[-1] )
                else:
-                  Eprobe = int( ele[1].split('MeV')[0].strip() )
-                  proj = ele[1].split('-')[1].strip()
+                  Eprobe = int( ele[1].split('MeV-')[0].strip() )
+                  proj = ele[1].split('MeV-')[1].strip()
                   nucEprobe.append( Eprobe )
                   nucProj.append( proj )
+               print('Z=',nucZ[-1],' symbol:',nucSymbol[-1],' A=',nucA[-1],' N=',nucN[-1],' Eprobe=',nucEprobe[-1],' proj:',nucProj[-1])
                # ele[3]: E0
                cent, errp, errm = nuda.param.tex2str( ele[3] )
                nucE0.append( cent ); nucE0_errp.append( errp ); nucE0_errm.append( errm );
