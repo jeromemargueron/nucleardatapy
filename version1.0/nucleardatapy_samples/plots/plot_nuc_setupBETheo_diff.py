@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
+def plot_nuc_setupBETheo_diff( tables, table_ref = '1995-DZ', Zref = 50 ):
     #
     print('Tables:',tables)
     if table_ref in tables:
@@ -18,7 +18,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     print('Table_ref:',table_ref)
     print('Zref:',Zref)
     #
-    pname = 'figs/plot_nuc_setupBETheo_Zref'+str(Zref)+'.png'
+    pname = 'figs/plot_nuc_setupBETheo_diff_Zref'+str(Zref)+'.png'
     print(f'Plot name: {pname}')
     #
     # plot
@@ -32,7 +32,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
     axs.set_xlabel(r'N',fontsize='12')
     #axs.set_xlim([0, 200])
     axs.set_ylim([-10, 10])
-    axs.text(int(Zref),400,'For Z='+str(Zref),fontsize='12')
+    axs.text(int(Zref),-5,'For Z='+str(Zref),fontsize='12')
     #
     # loop over the tables
     #
@@ -56,7 +56,7 @@ def plot_nuc_setupBETheo_isotopes( tables, table_ref = '1995-DZ', Zref = 50 ):
 def main():
     #
     print(50*'-')
-    print("Enter plot_nuc_setupBETheo.py:")
+    print("Enter plot_nuc_setupBETheo_diff.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -66,12 +66,12 @@ def main():
     tables, tables_lower = nuda.nuc.be_theo_tables()
     #tables = [ '1995-DZ' ]
     #
-    plot_nuc_setupBETheo_isotopes( tables, Zref = 50 )
+    plot_nuc_setupBETheo_diff( tables, Zref = 50 )
     #
-    plot_nuc_setupBETheo_isotopes( tables, Zref = 20 )
+    plot_nuc_setupBETheo_diff( tables, Zref = 20 )
     #
     print(50*'-')
-    print("Exit plot_nuc_setupBETheo.py:")
+    print("Exit plot_nuc_setupBETheo_diff.py:")
     print(50*'-')
     #
     
