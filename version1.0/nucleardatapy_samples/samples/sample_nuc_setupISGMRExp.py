@@ -14,8 +14,11 @@ def main():
     print("Enter sample_nuc_setupISGMRExp.py:")
     print(50*'-')
     #
-    #tables = [ '2010-ISGMR_LI', '2018-ISGMR-GARG' ]
-    tables, tables_lower = nuda.nuc.isgmr_exp_tables()
+    #tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG' ]
+    #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
+    tables = [ '2010-ISGMR-LI' ]
+    #tables = [ '2018-ISGMR-GARG' ]
+    #tables = [ '2018-ISGMR-GARG-LATEX' ]
     #
     for table in tables:
         #
