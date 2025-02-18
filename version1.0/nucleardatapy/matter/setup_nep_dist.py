@@ -149,12 +149,12 @@ class setupNEPDist():
         print("- Print latex:")
         print("   models:", len(self.models), self.models, len(self.params))
         print(' table:')
-        print(' NEP & $E_{\sat}$ & $n_{\sat}$ & $K_{\sat}$ & $Q_{\sat}$ & $Z_{\sat}$ &',
-            ' $E_{sym}$ & $L_{sym}$ & $K_{sym}$ & $Q_{sym}$ & $Z_{sym}$ &',
-            ' $m^*_{sat}/m$ & $\Delta m^*_{sat}/m$ \\\\')
-        print(' & MeV & fm$^{-3}n$ & MeV & MeV & MeV &',
-            ' MeV & MeV & MeV & MeV & MeV &',
-            '  &  \\\\')
+        print(r' NEP & $E_{\sat}$ & $n_{\sat}$ & $K_{\sat}$ & $Q_{\sat}$ & $Z_{\sat}$ &',
+            r' $E_{sym}$ & $L_{sym}$ & $K_{sym}$ & $Q_{sym}$ & $Z_{sym}$ &',
+            r' $m^*_{sat}/m$ & $\Delta m^*_{sat}/m$ \\\\')
+        print(r' & MeV & fm$^{-3}n$ & MeV & MeV & MeV &',
+            r' MeV & MeV & MeV & MeV & MeV &',
+            r'  &  \\\\')
         print(f' centroid & {self.Esat_mean:.2f} & {self.nsat_mean:.3f} &',
             f' {self.Ksat_mean:.1f} & {self.Qsat_mean:.0f} & {self.Zsat_mean:.0f} &',
             f' {self.Esym_mean:.2f} & {self.Lsym_mean:.1f} & {self.Ksym_mean:.0f} &',

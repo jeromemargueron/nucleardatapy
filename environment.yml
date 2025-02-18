@@ -1,0 +1,11 @@
+name: test_env
+dependencies:
+  - python=3.9
+  - jupyter
+  - seaborn
+  - numpy
+  - scipy
+  - conda-forge::sphinx_rtd_theme
+  - conda-forge::sphinxcontrib-bibtex
+  - conda-forge::nbsphinx
+  - conda-forge::pandoc

@@ -1,0 +1,43 @@
+name: Test Jupyter book build
+env:
+  CLONE_PATH: ${{ github.workspace }}
+  EXAMPLES_BOOK: ${{ github.workspace }}/book/_build/html
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version}}
+
+      - name: Install OpenMPI
+        run: |
+          sudo apt-get update
+
+      - name: Setup python with tox
+        run: |
+          $CLONE_PATH/.github/workflows/setup_base_python.sh ${{ runner.os }}
+
+      - name: Build Jupyter Book
+        run: |
+          pushd $CLONE_PATH
+          tox -r -e book
+          popd
+
+      - name: Archive examples Jupyter book
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ${{ env.EXAMPLES_BOOK }}
