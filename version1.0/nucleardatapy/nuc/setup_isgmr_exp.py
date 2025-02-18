@@ -20,7 +20,7 @@ def isgmr_exp_tables():
     #
     if nuda.env.verb: print("\nEnter isgmr_exp_tables()")
     #
-    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-LATEX' ]
+    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-LATEX', '2022-ISGMR-average' ]
     #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     #print('tables available in the toolkit:',tables_lower)
@@ -199,6 +199,28 @@ class setupISGMRExp():
                nbk += 1
          #
          nbk -= 1
+         #
+      elif table.lower() == '2022-isgmr-average':
+         #
+         file_in = os.path.join(nuda.param.path_data,'nuclei/isgmr/2022-ISGMR-average.dat')
+         if nuda.env.verb: print('Reads file:',file_in)
+         self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
+         self.label = 'Average-2022'
+         self.note = "write here notes about this table."
+         nucZ, nucA, nucM12Mm1, nucM12Mm1_errp, nucM12Mm1_errm = \
+            np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
+         nucN = nucA - nucZ
+         #print('elements:',nuda.param.elements)
+         for k,Z in enumerate(nucZ):
+            nucSymbol.append( nuda.param.elements[int(Z)-1] )
+            nucEprobe.append( '100' )
+            nucProj.append( '$\alpha$' )
+            nucE0.append( None ); nucE0_errp.append( None ); nucE0_errm.append( None )
+            nucG.append( None ); nucG_errp.append( None ); nucG_errm.append( None )
+            nucEWSR.append( None ); nucEWSR_errp.append( None ); nucEWSR_errm.append( None )
+            nucM12M0.append( None ); nucM12M0_errp.append( None ); nucM12M0_errm.append( None )
+            nucM32M1.append( None ); nucM32M1_errp.append( None ); nucM32M1_errm.append( None )
+         nuc = len( nucZ ); nbk = nuc
       #
       print('\nnumber of different nuclei:',nuc)
       print('\nnumber of total entries:   ',nbk)
@@ -215,7 +237,45 @@ class setupISGMRExp():
       isgmr['ref'] = nucRef
       self.isgmr = isgmr
       #
-      # compute average values
+      #: Attribute energy unit.
+      self.E_unit = 'MeV'
+      #
+      if nuda.env.verb: print("Exit setupISGMRExp()")
+   #
+   def print_outputs( self ):
+      """
+      Method which print outputs on terminal's screen.
+      """
+      print("")
+      #
+      if nuda.env.verb: print("Enter print_outputs()")
+      #
+      print("- Print output:")
+      print("   table:",self.table)
+      print("   ref:",self.ref)
+      print("   label:",self.label)
+      print("   note:",self.note)
+      print('\nZ:',self.isgmr['Z'])
+      print('\nA:',self.isgmr['A'])
+      for ind,Z in enumerate( self.isgmr['Z'] ):
+         print('For Z:',Z,' A:',self.isgmr['A'][ind])
+         for A in self.isgmr['A'][ind]:
+            print('Centroid energy:',self.isgmr['M12Mm1'][ind])
+            print('   with errp:',self.isgmr['M12Mm1_errp'][ind])
+            print('   with errm:',self.isgmr['M12Mm1_errm'][ind])
+      #
+      if nuda.env.verb: print("Exit print_outputs()")
+      #
+   #
+   def average( self ):
+      """
+      Method to average the data when same target is given.
+
+      **Attributes:**
+      """
+      print("")
+      #
+      if nuda.env.verb: print("Enter average()")
       #
       k = 0
       AAm1 = 0
@@ -381,36 +441,54 @@ class setupISGMRExp():
       isgmrm['M12Mm1'] = nM12Mm1; isgmrm['M12Mm1_errp'] = nM12Mm1_errp; isgmrm['M12Mm1_errm'] = nM12Mm1_errm
       isgmrm['M32M1'] = nM32M1; isgmrm['M32M1_errp'] = nM32M1_errp; isgmrm['M32M1_errm'] = nM32M1_errm
       self.isgmrm = isgmrm
-
+      #
       for k in range(len(isgmrm['A'])):
          print('Z=',isgmrm['Z'][k],' symbol:',isgmrm['symbol'][k],' A=',isgmrm['A'][k],' N=',isgmrm['N'][k],' E0:',isgmrm['E0'][k],isgmrm['E0_errp'][k],isgmrm['E0_errm'][k])
       #
-      #: Attribute energy unit.
-      self.E_unit = 'MeV'
+      return self
       #
-      if nuda.env.verb: print("Exit setupISGMRExp()")
+      if nuda.env.verb: print("Exit average()")
+      #
    #
-   def print_outputs( self ):
+   def select( self, Zref=50, obs = 'M12Mm1' ):
       """
-      Method which print outputs on terminal's screen.
+      Method to select a subset of data.
+
+      :param Zref: Fix the reference charge for the search of isotopes.
+      :type Zref: int, optional. Default: 1.
+      :param obs: kind of observable to extract: 'M12M0', 'M12Mm1', 'M32M1'.
+      :type obs: str
+      **Attributes:**
       """
       print("")
       #
-      if nuda.env.verb: print("Enter print_outputs()")
+      if nuda.env.verb: print("Enter select()")
       #
-      print("- Print output:")
-      print("   table:",self.table)
-      print("   ref:",self.ref)
-      print("   label:",self.label)
-      print("   note:",self.note)
-      print('\nZ:',self.isgmr['Z'])
-      print('\nA:',self.isgmr['A'])
-      for ind,Z in enumerate( self.isgmr['Z'] ):
-         print('For Z:',Z,' A:',self.isgmr['A'][ind])
-         for A in self.isgmr['A'][ind]:
-            print('Centroid energy:',self.isgmr['M12Mm1'][ind])
-            print('   with errp:',self.isgmr['M12Mm1_errp'][ind])
-            print('   with errm:',self.isgmr['M12Mm1_errm'][ind])
+      nucA = []; cent = []; errp = []; errm = [];
+      for ind,A in enumerate(self.isgmr['A']):
+         if obs == 'M12M0' and int( self.isgmr['Z'][ind] ) == Zref and self.isgmr['M12M0'][ind] is not None:
+            nucA.append( int(A) )
+            cent.append( float( self.isgmr['M12M0'][ind] ) )
+            errp.append( float( self.isgmr['M12M0_errp'][ind] ) )
+            errm.append( float( self.isgmr['M12M0_errm'][ind] ) )
+         if obs == 'M12Mm1' and int( self.isgmr['Z'][ind] ) == Zref and self.isgmr['M12Mm1'][ind] is not None:
+            nucA.append( int(A) )
+            cent.append( float( self.isgmr['M12Mm1'][ind] ) )
+            errp.append( float( self.isgmr['M12Mm1_errp'][ind] ) )
+            errm.append( float( self.isgmr['M12Mm1_errm'][ind] ) )
+         if obs == 'M32M1' and int( self.isgmr['Z'][ind] ) == Zref and self.isgmr['M32M1'][ind] is not None:
+            nucA.append( int(A) )
+            cent.append( float( self.isgmr['M32M1'][ind] ) )
+            errp.append( float( self.isgmr['M32M1_errp'][ind] ) )
+            errm.append( float( self.isgmr['M32M1_errm'][ind] ) )
+      erra = 0.5 * np.add( errp, errm )
+      self.nucA = nucA
+      self.cent = cent
+      self.errp = errp
+      self.errm = errm
+      self.erra = erra
       #
-      if nuda.env.verb: print("Exit print_outputs()")
+      return self
+      #
+      if nuda.env.verb: print("Exit select()")
       #

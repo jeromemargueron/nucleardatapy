@@ -459,7 +459,6 @@ class setupBEExp():
         """
         Method which select some nuclei from the table according to some criteria.
 
-
         :param interp: If interp='n', exclude the interpolated nuclei from the selected ones. \
         If interp='y' consider them in the table, in addition to the others.
         :type interp: str, optional. Default = 'n'.

@@ -13,27 +13,24 @@ def plot_nuc_setupISGMRExp( pname, tables ):
     #
     # plot
     #
-    fig, axs = plt.subplots(1,3)
-    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
-    #
-    axs[0].set_title(r'Zr')
-    axs[0].set_ylabel(r'$E_{ISGMR}$')
-    axs[0].set_xlabel(r'A')
-    #axs[0].set_xlim([88, 96])
-    axs[0].set_ylim([13, 18])
-    #
-    axs[1].set_title(r'Sn')
-    axs[1].set_xlabel(r'A')
-    #axs[1].set_xlim([110, 136])
-    axs[1].set_ylim([13, 18])
-    #
-    axs[2].set_title(r'Pb')
-    axs[2].set_xlabel(r'A')
-    #axs[2].set_xlim([202, 210])
-    axs[2].set_ylim([13, 18])
+    obs = 'M12Mm1'
     #
     nucZ = [ 40, 50, 82 ]
+    #
+    fig, axs = plt.subplots(1,3)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.1, hspace=0.3)
+    #
+    if obs == 'M12M0':
+        axs[0].set_ylabel(r'$E_{ISGMR}$ ($m_1/m_0$)')
+    elif obs == 'M12Mm1':
+        axs[0].set_ylabel(r'$E_{ISGMR}$ ($\sqrt{m_1/m_{-1}}$)')
+    elif obs == 'M12Mm1':
+        axs[0].set_ylabel(r'$E_{ISGMR}$ ($\sqrt{m_3/m_1}$)')
+    #
+    #axs[0].set_xlim([88, 96])
+    #axs[1].set_xlim([110, 136])
+    #axs[2].set_xlim([202, 210])
     #
     for k,table in enumerate( tables ):
         #
@@ -44,20 +41,15 @@ def plot_nuc_setupISGMRExp( pname, tables ):
         #print('E_errp[gmr.Z==40]:',gmr.E_errp[gmr.Z==40])
         for i in [0,1,2]:
             print('For Z = ',nucZ[i])
-            nucA = []; cent = []; errp = []; errm = [];
-            for ind,A in enumerate(gmr.isgmr['A']):
-                if int( gmr.isgmr['Z'][ind] ) == nucZ[i] and gmr.isgmr['M12Mm1'][ind] is not None:
-                    nucA.append( int(A)+0.2*k )
-                    cent.append( float( gmr.isgmr['M12Mm1'][ind] ) )
-                    errp.append( float( gmr.isgmr['M12Mm1_errp'][ind] ) )
-                    errm.append( float( gmr.isgmr['M12Mm1_errm'][ind] ) )
-            print('A:',nucA)
-            print('cent:',cent)
-            print('errp:',errp)
-            print('errm:',errm)
-            axs[i].errorbar( nucA, cent, yerr=errp, fmt='o', label=gmr.label )
+            axs[i].set_title(nuda.param.elements[nucZ[i]-1])
+            axs[i].set_xlabel(r'A')
+            axs[i].set_ylim([13, 18])
+            if i>0: axs[i].tick_params('y', labelleft=False)
+            gmrs = gmr.select( Zref = nucZ[i], obs = obs )
+            x = gmrs.nucA+0.2*k*np.ones(len(gmrs.nucA))
+            axs[i].errorbar( x, gmrs.cent, yerr=gmrs.erra, fmt='o', label=gmr.label )
     #
-    axs[2].legend(loc='upper right',fontsize='xx-small')
+    axs[2].legend(loc='upper right',fontsize='10')
     #
     plt.savefig(pname, dpi=200)
     plt.close()
@@ -73,7 +65,7 @@ def main():
     os.system('mkdir -p figs/')
     #
     #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
-    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG-LATEX' ]
+    tables = [ '2018-ISGMR-GARG-LATEX', '2022-ISGMR-average' ]
     #
     pname = 'figs/plot_nuc_setupISGMRExp.png'
     #
