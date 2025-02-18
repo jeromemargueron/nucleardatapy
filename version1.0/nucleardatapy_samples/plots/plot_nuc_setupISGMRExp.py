@@ -35,7 +35,7 @@ def plot_nuc_setupISGMRExp( pname, tables ):
     #
     nucZ = [ 40, 50, 82 ]
     #
-    for table in tables:
+    for k,table in enumerate( tables ):
         #
         print('Table:',table)
         gmr = nuda.nuc.setupISGMRExp( table = table )
@@ -47,7 +47,7 @@ def plot_nuc_setupISGMRExp( pname, tables ):
             nucA = []; cent = []; errp = []; errm = [];
             for ind,A in enumerate(gmr.isgmr['A']):
                 if int( gmr.isgmr['Z'][ind] ) == nucZ[i] and gmr.isgmr['M12Mm1'][ind] is not None:
-                    nucA.append( int(A) )
+                    nucA.append( int(A)+0.2*k )
                     cent.append( float( gmr.isgmr['M12Mm1'][ind] ) )
                     errp.append( float( gmr.isgmr['M12Mm1_errp'][ind] ) )
                     errm.append( float( gmr.isgmr['M12Mm1_errm'][ind] ) )
@@ -73,7 +73,7 @@ def main():
     os.system('mkdir -p figs/')
     #
     #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
-    tables = [ '2018-ISGMR-GARG-LATEX' ]
+    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG-LATEX' ]
     #
     pname = 'figs/plot_nuc_setupISGMRExp.png'
     #

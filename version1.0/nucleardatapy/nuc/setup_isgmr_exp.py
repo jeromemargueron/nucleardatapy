@@ -59,19 +59,6 @@ class setupISGMRExp():
       self.table = table
       if nuda.env.verb: print("table:",table)
       #
-      #: Attribute Z (charge of the nucleus).
-      self.nucZ = []
-      #: Attribute A (mass of the nucleus).
-      self.nucA = []
-      #: Attribute the symbol of the element.
-      self.nucSymbol = []
-      #: Attribute energy centroid.
-      self.nucM12Mm1_cent = []
-      #: Attribute (+) uncertainty in the energy centroid.
-      self.nucM12Mm1_errp = []
-      #: Attribute (-) uncertainty in the energy centroid.
-      self.nucM12Mm1_errm = []
-      #
       tables, tables_lower = isgmr_exp_tables()
       #
       if table.lower() not in tables_lower:
@@ -79,8 +66,15 @@ class setupISGMRExp():
           print('list of tables:',tables)
           print('-- Exit the code --')
           exit()
-      # dictionary
-      isgmr = {}
+      #
+      nucA=[]; nucZ=[]; nucN=[]; nucSymbol=[]; nucEprobe=[]; nucProj=[]; 
+      nucE0=[]; nucE0_errp=[]; nucE0_errm=[];
+      nucG=[]; nucG_errp=[]; nucG_errm=[]; 
+      nucEWSR=[]; nucEWSR_errp=[]; nucEWSR_errm=[]; 
+      nucM12M0=[]; nucM12M0_errp=[]; nucM12M0_errm=[]; 
+      nucM12Mm1=[]; nucM12Mm1_errp=[]; nucM12Mm1_errm=[]; 
+      nucM32M1=[]; nucM32M1_errp=[]; nucM32M1_errm=[];
+      nucRef=[];
       #
       if table.lower() == '2010-isgmr-li':
          #
@@ -92,37 +86,19 @@ class setupISGMRExp():
          self.label = 'Li-Garg-Liu-2010'
          #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
-         Z, A, self.nucM12Mm1_cent, self.nucM12Mm1_errp, self.nucM12Mm1_errm = \
-            np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
-         self.nucZ = np.array( Z, dtype=int )
-         self.nucZ = np.array( list(set( self.nucZ )), dtype=int )
-         self.nucA = np.array( A, dtype=int )
-         #: Attribute list with + and - uncertainty
-         #self.E_erra = [ self.E_errp, self.E_errm ]
-         #: Attribute symmetrised uncertainty (average between + and - uncertainty).
-         #self.E_errs = 0.5 * ( self.E_errp + self.E_errm )
-         isgmr['Z'] = self.nucZ
-         isgmr['A'] = self.nucA
-         for k,ZZ in enumerate(self.nucZ):
-            if str(ZZ) not in isgmr.keys():
-               isgmr[str(ZZ)] = {}
-            #print('ZZ:',ZZ)
-            symbol = nuda.param.elements[ ZZ-1 ]
-            self.nucSymbol.append( symbol )
-            isgmr[str(ZZ)]['symbol'] = symbol
-            AA = self.nucA[k]
-            print('ZZ:',ZZ,' AA:',AA,' symbol:',isgmr[str(ZZ)]['symbol'])
-            #print('  keys:',isgmr[str(ZZ)].keys())
-            if 'A' in isgmr[str(ZZ)].keys():
-               isgmr[str(ZZ)]['A'].append( AA )
-            else:
-               isgmr[str(ZZ)]['A'] = [ AA ]
-            isgmr[str(ZZ)][str(AA)] = {}
-            isgmr[str(ZZ)][str(AA)]['symbol'] = symbol
-            isgmr[str(ZZ)][str(AA)]['M12Mm1'] = {}
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['cent'] = self.nucM12Mm1_cent[k]
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['errp'] = self.nucM12Mm1_errp[k]
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['errm'] = self.nucM12Mm1_errm[k]
+         nucZ, nucA, nucM12Mm1, nucM12Mm1_errp, nucM12Mm1_errm = \
+            np.loadtxt( file_in, usecols=(0,1,4,5,6), comments='#', unpack = True )
+         nucN = nucA - nucZ
+         for k,Z in enumerate(nucZ):
+            nucSymbol.append( nuda.param.elements[int(Z)-1] )
+            nucEprobe.append( '386' )
+            nucProj.append( '$\alpha$' )
+            nucE0.append( None ); nucE0_errp.append( None ); nucE0_errm.append( None )
+            nucG.append( None ); nucG_errp.append( None ); nucG_errm.append( None )
+            nucEWSR.append( None ); nucEWSR_errp.append( None ); nucEWSR_errm.append( None )
+            nucM12M0.append( None ); nucM12M0_errp.append( None ); nucM12M0_errm.append( None )
+            nucM32M1.append( None ); nucM32M1_errp.append( None ); nucM32M1_errm.append( None )
+         nuc = len( nucZ ); nbk = nuc
          #
       elif table.lower() == '2018-isgmr-garg':
          #
@@ -131,32 +107,20 @@ class setupISGMRExp():
          self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
          self.label = 'Garg-Colo-2018'
          self.note = "write here notes about this table."
-         Z, A, self.nucM12Mm1_cent, self.nucM12Mm1_errp, self.nucM12Mm1_errm = \
+         nucZ, nucA, nucM12Mm1, nucM12Mm1_errp, nucM12Mm1_errm = \
             np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
-         self.nucZ = np.array( Z, dtype=int )
-         self.nucZ = np.array( list(set( self.nucZ )), dtype=int )
-         self.nucA = np.array( A, dtype=int )
-         #self.nucE_erra = [ self.E_errp, self.E_errm ]
-         #self.nucE_errs = 0.5 * ( self.E_errp + self.E_errm )
-         isgmr['Z'] = self.nucZ
-         isgmr['A'] = self.nucA
-         for k,ZZ in enumerate(self.nucZ):
-            isgmr[str(ZZ)] = {}
-            symbol = nuda.param.elements[ ZZ-1 ]
-            self.nucSymbol.append( symbol )
-            isgmr[str(ZZ)]['symbol'] = symbol
-            AA = self.nucA[k]
-            print('ZZ:',ZZ,' AA:',AA,' symbol:',isgmr[str(ZZ)]['symbol'])
-            if 'A' in isgmr[str(ZZ)].keys():
-               isgmr[str(ZZ)]['A'].append( AA )
-            else:
-               isgmr[str(ZZ)]['A'] = [ AA ]
-            isgmr[str(ZZ)][str(AA)] = {}
-            isgmr[str(ZZ)][str(AA)]['symbol'] = symbol
-            isgmr[str(ZZ)][str(AA)]['M12Mm1'] = {}
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['cent'] = self.nucM12Mm1_cent[k]
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['errp'] = self.nucM12Mm1_errp[k]
-            isgmr[str(ZZ)][str(AA)]['M12Mm1']['errm'] = self.nucM12Mm1_errm[k]
+         nucN = nucA - nucZ
+         #print('elements:',nuda.param.elements)
+         for k,Z in enumerate(nucZ):
+            nucSymbol.append( nuda.param.elements[int(Z)-1] )
+            nucEprobe.append( '100' )
+            nucProj.append( '$\alpha$' )
+            nucE0.append( None ); nucE0_errp.append( None ); nucE0_errm.append( None )
+            nucG.append( None ); nucG_errp.append( None ); nucG_errm.append( None )
+            nucEWSR.append( None ); nucEWSR_errp.append( None ); nucEWSR_errm.append( None )
+            nucM12M0.append( None ); nucM12M0_errp.append( None ); nucM12M0_errm.append( None )
+            nucM32M1.append( None ); nucM32M1_errp.append( None ); nucM32M1_errm.append( None )
+         nuc = len( nucZ ); nbk = nuc
          #
       elif table.lower() == '2018-isgmr-garg-latex':
          #
@@ -166,14 +130,6 @@ class setupISGMRExp():
          self.label = 'Garg-Colo-2018'
          self.note = "Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\\star$ indicate that the $\\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main'' ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit."
          #
-         nucA=[]; nucZ=[]; nucN=[]; nucSymbol=[]; nucEprobe=[]; nucProj=[]; 
-         nucE0=[]; nucE0_errp=[]; nucE0_errm=[];
-         nucG=[]; nucG_errp=[]; nucG_errm=[]; 
-         nucEWSR=[]; nucEWSR_errp=[]; nucEWSR_errm=[]; 
-         nucM12M0=[]; nucM12M0_errp=[]; nucM12M0_errm=[]; 
-         nucM12Mm1=[]; nucM12Mm1_errp=[]; nucM12Mm1_errm=[]; 
-         nucM32M1=[]; nucM32M1_errp=[]; nucM32M1_errm=[];
-         nucRef=[];
          nbk = 0
          nuc = -1
          with open(file_in,'r') as file:
@@ -243,243 +199,191 @@ class setupISGMRExp():
                nbk += 1
          #
          nbk -= 1
-         print('\nnumber of different nuclei:',nuc)
-         print('\nnumber of total entries:   ',nbk)
-         #
-         #isgmr['Z'] = np.array( sorted(set( nucZ[0:-2] )), dtype=int )
-         #isgmr['A'] = np.array( nucA[0:-2], dtype=int )
-         #self.nucZ = nucZ
-         #self.nucZ = np.array( sorted(set( nucZ[0:-2] )), dtype=int )
-         #self.nucA = np.array( nucA[0:-2], dtype=int )
-         #self.nucSymbol = nucSymbol
-         #self.nucM12Mm1_cent = nucM12Mm1
-         #self.nucM12Mm1_errp = nucM12Mm1_errp
-         #self.nucM12Mm1_errm = nucM12Mm1_errm
-         isgmr = {}
-         isgmr['A'] = nucA
-         isgmr['Z'] = nucZ
-         isgmr['N'] = nucN
-         isgmr['symbol'] = nucSymbol
-         isgmr['Eprobe'] = nucEprobe
-         isgmr['proj'] = nucProj
-         isgmr['E0'] = nucE0
-         isgmr['E0_errp'] = nucE0_errp
-         isgmr['E0_errm'] = nucE0_errm
-         isgmr['G'] = nucG
-         isgmr['G_errp'] = nucG_errp
-         isgmr['G_errm'] = nucG_errm
-         isgmr['EWSR'] = nucEWSR
-         isgmr['EWSR_errp'] = nucEWSR_errp
-         isgmr['EWSR_errm'] = nucEWSR_errm
-         isgmr['M12M0'] = nucM12M0
-         isgmr['M12M0_errp'] = nucM12M0_errp
-         isgmr['M12M0_errm'] = nucM12M0_errm
-         isgmr['M12Mm1'] = nucM12Mm1
-         isgmr['M12Mm1_errp'] = nucM12Mm1_errp
-         isgmr['M12Mm1_errm'] = nucM12Mm1_errm
-         isgmr['M32M1'] = nucM32M1
-         isgmr['M32M1_errp'] = nucM32M1_errp
-         isgmr['M32M1_errm'] = nucM32M1_errm
-         isgmr['ref'] = nucRef
-         #
-         # compute average values
-         #
-         k = 0
-         AAm1 = 0
-         ZZm1 = 0
-
-         nA=[]; nZ=[]; nN=[]; nSymbol=[];  
-         nE0=[]; nE0_errp=[]; nE0_errm=[];
-         nG=[]; nG_errp=[]; nG_errm=[]; 
-         nEWSR=[]; nEWSR_errp=[]; nEWSR_errm=[]; 
-         nM12M0=[]; nM12M0_errp=[]; nM12M0_errm=[]; 
-         nM12Mm1=[]; nM12Mm1_errp=[]; nM12Mm1_errm=[]; 
-         nM32M1=[]; nM32M1_errp=[]; nM32M1_errm=[];
-
-         while k < nbk:
-            AA   = nucA[k]
+      #
+      print('\nnumber of different nuclei:',nuc)
+      print('\nnumber of total entries:   ',nbk)
+      #
+      isgmr = {}
+      isgmr['A'] = nucA; isgmr['Z'] = nucZ; isgmr['N'] = nucN; isgmr['symbol'] = nucSymbol
+      isgmr['Eprobe'] = nucEprobe; isgmr['proj'] = nucProj
+      isgmr['E0'] = nucE0; isgmr['E0_errp'] = nucE0_errp; isgmr['E0_errm'] = nucE0_errm
+      isgmr['G'] = nucG; isgmr['G_errp'] = nucG_errp; isgmr['G_errm'] = nucG_errm
+      isgmr['EWSR'] = nucEWSR; isgmr['EWSR_errp'] = nucEWSR_errp; isgmr['EWSR_errm'] = nucEWSR_errm
+      isgmr['M12M0'] = nucM12M0; isgmr['M12M0_errp'] = nucM12M0_errp; isgmr['M12M0_errm'] = nucM12M0_errm
+      isgmr['M12Mm1'] = nucM12Mm1; isgmr['M12Mm1_errp'] = nucM12Mm1_errp; isgmr['M12Mm1_errm'] = nucM12Mm1_errm
+      isgmr['M32M1'] = nucM32M1; isgmr['M32M1_errp'] = nucM32M1_errp; isgmr['M32M1_errm'] = nucM32M1_errm
+      isgmr['ref'] = nucRef
+      self.isgmr = isgmr
+      #
+      # compute average values
+      #
+      k = 0
+      AAm1 = 0
+      ZZm1 = 0
+      #
+      nA=[]; nZ=[]; nN=[]; nSymbol=[];  
+      nE0=[]; nE0_errp=[]; nE0_errm=[];
+      nG=[]; nG_errp=[]; nG_errm=[]; 
+      nEWSR=[]; nEWSR_errp=[]; nEWSR_errm=[]; 
+      nM12M0=[]; nM12M0_errp=[]; nM12M0_errm=[]; 
+      nM12Mm1=[]; nM12Mm1_errp=[]; nM12Mm1_errm=[]; 
+      nM32M1=[]; nM32M1_errp=[]; nM32M1_errm=[];
+      #
+      while k < nbk:
+         AA   = nucA[k]
+         ZZ   = nucZ[k]
+         if k>0: 
+            AAm1 = nucA[k-1]
+            ZZm1 = nucZ[k-1]
+         if k < nbk-1:
             AAp1 = nucA[k+1]
-            if k>0: AAm1 = nucA[k-1]
-            ZZ   = nucZ[k]
             ZZp1 = nucZ[k+1]
-            if k>0: ZZm1 = nucZ[k-1]
-            #if k>0:
-            #   print('k:',k,' A:',AA,' Z:',ZZ,' E0:',nucE0[k],' nbE0:',nbE0)
-            #else:
-            #   print('k:',k,' A:',AA,' Z:',ZZ,' E0:',nucE0[k])
-            #NN = nucN[k]
+         else:
+            AAp1 = 0
+            ZZp1 = 0
+         #
+         if AA != AAm1 or ZZ != ZZm1:
             #
-            if AA != AAm1 or ZZ != ZZm1:
-               #
-               # Initialisation
-               #
-               nbE0 = 0
-               if nucE0[k] is not None:
-                  nbE0 += 1
-                  E0m = float(nucE0[k])
-                  E0m_errp = float(nucE0_errp[k])**2
-                  E0m_errm = float(nucE0_errm[k])**2
-               nbG = 0
-               if nucG[k] is not None:
-                  nbG += 1
-                  Gm = float(nucG[k])
-                  Gm_errp = float(nucG_errp[k])**2
-                  Gm_errm = float(nucG_errm[k])**2
-               nbEWSR = 0
-               if nucEWSR[k] is not None:
-                  nbEWSR += 1
-                  EWSRm = float(nucEWSR[k])
-                  EWSRm_errp = float(nucEWSR_errp[k])**2
-                  EWSRm_errm = float(nucEWSR_errm[k])**2
-               nbM12M0 = 0
-               if nucM12M0[k] is not None:
-                  nbM12M0 += 1
-                  M12M0m = float(nucM12M0[k])
-                  M12M0m_errp = float(nucM12M0_errp[k])**2
-                  M12M0m_errm = float(nucM12M0_errm[k])**2
-               nbM12Mm1 = 0
-               if nucM12Mm1[k] is not None:
-                  nbM12Mm1 += 1
-                  M12Mm1m = float(nucM12Mm1[k])
-                  M12Mm1m_errp = float(nucM12Mm1_errp[k])**2
-                  M12Mm1m_errm = float(nucM12Mm1_errm[k])**2
-               nbM32M1 = 0
-               if nucM32M1[k] is not None:
-                  nbM32M1 += 1
-                  M32M1m = float(nucM32M1[k])
-                  M32M1m_errp = float(nucM32M1_errp[k])**2
-                  M32M1m_errm = float(nucM32M1_errm[k])**2
-               #
-            if AA == AAp1 and ZZ == ZZp1:
-               #
-               if nucE0[k+1] is not None:
-                  nbE0 += 1
-                  E0m += float(nucE0[k+1])
-                  E0m_errp += float(nucE0_errp[k+1])**2
-                  E0m_errm += float(nucE0_errm[k+1])**2
-               if nucG[k+1] is not None:
-                  nbG += 1
-                  Gm += float(nucG[k+1])
-                  Gm_errp += float(nucG_errp[k+1])**2
-                  Gm_errm += float(nucG_errm[k+1])**2
-               if nucEWSR[k+1] is not None:
-                  nbEWSR += 1
-                  EWSRm += float(nucEWSR[k+1])
-                  EWSRm_errp += float(nucEWSR_errp[k+1])**2
-                  EWSRm_errm += float(nucEWSR_errm[k+1])**2
-               if nucM12M0[k+1] is not None:
-                  nbM12M0 += 1
-                  M12M0m += float(nucM12M0[k+1])
-                  M12M0m_errp += float(nucM12M0_errp[k+1])**2
-                  M12M0m_errm += float(nucM12M0_errm[k+1])**2
-               if nucM12Mm1[k+1] is not None:
-                  nbM12Mm1 += 1
-                  M12Mm1m += float(nucM12Mm1[k+1])
-                  M12Mm1m_errp += float(nucM12Mm1_errp[k+1])**2
-                  M12Mm1m_errm += float(nucM12Mm1_errm[k+1])**2
-               if nucM32M1[k+1] is not None:
-                  nbM32M1 += 1
-                  M32M1m += float(nucM32M1[k+1])
-                  M32M1m_errp += float(nucM32M1_errp[k+1])**2
-                  M32M1m_errm += float(nucM32M1_errm[k+1])**2
-               #
-               #print('k:',k,' A:',AA,' Z:',ZZ)
+            # Initialisation
+            #
+            nbE0 = 0
+            if nucE0[k] is not None:
+               nbE0 += 1
+               E0m = float(nucE0[k])
+               E0m_errp = float(nucE0_errp[k])**2
+               E0m_errm = float(nucE0_errm[k])**2
+            nbG = 0
+            if nucG[k] is not None:
+               nbG += 1
+               Gm = float(nucG[k])
+               Gm_errp = float(nucG_errp[k])**2
+               Gm_errm = float(nucG_errm[k])**2
+            nbEWSR = 0
+            if nucEWSR[k] is not None:
+               nbEWSR += 1
+               EWSRm = float(nucEWSR[k])
+               EWSRm_errp = float(nucEWSR_errp[k])**2
+               EWSRm_errm = float(nucEWSR_errm[k])**2
+            nbM12M0 = 0
+            if nucM12M0[k] is not None:
+               nbM12M0 += 1
+               M12M0m = float(nucM12M0[k])
+               M12M0m_errp = float(nucM12M0_errp[k])**2
+               M12M0m_errm = float(nucM12M0_errm[k])**2
+            nbM12Mm1 = 0
+            if nucM12Mm1[k] is not None:
+               nbM12Mm1 += 1
+               M12Mm1m = float(nucM12Mm1[k])
+               M12Mm1m_errp = float(nucM12Mm1_errp[k])**2
+               M12Mm1m_errm = float(nucM12Mm1_errm[k])**2
+            nbM32M1 = 0
+            if nucM32M1[k] is not None:
+               nbM32M1 += 1
+               M32M1m = float(nucM32M1[k])
+               M32M1m_errp = float(nucM32M1_errp[k])**2
+               M32M1m_errm = float(nucM32M1_errm[k])**2
+            #
+         if AA == AAp1 and ZZ == ZZp1:
+            #
+            if nucE0[k+1] is not None:
+               nbE0 += 1
+               E0m += float(nucE0[k+1])
+               E0m_errp += float(nucE0_errp[k+1])**2
+               E0m_errm += float(nucE0_errm[k+1])**2
+            if nucG[k+1] is not None:
+               nbG += 1
+               Gm += float(nucG[k+1])
+               Gm_errp += float(nucG_errp[k+1])**2
+               Gm_errm += float(nucG_errm[k+1])**2
+            if nucEWSR[k+1] is not None:
+               nbEWSR += 1
+               EWSRm += float(nucEWSR[k+1])
+               EWSRm_errp += float(nucEWSR_errp[k+1])**2
+               EWSRm_errm += float(nucEWSR_errm[k+1])**2
+            if nucM12M0[k+1] is not None:
+               nbM12M0 += 1
+               M12M0m += float(nucM12M0[k+1])
+               M12M0m_errp += float(nucM12M0_errp[k+1])**2
+               M12M0m_errm += float(nucM12M0_errm[k+1])**2
+            if nucM12Mm1[k+1] is not None:
+               nbM12Mm1 += 1
+               M12Mm1m += float(nucM12Mm1[k+1])
+               M12Mm1m_errp += float(nucM12Mm1_errp[k+1])**2
+               M12Mm1m_errm += float(nucM12Mm1_errm[k+1])**2
+            if nucM32M1[k+1] is not None:
+               nbM32M1 += 1
+               M32M1m += float(nucM32M1[k+1])
+               M32M1m_errp += float(nucM32M1_errp[k+1])**2
+               M32M1m_errm += float(nucM32M1_errm[k+1])**2
+            #
+         else:
+            #
+            nA.append( nucA[k] )
+            nZ.append( nucZ[k] )
+            nN.append( nucN[k] )
+            nSymbol.append( nucSymbol[k] )
+            if nbE0 == 0:
+               nE0.append( None )
+               nE0_errp.append( None )
+               nE0_errm.append( None )
             else:
-               #
-               nA.append( nucA[k] )
-               nZ.append( nucZ[k] )
-               nN.append( nucN[k] )
-               nSymbol.append( nucSymbol[k] )
-               if nbE0 == 0:
-                  nE0.append( None )
-                  nE0_errp.append( None )
-                  nE0_errm.append( None )
-               else:
-                  nE0.append( E0m / nbE0 )
-                  nE0_errp.append( math.sqrt( E0m_errp / nbE0 ) )
-                  nE0_errm.append( math.sqrt( E0m_errm / nbE0 ) )
-               if nbG == 0:
-                  nG.append( None )
-                  nG_errp.append( None )
-                  nG_errm.append( None )
-               else:
-                  nG.append( Gm / nbG )
-                  nG_errp.append( math.sqrt( Gm_errp / nbG ) )
-                  nG_errm.append( math.sqrt( Gm_errm / nbG ) )
-               if nbEWSR == 0:
-                  nEWSR.append( None )
-                  nEWSR_errp.append( None )
-                  nEWSR_errm.append( None )
-               else:
-                  nEWSR.append( EWSRm / nbEWSR )
-                  nEWSR_errp.append( math.sqrt( EWSRm_errp / nbEWSR ) )
-                  nEWSR_errm.append( math.sqrt( EWSRm_errm / nbEWSR ) )
-               if nbM12M0 == 0:
-                  nM12M0.append( None )
-                  nM12M0_errp.append( None )
-                  nM12M0_errm.append( None )
-               else:
-                  nM12M0.append( M12M0m / nbM12M0 )
-                  nM12M0_errp.append( math.sqrt( M12M0m_errp / nbM12M0 ) )
-                  nM12M0_errm.append( math.sqrt( M12M0m_errm / nbM12M0 ) )
-               if nbM12Mm1 == 0:
-                  nM12Mm1.append( None )
-                  nM12Mm1_errp.append( None )
-                  nM12Mm1_errm.append( None )
-               else:
-                  nM12Mm1.append( M12Mm1m / nbM12Mm1 )
-                  nM12Mm1_errp.append( math.sqrt( M12Mm1m_errp / nbM12Mm1 ) )
-                  nM12Mm1_errm.append( math.sqrt( M12Mm1m_errm / nbM12Mm1 ) )
-               if nbM32M1 == 0:
-                  nM32M1.append( None )
-                  nM32M1_errp.append( None )
-                  nM32M1_errm.append( None )
-               else:
-                  nM32M1.append( M32M1m / nbM32M1 )
-                  nM32M1_errp.append( math.sqrt( M32M1m_errp / nbM32M1 ) )
-                  nM32M1_errm.append( math.sqrt( M32M1m_errm / nbM32M1 ) )
-               #print('av   k:',k-1,' A:',nA[-1],' Z:',nZ[-1],' E0:',nE0[-1],' nbE0:',nbE0)
-            k += 1
-         print('End k:',k)
-         isgmrm = {}
-         isgmrm['A'] = nA
-         isgmrm['Z'] = nZ
-         isgmrm['N'] = nN
-         isgmrm['symbol'] = nSymbol
-         isgmrm['E0'] = nE0
-         isgmrm['E0_errp'] = nE0_errp
-         isgmrm['E0_errm'] = nE0_errm
-         isgmrm['G'] = nG
-         isgmrm['G_errp'] = nG_errp
-         isgmrm['G_errm'] = nG_errm
-         isgmrm['EWSR'] = nEWSR
-         isgmrm['EWSR_errp'] = nEWSR_errp
-         isgmrm['EWSR_errm'] = nEWSR_errm
-         isgmrm['M12M0'] = nM12M0
-         isgmrm['M12M0_errp'] = nM12M0_errp
-         isgmrm['M12M0_errm'] = nM12M0_errm
-         isgmrm['M12Mm1'] = nM12Mm1
-         isgmrm['M12Mm1_errp'] = nM12Mm1_errp
-         isgmrm['M12Mm1_errm'] = nM12Mm1_errm
-         isgmrm['M32M1'] = nM32M1
-         isgmrm['M32M1_errp'] = nM32M1_errp
-         isgmrm['M32M1_errm'] = nM32M1_errm
+               nE0.append( E0m / nbE0 )
+               nE0_errp.append( math.sqrt( E0m_errp / nbE0 ) )
+               nE0_errm.append( math.sqrt( E0m_errm / nbE0 ) )
+            if nbG == 0:
+               nG.append( None )
+               nG_errp.append( None )
+               nG_errm.append( None )
+            else:
+               nG.append( Gm / nbG )
+               nG_errp.append( math.sqrt( Gm_errp / nbG ) )
+               nG_errm.append( math.sqrt( Gm_errm / nbG ) )
+            if nbEWSR == 0:
+               nEWSR.append( None )
+               nEWSR_errp.append( None )
+               nEWSR_errm.append( None )
+            else:
+               nEWSR.append( EWSRm / nbEWSR )
+               nEWSR_errp.append( math.sqrt( EWSRm_errp / nbEWSR ) )
+               nEWSR_errm.append( math.sqrt( EWSRm_errm / nbEWSR ) )
+            if nbM12M0 == 0:
+               nM12M0.append( None )
+               nM12M0_errp.append( None )
+               nM12M0_errm.append( None )
+            else:
+               nM12M0.append( M12M0m / nbM12M0 )
+               nM12M0_errp.append( math.sqrt( M12M0m_errp / nbM12M0 ) )
+               nM12M0_errm.append( math.sqrt( M12M0m_errm / nbM12M0 ) )
+            if nbM12Mm1 == 0:
+               nM12Mm1.append( None )
+               nM12Mm1_errp.append( None )
+               nM12Mm1_errm.append( None )
+            else:
+               nM12Mm1.append( M12Mm1m / nbM12Mm1 )
+               nM12Mm1_errp.append( math.sqrt( M12Mm1m_errp / nbM12Mm1 ) )
+               nM12Mm1_errm.append( math.sqrt( M12Mm1m_errm / nbM12Mm1 ) )
+            if nbM32M1 == 0:
+               nM32M1.append( None )
+               nM32M1_errp.append( None )
+               nM32M1_errm.append( None )
+            else:
+               nM32M1.append( M32M1m / nbM32M1 )
+               nM32M1_errp.append( math.sqrt( M32M1m_errp / nbM32M1 ) )
+               nM32M1_errm.append( math.sqrt( M32M1m_errm / nbM32M1 ) )
+         k += 1
+      print('End k:',k)
+      isgmrm = {}
+      isgmrm['A'] = nA; isgmrm['Z'] = nZ; isgmrm['N'] = nN; isgmrm['symbol'] = nSymbol
+      isgmrm['E0'] = nE0; isgmrm['E0_errp'] = nE0_errp; isgmrm['E0_errm'] = nE0_errm
+      isgmrm['G'] = nG; isgmrm['G_errp'] = nG_errp; isgmrm['G_errm'] = nG_errm
+      isgmrm['EWSR'] = nEWSR; isgmrm['EWSR_errp'] = nEWSR_errp; isgmrm['EWSR_errm'] = nEWSR_errm
+      isgmrm['M12M0'] = nM12M0; isgmrm['M12M0_errp'] = nM12M0_errp; isgmrm['M12M0_errm'] = nM12M0_errm
+      isgmrm['M12Mm1'] = nM12Mm1; isgmrm['M12Mm1_errp'] = nM12Mm1_errp; isgmrm['M12Mm1_errm'] = nM12Mm1_errm
+      isgmrm['M32M1'] = nM32M1; isgmrm['M32M1_errp'] = nM32M1_errp; isgmrm['M32M1_errm'] = nM32M1_errm
+      self.isgmrm = isgmrm
 
       for k in range(len(isgmrm['A'])):
          print('Z=',isgmrm['Z'][k],' symbol:',isgmrm['symbol'][k],' A=',isgmrm['A'][k],' N=',isgmrm['N'][k],' E0:',isgmrm['E0'][k],isgmrm['E0_errp'][k],isgmrm['E0_errm'][k])
-      self.isgmr = isgmr
-      self.isgmrm = isgmrm
-      #
-      #print('\nkeys():',list(isgmr.keys()))
-      #print('\nZ:',isgmr['Z'])
-      #print('\nA:',isgmr['A'])
-      #for Z in self.isgmr['Z']:
-         #print('For Z:',Z,' A:',self.isgmr[str(Z)]['A'])
-      #print('\nnucA:',self.nucA)
-      #print('\nnucSymbol:',self.nucSymbol)
-      #print('\nM12Mm1:',self.nucM12Mm1_cent)
-      #print('\nM12Mm1_errp:',self.nucM12Mm1_errp)
-      #print('\nM12Mm1_errm:',self.nucM12Mm1_errm)
       #
       #: Attribute energy unit.
       self.E_unit = 'MeV'
@@ -501,12 +405,12 @@ class setupISGMRExp():
       print("   note:",self.note)
       print('\nZ:',self.isgmr['Z'])
       print('\nA:',self.isgmr['A'])
-      for Z in self.isgmr['Z']:
-         print('For Z:',Z,' A:',self.isgmr[str(Z)]['A'])
-         for A in self.isgmr[str(Z)]['A']:
-            print('Centroid energy:',self.isgmr[str(Z)][str(A)]['M12Mm1']['cent'])
-            print('   with errp:',self.isgmr[str(Z)][str(A)]['M12Mm1']['errp'])
-            print('   with errm:',self.isgmr[str(Z)][str(A)]['M12Mm1']['errm'])
+      for ind,Z in enumerate( self.isgmr['Z'] ):
+         print('For Z:',Z,' A:',self.isgmr['A'][ind])
+         for A in self.isgmr['A'][ind]:
+            print('Centroid energy:',self.isgmr['M12Mm1'][ind])
+            print('   with errp:',self.isgmr['M12Mm1_errp'][ind])
+            print('   with errm:',self.isgmr['M12Mm1_errm'][ind])
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #
