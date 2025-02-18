@@ -1,0 +1,11 @@
+format: jb-book
+root: landing
+options:
+  numbered: True
+chapters:
+  - file: nuda_intro
+
+  - file: notebooks/chapter1/tutorial1
+    sections:
+      - file: notebooks/chapter1/tutorial-1
+      - file: notebooks/chapter1/tutorial-2
