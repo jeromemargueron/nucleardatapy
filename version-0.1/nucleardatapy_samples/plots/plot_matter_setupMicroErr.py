@@ -30,10 +30,11 @@ def plot_matter_setupMicroErr( pname, models ):
         #
         mic = nuda.matter.setupMicro( model = model )
         if nuda.env.verb_output: mic.print_outputs( )
-        if mic.nm_e2a is not None: 
+        if mic.nm_e2a is not None:
             print('model:',model)
             axs.plot( mic.nm_den, mic.nm_e2a_err/mic.nm_e2a, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label )
-    axs.plot( den, nuda.uncertainty_stat(den), linestyle='dashed', linewidth=3, label='fit' )        
+    axs.plot( den, nuda.matter.uncertainty_stat(den,err='MBPT'), linestyle='dashed', linewidth=3, label='fit (MBPT)' )
+    axs.plot( den, nuda.matter.uncertainty_stat(den,err='QMC'),  linestyle='dashed', linewidth=3, label='fit (QMC)' )
     #
     axs.legend(loc='upper left',fontsize='12', ncol=3)
     #

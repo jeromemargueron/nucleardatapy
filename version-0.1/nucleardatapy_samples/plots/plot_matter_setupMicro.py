@@ -230,7 +230,7 @@ def main():
     #
     bmodels = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
     #
-    band = nuda.matter.setupMicroBand( bmodels )
+    band = nuda.matter.setupMicroBand( bmodels, matter='NM' )
     #
     # create the classes for the figures
     #

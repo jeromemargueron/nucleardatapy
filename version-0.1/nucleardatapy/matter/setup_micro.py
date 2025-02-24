@@ -6,16 +6,18 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-#nsat = 0.16
-#mnuc2 = 939.0
-
-def uncertainty_stat(den):
-    return 0.07*(den/nuda.cst.nsat)
+def uncertainty_stat( den , err = 'MBPT' ):
+    if err.lower() == 'qmc':
+        return 0.21*(den/nuda.cst.nsat)
+    elif err.lower() == 'mbpt':
+        return 0.07*(den/nuda.cst.nsat)
+    else:
+        print('no model uncertainty is given')
+        print('err:',err)
+        print('exit()')
+        exit()
 
 def micro_mbs():
     """
@@ -623,7 +625,7 @@ class setupMicro():
             #
             # We do not have the data for this model, but we have a fit of the data
             k=int(model.split(sep='-')[4])
-            print('k:',k)
+            #print('k:',k)
             file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM-'+str(k)+'.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
@@ -1010,6 +1012,7 @@ class setupMicro():
             #
         elif model.lower() == '2024-nleft-am':
             #
+            print('enter here:',model)
             self.flag_nm = True
             self.flag_sm = True
             self.flag_kf = False
@@ -1042,8 +1045,8 @@ class setupMicro():
             xdata = self.sm_kfn
             ydata = self.sm_e2adata
             sm_popt, sm_pcov = curve_fit( func_e2a_NLEFT2024, xdata, ydata )
-            #print('sm_popt:',sm_popt)
-            #print('sm_pcov:',sm_pcov)
+            print('sm_popt:',sm_popt)
+            print('sm_pcov:',sm_pcov)
             self.sm_pfit = sm_popt
             self.sm_perr = np.sqrt( np.diag( sm_pcov ) )
             # analyse the uncertainties for e2a, pre, cs2
@@ -1101,8 +1104,8 @@ class setupMicro():
             xdata = self.nm_kfn
             ydata = self.nm_e2adata
             nm_popt, nm_pcov = curve_fit( func_e2a_NLEFT2024, xdata, ydata )
-            #print('nm_popt:',nm_popt)
-            #print('nm_pcov:',nm_pcov)
+            print('nm_popt:',nm_popt)
+            print('nm_pcov:',nm_pcov)
             self.nm_pfit = nm_popt
             self.nm_perr = np.sqrt( np.diag( nm_pcov ) )
             self.nm_pcerr = np.zeros( (100,3), dtype=float )
