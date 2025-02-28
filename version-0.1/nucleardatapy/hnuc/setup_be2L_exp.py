@@ -190,10 +190,10 @@ class setupRE2LExp():
       #
       if nuda.env.verb_latex:
          print(f"- table: {self.table}")
-         print(f" index & Z & N & S & ch & symb & $RE$  & $\Delta RE$ & Ref. \\\\")
-         print(f"       &   &   &   &    &      & (MeV) & (MeV)       & \\\\")
+         print(rf" index & Z & N & S & ch & symb & $RE$  & $\Delta RE$ & Ref. \\\\")
+         print(rf"       &   &   &   &    &      & (MeV) & (MeV)       & \\\\")
          for ind,A in enumerate(self.A):
-            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.llre[ind]:.3f}\pm {self.llre_err[ind]:.3f}$ & ${self.lldre[ind]:.3f}\pm {self.lldre_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.llre[ind]:.3f}\pm {self.llre_err[ind]:.3f}$ & ${self.lldre[ind]:.3f}\pm {self.lldre_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

@@ -254,9 +254,9 @@ class setupMR():
         if nuda.env.verb: print("Enter print_table()")
         #
         if nuda.env.verb_table:
-            print(f"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & ${{{self.rad:.2f}}}^{{{+self.rad_sig_up}}}_{{{-self.rad_sig_do}}}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & ${{{self.rad:.2f}}}^{{{+self.rad_sig_up}}}_{{{-self.rad_sig_do}}}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_table()")
         #
@@ -364,9 +364,9 @@ class setupMRAverage():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(f"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ & ${self.rad_cen:.2f}\pm{self.rad_sig_std}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \\\\")
+            print(rf"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ & ${self.rad_cen:.2f}\pm{self.rad_sig_std}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \\\\")
         else:
-            print(f"- No table for source {self.source} (average). To get table, write 'verb_latex = True' in env.py.")
+            print(rf"- No table for source {self.source} (average). To get table, write 'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #

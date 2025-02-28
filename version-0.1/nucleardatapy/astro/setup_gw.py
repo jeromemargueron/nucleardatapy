@@ -215,9 +215,9 @@ class setupGW():
         if nuda.env.verb: print("Enter print_table()")
         #
         if nuda.env.verb_table:
-            print(f"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(f"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_table()")
         #
@@ -335,9 +335,9 @@ class setupGWAverage():
         if nuda.env.verb: print("Enter print_table()")
         #
         if nuda.env.verb_table:
-            print(f"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(f"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_table()")
         #

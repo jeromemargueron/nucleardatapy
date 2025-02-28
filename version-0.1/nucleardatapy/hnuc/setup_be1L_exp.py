@@ -119,7 +119,7 @@ class setupRE1LExp():
                nuclre_err.append(linesplit[5].strip())
                probe.append(linesplit[6].strip().strip('\n'))
                if probe[-1] == 'piK':
-                  label.append("GHM-2016 ($\pi$,K)")
+                  label.append(r"GHM-2016 ($\pi$,K)")
                   color.append('k')
                   mark.append('s')
                elif probe[-1] == 'eeK':
@@ -135,7 +135,7 @@ class setupRE1LExp():
                   color.append('pink')
                   mark.append('^')
                elif probe[-1] == 'Kpi':
-                  label.append("GHM-2016 (K,$\pi$)")
+                  label.append(r"GHM-2016 (K,$\pi$)")
                   color.append('magenta')
                   mark.append('D')
             else:
@@ -222,10 +222,10 @@ class setupRE1LExp():
       #
       if nuda.env.verb_latex:
          print(f"- table: {self.table}")
-         print(f" index & Z & N & S & ch & symb & $RE$  & Ref. \\\\")
-         print(f"       &   &   &   &    &      & (MeV) &      \\\\")
+         print(rf" index & Z & N & S & ch & symb & $RE$  & Ref. \\\\")
+         print(rf"       &   &   &   &    &      & (MeV) &      \\\\")
          for ind,A in enumerate(self.A):
-            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.lre[ind]:.3f}\pm {self.lre_err[ind]:.3f}$ & \cite{{"+self.keyref+"} \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.lre[ind]:.3f}\pm {self.lre_err[ind]:.3f}$ & \cite{{"+self.keyref+"} \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

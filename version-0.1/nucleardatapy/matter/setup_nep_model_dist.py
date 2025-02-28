@@ -157,22 +157,22 @@ class setupNEPModelDist():
         print("- Print latex:")
         print("   model:",self.model, len(self.params), self.params)
         print(' table:')
-        print(' NEP & $E_{\sat}$ & $n_{\sat}$ & $K_{\sat}$ & $Q_{\sat}$ & $Z_{\sat}$ &',
-            ' $E_{sym}$ & $L_{sym}$ & $K_{sym}$ & $Q_{sym}$ & $Z_{sym}$ &',
-            ' $m^*_{sat}/m$ & $\Delta m^*_{sat}/m$ \\\\')
-        print(' & MeV & fm$^{-3}n$ & MeV & MeV & MeV &',
-            ' MeV & MeV & MeV & MeV & MeV &',
-            '  &  \\\\')
-        print(f' centroid & {self.Esat_mean:.2f} & {self.nsat_mean:.3f} &',
-            f' {self.Ksat_mean:.1f} & {self.Qsat_mean:.0f} & {self.Zsat_mean:.0f} &',
-            f' {self.Esym_mean:.2f} & {self.Lsym_mean:.1f} & {self.Ksym_mean:.0f} &',
-            f' {self.Qsym_mean:.0f} & {self.Zsym_mean:.0f} & {self.msat_mean:.2f} &',
-            f' {self.Dmsat_mean:.3f} \\\\')
-        print(f' std.dev. & {self.Esat_std:.2f} & {self.nsat_std:.3f} &',
-            f' {self.Ksat_std:.1f} & {self.Qsat_std:.0f} & {self.Zsat_std:.0f} &',
-            f' {self.Esym_std:.2f} & {self.Lsym_std:.1f} & {self.Ksym_std:.0f} &',
-            f' {self.Qsym_std:.0f} & {self.Zsym_std:.0f} & {self.msat_std:.2f} &',
-            f' {self.Dmsat_std:.3f} \\\\')
+        print(r' NEP & $E_{\sat}$ & $n_{\sat}$ & $K_{\sat}$ & $Q_{\sat}$ & $Z_{\sat}$ &',
+            r' $E_{sym}$ & $L_{sym}$ & $K_{sym}$ & $Q_{sym}$ & $Z_{sym}$ &',
+            r' $m^*_{sat}/m$ & $\Delta m^*_{sat}/m$ \\\\')
+        print(r' & MeV & fm$^{-3}n$ & MeV & MeV & MeV &',
+            r' MeV & MeV & MeV & MeV & MeV &',
+            r'  &  \\\\')
+        print(rf' centroid & {self.Esat_mean:.2f} & {self.nsat_mean:.3f} &',
+            rf' {self.Ksat_mean:.1f} & {self.Qsat_mean:.0f} & {self.Zsat_mean:.0f} &',
+            rf' {self.Esym_mean:.2f} & {self.Lsym_mean:.1f} & {self.Ksym_mean:.0f} &',
+            rf' {self.Qsym_mean:.0f} & {self.Zsym_mean:.0f} & {self.msat_mean:.2f} &',
+            rf' {self.Dmsat_mean:.3f} \\\\')
+        print(rf' std.dev. & {self.Esat_std:.2f} & {self.nsat_std:.3f} &',
+            rf' {self.Ksat_std:.1f} & {self.Qsat_std:.0f} & {self.Zsat_std:.0f} &',
+            rf' {self.Esym_std:.2f} & {self.Lsym_std:.1f} & {self.Ksym_std:.0f} &',
+            rf' {self.Qsym_std:.0f} & {self.Zsym_std:.0f} & {self.msat_std:.2f} &',
+            rf' {self.Dmsat_std:.3f} \\\\')
         #
         if nuda.env.verb: print("Exit print_latex()")
         #

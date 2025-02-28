@@ -180,10 +180,10 @@ class setupRE1XiExp():
       #
       if nuda.env.verb_latex:
          print(f"- table: {self.table}")
-         print(f" index & Z & N & S & ch & symb & RE    & & Ref. \\\\")
-         print(f"       &   &   &   &    &      & (MeV) & & \\\\")
+         print(rf" index & Z & N & S & ch & symb & RE    & & Ref. \\\\")
+         print(rf"       &   &   &   &    &      & (MeV) & & \\\\")
          for ind,A in enumerate(self.A):
-            print(f" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.xire[ind]:.3f}\pm {self.xire_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.xire[ind]:.3f}\pm {self.xire_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

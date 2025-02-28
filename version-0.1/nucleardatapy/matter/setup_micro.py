@@ -9,6 +9,7 @@ import random
 import nucleardatapy as nuda
 
 def uncertainty_stat( den , err = 'MBPT' ):
+    print('Uncertainty')
     if err.lower() == 'qmc':
         return 0.21*(den/nuda.cst.nsat)
     elif err.lower() == 'mbpt':
@@ -408,8 +409,8 @@ class setupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -436,8 +437,8 @@ class setupMicro():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -463,7 +464,7 @@ class setupMicro():
             self.e2v = APRfit_compute( self.den, self.xpr )
             # energy per particle
             self.e2a = self.e2v / self.den
-            self.e2a_err = np.abs( uncertainty_stat(self.den) * self.e2a )
+            self.e2a_err = np.abs( uncertainty_stat(self.den,err='MBPT') * self.e2a )
             self.e2v_err = self.e2a_err * self.den
             # pressure as the first derivative of E/A
             cs_e2a = CubicSpline( self.den, self.e2a )
@@ -682,7 +683,7 @@ class setupMicro():
             self.nm_kfn_fit = nuda.kf_n( self.nm_den_fit )
             # energy in NM
             self.nm_e2a_fit = func_GCR_e2a(self.nm_den_fit,a[k-1],alfa[k-1],b[k-1],beta[k-1])
-            self.nm_e2a_fit_err = np.abs( uncertainty_stat(self.nm_den_fit) * self.nm_e2a_fit )
+            self.nm_e2a_fit_err = np.abs( uncertainty_stat(self.nm_den_fit,err='MBPT') * self.nm_e2a_fit )
             self.nm_e2v_fit = self.nm_den_fit * self.nm_e2a_fit
             self.nm_e2v_fit_err = self.nm_den_fit * self.nm_e2a_fit_err
             # pressure in NM
@@ -762,7 +763,7 @@ class setupMicro():
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a = self.nm_e2a_23bf
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
@@ -908,12 +909,12 @@ class setupMicro():
             #self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
             self.sm_e2v     = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
                  = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -938,12 +939,12 @@ class setupMicro():
             #self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
             self.sm_e2v     = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
                  = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -1007,7 +1008,7 @@ class setupMicro():
             #
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            #self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
             #
         elif model.lower() == '2024-nleft-am':
@@ -1298,7 +1299,7 @@ class setupMicro():
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.sm_kf = self.sm_kfn
             self.sm_e2a = self.sm_etot
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
             self.sm_e2v     = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -1307,7 +1308,7 @@ class setupMicro():
             self.nm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.nm_e2a = self.nm_etot
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -1320,7 +1321,7 @@ class setupMicro():
             #
             file_in = os.path.join(nuda.param.path_data,'matter/micro/2024-DMC-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = ' I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016).'
+            self.ref = 'I. Tews, R. Somasundaram, D. Lonardoni, H. Göttling, R. Seutin, J. Carlson, S. Gandolfi, K. Hebeler, A. Schwenk, arXiv:2407.08979 [nucl-th]'
             self.note = ""
             self.label = 'QMC-2024'
             self.marker = 's'
