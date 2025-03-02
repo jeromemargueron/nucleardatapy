@@ -9,3 +9,5 @@ data/eos/pheno/Skyrme/.DS_Store
 samples/nucleardatapy_plots/.DS_Store
 .history
 __pycache__
+.ipynb_checkpoints
+*.pyc

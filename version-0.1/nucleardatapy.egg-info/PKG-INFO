@@ -1,9 +1,9 @@
 Metadata-Version: 2.2
 Name: nucleardatapy
-Version: 1.0.0
+Version: 0.1.0
 Summary: A toolkit for nuclear data processing and analysis.
-Author: Nuclear Data Group
-Author-email: Nuclear Data Toolkit Developers <email1@email.com>, Nuclear Data Toolkit Developers <email2@email.com>
+Author: Jerome Margueron, Sudhanva Lalit
+Author-email: 
 License: MIT
 Classifier: Development Status :: 1 - Alpha
 Classifier: Intended Audience :: Science/Research
@@ -16,8 +16,6 @@ Description-Content-Type: text/markdown
 Requires-Dist: numpy
 Requires-Dist: scipy
 Requires-Dist: pandas
-Requires-Dist: matplotlib
-Dynamic: author
 
 # The toolkit `nucleardatapy`
 

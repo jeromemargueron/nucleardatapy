@@ -2,8 +2,9 @@ import os
 import numpy as np  # 1.15.0
 
 #
-nucleardatapy_tk = os.getenv("NUCLEARDATAPY_TK")
-# print('nseospy_path:',nseospy_path)
+# nucleardatapy_tk = os.getenv("NUCLEARDATAPY_TK")
+nucleardatapy_tk = os.path.dirname(os.path.abspath(__file__))
+# print("nseospy_path:", nseospy_path)
 #
 # where data/ are stored
 #
