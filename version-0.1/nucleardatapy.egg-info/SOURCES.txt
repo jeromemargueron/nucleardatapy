@@ -11,6 +11,12 @@ docs/make.bat
 docs/source/api.rst
 docs/source/miscelaneous.rst
 docs/source/usage.rst
+docs/source/api/astro.rst
+docs/source/api/corr.rst
+docs/source/api/crust.rst
+docs/source/api/eos.rst
+docs/source/api/matter.rst
+docs/source/api/nuc.rst
 docs/source/api/setup_astro_gw.rst
 docs/source/api/setup_astro_masses.rst
 docs/source/api/setup_astro_mr.rst
@@ -41,7 +47,6 @@ version-0.1/nucleardatapy/cst.py
 version-0.1/nucleardatapy/env.py
 version-0.1/nucleardatapy/param.py
 version-0.1/nucleardatapy/setup_micro-bkp2.py
-version-0.1/nucleardatapy/setup_micro_matter-bkp.py
 version-0.1/nucleardatapy.egg-info/PKG-INFO
 version-0.1/nucleardatapy.egg-info/SOURCES.txt
 version-0.1/nucleardatapy.egg-info/dependency_links.txt
@@ -460,7 +465,6 @@ version-0.1/nucleardatapy/hnuc/setup_be2L_exp.py
 version-0.1/nucleardatapy/matter/__init__.py
 version-0.1/nucleardatapy/matter/setup_ffg.py
 version-0.1/nucleardatapy/matter/setup_hic.py
-version-0.1/nucleardatapy/matter/setup_micro-old.py
 version-0.1/nucleardatapy/matter/setup_micro.py
 version-0.1/nucleardatapy/matter/setup_micro_band.py
 version-0.1/nucleardatapy/matter/setup_micro_esym.py

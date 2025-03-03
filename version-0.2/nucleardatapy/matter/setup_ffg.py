@@ -299,7 +299,13 @@ class setupFFGNuc():
         if self.den is not None: print(f"   den: {np.round(self.den,2)} in {self.den_unit}")
         if self.delta is not None: print(f"   delta: {np.round(self.delta,2)}")
         if self.kf_n is not None: print(f"   kf_n: {np.round(self.kf_n,2)} in {self.kf_unit}")
-        if self.e2a_int is not None: print(f"   e2a: {np.round(self.e2a_int,2)} in {self.e2a_unit}")
+        if self.e2a_int is not None: print(f"   e2a_int: {np.round(self.e2a_int,2)} in {self.e2a_unit}")
+        if self.pre is not None: print(f"   pre: {np.round(self.pre,2)} in {self.pre_unit}")
+        if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)} in {self.cs2_unit}")
+        print('The non-relativistic quantities are:')
+        if self.e2a_int_nr is not None: print(f"   e2a_int_nr: {np.round(self.e2a_int_nr,2)} in {self.e2a_unit}")
+        if self.pre_nr is not None: print(f"   pre_nr: {np.round(self.pre_nr,2)} in {self.pre_unit}")
+        if self.cs2_nr is not None: print(f"   cs2_nr: {np.round(self.cs2_nr,2)} in {self.cs2_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
