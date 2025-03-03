@@ -1,0 +1,5 @@
+# hyp, hypotheses, Mtot, sigma_low, sigma_up, latexCite
+1, 'low-spin+TaylorF2', 2.74, 0.04, 0.01, BPAbbott:2017
+2, 'high-spin+TaylorF2', 2.82, 0.47, 0.09, BPAbbott:2017
+3, 'low-spin+PhenomPNRT', 2.73, 0.04, 0.01, BPAbbott:2019
+4, 'high-spin+PhenomPNRT', 2.77, 0.22, 0.05, BPAbbott:2019

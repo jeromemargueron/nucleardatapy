@@ -11,7 +11,7 @@ matter.setupPhenoEsym
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupPhenoEsym.py
 	   
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_matter_setupPhenoEsym.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_matter_setupPhenoEsym.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

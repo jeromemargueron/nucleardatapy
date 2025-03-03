@@ -29,11 +29,12 @@ and our explanatory article:
 ```
 @article{Margueron:2025,
     author = {Margueron, J. and others}
-    title = {Title}
+    title = {nucleardatapy toolkit for simple access to nuclear data,
+astrophysical data, and theoretical predictions}
 
 }
 ```
 
-## Authors
+## Authors of this book
 
-Jerome Margueron, et al.
+Jerome Margueron, Sudhanva Lalit, Guilherme Grams

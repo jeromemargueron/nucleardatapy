@@ -11,13 +11,13 @@ nuc.setupBETheo
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupBETheo.py
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_nuc_setupBETheo_Zref20.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupBETheo_Zref20.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	Differences between binding energies predicted by different models with respect to the one predicted by Duflo-Zuker for Z = 20.
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_nuc_setupBETheo_Zref50.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupBETheo_Zref50.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

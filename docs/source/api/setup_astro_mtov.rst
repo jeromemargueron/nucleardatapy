@@ -11,7 +11,7 @@ astro.setupMtov
 
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/plots/plot_astro_setupMtov.py
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_astro_setupMtov.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_astro_setupMtov.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
