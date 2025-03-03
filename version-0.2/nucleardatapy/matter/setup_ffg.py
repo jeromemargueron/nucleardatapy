@@ -301,11 +301,11 @@ class setupFFGNuc():
         if self.kf_n is not None: print(f"   kf_n: {np.round(self.kf_n,2)} in {self.kf_unit}")
         if self.e2a_int is not None: print(f"   e2a_int: {np.round(self.e2a_int,2)} in {self.e2a_unit}")
         if self.pre is not None: print(f"   pre: {np.round(self.pre,2)} in {self.pre_unit}")
-        if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)} in {self.cs2_unit}")
+        if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,3)} in {self.cs2_unit}")
         print('The non-relativistic quantities are:')
         if self.e2a_int_nr is not None: print(f"   e2a_int_nr: {np.round(self.e2a_int_nr,2)} in {self.e2a_unit}")
         if self.pre_nr is not None: print(f"   pre_nr: {np.round(self.pre_nr,2)} in {self.pre_unit}")
-        if self.cs2_nr is not None: print(f"   cs2_nr: {np.round(self.cs2_nr,2)} in {self.cs2_unit}")
+        if self.cs2_nr is not None: print(f"   cs2_nr: {np.round(self.cs2_nr,3)} in {self.cs2_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
@@ -366,7 +366,7 @@ class setupFFGLep():
         #self.e2a_mu = self.e2v_mu / self.den_mu
         self.e2a_mu_int = self.e2a_mu - nuda.cst.mmuc2*self.den_mu / ( self.den_lep )
         self.e2a_lep = self.e2a_el + self.e2a_mu
-        self.e2a_int = self.e2a_el_int + self.e2a_mu_int
+        self.e2a_int_lep = self.e2a_el_int + self.e2a_mu_int
         #: Attribute FFG pressure (degeneracy = 2)
         self.pre_el = fpres( 2.0, self.kf_el, nuda.cst.mec2)
         self.pre_mu = fpres( 2.0, self.kf_mu, nuda.cst.mmuc2)
@@ -399,7 +399,9 @@ class setupFFGLep():
         if self.den_e is not None: print(f"   den_e: {np.round(self.den_e,2)} in {self.den_unit}")
         if self.den_mu is not None: print(f"   den_mu: {np.round(self.den_mu,2)}")
         if self.kf_e is not None: print(f"   kf_e: {np.round(self.kf_e,2)} in {self.kf_unit}")
-        if self.e2a is not None: print(f"   e2a: {np.round(self.e2a,2)} in {self.e2a_unit}")
+        if self.e2a_int_lep is not None: print(f"   e2a_int_lep: {np.round(self.e2a_int_lep,2)} in {self.e2a_unit}")
+        if self.pre_lep is not None: print(f"   pre_lep: {np.round(self.pre_lep,2)} in {self.pre_unit}")
+        if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)} in {self.cs2_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
