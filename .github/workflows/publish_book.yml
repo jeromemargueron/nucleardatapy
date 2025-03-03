@@ -1,0 +1,49 @@
+name: Build & publish Jupyter book
+env:
+  CLONE_PATH: ${{ github.workspace }}
+  EXAMPLES_BOOK: ${{ github.workspace }}/book/_build/html
+on:
+  push:
+    branches:
+      - main
+    workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version}}
+
+      - name: Setup python with tox
+        run: |
+          $CLONE_PATH/.github/workflows/setup_base_python.sh ${{ runner.os }}
+
+      - name: Build Jupyter Book
+        run: |
+          pushd $CLONE_PATH
+          tox -r -e book
+          popd
+
+      - name: Archive examples Jupyter book
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ${{ env.EXAMPLES_BOOK }}
+
+      - name: Publish Nuclear data toolkit Jupyter Book
+        id: deployment
+        uses: actions/deploy-pages@v2

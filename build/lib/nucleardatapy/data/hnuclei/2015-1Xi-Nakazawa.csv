@@ -1,0 +1,5 @@
+# Binding and bound energies for Xi^{-}-hypernuclei
+# Ref. J. K. Ahn, H. Akikawa, S. Aoki, K. Arai, Phys. Rev. C 88, 014003 (2013)
+# Z, name,   N,  XiBE,    err,  probe
+#               (MeV),  (MeV),
+  7,    N,   7, 4.378,  0.250,   Emul

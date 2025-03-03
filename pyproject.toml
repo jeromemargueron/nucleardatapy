@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools", "wheel", "sphinx"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nucleardatapy"
+authors = [
+    {name = "Jerome Margueron"},
+    {name = "Sudhanva Lalit"},
+]
+description = "A toolkit for nuclear data processing and analysis."
+license = {text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.9"
+version = "0.1.0"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+]
+
+classifiers = [
+    "Development Status :: 1 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[project-urls]
+Homepage = "https://github.com/jeromemargueron/nucleardatapy"
+Documentation = "https://nuclear-data-toolkit.readthedocs.io/en/latest/"
+Issues = "https://github.com/jeromemargueron/nucleardatapy/issues"
