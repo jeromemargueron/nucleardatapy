@@ -9,7 +9,6 @@ import random
 import nucleardatapy as nuda
 
 def uncertainty_stat( den , err = 'MBPT' ):
-    print('Uncertainty')
     if err.lower() == 'qmc':
         return 0.21*(den/nuda.cst.nsat)
     elif err.lower() == 'mbpt':
@@ -365,7 +364,7 @@ class setupMicro():
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
-        #print("-> model:",model)
+        print("model -> ",model)
         #
         self = setupMicro.init_self( self )
         #
@@ -660,7 +659,7 @@ class setupMicro():
             #
             # We do not have the data for this model, but we have a fit of the data
             k=int(model.split(sep='-')[4])
-            print('k:',k)
+            #print('k:',k)
             file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM-fit.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
@@ -1013,7 +1012,7 @@ class setupMicro():
             #
         elif model.lower() == '2024-nleft-am':
             #
-            print('enter here:',model)
+            #print('enter here:',model)
             self.flag_nm = True
             self.flag_sm = True
             self.flag_kf = False

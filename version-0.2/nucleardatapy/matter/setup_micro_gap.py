@@ -26,7 +26,7 @@ def micro_gap_models():
     #
     if nuda.env.verb: print("\nEnter micro_gap_models()")
     #
-    models = [ '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+    models = [ '2006-BHF-NM', '2006-BHF-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
             '2022-AFDMC-NM' ]
@@ -80,7 +80,47 @@ class setupMicroGap():
             print('-- Exit the code --')
             exit()
         #
-        if model.lower() == '2008-bcs-nm':
+        if model.lower() == '2006-bhf-nm':
+            #
+            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-NM-FreeSpectrum.dat')
+            if nuda.env.verb: print('Reads file (free spectrum):',file_in_fs)
+            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-NM-SelfEnergy.dat')
+            if nuda.env.verb: print('Reads file (self energy):',file_in_se)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
+            self.note = ""
+            self.label = 'BHF-2006'
+            self.marker = 'o'
+            self.every = 1
+            #self.linestyle = 'dotted'
+            self.gap_err = False
+            self.nm_kfn_1s0_fs, self.nm_gap_bare_1s0_fs, nm_gap_onebubble_1s0_fs, self.nm_gap_full_1s0_fs \
+                = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
+            self.nm_den_1s0_fs = nuda.den( self.nm_kfn_1s0_fs )
+            self.nm_kfn_1s0, self.nm_gap_bare_1s0, nm_gap_onebubble_1s0, self.nm_gap_full_1s0 \
+                = np.loadtxt( file_in_se, usecols=(0,1,2,3), unpack = True )
+            self.nm_den_1s0 = nuda.den( self.nm_kfn_1s0 )
+            #
+        elif model.lower() == '2006-bhf-sm':
+            #
+            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-SM-FreeSpectrum.dat')
+            if nuda.env.verb: print('Reads file (free spectrum):',file_in_fs)
+            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-SM-SelfEnergy.dat')
+            if nuda.env.verb: print('Reads file (self energy):',file_in_se)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
+            self.note = ""
+            self.label = 'BHF-2006'
+            self.marker = 'o'
+            self.every = 1
+            #self.linestyle = 'dotted'
+            self.gap_err = False
+            self.sm_kfn_1s0_fs, self.sm_gap_bare_1s0_fs, sm_gap_onebubble_1s0_fs, self.sm_gap_full_1s0_fs \
+                = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
+            self.sm_den_1s0_fs = nuda.den( self.sm_kfn_1s0_fs )
+            self.sm_kfn_1s0, self.sm_gap_bare_1s0, sm_gap_onebubble_1s0, self.sm_gap_full_1s0 \
+                = np.loadtxt( file_in_se, usecols=(0,1,2,3), unpack = True )
+            self.sm_den_1s0 = nuda.den( self.sm_kfn_1s0 )
+            #
+        elif model.lower() == '2008-bcs-nm':
             #
             file_in = os.path.join(nuda.param.path_data,'matter/micro/2008-BCS-NM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
