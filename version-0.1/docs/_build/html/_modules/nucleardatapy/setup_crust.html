@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_crust &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_crust</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_crust</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+
+<div class="viewcode-block" id="models_crust"><a class="viewcode-back" href="../../source/api/setup_crust.html#nucleardatapy.setup_crust.models_crust">[docs]</a><span class="k">def</span> <span class="nf">models_crust</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the tables available in this toolkit for the experimental masses and</span>
+<span class="sd">    print them all on the prompt. These tables are the following</span>
+<span class="sd">    ones: &#39;Negele-Vautheron-1973&#39;.</span>
+
+<span class="sd">    :return: The list of tables.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter models_crust()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">modcrusts</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1973-Negele-Vautherin&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1S&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1M&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MVCD-D1MS&#39;</span><span class="p">,</span>\
+    <span class="s1">&#39;2022-crustGMSR_BSK14&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_BSK16&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_DHSL59&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_DHSL69&#39;</span><span class="p">,</span>\
+    <span class="s1">&#39;2022-crustGMSR_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H1&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H2&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H3&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;2022-crustGMSR_H4&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H5&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_H7&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_LNS5&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;2022-crustGMSR_RATP&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_SGII&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-crustGMSR_SLY5&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crust models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">modcrusts</span><span class="p">)</span>
+    <span class="n">modcrusts_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">modcrusts</span> <span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crust models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">modcrusts_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit models_crust()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">modcrusts</span><span class="p">,</span> <span class="n">modcrusts_lower</span></div>
+
+
+<div class="viewcode-block" id="SetupCrust"><a class="viewcode-back" href="../../source/api/setup_crust.html#nucleardatapy.setup_crust.SetupCrust">[docs]</a><span class="k">class</span> <span class="nc">SetupCrust</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the properties of the crust for the existing models.</span>
+
+<span class="sd">    This choice is defined in the variable `crust`.</span>
+
+<span class="sd">    `crust` can chosen among the following ones: &#39;Negele-Vautherin-1973&#39;.</span>
+
+<span class="sd">    :param crust: Fix the name of `crust`. Default value: &#39;Negele-Vautherin-1973&#39;.</span>
+<span class="sd">    :type crust: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modcrust</span> <span class="o">=</span> <span class="s1">&#39;1973-Negele-Vautherin&#39;</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupCrusts()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">modcrusts</span><span class="p">,</span> <span class="n">modcrusts_lower</span> <span class="o">=</span> <span class="n">models_crust</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">modcrusts_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Crust model &#39;</span><span class="p">,</span><span class="n">modcrust</span><span class="p">,</span><span class="s1">&#39; is not in the list of crusts.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of crust models:&#39;</span><span class="p">,</span><span class="n">modcrusts</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modcrust</span> <span class="o">=</span> <span class="n">modcrust</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;modcrust:&quot;</span><span class="p">,</span><span class="n">modcrust</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the density of the system (in cm^-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the density of the system (in fm^-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute A_bound (mass of the cluster).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute Z_bound (charge of the cluster).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute N_bound (number of neutrons in the cluster).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute N_g (number of neutrons in the gas).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute n_g (neutron density in the gas).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute A (total number of nucleons of the WS cell).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute Z (total number of protons of the WS cell).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute N (total number of neutrons of the WS cell).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the fraction of neutrons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the fraction of bound neutrons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xn_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the fraction of protons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the fraction of bound protons.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xp_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the asymmetry parameter for bound particles.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">I_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the approximate ratio of proton to neutron in the nucleus.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xpn_bound</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron chemical potential (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the proton chemical potential (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the approximate density of neutron in the gas (in fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the radius of the cluster (in fm).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rcl</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the radius of the WS cell (in fm).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the rest mass energy (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the energy minus the neutron mass (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the internal energy (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the internal energy of the gas component (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;1973-negele-vautherin&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/1973-Negele-Vautherin.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span> <span class="s1">&#39;Negele and Vautherin, Nuc. Phys. A 207, 298 (1973).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NV-1973&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="s1">&#39;JWNegele:1973&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span> <span class="o">=</span> <span class="mf">0.17</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpn_bound</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span> <span class="o">*</span> <span class="mf">1.e-39</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpn_bound</span> <span class="p">)</span> <span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">I_bound</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span>
+            <span class="c1"># cluster volume and radius</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">I_bound</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Rcl</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+            <span class="c1"># unbound (gas) neutrons</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_g</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+            <span class="c1"># volume fraction</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnuc2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="s1">&#39;2020-mvcd&#39;</span> <span class="ow">in</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="c1">#</span>
+            <span class="c1"># Note: N_bound or N_g cannot be determined from the tables (Jerome).</span>
+            <span class="c1"># It is right?</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1s&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1S.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1S-2020&#39;</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1m&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1M.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1M-2020&#39;</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2020-mvcd-d1ms&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2020-MVCD-D1MS.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MVCD-D1M$^*$-2020&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;semiclassical variational Wigner-Kirkwood method along with shell and pairing corrections calculated with the Strutinsky integral method and the BCS approximation.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="s1">&#39;CMondal:2020&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_e</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">/</span> <span class="mf">1.e-39</span> <span class="c1"># in cm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="c1">#self.N_bound = [ int(item) for item in self.Z * self.xpn_bound ]</span>
+            <span class="c1">#self.xn_bound = self.N_bound / self.A</span>
+            <span class="c1">#self.N_g = self.N - self.N_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnuc2_approx</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="s1">&#39;2022-crustGMSR&#39;</span> <span class="ow">in</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="c1">#</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_bsk14&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_BSK14.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR BSK14 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1679927159410228</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.2333969704018517E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.7005802403942604E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">7.6209998100288209E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">15.799976089478367</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.32687267610704895</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.6209998100288209E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_bsk16&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_BSK16.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR BSK16 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5282142292259004E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1476234649744690</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.1738808103152147E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.4609997888086361E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">16.920900617363277</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.36795626298336570</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.4609997888086361E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_dhsl59&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_DHSL59.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR DHSL59 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.7840639496076998</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">6.3684106061817061E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.8095904260657669E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">7.2109998203862921E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.733669529186933</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.33617646422062142</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.2109998203862921E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_dhsl69&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_DHSL69.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR DHSL69 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4301212474202996E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.3077129271105594</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.6022465054447420E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">7.3209998176074584E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.399615979167670</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.38035277580973315</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.3209998176074584E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_f0&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_F0.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR F0 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4950843283419027E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0656453875088161</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.1979526696749431E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.6302667801639999E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.3309997920927123E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">18.078177464065167</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.33181818756433845</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.3309997920927123E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h1&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H1.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H1 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5957995753211628E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0757265666560816</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.2925404120069590E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.7364387300962906E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">9.5909997602624350E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.803660783830789</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48159809254574409</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.5909997602624350E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h2&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H2.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H2 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4301212474202996E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">6.7775868042313050</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.0750488249204384E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">9.2909997678410725E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.632170792314291</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48032175761400209</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.2909997678410725E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h3&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H3.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H3 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4623885640591057E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">6.9757456948608496</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.2473617319924773E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.5957995753211628E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.4509997890612573E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.236262111228385</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.40705940455120337</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.4509997890612573E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h4&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H4.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H4 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5282142292259004E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1798191275380834</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.4763060342489047E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">9.0609997736513612E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">18.131463559875652</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.47616516763123967</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">9.0609997736513612E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H5 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.8468963604916567E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.9585404850864840</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">6.7714839441802323E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">3.0011398166037865E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.7009997827457261E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">19.069132247958592</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.46337573665856840</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.7009997827457261E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_h7&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_H7.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR H7 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">3.2914459584803760E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">8.4098882517442597</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">8.5126111019145174E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">3.4697748949628541E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.3109997925979548E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">19.885261960955020</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.48143960493062543</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.3109997925979548E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_lns5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_LNS5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR LNS5 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.2220830810240075</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.3768304050759832E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.8095904260657669E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">7.0409998246808533E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">14.391278079363289</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.26627562388273884</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.0409998246808533E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_ratp&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_RATP.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR RATP 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.5617840312066730E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.1702995055472227</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.1984846488072468E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.7005802403942604E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">8.6009997852719386E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">16.557394274307612</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.35277408994086884</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">8.6009997852719386E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_sgii&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_SGII.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR SGII 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.6651916429173218E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.2454048591257214</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.3291857700309511E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.8095904260657669E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">6.5309998375645370E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">13.413876317015074</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.20198467236572187</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">6.5309998375645370E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">elif</span> <span class="n">modcrust</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2022-crustGMSR_sly5&#39;</span><span class="p">:</span>
+                <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;crust/2022-crustGMSR_SLY5.dat&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GMSR SLy5 2022&#39;</span>
+                <span class="c1"># Outer-Inner Crust (OIC) Transition :</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_oic</span> <span class="o">=</span> <span class="mf">2.4623885640591057E-004</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_oic</span> <span class="o">=</span> <span class="mf">7.0872886477160133</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_oic</span> <span class="o">=</span> <span class="mf">5.1240271689332565E-004</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_oic</span> <span class="o">=</span> <span class="mf">2.5957995753211628E-004</span> <span class="c1"># in MeV</span>
+                <span class="c1"># Crust-Core Transition:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nb_cc</span> <span class="o">=</span> <span class="mf">7.6309998097761997E-002</span> <span class="c1"># in fm-3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rho_cc</span> <span class="o">=</span> <span class="mf">17.103178025699933</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pre_cc</span> <span class="o">=</span> <span class="mf">0.31728157118252842</span> <span class="c1"># in MeV/fm3</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mu_n_cc</span> <span class="o">=</span> <span class="mf">7.6309998097761997E-002</span> <span class="c1"># in MeV</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;G. Grams, J. Margueron, R. Somasundaram, and S. Reddy, EPJA 58, 56 (2022).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="s1">&#39;GGrams:2022&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Acl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Zcl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xe</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ng</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_cgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">/</span> <span class="mf">1.e-39</span> <span class="c1"># in cm-3</span>
+            <span class="c1"># bound nucleons</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Acl</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Zcl</span> <span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">I_bound</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp_bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span>
+            <span class="c1"># cluster volume and radius</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">I_bound</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncl</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Rcl</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+            <span class="c1"># volume fraction</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span>
+            <span class="c1"># unbound (gas) neutrons</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ng</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">VWS</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vcl</span> <span class="p">)</span>
+            <span class="c1"># total number of nucleons</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z_bound</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_bound</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+            <span class="c1"># energy</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xn</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">xp</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="o">+</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
+            <span class="c1"># electrons</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mu_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span>
+            <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupCrust.print_outputs"><a class="viewcode-back" href="../../source/api/setup_crust.html#nucleardatapy.setup_crust.SetupCrust.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   modcrust:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">modcrust</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:     &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   N: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   N_bound: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">N_bound</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   N_g: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">N_g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   mu_n(MeV): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mu_n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   mu_p(MeV): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mu_p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den_g(fm-3): </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">RWS</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   RWS(fm): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">RWS</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xpn_bound</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   xpn_bound: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">xpn_bound</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_tot(MeV): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_tot</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_rm(MeV): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int2(MeV): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int(MeV): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int_g(MeV): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_g</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+       <span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

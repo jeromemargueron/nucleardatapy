@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.corr.setup_Esym &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffgnuc.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.corr.setup_Esym</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.corr.setup_Esym</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
+<span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+<span class="c1">#nsat = 0.16</span>
+
+<div class="viewcode-block" id="setupEsym"><a class="viewcode-back" href="../../../source/api/setup_corr_Esym.html#nucleardatapy.corr.setup_Esym.setupEsym">[docs]</a><span class="k">class</span> <span class="nc">setupEsym</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the values of Esym and Lsym from the constraint.</span>
+<span class="sd">    </span>
+<span class="sd">    :param constraint: name of the model: &#39;2014-IAS&#39;, ...</span>
+<span class="sd">    :type constraint: str.</span>
+<span class="sd">    :returns: constraint, ref, label, note, Esym, Lsym.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2014-IAS&#39;</span><span class="p">,</span> <span class="n">Ksym</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupEsym()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the constraint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constraint:&quot;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">EsymLsym_constraints</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">constraints_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The constraint &#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">,</span><span class="s1">&#39; is not in the list of constraints.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">setupEsymLsym</span><span class="p">(</span> <span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">ref</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">note</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">#print(&#39;Esym:&#39;,el.Esym)</span>
+        <span class="c1">#print(&#39;Lsym_min:&#39;,el.Lsym_min)</span>
+        <span class="c1">#print(&#39;Lsym_max:&#39;,el.Lsym_max)</span>
+        <span class="c1">#cons.print_outputs( )</span>
+        <span class="c1">#</span>
+        <span class="n">nden</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">den</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.16</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nden</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span> <span class="n">nden</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym_den</span> <span class="o">=</span> <span class="n">den</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">el</span><span class="o">.</span><span class="n">plot</span> <span class="o">==</span> <span class="s1">&#39;band_y&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1">#</span>
+            <span class="n">e_min</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="n">e_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">Lsym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Lsym_min</span><span class="p">):</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">Esym</span> <span class="o">+</span> <span class="n">Lsym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Ksym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">vden</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">den</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">Lsym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Lsym_max</span><span class="p">):</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">Esym</span> <span class="o">+</span> <span class="n">Lsym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Ksym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">vden</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">den</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="c1">#: Attribute the minimal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_min</span> <span class="o">=</span> <span class="n">e_min</span>
+            <span class="c1">#: Attribute the maximal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_max</span> <span class="o">=</span> <span class="n">e_max</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">el</span><span class="o">.</span><span class="n">plot</span> <span class="o">==</span> <span class="s1">&#39;band_x&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1">#</span>
+            <span class="n">e_min</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="n">e_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">Lsym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Lsym</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Esym_min</span><span class="p">):</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">Esym</span> <span class="o">+</span> <span class="n">Lsym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Ksym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">vden</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">den</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">Esym_max</span><span class="p">):</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">Esym</span> <span class="o">+</span> <span class="n">Lsym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Ksym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">vden</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">den</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="c1">#: Attribute the minimal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_min</span> <span class="o">=</span> <span class="n">e_min</span>
+            <span class="c1">#: Attribute the maximal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_max</span> <span class="o">=</span> <span class="n">e_max</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">el</span><span class="o">.</span><span class="n">plot</span> <span class="o">==</span> <span class="s1">&#39;point_err_xy&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1">#</span>
+            <span class="n">e_min</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="n">e_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">den</span><span class="p">))</span> <span class="p">)</span>
+            <span class="n">Lsyms</span> <span class="o">=</span> <span class="p">[</span> <span class="n">el</span><span class="o">.</span><span class="n">Lsym</span><span class="o">-</span><span class="n">el</span><span class="o">.</span><span class="n">Lsym_err</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">Lsym</span><span class="o">+</span><span class="n">el</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="p">]</span>
+            <span class="n">Esyms</span> <span class="o">=</span> <span class="p">[</span> <span class="n">el</span><span class="o">.</span><span class="n">Esym</span><span class="o">-</span><span class="n">el</span><span class="o">.</span><span class="n">Esym_err</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">Esym</span><span class="o">+</span><span class="n">el</span><span class="o">.</span><span class="n">Esym_err</span> <span class="p">]</span>
+            <span class="k">for</span> <span class="n">Esym</span> <span class="ow">in</span> <span class="n">Esyms</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">Lsym</span> <span class="ow">in</span> <span class="n">Lsyms</span><span class="p">:</span>
+                    <span class="n">esym</span> <span class="o">=</span> <span class="n">Esym</span> <span class="o">+</span> <span class="n">Lsym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Ksym</span><span class="o">*</span><span class="p">(</span><span class="n">den</span><span class="o">-</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">vden</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">den</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> 
+                            <span class="n">e_min</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">esym</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="c1">#: Attribute the minimal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_min</span> <span class="o">=</span> <span class="n">e_min</span>
+            <span class="c1">#: Attribute the maximal symmetry energy </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_max</span> <span class="o">=</span> <span class="n">e_max</span>
+            <span class="c1">#</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No Esyn(n) construction for constraint:&#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_den</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_min</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_max</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupEsym()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupEsym.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_corr_Esym.html#nucleardatapy.corr.setup_Esym.setupEsym.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   constraint:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   plot:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   den: &quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_den</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   max: &quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_max</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   min: &quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_e2a_min</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+        <span class="c1">#</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

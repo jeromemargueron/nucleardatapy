@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>matter.setupPhenoEsym &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="matter.setupHIC" href="setup_matter_hic.html" />
+    <link rel="prev" title="matter.setupPheno" href="setup_matter_pheno.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_corr_Esym.html">corr.setupEsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>matter.setupPhenoEsym</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_matter_pheno_esym.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matter-setupphenoesym">
+<h1>matter.setupPhenoEsym<a class="headerlink" href="#matter-setupphenoesym" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.matter.setup_pheno_esym"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.pheno_esym_models">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_pheno_esym.</span></span><span class="sig-name descname"><span class="pre">pheno_esym_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#pheno_esym_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.pheno_esym_models" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of models available in this toolkit and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of models with can be ‘Skyrme’, ‘ESkyrme’, ‘NLRH’, ‘DDRH’, ‘DDRHF’.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.pheno_esym_params">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_pheno_esym.</span></span><span class="sig-name descname"><span class="pre">pheno_esym_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#pheno_esym_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.pheno_esym_params" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list with the parameterizations available in
+this toolkit for a given model and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>str.</em>) – The type of model for which there are parametrizations.     They should be chosen among the following options: ‘Skyrme’, ‘NLRH’,     ‘DDRH’, ‘DDRHF’.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of parametrizations.     If <cite>models</cite> == ‘skyrme’: ‘BSK14’,     ‘BSK16’, ‘BSK17’, ‘BSK27’, ‘F-’, ‘F+’, ‘F0’, ‘FPL’, ‘LNS’, ‘LNS1’, ‘LNS5’,     ‘NRAPR’, ‘RATP’, ‘SAMI’, ‘SGII’, ‘SIII’, ‘SKGSIGMA’, ‘SKI2’, ‘SKI4’, ‘SKMP’,     ‘SKMS’, ‘SKO’, ‘SKOP’, ‘SKP’, ‘SKRSIGMA’, ‘SKX’, ‘Skz2’, ‘SLY4’, ‘SLY5’,     ‘SLY230A’, ‘SLY230B’, ‘SV’, ‘T6’, ‘T44’, ‘UNEDF0’, ‘UNEDF1’.     If <cite>models</cite> == ‘ESkyrme’: ‘BSk22’, ‘BSk24’, ‘BSk25’, ‘BSk26’, ‘BSk31’, ‘BSk32’,     ‘BSkG1’, ‘BSkG2’, ‘BSkG3’.     If <cite>models</cite> == ‘NLRH’: ‘NL-SH’, ‘NL3’, ‘NL3II’, ‘PK1’, ‘PK1R’, ‘TM1’.     If <cite>models</cite> == ‘DDRH’: ‘DDME1’, ‘DDME2’, ‘DDMEd’, ‘PKDD’, ‘TW99’.     If <cite>models</cite> == ‘DDRHF’: ‘PKA1’, ‘PKO1’, ‘PKO2’, ‘PKO3’.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_pheno_esym.</span></span><span class="sig-name descname"><span class="pre">setupPhenoEsym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Skyrme'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SLY5'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#setupPhenoEsym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with results based on phenomenological    interactions and choosen by the toolkit practitioner.     This choice is defined in the variables <cite>model</cite> and <cite>param</cite>.</p>
+<p>If <cite>models</cite> == ‘skyrme’, <cite>param</cite> can be: ‘BSK14’,     ‘BSK16’, ‘BSK17’, ‘BSK27’, ‘F-’, ‘F+’, ‘F0’, ‘FPL’, ‘LNS’, ‘LNS1’, ‘LNS5’,     ‘NRAPR’, ‘RATP’, ‘SAMI’, ‘SGII’, ‘SIII’, ‘SKGSIGMA’, ‘SKI2’, ‘SKI4’, ‘SKMP’,     ‘SKMS’, ‘SKO’, ‘SKOP’, ‘SKP’, ‘SKRSIGMA’, ‘SKX’, ‘Skz2’, ‘SLY4’, ‘SLY5’,     ‘SLY230A’, ‘SLY230B’, ‘SV’, ‘T6’, ‘T44’, ‘UNEDF0’, ‘UNEDF1’.</p>
+<p>If <cite>models</cite> == ‘ESkyrme’, <cite>param</cite> can be: ‘BSk22’, ‘BSk24’, ‘BSk25’,     ‘BSk26’, ‘BSk31’, ‘BSk32’, ‘BSkG1’, ‘BSkG2’, ‘BSkG3’.</p>
+<p>If <cite>models</cite> == ‘NLRH’, <cite>param</cite> can be: ‘NL-SH’, ‘NL3’, ‘NL3II’, ‘PK1’, ‘PK1R’, ‘TM1’.</p>
+<p>If <cite>models</cite> == ‘DDRH’, <cite>param</cite> can be: ‘DDME1’, ‘DDME2’, ‘DDMEd’, ‘PKDD’, ‘TW99’.</p>
+<p>If <cite>models</cite> == ‘DDRHF’, <cite>param</cite> can be: ‘PKA1’, ‘PKO1’, ‘PKO2’, ‘PKO3’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model: ‘Skyrme’, ‘NLRH’,     ‘DDRH’, ‘DDRHF’. Default value: ‘Skyrme’.</p></li>
+<li><p><strong>param</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the parameterization associated to model.     Default value: ‘SLY5’.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#setupPhenoEsym.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.init_self" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.model" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.param">
+<span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.param" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute param.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_pheno_esym.html#setupPhenoEsym.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupPhenoEsym.py</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupPhenoEsym.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupPhenoEsym.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">This figure shows the symmetry energy as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_matter_pheno.html" class="btn btn-neutral float-left" title="matter.setupPheno" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_matter_hic.html" class="btn btn-neutral float-right" title="matter.setupHIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

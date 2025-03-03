@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupEOSMicroLP</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupeosmicrolp">
+<h1>SetupEOSMicroLP</h1>
+<span class="target" id="module-nucleardatapy.matter.setup_micro_lp"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro_lp.micro_LP_models">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro_lp.</span></span><span class="sig-name descname"><span class="pre">micro_LP_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1994-BHF-SM-LP-AV14-GAP’, ‘1994-BHF-SM-LP-AV14-CONT’,     ‘1994-BHF-SM-LP-REID-GAP’, ‘1994-BHF-SM-LP-REID-CONT’, ‘1994-BHF-SM-LP-AV14-CONT-0.7’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of models.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro_lp.setupMicroLP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro_lp.</span></span><span class="sig-name descname"><span class="pre">setupMicroLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1994-BHF-SM-LP-AV14-GAP'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with Landau parameters from microscopic calculations choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1994-BHF-SM-LP-AV14-GAP’, ‘1994-BHF-SM-LP-AV14-CONT’,     ‘1994-BHF-SM-LP-REID-GAP’, ‘1994-BHF-SM-LP-REID-CONT’, ‘1994-BHF-SM-LP-AV14-CONT-0.7’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1994-BHF-LP’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro_lp.setupMicroLP.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro_lp.setupMicroLP.model">
+<span class="sig-name descname"><span class="pre">model</span></span></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro_lp.setupMicroLP.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupMicroLP.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_matter_setupMicroLP0_SM.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the L=0 Landau parameters in SM for different NN interactions obtained
+from BHF calculations.</span></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="map to buried treasure" src="../../_images/plot_matter_setupMicroLP1_SM.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">This figure shows the L=1 Landau parameters in SM for different NN interactions obtained
+from BHF calculations.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
