@@ -6,17 +6,20 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-# sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-# nsat = 0.16
-# mnuc2 = 939.0
 
-
-def uncertainty_stat(den):
-    return 0.07 * (den / nuda.cst.nsat)
+def uncertainty_stat(den, err="MBPT"):
+    print("Uncertainty")
+    if err.lower() == "qmc":
+        return 0.21 * (den / nuda.cst.nsat)
+    elif err.lower() == "mbpt":
+        return 0.07 * (den / nuda.cst.nsat)
+    else:
+        print("no model uncertainty is given")
+        print("err:", err)
+        print("exit()")
+        exit()
 
 
 def micro_mbs():
@@ -507,456 +510,6 @@ class setupMicro:
         var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])
         """
         #
-<<<<<<< HEAD
-        if nuda.env.verb: print("Enter SetupEOSMicro()")
-        #
-        #: Attribute model.
-        self.model = model
-        if nuda.env.verb: print("model:",model)
-        print("-> model:",model)
-        #
-        self = SetupEOSMicro.init_self( self )
-        #
-        # read var and define den, asy and xpr:
-        self.den = var1[:] # density n_b=n_n+n_p
-        self.asy = var2 # asymmetry parameter = (n_n-n_p)/n_b
-        self.kfn = nuda.kf_n( (1.0+self.asy) / 2.0 * self.den )
-        self.xpr = ( 1.0 - self.asy ) / 2.0 # proton fraction = n_p/n_b
-        #print('den:',self.den)
-        #print('asy:',self.asy)
-        #print('xpr:',self.xpr)
-        #
-        models, models_lower = eos_micro_models()
-        #
-        if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
-            exit()
-        #
-        if model.lower() == '1981-var-am-fp':
-            #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/1981-VAR-NM-FP.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/1981-VAR-SM-FP.dat')
-            if nuda.env.verb: print('Reads file:',file_in1)
-            if nuda.env.verb: print('Reads file:',file_in2)
-            self.ref = 'Friedman and Pandharipande, Nucl. Phys. A. 361, 502 (1981)'
-            self.note = "write here notes about this EOS."
-            self.label = 'FP-1981'
-            self.marker = 'o'
-            #self.linestyle = 'dashed'
-            self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
-            self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-<<<<<<<< HEAD:version-0.1/nucleardatapy/matter/setup_micro.py
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-========
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            # pressure in SM
-            x = np.insert( self.sm_kfn, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre = np.array( nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_kfn, 1 ) )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_kfn, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = self.sm_kfn / ( 3.0 * self.sm_den ) * cs_sm_pre( self.sm_kfn, 1) / self.sm_h2a
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = self.nm_kfn / ( 3.0 * self.nm_den ) * cs_nm_pre( self.nm_kfn, 1) / self.nm_h2a
->>>>>>>> slalit:build/lib/nucleardatapy/matter/setup_micro-old.py
-            #
-        elif model.lower() == '1998-var-am-apr':
-            #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/1998-VAR-NM-APR.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/1998-VAR-SM-APR.dat')
-            if nuda.env.verb: print('Reads file:',file_in1)
-            if nuda.env.verb: print('Reads file:',file_in2)
-            self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
-            self.note = "write here notes about this EOS."
-            self.label = 'APR-1998'
-            self.marker = '^'
-            #self.linestyle = 'dashed'
-            self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
-            self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-<<<<<<<< HEAD:version-0.1/nucleardatapy/matter/setup_micro.py
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-========
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den) * self.sm_e2a )
->>>>>>>> slalit:build/lib/nucleardatapy/matter/setup_micro-old.py
-            #
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            #cs_nm_e2a_err = CubicSpline( x, y_err )
-            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            #cs_sm_e2a_err = CubicSpline( x, y_err )
-            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_kfn, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = self.sm_kfn / ( 3.0 * self.sm_den ) * cs_sm_pre( self.sm_kfn, 1) / self.sm_h2a
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = self.nm_kfn / ( 3.0 * self.nm_den ) * cs_nm_pre( self.nm_kfn, 1) / self.nm_h2a
-            #
-        elif model.lower() == '1998-var-am-aprfit':
-            #
-            self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
-            self.note = "Use interpolation functions suggested in APR paper."
-            self.label = 'APRfit-1998'
-            self.marker = None
-            self.linestyle = 'solid'
-            # Define constants for APRfit and for A18+dv+UIX*
-            global p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21
-            ( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
-            ( 337.2, -382.0, 89.8, 0.457, -59.0, -19.1, 214.6, -384.0, 6.4, 69.0, -33.0, 0.35, 0.0, 0.0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0.0 )
-            #
-            # energy per unit volume
-            self.e2v = APRfit_compute( self.den, self.xpr )
-            # energy per particle
-            self.e2a = self.e2v / self.den
-            self.e2a_err = np.abs( uncertainty_stat(self.den,err='MBPT') * self.e2a )
-            self.e2v_err = self.e2a_err * self.den
-            # pressure as the first derivative of E/A
-            cs_e2a = CubicSpline( self.den, self.e2a )
-            #pre = n**2 * np.gradient( e2a, n)
-            self.pre = self.den**2 * cs_e2a( self.den, 1 )
-            # chemical potential
-            self.chempot = ( self.e2v + self.pre ) / self.den
-            # enthalpy
-            self.h2a = nuda.cst.mnuc2 + self.chempot
-            # sound speed
-            cs_pre = CubicSpline( self.den, self.pre )
-            self.cs2 = cs_pre( self.den, 1 ) / self.h2a
-            #
-        elif model.lower() == '2006-bhf-am':
-            #
-            print('not yet available')
-            exit()
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF-NM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF-SM.dat')
-            if nuda.env.verb: print('Reads file:',file_in1)
-            if nuda.env.verb: print('Reads file:',file_in2)
-            self.ref = 'L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
-            self.note = ""
-            self.label = 'BHF-2006'
-            self.marker = 'o'
-            #self.linestyle = 'solid'
-            #
-        elif model.lower() == '2008-bcs-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2008-BCS-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
-            self.note = ""
-            self.label = 'BCS-2008'
-            self.marker = 'o'
-            #self.linestyle = 'dotted'
-            self.marker = '.'
-            self.nm_kfn, nm_gap, self.nm_chempot, self.nm_effmass \
-                = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            #
-        elif model.lower() == '2008-afdmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2008-AFDMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005); A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008)'
-            self.note = ""
-            self.label = 'AFDMC-2008'
-            self.marker = 'D'
-            #self.linestyle = 'solid'
-            self.nm_kfn, nm_gap, self.nm_chempot, self.nm_effmass \
-                = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            #
-            # Deduce the energy from the chemical potential
-            #
-            eps_n = []
-            # add zero density to the chemical potential (for the spline)
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y1 = np.insert( self.nm_chempot, 0, 0.0 )
-            y2 = np.insert( nuda.den_n(self.nm_kfn), 0, 0.0 )
-            # spine the chemical potential
-            cs_chempot = CubicSpline( x, y1 )
-            cs_den = CubicSpline( x, y2 )
-            n_int = 10
-            kfn0 = 0.0
-            kf = 0.0
-            eps = 0.0
-            for i,kfn in enumerate(self.nm_kfn):
-                #print('i:',i,' kfn:',kfn)
-                kstep = ( kfn - kfn0 ) / float(n_int)
-                for k in range(n_int):
-                    kf += kstep
-                    if kf == 0.0: continue
-                    eps += nuda.cst.third * cs_den( kf ) / kf * cs_chempot( kf ) * kstep
-                    #print('  k:',k,' kf:',kf,' effpot:',cs_chempot( kf ),' eps:',eps)
-                eps_n.append( eps )
-                kfn0 = kfn
-            self.nm_e2v = eps_n
-            #self.nm_e2v_err = 0.01 * eps_n
-            self.nm_e2a = eps_n / self.nm_den
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
-            #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
-            #
-            # pressure
-            self.nm_pre = np.array(self.nm_den) * np.array(self.nm_chempot) - np.array(self.nm_e2v)
-            #self.nm_pre_err = np.array(self.nm_den) * np.array(self.nm_chempot_err) - np.array(self.nm_e2v_err)
-            #self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
-            #    = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            #self.nm_den     = nuda.den_n( self.nm_kfn )
-            #self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
-            #self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
-            #self.nm_gap     = gap2ef * nuda.epsF_n( self.nm_kfn )
-            #self.nm_gap_err = gap2ef_err * nuda.epsF_n( self.nm_kfn )
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2008-qmc-nm-swave':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2008-QMC-NM-swave.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
-            self.note = ""
-            self.label = 'QMC-swave-2008'
-            self.marker = 'o'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = e2effg * nuda.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * np.abs( cs_nm_e2a_err( self.nm_kfn, 1 ) )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2009-afdmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2009-AFDMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'S. Gandolfi, A.Y. Illarionov, F. Pederiva, K.E. Schmidt, S. Fantoni, Phys. Rev. C 80, 045802 (2009).'
-            self.note = ""
-            self.label = 'AFDMC-2009'
-            self.marker = 'o'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
-                = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            #self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2009-dlqmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2009-dQMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'T. Abe, R. Seki, Phys. Rev. C 79, 054002 (2009)'
-            self.note = ""
-            self.label = 'dLQMC-2009'
-            self.marker = 'v'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = np.array( e2effg * nuda.effg( self.nm_kfn ) )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2010-qmc-nm-av4':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2010-QMC-NM-AV4.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'A. Gezerlis and J. Carlson PRC 81, 025803 (2010)'
-            self.note = ""
-            self.label = 'QMC-AV4-2008'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a     = np.array( e2effg * nuda.effg( self.nm_kfn ) )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * np.abs( cs_nm_e2a_err( self.nm_kfn, 1 ) )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2010-mbpt-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2010-NM-Hebeler.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'K. Hebeler, et al, Phys. Rev. Lett. 105, 161102 (2010)'
-            self.note = "chiral NN forces with SRG and leading 3N forces."
-            self.label = 'MBPT-2010'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            #self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
-=======
         if nuda.env.verb:
             print("Enter setupMicro()")
         #
@@ -1014,8 +567,12 @@ class setupMicro:
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
-            self.sm_e2a_err = np.abs(uncertainty_stat(self.sm_den) * self.sm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
+            self.sm_e2a_err = np.abs(
+                uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a
+            )
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -1050,8 +607,12 @@ class setupMicro:
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
-            self.sm_e2a_err = np.abs(uncertainty_stat(self.sm_den) * self.sm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
+            self.sm_e2a_err = np.abs(
+                uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a
+            )
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -1122,7 +683,7 @@ class setupMicro:
             self.e2v = APRfit_compute(self.den, self.xpr)
             # energy per particle
             self.e2a = self.e2v / self.den
-            self.e2a_err = np.abs(uncertainty_stat(self.den) * self.e2a)
+            self.e2a_err = np.abs(uncertainty_stat(self.den, err="MBPT") * self.e2a)
             self.e2v_err = self.e2a_err * self.den
             # pressure as the first derivative of E/A
             cs_e2a = CubicSpline(self.den, self.e2a)
@@ -1294,58 +855,10 @@ class setupMicro:
             self.nm_den, self.nm_pre = np.loadtxt(file_in, usecols=(0, 1), unpack=True)
             self.nm_kfn = nuda.kf_n(self.nm_den)
             # self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
->>>>>>> slalit
             #
             # compute nm_e2v by integrating the pressure
             #
             # chemical potential
-<<<<<<< HEAD
-            #self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
-            #
-        elif '2012-afdmc-nm' in model.lower():
-            #
-            # We do not have the data for this model, but we have a fit of the data
-<<<<<<<< HEAD:version-0.1/nucleardatapy/matter/setup_micro.py
-            k=int(model.split(sep='-')[4])
-            #print('k:',k)
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM-'+str(k)+'.dat')
-========
-            k=int(model.split(sep='-')[3])
-            #print('k:',k)
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2012-AFDMC-NM.dat')
->>>>>>>> slalit:build/lib/nucleardatapy/matter/setup_micro-old.py
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'S. Gandolfi, J. Carlson, S. Reddy, Phys. Rev. C 85, 032801(R) (2012).'
-            self.note = "We do not have the data for this model, but we have a fit of the data."
-            self.label = 'AFDMC-2012-'+str(k)
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            #name = np.loadtxt( file_in, usecols=(5), unpack = True )
-            nmodel = np.size(alfa)
-            #print('nmodel:',nmodel)
-            if k < 0 or k > nmodel:
-                print('issue with the model number k:',k)
-                print('exit')
-                exit()
-            #for i in range(nmodel):
-            #    print('i:',i,' ind:',ind[i],' a:',a[i],' alfa:',alfa[i],' b:',b[i],' beta:',beta[i])
-            self.nm_den_fit = 0.04 + 0.45 * np.arange(self.nden+1)/float(self.nden)
-            self.nm_kfn_fit = nuda.kf_n( self.nm_den_fit )
-            # energy in NM
-            self.nm_e2a_fit = func_GCR_e2a(self.nm_den_fit,a[k-1],alfa[k-1],b[k-1],beta[k-1])
-            self.nm_e2a_fit_err = np.abs( uncertainty_stat(self.nm_den_fit,err='MBPT') * self.nm_e2a_fit )
-            self.nm_e2v_fit = self.nm_den_fit * self.nm_e2a_fit
-            self.nm_e2v_fit_err = self.nm_den_fit * self.nm_e2a_fit_err
-            # pressure in NM
-            self.nm_pre_fit = func_GCR_pre(self.nm_den_fit,a[k-1],alfa[k-1],b[k-1],beta[k-1])
-            # chemical potential
-            self.nm_chempot_fit = ( self.nm_pre_fit + self.nm_e2v_fit ) / self.nm_den_fit
-            # enthalpy per particle
-            self.nm_h2a_fit = nuda.cst.mnuc2 + self.nm_e2a_fit + self.nm_pre_fit / self.nm_den_fit
-            # sound speed in NM
-            self.nm_cs2_fit = func_GCR_cs2(self.nm_den_fit,a[k-1],alfa[k-1],b[k-1],beta[k-1])
-=======
             # self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
             #
         elif "2012-afdmc-nm-res" in model.lower():
@@ -1357,7 +870,7 @@ class setupMicro:
             #
             # We do not have the data for this model, but we have a fit of the data
             k = int(model.split(sep="-")[4])
-            print("k:", k)
+            # print('k:',k)
             file_in = os.path.join(
                 nuda.param.path_data, "matter/micro/2012-AFDMC-NM-" + str(k) + ".dat"
             )
@@ -1437,7 +950,7 @@ class setupMicro:
                 self.nm_den_fit, a[k - 1], alfa[k - 1], b[k - 1], beta[k - 1]
             )
             self.nm_e2a_fit_err = np.abs(
-                uncertainty_stat(self.nm_den_fit) * self.nm_e2a_fit
+                uncertainty_stat(self.nm_den_fit, err="MBPT") * self.nm_e2a_fit
             )
             self.nm_e2v_fit = self.nm_den_fit * self.nm_e2a_fit
             self.nm_e2v_fit_err = self.nm_den_fit * self.nm_e2a_fit_err
@@ -1455,7 +968,6 @@ class setupMicro:
             self.nm_cs2_fit = func_GCR_cs2(
                 self.nm_den_fit, a[k - 1], alfa[k - 1], b[k - 1], beta[k - 1]
             )
->>>>>>> slalit
             #
             self.nm_den = self.nm_den_fit
             self.nm_kfn = self.nm_kfn_fit
@@ -1467,31 +979,6 @@ class setupMicro:
             self.nm_chempot = self.nm_chempot_fit
             self.nm_cs2 = self.nm_cs2_fit
             #
-<<<<<<< HEAD
-        elif model.lower() == '2013-qmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2013-QMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'I. Tews et al., PRL 110, 032504 (2013)'
-            self.note = "write here notes about this EOS."
-            self.label = 'QMC-2013'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a = np.array( 0.5 * ( self.nm_e2a_up + self.nm_e2a_low ) )
-            self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.nm_pre = 0.5 * ( self.nm_pre_up + self.nm_pre_low )
-            self.nm_pre_err = 0.5 * ( self.nm_pre_up - self.nm_pre_low )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-=======
         elif model.lower() == "2013-qmc-nm":
             #
             self.flag_nm = True
@@ -1531,160 +1018,11 @@ class setupMicro:
             self.nm_chempot_err = (
                 np.array(self.nm_pre_err) + np.array(self.nm_e2v_err)
             ) / np.array(self.nm_den)
->>>>>>> slalit
             #
             # enthalpy
             self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
             #
             # sound speed
-<<<<<<< HEAD
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2014-afqmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2014-AFQMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'G. Wlazłowski, J.W. Holt, S. Moroz, A. Bulgac, and K.J. Roche Phys. Rev. Lett. 113, 182503 (2014)'
-            self.note = "write here notes about this EOS."
-            self.label = 'AFQMC-2014'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
-                = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a = self.nm_e2a_23bf
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            #self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_e2a( self.nm_kfn, 1 ) )
-            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            #cs_nm_e2a_err = CubicSpline( x, y_err )
-            #self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2016-qmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2016-QMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = ' I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016).'
-            self.note = ""
-            self.label = 'QMC-2016'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
-                = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a = np.array( 0.5 * ( self.nm_e2a_up + self.nm_e2a_low ) )
-            self.nm_e2a_err = 0.5 * ( self.nm_e2a_up - self.nm_e2a_low )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2016-mbpt-am':
-            #
-            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. C 93, 054314 (2016).'
-            self.note = ""
-            self.label = 'MBPT-2016'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            # read the results for the 7 hamiltonians
-            length = np.zeros( (11), dtype=int )
-            den = np.zeros( (11,35) )
-            e2a = np.zeros( (10,11,35) )
-            e2a_up = np.zeros( (11,35) )
-            e2a_low = np.zeros( (11,35) )
-            e2a_av = np.zeros( (11,35) )
-            e2a_err = np.zeros( (11,35) )
-            for i in range(0,11):
-                beta = i/10.0
-                if i<10:
-                    file_in = os.path.join(nuda.param.path_data,'matter/micro/2016-MBPT-AM/EOS_spec_4_beta_0.'+str(i)+'.txt')
-                if i==10:
-                    file_in = os.path.join(nuda.param.path_data,'matter/micro/2016-MBPT-AM/EOS_spec_4_beta_1.0.txt')
-                if nuda.env.verb: print('Reads file:',file_in)
-                deni, e2a_1, e2a_2, e2a_3, e2a_4, e2a_5, e2a_6, e2a_7 = np.genfromtxt( file_in, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-                length[i] = len(deni)
-                den[i,0:length[i]] = deni
-                den_n = deni * (1.0+beta)/2.0
-                e2a[1,i,0:length[i]] = e2a_1
-                e2a[2,i,0:length[i]] = e2a_2
-                e2a[3,i,0:length[i]] = e2a_3
-                e2a[4,i,0:length[i]] = e2a_4
-                e2a[5,i,0:length[i]] = e2a_5
-                e2a[6,i,0:length[i]] = e2a_6
-                e2a[7,i,0:length[i]] = e2a_7
-                # performs average and compute boundaries
-                e2a_up[i,0:length[i]] = e2a_1
-                e2a_low[i,0:length[i]] = e2a_1
-                for j in range(length[i]):
-                    for k in range(2,8):
-                        if e2a[k,i,j] > e2a_up[i,j]: e2a_up[i,j] = e2a[k,i,j]
-                        if e2a[k,i,j] < e2a_low[i,j]: e2a_low[i,j] = e2a[k,i,j]
-                    e2a_av[i,j] = 0.5* ( e2a_up[i,j] + e2a_low[i,j] )
-                    e2a_err[i,j] = 0.5* ( e2a_up[i,j] - e2a_low[i,j] )
-            if nuda.env.verb: print('length:',length[:])
-            # NM
-            self.nm_den = np.array( den[10,:] )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a_up = e2a_up[10,:]
-            self.nm_e2a_low = e2a_low[10,:]
-            self.nm_e2a = np.array( e2a_av[10,:] )
-            self.nm_e2a_err = e2a_err[10,:]
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            # SM
-            self.sm_den = np.array( den[0,:] )
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.sm_e2a_up = e2a_up[0,:]
-            self.sm_e2a_low = e2a_low[0,:]
-            self.sm_e2a = np.array( e2a_av[0,:] )
-            self.sm_e2a_err = e2a_err[0,:]
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-=======
             x = np.insert(self.nm_den, 0, 0.0)
             y = np.insert(self.nm_pre, 0, 0.0)
             cs_nm_pre = CubicSpline(x, y)
@@ -1713,7 +1051,9 @@ class setupMicro:
             )
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a = self.nm_e2a_23bf
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
             # self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
@@ -1827,89 +1167,12 @@ class setupMicro:
             self.sm_e2a = np.array(e2a_av[0, :])
             self.sm_e2a_err = e2a_err[0, :]
             self.sm_e2v = self.sm_e2a * self.sm_den
->>>>>>> slalit
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
             # Note: here I define the pressure as the derivative of the centroid energy
             # It would however be better to compute the presure for each models and only
             # after that, estimate the centroid and uncertainty.
             #
-<<<<<<< HEAD
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2018-qmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2018-QMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'I. Tews, J. Carlson, S. Gandolfi, S. Reddy, Astroph. J. 860(2), 149 (2018).'
-            self.note = ""
-            self.label = 'QMC-2018'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * np.abs( cs_nm_e2a_err( self.nm_kfn, 1 ) )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2019-mbpt-am-l59':
-=======
         elif model.lower() == "2018-qmc-nm":
             #
             self.flag_nm = True
@@ -1944,239 +1207,10 @@ class setupMicro:
             self.flag_sm = True
             self.flag_kf = False
             self.flag_den = True
->>>>>>> slalit
             #
             # here, the L59 case is compute alone, it would be interesting to compute the uncertainty
             # in the previous MBPT calculation (based on H1-H7) adding this new calculation.
             #
-<<<<<<< HEAD
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL59.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL59.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.note = ""
-            self.label = 'MBPT-2019-L59'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
-                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
-                 = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            #cs_nm_e2a_err = CubicSpline( x, y_err )
-            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            #cs_sm_e2a_err = CubicSpline( x, y_err )
-            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2019-mbpt-am-l69':
-            #
-            # same remarck as for L59
-            #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL69.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL69.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
-            self.note = ""
-            self.label = 'MBPT-2019-L69'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
-                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            self.nm_kfn, self.nm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.nm_e2a \
-                 = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            #y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            #cs_nm_e2a_err = CubicSpline( x, y_err )
-            #self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            #y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            #cs_sm_e2a_err = CubicSpline( x, y_err )
-            #self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.nm_den, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2020-mbpt-am':
-            #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-SM.csv')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-NM.csv')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
-            self.note = ""
-            self.label = 'MBPT-2020'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.every = 4
-            self.err = True
-            self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
-                self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
-                = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.sm_e2a = self.sm_e2a_n3lo
-            self.sm_e2a_err = self.sm_e2a_n3lo_err
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            self.nm_den, self.nm_e2a_lo, self.nm_e2a_lo_err, self.nm_e2a_nlo, self.nm_e2a_nlo_err, \
-                self.nm_e2a_n2lo, self.nm_e2a_n2lo_err, self.nm_e2a_n3lo, self.nm_e2a_n3lo_err \
-                = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a = self.nm_e2a_n3lo
-            self.nm_e2a_err = self.nm_e2a_n3lo_err
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2022-afdmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2022-AFDMC-NM.csv')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'S. Gandolfi, G. Palkanoglou, J. Carlson, A. Gezerlis, K.E. Schmidt, Condensed Matter 7(1) (2022).'
-            self.note = ""
-            self.label = 'AFDMC+corr.-2022'
-            self.linestyle = 'solid'
-            self.marker = 'o'
-            #self.linestyle = 'solid'
-            self.every = 1
-            self.err = True
-            # read e2a
-            self.nm_kfn, e2effg, e2effg_err = np.loadtxt( file_in, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
-            self.nm_den     = nuda.den_n( self.nm_kfn )
-            self.nm_e2a = e2effg * nuda.effg( self.nm_kfn )
-            self.nm_e2a_err = e2effg_err * nuda.effg( self.nm_kfn )
-            #
-            self.nm_e2v = self.nm_e2a * self.nm_den
-<<<<<<<< HEAD:version-0.1/nucleardatapy/matter/setup_micro.py
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-========
-            #self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
->>>>>>>> slalit:build/lib/nucleardatapy/matter/setup_micro-old.py
-            #self.nm_e2a_err = self.nm_e2v_err / self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            #
-<<<<<<<< HEAD:version-0.1/nucleardatapy/matter/setup_micro.py
-            print('enter here:',model)
-=======
             file_in1 = os.path.join(
                 nuda.param.path_data, "matter/micro/2020-MBPT-SM-DHSL59.dat"
             )
@@ -2205,7 +1239,9 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1, usecols=(0, 1, 2, 3, 4, 5, 6, 7), comments="#", unpack=True
             )
-            self.sm_e2a_err = np.abs(uncertainty_stat(self.sm_den) * self.sm_e2a)
+            self.sm_e2a_err = np.abs(
+                uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a
+            )
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             (
@@ -2220,7 +1256,9 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in2, usecols=(0, 1, 2, 3, 4, 5, 6, 7), comments="#", unpack=True
             )
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -2261,7 +1299,9 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1, usecols=(0, 1, 2, 3, 4, 5, 6, 7), comments="#", unpack=True
             )
-            self.sm_e2a_err = np.abs(uncertainty_stat(self.sm_den) * self.sm_e2a)
+            self.sm_e2a_err = np.abs(
+                uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a
+            )
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             (
@@ -2276,7 +1316,9 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in2, usecols=(0, 1, 2, 3, 4, 5, 6, 7), comments="#", unpack=True
             )
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -2379,41 +1421,16 @@ class setupMicro:
             #
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            # self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den) * self.nm_e2a )
+            # self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
             # self.nm_e2a_err = self.nm_e2v_err / self.nm_den
             #
         elif model.lower() == "2024-nleft-am":
             #
->>>>>>> slalit
+            print("enter here:", model)
             self.flag_nm = True
             self.flag_sm = True
             self.flag_kf = False
             self.flag_den = False
-<<<<<<< HEAD
-========
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2024-nleft-am':
->>>>>>>> slalit:build/lib/nucleardatapy/matter/setup_micro-old.py
-            #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-NLEFT-SM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-NLEFT-NM.dat')
-            if nuda.env.verb: print('Reads file1:',file_in1)
-            if nuda.env.verb: print('Reads file2:',file_in2)
-            self.ref = 'S. Elhatisari, L. Bovermann, Y.-Z. Ma et al., Nature 630, 59 (2024).'
-            self.note = ""
-            self.label = 'NLEFT-2024'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.every = 1
-=======
             #
             file_in1 = os.path.join(
                 nuda.param.path_data, "matter/micro/2024-NLEFT-SM.dat"
@@ -2433,16 +1450,10 @@ class setupMicro:
             self.marker = "s"
             # self.linestyle = 'solid'
             self.every = 2
->>>>>>> slalit
             self.err = True
             #
             # Read SM results
             #
-<<<<<<< HEAD
-            self.sm_A, self.sm_L, self.sm_den, self.sm_etot_2bf, self.sm_etot_2bf_err, self.sm_etot, self.sm_etot_err \
-                = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6), comments='#', unpack = True, delimiter=',' )
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-=======
             (
                 self.sm_A,
                 self.sm_L,
@@ -2459,80 +1470,18 @@ class setupMicro:
                 delimiter=",",
             )
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
->>>>>>> slalit
             self.sm_e2adata = self.sm_etot / self.sm_A
             self.sm_e2adata_err = self.sm_etot_err / self.sm_A
             self.sm_e2adata_2bf = self.sm_etot_2bf / self.sm_A
             self.sm_e2adata_2bf_err = self.sm_etot_2bf_err / self.sm_A
-<<<<<<< HEAD
-            self.sm_e2vdata     = self.sm_e2adata * self.sm_den
-=======
             self.sm_e2vdata = self.sm_e2adata * self.sm_den
->>>>>>> slalit
             self.sm_e2vdata_err = self.sm_e2adata_err * self.sm_den
             # fit with EFFG
             xdata = self.sm_kfn
             ydata = self.sm_e2adata
-<<<<<<< HEAD
-            sm_popt, sm_pcov = curve_fit( func_e2a_NLEFT2024, xdata, ydata )
-            print('sm_popt:',sm_popt)
-            print('sm_pcov:',sm_pcov)
-            self.sm_pfit = sm_popt
-            self.sm_perr = np.sqrt( np.diag( sm_pcov ) )
-            # analyse the uncertainties for e2a, pre, cs2
-            self.sm_pcerr = np.zeros( (100,3), dtype=float )
-            self.sm_e2a = func_e2a_NLEFT2024( xdata, *self.sm_pfit )
-            self.sm_e2a_min = self.sm_e2a.copy()
-            self.sm_e2a_max = self.sm_e2a.copy()
-            self.sm_pre = func_pre_NLEFT2024( xdata, self.sm_den, *self.sm_pfit )
-            self.sm_pre_min = self.sm_pre.copy()
-            self.sm_pre_max = self.sm_pre.copy()
-            self.sm_dpredn = func_dpredn_NLEFT2024( xdata, self.sm_den, *self.sm_pfit )
-            self.sm_dpredn_min = self.sm_dpredn.copy()
-            self.sm_dpredn_max = self.sm_dpredn.copy()
-            for k in range(100):
-                b = self.sm_pfit[0] + 0.1*(random.random()-0.5)*self.sm_perr[0]
-                c = self.sm_pfit[1] + 0.1*(random.random()-0.5)*self.sm_perr[1]
-                d = self.sm_pfit[2] + 0.1*(random.random()-0.5)*self.sm_perr[2]
-                self.sm_pcerr[k,0] = b
-                self.sm_pcerr[k,1] = c
-                self.sm_pcerr[k,2] = d
-                param = np.array( [ b, c, d ] )
-                # e2a
-                af = func_e2a_NLEFT2024( xdata, *param )
-                for l,val in enumerate(af):
-                    if val > self.sm_e2a_max[l]: self.sm_e2a_max[l] = val
-                    if val < self.sm_e2a_min[l]: self.sm_e2a_min[l] = val
-                self.sm_e2a_err = 0.5 * ( self.sm_e2a_max - self.sm_e2a_min )
-                # pre
-                af = func_pre_NLEFT2024( xdata, self.sm_den, *param )
-                for l,val in enumerate(af):
-                    if val > self.sm_pre_max[l]: self.sm_pre_max[l] = val
-                    if val < self.sm_pre_min[l]: self.sm_pre_min[l] = val
-                self.sm_pre_err = 0.5 * ( self.sm_pre_max - self.sm_pre_min )
-                # dpdn
-                af = func_dpredn_NLEFT2024( xdata, self.sm_den, *param )
-                for l,val in enumerate(af):
-                    if val > self.sm_dpredn_max[l]: self.sm_dpredn_max[l] = val
-                    if val < self.sm_dpredn_min[l]: self.sm_dpredn_min[l] = val
-                self.sm_dpredn_err = 0.5 * ( self.sm_dpredn_max - self.sm_dpredn_min )
-            print('sm_pcerr:',self.sm_pcerr)
-            #self.sm_e2a = self.sm_e2a_fit
-            #self.sm_e2a_err = self.sm_e2a_fit_err
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            #
-            # Read NM results
-            self.nm_A, self.nm_L, self.nm_den, self.nm_etot, self.nm_etot_err \
-                = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4), comments='#', unpack = True, delimiter=',' )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2adata = self.nm_etot / self.nm_A
-            self.nm_e2adata_err = self.nm_etot_err / self.nm_A
-            self.nm_e2vdata     = self.nm_e2adata * self.nm_den
-=======
             sm_popt, sm_pcov = curve_fit(func_e2a_NLEFT2024, xdata, ydata)
-            # print('sm_popt:',sm_popt)
-            # print('sm_pcov:',sm_pcov)
+            print("sm_popt:", sm_popt)
+            print("sm_pcov:", sm_pcov)
             self.sm_pfit = sm_popt
             self.sm_perr = np.sqrt(np.diag(sm_pcov))
             # analyse the uncertainties for e2a, pre, cs2
@@ -2598,61 +1547,13 @@ class setupMicro:
             self.nm_e2adata = self.nm_etot / self.nm_A
             self.nm_e2adata_err = self.nm_etot_err / self.nm_A
             self.nm_e2vdata = self.nm_e2adata * self.nm_den
->>>>>>> slalit
             self.nm_e2vdata_err = self.nm_e2adata_err * self.nm_den
             # fit with EFFG
             xdata = self.nm_kfn
             ydata = self.nm_e2adata
-<<<<<<< HEAD
-            nm_popt, nm_pcov = curve_fit( func_e2a_NLEFT2024, xdata, ydata )
-            print('nm_popt:',nm_popt)
-            print('nm_pcov:',nm_pcov)
-            self.nm_pfit = nm_popt
-            self.nm_perr = np.sqrt( np.diag( nm_pcov ) )
-            self.nm_pcerr = np.zeros( (100,3), dtype=float )
-            self.nm_e2a = func_e2a_NLEFT2024( xdata, *self.nm_pfit )
-            self.nm_e2a_min = self.nm_e2a.copy()
-            self.nm_e2a_max = self.nm_e2a.copy()
-            self.nm_pre = func_pre_NLEFT2024( xdata, self.nm_den, *self.nm_pfit )
-            self.nm_pre_min = self.nm_pre.copy()
-            self.nm_pre_max = self.nm_pre.copy()
-            self.nm_dpredn = func_dpredn_NLEFT2024( xdata, self.nm_den, *self.nm_pfit )
-            self.nm_dpredn_min = self.nm_dpredn.copy()
-            self.nm_dpredn_max = self.nm_dpredn.copy()
-            for k in range(100):
-                b = self.nm_pfit[0] + 0.2*(random.random()-0.5)*self.nm_perr[0]
-                c = self.nm_pfit[1] + 0.2*(random.random()-0.5)*self.nm_perr[1]
-                d = self.nm_pfit[2] + 0.2*(random.random()-0.5)*self.nm_perr[2]
-                self.nm_pcerr[k,0] = b
-                self.nm_pcerr[k,1] = c
-                self.nm_pcerr[k,2] = d
-                param = np.array( [ b, c, d ] )
-                # e2a
-                af = func_e2a_NLEFT2024( xdata, *param )
-                for l,val in enumerate(af):
-                    if val > self.nm_e2a_max[l]: self.nm_e2a_max[l] = val
-                    if val < self.nm_e2a_min[l]: self.nm_e2a_min[l] = val
-                self.nm_e2a_err = 0.5 * ( self.nm_e2a_max - self.nm_e2a_min )
-                # pre
-                af = func_pre_NLEFT2024( xdata, self.nm_den, *param )
-                for l,val in enumerate(af):
-                    if val > self.nm_pre_max[l]: self.nm_pre_max[l] = val
-                    if val < self.nm_pre_min[l]: self.nm_pre_min[l] = val
-                self.nm_pre_err = 0.5 * ( self.nm_pre_max - self.nm_pre_min )
-                # dpdn
-                af = func_dpredn_NLEFT2024( xdata, self.nm_den, *param )
-                for l,val in enumerate(af):
-                    if val > self.nm_dpredn_max[l]: self.nm_dpredn_max[l] = val
-                    if val < self.nm_dpredn_min[l]: self.nm_dpredn_min[l] = val
-                self.nm_dpredn_err = 0.5 * ( self.nm_dpredn_max - self.nm_dpredn_min )
-            #print('nm_pcerr:',self.nm_pcerr)
-            #self.nm_e2a = self.nm_e2a_fit
-            #self.nm_e2a_err = self.nm_e2a_fit_err
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-=======
             nm_popt, nm_pcov = curve_fit(func_e2a_NLEFT2024, xdata, ydata)
-            # print('nm_popt:',nm_popt)
-            # print('nm_pcov:',nm_pcov)
+            print("nm_popt:", nm_popt)
+            print("nm_pcov:", nm_pcov)
             self.nm_pfit = nm_popt
             self.nm_perr = np.sqrt(np.diag(nm_pcov))
             self.nm_pcerr = np.zeros((100, 3), dtype=float)
@@ -2701,7 +1602,6 @@ class setupMicro:
             # self.nm_e2a = self.nm_e2a_fit
             # self.nm_e2a_err = self.nm_e2a_fit_err
             self.nm_e2v = self.nm_e2a * self.nm_den
->>>>>>> slalit
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             self.nm_pre = self.nm_pre
             self.nm_pre_err = self.nm_pre_err
@@ -2709,12 +1609,6 @@ class setupMicro:
             self.nm_dpredn_err = self.nm_dpredn_err
             #
             # chemical potential
-<<<<<<< HEAD
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.sm_den)
-=======
             self.nm_chempot = (
                 np.array(self.nm_pre) + np.array(self.nm_e2v)
             ) / np.array(self.nm_den)
@@ -2727,7 +1621,6 @@ class setupMicro:
             self.sm_chempot_err = (
                 np.array(self.sm_pre_err) + np.array(self.sm_e2v_err)
             ) / np.array(self.sm_den)
->>>>>>> slalit
             #
             # enthalpy
             self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
@@ -2737,230 +1630,6 @@ class setupMicro:
             #
             # sound speed
             self.sm_cs2 = self.sm_dpredn / self.sm_h2a
-<<<<<<< HEAD
-            self.sm_cs2_err = np.abs( self.sm_dpredn_err / self.sm_h2a ) + \
-                np.abs( self.sm_dpredn * self.sm_h2a_err / self.sm_h2a )
-            self.nm_cs2 = self.nm_dpredn / self.nm_h2a
-            self.nm_cs2_err = np.abs( self.nm_dpredn_err / self.nm_h2a ) + \
-                np.abs( self.nm_dpredn * self.nm_h2a_err / self.nm_h2a )
-            #
-        elif '2024-bhf-am' in model.lower():
-            #
-            # 2BF
-            if model.lower() == '2024-bhf-am-2bf-av8p':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_Av8p2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_Av8p2BF.dat')
-                self.label = 'BHF-2024-2BF-Av8p'
-            elif model.lower() == '2024-bhf-am-2bf-av18':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_Av182BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_Av182BF.dat')
-                self.label = 'BHF-2024-2BF-Av18'
-            elif model.lower() == '2024-bhf-am-2bf-bonn':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_BONN2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_BONN2BF.dat')
-                self.label = 'BHF-2024-2BF-Bonn'
-            elif model.lower() == '2024-bhf-am-2bf-cdbonn':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_CDBONN2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_CDBONN2BF.dat')
-                self.label = 'BHF-2024-2BF-CDBonn'
-            elif model.lower() == '2024-bhf-am-2bf-sscv14':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_SSCV142BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_SSCV142BF.dat')
-                self.label = 'BHF-2024-2BF-SSCV14'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97a':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97a2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97a2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97a'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97b':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97b2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97b2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97b'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97c':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97c2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97c2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97c'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97d':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97d2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97d2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97d'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97e':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97e2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97e2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97e'
-            elif model.lower() == '2024-bhf-am-2bf-nsc97f':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-2BF/spin_isosp_NSC97f2BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-2BF/spin_isosp_NSC97f2BF.dat')
-                self.label = 'BHF-2024-2BF-NSC97f'
-            # 2+3BF
-            elif model.lower() == '2024-bhf-am-23bf-av8p':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_Av8p23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_Av8p23BF.dat')
-                self.label = 'BHF-2024-23BF-Av8p'
-            elif model.lower() == '2024-bhf-am-23bf-av18':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_Av1823BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_Av1823BF.dat')
-                self.label = 'BHF-2024-23BF-Av18'
-            elif model.lower() == '2024-bhf-am-23bfmicro-av18':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_Av1823BFmicro.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_Av1823BFmicro.dat')
-                self.label = 'BHF-2024-23BFmicro-Av18'
-            elif model.lower() == '2024-bhf-am-23bf-bonn':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_BONN23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_BONN23BF.dat')
-                self.label = 'BHF-2024-23BF-Bonn'
-            elif model.lower() == '2024-bhf-am-23bfmicro-bonnb':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_BONNB23BFmicro.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_BONNB23BFmicro.dat')
-                self.label = 'BHF-2024-23BFMicro-BonnB'
-            elif model.lower() == '2024-bhf-am-23bf-cdbonn':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_CDBONN23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_CDBONN23BF.dat')
-                self.label = 'BHF-2024-23BF-CDBonn'
-            elif model.lower() == '2024-bhf-am-23bf-sscv14':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_SSCV1423BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_SSCV1423BF.dat')
-                self.label = 'BHF-2024-23BF-SSCV14'
-            elif model.lower() == '2024-bhf-am-23bfmicro-nsc93':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC9323BFmicro.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC9323BFmicro.dat')
-                self.label = 'BHF-2024-23BFmicro-NSC93'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97a':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97a23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97a23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC97a'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97b':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97b23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97b23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC97b'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97c':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97c23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97c23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC97c'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97d':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97d23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97d23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC9d7'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97e':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97e23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97e23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC97e'
-            elif model.lower() == '2024-bhf-am-23bf-nsc97f':
-                file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-SM-23BF/spin_isosp_NSC97f23BF.dat')
-                file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2024-BHF-NM-23BF/spin_isosp_NSC97f23BF.dat')
-                self.label = 'BHF-2024-23BF-NSC97f'
-            #
-            if nuda.env.verb: print('Reads file:',file_in1)
-            if nuda.env.verb: print('Reads file:',file_in2)
-            self.ref = 'I. Vida\\~na, J. Margueron, H.J. Schulze, Universe 10, 5 (2024).'
-            self.note = ""
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.every = 4
-            self.err = False
-            #
-            self.sm_den, self.sm_vS0T0, self.sm_vS0T1, self.sm_vS1T0, self.sm_vS1T1, self.sm_vtot, self.sm_kin, self.sm_etot \
-                = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.sm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
-            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
-            self.sm_kf = self.sm_kfn
-            self.sm_e2a = self.sm_etot
-            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
-            self.sm_e2v     = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
-            #
-            self.nm_den, self.nm_vS0T0, self.nm_vS0T1, self.nm_vS1T0, self.nm_vS1T1, self.nm_vtot, self.nm_kin, self.nm_etot \
-                = np.loadtxt( file_in2, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
-            self.nm_den_min = min( self.sm_den ); self.sm_den_max = max( self.sm_den )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a = self.nm_etot
-            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
-            y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
-            cs_sm_e2a_err = CubicSpline( x, y_err )
-            self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
-            # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
-            #
-            # chemical potential in SM and NM
-            self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-            self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.nm_den)
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        elif model.lower() == '2024-dmc-nm':
-            #
-            file_in = os.path.join(nuda.param.path_data,'matter/micro/2024-DMC-NM.dat')
-            if nuda.env.verb: print('Reads file:',file_in)
-            self.ref = 'I. Tews, R. Somasundaram, D. Lonardoni, H. Göttling, R. Seutin, J. Carlson, S. Gandolfi, K. Hebeler, A. Schwenk, arXiv:2407.08979 [nucl-th]'
-            self.note = ""
-            self.label = 'DMC-2024'
-            self.marker = 's'
-            #self.linestyle = 'solid'
-            self.err = True
-            self.nm_den, self.nm_e2a, self.nm_e2a_err_stat, self.nm_e2a_err_ekm, self.nm_e2a_err_gp \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
-            self.nm_kfn = nuda.kf_n( self.nm_den )
-            self.nm_e2a_err = self.nm_e2a_err_stat + self.nm_e2a_err_ekm + self.nm_e2a_err_gp
-            self.nm_e2v     = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            #
-            # pressure in NM
-            x = np.insert( self.nm_kfn, 0, 0.0 )
-            y = np.insert( self.nm_e2a, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
-            y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
-            cs_nm_e2a_err = CubicSpline( x, y_err )
-            self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
-            #
-            # chemical potential
-            self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-            self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
-            #
-            # enthalpy
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
-            #
-            # sound speed
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
-            #
-        self.den_unit = 'fm$^{-3}$'
-        self.kf_unit = 'fm$^{-1}$'
-        self.e2a_unit = 'MeV'
-        self.e2v_unit = 'MeV fm$^{-3}$'
-        self.pre_unit = 'MeV fm$^{-3}$'
-        #
-        if nuda.env.verb: print("Exit SetupEOSMicro()")
-        #
-    def print_outputs( self ):
-=======
             self.sm_cs2_err = np.abs(self.sm_dpredn_err / self.sm_h2a) + np.abs(
                 self.sm_dpredn * self.sm_h2a_err / self.sm_h2a
             )
@@ -3258,7 +1927,9 @@ class setupMicro:
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_kf = self.sm_kfn
             self.sm_e2a = self.sm_etot
-            self.sm_e2a_err = np.abs(uncertainty_stat(self.sm_den) * self.sm_e2a)
+            self.sm_e2a_err = np.abs(
+                uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a
+            )
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
@@ -3278,7 +1949,9 @@ class setupMicro:
             self.sm_den_max = max(self.sm_den)
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a = self.nm_etot
-            self.nm_e2a_err = np.abs(uncertainty_stat(self.nm_den) * self.nm_e2a)
+            self.nm_e2a_err = np.abs(
+                uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a
+            )
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
             #
@@ -3292,7 +1965,7 @@ class setupMicro:
             file_in = os.path.join(nuda.param.path_data, "matter/micro/2024-DMC-NM.dat")
             if nuda.env.verb:
                 print("Reads file:", file_in)
-            self.ref = " I. Tews, S. Gandolfi, A. Gezerlis, A. Schwenk, Phys. Rev. C 93, 024305 (2016)."
+            self.ref = "I. Tews, R. Somasundaram, D. Lonardoni, H. Göttling, R. Seutin, J. Carlson, S. Gandolfi, K. Hebeler, A. Schwenk, arXiv:2407.08979 [nucl-th]"
             self.note = ""
             self.label = "QMC-2024"
             self.marker = "s"
@@ -3453,57 +2126,10 @@ class setupMicro:
         #
 
     def print_outputs(self):
->>>>>>> slalit
         """
         Method which print outputs on terminal's screen.
         """
         #
-<<<<<<< HEAD
-        if nuda.env.verb: print("Enter print_outputs()")
-        #
-        print("- Print output:")
-        print("   model:",self.model)
-        print("   ref:  ",self.ref)
-        print("   label:",self.label)
-        print("   note: ",self.note)
-        print("   self.sm_den: ",self.sm_den)
-        print("   self.sm_effmass: ",self.sm_effmass)
-        #if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
-        if self.den is not None: print(f"   den: {np.round(self.den,3)} in {self.den_unit}")
-        if self.kfn is not None: print(f"   kfn: {np.round(self.den,3)} in {self.kf_unit}")
-        if self.asy is not None: print(f"   asy: {np.round(self.asy,3)}")
-        if self.e2a is not None: print(f"   e2a: {np.round(self.e2a,3)} in {self.e2a_unit}")
-        if self.e2v is not None: print(f"   e2v: {np.round(self.e2v,3)} in {self.e2v_unit}")
-        if self.pre is not None: print(f"   pre: {np.round(self.pre,3)} in {self.pre_unit}")
-        if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)}")
-        if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
-        if self.sm_kfn is not None: print(f"   sm_kfn: {np.round(self.sm_kfn,3)} in {self.kf_unit}")
-        if self.sm_chempot is not None: print(f"   sm_chempot: {np.round(self.sm_chempot,3)} in {self.e2a_unit}")
-        if self.sm_effmass is not None: print(f"   sm_effmass: {np.round(self.sm_effmass,3)}")
-        if self.sm_e2a is not None: print(f"   sm_e2a: {np.round(self.sm_e2a,3)} in {self.e2a_unit}")
-        if self.sm_e2a_err is not None: print(f"   sm_e2a_err: {np.round(self.sm_e2a_err,3)} in {self.e2a_unit}")
-        if self.sm_e2a_fit is not None: print(f"   sm_e2a_fit: {np.round(self.sm_e2a_fit,3)} in {self.e2a_unit}")
-        if self.sm_e2a_fit_err is not None: print(f"   sm_e2a_fit_err: {np.round(self.sm_e2a_fit_err,3)} in {self.e2a_unit}")
-        if self.sm_e2v is not None: print(f"   sm_e2v: {np.round(self.sm_e2v,3)} in {self.e2v_unit}")
-        if self.sm_e2v_err is not None: print(f"   sm_e2v_err: {np.round(self.sm_e2v_err,3)} in {self.e2v_unit}")
-        if self.sm_pre is not None: print(f"   sm_pre: {np.round(self.sm_pre,3)} in {self.pre_unit}")
-        if self.nm_den is not None: print(f"   nm_den: {np.round(self.nm_den,3)} in {self.den_unit}")
-        if self.nm_kfn is not None: print(f"   nm_kfn: {np.round(self.nm_kfn,3)} in {self.kf_unit}")
-        if self.nm_chempot is not None: print(f"   nm_chempot: {np.round(self.nm_chempot,3)} in {self.e2a_unit}")
-        if self.nm_effmass is not None: print(f"   nm_effmass: {np.round(self.nm_effmass,3)}")
-        if self.nm_e2a is not None: print(f"   nm_e2a: {np.round(self.nm_e2a,3)} in {self.e2a_unit}")
-        if self.nm_e2a_err is not None: print(f"   nm_e2a_err: {np.round(self.nm_e2a_err,3)} in {self.e2a_unit}")
-        if self.nm_e2a_fit is not None: print(f"   nm_e2a_fit: {np.round(self.nm_e2a_fit,3)} in {self.e2a_unit}")
-        if self.nm_e2a_fit_err is not None: print(f"   nm_e2a_fit_err: {np.round(self.nm_e2a_fit_err,3)} in {self.e2a_unit}")
-        if self.nm_e2v is not None: print(f"   nm_e2v: {np.round(self.nm_e2v,3)} in {self.e2v_unit}")
-        if self.nm_e2v_err is not None: print(f"   nm_e2v_err: {np.round(self.nm_e2v_err,3)} in {self.e2v_unit}")
-        if self.nm_pre is not None: print(f"   nm_pre: {np.round(self.nm_pre,3)} in {self.pre_unit}")
-        if self.nm_cs2 is not None: print(f"   nm_cs2: {np.round(self.nm_cs2,3)}")
-        #
-        if nuda.env.verb: print("Exit print_outputs()")
-        #
-    def init_self( self ):
-=======
         if nuda.env.verb:
             print("Enter print_outputs()")
         #
@@ -3585,21 +2211,10 @@ class setupMicro:
         #
 
     def init_self(self):
->>>>>>> slalit
         """
         Initialize variables in self.
         """
         #
-<<<<<<< HEAD
-        if nuda.env.verb: print("Enter init_self()")
-        #
-        #: Attribute the number of points for the density.
-        self.nden = 10;
-        #: Attribute providing the full reference to the paper to be citted.
-        self.ref = ''
-        #: Attribute providing additional notes about the data.
-        self.note = ''
-=======
         if nuda.env.verb:
             print("Enter init_self()")
         #
@@ -3609,17 +2224,12 @@ class setupMicro:
         self.ref = ""
         #: Attribute providing additional notes about the data.
         self.note = ""
->>>>>>> slalit
         #: Attribute the plot linestyle.
         self.linestyle = None
         #: Attribute the plot to discriminate True uncertainties from False ones.
         self.err = False
         #: Attribute the plot label data.
-<<<<<<< HEAD
-        self.label = ''
-=======
         self.label = ""
->>>>>>> slalit
         #: Attribute the plot marker.
         self.marker = None
         #: Attribute the plot every data.
@@ -3732,14 +2342,7 @@ class setupMicro:
         #: Attribute the uncertainty in the symmetric matter sound speed.
         self.sm_cs2_err = None
         #
-<<<<<<< HEAD
-        if nuda.env.verb: print("Exit init_self()")
-        #
-        return self        
-
-=======
         if nuda.env.verb:
             print("Exit init_self()")
         #
         return self
->>>>>>> slalit

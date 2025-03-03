@@ -12,7 +12,7 @@ path_data = os.path.join(nucleardatapy_tk, "data/")
 #
 # where AME/ is stored
 #
-path_ame = os.path.join(path_data, "AME/")
+path_ame = os.path.join(path_data, "nuclei/masses/AME/")
 #
 col = [
     "blue",
