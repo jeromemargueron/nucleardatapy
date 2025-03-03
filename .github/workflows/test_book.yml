@@ -38,6 +38,6 @@ jobs:
           popd
 
       - name: Archive examples Jupyter book
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           path: ${{ env.EXAMPLES_BOOK }}
