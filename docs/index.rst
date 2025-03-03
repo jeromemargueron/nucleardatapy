@@ -38,31 +38,13 @@ Complement
    :maxdepth: 2
    :caption: Contents:
 
-   source/api/setup_matter_ffg
-   source/api/setup_matter_micro
-   source/api/setup_matter_micro_band
-   source/api/setup_matter_micro_lp
-   source/api/setup_matter_micro_gap
-   source/api/setup_matter_micro_esym
-   source/api/setup_matter_pheno
-   source/api/setup_matter_pheno_esym
-   source/api/setup_matter_hic
-   source/api/setup_eos_am
-   source/api/setup_eos_beta
-   source/api/setup_nuc_be_exp
-   source/api/setup_nuc_be_theo
-   source/api/setup_nuc_rch_exp
-   source/api/setup_nuc_rch_theo
-   source/api/setup_nuc_isgmr_exp
-   source/api/setup_crust
-   source/api/setup_astro_masses
-   source/api/setup_astro_mup
-   source/api/setup_astro_mtov
-   source/api/setup_astro_mr
-   source/api/setup_astro_gw
-   source/api/setup_corr_EsymLsym
-   source/api/setup_corr_Esym
-
+   source/api/matter
+   source/api/eos
+   source/api/nuc
+   source/api/crust
+   source/api/astro
+   source/api/corr
+   
 Indices and tables
 ------------------
 

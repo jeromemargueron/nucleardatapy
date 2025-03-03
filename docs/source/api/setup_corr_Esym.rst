@@ -11,19 +11,19 @@ corr.setupEsym
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_corr_setupEsym.py
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_corr_setupEsym_-200.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_corr_setupEsym_-200.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	Uncertainty band for Esym as a function of the density for Ksym=-200 MeV.
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_corr_setupEsym_0.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_corr_setupEsym_0.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	Uncertainty band for Esym as a function of the density for Ksym=0 MeV.
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_corr_setupEsym_200.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_corr_setupEsym_200.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

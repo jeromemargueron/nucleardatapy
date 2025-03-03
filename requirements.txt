@@ -2,5 +2,4 @@ os
 sys
 numpy
 scipy
-matplotlib
 random

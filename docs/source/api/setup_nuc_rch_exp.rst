@@ -11,7 +11,7 @@ nuc.setupRchExp
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupRchExp.py
 
-.. figure:: ../../../nucleardatapy_samples/plots/figs/plot_nuc_setupRchExp.png
+.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupRchExp.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
