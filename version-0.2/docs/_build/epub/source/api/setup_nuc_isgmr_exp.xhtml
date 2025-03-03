@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SetupNucISGMRExp</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/epub.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="setupnucisgmrexp">
+<h1>SetupNucISGMRExp</h1>
+<span class="target" id="module-nucleardatapy.nuc.setup_isgmr_exp"></span><dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.isgmr_exp_tables">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_isgmr_exp.</span></span><span class="sig-name descname"><span class="pre">isgmr_exp_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a list of tables available in this toolkit for the ISGMR energy and
+print them all on the prompt. These tables are the following
+ones: ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The list of tables.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_isgmr_exp.</span></span><span class="sig-name descname"><span class="pre">setupISGMRExp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2018-ISGMR-GARG'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiate the object with microscopic results choosen    by the toolkit practitioner.
+This choice is defined in the variable <cite>table</cite>.</p>
+<p>The <cite>table</cite> can chosen among the following ones:    ‘2010-ISGMR-LI’, ‘2018-ISGMR-GARG’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2018-ISGMR-GARG’, ‘2018-ISGMR-GARG-LATEX’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.E_unit">
+<span class="sig-name descname"><span class="pre">E_unit</span></span></dt>
+<dd><p>Attribute energy unit.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.label">
+<span class="sig-name descname"><span class="pre">label</span></span></dt>
+<dd><p>Attribute providing the label the data is references for figures.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.note">
+<span class="sig-name descname"><span class="pre">note</span></span></dt>
+<dd><p>Attribute providing additional notes about the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucA">
+<span class="sig-name descname"><span class="pre">nucA</span></span></dt>
+<dd><p>Attribute A (mass of the nucleus).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucM12Mm1_cent">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_cent</span></span></dt>
+<dd><p>Attribute energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucM12Mm1_errm">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errm</span></span></dt>
+<dd><p>Attribute (-) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucM12Mm1_errp">
+<span class="sig-name descname"><span class="pre">nucM12Mm1_errp</span></span></dt>
+<dd><p>Attribute (+) uncertainty in the energy centroid.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucSymbol">
+<span class="sig-name descname"><span class="pre">nucSymbol</span></span></dt>
+<dd><p>Attribute the symbol of the element.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.nucZ">
+<span class="sig-name descname"><span class="pre">nucZ</span></span></dt>
+<dd><p>Attribute Z (charge of the nucleus).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span></dt>
+<dd><p>Attribute providing the full reference to the paper to be citted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp.table">
+<span class="sig-name descname"><span class="pre">table</span></span></dt>
+<dd><p>Attribute table.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupISGMRExp.py</p>
+<figure class="align-default" id="id1">
+<img alt="map to buried treasure" src="../../_images/plot_nuc_setupISGMRExp.png" style="width: 448.0px; height: 336.0px;" />
+<figcaption>
+<p><span class="caption-text">Experimental ISGMR energies available in the nucleardatapy toolkit.</span></p>
+</figcaption>
+</figure>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

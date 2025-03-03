@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetupEOSMicroBand &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SetupEOSMicroLP" href="setup_eos_micro_lp.html" />
+    <link rel="prev" title="SetupEOSMicro" href="setup_eos_micro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup_astro_gw.html">SetupAstroGW</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>SetupEOSMicroBand</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_eos_micro_band.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setupeosmicroband">
+<h1>SetupEOSMicroBand<a class="headerlink" href="#setupeosmicroband" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-nucleardatapy.eos.setup_micro_band"></span><dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.eos.setup_micro_band.</span></span><span class="sig-name descname"><span class="pre">setupMicroBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['2016-MBPT-AM']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2a_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">20.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2a_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/eos/setup_micro_band.html#setupMicroBand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate the object with statistical distributions averaging over
+the models given as inputs and in NM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models</strong> (<em>list.</em>) – The models given as inputs.</p></li>
+<li><p><strong>nden</strong> (<em>int</em><em>, </em><em>optional.</em>) – number of density points.</p></li>
+<li><p><strong>ne</strong> (<em>int</em><em>, </em><em>optional.</em>) – number of points along the energy axis.</p></li>
+<li><p><strong>den</strong> (<em>None</em><em> or </em><em>numpy array</em><em>, </em><em>optional.</em>) – if not None (default), impose the densities.</p></li>
+<li><p><strong>matter</strong> (<em>str</em><em>, </em><em>optional.</em>) – can be ‘NM’ (default), ‘SM’ or ‘ESYM’.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.den">
+<span class="sig-name descname"><span class="pre">den</span></span><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.den" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute a set of density points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/eos/setup_micro_band.html#setupMicroBand.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.init_self" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.matter">
+<span class="sig-name descname"><span class="pre">matter</span></span><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.matter" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute matter str.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.models">
+<span class="sig-name descname"><span class="pre">models</span></span><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.models" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.nden">
+<span class="sig-name descname"><span class="pre">nden</span></span><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.nden" title="Permalink to this definition"></a></dt>
+<dd><p>Attribute number of points in density.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.eos.setup_micro_band.setupMicroBand.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/eos/setup_micro_band.html#setupMicroBand.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.eos.setup_micro_band.setupMicroBand.print_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_eos_setupMicroBand.py</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_eos_setupMicroBand_NM.png"><img alt="map to buried treasure" src="../../_images/plot_eos_setupMicroBand_NM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Uncertainty band in NM obtained from the analysis of different predictions: MBPT-2016, QMC-2016 and MBPT-2020.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/plot_eos_setupMicroBand_SM.png"><img alt="map to buried treasure" src="../../_images/plot_eos_setupMicroBand_SM.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Uncertainty band in SM obtained from the analysis of different predictions: MBPT-2016 and MBPT-2020.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/plot_eos_setupMicroBand_Esym.png"><img alt="map to buried treasure" src="../../_images/plot_eos_setupMicroBand_Esym.png" style="width: 448.0px; height: 336.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Uncertainty band for the symmetry energy obtained from the analysis of different predictions: MBPT-2016 and MBPT-2020.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_eos_micro.html" class="btn btn-neutral float-left" title="SetupEOSMicro" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_eos_micro_lp.html" class="btn btn-neutral float-right" title="SetupEOSMicroLP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

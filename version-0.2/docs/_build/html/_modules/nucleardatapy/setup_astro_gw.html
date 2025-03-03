@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.setup_astro_gw &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_ffg.html">SetupEOSFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro.html">SetupEOSMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_band.html">SetupEOSMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_lp.html">SetupEOSMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_gap.html">SetupEOSMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_micro_esym.html">SetupEOSMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno.html">SetupEOSPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_pheno_esym.html">SetupEOSPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_hic.html">SetupEOSHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_eos_esym.html">SetupEOSEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_crust.html">SetupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/api/setup_CorEsymLsym.html">SetupCorEsymLsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>nucleardatapy.setup_astro_gw</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.setup_astro_gw</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+
+<div class="viewcode-block" id="astro_gw"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.astro_gw">[docs]</a><span class="k">def</span> <span class="nf">astro_gw</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the astrophysical sources for which a mass is given</span>
+
+<span class="sd">    :return: The list of sources.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter astro_gw()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;GW170817&#39;</span><span class="p">,</span> <span class="s1">&#39;GW190425&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;sources available in the toolkit:&#39;,sources)</span>
+    <span class="n">sources_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sources</span> <span class="p">]</span>
+    <span class="c1">#print(&#39;sources available in the toolkit:&#39;,sources_lower)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit astro_gw()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">sources</span><span class="p">,</span> <span class="n">sources_lower</span></div>
+
+<div class="viewcode-block" id="astro_gw_source"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.astro_gw_source">[docs]</a><span class="k">def</span> <span class="nf">astro_gw_source</span><span class="p">(</span> <span class="n">source</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of observations for a given source and print them all on the prompt.</span>
+
+<span class="sd">    :param source: The source for which there are different hypotheses.</span>
+<span class="sd">    :type source: str.</span>
+<span class="sd">    :return: The list of hypotheses. \</span>
+<span class="sd">    If source == &#39;GW170817&#39;: 1, 2, 3, 4, 5.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter astro_gw_source()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;gw170817&#39;</span><span class="p">:</span>
+        <span class="n">hyps</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;gw190425&#39;</span><span class="p">:</span>
+        <span class="n">hyps</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;Hypothesis available in the toolkit:&#39;,hyps)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit astro_gw_source()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">hyps</span></div>
+
+<div class="viewcode-block" id="SetupAstroGW"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGW">[docs]</a><span class="k">class</span> <span class="nc">SetupAstroGW</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the tidal deformability for a given source and obs.</span>
+
+<span class="sd">    This choice is defined in the variables `source` and `obs`.</span>
+
+<span class="sd">    `source` can chosen among the following ones: &#39;GW170817&#39;.</span>
+
+<span class="sd">    `obs` depends on the chosen source.</span>
+
+<span class="sd">    :param source: Fix the name of `source`. Default value: &#39;GW170817&#39;.</span>
+<span class="sd">    :type source: str, optional. </span>
+<span class="sd">    :param obs: Fix the `obs`. Default value: 1.</span>
+<span class="sd">    :type obs: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;GW170817&#39;</span><span class="p">,</span> <span class="n">hyp</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupAstroGW()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># some checks</span>
+        <span class="c1">#</span>
+        <span class="n">sources</span><span class="p">,</span> <span class="n">sources_lower</span> <span class="o">=</span> <span class="n">astro_gw</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sources_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Source &#39;</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="s1">&#39; is not in the list of sources.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of sources:&#39;</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;source:&quot;</span><span class="p">,</span><span class="n">source</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">hyps</span> <span class="o">=</span> <span class="n">astro_gw_source</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">hyp</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hyps</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hyp &#39;</span><span class="p">,</span><span class="n">hyp</span><span class="p">,</span><span class="s1">&#39; is not in the list of hyp.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of hyps:&#39;</span><span class="p">,</span><span class="n">hyps</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hyp</span> <span class="o">=</span> <span class="n">hyp</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hyp:&quot;</span><span class="p">,</span><span class="n">hyp</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># fix `file_in` and some properties of the object</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;gw170817&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;astro/gw/GW170817.dat&#39;</span>
+            <span class="k">if</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;B.P. Abbott, R. Abbott, T.D. Abbott, et al., PRL 119, 161101 (2017)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW170817 LS Abbott 2017&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="k">elif</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;B.P. Abbott, R. Abbott, T.D. Abbott, et al., PRL 119, 161101 (2017)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW170817 HS Abbott 2017&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+            <span class="k">elif</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;S. De, D. Finstad, J.M. Lattimer, D.A. Brown, E. Berger, C.M. Biwer, PRL 121, 091102 (2018)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW170817 De 2018&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="k">elif</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39; B.P. Abbott, R. Abbott, T.D. Abbott, F. Acernese, et al., Phys. Rev. X 9, 011001 (2019)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW170817 LS Abbott 2019&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="k">elif</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">5</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39; B.P. Abbott, R. Abbott, T.D. Abbott, F. Acernese, et al., Phys. Rev. X 9, 011001 (2019)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW170817 HS Abbott 2019&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+        <span class="k">elif</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;gw190425&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;astro/gw/GW190425.dat&#39;</span>
+            <span class="k">if</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;B.P. Abbott, R. Abbott, T.D. Abbott, S. Abraham, et al., ApJL 892, L3 (2020)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW190425 LS Abbott 2020&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="k">elif</span> <span class="n">hyp</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+                <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">=</span><span class="s1">&#39;B.P. Abbott, R. Abbott, T.D. Abbott, S. Abraham, et al., ApJL 892, L3 (2020)&#39;</span>
+                <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;GW190425 HS Abbott 2020&#39;</span>
+                <span class="c1">#: Attribute providing additional notes about the data.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this observation.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_do</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_do</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lam</span>  <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower bound of the tidal deformability for the source.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_sig_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper bound of the tidal deformability for the source.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_sig_do</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute latexCite.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="c1"># read file from `file_in`</span>
+        <span class="c1">#</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">ele</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                <span class="c1">#print(&#39;ele[0]:&#39;,ele[0],&#39; obs:&#39;,obs, &#39;ele[:]:&#39;,ele[:])</span>
+                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">hyp</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_up</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_do</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">q_do</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">q_up</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lam</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_up</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_do</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ele</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="n">ele</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupAstroGW()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroGW.print_output"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGW.print_output">[docs]</a>    <span class="k">def</span> <span class="nf">print_output</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_output()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_output</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   source:       &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   hyp:          &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">hyp</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   m_chirp:      &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sig(m_chirp): &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_up</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_do</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   q_do, q_up:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">q_do</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_up</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   lambda:       &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sig(lambda):  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_up</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_do</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   latexCite:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:          &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:        &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:         &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No output for source </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">. To get output, write &#39;verb_output = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroGW.print_table"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGW.print_table">[docs]</a>    <span class="k">def</span> <span class="nf">print_table</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs in table format (latex) on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_table()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_table</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- table: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> &amp; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hyp</span><span class="si">}</span><span class="s2"> &amp; $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">^</span><span class="se">{{</span><span class="si">{</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_up</span><span class="si">}</span><span class="se">}}</span><span class="s2">_</span><span class="se">{{</span><span class="si">{</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_do</span><span class="si">}</span><span class="se">}}</span><span class="s2">$ &amp; $[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">q_do</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">q_up</span><span class="si">}</span><span class="s2">]$ &amp; $</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="si">:</span><span class="s2">.2f</span><span class="se">}}</span><span class="si">}</span><span class="s2">^</span><span class="se">{{</span><span class="si">{</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_up</span><span class="si">}</span><span class="se">}}</span><span class="s2">_</span><span class="se">{{</span><span class="si">{</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_do</span><span class="si">}</span><span class="se">}}</span><span class="s2">$ &amp; \cite</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="si">}</span><span class="se">}}</span><span class="s2"> </span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No  table for source </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">. To get  table, write  &#39;verb_table = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_table()&quot;</span><span class="p">)</span></div></div>
+        <span class="c1">#</span>
+
+<div class="viewcode-block" id="SetupAstroGWAverage"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGWAverage">[docs]</a><span class="k">class</span> <span class="nc">SetupAstroGWAverage</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the total mass for a given source and averaged over hypotheses.</span>
+
+<span class="sd">    This choice is defined in the variable `source`.</span>
+
+<span class="sd">    `source` can chosen among the following ones: &#39;GW170817&#39;.</span>
+
+<span class="sd">    :param source: Fix the name of `source`. Default value: &#39;GW170817&#39;.</span>
+<span class="sd">    :type source: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;GW170817&#39;</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter SetupAstroGWAverage()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">source</span><span class="o">+</span><span class="s1">&#39; average&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;compute the centroid and standard deviation from the obs. data.&#39;</span>
+        <span class="c1">#</span>
+        <span class="n">hyps</span> <span class="o">=</span> <span class="n">astro_gw_source</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># search for the boundary for mtot:</span>
+        <span class="n">lammin</span> <span class="o">=</span> <span class="mf">3000.0</span><span class="p">;</span> <span class="n">lammax</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="n">hyp</span> <span class="ow">in</span> <span class="n">hyps</span><span class="p">:</span>
+            <span class="n">gw</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroGW</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">hyp</span> <span class="o">=</span> <span class="n">hyp</span> <span class="p">)</span>
+            <span class="c1">#gw.print_outputs( )</span>
+            <span class="n">lamdo</span> <span class="o">=</span> <span class="n">gw</span><span class="o">.</span><span class="n">lam</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">gw</span><span class="o">.</span><span class="n">lam_sig_do</span>
+            <span class="n">lamup</span> <span class="o">=</span> <span class="n">gw</span><span class="o">.</span><span class="n">lam</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">gw</span><span class="o">.</span><span class="n">lam_sig_up</span>
+            <span class="k">if</span> <span class="n">lamdo</span> <span class="o">&lt;</span> <span class="n">lammin</span><span class="p">:</span> <span class="n">lammin</span> <span class="o">=</span> <span class="n">lamdo</span>
+            <span class="k">if</span> <span class="n">lamup</span> <span class="o">&gt;</span> <span class="n">lammax</span><span class="p">:</span> <span class="n">lammax</span> <span class="o">=</span> <span class="n">lamup</span>
+        <span class="c1"># construct the distribution of observations in ay</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lammin</span><span class="p">,</span><span class="n">lammax</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+        <span class="n">ay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">hyp</span> <span class="ow">in</span> <span class="n">hyps</span><span class="p">:</span>
+            <span class="c1">#print(&#39;hyp:&#39;,hyp)</span>
+            <span class="n">gw</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">SetupAstroGW</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">hyp</span> <span class="o">=</span> <span class="n">hyp</span> <span class="p">)</span>
+            <span class="c1">#gw.print_outputs( )</span>
+            <span class="n">ay</span> <span class="o">+=</span> <span class="n">gauss</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">gw</span><span class="o">.</span><span class="n">lam</span><span class="p">,</span><span class="n">gw</span><span class="o">.</span><span class="n">lam_sig_up</span><span class="p">,</span><span class="n">gw</span><span class="o">.</span><span class="n">lam_sig_do</span><span class="p">)</span>
+        <span class="c1"># determine the centroid and standard deviation from the distribution of obs. </span>
+        <span class="n">nor</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">ay</span> <span class="p">)</span>
+        <span class="n">cen</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">ay</span><span class="o">*</span><span class="n">ax</span> <span class="p">)</span>
+        <span class="n">std</span> <span class="o">=</span> <span class="nb">sum</span> <span class="p">(</span> <span class="n">ay</span><span class="o">*</span><span class="n">ax</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lam_cen</span> <span class="o">=</span> <span class="n">cen</span> <span class="o">/</span> <span class="n">nor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_std</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">std</span><span class="o">/</span><span class="n">nor</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam_cen</span><span class="o">**</span><span class="mi">2</span> <span class="p">),</span> <span class="mi">3</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lam_cen</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">lam_cen</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupAstroGWAverage()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroGWAverage.print_output"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_output">[docs]</a>    <span class="k">def</span> <span class="nf">print_output</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_output</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   source:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   lam_cen:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_cen</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   lam_sig_std:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_std</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   latexCite:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No output for source </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> (average). To get output, write &#39;verb_output = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_output()&quot;</span><span class="p">)</span></div>
+        <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="SetupAstroGWAverage.print_table"><a class="viewcode-back" href="../../source/api/setup_astro_gw.html#nucleardatapy.setup_astro_gw.SetupAstroGWAverage.print_table">[docs]</a>    <span class="k">def</span> <span class="nf">print_table</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs in table format (latex) on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_table()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb_table</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- table: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> &amp; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hyp</span><span class="si">}</span><span class="s2"> &amp; $</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">^</span><span class="se">{{</span><span class="si">{</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_up</span><span class="si">}</span><span class="se">}}</span><span class="s2">_</span><span class="se">{{</span><span class="si">{</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">mchirp_sig_do</span><span class="si">}</span><span class="se">}}</span><span class="s2">$ &amp; $[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">q_do</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">q_up</span><span class="si">}</span><span class="s2">]$ &amp; $</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lam</span><span class="si">:</span><span class="s2">.2f</span><span class="se">}}</span><span class="si">}</span><span class="s2">^</span><span class="se">{{</span><span class="si">{</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_up</span><span class="si">}</span><span class="se">}}</span><span class="s2">_</span><span class="se">{{</span><span class="si">{</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">lam_sig_do</span><span class="si">}</span><span class="se">}}</span><span class="s2">$ &amp; \cite</span><span class="se">{{</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latexCite</span><span class="si">}</span><span class="se">}}</span><span class="s2"> </span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- No  table for source </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> (average). To get  table, write  &#39;verb_table = True&#39; in env.py.&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_table()&quot;</span><span class="p">)</span></div></div>
+        <span class="c1">#</span>
+
+<span class="k">def</span> <span class="nf">gauss</span><span class="p">(</span> <span class="n">ax</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">sig_up</span><span class="p">,</span> <span class="n">sig_do</span> <span class="p">):</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="p">)</span>
+    <span class="n">gauss</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">lam</span><span class="p">:</span> 
+            <span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">lam</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sig_do</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">sig_do</span> <span class="o">*</span> <span class="n">fac</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">-</span> <span class="n">lam</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sig_up</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">sig_up</span> <span class="o">*</span> <span class="n">fac</span>
+        <span class="n">gauss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">norm</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">gauss</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
