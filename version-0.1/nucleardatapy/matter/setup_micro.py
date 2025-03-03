@@ -6,29 +6,6 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-<<<<<<< HEAD
-import nucleardatapy as nuda
-
-def uncertainty_stat( den , err = 'MBPT' ):
-    print('Uncertainty')
-    if err.lower() == 'qmc':
-        return 0.21*(den/nuda.cst.nsat)
-    elif err.lower() == 'mbpt':
-        return 0.07*(den/nuda.cst.nsat)
-    else:
-        print('no model uncertainty is given')
-        print('err:',err)
-        print('exit()')
-        exit()
-
-def eos_micro_models():
-    """
-    Return a list with the name of the models available in this toolkit and \
-    print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
-    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
-=======
 # nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
 # sys.path.insert(0, nucleardatapy_tk)
 
@@ -231,7 +208,6 @@ def micro_models_old():
     '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
     '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
     '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
->>>>>>> slalit
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
@@ -243,98 +219,12 @@ def micro_models_old():
     '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
     '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
     '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
-<<<<<<< HEAD
-    '2024-DMC-NM'
-=======
     '2024-QMC-NM'
->>>>>>> slalit
 
     :return: The list of models.
     :rtype: list[str].
     """
     #
-<<<<<<< HEAD
-    if nuda.env.verb: print("\nEnter eos_micro_models()")
-    #
-    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APRfit', '2008-BCS-NM', '2008-AFDMC-NM', \
-             '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
-             '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-             '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7',
-             '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-             '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-             '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
-            '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
-            '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14', '2024-DMC-NM' ]
-    if nuda.env.verb: print('models available in the toolkit:',models)
-    models_lower = [ item.lower() for item in models ]
-    #
-    if nuda.env.verb: print("Exit eos_micro_models()")
-    #
-    return models, models_lower
-
-def eos_micro_models_group_SM( group ):
-    """
-    """
-    #
-    if nuda.env.verb: print("\nEnter eos_micro_models_group_SM( group )")
-    #
-    print('For group (in SM):',group)
-    #
-    models, models_lower = nuda.eos_micro_models()
-    #
-    models2 = []
-    for j,model in enumerate(models):
-        if group in model and '2BF' not in model and ( 'SM' in model or 'AM' in model ):
-            models2.append( model )
-            print('   models:',model)
-    #
-    print('models2:',models2)
-    models2_lower = [ item.lower() for item in models2 ]
-    #
-    return models2, models2_lower
-
-def eos_micro_models_group_NM( group ):
-    """
-    """
-    #
-    if nuda.env.verb: print("\nEnter eos_micro_models_group_NM( group )")
-    #
-    print('For group (in NM):',group)
-    #
-    models, models_lower = nuda.eos_micro_models()
-    #
-    models2 = []
-    for j,model in enumerate(models):
-        if group in model and '2BF' not in model and ( 'NM' in model or 'AM' in model ):
-            models2.append( model )
-            print('   models:',model)
-    #
-    print('models2:',models2)
-    models2_lower = [ item.lower() for item in models2 ]
-    #
-    return models2, models2_lower
-
-# Define functions for APRfit
-
-def APRfit_compute( n, x ):
-    p53 = 5.0/3.0
-    p83 = 8.0/3.0
-    asy = 1.0-2.0*x
-    n2 = n * n
-    G = ( 3.0*np.pi**2 )**p53 / ( 5.0*np.pi**2 )
-    Hk = G * nuda.cst.hbc**2 / ( 2.0 * nuda.cst.mnuc2_approx ) * n**p53 * ( (1 - x)**p53 + x**p53 )
-    Hm = G * ( p3 * ( (1-x)**p53 + x**p53 ) + p5 * ( (1-x)**p83 + x**p83 ) ) * n**p83 * np.exp( -p4*n )
-    g1L = -n2 * ( p1 + p2*n + p6*n2 + (p10 + p11*n) * np.exp( -(p9**2)*n2 ) )
-    g2L = -n2 * ( p12/n + p7 + p8*n + p13*np.exp( -(p9**2)*n2 ) )
-    g1H = g1L - n2*( p17*(n-p19) + p21*(n-p19)**2)*np.exp( p18*(n-p19) )
-    g2H = g2L - n2*( p15*(n-p20) + p14*(n-p20)**2)*np.exp( p16*(n-p20) )
-    HdL = g1L * (1.0-asy**2) + g2L * asy**2
-    HdH = g1H * (1.0-asy**2) + g2H * asy**2
-=======
     if nuda.env.verb:
         print("\nEnter micro_models_old()")
     #
@@ -505,48 +395,10 @@ def APRfit_compute(n, x):
     g2H = g2L - n2 * (p15 * (n - p20) + p14 * (n - p20) ** 2) * np.exp(p16 * (n - p20))
     HdL = g1L * (1.0 - asy**2) + g2L * asy**2
     HdH = g1H * (1.0 - asy**2) + g2H * asy**2
->>>>>>> slalit
     #
     HL = Hk + Hm + HdL
     HH = Hk + Hm + HdH
     #
-<<<<<<< HEAD
-    nt = 0.32-0.12*(1-2*x)**2 # transition density in fm^-3
-    e2v = np.zeros( len(n) )
-    for ind,den in enumerate(n):
-        if den < nt:
-            e2v[ind] = HL[ind]
-        else:
-            e2v[ind] = HH[ind]    
-    return e2v
-
-def func_GCR_e2a(den,a,alfa,b,beta):
-    return a * (den/nuda.cst.nsat)**alfa + b * (den/nuda.cst.nsat)**beta
-
-def func_GCR_pre(den,a,alfa,b,beta):
-    return den * ( a * alfa * (den/nuda.cst.nsat)**alfa + b * beta * (den/nuda.cst.nsat)**beta )
-
-def func_GCR_cs2(den,a,alfa,b,beta):
-    dp_dn = a * alfa * ( alfa + 1.0 ) * (den/nuda.cst.nsat)**alfa + b * beta * ( beta + 1.0 ) * (den/nuda.cst.nsat)**beta
-    enth = nuda.cst.mnuc2 + func_GCR_e2a(den,a,alfa,b,beta) + func_GCR_pre(den,a,alfa,b,beta) / den
-    return dp_dn / enth
-
-def func_e2a_NLEFT2024( kfn, b, c, d ):
-    a = 1.0
-    func = a + b*kfn + c*kfn**2 + d*kfn**3
-    return func * nuda.effg( kfn )
-
-def func_pre_NLEFT2024( kfn, den, b, c, d ):
-    func = nuda.cst.two + nuda.cst.three * b * kfn + \
-       nuda.cst.four * c * kfn**2 + nuda.cst.five * d * kfn**3
-    return func * nuda.cst.third * den * nuda.effg( kfn )
-
-def func_dpredn_NLEFT2024( kfn, den, b, c, d ):
-    func = nuda.cst.four + 9.0 * b * kfn + 20.0 * c * kfn**2 + 25.0 * d * kfn**3
-    return func_pre_NLEFT2024( kfn, den, b, c, d ) / den + func * nuda.effg( kfn ) / 9.0
-
-class SetupEOSMicro():
-=======
     nt = 0.32 - 0.12 * (1 - 2 * x) ** 2  # transition density in fm^-3
     # print('nt:',nt)
     e2v = np.zeros(len(n))
@@ -614,26 +466,18 @@ def func_dpredn_NLEFT2024(kfn, den, b, c, d):
 
 
 class setupMicro:
->>>>>>> slalit
     """
     Instantiate the object with microscopic results choosen \
     by the toolkit practitioner.
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-<<<<<<< HEAD
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-iAPR', '2006-BHF-AM*', '2008-BCS-NM', '2008-AFDMC-NM', \
-    '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
-    '2012-AFDMC-NM-1', '2012-AFDMC-NM-2', '2012-AFDMC-NM-3', '2012-AFDMC-NM-4', \
-    '2012-AFDMC-NM-5', '2012-AFDMC-NM-6', '2012-AFDMC-NM-7', \
-=======
     '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
     '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
     '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
     '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
     '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
->>>>>>> slalit
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
@@ -642,27 +486,18 @@ class setupMicro:
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14', \
     '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
     '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-<<<<<<< HEAD
-    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14', '2025-DMC-NM'
-=======
     '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14', '2024-QMC-NM'
->>>>>>> slalit
 
     :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
     :type model: str, optional. 
 
     **Attributes:**
     """
-<<<<<<< HEAD
-    #
-    def __init__( self, model = '1998-VAR-AM-APR', var1 = np.linspace(0.01,0.4,20), var2 = 0.0 ):
-=======
 
     #
     def __init__(
         self, model="1998-VAR-AM-APR", var1=np.linspace(0.01, 0.4, 20), var2=0.0
     ):
->>>>>>> slalit
         """
         Parameters
         ----------
