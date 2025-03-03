@@ -7,3 +7,7 @@ data/isgmr/.DS_Store
 data/eos/pheno/Skyrme/.DS_Store
 data/eos/pheno/Skyrme/.DS_Store
 samples/nucleardatapy_plots/.DS_Store
+.history
+*.pyc
+.ipynb_checkpoints
+
