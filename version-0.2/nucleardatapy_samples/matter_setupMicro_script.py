@@ -16,12 +16,14 @@ def main():
     #
     models, models_lower = nuda.matter.micro_models()
     print('models:',models)
+    models = [ '1981-VAR-AM-FP' ]
     #
     for model in models:
         #
         print('model:',model)
         mic = nuda.matter.setupMicro( model = model )
         if nuda.env.verb_output: mic.print_outputs( )
+        mic.print_outputs( )
     #
     print(50*'-')
     print("Exit sample_matter_setupMicro.py:")
