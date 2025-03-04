@@ -165,8 +165,10 @@ class setupNEP():
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat \
+               = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
+            #nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+            #    msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             kappasym = kappas - kappav
             Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #

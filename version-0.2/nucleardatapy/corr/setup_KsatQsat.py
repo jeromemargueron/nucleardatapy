@@ -146,20 +146,23 @@ class setupKsatQsat():
             #
             print('The variable constraint:',constraint)
             print('does not fit with the options in the code')
+        print('model:',model)
         params, params_lower = nuda.matter.nep_params( model = model )
+        print('params:',params)
         #
         Ksat = []; Qsat = [];
         for param in params:
             #
-            print('param:',param)
+            #print('param:',param)
             nep = nuda.matter.setupNEP( model = model, param = param )
+            print('param:',param,' Ksat:',nep.Ksat)
             if nep.nep:
                 Ksat.append( nep.Ksat ); Qsat.append( nep.Qsat ); 
-        self.Ksat = Ksat
-        self.Qsat = Qsat
+        self.Ksat = np.array( Ksat, dtype=float ).tolist()
+        self.Qsat = np.array( Qsat, dtype=float ).tolist()
         #
-        print('Ksat:',self.Ksat)
-        print('Qsat:',self.Qsat)
+        #print('Ksat:',self.Ksat)
+        #print('Qsat:',self.Qsat)
         #
         # Compute linear fit:
         #
