@@ -888,6 +888,7 @@ version-0.2/nucleardatapy/plot/crust_setupCrust_fig.py
 version-0.2/nucleardatapy/plot/eos_setupAM_fig.py
 version-0.2/nucleardatapy/plot/hnuc_setupChart_fig.py
 version-0.2/nucleardatapy/plot/matter_setupFFGNuc_fig.py
+version-0.2/nucleardatapy/plot/matter_setupMicro_err_NM_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py
 version-0.2/nucleardatapy/plot/nuc_setupBEExp_fig.py
 version-0.2/tests/__init__.py

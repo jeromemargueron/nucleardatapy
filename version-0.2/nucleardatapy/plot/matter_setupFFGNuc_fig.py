@@ -28,26 +28,28 @@ def matter_setupFFGNuc_EP_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.35
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.05 )
     #
-    axs[0,0].set_ylabel(r'$e_{FFG,int}$')
+    axs[0,0].set_ylabel(r'$e_\text{FFG,int}$')
     axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([0, 100])
+    axs[0,0].tick_params('x', labelbottom=False)
     #
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$p_{FFG}$ (MeV fm$^{-3}$)')
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1,0].set_ylabel(r'$p_\text{FFG}$ (MeV fm$^{-3}$)')
     axs[1,0].set_xlim([0, 0.33])
-    axs[1,0].set_ylim([0, 20])
+    axs[1,0].set_ylim([0, 23])
     #
     #axs[0,1].set_ylabel(r'$\Delta/E_F$')
     axs[0,1].set_xlim([0.5, 2.0])
     axs[0,1].set_ylim([0, 100])
     axs[0,1].tick_params('y', labelleft=False)
+    axs[0,1].tick_params('x', labelbottom=False)
     #
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
+    axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
     #axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
     axs[1,1].set_xlim([0.5, 2.0])
-    axs[1,1].set_ylim([0, 20])
+    axs[1,1].set_ylim([0, 23])
     axs[1,1].tick_params('y', labelleft=False)
     #
     for ims,ms in enumerate(mss):
@@ -119,16 +121,17 @@ def matter_setupFFGNuc_EOS_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.3
     #
     fig, axs = plt.subplots(2,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_ylabel(r'$p_{FFG}$')
+    axs[0].set_ylabel(r'$p_\text{FFG}$')
     axs[0].set_xlim([0, 360])
     axs[0].set_ylim([0, 20])
+    axs[0].tick_params('x', labelbottom=False)
     #
     axs[1].set_xlabel(r'$\rho$ (MeV fm$^{-3}$)')
-    axs[1].set_ylabel(r'$c_{s,FFG}^2$')
+    axs[1].set_ylabel(r'$c_\text{s,FFG}^2$')
     axs[1].set_xlim([0, 360])
-    axs[1].set_ylim([0, 0.3])
+    axs[1].set_ylim([0, 0.28])
     #
     for ims,ms in enumerate(mss):
         ffg0 = nuda.matter.setupFFGNuc( den, delta0, ms )
