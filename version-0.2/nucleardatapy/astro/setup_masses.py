@@ -1,5 +1,3 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 
@@ -246,19 +244,19 @@ class setupMasses():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
 
 class setupMassesAverage():
@@ -341,19 +339,19 @@ class setupMassesAverage():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(rf"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ \\\\")
         else:
             print(rf"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
 
 

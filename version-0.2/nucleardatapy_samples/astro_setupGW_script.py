@@ -9,7 +9,7 @@ def main():
     print("Enter astro_setupGW_script.py:")
     print(50*'-')
     #
-    sources = nuda.astro.gw_sources( )[0]
+    sources, sources_lower = nuda.astro.gw_sources( )
     print('Complete list of available sources:', sources )
     #
     sources = [ 'GW170817', 'GW190425' ]

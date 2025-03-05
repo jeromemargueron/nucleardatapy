@@ -5,14 +5,14 @@ import nucleardatapy as nuda
 
 def astro_setupGW_fig( pname, sources ):
     """
-    Plot hyper-nuclear chart (N versus Z).\
+    Plot Tidal deformabilities for each sources.\
     The plot is 1x1 with:\
-    [0]: nuclear chart.
+    [0]: Tidal deformabilities versus sources.
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param sources: table.
-    :type sources: str.
+    :param sources: array of sources names.
+    :type sources: array of str.
 
     """
     #
@@ -57,12 +57,6 @@ def astro_setupGW_fig( pname, sources ):
     #
     axs.set_xticks( ilabel )
     axs.set_xticklabels( xlabel )
-    #axs.legend(loc='upper left',fontsize='8', ncol=2)
-    #ax_right
-    #ax_left
-    #upper_right_display=ax_right.transAxes.transform((1,1))
-    #upper_right_axes00=ax_left.transAxes.inverted().transform(upper_right_display)
-    #axs.legend(loc='lower left',bbox_to_anchor=(0,1.02,upper_right_axes00[0],1),mode='expand',columnspacing=0,fontsize='8', ncol=2)
     axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
     #
     #

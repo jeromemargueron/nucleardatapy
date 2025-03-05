@@ -1,10 +1,5 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
-
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -190,19 +185,19 @@ class setupMup():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(rf"- table: {self.source} & {self.hyp} & ${self.mup:.2f}^{{{+self.sig_up}}}_{{{-self.sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
 
 
@@ -281,19 +276,19 @@ class setupMupAverage():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(rf"- table: {self.source} & {self.hyp} & ${self.mup_cen:.2f}\pm{+self.sig_std}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
 
 def gauss( ax, mass, sig_up, sig_do ):

@@ -1,34 +1,29 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 from scipy import special
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-def compute_proba_do( amass, mass_cen, sig_up, sig_do ):
+def compute_proba_do( amass, mass_cen, sig_up, sig_lo ):
     fac = math.sqrt( 2.0 )
     prob = []
     for m in amass:
         if m < mass_cen: 
-            z = ( m - mass_cen ) / sig_do / fac
-            norm = sig_do * fac
+            z = ( m - mass_cen ) / sig_lo / fac
+            norm = sig_lo * fac
         else:
             z = ( m - mass_cen ) / sig_up / fac
             norm = sig_up * fac
         prob.append( 0.5 * ( special.erf(z)+1) )
     return prob
 
-def compute_proba_up( amass, mass_cen, sig_up, sig_do ):
+def compute_proba_up( amass, mass_cen, sig_up, sig_lo ):
     fac = math.sqrt( 2.0 )
     prob = []
     for m in amass:
         if m < mass_cen: 
-            z = ( m - mass_cen ) / sig_do / fac
-            norm = sig_do * fac
+            z = ( m - mass_cen ) / sig_lo / fac
+            norm = sig_lo * fac
         else:
             z = ( m - mass_cen ) / sig_up / fac
             norm = sig_up * fac
@@ -48,37 +43,37 @@ class setupMtov():
 
     **Attributes:**
     """
-    def __init__(self, sources_do = np.array(['J1614–2230']), sources_up = np.array([ 'GW170817' ]) ):
+    def __init__(self, sources_lo = np.array(['J1614–2230']), sources_up = np.array([ 'GW170817' ]) ):
         #
         if nuda.env.verb: print("Enter setupMtov()")
         #
         # lower bound from neutron star mass observation
         #
-        self.sources_do = sources_do
+        self.sources_lo = sources_lo
         self.sources_up = sources_up
-        if nuda.env.verb: print("sources_do:",sources_do)
+        if nuda.env.verb: print("sources_lo:",sources_lo)
         if nuda.env.verb: print("sources_up:",sources_up)
         #
         # construct the distribution of masses:
         self.mass = np.linspace(1.5,3.5,300)
         #
-        nsources = len(sources_do)
-        self.proba_do = np.zeros((nsources,300))
-        self.proba_do_tot = np.ones(300)
-        self.label_do = []
+        nsources = len(sources_lo)
+        self.proba_lo = np.zeros((nsources,300))
+        self.proba_lo_tot = np.ones(300)
+        self.label_lo = []
         #
-        for ind,source in enumerate(sources_do):
+        for ind,source in enumerate(sources_lo):
             #print('Call average for source:', source)
             avmass = nuda.setupMassesAverage( source = source )
             #print('End of call average')
             #avmass.print_outputs( )
             #print('source:',source,' mass:',avmass.mass_cen,' sig_std:',avmass.sig_std )
-            self.proba_do[ind] = compute_proba_do(self.mass, avmass.mass_cen, avmass.sig_std, avmass.sig_std)
-            self.label_do.append( str(source) )
+            self.proba_lo[ind] = compute_proba_do(self.mass, avmass.mass_cen, avmass.sig_std, avmass.sig_std)
+            self.label_lo.append( str(source) )
             #print('proba:',self.proba[ind])
-            self.proba_do_tot = self.proba_do_tot * self.proba_do[ind]
+            self.proba_lo_tot = self.proba_lo_tot * self.proba_lo[ind]
             #
-        self.label_do_tot = 'Lower boundary'
+        self.label_lo_tot = 'Lower boundary'
         #
         # upper bound from GW observation
         #
@@ -124,7 +119,7 @@ class setupMtov():
         #
         if nuda.env.verb_output:
             print("- Print output:")
-            print("   sources_do:  ",self.sources_do)
+            print("   sources_lo:  ",self.sources_lo)
             print("   sources_up:  ",self.sources_up)
             print("   mass:",self.mass)
             print("   proba_tot:",self.proba_tot)
@@ -134,18 +129,18 @@ class setupMtov():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
-            print(rf"- table: {self.sources_do} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
+        if nuda.env.verb_latex:
+            print(rf"- table: {self.sources_lo} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(rf"- No  table for sources {self.sources_do} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for sources {self.sources_lo} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
        

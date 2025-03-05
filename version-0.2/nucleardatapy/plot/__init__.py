@@ -15,3 +15,7 @@ from nucleardatapy.plot.eos_setupAM_fig           import *
 from nucleardatapy.plot.crust_setupCrust_fig      import *
 #
 from nucleardatapy.plot.astro_setupGW_fig         import *
+from nucleardatapy.plot.astro_setupMasses_fig     import *
+from nucleardatapy.plot.astro_setupMR_fig         import *
+from nucleardatapy.plot.astro_setupMtov_fig       import *
+from nucleardatapy.plot.astro_setupMup_fig        import *
