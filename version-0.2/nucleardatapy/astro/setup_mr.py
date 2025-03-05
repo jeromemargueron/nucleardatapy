@@ -160,13 +160,13 @@ class setupMR():
         #: Attribute the positive uncertainty.
         self.mass_sig_up = None
         #: Attribute the negative uncertainty.
-        self.mass_sig_do = None
+        self.mass_sig_lo = None
         #: Attribute the observational mass of the source.
         self.rad = None
         #: Attribute the positive uncertainty.
         self.rad_sig_up = None
         #: Attribute the negative uncertainty.
-        self.rad_sig_do = None
+        self.rad_sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
         #
@@ -180,18 +180,18 @@ class setupMR():
                 if int(ele[0]) == obs:
                     self.rad = float(ele[1])
                     self.rad_sig_up = float(ele[2])
-                    self.rad_sig_do = float(ele[3])
+                    self.rad_sig_lo = float(ele[3])
                     self.mass = float(ele[4])
                     self.mass_sig_up = float(ele[5])
-                    self.mass_sig_do = float(ele[6])
+                    self.mass_sig_lo = float(ele[6])
                     self.latexCite = ele[10].replace('\n','').replace(' ','')
         #
         # compute compactness
         #
         # fix the boundary for the masses and the radii:
-        mmin = self.mass - 3*self.mass_sig_do
+        mmin = self.mass - 3*self.mass_sig_lo
         mmax = self.mass + 3*self.mass_sig_up
-        rmin = self.rad - 3*self.rad_sig_do
+        rmin = self.rad - 3*self.rad_sig_lo
         rmax = self.rad + 3*self.rad_sig_up
         #print('Sch rad of the sun:',nuda.cst.rshsol_si)
         # construct the distribution of observations in ay
@@ -200,8 +200,8 @@ class setupMR():
         am = np.linspace(mmin,mmax,300); am=np.array( am )
         #ac = 0.5 * am / ar
         ac = 0.5 * nuda.cst.rshsol_si / 1.e3 * am / ar
-        ayr = gauss(ar,self.rad,self.rad_sig_up,self.rad_sig_do); ayr=np.array( ayr )
-        aym = gauss(am,self.mass,self.mass_sig_up,self.mass_sig_do); aym=np.array( aym )
+        ayr = gauss(ar,self.rad,self.rad_sig_up,self.rad_sig_lo); ayr=np.array( ayr )
+        aym = gauss(am,self.mass,self.mass_sig_up,self.mass_sig_lo); aym=np.array( aym )
         ayc = aym * ayr 
         # determine the centroid and standard deviation for the compactness
         noc = sum( ayc )
@@ -226,9 +226,9 @@ class setupMR():
             print("   source:  ",self.source)
             print("   obs:",self.obs)
             print("   mass:",self.mass,' in Mo')
-            print("   sigma(mass):",self.mass_sig_up,self.mass_sig_do,' in Mo')
+            print("   sigma(mass):",self.mass_sig_up,self.mass_sig_lo,' in Mo')
             print("   rad:",self.rad,' in km')
-            print("   sigma(mass):",self.rad_sig_up,self.rad_sig_do,' in km')
+            print("   sigma(mass):",self.rad_sig_up,self.rad_sig_lo,' in km')
             print("   compactness:",self.comp_cen)
             print("   sigma(comp):",self.comp_sig_std)
             print("   latexCite:",self.latexCite)
@@ -249,7 +249,7 @@ class setupMR():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & ${{{self.rad:.2f}}}^{{{+self.rad_sig_up}}}_{{{-self.rad_sig_do}}}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_lo}}}$ & ${{{self.rad:.2f}}}^{{{+self.rad_sig_up}}}_{{{-self.rad_sig_lo}}}$ & ${self.comp_cen}\pm{self.comp_sig_std}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
@@ -286,13 +286,13 @@ class setupMRAverage():
         rmin = 30.0; rmax = 0.0;
         for obs in obss:
             mr = nuda.setupMR( source = source, obs = obs )
-            mdo = mr.mass - 3*mr.mass_sig_do
+            mlo = mr.mass - 3*mr.mass_sig_lo
             mup = mr.mass + 3*mr.mass_sig_up
-            if mdo < mmin: mmin = mdo
+            if mlo < mmin: mmin = mlo
             if mup > mmax: mmax = mup
-            rdo = mr.rad - 3*mr.rad_sig_do
+            rlo = mr.rad - 3*mr.rad_sig_lo
             rup = mr.rad + 3*mr.rad_sig_up
-            if rdo < rmin: rmin = rdo
+            if rlo < rmin: rmin = rlo
             if rup > rmax: rmax = rup
         # construct the distribution of observations in ay
         ar = np.linspace(rmin,rmax,300); ar=np.array( ar )
@@ -302,8 +302,8 @@ class setupMRAverage():
         aym = np.zeros(300); aym=np.array( aym )
         for obs in obss:
             mr = nuda.setupMR( source = source, obs = obs )
-            ayr += gauss(ar,mr.rad,mr.rad_sig_up,mr.rad_sig_do)
-            aym += gauss(am,mr.mass,mr.mass_sig_up,mr.mass_sig_do)
+            ayr += gauss(ar,mr.rad,mr.rad_sig_up,mr.rad_sig_lo)
+            aym += gauss(am,mr.mass,mr.mass_sig_up,mr.mass_sig_lo)
         ayc = aym * ayr 
         # determine the centroid and standard deviation from the distribution of obs. 
         nor = sum( ayr )
@@ -366,13 +366,13 @@ class setupMRAverage():
         if nuda.env.verb: print("Exit print_latex()")
         #
 
-def gauss( ax, cent, sig_up, sig_do ):
+def gauss( ax, cent, sig_up, sig_lo ):
     fac = math.sqrt( 2*math.pi )
     gauss = []
     for x in ax:
         if x < cent: 
-            z = ( x - cent ) / sig_do
-            norm = sig_do * fac
+            z = ( x - cent ) / sig_lo
+            norm = sig_lo * fac
         else:
             z = ( x - cent ) / sig_up
             norm = sig_up * fac

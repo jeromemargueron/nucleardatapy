@@ -1,5 +1,5 @@
-#reference: preliminary, to be published Nature Physics, 15 (2019) 1, Phys. Rev. C, 95 (2017) 064328, Phys.Rev. C, 79 (2009) 034310 for all.
-#parametrization  rho_0    E/A       K      Q_skew     m*/m     a_sym    a'_sym  kappa_TRK=kappav    
+# reference: preliminary, to be published Nature Physics, 15 (2019) 1, Phys. Rev. C, 95 (2017) 064328, Phys.Rev. C, 79 (2009) 034310 for all.
+# parametrization  rho_0    E/A       K      Q_skew     m*/m     a_sym    a'_sym  kappa_TRK=kappav    
 SLy4            0.1595  -15.972    229.9  -356.20    0.6947    32.00    45.94   0.25
 SkM*            0.1602  -15.752    216.4  -389.53    0.7888    30.04    45.80   0.53
 SV-min          0.1611  -15.910    221.8  -402.25    0.9518    30.66    44.81   0.08

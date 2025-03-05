@@ -195,7 +195,7 @@ class setupMup():
         if nuda.env.verb_latex:
             print(rf"- table: {self.source} & {self.hyp} & ${self.mup:.2f}^{{{+self.sig_up}}}_{{{-self.sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No table for source {self.source}. To get table, write 'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #
@@ -284,9 +284,9 @@ class setupMupAverage():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & {self.hyp} & ${self.mup_cen:.2f}\pm{+self.sig_std}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & ${self.mup_cen:.2f}\pm{+self.sig_std}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No table for source {self.source}. To get table, write 'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #

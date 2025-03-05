@@ -15,13 +15,13 @@ def main():
     #
     # sources low
     #
-    sources_do, sources_do_lower = nuda.astro.masses_sources( )
+    sources_lo, sources_lo_lower = nuda.astro.masses_sources( )
     print('Complete list of available sources_lo:',sources_lo)
     #
-    sources_lo1 = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
-    sources_lo2 = [ 'J1614–2230', 'J0348+0432', 'J0740+6620' ]
+    sources_lo_all = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
+    sources_lo_dist = [ 'J1614–2230', 'J0348+0432', 'J0740+6620' ]
     #
-    print('sources_low considered:',sources_lo2)
+    print('sources_low considered for the distribution:',sources_lo_dist)
     #
     # sources up
     #
@@ -39,7 +39,7 @@ def main():
     # plot the results:
     #
     pname = 'figs/plot_astro_setupMtov.png'
-    nuda.plot.astro_setupMtov_fig( pname, sources_lo1, sources_lo2, sources_up1, sources_up2, sources_up3 )
+    nuda.plot.astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, sources_up2, sources_up3 )
     #
     print(50*'-')
     print("Exit astro_setupMtov_plot.py:")

@@ -11,13 +11,13 @@ def main():
     #
     # sources down
     #
-    sources_do, sources_do_lower = nuda.astro.masses_sources( )
-    print('Complete list of available sources_low:',sources_do)
+    sources_lo, sources_lo_lower = nuda.astro.masses_sources( )
+    print('Complete list of available sources_low:',sources_lo)
     #
-    sources_do = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
-    #sources_do = [ 'J1614–2230', 'J1600+3053', 'J0740+6620' ]
+    sources_lo = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
+    #sources_lo = [ 'J1614–2230', 'J1600+3053', 'J0740+6620' ]
     #
-    print('sources_low considered:',sources_do)
+    print('sources_low considered:',sources_lo)
     #
     # sources up
     #
@@ -30,7 +30,7 @@ def main():
     #
     # compute the distribution
     #
-    prob = nuda.astro.setupMtov( sources_do, sources_up )
+    prob = nuda.astro.setupMtov( sources_lo, sources_up )
     if nuda.env.verb_output: prob.print_output( )
     if nuda.env.verb_latex: prob.print_latex( )
     #

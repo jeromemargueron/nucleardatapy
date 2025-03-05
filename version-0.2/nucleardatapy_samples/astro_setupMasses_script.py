@@ -37,6 +37,9 @@ def main():
     print("Exit astro_setupMasses_script.py:")
     print(50*'-')
     #
-    
+    m = nuda.astro.setupMasses( source = 'J1614–2230', obs = 1 )
+    print('For tests:',m.mass)
+    #
+
 if __name__ == "__main__":
     main()

@@ -12,8 +12,8 @@ class SetupMicroTestCase(unittest.TestCase):
 	def setUp(self):
 		self.micro = nuda.matter.setupMicro( model = '1981-VAR-AM-FP' )
 	def test_e2a(self):
-		micro_e2a = self.micro.sm_e2a
-		self.assertEqual(micro_e2a[2], e2a[2] )
+		tk_e2a = self.micro.sm_e2a
+		self.assertEqual(tk_e2a[2], e2a[2] )
 
 if __name__ == '__main__':
 	unittest.main()

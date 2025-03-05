@@ -78,18 +78,18 @@ class setupMasses():
         #
         sources, sources_lower = masses_sources()
         if source.lower() not in sources_lower:
-            print('Source ',source,' is not in the list of sources.')
-            print('list of sources:',sources)
-            print('-- Exit the code --')
+            print('setup_masses.py: Source ',source,' is not in the list of sources.')
+            print('setup_masses.py: list of sources:',sources)
+            print('setup_masses.py: -- Exit the code --')
             exit()
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
         obss = masses_obss( source = source )
         if obs not in obss:
-            print('Obs ',obs,' is not in the list of obs.')
-            print('list of obs:',obss)
-            print('-- Exit the code --')
+            print('setup_masses.py: obs ',obs,' is not in the list of obs.')
+            print('setup_masses.py: list of obs:',obss)
+            print('setup_masses.py: -- Exit the code --')
             exit()
         self.obs = obs
         if nuda.env.verb: print("obs:",obs)
@@ -200,7 +200,7 @@ class setupMasses():
         #: Attribute the positive uncertainty.
         self.sig_up = None
         #: Attribute the negative uncertainty.
-        self.sig_do = None
+        self.sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
         #
@@ -214,7 +214,7 @@ class setupMasses():
                 if int(ele[0]) == obs:
                     self.mass = float(ele[1])
                     self.sig_up = float(ele[2])
-                    self.sig_do = float(ele[3])
+                    self.sig_lo = float(ele[3])
                     self.latexCite = ele[4].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit setupMasses()")
@@ -233,7 +233,7 @@ class setupMasses():
             print("   source:  ",self.source)
             print("   obs:",self.obs)
             print("   mass:",self.mass)
-            print("   sigma(mass):",self.sig_up,self.sig_do)
+            print("   sigma(mass):",self.sig_up,self.sig_lo)
             print("   latexCite:",self.latexCite)
             print("   ref:    ",self.ref)
             print("   label:  ",self.label)
@@ -252,9 +252,9 @@ class setupMasses():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.mass_sig_up}}}_{{{-self.mass_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.obs} & ${self.mass:.2f}^{{{+self.sig_up}}}_{{{-self.sig_lo}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No table for source {self.source}. To get table, write 'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #
@@ -290,9 +290,9 @@ class setupMassesAverage():
         for obs in obss:
             mass = nuda.setupMasses( source = source, obs = obs )
             #mass.print_outputs( )
-            mdo = mass.mass - 3*mass.sig_do
+            mlo = mass.mass - 3*mass.sig_lo
             mup = mass.mass + 3*mass.sig_up
-            if mdo < mmin: mmin = mdo
+            if mlo < mmin: mmin = mlo
             if mup > mmax: mmax = mup
         #print('mmin:',mmin)
         #print('mmax:',mmax)
@@ -303,7 +303,7 @@ class setupMassesAverage():
         for obs in obss:
             mass = nuda.setupMasses( source = source, obs = obs )
             #mass.print_outputs( )
-            ay += gauss(ax,mass.mass,mass.sig_up,mass.sig_do)
+            ay += gauss(ax,mass.mass,mass.sig_up,mass.sig_lo)
         # determine the centroid and standard deviation from the distribution of obs. 
         nor = sum( ay )
         cen = sum( ay*ax )
@@ -347,21 +347,21 @@ class setupMassesAverage():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.mass_sig_std}$ \\\\")
+            print(rf"- table: {self.source} & av & ${self.mass_cen:.2f}\pm{self.sig_std}$ \\\\")
         else:
-            print(rf"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No table for source {self.source} (average). To get table, write 'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #
 
 
-def gauss( ax, mass, sig_up, sig_do ):
+def gauss( ax, mass, sig_up, sig_lo ):
     fac = math.sqrt( 2*math.pi )
     gauss = []
     for x in ax:
         if x < mass: 
-            z = ( x - mass ) / sig_do
-            norm = sig_do * fac
+            z = ( x - mass ) / sig_lo
+            norm = sig_lo * fac
         else:
             z = ( x - mass ) / sig_up
             norm = sig_up * fac

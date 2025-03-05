@@ -23,8 +23,9 @@ def astro_setupMasses_fig( pname, sources ):
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.7, wspace=0.3, hspace=0.3)
     #
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
-    axs.set_xlim([0.8, 5.5])
+    axs.set_xlabel(r'sources',fontsize='12')
     axs.set_ylim([1.7, 3.5])
+    axs.set_xlim([0.8, 5.5])
     #
     isource = 1
     xlabel = []
@@ -42,13 +43,13 @@ def astro_setupMasses_fig( pname, sources ):
         for obs in obss:
             m = nuda.astro.setupMasses( source = source, obs = obs )
             if nuda.env.verb_output: m.print_output( )
-            if nuda.env.verb_table: m.print_table( )
-            axs.errorbar( isource+iobs/10, m.mass, yerr=np.array([(m.sig_do,m.sig_up)]).T, label=m.label, color=nuda.param.col[isource], marker='s', linestyle = 'solid', linewidth = 1 )
+            if nuda.env.verb_latex: m.print_latex( )
+            axs.errorbar( isource+iobs/10, m.mass, yerr=np.array([(m.sig_lo,m.sig_up)]).T, label=m.label, color=nuda.param.col[isource], marker='s', linestyle = 'solid', linewidth = 1 )
             iobs += 1
             #
         mav = nuda.astro.setupMassesAverage( source = source )
         if nuda.env.verb_output: mav.print_output( )
-        if nuda.env.verb_table: mav.print_table( )
+        if nuda.env.verb_latex: mav.print_latex( )
         axs.errorbar( isource+iobs/10, mav.mass_cen, yerr=mav.sig_std, label=mav.label, color=nuda.param.col[isource], marker='o', linestyle = 'solid', linewidth = 3 )
         isource += 1
     #

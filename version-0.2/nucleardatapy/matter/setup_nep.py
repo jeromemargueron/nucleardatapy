@@ -165,8 +165,16 @@ class setupNEP():
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype = str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype = str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             #print('name:',name)
+            #
             #nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat \
             #   = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True, dtype = float )
             #kappas = 1./msat - 1.0
@@ -179,9 +187,10 @@ class setupNEP():
             kappasym = kappas - kappav
             Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
+            #print('param:',param)
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )[0][0]
+                ind = np.where( name == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind]; 
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
                 self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
@@ -195,7 +204,14 @@ class setupNEP():
             if nuda.env.verb: print('Reads file:',file_in)
             self.label = 'Skyrme2-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
                 = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             kappas = 1.0/msat - 1.0
@@ -222,7 +238,14 @@ class setupNEP():
             self.label = 'ESKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             kappas = 1.0/msat - 1.0
             kappav = np.zeros( kappas.size )
@@ -248,7 +271,14 @@ class setupNEP():
             if nuda.env.verb: print('Reads file:',file_in)
             self.label = 'Gogny-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             Ksat, Qsat = np.loadtxt( file_in, usecols=(1,2), comments='#', unpack = True )
             #
             if param in name:
@@ -269,7 +299,14 @@ class setupNEP():
             if nuda.env.verb: print('Reads file:',file_in)
             self.label = 'Fayans-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
                 = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             kappas = 1.0/msat - 1.0
@@ -293,7 +330,14 @@ class setupNEP():
             #self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             kappasym = kappas - kappav
@@ -316,7 +360,14 @@ class setupNEP():
             #self.ref = ''
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             kappasym = kappas - kappav
@@ -339,7 +390,14 @@ class setupNEP():
             #self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
                 msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             kappasym = kappas - kappav

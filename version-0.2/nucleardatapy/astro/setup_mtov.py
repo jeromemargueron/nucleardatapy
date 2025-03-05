@@ -103,7 +103,7 @@ class setupMtov():
             #
         self.label_up_tot = 'Upper boundary'
         #
-        self.proba_tot = self.proba_do_tot * self.proba_up_tot
+        self.proba_tot = self.proba_lo_tot * self.proba_up_tot
         self.label_tot = 'Total'
         #
         if nuda.env.verb: print("Exit SetupAstroMtov()")
@@ -137,9 +137,9 @@ class setupMtov():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.sources_lo} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.sources_lo} & {self.sources_up} \\\\")
         else:
-            print(rf"- No  table for sources {self.sources_lo} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for sources {self.sources_lo} and {self.sources_up}. To get  table, write  'verb_latex = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_latex()")
         #

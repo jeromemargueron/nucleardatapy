@@ -22,8 +22,9 @@ def astro_setupGW_fig( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.07, right=None, top=0.8, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3)
     #
+    axs.set_xlabel(r'sources',fontsize='12')
     axs.set_ylabel(r'$\tilde{\Lambda}_{90\%}$',fontsize='12')
     axs.set_xlim([0.8, 2.5])
     axs.set_ylim([0, 1200])

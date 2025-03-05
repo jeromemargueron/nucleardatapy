@@ -22,6 +22,7 @@ def astro_setupMup_fig( pname, sources ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3)
     #
+    axs.set_xlabel(r'sources',fontsize='12')
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
     axs.set_xlim([0.8, 2.5])
     axs.set_ylim([2.4, 3.4])
@@ -43,14 +44,14 @@ def astro_setupMup_fig( pname, sources ):
         for hyp in hyps:
             mup = nuda.astro.setupMup( source = source, hyp = hyp )
             if nuda.env.verb_output: mup.print_output( )
-            if nuda.env.verb_table: mup.print_table( )
+            if nuda.env.verb_latex: mup.print_latex( )
             axs.errorbar( isource+ihyp/10, mup.mup, yerr=np.array([(mup.sig_do,mup.sig_up)]).T, label=mup.label, color=nuda.param.col[isource], marker=mup.marker, linestyle = 'solid', linewidth = 1 )
             ihyp += 1
             #
         if source=='GW170817': hyps = [ 3, 4 ]
         mupav = nuda.astro.setupMupAverage( source = source, hyps = hyps )
         if nuda.env.verb_output: mupav.print_output( )
-        if nuda.env.verb_table: mupav.print_table( )
+        if nuda.env.verb_latex: mupav.print_latex( )
         axs.errorbar( isource+ihyp/10, mupav.mup_cen, yerr=mupav.sig_std, label=mupav.label, color=nuda.param.col[isource], marker='o', linestyle = 'solid', linewidth = 3 )
         #
         isource += 1

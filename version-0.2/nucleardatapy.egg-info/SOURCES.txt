@@ -891,9 +891,7 @@ version-0.2/nucleardatapy/plot/matter_setupFFGNuc_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py
 version-0.2/nucleardatapy/plot/nuc_setupBEExp_fig.py
 version-0.2/tests/__init__.py
-version-0.2/tests/__init__.py-old.py
+version-0.2/tests/astro_setupMasses_tests.py
 version-0.2/tests/corr_setupKsatQsat_tests.py
 version-0.2/tests/matter_setupFFGNuc_tests.py
 version-0.2/tests/matter_setupMicro_tests.py
-version-0.2/tests/setup_micro_tests.py
-version-0.2/tests/setup_pheno_tests.py
