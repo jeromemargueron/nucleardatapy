@@ -48,7 +48,7 @@ def eos_setupAM_e_fig( pname, models_micro, models_pheno, asy ):
             #print('e2a:',am.e2a_nuc)
             axs[0].plot( am.den, am.e2a_nuc, marker='o', linestyle=am.linestyle, label=am.label, markevery=am.every )
     axs[0].text(0.02,12,'microscopic models',fontsize='10')
-    axs[0].text(0.02,10,'for $\delta=$'+str(asy),fontsize='10')
+    axs[0].text(0.02,10,r'for $\delta=$'+str(asy),fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #axs[0].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
     #
@@ -69,7 +69,7 @@ def eos_setupAM_e_fig( pname, models_micro, models_pheno, asy ):
     #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,12,'phenomenological models',fontsize='10')
-    axs[1].text(0.02,10,'for $\delta=$'+str(asy),fontsize='10')
+    axs[1].text(0.02,10,r'for $\delta=$'+str(asy),fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #axs[1].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
