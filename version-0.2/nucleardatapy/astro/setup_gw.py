@@ -207,19 +207,19 @@ class setupGW():
         if nuda.env.verb: print("Exit print_outputs()")
         #
     #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
+        if nuda.env.verb_latex:
             print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
         #
     def init_self( self ):
@@ -327,19 +327,19 @@ class setupGWAverage():
         #
         if nuda.env.verb: print("Exit print_output()")
         #
-    def print_table( self ):
+    def print_latex( self ):
         """
         Method which print outputs in table format (latex) on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_table()")
+        if nuda.env.verb: print("Enter print_latex()")
         #
-        if nuda.env.verb_table:
-            print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+        if nuda.env.verb_latex:
+            print(rf"- table: {self.source} &  &  &  &  &  \\\\")
         else:
             print(rf"- No  table for source {self.source} (average). To get  table, write  'verb_table = True' in env.py.")
         #
-        if nuda.env.verb: print("Exit print_table()")
+        if nuda.env.verb: print("Exit print_latex()")
         #
     def init_self( self ):
         """

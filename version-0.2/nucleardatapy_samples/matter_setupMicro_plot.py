@@ -1,6 +1,4 @@
 
-import os
-import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -55,7 +53,7 @@ def main():
             #
     #
     print(50*'-')
-    print("Exit plot_matter_setupMicro_mb.py:")
+    print("Exit matter_setupMicro_plot.py:")
     print(50*'-')
     #
     

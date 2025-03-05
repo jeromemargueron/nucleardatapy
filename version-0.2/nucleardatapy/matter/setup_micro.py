@@ -380,9 +380,9 @@ class setupMicro():
         models, models_lower = micro_models()
         #
         if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
+            print('setup_micro: The model name ',model,' is not in the list of models.')
+            print('setup_micro: list of models:',models)
+            print('setup_micro: -- Exit the code --')
             exit()
         #
         if model.lower() == '1981-var-am-fp':

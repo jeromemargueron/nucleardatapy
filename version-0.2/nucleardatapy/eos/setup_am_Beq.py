@@ -1,5 +1,3 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 from scipy.optimize import fsolve
@@ -7,24 +5,21 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def func_betaeq(var,*args):
-    x_e, x_mu = var
+    x_el, x_mu = var
     den, esym = args
-    n_e = x_e * den
-    kFe = ( 3 * nuda.cst.pi2 * n_e )**nuda.cst.third
-    mu_e = nuda.cst.hbc * kFe
-    if mu_e < nuda.cst.mmuc2:
-        x_p = x_e
-        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_e * den )**nuda.cst.third
+    n_el = x_el * den
+    kFel = ( 3 * nuda.cst.pi2 * n_el )**nuda.cst.third
+    mu_el = nuda.cst.hbc * kFel
+    if mu_el < nuda.cst.mmuc2:
+        x_p = x_el
+        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_el * den )**nuda.cst.third
         eq2 = 0.0
     else:
-        x_p = x_e + x_mu
-        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_e * den )**nuda.cst.third
+        x_p = x_el + x_mu
+        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_el * den )**nuda.cst.third
         n_mu = x_mu * den
         kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
         eq2 = kFmu - math.sqrt( kFe**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
@@ -96,18 +91,18 @@ class setupAMBeq():
         if esym.esym is not None:
             self.den = esym.den
             self.esym = esym.esym
-            self.x_e = []
+            self.x_el = []
             self.x_mu = []
             tmp1 = (4*esym.esym[0]/nuda.cst.hbc)**nuda.cst.three
-            x_e = tmp1 / (3*nuda.cst.pi2*esym.den[0] + 6*tmp1 )
-            #x_e = 0.1
+            x_el = tmp1 / (3*nuda.cst.pi2*esym.den[0] + 6*tmp1 )
+            #x_el = 0.1
             x_mu = 0.0
             for ind,den in enumerate(esym.den):
-                x_e, x_mu =  fsolve(func_betaeq, (x_e, x_mu), args=(den,esym.esym[ind]) )
-                #print(f' ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_e:{x_e:.3f}, x_mu:{x_mu:.3f}')
-                self.x_e.append( x_e )
+                x_el, x_mu =  fsolve(func_betaeq, (x_el, x_mu), args=(den,esym.esym[ind]) )
+                #print(f' ind:{ind}, den:{den:.3f}, esym:{esym.esym[ind]:.0f}, x_el:{x_el:.3f}, x_mu:{x_mu:.3f}')
+                self.x_el.append( x_el )
                 self.x_mu.append( x_mu )
-            self.x_e = np.array( self.x_e, dtype = float )
+            self.x_el = np.array( self.x_el, dtype = float )
             self.x_mu = np.array( self.x_mu, dtype = float )
             #print('x_e:',self.x_e)
             #print('x_mu:',self.x_mu)
@@ -118,14 +113,14 @@ class setupAMBeq():
             self.n_p = self.x_p * self.den
             #print('n_n:',self.n_n)
             self.kfn = nuda.kf_n( self.n_n )
-            self.n_e = self.x_e * self.den
+            self.n_el = self.x_el * self.den
             self.n_mu = self.x_mu * self.den
             #
             # Thermodynamical variables
             self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
             self.e2v_nuc = self.e2a_nuc * self.den
             self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
-            lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
+            lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
             self.e2a_el = lep.e2a_el
             self.e2a_mu = lep.e2a_mu
             self.e2a_lep = lep.e2a_lep

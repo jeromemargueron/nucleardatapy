@@ -1,3 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+import nucleardatapy as nuda
+
 def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
     """
     Plot nucleonic energy per particle E/A in matter.\
@@ -155,5 +160,6 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
     #plt.tight_layout(pad=3.0)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),fontsize='8',ncol=3,frameon=False)
     #
-    plt.savefig(pname, dpi=300)
-    plt.close()
+    if pname is not None: 
+        plt.savefig(pname, dpi=300)
+        plt.close()

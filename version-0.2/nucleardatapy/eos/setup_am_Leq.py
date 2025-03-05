@@ -1,5 +1,3 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 from scipy.optimize import fsolve
@@ -7,25 +5,22 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def func_am(var,*args):
     x_mu = var
     den, x_p = args
-    x_e = x_p - x_mu
-    n_e = x_e * den
-    kFe = ( 3 * nuda.cst.pi2 * n_e )**nuda.cst.third
-    mu_e = nuda.cst.hbc * kFe
-    if mu_e < nuda.cst.mmuc2:
+    x_el = x_p - x_mu
+    n_el = x_el * den
+    kFel = ( 3 * nuda.cst.pi2 * n_el )**nuda.cst.third
+    mu_el = nuda.cst.hbc * kFel
+    if mu_el < nuda.cst.mmuc2:
         x_mu = 0.0
         eq = 0.0
     else:
         n_mu = x_mu * den
         kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
-        eq = kFmu - math.sqrt( kFe**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
+        eq = kFmu - math.sqrt( kFel**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
     return eq
 
 class setupAMLeq():
@@ -100,7 +95,7 @@ class setupAMLeq():
         self.n_p = self.x_p * self.den
         #print('n_n:',self.n_n)
         self.kfn = nuda.kf_n( self.n_n )
-        self.x_e = []
+        self.x_el = []
         self.x_mu = []
         x_mu = 0.0
         #print('den:',self.den)
@@ -110,19 +105,19 @@ class setupAMLeq():
             #print('x_mu:',x_mu[0])
             #print(f' ind:{ind}, den:{den:.3f}, x_p:{self.x_p:.3f}, x_e:{self.x_p-x_mu[0]:.3f}, x_mu:{x_mu[0]:.3f}')
             self.x_mu.append( x_mu[0] )
-            self.x_e.append( self.x_p - x_mu[0] )
-        self.x_e = np.array( self.x_e, dtype = float )
+            self.x_el.append( self.x_p - x_mu[0] )
+        self.x_el = np.array( self.x_el, dtype = float )
         self.x_mu = np.array( self.x_mu, dtype = float )
         #print('x_e:',self.x_e)
         #print('x_mu:',self.x_mu)
-        self.n_e = self.x_e * self.den
+        self.n_el = self.x_el * self.den
         self.n_mu = self.x_mu * self.den
         #
         # Thermodynamical variables
         self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
         self.e2v_nuc = self.e2a_nuc * self.den
         self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
-        lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
+        lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
         self.e2a_el = lep.e2a_el
         self.e2a_mu = lep.e2a_mu
         self.e2a_lep = lep.e2a_lep

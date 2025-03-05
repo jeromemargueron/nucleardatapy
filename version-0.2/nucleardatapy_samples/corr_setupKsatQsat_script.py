@@ -8,7 +8,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter sample_corr_setupKsatQsat.py:")
+    print("Enter corr_setupKsatQsat_script.py:")
     print(50*'-')
     #
     #constraints = [ '2024-DFT-SKY', '2024-DFT-ESKY', '2024-DFT-DDRH', \
@@ -27,7 +27,7 @@ def main():
         kq.print_outputs( )
     #
     print(50*'-')
-    print("Exit sample_corr_setupKsatQsat.py:")
+    print("Exit corr_setupKsatQsat_script.py:")
     print(50*'-')
     #
     

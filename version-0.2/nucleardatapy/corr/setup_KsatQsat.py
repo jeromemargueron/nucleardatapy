@@ -49,9 +49,9 @@ class setupKsatQsat():
         constraints, constraints_lower = KsatQsat_constraints()
         #
         if constraint.lower() not in constraints_lower:
-            print('The constraint ',constraint,' is not in the list of constraints.')
-            print('list of constraints:',constraints)
-            print('-- Exit the code --')
+            print('setup_KsatQsat: The constraint ',constraint,' is not in the list of constraints.')
+            print('setup_KsatQsat: list of constraints:',constraints)
+            print('setup_KsatQsat: -- Exit the code --')
             exit()
         #
         if '2024-dft' in constraint.lower():
@@ -144,18 +144,18 @@ class setupKsatQsat():
             #
         else:
             #
-            print('The variable constraint:',constraint)
-            print('does not fit with the options in the code')
-        print('model:',model)
+            print('setup_KsatQsat: The variable constraint:',constraint)
+            print('setup_KsatQsat: does not fit with the options in the code')
+        #print('model:',model)
         params, params_lower = nuda.matter.nep_params( model = model )
-        print('params:',params)
+        #print('params:',params)
         #
         Ksat = []; Qsat = [];
         for param in params:
             #
             #print('param:',param)
             nep = nuda.matter.setupNEP( model = model, param = param )
-            print('param:',param,' Ksat:',nep.Ksat)
+            #print('param:',param,' Ksat:',nep.Ksat)
             if nep.nep:
                 Ksat.append( nep.Ksat ); Qsat.append( nep.Qsat ); 
         self.Ksat = np.array( Ksat, dtype=float ).tolist()
@@ -194,6 +194,8 @@ class setupKsatQsat():
         print("   label:",self.label)
         print("   note:",self.note)
         print("   plot:",self.plot)
+        print("   Ksat:",self.Ksat)
+        print("   Qsat:",self.Qsat)
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #

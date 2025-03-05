@@ -52,9 +52,9 @@ def be_exp_tables():
     #
     tables = [ 'AME' ]
     #
-    print('tables available in the toolkit:',tables)
+    #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
-    print('tables available in the toolkit:',tables_lower)
+    #print('tables available in the toolkit:',tables_lower)
     #
     if nuda.env.verb: print("Exit be_exp_tables()")
     #
@@ -77,7 +77,7 @@ def be_exp_versions( table ):
     if table.lower()=='ame':
         versions= [ '2020', '2016', '2012' ]
     #
-    print('Versions available in the toolkit:',versions)
+    #print('Versions available in the toolkit:',versions)
     versions_lower = [ item.lower() for item in versions ]
     #
     if nuda.env.verb: print("Exit be_exp_tables_versions()")

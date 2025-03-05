@@ -18,7 +18,7 @@ def nep_models():
     #
     if nuda.env.verb: print("\nEnter pheno_models()")
     #
-    models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    models = [ 'Skyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     #models = [ 'Skyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
@@ -141,44 +141,51 @@ class setupNEP():
         models, models_lower = nep_models( )
         #
         if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
+            print('setup_nep: The model name ',model,' is not in the list of models.')
+            print('setup_nep: list of models:',models)
+            print('setup_nep: -- Exit the code --')
             exit()
         #
         params, params_lower = nep_params( model = model )
         #
         if param.lower() not in params_lower:
-            print('The param set ',param,' is not in the list of param.')
-            print('list of param:',params)
-            print('-- Exit the code --')
+            print('setup_nep: The param set ',param,' is not in the list of param.')
+            print('setup_nep: list of param:',params)
+            print('setup_nep: -- Exit the code --')
             exit()
         #
         if model.lower() == 'skyrme':
             #
             file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPSkyrme.dat')
             if nuda.env.verb: print('Reads file:',file_in)
+            #print('Reads file:',file_in)
             #: Attribute providing the full reference to the paper to be citted.
             #self.ref = ''
             #: Attribute providing the label the data is references for figures.
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat \
-               = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            #nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-            #    msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype = str )
+            #print('name:',name)
+            #nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat \
+            #   = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True, dtype = float )
+            #kappas = 1./msat - 1.0
+            #kappav = np.zeros( kappas.size )
+            #Zsat = kappav.copy()
+            #Qsym = kappav.copy()
+            #Zsym = kappav.copy()
+            nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
+                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
             kappasym = kappas - kappav
             Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
-                ind = np.where(name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where(name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind]; 
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
         #
@@ -197,11 +204,11 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];  
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; 
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -218,15 +225,19 @@ class setupNEP():
             name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
             kappas = 1.0/msat - 1.0
-            #kappasym = kappas - kappav
-            #Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+            kappav = np.zeros( kappas.size )
+            Zsat = kappav.copy()
+            Qsym = kappav.copy()
+            Zsym = kappav.copy()
+            kappasym = kappas - kappav
+            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = None
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = None; self.Zsym = None
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = None;
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = None
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = None; self.Zsym = None
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = None;
                 self.kappasym = None; self.Dmsat = None
             else:
                 self.nep = False
@@ -242,9 +253,9 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];
-                self.nsat = None; self.Esat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None
+                ind = np.where( name == param )[0][0]
+                self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
+                self.nsat = None; self.Esat = None; self.Zsat = None
                 self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None
                 self.msat = None; self.kappas = None; self.kappav = None;
                 self.kappasym = None; self.Dmsat = None
@@ -267,11 +278,11 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0];  
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; 
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -290,11 +301,11 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];            
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind]; 
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -313,11 +324,11 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind];
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -336,11 +347,11 @@ class setupNEP():
             #
             if param in name:
                 self.nep = True
-                ind = np.where( name == param )
-                self.nsat = nsat[ind][0]; self.Esat = Esat[ind][0]; self.Ksat = Ksat[ind][0]; self.Qsat = Qsat[ind][0]; self.Zsat = Zsat[ind][0]; 
-                self.Esym = Esym[ind][0]; self.Lsym = Lsym[ind][0]; self.Ksym = Ksym[ind][0]; self.Qsym = Qsym[ind][0]; self.Zsym = Zsym[ind][0];
-                self.msat = msat[ind][0]; self.kappas = kappas[ind][0]; self.kappav = kappav[ind][0];
-                self.kappasym = kappasym[ind][0]; self.Dmsat = Dmsat[ind][0]
+                ind = np.where( name == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind];
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
+                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
+                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #

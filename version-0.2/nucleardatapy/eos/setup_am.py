@@ -81,17 +81,17 @@ class setupAM():
         self.x_n = ( 1.0 + self.asy ) / 2.0
         self.x_p = ( 1.0 - self.asy ) / 2.0
         self.x_mu = x_mu
-        self.x_e = self.x_p - self.x_mu
+        self.x_el = self.x_p - self.x_mu
         self.n_n = self.x_n * self.den
         self.n_p = self.x_p * self.den
         self.kfn = nuda.kf_n( self.n_n )
-        self.n_e = self.x_e * self.den
+        self.n_el = self.x_el * self.den
         self.n_mu = self.x_mu * self.den
         #
         # Thermodynamical variables
         self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
         self.e2v_nuc = self.e2a_nuc * self.den
-        lep = nuda.matter.setupFFGLep( den_e = self.n_e, den_mu = self.n_mu )
+        lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
         self.e2a_el = lep.e2a_el
         self.e2a_mu = lep.e2a_mu
         self.e2a_lep = lep.e2a_el + lep.e2a_mu

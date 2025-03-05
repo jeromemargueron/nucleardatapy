@@ -93,8 +93,9 @@ def matter_setupFFGNuc_EP_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.35
     #axs[1,0].legend(loc='upper right',fontsize='xx-small')
     fig.legend(loc='upper left',bbox_to_anchor=(0.2,0.97),fontsize='6',ncol=4,frameon=False)
     #
-    plt.savefig(pname, dpi=300)
-    plt.close()
+    if pname is not None: 
+        plt.savefig(pname, dpi=300)
+        plt.close()
     #
 
 def matter_setupFFGNuc_EOS_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.35,10) ):
@@ -162,6 +163,7 @@ def matter_setupFFGNuc_EOS_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.3
     #axs[1,0].legend(loc='upper right',fontsize='xx-small')
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,0.97),fontsize='8',ncol=4,frameon=False)
     #
-    plt.savefig(pname, dpi=300)
-    plt.close()
+    if pname is not None: 
+        plt.savefig(pname, dpi=300)
+        plt.close()
     #
