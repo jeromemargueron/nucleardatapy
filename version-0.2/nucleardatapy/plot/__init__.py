@@ -9,6 +9,9 @@ from nucleardatapy.plot.matter_setupMicro_gap_fig    import *
 #
 from nucleardatapy.plot.matter_setupPheno_fig        import *
 #
+from nucleardatapy.plot.matter_Esym_fig              import *
+from nucleardatapy.plot.matter_ESM_fig               import *
+#
 from nucleardatapy.plot.corr_setupKsatQsat_fig       import *
 from nucleardatapy.plot.corr_setupEsymLsym_fig       import *
 #
