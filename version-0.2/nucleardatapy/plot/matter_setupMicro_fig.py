@@ -29,12 +29,12 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[0,0].set_ylabel(r'$E_{NM}/A$ (MeV)')
+    axs[0,0].set_ylabel(r'$E_\text{NM}/A$ (MeV)')
     axs[0,0].set_xlim([0, 0.33])
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$E_{NM}/E_{FFG,NR}$')
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1,0].set_ylabel(r'$E_\text{NM}/E_\text{NRFFG}$')
     axs[1,0].set_xlim([0, 0.33])
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
+    axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
     axs[0,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('y', labelleft=False)
     axs[0,0].tick_params('x', labelbottom=False)

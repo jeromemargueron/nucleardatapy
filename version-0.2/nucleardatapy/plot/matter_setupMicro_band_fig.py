@@ -24,25 +24,25 @@ def matter_setupMicro_band_fig( pname, models, den, matter ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.98, wspace=0.38, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)',fontsize='14')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 0.2])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)',fontsize='14')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.2])
     #
     if matter.lower() == 'nm':
-        axs[0].set_ylabel(r'$E_{NM}$',fontsize='14')
-        axs[1].set_ylabel(r'$E_{NM}/E_{NM,FFG}$',fontsize='14')
+        axs[0].set_ylabel(r'$E_\text{NM}$',fontsize='14')
+        axs[1].set_ylabel(r'$E_\text{NM}/E_\text{NM,NRFFG}$',fontsize='14')
         axs[0].set_ylim([0, 20])
         axs[1].set_ylim([0.2, 0.9])
     elif matter.lower() == 'sm':
-        axs[0].set_ylabel(r'$E_{SM}$',fontsize='14')
-        axs[1].set_ylabel(r'$E_{SM}/E_{SM,FFG}$',fontsize='14')
+        axs[0].set_ylabel(r'$E_\text{SM}$',fontsize='14')
+        axs[1].set_ylabel(r'$E_\text{SM}/E_\text{SM,NRFFG}$',fontsize='14')
         axs[0].set_ylim([-20, 0])
         axs[1].set_ylim([-1.0, 0.0])
     elif matter.lower() == 'esym':
-        axs[0].set_ylabel(r'$E_{sym}$',fontsize='14')
-        axs[1].set_ylabel(r'$E_{sym}/E_{sym,FFG}$',fontsize='14')
+        axs[0].set_ylabel(r'$E_\text{sym}$',fontsize='14')
+        axs[1].set_ylabel(r'$E_\text{sym}/E_\text{sym,NRFFG}$',fontsize='14')
         axs[0].set_ylim([0, 50])
         axs[1].set_ylim([1.5, 2.8])
     #

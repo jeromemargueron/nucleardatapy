@@ -61,7 +61,7 @@ def plot_nuc_setupBEExp_D3p_p( tables, versions, Nref = 50 ):
     #
     axs.set_title(r'Experimental mass tables',fontsize='12')
     axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='12')
-    axs.set_xlabel(r'N',fontsize='12')
+    axs.set_xlabel(r'Z',fontsize='12')
     axs.set_xlim([0.4*Nref, 1.2*Nref])
     axs.set_xticks(np.arange(start=int(0.4*Nref),stop=1.2*Nref,step=5))
     #axs.set_ylim([-10, 10])
