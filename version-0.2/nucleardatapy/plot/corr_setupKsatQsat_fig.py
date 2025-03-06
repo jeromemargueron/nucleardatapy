@@ -11,7 +11,7 @@ def corr_setupKsatQsat_fig( pname, constraints ):
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param constraints: models to run on.
+    :param constraints: list of constraints to run on.
     :type constraints: array of str.
 
     """

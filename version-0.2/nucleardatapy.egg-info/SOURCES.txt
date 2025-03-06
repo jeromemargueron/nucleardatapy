@@ -883,6 +883,7 @@ version-0.2/nucleardatapy/plot/astro_setupMR_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMasses_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMtov_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMup_fig.py
+version-0.2/nucleardatapy/plot/corr_setupEsymLsym_fig.py
 version-0.2/nucleardatapy/plot/corr_setupKsatQsat_fig.py
 version-0.2/nucleardatapy/plot/crust_setupCrust_fig.py
 version-0.2/nucleardatapy/plot/eos_setupAM_fig.py

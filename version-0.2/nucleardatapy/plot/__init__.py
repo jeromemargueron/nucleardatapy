@@ -4,8 +4,11 @@ This module provides microscopic, phenomenological and experimental data constra
 from nucleardatapy.plot.matter_setupFFGNuc_fig       import *
 from nucleardatapy.plot.matter_setupMicro_fig        import *
 from nucleardatapy.plot.matter_setupMicro_err_NM_fig import *
+from nucleardatapy.plot.matter_setupMicro_band_fig   import *
+from nucleardatapy.plot.matter_setupMicro_gap_fig    import *
 #
 from nucleardatapy.plot.corr_setupKsatQsat_fig       import *
+from nucleardatapy.plot.corr_setupEsymLsym_fig       import *
 #
 from nucleardatapy.plot.nuc_setupBEExp_fig           import *
 #
