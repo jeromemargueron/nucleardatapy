@@ -6,20 +6,22 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter matter_setupMicro_plot.py:")
+    print("Enter matter_setupPheno_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
     #
     nuda.create_folder_fig()
     #
-    # create the groups of figures
+    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
     #
-    mbs, mbs_lower = nuda.matter.micro_mbs()
-    #mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
-    #mbs = [ 'VAR' ]
-    #mbs = [ 'NLEFT' ]
-    print('mbs:',mbs)
+    # create the models for the figures
+    #
+    #models, models_lower = nuda.modelsPheno()
+    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models = [ 'Skyrme' ]
+    #
+    print('models:',models)
     #
     # list the different matter cases investigated
     #
@@ -34,27 +36,24 @@ def main():
         elif matter.lower() == 'sm':
             bmodels = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
         #
-        band = nuda.matter.setupMicroBand( bmodels, matter=matter  )
+        band = nuda.matter.setupMicroBand( bmodels, den=den, matter=matter  )
         #
         # plot E/A in matter grouped by mb
         #
-        for mb in mbs:
+        for model in models:
             #
-            print('For mb:',mb)
+            print('For model:',model)
             #
-            # list the available models in mb
+            pname = 'figs/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
             #
-            models, models_lower = nuda.matter.micro_models_mb_matter( mb, matter = matter )
-            #
-            pname = 'figs/plot_matter_setupMicro_mb_e2a_'+matter+'_'+mb+'.png'
-            #
-            nuda.plot.matter_setupMicro_E_fig( pname, mb, models, band, matter )
-            #
+            nuda.plot.matter_setupPheno_E_fig( pname, model, band, matter )
+
     #
     print(50*'-')
-    print("Exit matter_setupMicro_plot.py:")
+    print("Exit matter_setupPheno_plot.py:")
     print(50*'-')
     #
-    
+
 if __name__ == "__main__":
     main()
+

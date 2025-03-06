@@ -893,6 +893,7 @@ version-0.2/nucleardatapy/plot/matter_setupMicro_band_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_err_NM_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_gap_fig.py
+version-0.2/nucleardatapy/plot/matter_setupPheno_fig.py
 version-0.2/nucleardatapy/plot/nuc_setupBEExp_fig.py
 version-0.2/tests/__init__.py
 version-0.2/tests/astro_setupMasses_tests.py

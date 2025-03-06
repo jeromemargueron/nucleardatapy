@@ -17,7 +17,7 @@ def main():
     #
     # list the available models
     #
-    models, models_lower = nuda.matter.micro_gap_models()
+    models, models_lower, models_all, models_all_lower = nuda.matter.micro_gap_models( matter = 'NM' )
     #
     # plot 1S0 pairing gaps in NM
     #

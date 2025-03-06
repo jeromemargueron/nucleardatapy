@@ -9,7 +9,7 @@ def main():
     print("Enter matter_setupMicro_gap_script.py:")
     print(50*'-')
     #
-    models, models_lower = nuda.matter.micro_gap_models()
+    models, models_lower, models_all, models_all_lower = nuda.matter.micro_gap_models( matter = 'NM' )
     #
     for model in models:
         #

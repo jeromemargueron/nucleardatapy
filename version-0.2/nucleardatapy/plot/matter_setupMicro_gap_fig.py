@@ -22,23 +22,27 @@ def matter_setupMicro_nm_gap_1s0_fig( pname, models ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.2, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.05, hspace=0.05 )
     #
     axs[0,0].set_ylabel(r'$\Delta_{1S0}$ (MeV)')
-    axs[0,0].set_xlim([0, 0.05])
+    axs[0,0].set_xlim([0, 0.048])
     axs[0,0].set_ylim([0, 3.0])
+    axs[0,0].tick_params('x', labelbottom=False)
     #
     axs[0,1].set_xlim([0, 1.6])
     axs[0,1].set_ylim([0, 3.0])
+    axs[0,1].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('y', labelleft=False)
     #
     axs[1,0].set_ylabel(r'$\Delta_{1S0}/E_F$')
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_xlim([0, 0.05])
-    axs[1,0].set_ylim([0, 0.8])
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1,0].set_xlim([0, 0.048])
+    axs[1,0].set_ylim([0, 0.78])
     #
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
+    axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
     axs[1,1].set_xlim([0, 1.6])
-    axs[1,1].set_ylim([0, 0.8])
+    axs[1,1].set_ylim([0, 0.78])
+    axs[1,1].tick_params('y', labelleft=False)
     #
     for model in models:
         #
@@ -58,7 +62,7 @@ def matter_setupMicro_nm_gap_1s0_fig( pname, models ):
         if nuda.env.verb_output: gap.print_outputs( )
     #
     #axs[1,0].legend(loc='upper right',fontsize='8')
-    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.08,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=300)
@@ -84,23 +88,27 @@ def matter_setupMicro_nm_gap_3pf2_fig( pname, models ):
     #
     fig, axs = plt.subplots(2,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.2, hspace=0.2 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.05, hspace=0.05 )
     #
     axs[0,0].set_ylabel(r'$\Delta_{3PF2}$ (MeV)')
-    axs[0,0].set_xlim([0, 0.4])
+    axs[0,0].set_xlim([0, 0.38])
     axs[0,0].set_ylim([0, 0.6])
+    axs[0,0].tick_params('x', labelbottom=False)
     #
-    axs[0,1].set_xlim([0.8, 2.3])
+    axs[0,1].set_xlim([0.6, 2.3])
     axs[0,1].set_ylim([0, 0.6])
+    axs[0,1].tick_params('x', labelbottom=False)
+    axs[0,1].tick_params('y', labelleft=False)
     #
     axs[1,0].set_ylabel(r'$100\times \Delta_{3PF2}/E_F$')
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)')
-    axs[1,0].set_xlim([0, 0.4])
-    axs[1,0].set_ylim([0, 0.8])
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1,0].set_xlim([0, 0.38])
+    axs[1,0].set_ylim([0, 0.78])
     #
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)')
-    axs[1,1].set_xlim([0.8, 2.3])
-    axs[1,1].set_ylim([0, 0.8])
+    axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
+    axs[1,1].set_xlim([0.6, 2.3])
+    axs[1,1].set_ylim([0, 0.78])
+    axs[1,1].tick_params('y', labelleft=False)
     #
     for model in models:
         #
@@ -120,7 +128,7 @@ def matter_setupMicro_nm_gap_3pf2_fig( pname, models ):
         if nuda.env.verb_output: gap.print_outputs( )
     #
     #axs[1,0].legend(loc='upper right',fontsize='8')
-    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.04,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=300)

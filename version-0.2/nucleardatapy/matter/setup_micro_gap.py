@@ -11,7 +11,7 @@ import random
 
 import nucleardatapy as nuda
 
-def micro_gap_models():
+def micro_gap_models( matter = 'NM' ):
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
@@ -20,22 +20,32 @@ def micro_gap_models():
     '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
     '2022-AFDMC-NM' \
 
+    :param matter: matter can be 'NM' (by default) or 'SM'.
+    :type matter: str.
     :return: The list of models.
     :rtype: list[str].
     """
     #
     if nuda.env.verb: print("\nEnter micro_gap_models()")
     #
-    models = [ '2006-BHF-NM', '2006-BHF-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
-            '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
+    models_all = [ '2006-BHF-NM', '2006-BHF-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', \
+            '2017-MBPT-NM-GAP-EMG-450-500-N2LO', '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
             '2022-AFDMC-NM' ]
-    if nuda.env.verb: print('models available in the toolkit:',models)
-    models_lower = [ item.lower() for item in models ]
+    models_all_lower = [ item.lower() for item in models_all ]
+    if nuda.env.verb: print('All models available in the toolkit:',models_all)
+    #
+    models = []
+    models_lower = []
+    for model in models_all:
+        #print('split:',model.split('-'))
+        if matter in model.split('-')[2]:
+            models.append( model )
+            models_lower.append( model.lower() )
     #
     if nuda.env.verb: print("Exit micro_gap_models()")
     #
-    return models, models_lower
+    return models, models_lower, models_all, models_all_lower
 
 class setupMicroGap():
     """
@@ -72,12 +82,12 @@ class setupMicroGap():
         #
         self = setupMicroGap.init_self( self )
         #
-        models, models_lower = micro_gap_models()
+        models, models_lower, models_all, models_all_lower = micro_gap_models()
         #
-        if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
+        if model.lower() not in models_all_lower:
+            print('setup_micro_gap: The model name ',model,' is not in the list of models.')
+            print('setup_micro_gap: list of models:',models)
+            print('setup_micro_gap: -- Exit the code --')
             exit()
         #
         if model.lower() == '2006-bhf-nm':
@@ -93,11 +103,11 @@ class setupMicroGap():
             self.every = 1
             #self.linestyle = 'dotted'
             self.gap_err = False
-            self.nm_kfn_1s0_fs, self.nm_gap_bare_1s0_fs, nm_gap_onebubble_1s0_fs, self.nm_gap_full_1s0_fs \
+            self.nm_kfn_1s0_fs, self.nm_gap_bare_1s0_fs, self.nm_gap_bare_onebubble_1s0_fs, self.nm_gap_bare_full_1s0_fs \
                 = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
             self.nm_den_1s0_fs = nuda.den( self.nm_kfn_1s0_fs )
-            self.nm_kfn_1s0, self.nm_gap_bare_1s0, nm_gap_onebubble_1s0, self.nm_gap_full_1s0 \
-                = np.loadtxt( file_in_se, usecols=(0,1,2,3), unpack = True )
+            self.nm_kfn_1s0, self.nm_gap_bare_1s0, self.nm_gap_1s0 \
+                = np.loadtxt( file_in_se, usecols=(0,1,2), unpack = True )
             self.nm_den_1s0 = nuda.den( self.nm_kfn_1s0 )
             #
         elif model.lower() == '2006-bhf-sm':
@@ -113,11 +123,11 @@ class setupMicroGap():
             self.every = 1
             #self.linestyle = 'dotted'
             self.gap_err = False
-            self.sm_kfn_1s0_fs, self.sm_gap_bare_1s0_fs, sm_gap_onebubble_1s0_fs, self.sm_gap_full_1s0_fs \
+            self.sm_kfn_1s0_fs, self.sm_gap_bare_1s0_fs, self.sm_gap_bare_onebubble_1s0_fs, self.sm_gap_bare_full_1s0_fs \
                 = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
             self.sm_den_1s0_fs = nuda.den( self.sm_kfn_1s0_fs )
-            self.sm_kfn_1s0, self.sm_gap_bare_1s0, sm_gap_onebubble_1s0, self.sm_gap_full_1s0 \
-                = np.loadtxt( file_in_se, usecols=(0,1,2,3), unpack = True )
+            self.sm_kfn_1s0, self.sm_gap_1s0 \
+                = np.loadtxt( file_in_se, usecols=(0,1), unpack = True )
             self.sm_den_1s0 = nuda.den( self.sm_kfn_1s0 )
             #
         elif model.lower() == '2008-bcs-nm':
