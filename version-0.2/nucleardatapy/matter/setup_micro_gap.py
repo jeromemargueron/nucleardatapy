@@ -105,10 +105,10 @@ class setupMicroGap():
             self.gap_err = False
             self.nm_kfn_1s0_fs, self.nm_gap_bare_1s0_fs, self.nm_gap_bare_onebubble_1s0_fs, self.nm_gap_bare_full_1s0_fs \
                 = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
-            self.nm_den_1s0_fs = nuda.den( self.nm_kfn_1s0_fs )
+            self.nm_den_1s0_fs = nuda.den_n( self.nm_kfn_1s0_fs )
             self.nm_kfn_1s0, self.nm_gap_bare_1s0, self.nm_gap_1s0 \
                 = np.loadtxt( file_in_se, usecols=(0,1,2), unpack = True )
-            self.nm_den_1s0 = nuda.den( self.nm_kfn_1s0 )
+            self.nm_den_1s0 = nuda.den_n( self.nm_kfn_1s0 )
             #
         elif model.lower() == '2006-bhf-sm':
             #
