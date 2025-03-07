@@ -30,10 +30,10 @@ def matter_setupPheno_E_fig( pname, model, band, matter ):
     fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.88, wspace=0.05, hspace=0.05)
     #
     axs[0,0].set_xlim([0, 0.33])
-    axs[1,0].set_xlabel(r'n (fm$^{-3}$)',fontsize='12')
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='12')
     axs[1,0].set_xlim([0, 0.33])
     axs[0,1].set_xlim([0.5, 1.5])
-    axs[1,1].set_xlabel(r'$k_F$ (fm$^{-1}$)',fontsize='12')
+    axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)',fontsize='12')
     axs[1,1].set_xlim([0.5, 1.5])
     #
     axs[0,0].tick_params('x', labelbottom=False)

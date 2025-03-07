@@ -77,7 +77,14 @@ class setupMicroLP():
             self.note = "write here notes about this EOS."
             self.err = False
             #
-            name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            name = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    name.append( line.split()[0] )
+            name = np.array( name, dtype = str )
             #
             lp1, lp2, lp3, lp4, lp5 = np.loadtxt( file_in, usecols=(1,2,3,4,5), unpack = True )
             #
@@ -96,7 +103,9 @@ class setupMicroLP():
                 self.Ksat = lp1[25]
                 self.Esym2 = lp1[26]
                 self.sm_effMass = lp1[27]
+                #
             elif model.lower() == '1994-bhf-sm-lp-av14-cont':
+                #
                 self.label = 'BHF-AV14Cont-1994'
                 self.marker = 'o'
                 for ell in range(0,8):
@@ -111,7 +120,9 @@ class setupMicroLP():
                 self.Ksat = lp2[25]
                 self.Esym2 = lp2[26]
                 self.sm_effMass = lp2[27]
+                #
             elif model.lower() == '1994-bhf-sm-lp-reid-gap':
+                #
                 self.label = 'BHF-ReidGap-1994'
                 self.marker = 'o'
                 for ell in range(0,8):
@@ -126,7 +137,9 @@ class setupMicroLP():
                 self.Ksat = lp3[25]
                 self.Esym2 = lp3[26]
                 self.sm_effMass = lp3[27]
+                #
             elif model.lower() == '1994-bhf-sm-lp-reid-cont':
+                #
                 self.label = 'BHF-ReidCont-1994'
                 self.marker = 'o'
                 for ell in range(0,8):
@@ -141,7 +154,9 @@ class setupMicroLP():
                 self.Ksat = lp4[25]
                 self.Esym2 = lp4[26]
                 self.sm_effMass = lp4[27]
+                #
             elif model.lower() == '1994-bhf-sm-lp-av14-cont-0.7':
+                #
                 self.label = 'BHF-AV14Cont-0.7-1994'
                 self.marker = 'o'
                 for ell in range(0,8):

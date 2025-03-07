@@ -891,10 +891,12 @@ version-0.2/nucleardatapy/plot/hnuc_setupChart_fig.py
 version-0.2/nucleardatapy/plot/matter_ESM_fig.py
 version-0.2/nucleardatapy/plot/matter_Esym_fig.py
 version-0.2/nucleardatapy/plot/matter_setupFFGNuc_fig.py
+version-0.2/nucleardatapy/plot/matter_setupMicro_LP_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_band_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_err_NM_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_gap_fig.py
+version-0.2/nucleardatapy/plot/matter_setupNEPModelDist_fig.py
 version-0.2/nucleardatapy/plot/matter_setupPheno_fig.py
 version-0.2/nucleardatapy/plot/nuc_setupBEExp_fig.py
 version-0.2/tests/__init__.py

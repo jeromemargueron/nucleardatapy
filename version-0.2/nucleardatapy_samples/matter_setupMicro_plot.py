@@ -46,7 +46,7 @@ def main():
             #
             models, models_lower = nuda.matter.micro_models_mb_matter( mb, matter = matter )
             #
-            pname = 'figs/plot_matter_setupMicro_mb_e2a_'+matter+'_'+mb+'.png'
+            pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
             #
             nuda.plot.matter_setupMicro_E_fig( pname, mb, models, band, matter )
             #

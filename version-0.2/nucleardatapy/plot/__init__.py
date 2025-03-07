@@ -6,8 +6,11 @@ from nucleardatapy.plot.matter_setupMicro_fig        import *
 from nucleardatapy.plot.matter_setupMicro_err_NM_fig import *
 from nucleardatapy.plot.matter_setupMicro_band_fig   import *
 from nucleardatapy.plot.matter_setupMicro_gap_fig    import *
+from nucleardatapy.plot.matter_setupMicro_LP_fig     import *
 #
 from nucleardatapy.plot.matter_setupPheno_fig        import *
+#
+from nucleardatapy.plot.matter_setupNEPModelDist_fig import *
 #
 from nucleardatapy.plot.matter_Esym_fig              import *
 from nucleardatapy.plot.matter_ESM_fig               import *

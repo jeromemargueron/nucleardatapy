@@ -110,7 +110,7 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
     axs[1].text(0.03,2,'phenomenological models',fontsize='10')
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     #plt.tight_layout()
     if pname is not None:
