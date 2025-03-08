@@ -36,10 +36,11 @@ jobs:
       - name: Setup base Python environment
         run: ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh ${{ runner.os }}
 
-      - name: Build Sphinx documentation
+        - name: Build Sphinx documentation
         run: |
-          cd ${{ env.CLONE_PATH }}
-          tox -r -e html,pdf
+          cd $CLONE_PATH
+          tox -c $CLONE_PATH/tox.ini -r -e html,pdf
+
 
       - name: Archive Sphinx-based documentation
         uses: actions/upload-artifact@v4
