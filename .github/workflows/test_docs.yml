@@ -18,23 +18,29 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra latexmk
+          sudo apt-get -y install texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra latexmk
           sudo apt-get -y install pandoc
+
+      - name: Grant execute permission for setup script
+        run: chmod +x ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh
+
       - name: Setup base Python environment
-        run: |
-          $CLONE_PATH/.github/workflows/setup_base_python.sh ${{ runner.os }}
+        run: ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh ${{ runner.os }}
+
       - name: Build Sphinx documentation
         run: |
-          pushd $CLONE_PATH
+          cd ${{ env.CLONE_PATH }}
           tox -r -e html,pdf
-          popd
+
       - name: Archive Sphinx-based documentation
         uses: actions/upload-artifact@v4
         with:

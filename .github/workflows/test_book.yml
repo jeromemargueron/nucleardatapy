@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -21,23 +21,25 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version}}
+          python-version: ${{ matrix.python-version }}
 
       - name: Install OpenMPI
         run: |
           sudo apt-get update
+          sudo apt-get -y install libopenmpi-dev openmpi-bin
 
-      - name: Setup python with tox
-        run: |
-          $CLONE_PATH/.github/workflows/setup_base_python.sh ${{ runner.os }}
+      - name: Grant execute permission for setup script
+        run: chmod +x ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh
+
+      - name: Setup Python with tox
+        run: ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh ${{ runner.os }}
 
       - name: Build Jupyter Book
         run: |
-          pushd $CLONE_PATH
+          cd ${{ env.CLONE_PATH }}
           tox -r -e book
-          popd
 
       - name: Archive examples Jupyter book
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.EXAMPLES_BOOK }}

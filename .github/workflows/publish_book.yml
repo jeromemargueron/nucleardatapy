@@ -16,7 +16,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version}}
+          python-version: ${{ matrix.python-version }}
 
       - name: Setup python with tox
         run: |
@@ -35,15 +35,15 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          pushd $CLONE_PATH
+          cd $CLONE_PATH
           tox -r -e book
-          popd
 
       - name: Archive examples Jupyter book
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: jupyter-book
           path: ${{ env.EXAMPLES_BOOK }}
 
-      - name: Publish Nuclear data toolkit Jupyter Book
+      - name: Publish Nuclear Data Toolkit Jupyter Book
         id: deployment
         uses: actions/deploy-pages@v2
