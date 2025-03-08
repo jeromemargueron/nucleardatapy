@@ -1,8 +1,10 @@
-name: Test sphinx docs build
+name: Build and publish Sphinx docs
+
 env:
   CLONE_PATH: ${{ github.workspace }}
-  HTML_DOCS: ${{ github.workspace }}/docs/build_html
-  PDF_DOCS: ${{ github.workspace }}/docs/build_pdf
+  HTML_DOCS: ${{ github.workspace }}/_build/html
+  PDF_DOCS: ${{ github.workspace }}/_build/pdf
+
 on:
   push:
     branches: [main, develop]
@@ -29,18 +31,20 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra latexmk
           sudo apt-get -y install pandoc
+          pip install sphinx sphinx_rtd_theme
 
-      - name: Grant execute permission for setup script
-        run: chmod +x ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh
+      - name: Grant execute permission for Makefile (if needed)
+        run: chmod +x Makefile
 
-      - name: Setup base Python environment
-        run: ${{ env.CLONE_PATH }}/.github/workflows/setup_base_python.sh ${{ runner.os }}
-
-      - name: Build Sphinx documentation
+      - name: Build Sphinx documentation (HTML)
         run: |
           cd $CLONE_PATH
-          sphinx-build -b html docs/source docs/build_html
-          sphinx-build -b latex docs/source docs/build_pdf
+          make html
+
+      - name: Build Sphinx documentation (PDF)
+        run: |
+          cd $CLONE_PATH
+          make latexpdf
 
       - name: Archive Sphinx-based documentation
         uses: actions/upload-artifact@v4

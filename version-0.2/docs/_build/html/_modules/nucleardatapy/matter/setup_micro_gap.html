@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.matter.setup_micro_gap &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,30 +46,30 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">corr.setupEsym</a></li>
 </ul>
 
         </div>
@@ -81,9 +85,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.matter.setup_micro_gap</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.matter.setup_micro_gap</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -93,56 +97,68 @@
            <div itemprop="articleBody">
              
   <h1>Source code for nucleardatapy.matter.setup_micro_gap</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">CubicSpline</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">CubicSpline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
 <span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
 <span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
 
-<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
 
-<div class="viewcode-block" id="micro_gap_models"><a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.micro_gap_models">[docs]</a><span class="k">def</span> <span class="nf">micro_gap_models</span><span class="p">():</span>
+<div class="viewcode-block" id="micro_gap_models">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.micro_gap_models">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_gap_models</span><span class="p">(</span> <span class="n">matter</span> <span class="o">=</span> <span class="s1">&#39;NM&#39;</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list with the name of the models available in this toolkit and \</span>
 <span class="sd">    print them all on the prompt. These models are the following ones: \</span>
-<span class="sd">    &#39;2008-BCS-NM&#39;, &#39;2008-AFDMC-NM&#39;, \</span>
-<span class="sd">    &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, \</span>
+<span class="sd">    &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, \</span>
 <span class="sd">    &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, \</span>
 <span class="sd">    &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, \</span>
 <span class="sd">    &#39;2022-AFDMC-NM&#39; \</span>
 
+<span class="sd">    :param matter: matter can be &#39;NM&#39; (by default) or &#39;SM&#39;.</span>
+<span class="sd">    :type matter: str.</span>
 <span class="sd">    :return: The list of models.</span>
 <span class="sd">    :rtype: list[str].</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_gap_models()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2008-BCS-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-AFDMC-NM&#39;</span><span class="p">,</span> \
-             <span class="s1">&#39;2008-QMC-NM-swave&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-DLQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-QMC-NM-AV4&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;</span><span class="p">,</span> \
-             <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;</span><span class="p">,</span> \
-             <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;</span><span class="p">,</span> \
-             <span class="s1">&#39;2022-AFDMC-NM&#39;</span> <span class="p">]</span>
-    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
-    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="n">models_all</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2006-BHF-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2006-BHF-SM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-BCS-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-QMC-NM-swave&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-DLQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-QMC-NM-AV4&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2022-AFDMC-NM&#39;</span> <span class="p">]</span>
+    <span class="n">models_all_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models_all</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models_all</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_all</span><span class="p">:</span>
+        <span class="c1">#print(&#39;split:&#39;,model.split(&#39;-&#39;))</span>
+        <span class="k">if</span> <span class="n">matter</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">model</span> <span class="p">)</span>
+            <span class="n">models_lower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">)</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_gap_models()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span></div>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span><span class="p">,</span> <span class="n">models_all</span><span class="p">,</span> <span class="n">models_all_lower</span></div>
 
-<div class="viewcode-block" id="setupMicroGap"><a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap">[docs]</a><span class="k">class</span> <span class="nc">setupMicroGap</span><span class="p">():</span>
+
+<div class="viewcode-block" id="setupMicroGap">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupMicroGap</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the object with microscopic results choosen \</span>
 <span class="sd">    by the toolkit practitioner.</span>
 
 <span class="sd">    This choice is defined in `model`, which can chosen among \</span>
 <span class="sd">    the following choices: \</span>
-<span class="sd">    &#39;2008-BCS-NM&#39;, &#39;2008-AFDMC-NM&#39;, \</span>
-<span class="sd">    &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, \</span>
+<span class="sd">    &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, \</span>
 <span class="sd">    &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, \</span>
 <span class="sd">    &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, \</span>
 <span class="sd">    &#39;2022-AFDMC-NM&#39; \</span>
@@ -153,7 +169,7 @@
 <span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2008-BCS-NM&#39;</span> <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2008-BCS-NM&#39;</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -170,15 +186,55 @@
         <span class="c1">#</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="n">setupMicroGap</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
         <span class="c1">#</span>
-        <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_gap_models</span><span class="p">()</span>
+        <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span><span class="p">,</span> <span class="n">models_all</span><span class="p">,</span> <span class="n">models_all_lower</span> <span class="o">=</span> <span class="n">micro_gap_models</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_all_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro_gap: The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro_gap: list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro_gap: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2008-bcs-nm&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2006-bhf-nm&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in_fs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-GAP-NM-FreeSpectrum.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (free spectrum):&#39;</span><span class="p">,</span><span class="n">file_in_fs</span><span class="p">)</span>
+            <span class="n">file_in_se</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-GAP-NM-SelfEnergy.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (self energy):&#39;</span><span class="p">,</span><span class="n">file_in_se</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1">#self.linestyle = &#39;dotted&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gap_err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_bare_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_bare_onebubble_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_bare_full_1s0_fs</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in_fs</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den_1s0_fs</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_1s0_fs</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_1s0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_bare_1s0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_1s0</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in_se</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_den_1s0</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_1s0</span> <span class="p">)</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2006-bhf-sm&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in_fs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-GAP-SM-FreeSpectrum.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (free spectrum):&#39;</span><span class="p">,</span><span class="n">file_in_fs</span><span class="p">)</span>
+            <span class="n">file_in_se</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-GAP-SM-SelfEnergy.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (self energy):&#39;</span><span class="p">,</span><span class="n">file_in_se</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1">#self.linestyle = &#39;dotted&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gap_err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap_bare_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap_bare_onebubble_1s0_fs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap_bare_full_1s0_fs</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in_fs</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den_1s0_fs</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn_1s0_fs</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn_1s0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_gap_1s0</span> \
+                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in_se</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_den_1s0</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn_1s0</span> <span class="p">)</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2008-bcs-nm&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2008-BCS-NM.dat&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
@@ -272,26 +328,32 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-emg-450-500-n2lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EMG450-500-N2LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_gap_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-emg-450-500-n3lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EMG450-500-N3LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_gap_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_500_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-emg-450-700-n2lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EMG450-700-N2LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_gap_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-emg-450-700-n3lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EMG450-700-N3LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_gap_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EGM450_700_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-em-500-n2lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EM500-N2LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_gap_1S0_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_gap_3PF2_HF_spectrum_N2LO_3N_forces.csv&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-mbpt-nm-gap-em-500-n3lo&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BCS-EM500-N3LO-2017&#39;</span>
                 <span class="n">file_effmass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_1s0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_gap_1S0_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
                 <span class="n">file_3pf2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2017-Drischler/N3LO_EM500_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv&#39;</span><span class="p">)</span>
@@ -299,7 +361,6 @@
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file_effmass:&#39;</span><span class="p">,</span><span class="n">file_in_effmass</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file_1s0:    &#39;</span><span class="p">,</span><span class="n">file_in_1s0</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file_3pf2:   &#39;</span><span class="p">,</span><span class="n">file_in_3pf2</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2017&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_effmass</span><span class="p">,</span> <span class="n">effmass_lo</span><span class="p">,</span> <span class="n">effmass_up</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_effmass</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den_effmass</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn_effmass</span> <span class="p">)</span>
@@ -339,7 +400,9 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupMicroGap()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-<div class="viewcode-block" id="setupMicroGap.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupMicroGap.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -366,8 +429,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_3pf2_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_gap_3pf2_err: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_gap_3pf2_err</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
         <span class="c1">#</span>
-<div class="viewcode-block" id="setupMicroGap.init_self"><a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap.init_self">[docs]</a>    <span class="k">def</span> <span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupMicroGap.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_gap.html#nucleardatapy.matter.setup_micro_gap.setupMicroGap.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize variables in self.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -409,7 +475,9 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span>        </div></div>
+        <span class="k">return</span> <span class="bp">self</span>        </div>
+</div>
+
 
 </pre></div>
 

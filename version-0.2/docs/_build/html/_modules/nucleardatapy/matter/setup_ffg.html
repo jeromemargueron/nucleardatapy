@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.matter.setup_ffg &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,30 +46,30 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">SetupEOSFFG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">SetupEOSMicro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">SetupEOSMicroBand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">SetupEOSMicroLP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">SetupEOSMicroGap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">SetupEOSMicroEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">SetupEOSPheno</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">SetupEOSPhenoEsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">SetupEOSHIC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">SetupEOSAM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">SetupEOSBeta</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">SetupNucBEExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">SetupNucBETheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">SetupNucRchExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">SetupNucRchTheo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">SetupNucISGMRExp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">SetupCrust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">SetupAstroMasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">SetupAstroMup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">SetupAstroMtov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">SetupAstroMR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">SetupAstroGW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">SetupCorrEsymLsym</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">SetupCORREsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">corr.setupEsym</a></li>
 </ul>
 
         </div>
@@ -81,9 +85,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.matter.setup_ffg</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.matter.setup_ffg</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -93,13 +97,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for nucleardatapy.matter.setup_ffg</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="c1">#from scipy.interpolate import CubicSpline</span>
 
-<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
 
-<div class="viewcode-block" id="kf"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.kf">[docs]</a><span class="k">def</span> <span class="nf">kf</span><span class="p">(</span> <span class="n">den</span> <span class="p">):</span>
+<div class="viewcode-block" id="kf">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.kf">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">kf</span><span class="p">(</span> <span class="n">den</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fermi momentum as a function of the density.</span>
 
@@ -109,7 +115,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">den</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span></div>
 
-<div class="viewcode-block" id="den"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.den">[docs]</a><span class="k">def</span> <span class="nf">den</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="den">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.den">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">den</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Density as a function of the Fermi momentum.</span>
 
@@ -119,7 +128,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span> <span class="o">*</span> <span class="n">kf</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">/</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="p">)</span></div>
 
-<div class="viewcode-block" id="kf_n"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.kf_n">[docs]</a><span class="k">def</span> <span class="nf">kf_n</span><span class="p">(</span> <span class="n">den_n</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="kf_n">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.kf_n">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">kf_n</span><span class="p">(</span> <span class="n">den_n</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Neutron Fermi momentum as a function of the neutron density.</span>
 
@@ -129,7 +141,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">den_n</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span></div>
 
-<div class="viewcode-block" id="den_n"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.den_n">[docs]</a><span class="k">def</span> <span class="nf">den_n</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="den_n">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.den_n">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">den_n</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Neutron density as a function of the neutron Fermi momentum.</span>
 
@@ -139,7 +154,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">kf_n</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">/</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="p">)</span></div>
 
-<div class="viewcode-block" id="eF_n"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.eF_n">[docs]</a><span class="k">def</span> <span class="nf">eF_n</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="eF_n">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.eF_n">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">eF_n</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Neutron Fermi energy as a function of the neutron Fermi momentum.</span>
 
@@ -149,7 +167,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="n">kf_n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span></div>
 
-<div class="viewcode-block" id="eF_n_nr"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.eF_n_nr">[docs]</a><span class="k">def</span> <span class="nf">eF_n_nr</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="eF_n_nr">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.eF_n_nr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">eF_n_nr</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Non-relativistic neutron Fermi energy as a function of the neutron Fermi momentum.</span>
 
@@ -159,7 +180,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="n">kf_n</span><span class="o">**</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="effg_NM_nr"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_NM_nr">[docs]</a><span class="k">def</span> <span class="nf">effg_NM_nr</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="effg_NM_nr">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_NM_nr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">effg_NM_nr</span><span class="p">(</span> <span class="n">kf_n</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Free Fermi gas energy as a function of the neutron Fermi momentum.</span>
 
@@ -169,7 +193,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="n">kf_n</span><span class="o">**</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="effg_SM_nr"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_SM_nr">[docs]</a><span class="k">def</span> <span class="nf">effg_SM_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="effg_SM_nr">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_SM_nr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">effg_SM_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Free Fermi gas energy as a function of the Fermi momentum in SM.</span>
 
@@ -179,7 +206,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="n">kf</span><span class="o">**</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="effg_nr"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_nr">[docs]</a><span class="k">def</span> <span class="nf">effg_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="effg_nr">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.effg_nr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">effg_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Free Fermi gas energy as a function of the Fermi momentum.</span>
 
@@ -189,7 +219,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="n">kf</span><span class="o">**</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="esymffg_nr"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.esymffg_nr">[docs]</a><span class="k">def</span> <span class="nf">esymffg_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="esymffg_nr">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.esymffg_nr">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">esymffg_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Free Fermi gas symmetry energy as a function of the Fermi momentum.</span>
 
@@ -199,8 +232,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">effg_nr</span><span class="p">(</span> <span class="n">kf</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span></div>
 
+
 <span class="c1"># FFG energy</span>
-<span class="k">def</span> <span class="nf">feden</span><span class="p">(</span><span class="n">gam</span><span class="p">,</span> <span class="n">kf</span><span class="p">,</span> <span class="n">mc2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">feden</span><span class="p">(</span><span class="n">gam</span><span class="p">,</span> <span class="n">kf</span><span class="p">,</span> <span class="n">mc2</span><span class="p">):</span>
     <span class="n">den</span> <span class="o">=</span> <span class="n">gam</span> <span class="o">*</span> <span class="n">kf</span><span class="o">**</span><span class="mi">3</span> <span class="o">/</span> <span class="p">(</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="p">)</span>
     <span class="n">e2v</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">e2a</span> <span class="o">=</span> <span class="p">[]</span>
@@ -220,12 +254,12 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">e2v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
             <span class="n">e2a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
-    <span class="n">e2v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">e2v</span> <span class="p">)</span>
-    <span class="n">e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">e2a</span> <span class="p">)</span>
+    <span class="n">e2v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">e2v</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+    <span class="n">e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">e2a</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">e2v</span><span class="p">,</span> <span class="n">e2a</span>
 
 <span class="c1"># FFG pressure</span>
-<span class="k">def</span> <span class="nf">fpres</span><span class="p">(</span><span class="n">gam</span><span class="p">,</span> <span class="n">kf</span><span class="p">,</span> <span class="n">mc2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fpres</span><span class="p">(</span><span class="n">gam</span><span class="p">,</span> <span class="n">kf</span><span class="p">,</span> <span class="n">mc2</span><span class="p">):</span>
     <span class="n">pre</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">val_kf</span> <span class="ow">in</span> <span class="n">kf</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">val_kf</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
@@ -241,10 +275,29 @@
             <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">gam</span> <span class="o">*</span> <span class="n">term</span> <span class="o">/</span> <span class="p">(</span><span class="mf">48.0</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">**</span><span class="mi">3</span> <span class="p">)</span> <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
-    <span class="n">pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">pre</span> <span class="p">)</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">pre</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">pre</span>
 
-<div class="viewcode-block" id="setupFFGNuc"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGNuc">[docs]</a><span class="k">class</span> <span class="nc">setupFFGNuc</span><span class="p">():</span>
+<span class="c1"># FFG dp/dn</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f_dp_dn</span><span class="p">(</span><span class="n">kf</span><span class="p">,</span> <span class="n">mc2</span><span class="p">):</span>
+    <span class="n">dp_dn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">val_kf</span> <span class="ow">in</span> <span class="n">kf</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">val_kf</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+            <span class="n">pf</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span> <span class="o">*</span> <span class="n">val_kf</span>
+            <span class="k">if</span> <span class="n">mc2</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">term</span> <span class="o">=</span> <span class="n">pf</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">pf</span> <span class="o">*</span> <span class="n">pf</span> <span class="o">+</span> <span class="n">mc2</span> <span class="o">*</span> <span class="n">mc2</span> <span class="p">)</span>
+                <span class="n">term</span> <span class="o">=</span> <span class="n">pf</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ef</span>
+            <span class="n">dp_dn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">term</span> <span class="o">/</span> <span class="mf">3.0</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dp_dn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="mf">0.0</span> <span class="p">)</span>
+    <span class="n">dp_dn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">dp_dn</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">dp_dn</span>
+
+<div class="viewcode-block" id="setupFFGNuc">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGNuc">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupFFGNuc</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the object with free Fermi gas (FFG) quantities.</span>
 
@@ -256,7 +309,7 @@
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">den</span><span class="p">,</span> <span class="n">delta</span> <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">den</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">ms</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -264,7 +317,7 @@
 <span class="sd">        Density or densities for which the FFG quantities are calculated.</span>
 <span class="sd">        delta: float or numpy array of floats.</span>
 <span class="sd">        Isospin density or densities for which the FFG quantities are calculated.</span>
-
+<span class="sd">        ms: effective mass in unit of mass.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupFFGNuc()&quot;</span><span class="p">)</span>
@@ -277,6 +330,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den</span> 
         <span class="c1">#: Attribute isospin parameter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> 
+        <span class="c1">#: Attribute the effective mass in unit of mass.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ms</span> <span class="o">=</span> <span class="n">ms</span>
         <span class="c1"># Attribute the neutron fraction</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">one</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="p">)</span>
         <span class="c1"># Attribute the proton fraction</span>
@@ -292,51 +347,80 @@
         <span class="c1">#: Attribute proton Fermi momentum (degeneracy = 2)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span> <span class="o">=</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_p</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
         <span class="c1">#: Attribute neutron Fermi energy (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">-</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_n_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span>
         <span class="c1">#: Attribute proton Fermi energy (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">-</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_p_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span>
+        <span class="c1">#: Attribute rest mass energy per particle (degeneracy = 2)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="n">ms</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="n">ms</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_rm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
         <span class="c1">#: Attribute FFG energy per particle (degeneracy = 2)</span>
-        <span class="n">e2v_n</span><span class="p">,</span> <span class="n">e2a_n</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="p">)</span>
-        <span class="n">e2v_p</span><span class="p">,</span> <span class="n">e2a_p</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="p">)</span>
+        <span class="n">e2v_n</span><span class="p">,</span> <span class="n">e2a_n</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="p">)</span>
+        <span class="n">e2v_p</span><span class="p">,</span> <span class="n">e2a_p</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2v</span> <span class="o">=</span> <span class="n">e2v_n</span> <span class="o">+</span> <span class="n">e2v_p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="n">e2a_n</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="n">e2a_p</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> \
            <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span><span class="o">*</span><span class="n">den</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">*</span> \
            <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> \
            <span class="p">(</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">one</span><span class="o">+</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">fiveThird</span> <span class="o">+</span> \
              <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">one</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">fiveThird</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_rm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span> 
         <span class="c1">#: Attribute FFG energy per unit volum (degeneracy = 2)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2v_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2v_int_nr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_nr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nr</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
         <span class="c1">#: Attribute FFG symmetry energy (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">esym_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> \
            <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span><span class="o">*</span><span class="n">den</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">*</span> \
            <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">two</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">one</span> <span class="p">)</span>
         <span class="c1">#: Attribute FFG quadratic contribution to the symmetry energy</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">esym2_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym2_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> \
            <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span><span class="o">*</span><span class="n">den</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">*</span> \
            <span class="mf">10.0</span><span class="o">/</span><span class="mf">18.0</span>
         <span class="c1">#: Attribute FFG quartic contribution to the symmetry energy</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">esym4_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">*</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym4_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">threeFifth</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">h2m</span> <span class="o">/</span> <span class="n">ms</span> <span class="o">*</span> \
            <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span><span class="o">*</span><span class="n">den</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">*</span> \
            <span class="mf">5.0</span><span class="o">/</span><span class="mf">243.0</span>
         <span class="c1">#: Attribute FFG pressure (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="p">)</span> <span class="o">+</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;pre:&#39;,self.pre)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pre_nr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">twoThird</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_int_nr</span>
+        <span class="c1">#print(&#39;pre_nr:&#39;,self.pre_nr)</span>
+        <span class="c1"># spline the pressure p(n) to extract dp/dn:</span>
+        <span class="c1">#cs_pre = CubicSpline( self.den, self.pre )</span>
+        <span class="c1">#: Attribute enthalpy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2a</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="c1">#print(&#39;h2a:&#39;,self.h2a)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2a_nr</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_nr</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_nr</span> <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="c1">#print(&#39;h2a_nr:&#39;,self.h2a_nr)</span>
+        <span class="c1">#: Attribute sound speed squared</span>
+        <span class="n">dp_dn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="n">f_dp_dn</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span> <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="n">f_dp_dn</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_p</span><span class="p">,</span> <span class="n">ms</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mpc2</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;dp_dn:&#39;,dp_dn)</span>
+        <span class="c1">#dp_dn_num = cs_pre( self.den, 1 )</span>
+        <span class="c1">#print(&#39;dp_dn_num:&#39;,dp_dn_num)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs2</span> <span class="o">=</span> <span class="n">dp_dn</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2a</span> 
+        <span class="c1">#self.cs2_num = dp_dn_num / self.h2a</span>
+        <span class="c1">#self.cs2_nr = 10.0 / 9.0 * self.e2v_nr / self.den / self.h2a_nr</span>
+        <span class="n">dp_dn_nr</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">/</span> <span class="mf">9.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span>
+        <span class="c1">#print(&#39;dp_dn_nr:&#39;,dp_dn_nr)</span>
+        <span class="c1">#print(&#39;dp_dn_nr/dp_dn:&#39;,dp_dn_nr/dp_dn)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs2_nr</span> <span class="o">=</span> <span class="n">dp_dn_nr</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2a_nr</span>
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs2_unit</span> <span class="o">=</span> <span class="s1">&#39;c$^</span><span class="si">{2}</span><span class="s1">$&#39;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupFFGNuc()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupFFGNuc.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGNuc.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupFFGNuc.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGNuc.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -348,12 +432,22 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   delta: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   kf_n: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_n</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   pre: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   cs2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The non-relativistic quantities are:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int_nr: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_nr</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_nr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   pre_nr: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_nr</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs2_nr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   cs2_nr: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2_nr</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
         <span class="c1">#</span>
 
-<div class="viewcode-block" id="setupFFGLep"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGLep">[docs]</a><span class="k">class</span> <span class="nc">setupFFGLep</span><span class="p">():</span>
+<div class="viewcode-block" id="setupFFGLep">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGLep">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupFFGLep</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the object with free Fermi gas (FFG) quantities.</span>
 
@@ -365,7 +459,7 @@
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">den_e</span><span class="p">,</span> <span class="n">den_mu</span> <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">den_el</span><span class="p">,</span> <span class="n">den_mu</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -383,34 +477,56 @@
         <span class="c1">#: Attribute providing additional notes about the data.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="c1">#: Attribute electron density</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">den_e</span> <span class="o">=</span> <span class="n">den_e</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_el</span> <span class="o">=</span> <span class="n">den_el</span>
         <span class="c1">#: Attribute muon density</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span> <span class="o">=</span> <span class="n">den_mu</span>
+        <span class="c1">#: Attribute lepton density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_lep</span> <span class="o">=</span> <span class="n">den_el</span> <span class="o">+</span> <span class="n">den_mu</span>
+        <span class="c1">#: Attribute electron fraction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_el</span> <span class="o">=</span> <span class="n">den_el</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_lep</span>
+        <span class="c1">#: Attribute muon fraction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span> <span class="o">=</span> <span class="n">den_mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_lep</span>
         <span class="c1">#: Attribute electron Fermi momentum (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span> <span class="o">=</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_e</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_el</span> <span class="o">=</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_el</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
         <span class="c1">#: Attribute muon Fermi momentum (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span> <span class="o">=</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span><span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span> <span class="o">=</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">three</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span> <span class="p">)</span><span class="o">**</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">third</span>
         <span class="c1">#: Attribute electon Fermi energy (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eF_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eF_el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_el</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
         <span class="c1">#: Attribute muon Fermi energy (degeneracy = 2)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eF_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
         <span class="c1">#: Attribute FFG energy per particle (degeneracy = 2)</span>
-        <span class="n">e2v_e</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="p">)</span>
-        <span class="n">e2v_mu</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e2v</span> <span class="o">=</span> <span class="n">e2v_e</span> <span class="o">+</span> <span class="n">e2v_mu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">=</span> <span class="n">e2v_e</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_e</span> <span class="o">+</span> <span class="n">e2v_mu</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den_e</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span><span class="o">*</span><span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den_e</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_el</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_el</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_mu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu</span> <span class="o">=</span> <span class="n">feden</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_lep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_el</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_mu</span>
+        <span class="c1">#self.e2a_el = self.e2v_el / self.den_e</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">den_el</span> <span class="o">/</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_lep</span> <span class="p">)</span>
+        <span class="c1">#self.e2a_mu = self.e2v_mu / self.den_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu_int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu</span> <span class="o">-</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span> <span class="o">/</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_lep</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_lep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_lep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el_int</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu_int</span>
         <span class="c1">#: Attribute FFG pressure (degeneracy = 2)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_el</span> <span class="o">=</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_el</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_mu</span> <span class="o">=</span> <span class="n">fpres</span><span class="p">(</span> <span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_lep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_el</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_mu</span>
+        <span class="c1">#: Attribute enthalpy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2v_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_el</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_el</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2v_mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v_mu</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2v_lep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2v_el</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2v_mu</span>
+        <span class="c1">#: Attribute sound speed squared</span>
+        <span class="n">dp_dn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_el</span> <span class="o">*</span> <span class="n">f_dp_dn</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_el</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mec2</span> <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span> <span class="o">*</span> <span class="n">f_dp_dn</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_mu</span><span class="p">,</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mmuc2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs2_lep</span> <span class="o">=</span> <span class="n">dp_dn</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2v_lep</span>
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupFFGLep()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupFFGLep.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGLep.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupFFGLep.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_ffg.html#nucleardatapy.matter.setup_ffg.setupFFGLep.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -422,9 +538,13 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den_e: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den_e</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den_mu: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den_mu</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   kf_e: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_e</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_lep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a_int_lep: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_int_lep</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   pre_lep: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_lep</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs2_lep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   cs2_lep: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2_lep</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div></div>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+</div>
+
         <span class="c1">#</span>
 
 

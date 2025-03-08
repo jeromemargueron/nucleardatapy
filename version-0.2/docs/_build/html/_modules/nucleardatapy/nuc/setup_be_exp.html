@@ -1,20 +1,20 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nucleardatapy.nuc.setup_be_exp &mdash; nucleardatapy 0.1 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -25,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> nucleardatapy
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -81,9 +85,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>nucleardatapy.nuc.setup_be_exp</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.nuc.setup_be_exp</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -93,15 +97,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for nucleardatapy.nuc.setup_be_exp</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
 
 <span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
 <span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
 
-<span class="kn">import</span> <span class="nn">nucleardatapy</span> <span class="k">as</span> <span class="nn">nuda</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
 
 <span class="n">CST_AtmMass</span> <span class="o">=</span> <span class="mf">931.494028</span>
 <span class="c1">#CST_mpc2 = 938.272081</span>
@@ -128,12 +132,14 @@
 <span class="n">HTvsl</span> <span class="o">=</span> <span class="mf">1e-3</span> <span class="c1"># half-time for very short live nuclei</span>
 <span class="n">HTsl</span> <span class="o">=</span> <span class="n">hours</span> <span class="c1"># half-time for short live nuclei</span>
 
-<span class="k">def</span> <span class="nf">stable_fit</span><span class="p">():</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">110</span><span class="p">)</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">Z</span> <span class="o">+</span> <span class="mf">6.e-3</span><span class="o">*</span><span class="n">Z</span><span class="o">*</span><span class="n">Z</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stable_fit</span><span class="p">(</span><span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">120</span><span class="p">):</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">Zmin</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">Zmax</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="n">Zmax</span><span class="o">-</span><span class="n">Zmin</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">Z</span> <span class="o">+</span> <span class="mf">6.e-3</span><span class="o">*</span><span class="n">Z</span><span class="o">*</span><span class="n">Z</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">N</span><span class="p">,</span> <span class="n">Z</span>
 
-<div class="viewcode-block" id="be_exp_tables"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.be_exp_tables">[docs]</a><span class="k">def</span> <span class="nf">be_exp_tables</span><span class="p">():</span>
+<div class="viewcode-block" id="be_exp_tables">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.be_exp_tables">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_exp_tables</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of the tables available in this toolkit for the experimental masses and</span>
 <span class="sd">    print them all on the prompt. These tables are the following</span>
@@ -147,15 +153,18 @@
     <span class="c1">#</span>
     <span class="n">tables</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;AME&#39;</span> <span class="p">]</span>
     <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+    <span class="c1">#print(&#39;tables available in the toolkit:&#39;,tables)</span>
     <span class="n">tables_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tables</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables available in the toolkit:&#39;</span><span class="p">,</span><span class="n">tables_lower</span><span class="p">)</span>
+    <span class="c1">#print(&#39;tables available in the toolkit:&#39;,tables_lower)</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit be_exp_tables()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="k">return</span> <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span></div>
 
-<div class="viewcode-block" id="be_exp_versions"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.be_exp_versions">[docs]</a><span class="k">def</span> <span class="nf">be_exp_versions</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="be_exp_versions">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.be_exp_versions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_exp_versions</span><span class="p">(</span> <span class="n">table</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of versions of tables available in </span>
 <span class="sd">    this toolkit for a given model and print them all on the prompt.</span>
@@ -172,7 +181,7 @@
     <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;ame&#39;</span><span class="p">:</span>
         <span class="n">versions</span><span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2012&#39;</span> <span class="p">]</span>
     <span class="c1">#</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Versions available in the toolkit:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
+    <span class="c1">#print(&#39;Versions available in the toolkit:&#39;,versions)</span>
     <span class="n">versions_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">versions</span> <span class="p">]</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit be_exp_tables_versions()&quot;</span><span class="p">)</span>
@@ -180,7 +189,43 @@
     <span class="k">return</span> <span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span></div>
 
 
-<div class="viewcode-block" id="setupBEExp"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp">[docs]</a><span class="k">class</span> <span class="nc">setupBEExp</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_shells</span><span class="p">(</span><span class="n">axs</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># plot shells for isotopes and isotones</span>
+    <span class="c1">#</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="mi">21</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">90</span><span class="p">],</span> <span class="p">[</span><span class="mi">27</span><span class="p">,</span><span class="mi">27</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">90</span><span class="p">],</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span><span class="mi">29</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">138</span><span class="p">],</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span><span class="mi">49</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">138</span><span class="p">],</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">76</span><span class="p">,</span><span class="mi">170</span><span class="p">],</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span><span class="mi">81</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">76</span><span class="p">,</span><span class="mi">170</span><span class="p">],</span> <span class="p">[</span><span class="mi">83</span><span class="p">,</span><span class="mi">83</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">126</span><span class="p">,</span><span class="mi">190</span><span class="p">],</span> <span class="p">[</span><span class="mi">127</span><span class="p">,</span><span class="mi">127</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">126</span><span class="p">,</span><span class="mi">190</span><span class="p">],</span> <span class="p">[</span><span class="mi">129</span><span class="p">,</span><span class="mi">129</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># plot shells for isotones</span>
+    <span class="c1">#</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span><span class="mi">21</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">40</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">27</span><span class="p">,</span><span class="mi">27</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">46</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span><span class="mi">29</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">46</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span><span class="mi">49</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span><span class="mi">81</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">86</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">83</span><span class="p">,</span><span class="mi">83</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">86</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">127</span><span class="p">,</span><span class="mi">127</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">132</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="mi">129</span><span class="p">,</span><span class="mi">129</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">132</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">axs</span>
+
+<div class="viewcode-block" id="setupBEExp">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupBEExp</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate the experimental nuclear masses from AME mass table.</span>
 
@@ -197,7 +242,7 @@
 
 <span class="sd">    **Attributes:**</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">):</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupBEExp()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -301,9 +346,10 @@
                     <span class="c1">#if int(Z) != 0 and nucZ != int(Z): continue</span>
                     <span class="n">NN</span> <span class="o">=</span> <span class="n">AA</span> <span class="o">-</span> <span class="n">ZZ</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   nucleus:&#39;</span><span class="p">,</span><span class="n">AA</span><span class="p">,</span><span class="n">ZZ</span><span class="p">,</span><span class="n">NN</span><span class="p">)</span>
+                    <span class="c1">#if ZZ == 20: print(&#39;   nucleus:&#39;,AA,ZZ,NN)</span>
                     <span class="n">flagI</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span> <span class="c1"># if nuci==0: ground-state (GS)</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   flagI:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">flagI</span><span class="p">))</span>
-                    <span class="c1"># select only GS by skiping all contributions from other states (flagI != 0)</span>
+                    <span class="c1"># select only GS by skiping all contributions from other states (flagI = 0)</span>
                     <span class="c1">#if flagI != 0: continue</span>
                     <span class="c1">#</span>
                     <span class="n">name</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span>
@@ -497,7 +543,9 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit SetupNucBEExp()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.print_outputs"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.print_outputs">[docs]</a>    <span class="k">def</span> <span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupBEExp.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
 <span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
 <span class="sd">       &quot;&quot;&quot;</span>
@@ -515,11 +563,13 @@
        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   A: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nucA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
        <span class="c1">#</span>
        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
        <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.select"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.select">[docs]</a>    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="setupBEExp.select">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.select">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Amin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">nucleus</span> <span class="o">=</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="n">every</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which select some nuclei from the table according to some criteria.</span>
-
 
 <span class="sd">        :param interp: If interp=&#39;n&#39;, exclude the interpolated nuclei from the selected ones. \</span>
 <span class="sd">        If interp=&#39;y&#39; consider them in the table, in addition to the others.</span>
@@ -646,12 +696,17 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
-        <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.drip"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.drip">[docs]</a>    <span class="k">def</span> <span class="nf">drip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Method which find the drip-line nuclei (on the two sides).</span>
 
-<span class="sd">        :param Zmax: Fix the maximum charge for the search of the drip line.</span>
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupBEExp.isotopes">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.isotopes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isotopes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which find the first and last isotopes for each Zmin&lt;Z&lt;Zmax.</span>
+
+<span class="sd">        :param Zmin: Fix the minimum charge for the search of isotopes.</span>
+<span class="sd">        :type Zmin: int, optional. Default: 1.</span>
+<span class="sd">        :param Zmax: Fix the maximum charge for the search of isotopes.</span>
 <span class="sd">        :type Zmax: int, optional. Default: 95.</span>
 
 <span class="sd">        **Attributes:**</span>
@@ -659,16 +714,28 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="n">Nstable</span><span class="p">,</span> <span class="n">Zstable</span> <span class="o">=</span> <span class="n">stable_fit</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In isotopes attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Z</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmin</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmax</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">Nstable</span><span class="p">,</span> <span class="n">Zstable</span> <span class="o">=</span> <span class="n">stable_fit</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zmin</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zmax</span> <span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">for</span> <span class="n">Z</span><span class="p">,</span><span class="n">ind</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Zstable</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Nmin</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Nmax</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Z</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Zstable</span><span class="p">):</span>
             <span class="c1">#</span>
-            <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;=</span> <span class="n">Zmax</span> <span class="p">:</span>
+            <span class="c1">#print(&#39;ind,Z, Nstable:&#39;,ind,Z,Nstable[ind])</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;</span> <span class="n">Zmax</span> <span class="p">:</span>
                 <span class="k">break</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&lt;</span> <span class="n">Zmin</span> <span class="p">:</span>
+                <span class="k">continue</span>
             <span class="c1">#</span>
             <span class="n">Nmin</span> <span class="o">=</span> <span class="n">Nstable</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
             <span class="n">Nmax</span> <span class="o">=</span> <span class="n">Nstable</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
@@ -685,9 +752,9 @@
                     <span class="n">Nmin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_nucZ</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
                     <span class="n">Nmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Z</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmin</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">drip_Nmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmax</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Z</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Nmin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmin</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">isotopes_Nmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Nmax</span> <span class="p">)</span>
         <span class="c1">#print(&#39;drip: Z&#39;,self.drip_Z)</span>
         <span class="c1">#print(&#39;drip: Nmin:&#39;,self.drip_Nmin)</span>
         <span class="c1">#print(&#39;drip: Nmax:&#39;,self.drip_Nmax)</span>
@@ -695,8 +762,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
         <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.select_year"><a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.select_year">[docs]</a>    <span class="k">def</span> <span class="nf">select_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_min</span><span class="o">=</span><span class="mi">1940</span><span class="p">,</span> <span class="n">year_max</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="setupBEExp.select_year">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.select_year">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_min</span><span class="o">=</span><span class="mi">1940</span><span class="p">,</span> <span class="n">year_max</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method which select some nuclei from the table according to the discovery year.</span>
 
@@ -797,8 +867,295 @@
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
         <span class="c1">#</span>
+<div class="viewcode-block" id="setupBEExp.S2n">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.S2n">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">S2n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the two-neutron separation energy (S2n)</span>
+<span class="sd">        S2n = E(Z,N)-E(Z,N-2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2n()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">S2n_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">S2n_N</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">S2n</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Z</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;</span> <span class="n">Zmax</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&lt;</span> <span class="n">Zmin</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>                
+            <span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#</span>
+            <span class="c1">#print(&#39;For Z,N:&#39;,Z,N)</span>
+            <span class="c1">#</span>
+            <span class="c1"># search index for Z,N+2</span>
+            <span class="c1">#</span>
+            <span class="n">flag_find</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span><span class="n">Z2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">Z</span> <span class="o">==</span> <span class="n">Z2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">flag_find</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="n">N2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+                <span class="c1">#print(&#39;N,N2:&#39;,N,N2,&#39;ind,ind2:&#39;,ind,ind2)</span>
+                <span class="n">S2n_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                <span class="n">S2n_N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                <span class="n">S2n</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2n_N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2n_N</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2n_Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2n_Z</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2n</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;Z:&#39;,self.S2n_Z)</span>
+        <span class="c1">#print(&#39;N:&#39;,self.S2n_N)</span>
+        <span class="c1">#print(&#39;S2n:&#39;,self.S2n)</span>
+        <span class="c1">#print(&#39;Z:&#39;,self.S2n_Z)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit S2n()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupBEExp.S2p">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.S2p">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">S2p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the two-proton separation energy (S2n)</span>
+<span class="sd">        S2p = E(Z,N)-E(Z-2,N)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2p()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">S2p_Z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">S2p_N</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">S2p</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="n">Nmax</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="n">Nmin</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>                
+            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#</span>
+            <span class="c1">#print(&#39;For Z,N:&#39;,Z,N)</span>
+            <span class="c1">#</span>
+            <span class="c1"># search index for Z-2,N</span>
+            <span class="c1">#</span>
+            <span class="n">flag_find</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span><span class="n">N2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="n">N2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span><span class="o">-</span><span class="mi">2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">flag_find</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="n">Z2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+                <span class="c1">#print(&#39;N,N2:&#39;,N,N2,&#39;ind,ind2:&#39;,ind,ind2)</span>
+                <span class="n">S2p_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                <span class="n">S2p_N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                <span class="n">S2p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2p_N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2p_N</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2p_Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2p_Z</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">S2p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">S2p</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="c1">#print(&#39;Z:&#39;,self.S2n_Z)</span>
+        <span class="c1">#print(&#39;N:&#39;,self.S2n_N)</span>
+        <span class="c1">#print(&#39;S2n:&#39;,self.S2n)</span>
+        <span class="c1">#print(&#39;Z:&#39;,self.S2n_Z)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit S2p()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupBEExp.D3p_n">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3p_n">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the three-points odd-even mass staggering (D3p_n)</span>
+<span class="sd">        D_3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_n()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_n_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_n_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_n_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_n_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Z</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&gt;</span> <span class="n">Zmax</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">&lt;</span> <span class="n">Zmin</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">N</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#even</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="c1"># odd</span>
+            <span class="c1">#</span>
+            <span class="c1">#print(&#39;For Z,N:&#39;,Z,N)</span>
+            <span class="c1">#</span>
+            <span class="c1"># search index for Z,N+2</span>
+            <span class="c1">#</span>
+            <span class="n">flag_find1</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind1</span><span class="p">,</span><span class="n">Z1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">Z</span> <span class="o">==</span> <span class="n">Z1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find1</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="n">flag_find2</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span><span class="n">Z2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">Z</span> <span class="o">==</span> <span class="n">Z2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find2</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
+                    <span class="n">D3p_n_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_n_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_n_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">D3p_n_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_n_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_n_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_n()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupBEExp.D3p_p">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3p_p">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the three-points odd-even mass staggering (D3p_p)</span>
+<span class="sd">        D_3p^P = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_p()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_p_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_p_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_p_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_p_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="n">Nmax</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="n">Nmin</span> <span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1">#</span>
+            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">Z</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#even</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="c1"># odd</span>
+            <span class="c1">#</span>
+            <span class="c1">#print(&#39;For Z,N:&#39;,Z,N)</span>
+            <span class="c1">#</span>
+            <span class="c1"># search index for Z,N+2</span>
+            <span class="c1">#</span>
+            <span class="n">flag_find1</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind1</span><span class="p">,</span><span class="n">N1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="n">N1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span><span class="o">+</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find1</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="n">flag_find2</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span><span class="n">N2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="n">N2</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="n">Z</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagI</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagInterp</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                    <span class="n">flag_find2</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
+                    <span class="n">D3p_p_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_p_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_p_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">D3p_p_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_p_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_p_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_p()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
+    <span class="c1">#</span>
 </pre></div>
 
            </div>
