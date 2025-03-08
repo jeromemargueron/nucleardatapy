@@ -3,7 +3,6 @@ env:
   CLONE_PATH: ${{ github.workspace }}
   HTML_DOCS: ${{ github.workspace }}/docs/build_html
   PDF_DOCS: ${{ github.workspace }}/docs/build_pdf
-
 on:
   push:
     branches: [main, develop]
@@ -40,9 +39,8 @@ jobs:
       - name: Build Sphinx documentation
         run: |
           cd $CLONE_PATH
-          sphinx-build -b html docs docs/build_html
-          sphinx-build -b latex docs docs/build_pdf
-
+          sphinx-build -b html docs/source docs/build_html
+          sphinx-build -b latex docs/source docs/build_pdf
 
       - name: Archive Sphinx-based documentation
         uses: actions/upload-artifact@v4
