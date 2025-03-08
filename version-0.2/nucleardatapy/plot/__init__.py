@@ -7,8 +7,12 @@ from nucleardatapy.plot.matter_setupMicro_err_NM_fig import *
 from nucleardatapy.plot.matter_setupMicro_band_fig   import *
 from nucleardatapy.plot.matter_setupMicro_gap_fig    import *
 from nucleardatapy.plot.matter_setupMicro_LP_fig     import *
+from nucleardatapy.plot.matter_setupMicroEsym_fig    import *
 #
 from nucleardatapy.plot.matter_setupPheno_fig        import *
+from nucleardatapy.plot.matter_setupPhenoEsym_fig    import *
+#
+from nucleardatapy.plot.matter_setupHIC_fig          import *
 #
 from nucleardatapy.plot.matter_setupNEPModelDist_fig import *
 #
@@ -26,6 +30,8 @@ from nucleardatapy.plot.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.plot.hnuc_setupChart_fig          import *
 #
 from nucleardatapy.plot.eos_setupAM_fig              import *
+from nucleardatapy.plot.eos_setupAMBeq_fig           import *
+from nucleardatapy.plot.eos_setupAMLeq_fig           import *
 #
 from nucleardatapy.plot.crust_setupCrust_fig         import *
 #
