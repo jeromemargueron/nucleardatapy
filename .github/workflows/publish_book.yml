@@ -37,7 +37,6 @@ jobs:
           chmod +x $CLONE_PATH/.github/workflows/setup_base_python.sh
           bash $CLONE_PATH/.github/workflows/setup_base_python.sh "${{ runner.os }}"
 
-
       - name: Build Jupyter Book
         run: |
           cd $CLONE_PATH
