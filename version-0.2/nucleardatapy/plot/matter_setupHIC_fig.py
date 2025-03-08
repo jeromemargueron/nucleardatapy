@@ -10,7 +10,7 @@ plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 
 import nucleardatapy as nuda
 
-def plot_matter_setupHIC( pname, constraints ):
+def matter_setupHIC_fig( pname, constraints ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\

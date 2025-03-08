@@ -38,7 +38,7 @@ def hnuc_setupRE1LExp_plot( pname, tables ):
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs.legend(loc='upper right',fontsize='8',ncol=2)
     #
-    pname is not None:
+    if pname is not None:
     	plt.savefig(pname, dpi=200)
     	plt.close()
     #
