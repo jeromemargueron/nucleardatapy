@@ -39,7 +39,7 @@ jobs:
       - name: Build Sphinx documentation
         run: |
           cd $CLONE_PATH
-          tox -c $CLONE_PATH/tox.ini -r -e html,pdf
+          tox -c $CLONE_PATH/tox.ini -r -e html
 
 
       - name: Archive Sphinx-based documentation
