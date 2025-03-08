@@ -40,7 +40,9 @@ jobs:
       - name: Build Sphinx documentation
         run: |
           cd $CLONE_PATH
-          tox -c $CLONE_PATH/tox.ini -r -e html,pdf
+          sphinx-build -b html docs docs/build_html
+          sphinx-build -b latex docs docs/build_pdf
+
 
       - name: Archive Sphinx-based documentation
         uses: actions/upload-artifact@v4
