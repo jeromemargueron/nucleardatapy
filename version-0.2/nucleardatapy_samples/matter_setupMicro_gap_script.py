@@ -13,7 +13,7 @@ def main():
     #
     for model in models:
         #
-        gap = nuda.matter.setupMicroGap( model = model )
+        gap = nuda.matter.setupMicroGap( model = model, matter = 'NM' )
         if nuda.env.verb_output: gap.print_outputs( )
     #
     print(50*'-')

@@ -449,7 +449,7 @@ version-0.2/nucleardatapy/astro/setup_mr.py
 version-0.2/nucleardatapy/astro/setup_mtov.py
 version-0.2/nucleardatapy/astro/setup_mup.py
 version-0.2/nucleardatapy/corr/__init__.py
-version-0.2/nucleardatapy/corr/setup_Esym.py
+version-0.2/nucleardatapy/corr/setup_EsymDen.py
 version-0.2/nucleardatapy/corr/setup_EsymLsym.py
 version-0.2/nucleardatapy/corr/setup_KsatQsat.py
 version-0.2/nucleardatapy/crust/__init__.py
@@ -883,11 +883,14 @@ version-0.2/nucleardatapy/plot/astro_setupMR_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMasses_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMtov_fig.py
 version-0.2/nucleardatapy/plot/astro_setupMup_fig.py
+version-0.2/nucleardatapy/plot/corr_setupEsymDen_fig.py
 version-0.2/nucleardatapy/plot/corr_setupEsymLsym_fig.py
 version-0.2/nucleardatapy/plot/corr_setupKsatQsat_fig.py
 version-0.2/nucleardatapy/plot/crust_setupCrust_fig.py
 version-0.2/nucleardatapy/plot/eos_setupAM_fig.py
 version-0.2/nucleardatapy/plot/hnuc_setupChart_fig.py
+version-0.2/nucleardatapy/plot/hnuc_setupRE1LExp_fig.py
+version-0.2/nucleardatapy/plot/matter_ENM_fig.py
 version-0.2/nucleardatapy/plot/matter_ESM_fig.py
 version-0.2/nucleardatapy/plot/matter_Esym_fig.py
 version-0.2/nucleardatapy/plot/matter_setupFFGNuc_fig.py

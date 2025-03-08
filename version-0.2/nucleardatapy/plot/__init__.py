@@ -14,12 +14,15 @@ from nucleardatapy.plot.matter_setupNEPModelDist_fig import *
 #
 from nucleardatapy.plot.matter_Esym_fig              import *
 from nucleardatapy.plot.matter_ESM_fig               import *
+from nucleardatapy.plot.matter_ENM_fig               import *
 #
 from nucleardatapy.plot.corr_setupKsatQsat_fig       import *
 from nucleardatapy.plot.corr_setupEsymLsym_fig       import *
+from nucleardatapy.plot.corr_setupEsymDen_fig        import *
 #
 from nucleardatapy.plot.nuc_setupBEExp_fig           import *
 #
+from nucleardatapy.plot.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.plot.hnuc_setupChart_fig          import *
 #
 from nucleardatapy.plot.eos_setupAM_fig              import *
