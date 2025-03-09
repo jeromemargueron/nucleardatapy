@@ -28,9 +28,11 @@ jobs:
           pip install -r requirements.txt
           pip install -e .  # Install nucleardatapy in editable mode
 
+      - name: Check test discovery
+        run: pytest --collect-only version-0.2/tests/
+
       - name: Run tests
-        working-directory: version-0.2
-        run: pytest
+        run: pytest version-0.2/tests/ --verbose
 
       - name: Build Sphinx documentation
         working-directory: docs
