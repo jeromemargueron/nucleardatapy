@@ -37,9 +37,7 @@ jobs:
 
       - name: Build Sphinx documentation
         working-directory: docs
-        run: |
-          cd docs
-          make html
+        run: make html
 
       - name: Build Jupyter Book
         working-directory: book
