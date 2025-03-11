@@ -125,7 +125,7 @@ class setupEsymLsym():
             #
         elif constraint.lower() == '2010-rnp':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2010-RNP.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2010-RNP.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'L.W. Chen, C.M. Ko, B.A. Li, J. Xu, Phys. Rev. C 82, 024321 (2010)'
             self.label = 'RNP-2010'
@@ -159,7 +159,7 @@ class setupEsymLsym():
         #
         elif constraint.lower() == '2012-frdm':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2012-FRDM.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2012-FRDM.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Moller, W.D. Myers, H. Sagawa, S. Yoshida, Phys. Rev. Lett. 108, 052501 (2012)'
             self.label = 'FRDM-2012'
@@ -193,7 +193,7 @@ class setupEsymLsym():
         #
         elif constraint.lower() == '2013-ns':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2013-NS.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2013-NS.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)'
             self.label = 'NS-2013'
@@ -227,7 +227,7 @@ class setupEsymLsym():
         #
         elif constraint.lower() == '2014-ias':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS-err.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2014-IAS-err.dat')
             #file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
@@ -256,8 +256,8 @@ class setupEsymLsym():
             #
         elif constraint.lower() == '2014-ias+rnp':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP-err.dat')
-            #file_in = os.path.join(nuda.param.path_data,'EsymLsym/2014-IAS+RNP.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2014-IAS+RNP-err.dat')
+            #file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2014-IAS+RNP.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Danielewicz and Lee, NPA 922, 1 (2014)'
             self.label = 'IAS+Rnp-2014'
@@ -369,7 +369,7 @@ class setupEsymLsym():
             #
         elif constraint.lower() == '2021-prexii-reed':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reed.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2021-PREXII-Reed.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reed et al., PRL 126, 172503 (2021)'
             self.label = 'PREXII-Reed'
@@ -382,7 +382,7 @@ class setupEsymLsym():
             #
         elif constraint.lower() == '2021-prexii-reinhard':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2021-PREXII-Reinhard.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2021-PREXII-Reinhard.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reinhard et al., PRL 127, 232501 (2021)'
             self.label = 'PREXII-Reinhard'
@@ -395,7 +395,7 @@ class setupEsymLsym():
             #
         elif constraint.lower() == '2023-prexii+crex-zhang':
             #
-            file_in = os.path.join(nuda.param.path_data,'EsymLsym/2023-PREXII-Zhang.dat')
+            file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2023-PREXII-Zhang.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Z. Zhang, L.W. Chen, Phys. Rev. C 108, 024317 (2023).'
             self.label = 'PREXII+CREX-Zhang'

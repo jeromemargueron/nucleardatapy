@@ -53,7 +53,7 @@ jobs:
             book/_build/html/
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' # Only deploy from main branch
+    if: github.ref == 'refs/heads/develop' # Only deploy from main branch
     runs-on: ubuntu-latest
     permissions:
       contents: write
