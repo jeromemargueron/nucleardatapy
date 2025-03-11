@@ -11,7 +11,7 @@ corr.setupEsymLsym
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_corr_setupEsymLsym.py
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_corr_setupEsymLsym.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/plots/figs/plot_corr_setupEsymLsym.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
