@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.matter.setup_hic &mdash; nucleardatapy 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/matter.html">Matter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/eos.html">EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/nuc.html">Nuc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/crust.html">Crust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/astro.html">Astro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/corr.html">Corr</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.matter.setup_hic</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.matter.setup_hic</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+
+<span class="n">nucleardatapy_tk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NUCLEARDATAPY_TK&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nucleardatapy_tk</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+
+<div class="viewcode-block" id="hic_constraints">
+<a class="viewcode-back" href="../../../source/api/setup_matter_hic.html#nucleardatapy.matter.setup_hic.hic_constraints">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hic_constraints</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of the HIC constraints available in this toolkit </span>
+<span class="sd">    for the equation of state in SM and NM and print them all on </span>
+<span class="sd">    the prompt. These constraints are the following</span>
+<span class="sd">    ones: [ &#39;2002-DLL&#39;, &#39;2002-KAON&#39;, &#39;2016-FOPI&#39;, &#39;2011-FOPI-LAND&#39;, &#39;2016-ASY-EOS&#39;</span>
+<span class="sd">    , &#39;2021-SPIRIT&#39;,&#39;2019-NP-RATIO&#39;,&#39;2009-ISO-DIFF&#39; ].</span>
+
+<span class="sd">    :return: The list of constraints.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter hic_constraints()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2002-DLL&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-KAON&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-FOPI&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-ISO-DIFF&#39;</span> <span class="p">,</span><span class="s1">&#39;2011-FOPI-LAND&#39;</span>
+                   <span class="p">,</span> <span class="s1">&#39;2016-ASY-EOS&#39;</span><span class="p">,</span><span class="s1">&#39;2019-NP-RATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-SPIRIT&#39;</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="n">constraints_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">constraints</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC constraints available in the toolkit:&#39;</span><span class="p">,</span><span class="n">constraints_lower</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit hic_constraints()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span></div>
+
+
+
+<div class="viewcode-block" id="setupHIC">
+<a class="viewcode-back" href="../../../source/api/setup_matter_hic.html#nucleardatapy.matter.setup_hic.setupHIC">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupHIC</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the constraints on the EOS from HIC.</span>
+
+<span class="sd">    This choice is defined in the variable `constraint`.</span>
+
+<span class="sd">    `constraint` can chosen among the following ones: </span>
+<span class="sd">    [ &#39;2002-DLL&#39;, &#39;2016-FOPI&#39;, &#39;2002-KAON&#39;,&#39;2009-ISO-DIFF&#39;, &#39;2011-FOPI_LAND&#39;</span>
+<span class="sd">    , &#39;2016-ASY_EOS&#39;,&#39;2019-NP-RATIO&#39;, &#39;2021-SPIRIT&#39; ].</span>
+
+<span class="sd">    :param constraint: Default value: &#39;2002-DLL&#39;.</span>
+<span class="sd">    :type constraint: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2002-DLL&#39;</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupHIC()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+        
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constraint:&quot;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">setupHIC</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">hic_constraints</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">constraints_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The constraint &#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">,</span><span class="s1">&#39; is not in the list of EOS HIC constraints.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of EOS HIC constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2002-dll&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-SM.dat&#39;</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-NM-soft.dat&#39;</span>
+            <span class="n">file_in3</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-DLL-NM-stiff.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in3</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;P. Danielewicz, R. Lacey, and W. Lynch, Science, 298, 1592 (2002).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Flow data used to contraint EOS of symmetric matter&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;DLL-2002&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_so</span> <span class="o">=</span> <span class="s1">&#39;DLL-2002-Asy_soft&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_st</span> <span class="o">=</span> <span class="s1">&#39;DLL-2002-Asy_stiff&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in3</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span>
+            <span class="c1">#self.sm_pre = nuda.cst.half * ( self.sm_pre_up + self.sm_pre_lo )</span>
+            <span class="c1">#self.sm_pre_err = nuda.cst.half * ( self.sm_pre_up - self.sm_pre_lo )</span>
+            <span class="c1">#self.nm_pre_so = nuda.cst.half * ( self.nm_pre_so_up + self.nm_pre_so_lo )</span>
+            <span class="c1">#self.nm_pre_so_err = nuda.cst.half * ( self.nm_pre_so_up - self.nm_pre_so_lo )</span>
+            <span class="c1"># decide that the NM pressure should be the asy-soft one by default</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_err</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2002-kaon&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2002-KAON.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;C. Fuchs, PPNP 56,1 (2006); W. Lynch et al., PPNP 62, 427 (2009).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Kaon yield ratios studied to contraint symmetric EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;KAON-2002&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;cyan&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            
+
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2016-fopi&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2016-FOPI-E2A.dat&#39;</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2016-FOPI-SM.dat&#39;</span>
+            <span class="c1">#if nuda.env.verb: print(&#39;Reads file:&#39;,file_in)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;A. Le Fevre, Y. Leifels, W. Reisdorf, J. Aichelin, and C. Hartnack, Nuclear Physics A 945, 112 (2016).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Elliptical flow data is used to constraint symmetric matter EOS&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;FOPI-2016&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span>
+            <span class="n">den2densat_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_e2a</span> <span class="o">=</span> <span class="n">den2densat_e2a</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="p">)</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2009-iso-diff&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2009-iso-diff.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;M. B. Tsang et al., Phys. Rev. Lett. 102, 122701 (2009); W. Lynch, M. B. Tsang, Phys. Lett. B 830, 137098 (2022).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Isospin diffusion data studied to constraint symmetry energy at sub-saturation.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Iso Diff-2009&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="n">den2densat_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_isodiff</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_isodiff_err</span> <span class="o">=</span> <span class="n">den2densat_err</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2011-fopi-land&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2011-FOPI-LAND.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39; P. Russotto et al., Physics Letters B 697, 471 (2011).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Sura-saturation information on symmtery energy usinf n/p elliptical flows&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;FOPI-LAND-2011&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;yellow&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span> <span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2016-asy-eos&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2016-ASY-EOS.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;P. Russotto et al., Phys. Rev. C 94, 034608 (2016).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Sura-saturation information on symmtery energy usinf n/p elliptical flows.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ASY-EOS-2016&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_err</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">half</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span> <span class="p">)</span>
+        <span class="c1">#   </span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2019-np-ratio&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2019-n2p-ratio.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;P. Morfouace et al., Phys. Lett. B 799, 135045 (2019).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;n/p spectral ratios to constraint symmetry energy at sub-saturation densities&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;n/p ratio-2019&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="n">den2densat_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_np</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_np_err</span> <span class="o">=</span> <span class="n">den2densat_err</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+        <span class="c1">#    </span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="s1">&#39;2021-spirit&#39;</span><span class="p">:</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;matter/hic/2021-SPIRIT.dat&#39;</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;J. Estee et al., Phys. Rev. Lett. 126, 162701 (2021).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Pion double ratios is studied in neutron rich and poor colliding nuclei.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;SPIRIT-2021&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+            <span class="n">den2densat</span><span class="p">,</span> <span class="n">den2densat_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_pre_spirit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_pre_spirit_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_spirit</span> <span class="o">=</span> <span class="n">den2densat</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">den_spirit_err</span> <span class="o">=</span> <span class="n">den2densat_err</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">nsat</span> <span class="c1"># in fm-3</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupHIC.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_hic.html#nucleardatapy.matter.setup_hic.setupHIC.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">       </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+       <span class="c1">#</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   constraint:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:     &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:    &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_isodiff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_isodiff</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_np</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_np</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_spirit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_spirit</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_pre: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   sm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   nm_pre_err: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np_err</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+       <span class="c1">#</span>
+       <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
+       <span class="c1">#</span>
+<div class="viewcode-block" id="setupHIC.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_matter_hic.html#nucleardatapy.matter.setup_hic.setupHIC.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute providing additional notes about the data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;HIC constraints&#39;</span>
+        <span class="c1">#: Attribute the density of the system (in fm^-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the energy per particle in SM (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the energy per particle in SM (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the energy per particle in SM (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty in the energy per particle in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in SM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM for asy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM for asy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM for asy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM for asy-soft EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_so_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the pressure in NM for asy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the pressure in NM for asy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the lower limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_st_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_lo</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_up</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroids of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the symmetry energy for SPIRIT constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the symmetry energy for SPIRIT constraints (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_spirit_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_isodiff_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_enr_np_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot linestyle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+        <span class="c1">#: Attribute plot label.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute plot alpha.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>         </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.eos.setup_am &mdash; nucleardatapy 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/matter.html">Matter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/eos.html">EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/nuc.html">Nuc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/crust.html">Crust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/astro.html">Astro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/corr.html">Corr</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.eos.setup_am</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.eos.setup_am</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">CubicSpline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
+<span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<div class="viewcode-block" id="setupAM">
+<a class="viewcode-back" href="../../../source/api/setup_eos_am.html#nucleardatapy.eos.setup_am.setupAM">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupAM</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the object with microscopic results choosen \</span>
+<span class="sd">    by the toolkit practitioner.</span>
+
+<span class="sd">    :param model: Fix the name of model. Default value: &#39;1998-VAR-AM-APR&#39;.</span>
+<span class="sd">    :type model: str, optional. </span>
+<span class="sd">    :param kind: chose between &#39;micro&#39; and &#39;pheno&#39;.</span>
+<span class="sd">    :type kind: str, optional.</span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="n">asy</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">x_mu</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : str, optional</span>
+<span class="sd">        The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...</span>
+<span class="sd">        kind : chose between &#39;micro&#39; or &#39;pheno&#39;.</span>
+<span class="sd">        var1 and var2 : densities (array) and isospin asymmetry (scalar) if necessary (for interpolation function in APRfit for instance)</span>
+<span class="sd">        var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupAM()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">setupAM</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># read var and define den, asy and xpr:</span>
+        <span class="c1">#self.den = np.array( den, dtype=float ) # density n_b=n_n+n_p</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">asy</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;micro&#39;</span><span class="p">:</span>
+            <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_esym_models</span><span class="p">()</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-VAR-AM-APR-fit&#39;</span><span class="p">)</span>
+            <span class="n">models_lower</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-var-am-apr-fit&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;pheno&#39;</span><span class="p">:</span>
+            <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_esym_models</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;micro&#39;</span><span class="p">:</span>
+            <span class="n">esym</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroEsym</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+            <span class="c1">#eos.print_outputs( )</span>
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;pheno&#39;</span><span class="p">:</span>
+            <span class="n">esym</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPhenoEsym</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
+            <span class="c1">#eos.print_outputs( )</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Issue with variable kind=&#39;</span><span class="p">,</span><span class="n">kind</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">every</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">linestyle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">marker</span>
+        <span class="c1">#print(&#39;type esym:&#39;,type(esym.esym))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">den</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">esym</span>
+        <span class="c1">#print(&#39;esym:&#39;,self.esym)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span> <span class="o">=</span> <span class="n">x_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kfn</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_n</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_el</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_mu</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="c1">#</span>
+        <span class="c1"># Thermodynamical variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nuc</span> <span class="o">=</span> <span class="n">esym</span><span class="o">.</span><span class="n">e2a_sm</span> <span class="o">+</span> <span class="n">esym</span><span class="o">.</span><span class="n">esym</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">asy</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_nuc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nuc</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span>
+        <span class="n">lep</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupFFGLep</span><span class="p">(</span> <span class="n">den_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_el</span><span class="p">,</span> <span class="n">den_mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_mu</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_el</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">e2a_el</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_mu</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">e2a_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_lep</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">e2a_el</span> <span class="o">+</span> <span class="n">lep</span><span class="o">.</span><span class="n">e2a_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_el</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">pre_el</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_mu</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">pre_mu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_lep</span> <span class="o">=</span> <span class="n">lep</span><span class="o">.</span><span class="n">pre_el</span> <span class="o">+</span> <span class="n">lep</span><span class="o">.</span><span class="n">pre_mu</span>
+        <span class="c1"># self.h2a</span>
+        <span class="c1"># self.h2v</span>
+        <span class="c1"># self.cs2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupAM()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupAM.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_eos_am.html#nucleardatapy.eos.setup_am.setupAM.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   model:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="c1">#if any(self.sm_den): print(f&quot;   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}&quot;)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kfn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   kfn: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   asy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">asy</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2a: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   e2v: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e2v</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   pre: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cs2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   cs2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupAM.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_eos_am.html#nucleardatapy.eos.setup_am.setupAM.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute providing additional notes about the data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the matter asymmetry parameter (n_n-n_p)/(n_n+n_p).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">asy</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the matter density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetry energy.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron fraction.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_n</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the proton fraction.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_p</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron density</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_n</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the proton density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_p</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kfn</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">#: Attribute the energy per particle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the energy per unit volume.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the enthalpy per particle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the enthalpy per unit volume.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h2v</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the pressure.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the sound speed.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs2</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#self.chempot_n</span>
+        <span class="c1">#self.chempot_p</span>
+        <span class="c1">#: Attribute the neutron matter effective mass.</span>
+        <span class="c1">#self.effmass_n = None</span>
+        <span class="c1">#: Attribute the symmetric matter effective mass.</span>
+        <span class="c1">#self.effmass_p = None</span>
+
+        <span class="c1">#: Attribute the plot linestyle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot to discriminate True uncertainties from False ones.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">#: Attribute the plot label data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the plot marker.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot every data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>        </div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

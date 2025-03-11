@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.1. Chapter 1 tutoral 1: Introduction to nucleardatapy toolkit &#8212; Nuclear data toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter1_introduction/Chapter1_1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2. Chapter 1 tutorial 2: Warm up" href="Chapter1_2.html" />
+    <link rel="prev" title="1. Tutorial 1 : Introduction to NUDA" href="tutorial_chap1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../landing.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Nuclear data toolkit - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Nuclear data toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../landing.html">
+                    Welcome to our Jupyter Book!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorial_chap1.html">1. Tutorial 1 : Introduction to NUDA</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Chapter 1 tutoral 1: Introduction to nucleardatapy toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter1_2.html">1.2. Chapter 1 tutorial 2: Warm up</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2_matter/tutorial_chap2.html">2. Chapter 2: Matter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.1.html">2.1. Free Fermi gas (FFG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.2.html">2.2. Microscopic calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.3.html">2.3. Chapter 2 tutorial 3: uncertainties in the theoretical predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: pairing gap (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.5.html">2.5. Chapter 2 tutorial 4: Landau parameters (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.10.html">2.6. Chapter 2 tutorial 10: phenomenological interactions (pheno)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.20.html">2.7. Chapter 2 tutorial 20: Nuclear Empirical Parameters (NEP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.30.html">2.8. Chapter 2 tutorial 30: figures with micro and pheno together</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3_correlations/tutorial_chap3.html">3. Chapter 3: Correlations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.1.html">3.1. Chapter 3 Tutorial 1: Ksat-Qsat correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.2.html">3.2. Chapter 3 Tutorial 2: Esym-Lsym correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.3.html">3.3. Chapter 3 Tutorial 3: Esym(n)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4_nuclei/tutorial_chap4.html">4. Chapter 4: Nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.1.html">4.1. Chapter 4 Tutorial 1: experimental nuclear chart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter5_hypernuclei/tutorial_chap5.html">5. Chapter 5: Hyper-nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.1.html">5.1. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.2.html">5.2. Chapter 5 Tutorial 1: experimental hyper-nuclei with 2 Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.4.html">5.4. Chapter 5 Tutorial 4: experimental hyper-nuclear chart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter6_eos/tutorial_chap6.html">6. Chapter 6: Equations of State</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter6_eos/Tutorial-6.1.html">6.1. Chapter 6 Tutorial 1: equation of state (eos)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter7_crust/tutorial_chap7.html">7. Chapter 7: Neutron Star Crusts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter7_crust/Tutorial-7.1.html">7.1. Neutron Star Crust</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter8_astro/tutorial_chap8.html">8. Chapter 8: Astrophysical Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.1.html">8.1. Chapter 8 Tutorial 1: gravitational waveform analysis (GW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.2.html">8.2. Chapter 8 Tutorial 2: maximum masses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.3.html">8.3. Chapter 8 Tutorial 3: TOV mass probability distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.4.html">8.4. Chapter 8 Tutorial 4: observation constraints on masses and radii (NICER observatory)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jeromemargueron/nucleardatapy/blob/main/book/notebooks/chapter1_introduction/Chapter1_1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeromemargueron/nucleardatapy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeromemargueron/nucleardatapy/issues/new?title=Issue%20on%20page%20%2Fnotebooks/chapter1_introduction/Chapter1_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/chapter1_introduction/Chapter1_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1 tutoral 1: Introduction to nucleardatapy toolkit</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-tutoral-1-introduction-to-nucleardatapy-toolkit">
+<h1><span class="section-number">1.1. </span>Chapter 1 tutoral 1: Introduction to nucleardatapy toolkit<a class="headerlink" href="#chapter-1-tutoral-1-introduction-to-nucleardatapy-toolkit" title="Link to this heading">#</a></h1>
+<p>In this tutorial, you will learn basic functions for using nuda toolkit.</p>
+<p>First, import the libraries that will be employed in this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import nucleardatapy package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import nucleardatapy package</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
+<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupFFGNuc_fig</span><span class="w">       </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_err_NM_fig</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span><span class="w"> </span><span class="nf">matter_setupFFGNuc_EP_fig</span><span class="p">(</span> <span class="n">pname</span><span class="p">,</span> <span class="n">mss</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.0</span> <span class="p">],</span> <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">kfn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">):</span>
+
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.12.9</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1296</span>
+<span class="g g-Whitespace">   </span><span class="mi">1292</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend_fallback&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1295</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1296</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1299</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_backend</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">auto_select</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1300</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1301</span><span class="sd">     Return the name of the current backend.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1302</span><span class="sd"> </span>
+<span class="sd">   (...)   1320     matplotlib.use</span>
+<span class="g g-Whitespace">   </span><span class="mi">1321</span><span class="sd">     &quot;&quot;&quot;</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/__init__.py:769,</span> in <span class="ni">RcParams.__setitem__</span><span class="nt">(self, key, val)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span>             <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">769</span>     <span class="n">cval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span> <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">771</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ve</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/rcsetup.py:273,</span> in <span class="ni">validate_backend</span><span class="nt">(s)</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">273</span>     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">_auto_backend_sentinel</span> <span class="ow">or</span> <span class="n">backend_registry</span><span class="o">.</span><span class="n">is_valid_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="k">return</span> <span class="n">s</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:244,</span> in <span class="ni">BackendRegistry.is_valid_backend</span><span class="nt">(self, backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="k">return</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="c1"># Only load entry points if really need to and not already done so.</span>
+<span class="ne">--&gt; </span><span class="mi">244</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_entry_points_loaded</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="n">backend</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_to_gui_framework</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>     <span class="k">return</span> <span class="kc">True</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:116,</span> in <span class="ni">BackendRegistry._ensure_entry_points_loaded</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_entry_points_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># Load entry points, if they have not already been loaded.</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">116</span>         <span class="n">entries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_entry_points</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_and_store_entry_points</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:136,</span> in <span class="ni">BackendRegistry._read_entry_points</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_entry_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="c1"># Read entry points of modules that self-advertise as Matplotlib backends.</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="c1"># Expects entry points like this one from matplotlib-inline (in pyproject.toml</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="c1"># format):</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="c1">#   [project.entry-points.&quot;matplotlib.backend&quot;]</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1">#   inline = &quot;matplotlib_inline.backend_inline&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">im</span>
+<span class="ne">--&gt; </span><span class="mi">136</span>     <span class="n">entry_points</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">entry_points</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;matplotlib.backend&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entry_points</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># For backward compatibility, if matplotlib-inline and/or ipympl are installed</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># but too old to include entry points, create them. Do not import ipympl</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="c1"># directly as this calls matplotlib.use() whilst in this function.</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/__init__.py:913,</span> in <span class="ni">entry_points</span><span class="nt">(**params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
+<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd"> Pass selection parameters (group or name) to filter the</span>
+<span class="sd">   (...)    908 :return: EntryPoints for all installed packages.</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+<span class="nn">    911     dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">913</span> <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/__init__.py:911,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">def</span><span class="w"> </span><span class="nf">entry_points</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EntryPoints</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
+<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd">     Pass selection parameters (group or name) to filter the</span>
+<span class="sd">   (...)    908     :return: EntryPoints for all installed packages.</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">910</span>     <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+<span class="nn">--&gt; 911         dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/_itertools.py:15,</span> in <span class="ni">unique_everseen</span><span class="nt">(iterable, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">yield</span> <span class="n">element</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/__init__.py:795,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Find metadata directories in paths heuristically.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span> <span class="n">prepared</span> <span class="o">=</span> <span class="n">Prepared</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span> <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+<span class="nn">--&gt; 795     path.search(prepared) for path</span> in <span class="ni">map</span><span class="nt">(FastPath, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/__init__.py:693,</span> in <span class="ni">FastPath.search</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">693</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mtime</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/importlib/metadata/__init__.py:698,</span> in <span class="ni">FastPath.mtime</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">def</span><span class="w"> </span><span class="nf">mtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">OSError</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">698</span>         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
+
+<span class="ne">TypeError</span>: stat: path should be string, bytes, os.PathLike or integer, not NoneType
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>What are the functions available in the toolkit?
+Type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span> <span class="nb">dir</span> <span class="p">(</span> <span class="n">nuda</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;APRfit_compute&#39;, &#39;CST_AtmMass&#39;, &#39;CST_dmHc2&#39;, &#39;CST_dmnc2&#39;, &#39;CST_mHc2&#39;, &#39;CST_mnc2&#39;, &#39;CubicSpline&#39;, &#39;EsymLsym_constraints&#39;, &#39;G_cgs&#39;, &#39;G_si&#39;, &#39;HIC_Esym&#39;, &#39;HIC_Lsym&#39;, &#39;HIC_Lsym_bound&#39;, &#39;HIC_xgi&#39;, &#39;HTsl&#39;, &#39;HTvsl&#39;, &#39;ILt&#39;, &#39;ISt&#39;, &#39;KsatQsat_constraints&#39;, &#39;MeV2J&#39;, &#39;MeV2kg&#39;, &#39;MeVfm32dyncm2&#39;, &#39;MeVfm32gcm3&#39;, &#39;Msol_cgs&#39;, &#39;Msol_si&#39;, &#39;Nc&#39;, &#39;Rsol_cgs&#39;, &#39;Rsol_si&#39;, &#39;SetupNeutronSkinExp&#39;, &#39;SetupNeutronSkinTheo&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;__spec__&#39;, &#39;astro&#39;, &#39;be_exp_tables&#39;, &#39;be_exp_versions&#39;, &#39;be_theo_tables&#39;, &#39;c&#39;, &#39;c2&#39;, &#39;checkPheno&#39;, &#39;col&#39;, &#39;compute_proba_do&#39;, &#39;compute_proba_up&#39;, &#39;conversionMBE&#39;, &#39;corr&#39;, &#39;corr_setupKsatQsat_fig&#39;, &#39;create_folder&#39;, &#39;create_folder_fig&#39;, &#39;crust&#39;, &#39;crust_models&#39;, &#39;cst&#39;, &#39;curve_fit&#39;, &#39;days&#39;, &#39;den&#39;, &#39;den_n&#39;, &#39;e&#39;, &#39;eF_n&#39;, &#39;eF_n_nr&#39;, &#39;effg_NM_nr&#39;, &#39;effg_SM_nr&#39;, &#39;effg_nr&#39;, &#39;elements&#39;, &#39;env&#39;, &#39;eos&#39;, &#39;esymffg_nr&#39;, &#39;f_dp_dn&#39;, &#39;feden&#39;, &#39;five&#39;, &#39;fiveThird&#39;, &#39;flinear&#39;, &#39;four&#39;, &#39;fpres&#39;, &#39;fsolve&#39;, &#39;func_GCR_cs2&#39;, &#39;func_GCR_e2a&#39;, &#39;func_GCR_pre&#39;, &#39;func_am&#39;, &#39;func_betaeq&#39;, &#39;func_dpredn_NLEFT2024&#39;, &#39;func_e2a_NLEFT2024&#39;, &#39;func_pre_NLEFT2024&#39;, &#39;gauss&#39;, &#39;gw_hyps&#39;, &#39;gw_sources&#39;, &#39;h2m&#39;, &#39;half&#39;, &#39;hbc&#39;, &#39;hic_constraints&#39;, &#39;hnuc&#39;, &#39;hours&#39;, &#39;isgmr_exp_tables&#39;, &#39;kf&#39;, &#39;kf_n&#39;, &#39;masses_obss&#39;, &#39;masses_sources&#39;, &#39;math&#39;, &#39;matter&#39;, &#39;matter_setupFFGNuc_EOS_fig&#39;, &#39;matter_setupFFGNuc_EP_fig&#39;, &#39;matter_setupFFGNuc_fig&#39;, &#39;matter_setupMicro_E_fig&#39;, &#39;matter_setupMicro_fig&#39;, &#39;mec2&#39;, &#39;micro_LP_models&#39;, &#39;micro_esym_mbs&#39;, &#39;micro_esym_models&#39;, &#39;micro_esym_models_mb&#39;, &#39;micro_esym_models_mbs&#39;, &#39;micro_esym_models_old&#39;, &#39;micro_gap_models&#39;, &#39;micro_mbs&#39;, &#39;micro_models&#39;, &#39;micro_models_mb&#39;, &#39;micro_models_mb_NM&#39;, &#39;micro_models_mb_SM&#39;, &#39;micro_models_mb_matter&#39;, &#39;micro_models_mbs&#39;, &#39;micro_models_old&#39;, &#39;minutes&#39;, &#39;mmuc2&#39;, &#39;mnc2&#39;, &#39;mnuc2&#39;, &#39;mnuc2_approx&#39;, &#39;months&#39;, &#39;mpc2&#39;, &#39;mr_obss&#39;, &#39;mr_sources&#39;, &#39;mup_hyps&#39;, &#39;mup_sources&#39;, &#39;nep_models&#39;, &#39;nep_params&#39;, &#39;np&#39;, &#39;ns&#39;, &#39;nsat&#39;, &#39;nskin_exp&#39;, &#39;nskin_exp_source&#39;, &#39;nskin_theo_models&#39;, &#39;nskin_theo_params&#39;, &#39;nuc&#39;, &#39;nucleardatapy_tk&#39;, &#39;nuda&#39;, &#39;one&#39;, &#39;os&#39;, &#39;param&#39;, &#39;path_ame&#39;, &#39;path_data&#39;, &#39;pheno_esym_models&#39;, &#39;pheno_esym_params&#39;, &#39;pheno_models&#39;, &#39;pheno_params&#39;, &#39;pi&#39;, &#39;pi2&#39;, &#39;plot&#39;, &#39;plot_shells&#39;, &#39;plt&#39;, &#39;random&#39;, &#39;rch_exp_tables&#39;, &#39;rch_theo_tables&#39;, &#39;re1L_exp_tables&#39;, &#39;re1Xi_exp_tables&#39;, &#39;re2L_exp_tables&#39;, &#39;rshsol_si&#39;, &#39;setupAM&#39;, &#39;setupAMBeq&#39;, &#39;setupAMLeq&#39;, &#39;setupBEExp&#39;, &#39;setupBETheo&#39;, &#39;setupCrust&#39;, &#39;setupEsym&#39;, &#39;setupEsymLsym&#39;, &#39;setupFFGLep&#39;, &#39;setupFFGNuc&#39;, &#39;setupGW&#39;, &#39;setupGWAverage&#39;, &#39;setupHIC&#39;, &#39;setupISGMRExp&#39;, &#39;setupKsatQsat&#39;, &#39;setupMR&#39;, &#39;setupMRAverage&#39;, &#39;setupMasses&#39;, &#39;setupMassesAverage&#39;, &#39;setupMicro&#39;, &#39;setupMicroBand&#39;, &#39;setupMicroEsym&#39;, &#39;setupMicroGap&#39;, &#39;setupMicroLP&#39;, &#39;setupMtov&#39;, &#39;setupMup&#39;, &#39;setupMupAverage&#39;, &#39;setupNEP&#39;, &#39;setupNEPDist&#39;, &#39;setupNEPModelDist&#39;, &#39;setupNeutronSkinAverage&#39;, &#39;setupPheno&#39;, &#39;setupPhenoEsym&#39;, &#39;setupRE1LExp&#39;, &#39;setupRE1XiExp&#39;, &#39;setupRE2LExp&#39;, &#39;setupRchExp&#39;, &#39;setupRchTheo&#39;, &#39;setup_Esym&#39;, &#39;setup_EsymLsym&#39;, &#39;setup_KsatQsat&#39;, &#39;setup_am&#39;, &#39;setup_am_Beq&#39;, &#39;setup_am_Leq&#39;, &#39;setup_be1L_exp&#39;, &#39;setup_be1Xi_exp&#39;, &#39;setup_be2L_exp&#39;, &#39;setup_be_exp&#39;, &#39;setup_be_theo&#39;, &#39;setup_crust&#39;, &#39;setup_ffg&#39;, &#39;setup_gw&#39;, &#39;setup_hic&#39;, &#39;setup_isgmr_exp&#39;, &#39;setup_masses&#39;, &#39;setup_micro&#39;, &#39;setup_micro_band&#39;, &#39;setup_micro_esym&#39;, &#39;setup_micro_gap&#39;, &#39;setup_micro_lp&#39;, &#39;setup_mr&#39;, &#39;setup_mtov&#39;, &#39;setup_mup&#39;, &#39;setup_nep&#39;, &#39;setup_nep_dist&#39;, &#39;setup_nep_model_dist&#39;, &#39;setup_nskin_exp&#39;, &#39;setup_nskin_theo&#39;, &#39;setup_pheno&#39;, &#39;setup_pheno_esym&#39;, &#39;setup_rch_exp&#39;, &#39;setup_rch_theo&#39;, &#39;special&#39;, &#39;stable_fit&#39;, &#39;sys&#39;, &#39;tex2str&#39;, &#39;third&#39;, &#39;three&#39;, &#39;threeFifth&#39;, &#39;two&#39;, &#39;twoThird&#39;, &#39;uncertainty_stat&#39;, &#39;verb&#39;, &#39;verb_latex&#39;, &#39;verb_output&#39;, &#39;yearMin&#39;, &#39;years&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span> <span class="n">help</span> <span class="p">(</span> <span class="n">nuda</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on package nucleardatapy:
+
+NAME
+    nucleardatapy - This module provides microscopic, phenomenological and experimental data constraints.
+
+PACKAGE CONTENTS
+    astro (package)
+    corr (package)
+    create_folder
+    crust (package)
+    cst
+    env
+    eos (package)
+    hnuc (package)
+    matter (package)
+    nuc (package)
+    param
+    plot (package)
+
+SUBMODULES
+    matter_setupFFGNuc_fig
+    matter_setupMicro_fig
+    setup_Esym
+    setup_EsymLsym
+    setup_KsatQsat
+    setup_am
+    setup_am_Beq
+    setup_am_Leq
+    setup_be1L_exp
+    setup_be1Xi_exp
+    setup_be2L_exp
+    setup_be_exp
+    setup_be_theo
+    setup_crust
+    setup_ffg
+    setup_gw
+    setup_hic
+    setup_isgmr_exp
+    setup_masses
+    setup_micro
+    setup_micro_band
+    setup_micro_esym
+    setup_micro_gap
+    setup_micro_lp
+    setup_mr
+    setup_mtov
+    setup_mup
+    setup_nep
+    setup_nep_dist
+    setup_nep_model_dist
+    setup_nskin_exp
+    setup_nskin_theo
+    setup_pheno
+    setup_pheno_esym
+    setup_rch_exp
+    setup_rch_theo
+
+DATA
+    CST_AtmMass = 931.494028
+    CST_dmHc2 = 1e-07
+    CST_dmnc2 = 5e-07
+    CST_mHc2 = 7.2889706
+    CST_mnc2 = 8.0713171
+    G_cgs = 6.67259e-08
+    G_si = 6.67259e-11
+    HTsl = 3600
+    HTvsl = 0.001
+    ILt = 3.155692608e+37
+    ISt = 1e-30
+    MeV2J = 1.6021766339999998e-13
+    MeV2kg = 1.7826619216278976e-30
+    MeVfm32dyncm2 = 1.602176634e+33
+    MeVfm32gcm3 = 1782661921627.8977
+    Msol_cgs = 1.99e+33
+    Msol_si = 1.99e+30
+    Nc = 3
+    Rsol_cgs = 69600000000.0
+    Rsol_si = 696000000.0
+    c = 299792458.0
+    c2 = 8.987551787368176e+16
+    col = [&#39;blue&#39;, &#39;orange&#39;, &#39;green&#39;, &#39;red&#39;, &#39;purple&#39;, &#39;brown&#39;, &#39;pink&#39;, &#39;g...
+    days = 86400
+    e = 1.602176634e-19
+    elements = array([&#39;H&#39;, &#39;He&#39;, &#39;Li&#39;, &#39;Be&#39;, &#39;B&#39;, &#39;C&#39;, &#39;N&#39;, &#39;O&#39;...&#39;Nh&#39;, &#39;F...
+    five = 5.0
+    fiveThird = 1.6666666666666667
+    four = 4.0
+    h2m = 41.471043279826425
+    half = 0.5
+    hbc = 197.3269804
+    hours = 3600
+    mec2 = 0.510998949
+    minutes = 60
+    mmuc2 = 105.6583745
+    mnc2 = 939.565346
+    mnuc2 = 939.0
+    mnuc2_approx = 939.0
+    months = 2592000
+    mpc2 = 938.272013
+    ns = 1e-09
+    nsat = 0.16
+    nucleardatapy_tk = &#39;/Users/margueron/mylib/nucleardatapy&#39;
+    one = 1.0
+    path_ame = &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucl...
+    path_data = &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nuc...
+    pi = 3.141592653589793
+    pi2 = 9.869604401089358
+    rshsol_si = 2954.85453973408
+    third = 0.3333333333333333
+    three = 3.0
+    threeFifth = 0.6
+    two = 2.0
+    twoThird = 0.6666666666666666
+    verb = False
+    verb_latex = True
+    verb_output = False
+    yearMin = 1851
+    years = 31556926.080000002
+
+FILE
+    /Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/__init__.py
+
+
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="vm">__dict__</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;__name__&#39;: &#39;nucleardatapy&#39;, &#39;__doc__&#39;: &#39;\nThis module provides microscopic, phenomenological and experimental data constraints.\n&#39;, &#39;__package__&#39;: &#39;nucleardatapy&#39;, &#39;__loader__&#39;: &lt;_frozen_importlib_external.SourceFileLoader object at 0x2d6c3b230&gt;, &#39;__spec__&#39;: ModuleSpec(name=&#39;nucleardatapy&#39;, loader=&lt;_frozen_importlib_external.SourceFileLoader object at 0x2d6c3b230&gt;, origin=&#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/__init__.py&#39;, submodule_search_locations=[&#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy&#39;]), &#39;__path__&#39;: [&#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy&#39;], &#39;__file__&#39;: &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/__init__.py&#39;, &#39;__cached__&#39;: &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/__pycache__/__init__.cpython-312.pyc&#39;, &#39;__builtins__&#39;: {&#39;__name__&#39;: &#39;builtins&#39;, &#39;__doc__&#39;: &quot;Built-in functions, types, exceptions, and other objects.\n\nThis module provides direct access to all &#39;built-in&#39;\nidentifiers of Python; for example, builtins.len is\nthe full name for the built-in function len().\n\nThis module is not normally accessed explicitly by most\napplications, but can be useful in modules that provide\nobjects with the same name as a built-in value, but in\nwhich the built-in of that name is also needed.&quot;, &#39;__package__&#39;: &#39;&#39;, &#39;__loader__&#39;: &lt;class &#39;_frozen_importlib.BuiltinImporter&#39;&gt;, &#39;__spec__&#39;: ModuleSpec(name=&#39;builtins&#39;, loader=&lt;class &#39;_frozen_importlib.BuiltinImporter&#39;&gt;, origin=&#39;built-in&#39;), &#39;__build_class__&#39;: &lt;built-in function __build_class__&gt;, &#39;__import__&#39;: &lt;built-in function __import__&gt;, &#39;abs&#39;: &lt;built-in function abs&gt;, &#39;all&#39;: &lt;built-in function all&gt;, &#39;any&#39;: &lt;built-in function any&gt;, &#39;ascii&#39;: &lt;built-in function ascii&gt;, &#39;bin&#39;: &lt;built-in function bin&gt;, &#39;breakpoint&#39;: &lt;built-in function breakpoint&gt;, &#39;callable&#39;: &lt;built-in function callable&gt;, &#39;chr&#39;: &lt;built-in function chr&gt;, &#39;compile&#39;: &lt;built-in function compile&gt;, &#39;delattr&#39;: &lt;built-in function delattr&gt;, &#39;dir&#39;: &lt;built-in function dir&gt;, &#39;divmod&#39;: &lt;built-in function divmod&gt;, &#39;eval&#39;: &lt;built-in function eval&gt;, &#39;exec&#39;: &lt;built-in function exec&gt;, &#39;format&#39;: &lt;built-in function format&gt;, &#39;getattr&#39;: &lt;built-in function getattr&gt;, &#39;globals&#39;: &lt;built-in function globals&gt;, &#39;hasattr&#39;: &lt;built-in function hasattr&gt;, &#39;hash&#39;: &lt;built-in function hash&gt;, &#39;hex&#39;: &lt;built-in function hex&gt;, &#39;id&#39;: &lt;built-in function id&gt;, &#39;input&#39;: &lt;bound method Kernel.raw_input of &lt;ipykernel.ipkernel.IPythonKernel object at 0x2d6645100&gt;&gt;, &#39;isinstance&#39;: &lt;built-in function isinstance&gt;, &#39;issubclass&#39;: &lt;built-in function issubclass&gt;, &#39;iter&#39;: &lt;built-in function iter&gt;, &#39;aiter&#39;: &lt;built-in function aiter&gt;, &#39;len&#39;: &lt;built-in function len&gt;, &#39;locals&#39;: &lt;built-in function locals&gt;, &#39;max&#39;: &lt;built-in function max&gt;, &#39;min&#39;: &lt;built-in function min&gt;, &#39;next&#39;: &lt;built-in function next&gt;, &#39;anext&#39;: &lt;built-in function anext&gt;, &#39;oct&#39;: &lt;built-in function oct&gt;, &#39;ord&#39;: &lt;built-in function ord&gt;, &#39;pow&#39;: &lt;built-in function pow&gt;, &#39;print&#39;: &lt;built-in function print&gt;, &#39;repr&#39;: &lt;built-in function repr&gt;, &#39;round&#39;: &lt;built-in function round&gt;, &#39;setattr&#39;: &lt;built-in function setattr&gt;, &#39;sorted&#39;: &lt;built-in function sorted&gt;, &#39;sum&#39;: &lt;built-in function sum&gt;, &#39;vars&#39;: &lt;built-in function vars&gt;, &#39;None&#39;: None, &#39;Ellipsis&#39;: Ellipsis, &#39;NotImplemented&#39;: NotImplemented, &#39;False&#39;: False, &#39;True&#39;: True, &#39;bool&#39;: &lt;class &#39;bool&#39;&gt;, &#39;memoryview&#39;: &lt;class &#39;memoryview&#39;&gt;, &#39;bytearray&#39;: &lt;class &#39;bytearray&#39;&gt;, &#39;bytes&#39;: &lt;class &#39;bytes&#39;&gt;, &#39;classmethod&#39;: &lt;class &#39;classmethod&#39;&gt;, &#39;complex&#39;: &lt;class &#39;complex&#39;&gt;, &#39;dict&#39;: &lt;class &#39;dict&#39;&gt;, &#39;enumerate&#39;: &lt;class &#39;enumerate&#39;&gt;, &#39;filter&#39;: &lt;class &#39;filter&#39;&gt;, &#39;float&#39;: &lt;class &#39;float&#39;&gt;, &#39;frozenset&#39;: &lt;class &#39;frozenset&#39;&gt;, &#39;property&#39;: &lt;class &#39;property&#39;&gt;, &#39;int&#39;: &lt;class &#39;int&#39;&gt;, &#39;list&#39;: &lt;class &#39;list&#39;&gt;, &#39;map&#39;: &lt;class &#39;map&#39;&gt;, &#39;object&#39;: &lt;class &#39;object&#39;&gt;, &#39;range&#39;: &lt;class &#39;range&#39;&gt;, &#39;reversed&#39;: &lt;class &#39;reversed&#39;&gt;, &#39;set&#39;: &lt;class &#39;set&#39;&gt;, &#39;slice&#39;: &lt;class &#39;slice&#39;&gt;, &#39;staticmethod&#39;: &lt;class &#39;staticmethod&#39;&gt;, &#39;str&#39;: &lt;class &#39;str&#39;&gt;, &#39;super&#39;: &lt;class &#39;super&#39;&gt;, &#39;tuple&#39;: &lt;class &#39;tuple&#39;&gt;, &#39;type&#39;: &lt;class &#39;type&#39;&gt;, &#39;zip&#39;: &lt;class &#39;zip&#39;&gt;, &#39;__debug__&#39;: True, &#39;BaseException&#39;: &lt;class &#39;BaseException&#39;&gt;, &#39;BaseExceptionGroup&#39;: &lt;class &#39;BaseExceptionGroup&#39;&gt;, &#39;Exception&#39;: &lt;class &#39;Exception&#39;&gt;, &#39;GeneratorExit&#39;: &lt;class &#39;GeneratorExit&#39;&gt;, &#39;KeyboardInterrupt&#39;: &lt;class &#39;KeyboardInterrupt&#39;&gt;, &#39;SystemExit&#39;: &lt;class &#39;SystemExit&#39;&gt;, &#39;ArithmeticError&#39;: &lt;class &#39;ArithmeticError&#39;&gt;, &#39;AssertionError&#39;: &lt;class &#39;AssertionError&#39;&gt;, &#39;AttributeError&#39;: &lt;class &#39;AttributeError&#39;&gt;, &#39;BufferError&#39;: &lt;class &#39;BufferError&#39;&gt;, &#39;EOFError&#39;: &lt;class &#39;EOFError&#39;&gt;, &#39;ImportError&#39;: &lt;class &#39;ImportError&#39;&gt;, &#39;LookupError&#39;: &lt;class &#39;LookupError&#39;&gt;, &#39;MemoryError&#39;: &lt;class &#39;MemoryError&#39;&gt;, &#39;NameError&#39;: &lt;class &#39;NameError&#39;&gt;, &#39;OSError&#39;: &lt;class &#39;OSError&#39;&gt;, &#39;ReferenceError&#39;: &lt;class &#39;ReferenceError&#39;&gt;, &#39;RuntimeError&#39;: &lt;class &#39;RuntimeError&#39;&gt;, &#39;StopAsyncIteration&#39;: &lt;class &#39;StopAsyncIteration&#39;&gt;, &#39;StopIteration&#39;: &lt;class &#39;StopIteration&#39;&gt;, &#39;SyntaxError&#39;: &lt;class &#39;SyntaxError&#39;&gt;, &#39;SystemError&#39;: &lt;class &#39;SystemError&#39;&gt;, &#39;TypeError&#39;: &lt;class &#39;TypeError&#39;&gt;, &#39;ValueError&#39;: &lt;class &#39;ValueError&#39;&gt;, &#39;Warning&#39;: &lt;class &#39;Warning&#39;&gt;, &#39;FloatingPointError&#39;: &lt;class &#39;FloatingPointError&#39;&gt;, &#39;OverflowError&#39;: &lt;class &#39;OverflowError&#39;&gt;, &#39;ZeroDivisionError&#39;: &lt;class &#39;ZeroDivisionError&#39;&gt;, &#39;BytesWarning&#39;: &lt;class &#39;BytesWarning&#39;&gt;, &#39;DeprecationWarning&#39;: &lt;class &#39;DeprecationWarning&#39;&gt;, &#39;EncodingWarning&#39;: &lt;class &#39;EncodingWarning&#39;&gt;, &#39;FutureWarning&#39;: &lt;class &#39;FutureWarning&#39;&gt;, &#39;ImportWarning&#39;: &lt;class &#39;ImportWarning&#39;&gt;, &#39;PendingDeprecationWarning&#39;: &lt;class &#39;PendingDeprecationWarning&#39;&gt;, &#39;ResourceWarning&#39;: &lt;class &#39;ResourceWarning&#39;&gt;, &#39;RuntimeWarning&#39;: &lt;class &#39;RuntimeWarning&#39;&gt;, &#39;SyntaxWarning&#39;: &lt;class &#39;SyntaxWarning&#39;&gt;, &#39;UnicodeWarning&#39;: &lt;class &#39;UnicodeWarning&#39;&gt;, &#39;UserWarning&#39;: &lt;class &#39;UserWarning&#39;&gt;, &#39;BlockingIOError&#39;: &lt;class &#39;BlockingIOError&#39;&gt;, &#39;ChildProcessError&#39;: &lt;class &#39;ChildProcessError&#39;&gt;, &#39;ConnectionError&#39;: &lt;class &#39;ConnectionError&#39;&gt;, &#39;FileExistsError&#39;: &lt;class &#39;FileExistsError&#39;&gt;, &#39;FileNotFoundError&#39;: &lt;class &#39;FileNotFoundError&#39;&gt;, &#39;InterruptedError&#39;: &lt;class &#39;InterruptedError&#39;&gt;, &#39;IsADirectoryError&#39;: &lt;class &#39;IsADirectoryError&#39;&gt;, &#39;NotADirectoryError&#39;: &lt;class &#39;NotADirectoryError&#39;&gt;, &#39;PermissionError&#39;: &lt;class &#39;PermissionError&#39;&gt;, &#39;ProcessLookupError&#39;: &lt;class &#39;ProcessLookupError&#39;&gt;, &#39;TimeoutError&#39;: &lt;class &#39;TimeoutError&#39;&gt;, &#39;IndentationError&#39;: &lt;class &#39;IndentationError&#39;&gt;, &#39;IndexError&#39;: &lt;class &#39;IndexError&#39;&gt;, &#39;KeyError&#39;: &lt;class &#39;KeyError&#39;&gt;, &#39;ModuleNotFoundError&#39;: &lt;class &#39;ModuleNotFoundError&#39;&gt;, &#39;NotImplementedError&#39;: &lt;class &#39;NotImplementedError&#39;&gt;, &#39;RecursionError&#39;: &lt;class &#39;RecursionError&#39;&gt;, &#39;UnboundLocalError&#39;: &lt;class &#39;UnboundLocalError&#39;&gt;, &#39;UnicodeError&#39;: &lt;class &#39;UnicodeError&#39;&gt;, &#39;BrokenPipeError&#39;: &lt;class &#39;BrokenPipeError&#39;&gt;, &#39;ConnectionAbortedError&#39;: &lt;class &#39;ConnectionAbortedError&#39;&gt;, &#39;ConnectionRefusedError&#39;: &lt;class &#39;ConnectionRefusedError&#39;&gt;, &#39;ConnectionResetError&#39;: &lt;class &#39;ConnectionResetError&#39;&gt;, &#39;TabError&#39;: &lt;class &#39;TabError&#39;&gt;, &#39;UnicodeDecodeError&#39;: &lt;class &#39;UnicodeDecodeError&#39;&gt;, &#39;UnicodeEncodeError&#39;: &lt;class &#39;UnicodeEncodeError&#39;&gt;, &#39;UnicodeTranslateError&#39;: &lt;class &#39;UnicodeTranslateError&#39;&gt;, &#39;ExceptionGroup&#39;: &lt;class &#39;ExceptionGroup&#39;&gt;, &#39;EnvironmentError&#39;: &lt;class &#39;OSError&#39;&gt;, &#39;IOError&#39;: &lt;class &#39;OSError&#39;&gt;, &#39;open&#39;: &lt;built-in function open&gt;, &#39;copyright&#39;: Copyright (c) 2001-2023 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., &#39;credits&#39;:     Thanks to CWI, CNRI, BeOpen, Zope Corporation, the Python Software
+    Foundation, and a cast of thousands for supporting Python
+    development.  See www.python.org for more information., &#39;license&#39;: Type license() to see the full license text, &#39;help&#39;: Type help() for interactive help, or help(object) for help about object., &#39;execfile&#39;: &lt;function execfile at 0x2d6751e40&gt;, &#39;runfile&#39;: &lt;function runfile at 0x2d6862de0&gt;, &#39;__IPYTHON__&#39;: True, &#39;display&#39;: &lt;function display at 0x2d57ad3a0&gt;, &#39;get_ipython&#39;: &lt;bound method InteractiveShell.get_ipython of &lt;ipykernel.zmqshell.ZMQInteractiveShell object at 0x2d6be7680&gt;&gt;}, &#39;cst&#39;: &lt;module &#39;nucleardatapy.cst&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/cst.py&#39;&gt;, &#39;hbc&#39;: 197.3269804, &#39;pi&#39;: 3.141592653589793, &#39;pi2&#39;: 9.869604401089358, &#39;mec2&#39;: 0.510998949, &#39;mmuc2&#39;: 105.6583745, &#39;mnc2&#39;: 939.565346, &#39;mpc2&#39;: 938.272013, &#39;mnuc2&#39;: 939.0, &#39;mnuc2_approx&#39;: 939.0, &#39;h2m&#39;: 41.471043279826425, &#39;nsat&#39;: 0.16, &#39;e&#39;: 1.602176634e-19, &#39;c&#39;: 299792458.0, &#39;c2&#39;: 8.987551787368176e+16, &#39;Nc&#39;: 3, &#39;G_cgs&#39;: 6.67259e-08, &#39;G_si&#39;: 6.67259e-11, &#39;Msol_cgs&#39;: 1.99e+33, &#39;Msol_si&#39;: 1.99e+30, &#39;Rsol_cgs&#39;: 69600000000.0, &#39;Rsol_si&#39;: 696000000.0, &#39;rshsol_si&#39;: 2954.85453973408, &#39;one&#39;: 1.0, &#39;two&#39;: 2.0, &#39;three&#39;: 3.0, &#39;four&#39;: 4.0, &#39;five&#39;: 5.0, &#39;half&#39;: 0.5, &#39;third&#39;: 0.3333333333333333, &#39;twoThird&#39;: 0.6666666666666666, &#39;threeFifth&#39;: 0.6, &#39;fiveThird&#39;: 1.6666666666666667, &#39;MeV2J&#39;: 1.6021766339999998e-13, &#39;MeV2kg&#39;: 1.7826619216278976e-30, &#39;MeVfm32gcm3&#39;: 1782661921627.8977, &#39;MeVfm32dyncm2&#39;: 1.602176634e+33, &#39;env&#39;: &lt;module &#39;nucleardatapy.env&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/env.py&#39;&gt;, &#39;verb&#39;: False, &#39;verb_output&#39;: False, &#39;verb_latex&#39;: True, &#39;param&#39;: &lt;module &#39;nucleardatapy.param&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/param.py&#39;&gt;, &#39;os&#39;: &lt;module &#39;os&#39; (frozen)&gt;, &#39;np&#39;: &lt;module &#39;numpy&#39; from &#39;/Users/margueron/Library/Python/3.12/lib/python/site-packages/numpy/__init__.py&#39;&gt;, &#39;nucleardatapy_tk&#39;: &#39;/Users/margueron/mylib/nucleardatapy&#39;, &#39;path_data&#39;: &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/data/&#39;, &#39;path_ame&#39;: &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/data/AME/&#39;, &#39;col&#39;: [&#39;blue&#39;, &#39;orange&#39;, &#39;green&#39;, &#39;red&#39;, &#39;purple&#39;, &#39;brown&#39;, &#39;pink&#39;, &#39;gray&#39;, &#39;olive&#39;, &#39;cyan&#39;, &#39;black&#39;, &#39;magenta&#39;, &#39;yellow&#39;, &#39;#1f77b4&#39;, &#39;#ff7f0e&#39;, &#39;#2ca02c&#39;, &#39;#d62728&#39;, &#39;#9467bd&#39;, &#39;#8c564b&#39;, &#39;#e377c2&#39;, &#39;#7f7f7f&#39;, &#39;#bcbd22&#39;, &#39;#17becf&#39;], &#39;elements&#39;: array([&#39;H&#39;, &#39;He&#39;, &#39;Li&#39;, &#39;Be&#39;, &#39;B&#39;, &#39;C&#39;, &#39;N&#39;, &#39;O&#39;, &#39;F&#39;, &#39;Ne&#39;, &#39;Na&#39;, &#39;Mg&#39;,
+       &#39;Al&#39;, &#39;Si&#39;, &#39;P&#39;, &#39;S&#39;, &#39;Cl&#39;, &#39;Ar&#39;, &#39;K&#39;, &#39;Ca&#39;, &#39;Sc&#39;, &#39;Ti&#39;, &#39;V&#39;, &#39;Cr&#39;,
+       &#39;Mn&#39;, &#39;Fe&#39;, &#39;Co&#39;, &#39;Ni&#39;, &#39;Cu&#39;, &#39;Zn&#39;, &#39;Ga&#39;, &#39;Ge&#39;, &#39;As&#39;, &#39;Se&#39;, &#39;Br&#39;,
+       &#39;Kr&#39;, &#39;Rb&#39;, &#39;Sr&#39;, &#39;Y&#39;, &#39;Zr&#39;, &#39;Nb&#39;, &#39;Mo&#39;, &#39;Tc&#39;, &#39;Ru&#39;, &#39;Rh&#39;, &#39;Pd&#39;,
+       &#39;Ag&#39;, &#39;Cd&#39;, &#39;In&#39;, &#39;Sn&#39;, &#39;Sb&#39;, &#39;Te&#39;, &#39;I&#39;, &#39;Xe&#39;, &#39;Cs&#39;, &#39;Ba&#39;, &#39;La&#39;,
+       &#39;Ce&#39;, &#39;Pr&#39;, &#39;Nd&#39;, &#39;Pm&#39;, &#39;Sm&#39;, &#39;Eu&#39;, &#39;Gd&#39;, &#39;Tb&#39;, &#39;Dy&#39;, &#39;Ho&#39;, &#39;Er&#39;,
+       &#39;Tm&#39;, &#39;Yb&#39;, &#39;Lu&#39;, &#39;Hf&#39;, &#39;Ta&#39;, &#39;W&#39;, &#39;Re&#39;, &#39;Os&#39;, &#39;Ir&#39;, &#39;Pt&#39;, &#39;Au&#39;,
+       &#39;Hg&#39;, &#39;Tl&#39;, &#39;Pb&#39;, &#39;Bi&#39;, &#39;Po&#39;, &#39;At&#39;, &#39;Rn&#39;, &#39;Fr&#39;, &#39;Ra&#39;, &#39;Ac&#39;, &#39;Th&#39;,
+       &#39;Pa&#39;, &#39;U&#39;, &#39;Np&#39;, &#39;Pu&#39;, &#39;Am&#39;, &#39;Cm&#39;, &#39;Bk&#39;, &#39;Cf&#39;, &#39;Es&#39;, &#39;Fm&#39;, &#39;Md&#39;,
+       &#39;No&#39;, &#39;Lr&#39;, &#39;Rf&#39;, &#39;Db&#39;, &#39;Sg&#39;, &#39;Bh&#39;, &#39;Hs&#39;, &#39;Mt&#39;, &#39;Ds&#39;, &#39;Rg&#39;, &#39;Cn&#39;,
+       &#39;Nh&#39;, &#39;Fl&#39;, &#39;Mc&#39;, &#39;Lv&#39;, &#39;Ts&#39;, &#39;Og&#39;], dtype=&#39;&lt;U2&#39;), &#39;tex2str&#39;: &lt;function tex2str at 0x2d6faaca0&gt;, &#39;create_folder&#39;: &lt;module &#39;nucleardatapy.create_folder&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/create_folder.py&#39;&gt;, &#39;create_folder_fig&#39;: &lt;function create_folder_fig at 0x2d6faade0&gt;, &#39;matter&#39;: &lt;module &#39;nucleardatapy.matter&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/__init__.py&#39;&gt;, &#39;setup_ffg&#39;: &lt;module &#39;nucleardatapy.matter.setup_ffg&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_ffg.py&#39;&gt;, &#39;nuda&#39;: &lt;module &#39;nucleardatapy&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/__init__.py&#39;&gt;, &#39;kf&#39;: &lt;function kf at 0x2d6faac00&gt;, &#39;den&#39;: &lt;function den at 0x2d6fab1a0&gt;, &#39;kf_n&#39;: &lt;function kf_n at 0x2d6fab240&gt;, &#39;den_n&#39;: &lt;function den_n at 0x2d6fab2e0&gt;, &#39;eF_n&#39;: &lt;function eF_n at 0x2d6fab380&gt;, &#39;eF_n_nr&#39;: &lt;function eF_n_nr at 0x2d6fab420&gt;, &#39;effg_NM_nr&#39;: &lt;function effg_NM_nr at 0x2d6fab4c0&gt;, &#39;effg_SM_nr&#39;: &lt;function effg_SM_nr at 0x2d6fab560&gt;, &#39;effg_nr&#39;: &lt;function effg_nr at 0x2d6fab600&gt;, &#39;esymffg_nr&#39;: &lt;function esymffg_nr at 0x2d6fab6a0&gt;, &#39;feden&#39;: &lt;function feden at 0x2d6fab740&gt;, &#39;fpres&#39;: &lt;function fpres at 0x2d6fab7e0&gt;, &#39;f_dp_dn&#39;: &lt;function f_dp_dn at 0x2d6fab880&gt;, &#39;setupFFGNuc&#39;: &lt;class &#39;nucleardatapy.matter.setup_ffg.setupFFGNuc&#39;&gt;, &#39;setupFFGLep&#39;: &lt;class &#39;nucleardatapy.matter.setup_ffg.setupFFGLep&#39;&gt;, &#39;setup_micro&#39;: &lt;module &#39;nucleardatapy.matter.setup_micro&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro.py&#39;&gt;, &#39;sys&#39;: &lt;module &#39;sys&#39; (built-in)&gt;, &#39;math&#39;: &lt;module &#39;math&#39; from &#39;/opt/local/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload/math.cpython-312-darwin.so&#39;&gt;, &#39;CubicSpline&#39;: &lt;class &#39;scipy.interpolate._cubic.CubicSpline&#39;&gt;, &#39;curve_fit&#39;: &lt;function curve_fit at 0x2d9a7c720&gt;, &#39;random&#39;: &lt;module &#39;random&#39; from &#39;/opt/local/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/random.py&#39;&gt;, &#39;uncertainty_stat&#39;: &lt;function uncertainty_stat at 0x2d6fabf60&gt;, &#39;micro_mbs&#39;: &lt;function micro_mbs at 0x2d6ffc540&gt;, &#39;micro_models_mb&#39;: &lt;function micro_models_mb at 0x2d6ffc5e0&gt;, &#39;micro_models_mbs&#39;: &lt;function micro_models_mbs at 0x2d6ffc680&gt;, &#39;micro_models&#39;: &lt;function micro_models at 0x2da61f1a0&gt;, &#39;micro_models_old&#39;: &lt;function micro_models_old at 0x2da61fba0&gt;, &#39;micro_models_mb_matter&#39;: &lt;function micro_models_mb_matter at 0x2da61fd80&gt;, &#39;micro_models_mb_SM&#39;: &lt;function micro_models_mb_SM at 0x2da61fe20&gt;, &#39;micro_models_mb_NM&#39;: &lt;function micro_models_mb_NM at 0x2da61fec0&gt;, &#39;APRfit_compute&#39;: &lt;function APRfit_compute at 0x2da61ff60&gt;, &#39;func_GCR_e2a&#39;: &lt;function func_GCR_e2a at 0x2da63c040&gt;, &#39;func_GCR_pre&#39;: &lt;function func_GCR_pre at 0x2da63c0e0&gt;, &#39;func_GCR_cs2&#39;: &lt;function func_GCR_cs2 at 0x2da63c180&gt;, &#39;func_e2a_NLEFT2024&#39;: &lt;function func_e2a_NLEFT2024 at 0x2da63c220&gt;, &#39;func_pre_NLEFT2024&#39;: &lt;function func_pre_NLEFT2024 at 0x2da63c2c0&gt;, &#39;func_dpredn_NLEFT2024&#39;: &lt;function func_dpredn_NLEFT2024 at 0x2da63c360&gt;, &#39;setupMicro&#39;: &lt;class &#39;nucleardatapy.matter.setup_micro.setupMicro&#39;&gt;, &#39;setup_micro_gap&#39;: &lt;module &#39;nucleardatapy.matter.setup_micro_gap&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_gap.py&#39;&gt;, &#39;micro_gap_models&#39;: &lt;function micro_gap_models at 0x2da63c720&gt;, &#39;setupMicroGap&#39;: &lt;class &#39;nucleardatapy.matter.setup_micro_gap.setupMicroGap&#39;&gt;, &#39;setup_micro_band&#39;: &lt;module &#39;nucleardatapy.matter.setup_micro_band&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_band.py&#39;&gt;, &#39;gauss&#39;: &lt;function gauss at 0x2da69dda0&gt;, &#39;setupMicroBand&#39;: &lt;class &#39;nucleardatapy.matter.setup_micro_band.setupMicroBand&#39;&gt;, &#39;setup_micro_esym&#39;: &lt;module &#39;nucleardatapy.matter.setup_micro_esym&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_esym.py&#39;&gt;, &#39;micro_esym_mbs&#39;: &lt;function micro_esym_mbs at 0x2da63cea0&gt;, &#39;micro_esym_models_mb&#39;: &lt;function micro_esym_models_mb at 0x2da63cf40&gt;, &#39;micro_esym_models_mbs&#39;: &lt;function micro_esym_models_mbs at 0x2da63cfe0&gt;, &#39;micro_esym_models&#39;: &lt;function micro_esym_models at 0x2da63d080&gt;, &#39;micro_esym_models_old&#39;: &lt;function micro_esym_models_old at 0x2da63d120&gt;, &#39;setupMicroEsym&#39;: &lt;class &#39;nucleardatapy.matter.setup_micro_esym.setupMicroEsym&#39;&gt;, &#39;setup_micro_lp&#39;: &lt;module &#39;nucleardatapy.matter.setup_micro_lp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_lp.py&#39;&gt;, &#39;micro_LP_models&#39;: &lt;function micro_LP_models at 0x2da63d4e0&gt;, &#39;setupMicroLP&#39;: &lt;class &#39;nucleardatapy.matter.setup_micro_lp.setupMicroLP&#39;&gt;, &#39;setup_pheno&#39;: &lt;module &#39;nucleardatapy.matter.setup_pheno&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno.py&#39;&gt;, &#39;pheno_models&#39;: &lt;function pheno_models at 0x2da63c7c0&gt;, &#39;pheno_params&#39;: &lt;function pheno_params at 0x2da63d940&gt;, &#39;setupPheno&#39;: &lt;class &#39;nucleardatapy.matter.setup_pheno.setupPheno&#39;&gt;, &#39;checkPheno&#39;: &lt;function checkPheno at 0x2da63d9e0&gt;, &#39;setup_pheno_esym&#39;: &lt;module &#39;nucleardatapy.matter.setup_pheno_esym&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno_esym.py&#39;&gt;, &#39;pheno_esym_models&#39;: &lt;function pheno_esym_models at 0x2da63dd00&gt;, &#39;pheno_esym_params&#39;: &lt;function pheno_esym_params at 0x2da63de40&gt;, &#39;setupPhenoEsym&#39;: &lt;class &#39;nucleardatapy.matter.setup_pheno_esym.setupPhenoEsym&#39;&gt;, &#39;setup_hic&#39;: &lt;module &#39;nucleardatapy.matter.setup_hic&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_hic.py&#39;&gt;, &#39;hic_constraints&#39;: &lt;function hic_constraints at 0x2da63e2a0&gt;, &#39;setupHIC&#39;: &lt;class &#39;nucleardatapy.matter.setup_hic.setupHIC&#39;&gt;, &#39;setup_nep&#39;: &lt;module &#39;nucleardatapy.matter.setup_nep&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_nep.py&#39;&gt;, &#39;nep_models&#39;: &lt;function nep_models at 0x2da63e5c0&gt;, &#39;nep_params&#39;: &lt;function nep_params at 0x2da63e660&gt;, &#39;setupNEP&#39;: &lt;class &#39;nucleardatapy.matter.setup_nep.setupNEP&#39;&gt;, &#39;setup_nep_dist&#39;: &lt;module &#39;nucleardatapy.matter.setup_nep_dist&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_nep_dist.py&#39;&gt;, &#39;setupNEPDist&#39;: &lt;class &#39;nucleardatapy.matter.setup_nep_dist.setupNEPDist&#39;&gt;, &#39;setup_nep_model_dist&#39;: &lt;module &#39;nucleardatapy.matter.setup_nep_model_dist&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/matter/setup_nep_model_dist.py&#39;&gt;, &#39;setupNEPModelDist&#39;: &lt;class &#39;nucleardatapy.matter.setup_nep_model_dist.setupNEPModelDist&#39;&gt;, &#39;eos&#39;: &lt;module &#39;nucleardatapy.eos&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/eos/__init__.py&#39;&gt;, &#39;setup_am&#39;: &lt;module &#39;nucleardatapy.eos.setup_am&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/eos/setup_am.py&#39;&gt;, &#39;fsolve&#39;: &lt;function fsolve at 0x2d9a4d580&gt;, &#39;setupAM&#39;: &lt;class &#39;nucleardatapy.eos.setup_am.setupAM&#39;&gt;, &#39;setup_am_Leq&#39;: &lt;module &#39;nucleardatapy.eos.setup_am_Leq&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/eos/setup_am_Leq.py&#39;&gt;, &#39;func_am&#39;: &lt;function func_am at 0x2da63e980&gt;, &#39;setupAMLeq&#39;: &lt;class &#39;nucleardatapy.eos.setup_am_Leq.setupAMLeq&#39;&gt;, &#39;setup_am_Beq&#39;: &lt;module &#39;nucleardatapy.eos.setup_am_Beq&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/eos/setup_am_Beq.py&#39;&gt;, &#39;func_betaeq&#39;: &lt;function func_betaeq at 0x2da63f6a0&gt;, &#39;setupAMBeq&#39;: &lt;class &#39;nucleardatapy.eos.setup_am_Beq.setupAMBeq&#39;&gt;, &#39;corr&#39;: &lt;module &#39;nucleardatapy.corr&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/corr/__init__.py&#39;&gt;, &#39;setup_KsatQsat&#39;: &lt;module &#39;nucleardatapy.corr.setup_KsatQsat&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/corr/setup_KsatQsat.py&#39;&gt;, &#39;KsatQsat_constraints&#39;: &lt;function KsatQsat_constraints at 0x2da63f2e0&gt;, &#39;flinear&#39;: &lt;function flinear at 0x2da63fba0&gt;, &#39;setupKsatQsat&#39;: &lt;class &#39;nucleardatapy.corr.setup_KsatQsat.setupKsatQsat&#39;&gt;, &#39;setup_EsymLsym&#39;: &lt;module &#39;nucleardatapy.corr.setup_EsymLsym&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/corr/setup_EsymLsym.py&#39;&gt;, &#39;EsymLsym_constraints&#39;: &lt;function EsymLsym_constraints at 0x2da66c0e0&gt;, &#39;HIC_Esym&#39;: &lt;function HIC_Esym at 0x2da66c180&gt;, &#39;HIC_Lsym&#39;: &lt;function HIC_Lsym at 0x2da66c220&gt;, &#39;HIC_xgi&#39;: &lt;function HIC_xgi at 0x2da66c2c0&gt;, &#39;HIC_Lsym_bound&#39;: &lt;function HIC_Lsym_bound at 0x2da66c360&gt;, &#39;setupEsymLsym&#39;: &lt;class &#39;nucleardatapy.corr.setup_EsymLsym.setupEsymLsym&#39;&gt;, &#39;setup_Esym&#39;: &lt;module &#39;nucleardatapy.corr.setup_Esym&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/corr/setup_Esym.py&#39;&gt;, &#39;setupEsym&#39;: &lt;class &#39;nucleardatapy.corr.setup_Esym.setupEsym&#39;&gt;, &#39;nuc&#39;: &lt;module &#39;nucleardatapy.nuc&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/__init__.py&#39;&gt;, &#39;setup_be_exp&#39;: &lt;module &#39;nucleardatapy.nuc.setup_be_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_be_exp.py&#39;&gt;, &#39;CST_AtmMass&#39;: 931.494028, &#39;CST_mnc2&#39;: 8.0713171, &#39;CST_dmnc2&#39;: 5e-07, &#39;CST_mHc2&#39;: 7.2889706, &#39;CST_dmHc2&#39;: 1e-07, &#39;yearMin&#39;: 1851, &#39;ns&#39;: 1e-09, &#39;minutes&#39;: 60, &#39;hours&#39;: 3600, &#39;days&#39;: 86400, &#39;months&#39;: 2592000, &#39;years&#39;: 31556926.080000002, &#39;ILt&#39;: 3.155692608e+37, &#39;ISt&#39;: 1e-30, &#39;HTvsl&#39;: 0.001, &#39;HTsl&#39;: 3600, &#39;stable_fit&#39;: &lt;function stable_fit at 0x2da66ccc0&gt;, &#39;be_exp_tables&#39;: &lt;function be_exp_tables at 0x2da66cd60&gt;, &#39;be_exp_versions&#39;: &lt;function be_exp_versions at 0x2da66ce00&gt;, &#39;plot_shells&#39;: &lt;function plot_shells at 0x2da66cea0&gt;, &#39;setupBEExp&#39;: &lt;class &#39;nucleardatapy.nuc.setup_be_exp.setupBEExp&#39;&gt;, &#39;setup_be_theo&#39;: &lt;module &#39;nucleardatapy.nuc.setup_be_theo&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_be_theo.py&#39;&gt;, &#39;be_theo_tables&#39;: &lt;function be_theo_tables at 0x2da66d6c0&gt;, &#39;conversionMBE&#39;: &lt;function conversionMBE at 0x2da66d760&gt;, &#39;setupBETheo&#39;: &lt;class &#39;nucleardatapy.nuc.setup_be_theo.setupBETheo&#39;&gt;, &#39;setup_isgmr_exp&#39;: &lt;module &#39;nucleardatapy.nuc.setup_isgmr_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_isgmr_exp.py&#39;&gt;, &#39;isgmr_exp_tables&#39;: &lt;function isgmr_exp_tables at 0x2da66df80&gt;, &#39;setupISGMRExp&#39;: &lt;class &#39;nucleardatapy.nuc.setup_isgmr_exp.setupISGMRExp&#39;&gt;, &#39;setup_nskin_exp&#39;: &lt;module &#39;nucleardatapy.nuc.setup_nskin_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_nskin_exp.py&#39;&gt;, &#39;nskin_exp&#39;: &lt;function nskin_exp at 0x2da66e520&gt;, &#39;nskin_exp_source&#39;: &lt;function nskin_exp_source at 0x2da66e5c0&gt;, &#39;SetupNeutronSkinExp&#39;: &lt;class &#39;nucleardatapy.nuc.setup_nskin_exp.SetupNeutronSkinExp&#39;&gt;, &#39;setupNeutronSkinAverage&#39;: &lt;class &#39;nucleardatapy.nuc.setup_nskin_exp.setupNeutronSkinAverage&#39;&gt;, &#39;setup_nskin_theo&#39;: &lt;module &#39;nucleardatapy.nuc.setup_nskin_theo&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_nskin_theo.py&#39;&gt;, &#39;nskin_theo_models&#39;: &lt;function nskin_theo_models at 0x2da66cf40&gt;, &#39;nskin_theo_params&#39;: &lt;function nskin_theo_params at 0x2da66eca0&gt;, &#39;SetupNeutronSkinTheo&#39;: &lt;class &#39;nucleardatapy.nuc.setup_nskin_theo.SetupNeutronSkinTheo&#39;&gt;, &#39;setup_rch_exp&#39;: &lt;module &#39;nucleardatapy.nuc.setup_rch_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_rch_exp.py&#39;&gt;, &#39;rch_exp_tables&#39;: &lt;function rch_exp_tables at 0x2da66f100&gt;, &#39;setupRchExp&#39;: &lt;class &#39;nucleardatapy.nuc.setup_rch_exp.setupRchExp&#39;&gt;, &#39;setup_rch_theo&#39;: &lt;module &#39;nucleardatapy.nuc.setup_rch_theo&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/nuc/setup_rch_theo.py&#39;&gt;, &#39;rch_theo_tables&#39;: &lt;function rch_theo_tables at 0x2da66f560&gt;, &#39;setupRchTheo&#39;: &lt;class &#39;nucleardatapy.nuc.setup_rch_theo.setupRchTheo&#39;&gt;, &#39;crust&#39;: &lt;module &#39;nucleardatapy.crust&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/crust/__init__.py&#39;&gt;, &#39;setup_crust&#39;: &lt;module &#39;nucleardatapy.crust.setup_crust&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/crust/setup_crust.py&#39;&gt;, &#39;crust_models&#39;: &lt;function crust_models at 0x2da66f920&gt;, &#39;setupCrust&#39;: &lt;class &#39;nucleardatapy.crust.setup_crust.setupCrust&#39;&gt;, &#39;astro&#39;: &lt;module &#39;nucleardatapy.astro&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/__init__.py&#39;&gt;, &#39;setup_masses&#39;: &lt;module &#39;nucleardatapy.astro.setup_masses&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/setup_masses.py&#39;&gt;, &#39;masses_sources&#39;: &lt;function masses_sources at 0x2da63f420&gt;, &#39;masses_obss&#39;: &lt;function masses_obss at 0x2da69c040&gt;, &#39;setupMasses&#39;: &lt;class &#39;nucleardatapy.astro.setup_masses.setupMasses&#39;&gt;, &#39;setupMassesAverage&#39;: &lt;class &#39;nucleardatapy.astro.setup_masses.setupMassesAverage&#39;&gt;, &#39;setup_mup&#39;: &lt;module &#39;nucleardatapy.astro.setup_mup&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/setup_mup.py&#39;&gt;, &#39;mup_sources&#39;: &lt;function mup_sources at 0x2da69c900&gt;, &#39;mup_hyps&#39;: &lt;function mup_hyps at 0x2da69c9a0&gt;, &#39;setupMup&#39;: &lt;class &#39;nucleardatapy.astro.setup_mup.setupMup&#39;&gt;, &#39;setupMupAverage&#39;: &lt;class &#39;nucleardatapy.astro.setup_mup.setupMupAverage&#39;&gt;, &#39;setup_mtov&#39;: &lt;module &#39;nucleardatapy.astro.setup_mtov&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/setup_mtov.py&#39;&gt;, &#39;special&#39;: &lt;module &#39;scipy.special&#39; from &#39;/opt/local/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/scipy/special/__init__.py&#39;&gt;, &#39;compute_proba_do&#39;: &lt;function compute_proba_do at 0x2da69cf40&gt;, &#39;compute_proba_up&#39;: &lt;function compute_proba_up at 0x2da69cfe0&gt;, &#39;setupMtov&#39;: &lt;class &#39;nucleardatapy.astro.setup_mtov.setupMtov&#39;&gt;, &#39;setup_mr&#39;: &lt;module &#39;nucleardatapy.astro.setup_mr&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/setup_mr.py&#39;&gt;, &#39;mr_sources&#39;: &lt;function mr_sources at 0x2da69d4e0&gt;, &#39;mr_obss&#39;: &lt;function mr_obss at 0x2da69d580&gt;, &#39;setupMR&#39;: &lt;class &#39;nucleardatapy.astro.setup_mr.setupMR&#39;&gt;, &#39;setupMRAverage&#39;: &lt;class &#39;nucleardatapy.astro.setup_mr.setupMRAverage&#39;&gt;, &#39;setup_gw&#39;: &lt;module &#39;nucleardatapy.astro.setup_gw&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/astro/setup_gw.py&#39;&gt;, &#39;gw_sources&#39;: &lt;function gw_sources at 0x2da69dc60&gt;, &#39;gw_hyps&#39;: &lt;function gw_hyps at 0x2da69dd00&gt;, &#39;setupGW&#39;: &lt;class &#39;nucleardatapy.astro.setup_gw.setupGW&#39;&gt;, &#39;setupGWAverage&#39;: &lt;class &#39;nucleardatapy.astro.setup_gw.setupGWAverage&#39;&gt;, &#39;hnuc&#39;: &lt;module &#39;nucleardatapy.hnuc&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/hnuc/__init__.py&#39;&gt;, &#39;setup_be1L_exp&#39;: &lt;module &#39;nucleardatapy.hnuc.setup_be1L_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/hnuc/setup_be1L_exp.py&#39;&gt;, &#39;re1L_exp_tables&#39;: &lt;function re1L_exp_tables at 0x2da69e480&gt;, &#39;setupRE1LExp&#39;: &lt;class &#39;nucleardatapy.hnuc.setup_be1L_exp.setupRE1LExp&#39;&gt;, &#39;setup_be2L_exp&#39;: &lt;module &#39;nucleardatapy.hnuc.setup_be2L_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/hnuc/setup_be2L_exp.py&#39;&gt;, &#39;re2L_exp_tables&#39;: &lt;function re2L_exp_tables at 0x2da69e7a0&gt;, &#39;setupRE2LExp&#39;: &lt;class &#39;nucleardatapy.hnuc.setup_be2L_exp.setupRE2LExp&#39;&gt;, &#39;setup_be1Xi_exp&#39;: &lt;module &#39;nucleardatapy.hnuc.setup_be1Xi_exp&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/hnuc/setup_be1Xi_exp.py&#39;&gt;, &#39;re1Xi_exp_tables&#39;: &lt;function re1Xi_exp_tables at 0x2da69e340&gt;, &#39;setupRE1XiExp&#39;: &lt;class &#39;nucleardatapy.hnuc.setup_be1Xi_exp.setupRE1XiExp&#39;&gt;, &#39;plot&#39;: &lt;module &#39;nucleardatapy.plot&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/plot/__init__.py&#39;&gt;, &#39;matter_setupFFGNuc_fig&#39;: &lt;module &#39;nucleardatapy.plot.matter_setupFFGNuc_fig&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/plot/matter_setupFFGNuc_fig.py&#39;&gt;, &#39;plt&#39;: &lt;module &#39;matplotlib.pyplot&#39; from &#39;/Users/margueron/Library/Python/3.12/lib/python/site-packages/matplotlib/pyplot.py&#39;&gt;, &#39;matter_setupFFGNuc_EP_fig&#39;: &lt;function matter_setupFFGNuc_EP_fig at 0x2da69ee80&gt;, &#39;matter_setupFFGNuc_EOS_fig&#39;: &lt;function matter_setupFFGNuc_EOS_fig at 0x2da69f060&gt;, &#39;matter_setupMicro_fig&#39;: &lt;module &#39;nucleardatapy.plot.matter_setupMicro_fig&#39; from &#39;/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py&#39;&gt;, &#39;matter_setupMicro_E_fig&#39;: &lt;function matter_setupMicro_E_fig at 0x2db61eb60&gt;, &#39;corr_setupKsatQsat_fig&#39;: &lt;function corr_setupKsatQsat_fig at 0x2db91c720&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span> <span class="n">nuda</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;__name__&#39;, &#39;__doc__&#39;, &#39;__package__&#39;, &#39;__loader__&#39;, &#39;__spec__&#39;, &#39;__path__&#39;, &#39;__file__&#39;, &#39;__cached__&#39;, &#39;__builtins__&#39;, &#39;cst&#39;, &#39;hbc&#39;, &#39;pi&#39;, &#39;pi2&#39;, &#39;mec2&#39;, &#39;mmuc2&#39;, &#39;mnc2&#39;, &#39;mpc2&#39;, &#39;mnuc2&#39;, &#39;mnuc2_approx&#39;, &#39;h2m&#39;, &#39;nsat&#39;, &#39;e&#39;, &#39;c&#39;, &#39;c2&#39;, &#39;Nc&#39;, &#39;G_cgs&#39;, &#39;G_si&#39;, &#39;Msol_cgs&#39;, &#39;Msol_si&#39;, &#39;Rsol_cgs&#39;, &#39;Rsol_si&#39;, &#39;rshsol_si&#39;, &#39;one&#39;, &#39;two&#39;, &#39;three&#39;, &#39;four&#39;, &#39;five&#39;, &#39;half&#39;, &#39;third&#39;, &#39;twoThird&#39;, &#39;threeFifth&#39;, &#39;fiveThird&#39;, &#39;MeV2J&#39;, &#39;MeV2kg&#39;, &#39;MeVfm32gcm3&#39;, &#39;MeVfm32dyncm2&#39;, &#39;env&#39;, &#39;verb&#39;, &#39;verb_output&#39;, &#39;verb_latex&#39;, &#39;param&#39;, &#39;os&#39;, &#39;np&#39;, &#39;nucleardatapy_tk&#39;, &#39;path_data&#39;, &#39;path_ame&#39;, &#39;col&#39;, &#39;elements&#39;, &#39;tex2str&#39;, &#39;create_folder&#39;, &#39;create_folder_fig&#39;, &#39;matter&#39;, &#39;setup_ffg&#39;, &#39;nuda&#39;, &#39;kf&#39;, &#39;den&#39;, &#39;kf_n&#39;, &#39;den_n&#39;, &#39;eF_n&#39;, &#39;eF_n_nr&#39;, &#39;effg_NM_nr&#39;, &#39;effg_SM_nr&#39;, &#39;effg_nr&#39;, &#39;esymffg_nr&#39;, &#39;feden&#39;, &#39;fpres&#39;, &#39;f_dp_dn&#39;, &#39;setupFFGNuc&#39;, &#39;setupFFGLep&#39;, &#39;setup_micro&#39;, &#39;sys&#39;, &#39;math&#39;, &#39;CubicSpline&#39;, &#39;curve_fit&#39;, &#39;random&#39;, &#39;uncertainty_stat&#39;, &#39;micro_mbs&#39;, &#39;micro_models_mb&#39;, &#39;micro_models_mbs&#39;, &#39;micro_models&#39;, &#39;micro_models_old&#39;, &#39;micro_models_mb_matter&#39;, &#39;micro_models_mb_SM&#39;, &#39;micro_models_mb_NM&#39;, &#39;APRfit_compute&#39;, &#39;func_GCR_e2a&#39;, &#39;func_GCR_pre&#39;, &#39;func_GCR_cs2&#39;, &#39;func_e2a_NLEFT2024&#39;, &#39;func_pre_NLEFT2024&#39;, &#39;func_dpredn_NLEFT2024&#39;, &#39;setupMicro&#39;, &#39;setup_micro_gap&#39;, &#39;micro_gap_models&#39;, &#39;setupMicroGap&#39;, &#39;setup_micro_band&#39;, &#39;gauss&#39;, &#39;setupMicroBand&#39;, &#39;setup_micro_esym&#39;, &#39;micro_esym_mbs&#39;, &#39;micro_esym_models_mb&#39;, &#39;micro_esym_models_mbs&#39;, &#39;micro_esym_models&#39;, &#39;micro_esym_models_old&#39;, &#39;setupMicroEsym&#39;, &#39;setup_micro_lp&#39;, &#39;micro_LP_models&#39;, &#39;setupMicroLP&#39;, &#39;setup_pheno&#39;, &#39;pheno_models&#39;, &#39;pheno_params&#39;, &#39;setupPheno&#39;, &#39;checkPheno&#39;, &#39;setup_pheno_esym&#39;, &#39;pheno_esym_models&#39;, &#39;pheno_esym_params&#39;, &#39;setupPhenoEsym&#39;, &#39;setup_hic&#39;, &#39;hic_constraints&#39;, &#39;setupHIC&#39;, &#39;setup_nep&#39;, &#39;nep_models&#39;, &#39;nep_params&#39;, &#39;setupNEP&#39;, &#39;setup_nep_dist&#39;, &#39;setupNEPDist&#39;, &#39;setup_nep_model_dist&#39;, &#39;setupNEPModelDist&#39;, &#39;eos&#39;, &#39;setup_am&#39;, &#39;fsolve&#39;, &#39;setupAM&#39;, &#39;setup_am_Leq&#39;, &#39;func_am&#39;, &#39;setupAMLeq&#39;, &#39;setup_am_Beq&#39;, &#39;func_betaeq&#39;, &#39;setupAMBeq&#39;, &#39;corr&#39;, &#39;setup_KsatQsat&#39;, &#39;KsatQsat_constraints&#39;, &#39;flinear&#39;, &#39;setupKsatQsat&#39;, &#39;setup_EsymLsym&#39;, &#39;EsymLsym_constraints&#39;, &#39;HIC_Esym&#39;, &#39;HIC_Lsym&#39;, &#39;HIC_xgi&#39;, &#39;HIC_Lsym_bound&#39;, &#39;setupEsymLsym&#39;, &#39;setup_Esym&#39;, &#39;setupEsym&#39;, &#39;nuc&#39;, &#39;setup_be_exp&#39;, &#39;CST_AtmMass&#39;, &#39;CST_mnc2&#39;, &#39;CST_dmnc2&#39;, &#39;CST_mHc2&#39;, &#39;CST_dmHc2&#39;, &#39;yearMin&#39;, &#39;ns&#39;, &#39;minutes&#39;, &#39;hours&#39;, &#39;days&#39;, &#39;months&#39;, &#39;years&#39;, &#39;ILt&#39;, &#39;ISt&#39;, &#39;HTvsl&#39;, &#39;HTsl&#39;, &#39;stable_fit&#39;, &#39;be_exp_tables&#39;, &#39;be_exp_versions&#39;, &#39;plot_shells&#39;, &#39;setupBEExp&#39;, &#39;setup_be_theo&#39;, &#39;be_theo_tables&#39;, &#39;conversionMBE&#39;, &#39;setupBETheo&#39;, &#39;setup_isgmr_exp&#39;, &#39;isgmr_exp_tables&#39;, &#39;setupISGMRExp&#39;, &#39;setup_nskin_exp&#39;, &#39;nskin_exp&#39;, &#39;nskin_exp_source&#39;, &#39;SetupNeutronSkinExp&#39;, &#39;setupNeutronSkinAverage&#39;, &#39;setup_nskin_theo&#39;, &#39;nskin_theo_models&#39;, &#39;nskin_theo_params&#39;, &#39;SetupNeutronSkinTheo&#39;, &#39;setup_rch_exp&#39;, &#39;rch_exp_tables&#39;, &#39;setupRchExp&#39;, &#39;setup_rch_theo&#39;, &#39;rch_theo_tables&#39;, &#39;setupRchTheo&#39;, &#39;crust&#39;, &#39;setup_crust&#39;, &#39;crust_models&#39;, &#39;setupCrust&#39;, &#39;astro&#39;, &#39;setup_masses&#39;, &#39;masses_sources&#39;, &#39;masses_obss&#39;, &#39;setupMasses&#39;, &#39;setupMassesAverage&#39;, &#39;setup_mup&#39;, &#39;mup_sources&#39;, &#39;mup_hyps&#39;, &#39;setupMup&#39;, &#39;setupMupAverage&#39;, &#39;setup_mtov&#39;, &#39;special&#39;, &#39;compute_proba_do&#39;, &#39;compute_proba_up&#39;, &#39;setupMtov&#39;, &#39;setup_mr&#39;, &#39;mr_sources&#39;, &#39;mr_obss&#39;, &#39;setupMR&#39;, &#39;setupMRAverage&#39;, &#39;setup_gw&#39;, &#39;gw_sources&#39;, &#39;gw_hyps&#39;, &#39;setupGW&#39;, &#39;setupGWAverage&#39;, &#39;hnuc&#39;, &#39;setup_be1L_exp&#39;, &#39;re1L_exp_tables&#39;, &#39;setupRE1LExp&#39;, &#39;setup_be2L_exp&#39;, &#39;re2L_exp_tables&#39;, &#39;setupRE2LExp&#39;, &#39;setup_be1Xi_exp&#39;, &#39;re1Xi_exp_tables&#39;, &#39;setupRE1XiExp&#39;, &#39;plot&#39;, &#39;matter_setupFFGNuc_fig&#39;, &#39;plt&#39;, &#39;matter_setupFFGNuc_EP_fig&#39;, &#39;matter_setupFFGNuc_EOS_fig&#39;, &#39;matter_setupMicro_fig&#39;, &#39;matter_setupMicro_E_fig&#39;, &#39;corr_setupKsatQsat_fig&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/chapter1_introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorial_chap1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Tutorial 1 : Introduction to NUDA</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter1_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Chapter 1 tutorial 2: Warm up</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Margueron, et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

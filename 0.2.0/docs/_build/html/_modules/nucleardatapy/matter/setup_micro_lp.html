@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.matter.setup_micro_lp &mdash; nucleardatapy 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/matter.html">Matter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/eos.html">EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/nuc.html">Nuc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/crust.html">Crust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/astro.html">Astro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/corr.html">Corr</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.matter.setup_micro_lp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.matter.setup_micro_lp</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">CubicSpline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<span class="c1">#nsat = 0.16</span>
+<span class="c1">#mnuc2 = 939.0</span>
+
+<div class="viewcode-block" id="micro_LP_models">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_lp.html#nucleardatapy.matter.setup_micro_lp.micro_LP_models">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_LP_models</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list with the name of the models available in this toolkit and \</span>
+<span class="sd">    print them all on the prompt. These models are the following ones: \</span>
+<span class="sd">    &#39;1994-BHF-SM-LP-AV14-GAP&#39;, &#39;1994-BHF-SM-LP-AV14-CONT&#39;, \</span>
+<span class="sd">    &#39;1994-BHF-SM-LP-REID-GAP&#39;, &#39;1994-BHF-SM-LP-REID-CONT&#39;, &#39;1994-BHF-SM-LP-AV14-CONT-0.7&#39;, \</span>
+<span class="sd">    &#39;2007-BHF-NM-LP-BONNC&#39;.</span>
+
+<span class="sd">    :return: The list of models.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1994-BHF-SM-LP-AV14-GAP&#39;</span><span class="p">,</span> <span class="s1">&#39;1994-BHF-SM-LP-AV14-CONT&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;1994-BHF-SM-LP-REID-GAP&#39;</span><span class="p">,</span> <span class="s1">&#39;1994-BHF-SM-LP-REID-CONT&#39;</span><span class="p">,</span> <span class="s1">&#39;1994-BHF-SM-LP-AV14-CONT-0.7&#39;</span><span class="p">,</span> \
+    <span class="s1">&#39;2007-BHF-NM-LP-BONNC&#39;</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span></div>
+
+
+<div class="viewcode-block" id="setupMicroLP">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_lp.html#nucleardatapy.matter.setup_micro_lp.setupMicroLP">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupMicroLP</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the object with Landau parameters from microscopic calculations choosen \</span>
+<span class="sd">    by the toolkit practitioner.</span>
+
+<span class="sd">    This choice is defined in `model`, which can chosen among \</span>
+<span class="sd">    the following choices: \</span>
+<span class="sd">    &#39;1994-BHF-SM-LP-AV14-GAP&#39;, &#39;1994-BHF-SM-LP-AV14-CONT&#39;, \</span>
+<span class="sd">    &#39;1994-BHF-SM-LP-REID-GAP&#39;, &#39;1994-BHF-SM-LP-REID-CONT&#39;, &#39;1994-BHF-SM-LP-AV14-CONT-0.7&#39;,\</span>
+<span class="sd">    &#39;2007-BHF-NM-LP-BONNC&#39;.</span>
+
+<span class="sd">    :param model: Fix the name of model. Default value: &#39;1994-BHF-LP&#39;.</span>
+<span class="sd">    :type model: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;1994-BHF-SM-LP-AV14-GAP&#39;</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : str, optional</span>
+<span class="sd">        The model to consider. Choose between: &#39;1994-BHF-SM-LP-AV14-GAP&#39; (default), ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupMicroLP()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">setupMicroLP</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_LP_models</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="s1">&#39;1994-bhf-sm-lp&#39;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;LandauParameters/micro/1994-BHF-SM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;M. Baldo and L.S. Ferreira, Phys. Rev. C 50, 1887 (1994)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1">#</span>
+            <span class="c1">#name = np.loadtxt( file_in, usecols=(0), comments=&#39;#&#39;, unpack = True, dtype=str )</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s1">&#39;#&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">name</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">str</span> <span class="p">)</span>
+            <span class="c1">#</span>
+            <span class="n">lp1</span><span class="p">,</span> <span class="n">lp2</span><span class="p">,</span> <span class="n">lp3</span><span class="p">,</span> <span class="n">lp4</span><span class="p">,</span> <span class="n">lp5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="c1">#</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1994-bhf-sm-lp-av14-gap&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-AV14Gap-1994&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+                <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">8</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">13</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">18</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span>  <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="n">lp1</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+                <span class="c1">#</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1994-bhf-sm-lp-av14-cont&#39;</span><span class="p">:</span>
+                <span class="c1">#</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-AV14Cont-1994&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+                <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">8</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">13</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">18</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span>  <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="n">lp2</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+                <span class="c1">#</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1994-bhf-sm-lp-reid-gap&#39;</span><span class="p">:</span>
+                <span class="c1">#</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-ReidGap-1994&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+                <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">8</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">13</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">18</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span>  <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="n">lp3</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+                <span class="c1">#</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1994-bhf-sm-lp-reid-cont&#39;</span><span class="p">:</span>
+                <span class="c1">#</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-ReidCont-1994&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+                <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">8</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">13</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">18</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span>  <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="n">lp4</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+                <span class="c1">#</span>
+            <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1994-bhf-sm-lp-av14-cont-0.7&#39;</span><span class="p">:</span>
+                <span class="c1">#</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-AV14Cont-0.7-1994&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+                <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">8</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">13</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">18</span><span class="o">+</span><span class="n">ell</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span>  <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="n">lp5</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span>
+            <span class="c1">#print(&#39;F:&#39;,self.sm_LP[&#39;F&#39;][0])</span>
+            <span class="c1">#print(&#39;G:&#39;,self.sm_LP[&#39;G&#39;][0])</span>
+        <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2007-bhf-nm-lp-bonnc&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;LandauParameters/micro/2007-BHF-NM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Armen Sedrakian, Herbert Müther, Peter Schuck, Phys Rev C 76, 055805 (2007)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-BonnC-2007&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_effmass</span><span class="p">,</span> <span class="n">lp_f</span><span class="p">,</span> <span class="n">lp_g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_gap</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_Tc</span> <span class="o">=</span> \
+              <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span> <span class="p">)</span>
+            <span class="c1">#print(&#39;kfn:&#39;,self.nm_kfn)</span>
+            <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="n">ell</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp_f</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="n">lp_g</span>
+            <span class="c1">#print(&#39;F:&#39;,self.nm_LP[&#39;F&#39;][0])</span>
+            <span class="c1">#print(&#39;G:&#39;,self.nm_LP[&#39;G&#39;][0])</span>
+            <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kfn_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gap_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc_unit</span>  <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupMicroLP()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupMicroLP.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_lp.html#nucleardatapy.matter.setup_micro_lp.setupMicroLP.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   model: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:   &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   marker:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="c1">#if any(self.sm_den): print(f&quot;   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}&quot;)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in SM:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sm_kfn: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sm_effmass: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   sm_effMass: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Ksat: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Esym2: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span><span class="p">)</span>
+        <span class="c1">#print(f&quot;   F: {self.sm_LP[&#39;F&#39;]}&quot;)</span>
+        <span class="c1">#print(f&quot;   F0: {self.sm_LP[&#39;F&#39;][0]}&quot;)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   F0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   G0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Fp0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Gp0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in NM:&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   nm_kfn: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_effmass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   nm_effmass: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_effmass</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   F0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   G0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupMicroLP.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_lp.html#nucleardatapy.matter.setup_micro_lp.setupMicroLP.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute providing additional notes about the data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the plot linestyle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+        <span class="c1">#: Attribute the plot to discriminate True uncertainties from False ones.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">#: Attribute the plot label data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the plot marker data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the neutron matter density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetric matter density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron matter neutron Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetric matter neutron Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Fp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_LP</span><span class="p">[</span><span class="s1">&#39;Gp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_LP</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the neutron matter effective mass (from the spe).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nm_effmass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetric matter effective mass.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_effmass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetric matter effective mass (from F1 Landau parameter).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_effMass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the quadratic contribution to the symmetry energy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Esym2</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the incompressibility modulus</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ksat</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>        </div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

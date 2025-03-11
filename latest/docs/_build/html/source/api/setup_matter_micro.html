@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>matter.setupMicro &mdash; nucleardatapy 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="matter.setupMicroBand" href="setup_matter_micro_band.html" />
+    <link rel="prev" title="matter.setupFFG" href="setup_matter_ffg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="matter.html">Matter</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matter.setupMicro</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_mbs"><code class="docutils literal notranslate"><span class="pre">micro_mbs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_models_mb"><code class="docutils literal notranslate"><span class="pre">micro_models_mb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_models_mb_NM"><code class="docutils literal notranslate"><span class="pre">micro_models_mb_NM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_models_mb_SM"><code class="docutils literal notranslate"><span class="pre">micro_models_mb_SM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_models_mb_matter"><code class="docutils literal notranslate"><span class="pre">micro_models_mb_matter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.micro_models_old"><code class="docutils literal notranslate"><span class="pre">micro_models_old()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.setupMicro"><code class="docutils literal notranslate"><span class="pre">setupMicro</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.setupMicro.init_self"><code class="docutils literal notranslate"><span class="pre">setupMicro.init_self()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.setupMicro.model"><code class="docutils literal notranslate"><span class="pre">setupMicro.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nucleardatapy.matter.setup_micro.setupMicro.print_outputs"><code class="docutils literal notranslate"><span class="pre">setupMicro.print_outputs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_matter_hic.html">matter.setupHIC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eos.html">EOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nuc.html">Nuc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crust.html">Crust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="astro.html">Astro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corr.html">Corr</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="matter.html">Matter</a></li>
+      <li class="breadcrumb-item active">matter.setupMicro</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/source/api/setup_matter_micro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matter-setupmicro">
+<h1>matter.setupMicro<a class="headerlink" href="#matter-setupmicro" title="Link to this heading"></a></h1>
+<dl class="py function" id="module-nucleardatapy.matter.setup_micro">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_mbs">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_mbs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_mbs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_mbs" title="Link to this definition"></a></dt>
+<dd><p>Return a list of many-bodys (mbs) approaches available in this toolkit and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of models with can be ‘VAR’, ‘AFDMC’, ‘BHF’, ‘QMC’, ‘MBPT’, ‘NLEFT’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_models_mb">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_mb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_models_mb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_models_mb" title="Link to this definition"></a></dt>
+<dd><p>Return a list with the name of the models available in this toolkit     for a given mb appoach and print them all on the prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mb</strong> (<em>str.</em>) – The mb approach for which there are parametrizations.     They should be chosen among the following options: ‘VAR’, ‘AFDMC’, ‘BHF’, ‘QMC’, ‘MBPT’, ‘NLEFT’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of parametrizations.</p>
+</dd>
+</dl>
+<p>These models are the following ones:     If <cite>mb</cite> == ‘VAR’:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APR-fit’,     If <cite>mb</cite> == ‘AFDMC’:     ‘2012-AFDMC-NM-RES-1’, ‘2012-AFDMC-NM-RES-2’, ‘2012-AFDMC-NM-RES-3’, ‘2012-AFDMC-NM-RES-4’,     ‘2012-AFDMC-NM-RES-5’, ‘2012-AFDMC-NM-RES-6’, ‘2012-AFDMC-NM-RES-7’,     ‘2012-AFDMC-NM-FIT-1’, ‘2012-AFDMC-NM-FIT-2’, ‘2012-AFDMC-NM-FIT-3’, ‘2012-AFDMC-NM-FIT-4’,     ‘2012-AFDMC-NM-FIT-5’, ‘2012-AFDMC-NM-FIT-6’, ‘2012-AFDMC-NM-FIT-7’,     ‘2022-AFDMC-NM’,
+If <cite>mb</cite> == ‘BHF’:     ‘2006-BHF-AM*’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,    ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’,    ‘2024-BHF-AM-23BFmicro-Av18’, ‘2024-BHF-AM-23BFmicro-BONNB’, ‘2024-BHF-AM-23BFmicro-NSC93’,    If <cite>mb</cite> == ‘QMC’:     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’,      ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2024-QMC-NM’,     If <cite>mb</cite> == ‘MBPT’:     ‘2010-MBPT-NM’, ‘2020-MBPT-AM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’
+If <cite>mb</cite> == ‘NLEFT’:     ‘2024-NLEFT-AM’,</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_models_mb_NM">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_mb_NM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_models_mb_NM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_models_mb_NM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_models_mb_SM">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_mb_SM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_models_mb_SM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_models_mb_SM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_models_mb_matter">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_mb_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_models_mb_matter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_models_mb_matter" title="Link to this definition"></a></dt>
+<dd><p>matter can be ‘sm’, ‘SM’ or ‘nm’, ‘NM’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.micro_models_old">
+<span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">micro_models_old</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#micro_models_old"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.micro_models_old" title="Link to this definition"></a></dt>
+<dd><p>Return a list with the name of the models available in this toolkit and     print them all on the prompt. These models are the following ones:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APR-fit’, ‘2006-BHF-AM*’,     ‘2012-AFDMC-NM-RES-1’, ‘2012-AFDMC-NM-RES-2’, ‘2012-AFDMC-NM-RES-3’, ‘2012-AFDMC-NM-RES-4’,     ‘2012-AFDMC-NM-RES-5’, ‘2012-AFDMC-NM-RES-6’, ‘2012-AFDMC-NM-RES-7’,     ‘2012-AFDMC-NM-FIT-1’, ‘2012-AFDMC-NM-FIT-2’, ‘2012-AFDMC-NM-FIT-3’, ‘2012-AFDMC-NM-FIT-4’,     ‘2012-AFDMC-NM-FIT-5’, ‘2012-AFDMC-NM-FIT-6’, ‘2012-AFDMC-NM-FIT-7’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,    ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’,    ‘2024-BHF-AM-23BFmicro-Av18’, ‘2024-BHF-AM-23BFmicro-BONNB’, ‘2024-BHF-AM-23BFmicro-NSC93’,    ‘2024-QMC-NM’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of models.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.setupMicro">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.matter.setup_micro.</span></span><span class="sig-name descname"><span class="pre">setupMicro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1998-VAR-AM-APR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.01,</span> <span class="pre">0.03052632,</span> <span class="pre">0.05105263,</span> <span class="pre">0.07157895,</span> <span class="pre">0.09210526,</span> <span class="pre">0.11263158,</span> <span class="pre">0.13315789,</span> <span class="pre">0.15368421,</span> <span class="pre">0.17421053,</span> <span class="pre">0.19473684,</span> <span class="pre">0.21526316,</span> <span class="pre">0.23578947,</span> <span class="pre">0.25631579,</span> <span class="pre">0.27684211,</span> <span class="pre">0.29736842,</span> <span class="pre">0.31789474,</span> <span class="pre">0.33842105,</span> <span class="pre">0.35894737,</span> <span class="pre">0.37947368,</span> <span class="pre">0.4])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#setupMicro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.setupMicro" title="Link to this definition"></a></dt>
+<dd><p>Instantiate the object with microscopic results choosen     by the toolkit practitioner.</p>
+<p>This choice is defined in <cite>model</cite>, which can chosen among     the following choices:     ‘1981-VAR-AM-FP’, ‘1998-VAR-AM-APR’, ‘1998-VAR-AM-APR-fit’, ‘2006-BHF-AM*’,     ‘2008-QMC-NM-swave’, ‘2010-QMC-NM-AV4’, ‘2009-DLQMC-NM’, ‘2010-MBPT-NM’,     ‘2012-AFDMC-NM-RES-1’, ‘2012-AFDMC-NM-RES-2’, ‘2012-AFDMC-NM-RES-3’, ‘2012-AFDMC-NM-RES-4’,     ‘2012-AFDMC-NM-RES-5’, ‘2012-AFDMC-NM-RES-6’, ‘2012-AFDMC-NM-RES-7’,     ‘2012-AFDMC-NM-FIT-1’, ‘2012-AFDMC-NM-FIT-2’, ‘2012-AFDMC-NM-FIT-3’, ‘2012-AFDMC-NM-FIT-4’,     ‘2012-AFDMC-NM-FIT-5’, ‘2012-AFDMC-NM-FIT-6’, ‘2012-AFDMC-NM-FIT-7’,     ‘2013-QMC-NM’, ‘2014-AFQMC-NM’, ‘2016-QMC-NM’, ‘2016-MBPT-AM’,     ‘2018-QMC-NM’, ‘2019-MBPT-AM-L59’, ‘2019-MBPT-AM-L69’,     ‘2020-MBPT-AM’, ‘2022-AFDMC-NM’, ‘2024-NLEFT-AM’,     ‘2024-BHF-AM-2BF-Av8p’, ‘2024-BHF-AM-2BF-Av18’, ‘2024-BHF-AM-2BF-BONN’, ‘2024-BHF-AM-2BF-CDBONN’,     ‘2024-BHF-AM-2BF-NSC97a’, ‘2024-BHF-AM-2BF-NSC97b’, ‘2024-BHF-AM-2BF-NSC97c’, ‘2024-BHF-AM-2BF-NSC97d’,     ‘2024-BHF-AM-2BF-NSC97e’, ‘2024-BHF-AM-2BF-NSC97f’, ‘2024-BHF-AM-2BF-SSCV14’,     ‘2024-BHF-AM-23BF-Av8p’, ‘2024-BHF-AM-23BF-Av18’, ‘2024-BHF-AM-23BF-BONN’, ‘2024-BHF-AM-23BF-CDBONN’,     ‘2024-BHF-AM-23BF-NSC97a’, ‘2024-BHF-AM-23BF-NSC97b’, ‘2024-BHF-AM-23BF-NSC97c’, ‘2024-BHF-AM-23BF-NSC97d’,     ‘2024-BHF-AM-23BF-NSC97e’, ‘2024-BHF-AM-23BF-NSC97f’, ‘2024-BHF-AM-23BF-SSCV14’, ‘2024-QMC-NM’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of model. Default value: ‘1998-VAR-AM-APR’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>between</strong> (<em>The model to consider. Choose</em>)</p></li>
+<li><p><strong>var2</strong> (<em>var1 and</em>)</p></li>
+<li><p><strong>np.array</strong><strong>(</strong><strong>[</strong><strong>0.1</strong> (<em>var1 =</em>)</p></li>
+<li><p><strong>0.15</strong></p></li>
+<li><p><strong>0.16</strong></p></li>
+<li><p><strong>0.17</strong></p></li>
+<li><p><strong>0.2</strong></p></li>
+<li><p><strong>0.25</strong><strong>]</strong><strong>)</strong></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.setupMicro.init_self">
+<span class="sig-name descname"><span class="pre">init_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#setupMicro.init_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.setupMicro.init_self" title="Link to this definition"></a></dt>
+<dd><p>Initialize variables in self.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.setupMicro.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#nucleardatapy.matter.setup_micro.setupMicro.model" title="Link to this definition"></a></dt>
+<dd><p>Attribute model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nucleardatapy.matter.setup_micro.setupMicro.print_outputs">
+<span class="sig-name descname"><span class="pre">print_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/matter/setup_micro.html#setupMicro.print_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.matter.setup_micro.setupMicro.print_outputs" title="Link to this definition"></a></dt>
+<dd><p>Method which print outputs on terminal’s screen.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupMicro.py</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupMicro_e2a_NM_VAR.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupMicro_e2a_NM_VAR.png" style="width: 1344.0px; height: 1007.9999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the variational models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupMicro_e2a_NM_AFDMC.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupMicro_e2a_NM_AFDMC.png" style="width: 1344.0px; height: 1007.9999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the AFDMC models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupMicro_e2a_NM_BHF.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupMicro_e2a_NM_BHF.png" style="width: 1344.0px; height: 1007.9999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the BHF models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupMicro_e2a_NM_QMC.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupMicro_e2a_NM_QMC.png" style="width: 1344.0px; height: 1007.9999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the QMC models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../../_images/plot_matter_setupMicro_e2a_NM_MBPT.png"><img alt="map to buried treasure" src="../../_images/plot_matter_setupMicro_e2a_NM_MBPT.png" style="width: 1344.0px; height: 1007.9999999999999px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_matter_ffg.html" class="btn btn-neutral float-left" title="matter.setupFFG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_matter_micro_band.html" class="btn btn-neutral float-right" title="matter.setupMicroBand" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
