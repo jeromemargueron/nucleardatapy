@@ -1,7 +1,7 @@
 #/bin/sh
 
 # version number
-VER=1.0
+VER=0.2
 
 # Folder where libraries are installed:
 LIB=$HOME/mylib
@@ -29,13 +29,13 @@ echo ">> copy nucleardatapy toolkit to $LIB/nucleardatapy folder"
 rm -rf $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy
 mkdir -p $LIB/nucleardatapy/nucleardatapy
-cp -R version$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
-cp -R version$VER/data $LIB/nucleardatapy/
+cp -R version-$VER/nucleardatapy/* $LIB/nucleardatapy/nucleardatapy
+cp -R version-$VER/data $LIB/nucleardatapy/
 
 echo ""
 echo ">> copy nucleardatapy samples to $SAMPLES/ folder"
 mkdir -p  $SAMPLES
-cp -R version$VER/nucleardatapy_samples/ $SAMPLES/
+cp -R version-$VER/nucleardatapy_samples/ $SAMPLES/
 
 echo ""
 echo ">> You should create the following global variables:"

@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.matter.setup_micro_esym &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">corr.setupEsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.matter.setup_micro_esym</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.matter.setup_micro_esym</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">CubicSpline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
+<span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<span class="n">nsat</span> <span class="o">=</span> <span class="mf">0.16</span>
+<span class="n">mnuc2</span> <span class="o">=</span> <span class="mf">939.0</span>
+
+<div class="viewcode-block" id="micro_esym_mbs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.micro_esym_mbs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_esym_mbs</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of many-bodys (mbs) approaches available in this toolkit and print them all on the prompt.</span>
+
+<span class="sd">    :return: The list of models with can be &#39;VAR&#39;, &#39;AFDMC&#39;, &#39;BHF&#39;, &#39;QMC&#39;, &#39;MBPT&#39;, &#39;NLEFT&#39;.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_mbs()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">mbs</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;VAR&#39;</span><span class="p">,</span> <span class="s1">&#39;BHF&#39;</span><span class="p">,</span> <span class="s1">&#39;MBPT&#39;</span><span class="p">,</span> <span class="s1">&#39;NLEFT&#39;</span> <span class="p">]</span>
+    <span class="n">mbs_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">mbs</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_mbs()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">mbs</span><span class="p">,</span> <span class="n">mbs_lower</span></div>
+
+
+<div class="viewcode-block" id="micro_esym_models_mb">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.micro_esym_models_mb">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_esym_models_mb</span><span class="p">(</span> <span class="n">mb</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list with the name of the models available in this toolkit \</span>
+<span class="sd">    for a given mb appoach and print them all on the prompt. </span>
+
+<span class="sd">    :param mb: The mb approach for which there are parametrizations. \</span>
+<span class="sd">    They should be chosen among the following options: &#39;VAR&#39;, &#39;AFDMC&#39;, &#39;BHF&#39;, &#39;QMC&#39;, &#39;MBPT&#39;, &#39;NLEFT&#39;.</span>
+<span class="sd">    :type mb: str.</span>
+<span class="sd">    :return: The list of parametrizations. \</span>
+
+<span class="sd">    These models are the following ones: \</span>
+<span class="sd">    If `mb` == &#39;VAR&#39;: \</span>
+<span class="sd">    &#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, \</span>
+<span class="sd">    If `mb` == &#39;BHF&#39;: \</span>
+<span class="sd">    &#39;2006-BHF-AM*&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;,\</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;,\</span>
+<span class="sd">    &#39;2024-BHF-AM-23BFmicro-Av18&#39;, &#39;2024-BHF-AM-23BFmicro-BONNB&#39;, &#39;2024-BHF-AM-23BFmicro-NSC93&#39;,\</span>
+<span class="sd">    If `mb` == &#39;MBPT&#39;: \</span>
+<span class="sd">    &#39;2010-MBPT-NM&#39;, &#39;2020-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;</span>
+<span class="sd">    If `mb` == &#39;NLEFT&#39;: \</span>
+<span class="sd">    &#39;2024-NLEFT-AM&#39;, \</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_models_mb()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;mb:&#39;,mb)</span>
+    <span class="k">if</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;var&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1981-VAR-AM-FP&#39;</span><span class="p">,</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span><span class="p">,</span> <span class="s1">&#39;1998-VAR-AM-APR-fit&#39;</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;bhf&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-CDBONN&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97d&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-SSCV14&#39;</span><span class="p">,</span>\
+            <span class="s1">&#39;2024-BHF-AM-23BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-CDBONN&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97d&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-SSCV14&#39;</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;mbpt&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2019-MBPT-AM-L59&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L69&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nleft&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2024-NLEFT-AM&#39;</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Exit micro_models_mb()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span></div>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_esym_models_mbs</span><span class="p">(</span> <span class="n">mbs</span> <span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_esym_models_mbs()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1">#print(&#39;mbs:&#39;,mbs)</span>
+    <span class="c1">#</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">mbs</span><span class="p">:</span>
+        <span class="n">new_models</span><span class="p">,</span> <span class="n">new_models_lower</span> <span class="o">=</span> <span class="n">micro_esym_models_mb</span><span class="p">(</span> <span class="n">mb</span> <span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span> <span class="n">new_models</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_esym_models_mb()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_esym_models</span><span class="p">():</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_esym_models()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">mbs</span><span class="p">,</span> <span class="n">mbs_lower</span> <span class="o">=</span> <span class="n">micro_esym_mbs</span><span class="p">()</span>
+    <span class="c1">#print(&#39;mbs:&#39;,mbs)</span>
+    <span class="c1">#</span>
+    <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_esym_models_mbs</span><span class="p">(</span> <span class="n">mbs</span> <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_esym_models()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span>
+
+<div class="viewcode-block" id="micro_esym_models_old">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.micro_esym_models_old">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_esym_models_old</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list with the name of the models available in this toolkit and \</span>
+<span class="sd">    print them all on the prompt. These models are the following ones: \</span>
+<span class="sd">    &#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2006-BHF-AM*&#39;, \</span>
+<span class="sd">    2016-MBPT-AM&#39;, 2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, \</span>
+<span class="sd">    &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;,\</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;,\</span>
+<span class="sd">    &#39;2024-BHF-AM-23BFmicro-Av18&#39;, &#39;2024-BHF-AM-23BFmicro-BONNB&#39;, &#39;2024-BHF-AM-23BFmicro-NSC93&#39;\</span>
+
+<span class="sd">    :return: The list of models.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_esym_models()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1981-VAR-AM-FP&#39;</span><span class="p">,</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span><span class="p">,</span> <span class="s1">&#39;1998-VAR-AM-APR-fit&#39;</span><span class="p">,</span> \
+               <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L59&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L69&#39;</span><span class="p">,</span> \
+             <span class="s1">&#39;2020-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-NLEFT-AM&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-2BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-CDBONN&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97d&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-SSCV14&#39;</span><span class="p">,</span>\
+            <span class="s1">&#39;2024-BHF-AM-23BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-CDBONN&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97d&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-SSCV14&#39;</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models available in the toolkit:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+    <span class="n">models_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models</span> <span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_esym_models()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span></div>
+
+
+<div class="viewcode-block" id="setupMicroEsym">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.setupMicroEsym">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupMicroEsym</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the object with microscopic results choosen \</span>
+<span class="sd">    by the toolkit practitioner.</span>
+
+<span class="sd">    This choice is defined in `model`, which can chosen among \</span>
+<span class="sd">    the following choices: \</span>
+<span class="sd">    &#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2006-BHF-AM*&#39;, \</span>
+<span class="sd">    &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, \</span>
+<span class="sd">    &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, \</span>
+<span class="sd">    &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;</span>
+
+<span class="sd">    :param model: Fix the name of model. Default value: &#39;1998-VAR-AM-APR&#39;.</span>
+<span class="sd">    :type model: str, optional. </span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span><span class="p">,</span> <span class="n">var1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">var2</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : str, optional</span>
+<span class="sd">        The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...</span>
+<span class="sd">        var1 and var2 : densities (array) and isospin asymmetry (scalar) if necessary (for interpolation function in APRfit for instance)</span>
+<span class="sd">        var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupMicroEsym()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&gt; model:&quot;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">setupMicroEsym</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_esym_models</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="c1"># =========================</span>
+        <span class="c1"># load NM and SM quantities</span>
+        <span class="c1"># =========================</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="s1">&#39;fit&#39;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="c1">#</span>
+            <span class="c1"># SM</span>
+            <span class="c1">#</span>
+            <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">var1</span> <span class="o">=</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="p">)</span>
+            <span class="n">sm_den</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">den</span>
+            <span class="n">sm_e2a</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">e2a</span>
+            <span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">e2a_err</span>
+            <span class="c1">#</span>
+            <span class="c1"># NM</span>
+            <span class="c1">#</span>
+            <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">var1</span> <span class="o">=</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="p">)</span>
+            <span class="n">nm_den</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">den</span>
+            <span class="n">nm_e2a</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">e2a</span>
+            <span class="n">nm_e2a_err</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">e2a_err</span>
+            <span class="c1">#</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+            <span class="n">sm_den</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_den</span>
+            <span class="n">sm_e2a</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_e2a</span>
+            <span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">sm_e2a_err</span>
+            <span class="n">nm_den</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_den</span>
+            <span class="n">nm_e2a</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_e2a</span>
+            <span class="n">nm_e2a_err</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">nm_e2a_err</span>
+            <span class="c1">#mic.print_outputs( )</span>
+            <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="c1"># ===========================</span>
+        <span class="c1"># compute the symmetry energy</span>
+        <span class="c1"># ===========================</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">ref</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">note</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">marker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">mic</span><span class="o">.</span><span class="n">every</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="n">mic</span><span class="o">.</span><span class="n">linestyle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1">#</span>
+        <span class="c1"># E/A in SM (cubic spline)</span>
+        <span class="c1">#</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">sm_den</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">sm_e2a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="n">cs_sm_e2a</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
+        <span class="n">y_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">sm_e2a_err</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="n">cs_sm_e2a_err</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_err</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># E/A in NM (cubic spline)</span>
+        <span class="c1">#</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">nm_den</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">nm_e2a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="n">cs_nm_e2a</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
+        <span class="n">y_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span> <span class="n">nm_e2a_err</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="p">)</span>
+        <span class="n">cs_nm_e2a_err</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_err</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># density for Esym (no extrapolation, only interpolation)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="nb">min</span><span class="p">(</span> <span class="n">nm_den</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span> <span class="n">sm_den</span><span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_max</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="nb">max</span><span class="p">(</span> <span class="n">nm_den</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span> <span class="n">sm_den</span><span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_min</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf_max</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_max</span> <span class="p">)</span>
+        <span class="n">den_step</span> <span class="o">=</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_max</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nesym</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nesym</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">den_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># Symmetry energy for the densities defined in self.den</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_sm</span> <span class="o">=</span> <span class="n">cs_sm_e2a</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nm</span> <span class="o">=</span> <span class="n">cs_nm_e2a</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_nm</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">e2a_sm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">cs_nm_e2a_err</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cs_sm_e2a_err</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cs_sm_e2a</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sym_pre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cs_nm_e2a</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupMicroEsym()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupMicroEsym.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.setupMicroEsym.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Print output:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   model:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:  &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note: &quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   den: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   kf: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kf</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">esym</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   esym: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esym</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">esym_err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   esym_err: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_err</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">esym_unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupMicroEsym.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro_esym.html#nucleardatapy.matter.setup_micro_esym.setupMicroEsym.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the number of points for esym calculation.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nesym</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> 
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute providing additional notes about the data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the plot label data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#: Attribute the plot linestyle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot marker.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot every data.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute the matter density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the neutron Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the minimum of the density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the maximum of the density.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">den_max</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the minimum of the Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the maximum of the Fermi momentum.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_max</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the symmetry energy per particle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the uncertainty in the symmetry energy per particle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esym_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>        </div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Binding and bound energies for LL-hypernuclei
+# Ref. J. K. Ahn, H. Akikawa, S. Aoki, K. Arai, Phys. Rev. C 88, 014003 (2013)
+# Z, name,   N, LLBE,   err,  LLDBE,   err, probe
+#              (MeV), (MeV),  (MeV), (MeV),
+  2,   He,   2, 6.91,  0.16,   0.67,  0.17, Emul

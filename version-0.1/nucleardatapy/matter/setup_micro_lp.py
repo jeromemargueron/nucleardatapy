@@ -10,9 +10,6 @@ import nucleardatapy as nuda
 #nsat = 0.16
 #mnuc2 = 939.0
 
-def uncertainty_stat(den):
-    return 0.07*(den/nuda.cst.nsat)
-
 def micro_LP_models():
     """
     Return a list with the name of the models available in this toolkit and \

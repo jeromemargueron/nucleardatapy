@@ -142,9 +142,9 @@ class setupMtov():
         if nuda.env.verb: print("Enter print_table()")
         #
         if nuda.env.verb_table:
-            print(f"- table: {self.sources_do} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.sources_do} & {self.sources_up} & ${self.mass:.2f}$ & \cite{{{self.latexCite}}} \\\\")
         else:
-            print(f"- No  table for sources {self.sources_do} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
+            print(rf"- No  table for sources {self.sources_do} and {self.sources_up}. To get  table, write  'verb_table = True' in env.py.")
         #
         if nuda.env.verb: print("Exit print_table()")
         #

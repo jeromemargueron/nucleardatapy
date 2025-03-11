@@ -6,13 +6,14 @@ from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
+# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
+# sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
 nsat = 0.16
 mnuc2 = 939.0
+
 
 def pheno_esym_models():
     """
@@ -22,17 +23,20 @@ def pheno_esym_models():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter pheno_esym_models()")
+    if nuda.env.verb:
+        print("\nEnter pheno_esym_models()")
     #
-    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
-    #print('Phenomenological models available in the toolkit:',models)
-    models_lower = [ item.lower() for item in models ]
+    models = ["Skyrme", "ESkyrme", "NLRH", "DDRH", "DDRHF"]
+    # print('Phenomenological models available in the toolkit:',models)
+    models_lower = [item.lower() for item in models]
     #
-    if nuda.env.verb: print("Exit pheno_esym_models()")
+    if nuda.env.verb:
+        print("Exit pheno_esym_models()")
     #
     return models, models_lower
 
-def pheno_esym_params( model ):
+
+def pheno_esym_params(model):
     """
     Return a list with the parameterizations available in 
     this toolkit for a given model and print them all on the prompt.
@@ -55,32 +59,77 @@ def pheno_esym_params( model ):
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter pheno_esym_params()")
+    if nuda.env.verb:
+        print("\nEnter pheno_esym_params()")
     #
-    #print('For model:',model)
-    if model.lower() == 'skyrme':
-        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
-            'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
-            'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
-            'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
-            'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
-            'UNEDF0', 'UNEDF1']
-    elif model.lower() == 'eskyrme':
-        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
-    elif model.lower() == 'nlrh':
-        params = [ 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1' ]
-    elif model.lower() == 'ddrh':
-        params = [ 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99' ]
-    elif model.lower() == 'ddrhf':
-        params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
-    #print('Parameters available in the toolkit:',params)
-    params_lower = [ item.lower() for item in params ]
+    # print('For model:',model)
+    if model.lower() == "skyrme":
+        params = [
+            "BSK14",
+            "BSK16",
+            "BSK17",
+            "BSK27",
+            "F-",
+            "F+",
+            "F0",
+            "FPL",
+            "LNS",
+            "LNS1",
+            "LNS5",
+            "NRAPR",
+            "RATP",
+            "SAMI",
+            "SGII",
+            "SIII",
+            "SKGSIGMA",
+            "SKI2",
+            "SKI4",
+            "SKMP",
+            "SKMS",
+            "SKO",
+            "SKOP",
+            "SKP",
+            "SKRSIGMA",
+            "SKX",
+            "Skz2",
+            "SLY4",
+            "SLY5",
+            "SLY230A",
+            "SLY230B",
+            "SV",
+            "T6",
+            "T44",
+            "UNEDF0",
+            "UNEDF1",
+        ]
+    elif model.lower() == "eskyrme":
+        params = [
+            "BSk22",
+            "BSk24",
+            "BSk25",
+            "BSk26",
+            "BSk31",
+            "BSk32",
+            "BSkG1",
+            "BSkG2",
+            "BSkG3",
+        ]
+    elif model.lower() == "nlrh":
+        params = ["NL-SH", "NL3", "NL3II", "PK1", "PK1R", "TM1"]
+    elif model.lower() == "ddrh":
+        params = ["DDME1", "DDME2", "DDMEd", "PKDD", "TW99"]
+    elif model.lower() == "ddrhf":
+        params = ["PKA1", "PKO1", "PKO2", "PKO3"]
+    # print('Parameters available in the toolkit:',params)
+    params_lower = [item.lower() for item in params]
     #
-    if nuda.env.verb: print("Exit pheno_esym_params()")
+    if nuda.env.verb:
+        print("Exit pheno_esym_params()")
     #
     return params, params_lower
 
-class setupPhenoEsym():
+
+class setupPhenoEsym:
     """
     Instantiate the object with results based on phenomenological\
     interactions and choosen by the toolkit practitioner. \
@@ -110,8 +159,9 @@ class setupPhenoEsym():
 
     **Attributes:**
     """
+
     #
-    def __init__( self, model = 'Skyrme', param = 'SLY5' ):
+    def __init__(self, model="Skyrme", param="SLY5"):
         """
         Parameters
         ----------
@@ -121,45 +171,48 @@ class setupPhenoEsym():
         var1 = np.array([0.1,0.15,0.16,0.17,0.2,0.25])
         """
         #
-        if nuda.env.verb: print("Enter setupPhenoEsym()")
+        if nuda.env.verb:
+            print("Enter setupPhenoEsym()")
         #
         #: Attribute model.
         self.model = model
-        if nuda.env.verb: print("model:",model)
-        #print("-> model:",model)
+        if nuda.env.verb:
+            print("model:", model)
+        # print("-> model:",model)
         #: Attribute param.
         self.param = param
-        if nuda.env.verb: print("param:",param)
-        #print("-> param:",param)
+        if nuda.env.verb:
+            print("param:", param)
+        # print("-> param:",param)
         #
-        self = setupPhenoEsym.init_self( self )
+        self = setupPhenoEsym.init_self(self)
         #
         models, models_lower = pheno_esym_models()
         #
         if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
+            print("The model name ", model, " is not in the list of models.")
+            print("list of models:", models)
+            print("-- Exit the code --")
             exit()
         #
-        params, params_lower = pheno_esym_params( model = model )
+        params, params_lower = pheno_esym_params(model=model)
         #
         if param.lower() not in params_lower:
-            print('The param set ',param,' is not in the list of param.')
-            print('list of param:',params)
-            print('-- Exit the code --')
+            print("The param set ", param, " is not in the list of param.")
+            print("list of param:", params)
+            print("-- Exit the code --")
             exit()
         #
         # =========================
         # load NM and SM quantities
         # =========================
         #
-        pheno = nuda.matter.setupPheno( model = model, param = param )
+        pheno = nuda.matter.setupPheno(model=model, param=param)
         sm_den = pheno.sm_den
         sm_e2a = pheno.sm_e2a
         nm_den = pheno.nm_den
         nm_e2a = pheno.nm_e2a
-        #pheno.print_outputs( )
+        # pheno.print_outputs( )
         #
         # ===========================
         # compute the symmetry energy
@@ -173,74 +226,87 @@ class setupPhenoEsym():
         #
         # E/A in SM (cubic spline)
         #
-        x = np.insert( sm_den, 0, 0.0 ); y = np.insert( sm_e2a, 0, 0.0 )
-        cs_sm_e2a = CubicSpline( x, y )
+        x = np.insert(sm_den, 0, 0.0)
+        y = np.insert(sm_e2a, 0, 0.0)
+        cs_sm_e2a = CubicSpline(x, y)
         #
         # E/A in NM (cubic spline)
         #
-        x = np.insert( nm_den, 0, 0.0 ); y = np.insert( nm_e2a, 0, 0.0 )
-        cs_nm_e2a = CubicSpline( x, y )
+        x = np.insert(nm_den, 0, 0.0)
+        y = np.insert(nm_e2a, 0, 0.0)
+        cs_nm_e2a = CubicSpline(x, y)
         #
         # density for Esym (no extroplation, only interpolation)
         #
-        self.den_min = max( min( nm_den), min( sm_den) )
-        self.den_max = min( max( nm_den), max( sm_den) )
-        self.kf_min = nuda.kf( self.den_min ); self.kf_max = nuda.kf( self.den_max )
-        den_step = ( self.den_max - self.den_min ) / float( self.nesym )
-        self.den = self.den_min + np.arange(self.nesym+1) * den_step
-        self.kf = nuda.kf( self.den )
+        self.den_min = max(min(nm_den), min(sm_den))
+        self.den_max = min(max(nm_den), max(sm_den))
+        self.kf_min = nuda.kf(self.den_min)
+        self.kf_max = nuda.kf(self.den_max)
+        den_step = (self.den_max - self.den_min) / float(self.nesym)
+        self.den = self.den_min + np.arange(self.nesym + 1) * den_step
+        self.kf = nuda.kf(self.den)
         #
         # Symmetry energy for the densities defined in self.den
         #
-        self.e2a_sm = cs_sm_e2a( self.den )
-        self.e2a_nm = cs_nm_e2a( self.den )
+        self.e2a_sm = cs_sm_e2a(self.den)
+        self.e2a_nm = cs_nm_e2a(self.den)
         self.esym = self.e2a_nm - self.e2a_sm
-        self.sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
-        self.sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.sm_pre
+        self.sm_pre = self.den**2 * cs_sm_e2a(self.den, 1)
+        self.sym_pre = self.den**2 * cs_nm_e2a(self.den, 1) - self.sm_pre
         #
-        self.den_unit = 'fm$^{-3}$'
-        self.kf_unit = 'fm$^{-1}$'
-        self.esym_unit = 'MeV'
-        self.e2v_unit = 'MeV fm$^{-3}$'
-        self.pre_unit = 'MeV fm$^{-3}$'
+        self.den_unit = "fm$^{-3}$"
+        self.kf_unit = "fm$^{-1}$"
+        self.esym_unit = "MeV"
+        self.e2v_unit = "MeV fm$^{-3}$"
+        self.pre_unit = "MeV fm$^{-3}$"
         #
-        if nuda.env.verb: print("Exit SetupEOSPhenoEsym()")
+        if nuda.env.verb:
+            print("Exit SetupEOSPhenoEsym()")
         #
-    def print_outputs( self ):
+
+    def print_outputs(self):
         """
         Method which print outputs on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_outputs()")
+        if nuda.env.verb:
+            print("Enter print_outputs()")
         #
         print("- Print output:")
-        print("   model:",self.model)
-        print("   ref:  ",self.ref)
-        print("   label:",self.label)
-        print("   note: ",self.note)
+        print("   model:", self.model)
+        print("   ref:  ", self.ref)
+        print("   label:", self.label)
+        print("   note: ", self.note)
         #
-        if self.den is not None: print(f"   den: {np.round(self.den,3)} in {self.den_unit}")
-        if self.kf is not None: print(f"   kf: {np.round(self.kf,3)} in {self.kf_unit}")
-        if self.esym is not None: print(f"   esym: {np.round(self.esym,3)} in {self.esym_unit}")
-        if self.esym_err is not None: print(f"   esym_err: {np.round(self.esym_err,3)} in {self.esym_unit}")
+        if self.den is not None:
+            print(f"   den: {np.round(self.den,3)} in {self.den_unit}")
+        if self.kf is not None:
+            print(f"   kf: {np.round(self.kf,3)} in {self.kf_unit}")
+        if self.esym is not None:
+            print(f"   esym: {np.round(self.esym,3)} in {self.esym_unit}")
+        if self.esym_err is not None:
+            print(f"   esym_err: {np.round(self.esym_err,3)} in {self.esym_unit}")
         #
-        if nuda.env.verb: print("Exit print_outputs()")
+        if nuda.env.verb:
+            print("Exit print_outputs()")
         #
-    def init_self( self ):
+
+    def init_self(self):
         """
         Initialize variables in self.
         """
         #
-        if nuda.env.verb: print("Enter init_self()")
+        if nuda.env.verb:
+            print("Enter init_self()")
         #
         #: Attribute the number of points for esym calculation.
-        self.nesym = 20; 
+        self.nesym = 20
         #: Attribute providing the full reference to the paper to be citted.
-        self.ref = ''
+        self.ref = ""
         #: Attribute providing additional notes about the data.
-        self.note = ''
+        self.note = ""
         #: Attribute the plot label data.
-        self.label = ''
+        self.label = ""
         #: Attribute the plot linestyle.
         self.linestyle = None
         #: Attribute the plot marker.
@@ -265,7 +331,7 @@ class setupPhenoEsym():
         #: Attribute the uncertainty in the symmetry energy per particle.
         self.esym_err = None
         #
-        if nuda.env.verb: print("Exit init_self()")
+        if nuda.env.verb:
+            print("Exit init_self()")
         #
-        return self        
-
+        return self

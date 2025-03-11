@@ -1,0 +1,4 @@
+include docs/*
+recursive-include docs *
+include version-0.2/nucleardatapy/data/*
+recursive-include version-0.2/nucleardatapy/data *

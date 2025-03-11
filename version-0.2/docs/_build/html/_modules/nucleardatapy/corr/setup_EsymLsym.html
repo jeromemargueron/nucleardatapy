@@ -1,0 +1,609 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nucleardatapy.corr.setup_EsymLsym &mdash; nucleardatapy 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            nucleardatapy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/miscelaneous.html">Miscelaneous</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_ffg.html">matter.setupFFG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro.html">matter.setupMicro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_band.html">matter.setupMicroBand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_lp.html">matter.setupMicroLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_gap.html">matter.setupMicroGap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_micro_esym.html">matter.setupMicroEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno.html">matter.setupPheno</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_pheno_esym.html">matter.setupPhenoEsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_matter_hic.html">matter.setupHIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_am.html">eos.setupAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_eos_beta.html">eos.setupBeta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_exp.html">nuc.setupBEExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_be_theo.html">nuc.setupBETheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_exp.html">nuc.setupRchExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_rch_theo.html">nuc.setupRchTheo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_crust.html">crust.setupCrust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_masses.html">astro.setupMasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mup.html">astro.setupMup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mtov.html">astro.setupMtov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_mr.html">astro.setupMR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_astro_gw.html">astro.setupGW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_EsymLsym.html">corr.setupEsymLsym</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/api/setup_corr_Esym.html">corr.setupEsym</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">nucleardatapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nucleardatapy.corr.setup_EsymLsym</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nucleardatapy.corr.setup_EsymLsym</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
+<span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<div class="viewcode-block" id="EsymLsym_constraints">
+<a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.EsymLsym_constraints">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">EsymLsym_constraints</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of constraints available in this toolkit in the \</span>
+<span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
+<span class="sd">    &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208PB&#39;, &#39;2015-POL-120SN&#39;, \</span>
+<span class="sd">    &#39;2015-POL-68NI&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, \</span>
+<span class="sd">    &#39;2021-PREXII-Reinhard&#39;, &#39;2023-PREXII+CREX-Zhang&#39;; and \</span>
+<span class="sd">    print them all on the prompt.</span>
+
+<span class="sd">    :return: The list of constraints.</span>
+<span class="sd">    :rtype: list[str].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2009-HIC&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-RNP&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-FRDM&#39;</span><span class="p">,</span> <span class="s1">&#39;2013-NS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-IAS+RNP&#39;</span><span class="p">,</span> \
+             <span class="s1">&#39;2015-POL-208PB&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-120SN&#39;</span><span class="p">,</span> <span class="s1">&#39;2015-POL-68NI&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-UG&#39;</span><span class="p">,</span> \
+              <span class="s1">&#39;2021-PREXII-Reed&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-PREXII-Reinhard&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-PREXII+CREX-Zhang&#39;</span> <span class="p">]</span>
+    <span class="c1">#print(&#39;Constraints available in the toolkit:&#39;,constraints)</span>
+    <span class="n">constraints_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">constraints</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span></div>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">HIC_Esym</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
+    <span class="n">n_sat</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="c1"># in fm-3</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">csk</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="mf">0.6666</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">csp</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="n">gi</span> 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">HIC_Lsym</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
+    <span class="n">n_sat</span> <span class="o">=</span> <span class="mf">0.16</span> <span class="c1"># in fm-3</span>
+    <span class="k">return</span> <span class="n">csk</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="mf">0.3333</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">gi</span> <span class="o">*</span> <span class="n">csp</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">n_sat</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">gi</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span> 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">HIC_xgi</span><span class="p">(</span><span class="n">Esym</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Esym</span> <span class="o">-</span> <span class="mf">30.1</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="mf">33.8</span> <span class="o">-</span> <span class="mf">30.1</span> <span class="p">)</span> 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">HIC_Lsym_bound</span><span class="p">(</span><span class="n">Esym</span><span class="p">,</span><span class="n">gi</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="n">gi</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="n">Esym</span><span class="p">),</span><span class="n">csk</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">,</span><span class="n">csp</span><span class="o">*</span><span class="n">Esym</span><span class="o">/</span><span class="mf">30.1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="setupEsymLsym">
+<a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">setupEsymLsym</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Instantiate the values of Esym and Lsym from the constraint.</span>
+
+<span class="sd">    The name of the constraint to be chosen in the \</span>
+<span class="sd">    following list: &#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, \</span>
+<span class="sd">    &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208PB&#39;, &#39;2015-POL-120SN&#39;, \</span>
+<span class="sd">    &#39;2015-POL-68NI&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, \</span>
+<span class="sd">    &#39;2021-PREXII-Reinhard&#39;, &#39;2021-PREXII+CREX-Zhang&#39;.</span>
+
+<span class="sd">    :param constraint: Fix the name of `constraint`. Default value: &#39;2014-IAS&#39;.</span>
+<span class="sd">    :type constraint: str, optional.</span>
+
+<span class="sd">    **Attributes:**</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2014-IAS&#39;</span> <span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter setupEsymLsym()&quot;</span><span class="p">)</span>
+        <span class="c1">#: Attribute constraint.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constraint:&quot;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">setupEsymLsym</span><span class="o">.</span><span class="n">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">EsymLsym_constraints</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">constraints_lower</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The constraint &#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">,</span><span class="s1">&#39; is not in the list of constraints.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">()</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2009-hic&#39;</span><span class="p">:</span>
+            <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Tsang et al., PRL 102, 122701 (2009)&#39;</span>
+            <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;HIC-2009&#39;</span>
+            <span class="c1">#: Attribute providing additional notes about the constraint.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;constraints inferred from the study of isospin diffusion in HICs&quot;</span>
+            <span class="n">csk</span> <span class="o">=</span> <span class="mf">25.0</span> <span class="c1"># MeV</span>
+            <span class="n">csp</span> <span class="o">=</span> <span class="mf">35.2</span> <span class="c1"># MeV</span>
+            <span class="n">csk2</span> <span class="o">=</span> <span class="n">csk</span> <span class="o">*</span> <span class="mi">28</span> <span class="o">/</span> <span class="mf">30.1</span>
+            <span class="n">csp2</span> <span class="o">=</span> <span class="n">csp</span> <span class="o">*</span> <span class="mi">28</span> <span class="o">/</span> <span class="mf">30.1</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;At 28 MeV&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Esym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">),</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Lsym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="mf">28.0</span><span class="p">),</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">),</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="mf">28.0</span><span class="p">),</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;At 30.1 MeV&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Esym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Lsym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;At 33.8 MeV&#39;</span><span class="p">)</span>
+            <span class="n">csk2</span> <span class="o">=</span> <span class="n">csk</span> <span class="o">*</span> <span class="mf">33.8</span> <span class="o">/</span> <span class="mf">30.1</span>
+            <span class="n">csp2</span> <span class="o">=</span> <span class="n">csp</span> <span class="o">*</span> <span class="mf">33.8</span> <span class="o">/</span> <span class="mf">30.1</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Esym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">),</span> <span class="n">HIC_Esym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;HIC: Lsym(gi):&#39;</span><span class="p">,</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.35</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="mf">33.8</span><span class="p">),</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">),</span> <span class="n">HIC_Lsym</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">1.05</span><span class="o">*</span><span class="n">HIC_xgi</span><span class="p">(</span><span class="mf">33.8</span><span class="p">),</span><span class="n">csk2</span><span class="p">,</span><span class="n">csp2</span><span class="p">)</span> <span class="p">)</span>
+            <span class="c1">#</span>
+            <span class="c1"># setup list with contour for HIC contraint in Esym-Lsym coordinates</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="p">)</span> <span class="c1"># aEsym</span>
+            <span class="n">Lsym1</span> <span class="o">=</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)</span>
+            <span class="n">Lsym2</span> <span class="o">=</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym1</span> <span class="o">+</span> <span class="n">Lsym2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span> <span class="n">Lsym1</span> <span class="o">-</span> <span class="n">Lsym2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)))</span>
+    <span class="c1">#print(&#39;np.arrange2:&#39;,np.arange(len(aEsym)-1,0,-1))</span>
+            <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">1.05</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">),</span> <span class="n">HIC_Lsym_bound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.35</span><span class="p">,</span><span class="n">csk</span><span class="p">,</span><span class="n">csp</span><span class="p">)))</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2010-rnp&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2010-RNP.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.W. Chen, C.M. Ko, B.A. Li, J. Xu, Phys. Rev. C 82, 024321 (2010)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;RNP-2010&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;analysis of neutron skin thickness in Sn isotopes&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">Lsym_min</span><span class="p">,</span> <span class="n">Lsym_max</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym_max</span> <span class="o">+</span> <span class="n">Lsym_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym_max</span> <span class="o">-</span> <span class="n">Lsym_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+            <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
+            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_max</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_max</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
+        <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2012-frdm&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2012-FRDM.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;P. Moller, W.D. Myers, H. Sagawa, S. Yoshida, Phys. Rev. Lett. 108, 052501 (2012)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;FRDM-2012&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;values of S0 and L inferred from finite-range droplet mass model calculations&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">Lsym_min</span><span class="p">,</span> <span class="n">Lsym_max</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym_max</span> <span class="o">+</span> <span class="n">Lsym_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym_max</span> <span class="o">-</span> <span class="n">Lsym_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+            <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
+            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_max</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_max</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
+        <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2013-ns&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2013-NS.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;A.W. Steiner, J.M. Lattimer, E.F. Brown, Astrophys. J. Lett. 765, L5 (2013)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NS-2013&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Bayesian analysis of mass and radius measurements of NSs by considering 68</span><span class="se">\\</span><span class="si">% a</span><span class="s2">nd 96</span><span class="se">\\</span><span class="si">% c</span><span class="s2">onfidence values for L.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">Lsym68_min</span><span class="p">,</span> <span class="n">Lsym68_max</span><span class="p">,</span> <span class="n">Lsym95_min</span><span class="p">,</span> <span class="n">Lsym95_max</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym95_max</span> <span class="o">+</span> <span class="n">Lsym95_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">Lsym95_max</span> <span class="o">-</span> <span class="n">Lsym95_min</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+            <span class="c1"># setup list with contour in Esym-Lsym coordinates</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
+            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_max</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym95_max</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_max</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Lsym95_min</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_min</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">Lsym95_min</span><span class="p">[</span><span class="n">ind</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">Lsym95_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lsym95_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="c1">#print(&#39;coutour Esym:&#39;,self.cont_Esym)</span>
+            <span class="c1">#print(&#39;coutour Lsym:&#39;,self.cont_Lsym)</span>
+        <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2014-ias&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2014-IAS-err.dat&#39;</span><span class="p">)</span>
+            <span class="c1">#file_in = os.path.join(nuda.param.path_data,&#39;EsymLsym/2014-IAS.dat&#39;)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Danielewicz and Lee, NPA 922, 1 (2014)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;IAS-2014&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints from IAS.&quot;</span>
+            <span class="c1">#self.Lsym, self.Esym = \</span>
+            <span class="c1">#    np.loadtxt( file_in, usecols=(0,1), unpack = True )</span>
+            <span class="c1">#self.plot = &#39;contour&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+            <span class="c1"># setup list with contour for IAS contraint in Esym-Lsym coordinates</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1">#print(&#39;length(Esym)&#39;,len(self.Esym))</span>
+            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2014-ias+rnp&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2014-IAS+RNP-err.dat&#39;</span><span class="p">)</span>
+            <span class="c1">#file_in = os.path.join(nuda.param.path_data,&#39;EsymLsym/2014-IAS+RNP.dat&#39;)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Danielewicz and Lee, NPA 922, 1 (2014)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;IAS+Rnp-2014&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints from IAS + neutron skin (Rnp).&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_y&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="c1">#self.Lsym, self.Esym = \</span>
+            <span class="c1">#    np.loadtxt( file_in, usecols=(0,1), unpack = True )</span>
+            <span class="c1">#self.plot = &#39;contour&#39;</span>
+
+            <span class="c1"># setup list with contour for IAS contraint in Esym-Lsym coordinates</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Esym</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">):</span>
+            <span class="c1">#for index in np.arange(0,len(self.Esym)-1):</span>
+                <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Esym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cont_Lsym</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-208pb&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="c1"># 208Pb</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
+            <span class="n">POL_Esym_1</span> <span class="o">=</span> <span class="mf">25.3</span> <span class="o">+</span> <span class="mf">0.168</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_2</span> <span class="o">=</span> <span class="mf">24.5</span> <span class="o">+</span> <span class="mf">0.168</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_3</span> <span class="o">=</span> <span class="mf">23.7</span> <span class="o">+</span> <span class="mf">0.168</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">POL_Esym_2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">POL_Esym_1</span> <span class="o">-</span> <span class="n">POL_Esym_3</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_x&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-120sn&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="c1"># 120Sn</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
+            <span class="n">POL_Esym_1</span> <span class="o">=</span> <span class="mf">26.5</span> <span class="o">+</span> <span class="mf">0.17</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_2</span> <span class="o">=</span> <span class="mf">25.4</span> <span class="o">+</span> <span class="mf">0.17</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_3</span> <span class="o">=</span> <span class="mf">24.3</span> <span class="o">+</span> <span class="mf">0.17</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">POL_Esym_2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">POL_Esym_1</span> <span class="o">-</span> <span class="n">POL_Esym_3</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_x&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2015-pol-68ni&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="c1"># 68Ni</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;X. Roca-Maza, X. Vi</span><span class="se">\\</span><span class="s1">~nas, M. Centelles, B.K. Agrawal, G. Col</span><span class="se">\\</span><span class="s1">`o, N. Paar, J. Piekarewicz, D. Vretenar, Phys. Rev. C 92, 064304 (2015)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;POL-2015&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Constraints on the electric dipole polarizability deduced in the associated Ref.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="p">)</span>
+            <span class="n">POL_Esym_1</span> <span class="o">=</span> <span class="mf">26.9</span> <span class="o">+</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_2</span> <span class="o">=</span> <span class="mf">24.9</span> <span class="o">+</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="n">POL_Esym_3</span> <span class="o">=</span> <span class="mf">22.9</span> <span class="o">+</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">POL_Esym_2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span> <span class="n">POL_Esym_1</span> <span class="o">-</span> <span class="n">POL_Esym_3</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;band_x&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2017-ug&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;I. Tews, J.M. Lattimer, A. Ohnishi, E.E. Kolomeitsev, Astrophys. J. 848, 105 (2017)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;UG-2017&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Unitary Gas bound on symmetry energy parameters: only values of (S0, L) to the right of the curve are permitted.&quot;</span>
+            <span class="c1"># Unitary gaz limit</span>
+            <span class="n">Esat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">15.5</span> <span class="c1"># MeV</span>
+            <span class="n">nsat</span> <span class="o">=</span> <span class="mf">0.157</span> <span class="c1"># fm-3</span>
+            <span class="n">Ksat</span> <span class="o">=</span> <span class="mi">270</span> <span class="c1"># MeV</span>
+            <span class="n">Kn</span> <span class="o">=</span> <span class="n">Ksat</span>
+            <span class="n">Ksym</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># MeV</span>
+            <span class="n">Qnplus</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># MeV</span>
+            <span class="n">Qnminus</span> <span class="o">=</span> <span class="o">-</span><span class="mi">750</span> <span class="c1"># MeV</span>
+            <span class="n">zeta0</span> <span class="o">=</span> <span class="mf">0.365</span>
+            <span class="c1">#</span>
+            <span class="n">kFsat</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">pi2</span> <span class="o">*</span> <span class="n">nsat</span> <span class="p">)</span><span class="o">**</span><span class="mf">0.3333</span>
+            <span class="n">EUGsat</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">10.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">hbc</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnuc2</span> <span class="o">*</span> <span class="n">kFsat</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">zeta0</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EUGsat:&#39;</span><span class="p">,</span><span class="n">EUGsat</span><span class="p">)</span>
+            <span class="c1">#</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+            <span class="k">for</span> <span class="n">ut</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ut</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">Qn</span> <span class="o">=</span> <span class="n">Qnplus</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">Qn</span> <span class="o">=</span> <span class="n">Qnminus</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="n">EUGsat</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ut</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0</span><span class="o">*</span><span class="n">ut</span><span class="o">**</span><span class="mf">0.3333</span><span class="p">)</span> \
+                    <span class="o">+</span> <span class="n">Kn</span> <span class="o">/</span> <span class="mf">18.0</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ut</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Qn</span><span class="o">/</span><span class="mf">81.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">ut</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span><span class="o">**</span><span class="mi">3</span> \
+                    <span class="o">-</span> <span class="n">Esat</span> <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">EUGsat</span> <span class="o">/</span> <span class="n">ut</span><span class="o">**</span><span class="mf">0.3333</span> <span class="o">-</span> \
+                    <span class="n">Kn</span> <span class="o">/</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ut</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span> <span class="o">-</span> <span class="n">Qn</span> <span class="o">/</span> <span class="mf">18.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">ut</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;curve&#39;</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2021-prexii-reed&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2021-PREXII-Reed.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Reed et al., PRL 126, 172503 (2021)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PREXII-Reed&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;point_err_xy&#39;</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2021-prexii-reinhard&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2021-PREXII-Reinhard.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Reinhard et al., PRL 127, 232501 (2021)&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PREXII-Reinhard&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;point_err_xy&#39;</span>
+            <span class="c1">#</span>
+        <span class="k">elif</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2023-prexii+crex-zhang&#39;</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="n">file_in</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;EsymLsym/2023-PREXII-Zhang.dat&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Z. Zhang, L.W. Chen, Phys. Rev. C 108, 024317 (2023).&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PREXII+CREX-Zhang&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;point_err_xy&#39;</span>
+            <span class="c1">#</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The variable constraint:&#39;</span><span class="p">,</span><span class="n">constraint</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;does not fit with the options in the code&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit setupEsymLsym()&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+<div class="viewcode-block" id="setupEsymLsym.print_outputs">
+<a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.print_outputs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_outputs</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method which print outputs on terminal&#39;s screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter print_outputs()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   constraint:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   ref:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   label:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   note:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">note</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   plot:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit print_outputs()&quot;</span><span class="p">)</span></div>
+
+        <span class="c1">#</span>
+<div class="viewcode-block" id="setupEsymLsym.init_self">
+<a class="viewcode-back" href="../../../source/api/setup_corr_EsymLsym.html#nucleardatapy.corr.setup_EsymLsym.setupEsymLsym.init_self">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_self</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize variables in self.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute providing the full reference to the paper to be citted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute providing additional notes about the constraint.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute the plot alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="c1">#: Attribute Esym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute max of Esym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Esym_max</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute min of Esym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Esym_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute with uncertainty in Esym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Esym_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute Lsym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lsym</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute max of Lsym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_max</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute min of Lsym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Attribute with uncertainty in Lsym.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lsym_err</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit init_self()&quot;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="k">return</span> <span class="bp">self</span>        </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jérôme Margueron, IRL NPA, USA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

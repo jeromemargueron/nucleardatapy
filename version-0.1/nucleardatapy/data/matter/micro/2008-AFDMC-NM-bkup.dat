@@ -1,0 +1,11 @@
+# From A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Phys. Rev. Lett. 95, 192501 (2005).
+# From A. Fabrocini, S. Fantoni, A.Y. Illarionov, and K.E. Schmidt, Nuc. Phys. A 803, 137 (2008).
+# In fact, extracted from Gezerlis & Carlson PRC 81, 025803 (2010)
+# kF    Delta/EF   error  E/EFG   error 
+0.05    0.175      0.020  0.798   0.005
+0.20    0.265      0.235  0.710   0.005
+0.30	0.449      0.157  0.660   0.005
+0.40	0.429      0.046  0.620   0.005
+0.60	0.277      0.020  0.576   0.005
+
+
