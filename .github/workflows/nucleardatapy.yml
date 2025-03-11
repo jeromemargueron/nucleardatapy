@@ -53,11 +53,28 @@ jobs:
             book/_build/html/
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/develop' # Only deploy from main branch
+    if: github.ref == 'refs/heads/develop' # Only deploy from develop branch
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Check out the repository (develop branch)
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Extract version from __init__.py
+        id: version
+        run: |
+          if [ -f version-0.2/__init__.py ]; then
+            VERSION=$(grep -oP "__version__\s*=\s*['\"]\K[^'\"]+" version-0.2/__init__.py)
+            echo "Extracted version: $VERSION"
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          else
+            echo "Error: version-0.2/__init__.py not found!"
+            exit 1
+          fi
+
       - name: Check out gh-pages branch
         uses: actions/checkout@v4
         with:
@@ -71,8 +88,8 @@ jobs:
 
       - name: Copy docs to versioned folder
         run: |
-          VERSION=$(cat version-0.2/__init__.py | grep __version__ | cut -d '"' -f2)
           mkdir -p docs/$VERSION
+          mkdir -p docs/latest
           cp -r public/* docs/$VERSION
           cp -r public/* docs/latest  # Always update 'latest'
 
