@@ -26,14 +26,14 @@ def eos_setupAM_e_fig( pname, models_micro, models_pheno, asy ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.95, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E/A$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([-13, 15])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'$E/A$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([-13, 15])
     axs[1].tick_params('y', labelleft=False)
     #

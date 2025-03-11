@@ -22,6 +22,7 @@ def main():
         print('F0:',lp.nm_LP['F'][0])
         print('G0:',lp.nm_LP['G'][0])
         if nuda.env.verb_output: lp.print_outputs( )
+        lp.print_outputs( )
     #
     print(50*'-')
     print("Exit matter_setupMicro_LP_script.py:")
