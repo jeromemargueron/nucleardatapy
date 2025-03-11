@@ -26,16 +26,16 @@ def eos_setupAMBeq_xp_fig( pname, models_micro, models_pheno ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'proton fraction $x_p$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([0, 0.2])
-    axs[0].set_tick_params('y', right=True)
-    axs[0].set_tick_params('x', top=True)
+    #axs[0].set_tick_params('y', right=True)
+    #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'proton fraction $x_p$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([0, 0.2])
     #setp(axs[1].get_yticklabels(), visible=False)
     axs[1].tick_params('y', labelleft=False)
@@ -98,14 +98,14 @@ def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'electron fraction $x_e$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([0, 0.2])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'electron fraction $x_e$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -116,7 +116,7 @@ def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
         #
         if beta.esym is not None: 
             print('model:',model)
-            axs[0].plot( beta.den, beta.x_e, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+            axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
@@ -130,7 +130,7 @@ def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
             if beta.esym is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.x_e, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
@@ -162,14 +162,14 @@ def eos_setupAMBeq_xmu_fig( pname, models_micro, models_pheno ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'muon fraction $x_\mu$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([0, 0.2])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'muon fraction $x_\mu$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #

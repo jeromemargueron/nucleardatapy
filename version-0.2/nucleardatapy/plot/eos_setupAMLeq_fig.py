@@ -30,15 +30,16 @@ def eos_setupAMLeq_xe_fig( pname, models_micro, models_pheno ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'electron fraction $x_e$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([0.1, 0.3])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'electron fraction $x_e$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([0.1, 0.3])
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -47,8 +48,8 @@ def eos_setupAMLeq_xe_fig( pname, models_micro, models_pheno ):
         #
         if beta.esym is not None: 
             print('model:',model)
-            axs[0].plot( beta.den, beta.x_e, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
-            #axs[0].plot( beta.den, beta.x_e, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+            axs[0].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+            #axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
     axs[0].text(0.08,0.22,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
@@ -62,7 +63,7 @@ def eos_setupAMLeq_xe_fig( pname, models_micro, models_pheno ):
             if beta.esym is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.x_e, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     axs[1].text(0.08,0.22,'phenomenological models',fontsize='10')
@@ -98,15 +99,16 @@ def eos_setupAMLeq_xmu_fig( pname, models_micro, models_pheno ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'muon fraction $x_\mu$')
-    axs[0].set_xlim([0, 0.3])
+    axs[0].set_xlim([0, 0.28])
     axs[0].set_ylim([0, 0.15])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'muon fraction $x_\mu$')
-    axs[1].set_xlim([0, 0.3])
+    axs[1].set_xlim([0, 0.28])
     axs[1].set_ylim([0, 0.15])
+    axs[1].tick_params('y', labelleft=False)
     #
     for model in models_micro:
         #
@@ -161,9 +163,9 @@ def eos_setupAMLeq_xexmu_fig( pname, models_micro, models_pheno ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.95, wspace=0.3, hspace=0.3 )
     #
-    axs.set_xlabel(r'n (fm$^{-3}$)',fontsize='10')
+    axs.set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='10')
     axs.set_ylabel(r'$x_e$, $x_\mu$',fontsize='10')
-    axs.set_xlim([0, 0.3])
+    axs.set_xlim([0, 0.28])
     axs.set_ylim([0, 0.5])
     #
     asys = [ 0.1, 0.3, 0.5, 0.7, 0.9 ]
@@ -193,7 +195,7 @@ def eos_setupAMLeq_xexmu_fig( pname, models_micro, models_pheno ):
                 if am.esym is not None: 
                     print('model:',model,' param:',param)
                     #beta.label=None
-                    axs.plot( am.den, am.x_e, linestyle='solid', label='$\delta=$'+str(asy), color=nuda.param.col[inda] )
+                    axs.plot( am.den, am.x_el, linestyle='solid', label='$\delta=$'+str(asy), color=nuda.param.col[inda] )
                     axs.plot( am.den, am.x_mu, linestyle='dashed', color=nuda.param.col[inda] )
                 if nuda.env.verb_output: pheno.print_outputs( )
                 break

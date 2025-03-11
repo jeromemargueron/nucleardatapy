@@ -35,13 +35,13 @@ def main():
     # plot Esym
     #
     pname = 'figs/plot_eos_setupAMBeq_xp.png'
-    plot_eos_setupAMBeq_xp( pname, micro_models, pheno_models )
+    nuda.plot.eos_setupAMBeq_xp_fig( pname, micro_models, pheno_models )
     #
     pname = 'figs/plot_eos_setupAMBeq_xe.png'
-    plot_eos_setupAMBeq_xe( pname, micro_models, pheno_models )
+    nuda.plot.eos_setupAMBeq_xe_fig( pname, micro_models, pheno_models )
     #
     pname = 'figs/plot_eos_setupAMBeq_xmu.png'
-    plot_eos_setupAMBeq_xmu( pname, micro_models, pheno_models )
+    nuda.plot.eos_setupAMBeq_xmu_fig( pname, micro_models, pheno_models )
     #
     print(50*'-')
     print("Exit plot_eos_setupAMBeq.py:")
