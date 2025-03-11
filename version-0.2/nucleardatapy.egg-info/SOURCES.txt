@@ -455,6 +455,10 @@ version-0.2/nucleardatapy/corr/setup_KsatQsat.py
 version-0.2/nucleardatapy/crust/__init__.py
 version-0.2/nucleardatapy/crust/setup_crust.py
 version-0.2/nucleardatapy/data/LandauParameters/micro/1994-BHF-SM.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-BHF-NM-AV18.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-BHF-SM-AV18.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-IBHF-NM-AV18.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-IBHF-SM-AV18.dat
 version-0.2/nucleardatapy/data/LandauParameters/micro/2007-BHF-NM.dat
 version-0.2/nucleardatapy/data/LandauParameters/pheno/2013-BSk22.dat
 version-0.2/nucleardatapy/data/LandauParameters/pheno/2016-BSk31.dat
@@ -574,6 +578,10 @@ version-0.2/nucleardatapy/data/matter/micro/BSTmicro-SM.dat
 version-0.2/nucleardatapy/data/matter/micro/BSTph-NM.dat
 version-0.2/nucleardatapy/data/matter/micro/BSTph-SM.dat
 version-0.2/nucleardatapy/data/matter/micro/convert.sh
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-E2A-AM.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-E2A-NM.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-E2A-SM.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Esym2-SM.dat
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-GAP-NM-FreeSpectrum.dat
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-GAP-NM-SelfEnergy.dat
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-GAP-SM-FreeSpectrum.dat
