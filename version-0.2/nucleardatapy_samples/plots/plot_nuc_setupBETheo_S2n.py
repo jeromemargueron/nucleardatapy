@@ -21,9 +21,10 @@ def plot_nuc_setupBETheo_S2n( tables, Zref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    #fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.15, bottom=0.13, right=None, top=0.8)#, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
+    #axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
     axs.set_ylabel(r'$S_{2n}$ (MeV)',fontsize='12')
     axs.set_xlabel(r'N',fontsize='12')
     axs.set_xlim([Zref-5, int(2.3*Zref)])
@@ -49,9 +50,11 @@ def plot_nuc_setupBETheo_S2n( tables, Zref = 50 ):
     #N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
     #axs.scatter( N_diff, BE_diff, label='AME2020' )
     #
-    axs.legend(loc='upper right',fontsize='10', ncol=4)
+    #axs.legend(loc='upper right',fontsize='10', ncol=4)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname, dpi=200)
+    plt.show()
     plt.close()
     #
 

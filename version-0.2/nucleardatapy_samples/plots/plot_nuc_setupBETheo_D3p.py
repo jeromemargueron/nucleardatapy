@@ -14,22 +14,23 @@ def plot_nuc_setupBETheo_D3p_n( tables, Zref = 50 ):
     print('Tables:',tables)
     print('Zref:',Zref)
     #
-    pname = 'figs/plot_nuc_setupBETheo_D3p_Zref'+str(Zref)+'.png'
+    pname = 'figs/plot_nuc_setupBETheo_D3n_Zref'+str(Zref)+'.png'
     print(f'Plot name: {pname}')
     #
     # plot
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    #fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8)#, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
-    axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='12')
+    #axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
+    axs.set_ylabel(r'$\Delta_{3,n}$ (MeV)',fontsize='12')
     axs.set_xlabel(r'N',fontsize='12')
     axs.set_xlim([Zref-5, int(2.3*Zref)])
     axs.set_xticks(np.arange(start=Zref-5,stop=2.3*Zref,step=5))
     axs.set_ylim([0, 4])
-    axs.text(int(Zref),0.5,'For Z='+str(Zref),fontsize='12')
+    axs.text(int(Zref)+10,3.5,'For Z='+str(Zref),fontsize='12')
     #
     # loop over the tables
     #
@@ -46,9 +47,11 @@ def plot_nuc_setupBETheo_D3p_n( tables, Zref = 50 ):
     d3p_exp = mas_exp.D3p_n( Zmin = Zref, Zmax = Zref )
     axs.scatter( d3p_exp.D3p_n_N_even, d3p_exp.D3p_n_even, label=exp_table+' '+exp_version+'(even)' )
     #
-    axs.legend(loc='upper right',fontsize='10', ncol=4)
+    #axs.legend(loc='upper right',fontsize='10', ncol=4)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='7',ncol=4,frameon=False)
     #
     plt.savefig(pname, dpi=200)
+    plt.show()
     plt.close()
     #
 
@@ -64,15 +67,16 @@ def plot_nuc_setupBETheo_D3p_p( tables, Nref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    #fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8)#, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
-    axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='12')
+    #axs.set_title(r'Comparison of theoretical mass models',fontsize='12')
+    axs.set_ylabel(r'$\Delta_{3,p}$ (MeV)',fontsize='12')
     axs.set_xlabel(r'Z',fontsize='12')
-    axs.set_xlim([0.4*Nref, 1.2*Nref])
+    axs.set_xlim([0.4*Nref, 1.1*Nref])
     axs.set_xticks(np.arange(start=int(0.4*Nref),stop=1.2*Nref,step=5))
     axs.set_ylim([0, 4])
-    axs.text(int(0.7*Nref),0.5,'For N='+str(Nref),fontsize='12')
+    axs.text(int(0.7*Nref),3.5,'For N='+str(Nref),fontsize='12')
     #
     # loop over the tables
     #
@@ -89,9 +93,12 @@ def plot_nuc_setupBETheo_D3p_p( tables, Nref = 50 ):
     d3p_exp = mas_exp.D3p_p( Nmin = Nref, Nmax = Nref )
     axs.scatter( d3p_exp.D3p_p_Z_even, d3p_exp.D3p_p_even, label=exp_table+' '+exp_version+'(even)' )
     #
-    axs.legend(loc='upper right',fontsize='10', ncol=4)
+    #axs.legend(loc='upper right',fontsize='8', ncol=4)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='7',ncol=4,frameon=False)
+    #
     #
     plt.savefig(pname, dpi=200)
+    plt.show()
     plt.close()
     #
 def main():

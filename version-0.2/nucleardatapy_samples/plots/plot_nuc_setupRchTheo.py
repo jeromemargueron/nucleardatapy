@@ -17,23 +17,23 @@ def plot_nuc_setupRchTheo( pname, tables, table_exp ):
     #
     fig, axs = plt.subplots(1,3)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.9, wspace=0.35, hspace=0.3)
     #
     axs[0].set_title(r'Zr')
     axs[0].set_ylabel(r'$R_{ch}$')
     axs[0].set_xlabel(r'A')
-    axs[0].set_xlim([88, 96])
-    axs[0].set_ylim([4.2, 4.5])
+    axs[0].set_xlim([88, 98])
+    axs[0].set_ylim([4.25, 4.45])
     #
     axs[1].set_title(r'Sn')
     axs[1].set_xlabel(r'A')
     axs[1].set_xlim([110, 136])
-    axs[1].set_ylim([4.5, 4.8])
+    axs[1].set_ylim([4.55, 4.75])
     #
     axs[2].set_title(r'Pb')
     axs[2].set_xlabel(r'A')
     axs[2].set_xlim([202, 210])
-    axs[2].set_ylim([5.4, 5.6])
+    axs[2].set_ylim([5.45, 5.55])
     #
     for table in tables:
         #
@@ -73,10 +73,13 @@ def plot_nuc_setupRchTheo( pname, tables, table_exp ):
     Nref_exp, Aref_exp, Rchref_exp, Rchref_err_exp = rch_exp.Rch_isotopes( Zref = 82 )
     axs[2].errorbar( Aref_exp, Rchref_exp, yerr=Rchref_err_exp, fmt='o', label=rch_exp.label )
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
-    axs[0].legend(loc='upper left',fontsize='8')
+    axs[0].legend(loc='upper left',fontsize='7',frameon=False)
+    #axs[0].legend(loc='upper left',bbox_to_anchor=(0.1,0.9),columnspacing=2,fontsize='10',ncol=2,frameon=False)
+    #fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='7',ncol=4,frameon=False)
     #
     plt.savefig(pname, dpi=200)
     print("plot in file:",pname)
+    plt.show()
     plt.close()
     #
 

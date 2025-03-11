@@ -19,7 +19,7 @@ def rch_theo_tables():
     #
     if nuda.env.verb: print("\nEnter rch_theo_tables()")
     #
-    tables = [ '2021-BSkG1', '2022-BSkG2', '2023-BSkG3' ]
+    tables = [ '2021-BSkG1', '2022-BSkG2', '2023-BSkG3', '2025-BSkG4'  ]
     #
     print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -50,7 +50,7 @@ class setupRchTheo():
       Parameters
       ----------
       table : str, optional
-      The theoretical table to consider. Choose between: 2021-BSkG1 (default), 2022-BSkG2, 2023-BSkG3 ...
+      The theoretical table to consider. Choose between: 2021-BSkG1 (default), 2022-BSkG2, 2023-BSkG3, 2025-BSkG4 ...
       """
       #
       if nuda.env.verb: print("\nEnter setupRchTheo()")
@@ -123,6 +123,23 @@ class setupRchTheo():
          self.note = "write here notes about this EOS."
          #: Attribute providing the label the data is references for figures.
          self.label = 'BSkG3-2023'
+         self.nucZr, self.nucNr, self.nucMass, self.Ebind, self.beta20, self.beta22, self.beta2, \
+         self.beta30, self.beta32, self.Erot, self.gap_n, self.gap_p, self.nucRch, self.moi = \
+         np.loadtxt( file_in, usecols=(0,1,3,5,6,7,8,9,10,11,12,13,14,17), unpack = True )
+         self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+         self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+         self.nucA = self.nucZ + self.nucN
+         #
+      elif table.lower() == '2025-bskg4':
+         #
+         file_in = os.path.join(nuda.param.path_data,'nuclei/masses/Theory/2025-BSkG4.txt')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely,  EPJA 61, 35 (2025).'
+         #: Attribute providing additional notes about the data.
+         self.note = "write here notes about this EOS."
+         #: Attribute providing the label the data is references for figures.
+         self.label = 'BSkG4-2025'
          self.nucZr, self.nucNr, self.nucMass, self.Ebind, self.beta20, self.beta22, self.beta2, \
          self.beta30, self.beta32, self.Erot, self.gap_n, self.gap_p, self.nucRch, self.moi = \
          np.loadtxt( file_in, usecols=(0,1,3,5,6,7,8,9,10,11,12,13,14,17), unpack = True )
