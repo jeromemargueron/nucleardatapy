@@ -10,7 +10,7 @@ import nucleardatapy as nuda
 
 #nsat = 0.16
 
-class setupEsym():
+class setupEsymDen():
     """
     Instantiate the values of Esym and Lsym from the constraint.
     
@@ -21,7 +21,7 @@ class setupEsym():
     #
     def __init__( self, constraint = '2014-IAS', Ksym = 0.0 ):
         #
-        if nuda.env.verb: print("Enter setupEsym()")
+        if nuda.env.verb: print("Enter setupEsymDen()")
         #
         #: Attribute the constraint
         self.constraint = constraint
@@ -131,7 +131,7 @@ class setupEsym():
             self.esym_e2a_max = None
             #
         #
-        if nuda.env.verb: print("Exit setupEsym()")
+        if nuda.env.verb: print("Exit setupEsymDen()")
     #
     def print_outputs( self ):
         """

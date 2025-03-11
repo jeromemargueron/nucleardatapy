@@ -4,5 +4,5 @@ This module provides microscopic, phenomenological and experimental data constra
 #
 from nucleardatapy.corr.setup_KsatQsat    import *
 from nucleardatapy.corr.setup_EsymLsym    import *
-from nucleardatapy.corr.setup_Esym        import *
+from nucleardatapy.corr.setup_EsymDen        import *
 #

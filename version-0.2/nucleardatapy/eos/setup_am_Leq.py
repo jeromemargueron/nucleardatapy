@@ -36,7 +36,7 @@ class setupAMLeq():
     **Attributes:**
     """
     #
-    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0, var1 = np.linspace(0.01,0.4,100) ):
+    def __init__( self, model = '1998-VAR-AM-APR', param = None, kind = 'micro', asy = 0.0 ):
         """
         Parameters
         ----------
@@ -56,7 +56,7 @@ class setupAMLeq():
         self = setupAMLeq.init_self( self )
         #
         # read var and define den, asy and xpr:
-        self.den = np.array( var1, dtype=float ) # density n_b=n_n+n_p
+        #self.den = np.array( var1, dtype=float ) # density n_b=n_n+n_p
         self.asy = float(asy)
         #
         if kind == 'micro':

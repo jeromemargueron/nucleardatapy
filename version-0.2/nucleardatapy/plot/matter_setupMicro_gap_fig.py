@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def matter_setupMicro_nm_gap_1s0_fig( pname, models ):
+def matter_setupMicro_gap_1s0_fig( pname, models, matter = 'NM' ):
     """
     Plot the correlation between Esym and Lsym.\
     The plot is 1x1 with:\
@@ -46,19 +46,32 @@ def matter_setupMicro_nm_gap_1s0_fig( pname, models ):
     #
     for model in models:
         #
-        gap = nuda.matter.setupMicroGap( model = model )
+        gap = nuda.matter.setupMicroGap( model = model, matter = matter )
         #
-        if gap.nm_gap_1s0 is not None:
-            if gap.nm_gap_1s0_err is not None:
-                axs[0,0].errorbar( gap.nm_den_1s0, gap.nm_gap_1s0, yerr=gap.nm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
-                axs[0,1].errorbar( gap.nm_kfn_1s0, gap.nm_gap_1s0, yerr=gap.nm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,0].errorbar( gap.nm_den_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), yerr=gap.nm_gap_1s0_err/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,1].errorbar( gap.nm_kfn_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), yerr=gap.nm_gap_1s0_err/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
-            else:
-                axs[0,0].plot( gap.nm_den_1s0, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
-                axs[0,1].plot( gap.nm_kfn_1s0, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,0].plot( gap.nm_den_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,1].plot( gap.nm_kfn_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+        if matter.lower() == 'nm':
+            if gap.nm_gap_1s0 is not None:
+                if gap.nm_gap_1s0_err is not None:
+                    axs[0,0].errorbar( gap.nm_den_1s0, gap.nm_gap_1s0, yerr=gap.nm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].errorbar( gap.nm_kfn_1s0, gap.nm_gap_1s0, yerr=gap.nm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].errorbar( gap.nm_den_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), yerr=gap.nm_gap_1s0_err/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].errorbar( gap.nm_kfn_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), yerr=gap.nm_gap_1s0_err/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                else:
+                    axs[0,0].plot( gap.nm_den_1s0, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].plot( gap.nm_kfn_1s0, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].plot( gap.nm_den_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].plot( gap.nm_kfn_1s0, gap.nm_gap_1s0/nuda.eF_n(gap.nm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+        elif matter.lower() == 'sm':
+            if gap.sm_gap_1s0 is not None:
+                if gap.sm_gap_1s0_err is not None:
+                    axs[0,0].errorbar( gap.sm_den_1s0, gap.sm_gap_1s0, yerr=gap.sm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].errorbar( gap.sm_kfn_1s0, gap.sm_gap_1s0, yerr=gap.sm_gap_1s0_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].errorbar( gap.sm_den_1s0, gap.sm_gap_1s0/nuda.eF_n(gap.sm_kfn_1s0), yerr=gap.sm_gap_1s0_err/nuda.eF_n(gap.sm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].errorbar( gap.sm_kfn_1s0, gap.sm_gap_1s0/nuda.eF_n(gap.sm_kfn_1s0), yerr=gap.sm_gap_1s0_err/nuda.eF_n(gap.sm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                else:
+                    axs[0,0].plot( gap.sm_den_1s0, gap.sm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].plot( gap.sm_kfn_1s0, gap.sm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].plot( gap.sm_den_1s0, gap.sm_gap_1s0/nuda.eF_n(gap.sm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].plot( gap.sm_kfn_1s0, gap.sm_gap_1s0/nuda.eF_n(gap.sm_kfn_1s0), marker=gap.marker, markevery=gap.every, linestyle='none' )
         if nuda.env.verb_output: gap.print_outputs( )
     #
     #axs[1,0].legend(loc='upper right',fontsize='8')
@@ -68,7 +81,7 @@ def matter_setupMicro_nm_gap_1s0_fig( pname, models ):
     	plt.savefig(pname, dpi=300)
     	plt.close()
 
-def matter_setupMicro_nm_gap_3pf2_fig( pname, models ):
+def matter_setupMicro_gap_3pf2_fig( pname, models, matter = 'NM' ):
     """
     Plot the correlation between Esym and Lsym.\
     The plot is 1x1 with:\
@@ -112,19 +125,32 @@ def matter_setupMicro_nm_gap_3pf2_fig( pname, models ):
     #
     for model in models:
         #
-        gap = nuda.matter.setupMicroGap( model = model )
+        gap = nuda.matter.setupMicroGap( model = model, matter = matter )
         #
-        if gap.nm_gap_3pf2 is not None:
-            if gap.nm_gap_3pf2_err is not None:
-                axs[0,0].errorbar( gap.nm_den_3pf2, gap.nm_gap_3pf2, yerr=gap.nm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
-                axs[0,1].errorbar( gap.nm_kfn_3pf2, gap.nm_gap_3pf2, yerr=gap.nm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,0].errorbar( gap.nm_den_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), yerr=gap.nm_gap_3pf2_err/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,1].errorbar( gap.nm_kfn_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), yerr=gap.nm_gap_3pf2_err/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
-            else:
-                axs[0,0].plot( gap.nm_den_3pf2, gap.nm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
-                axs[0,1].plot( gap.nm_kfn_3pf2, gap.nm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,0].plot( gap.nm_den_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
-                axs[1,1].plot( gap.nm_kfn_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+        if matter.lower() == 'nm':
+            if gap.nm_gap_3pf2 is not None:
+                if gap.nm_gap_3pf2_err is not None:
+                    axs[0,0].errorbar( gap.nm_den_3pf2, gap.nm_gap_3pf2, yerr=gap.nm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].errorbar( gap.nm_kfn_3pf2, gap.nm_gap_3pf2, yerr=gap.nm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].errorbar( gap.nm_den_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), yerr=gap.nm_gap_3pf2_err/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].errorbar( gap.nm_kfn_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), yerr=gap.nm_gap_3pf2_err/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                else:
+                    axs[0,0].plot( gap.nm_den_3pf2, gap.nm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].plot( gap.nm_kfn_3pf2, gap.nm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].plot( gap.nm_den_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].plot( gap.nm_kfn_3pf2, 100*gap.nm_gap_3pf2/nuda.eF_n(gap.nm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+        elif matter.lower() == 'sm':
+            if gap.sm_gap_3pf2 is not None:
+                if gap.sm_gap_3pf2_err is not None:
+                    axs[0,0].errorbar( gap.sm_den_3pf2, gap.sm_gap_3pf2, yerr=gap.sm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].errorbar( gap.sm_kfn_3pf2, gap.sm_gap_3pf2, yerr=gap.sm_gap_3pf2_err, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].errorbar( gap.sm_den_3pf2, 100*gap.sm_gap_3pf2/nuda.eF_n(gap.sm_kfn_3pf2), yerr=gap.sm_gap_3pf2_err/nuda.eF_n(gap.sm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].errorbar( gap.sm_kfn_3pf2, 100*gap.sm_gap_3pf2/nuda.eF_n(gap.sm_kfn_3pf2), yerr=gap.sm_gap_3pf2_err/nuda.eF_n(gap.sm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                else:
+                    axs[0,0].plot( gap.sm_den_3pf2, gap.sm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
+                    axs[0,1].plot( gap.sm_kfn_3pf2, gap.sm_gap_3pf2, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,0].plot( gap.sm_den_3pf2, 100*gap.sm_gap_3pf2/nuda.eF_n(gap.sm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[1,1].plot( gap.sm_kfn_3pf2, 100*gap.sm_gap_3pf2/nuda.eF_n(gap.sm_kfn_3pf2), marker=gap.marker, markevery=gap.every, linestyle='none' )
         if nuda.env.verb_output: gap.print_outputs( )
     #
     #axs[1,0].legend(loc='upper right',fontsize='8')
