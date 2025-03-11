@@ -36,6 +36,12 @@ jobs:
       - name: Run tests
         run: pytest version-0.2/tests/ --verbose
 
+      - name: Upload Version Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2/__init__.py
+
       - name: Build Sphinx documentation
         working-directory: docs
         run: make html
