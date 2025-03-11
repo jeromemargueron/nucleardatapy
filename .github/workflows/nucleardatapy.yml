@@ -51,9 +51,10 @@ jobs:
           path: |
             docs/_build/html/
             book/_build/html/
+
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/develop' # Only deploy from develop branch
+    if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -62,6 +63,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
+
+      - name: Download version file
+        uses: actions/download-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2
+
+      - name: Debug Directory Structure
+        run: ls -R
 
       - name: Extract version from __init__.py
         id: version
@@ -91,7 +101,7 @@ jobs:
           mkdir -p docs/$VERSION
           mkdir -p docs/latest
           cp -r public/* docs/$VERSION
-          cp -r public/* docs/latest  # Always update 'latest'
+          cp -r public/* docs/latest
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
