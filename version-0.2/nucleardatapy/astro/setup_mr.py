@@ -229,22 +229,19 @@ class setupMR():
         #
         if nuda.env.verb: print("Enter print_output()")
         #
-        if nuda.env.verb_output:
-            print("- Print output:")
-            print("   source:  ",self.source)
-            print("   obs:",self.obs)
-            print("   mass:",self.mass,' in Mo')
-            print("   sigma(mass):",self.mass_sig_up,self.mass_sig_lo,' in Mo')
-            print("   rad:",self.rad,' in km')
-            print("   sigma(mass):",self.rad_sig_up,self.rad_sig_lo,' in km')
-            print("   compactness:",self.comp)
-            print("   sigma(comp):",self.comp_sig_up,self.comp_sig_lo)
-            print("   latexCite:",self.latexCite)
-            print("   ref:    ",self.ref)
-            print("   label:  ",self.label)
-            print("   note:   ",self.note)
-        else:
-            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        print("- Print output:")
+        print("   source:  ",self.source)
+        print("   obs:",self.obs)
+        print("   mass:",self.mass,' in Mo')
+        print("   sigma(mass):",self.mass_sig_up,self.mass_sig_lo,' in Mo')
+        print("   rad:",self.rad,' in km')
+        print("   sigma(mass):",self.rad_sig_up,self.rad_sig_lo,' in km')
+        print("   compactness:",self.comp)
+        print("   sigma(comp):",self.comp_sig_up,self.comp_sig_lo)
+        print("   latexCite:",self.latexCite)
+        print("   ref:    ",self.ref)
+        print("   label:  ",self.label)
+        print("   note:   ",self.note)
         #
         if nuda.env.verb: print("Exit print_output()")
         #

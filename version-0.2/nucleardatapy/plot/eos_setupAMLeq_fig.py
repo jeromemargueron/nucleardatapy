@@ -195,7 +195,7 @@ def eos_setupAMLeq_xexmu_fig( pname, models_micro, models_pheno ):
                 if am.esym is not None: 
                     print('model:',model,' param:',param)
                     #beta.label=None
-                    axs.plot( am.den, am.x_el, linestyle='solid', label='$\delta=$'+str(asy), color=nuda.param.col[inda] )
+                    axs.plot( am.den, am.x_el, linestyle='solid', label=r'$\delta=$'+str(asy), color=nuda.param.col[inda] )
                     axs.plot( am.den, am.x_mu, linestyle='dashed', color=nuda.param.col[inda] )
                 if nuda.env.verb_output: pheno.print_outputs( )
                 break
