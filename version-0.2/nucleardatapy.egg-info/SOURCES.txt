@@ -840,6 +840,7 @@ version-0.2/nucleardatapy/data/nuclei/masses/Theory/2022-BSkG2.txt
 version-0.2/nucleardatapy/data/nuclei/masses/Theory/2023-BSkG3-old.txt
 version-0.2/nucleardatapy/data/nuclei/masses/Theory/2023-BSkG3.txt
 version-0.2/nucleardatapy/data/nuclei/masses/Theory/2024-BSkG4-old.txt
+version-0.2/nucleardatapy/data/nuclei/masses/Theory/2025-BSkG4.txt
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04.tar
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/DataSet04.dat
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/Makefile_ifc
@@ -900,7 +901,7 @@ version-0.2/nucleardatapy/plot/matter_setupNEPModelDist_fig.py
 version-0.2/nucleardatapy/plot/matter_setupPheno_fig.py
 version-0.2/nucleardatapy/plot/nuc_setupBEExp_fig.py
 version-0.2/tests/__init__.py
-version-0.2/tests/astro_setupMasses_tests.py
-version-0.2/tests/corr_setupKsatQsat_tests.py
-version-0.2/tests/matter_setupFFGNuc_tests.py
-version-0.2/tests/matter_setupMicro_tests.py
+version-0.2/tests/test_astro_setupMasses.py
+version-0.2/tests/test_corr_setupKsatQsat.py
+version-0.2/tests/test_matter_setupFFGNuc.py
+version-0.2/tests/test_matter_setupMicro.py

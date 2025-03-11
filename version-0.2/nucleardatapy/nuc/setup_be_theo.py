@@ -14,9 +14,9 @@ def be_theo_tables():
     predicted by theoretical approaches and print them all on the prompt. 
     These tables are the following ones: \
     [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
-    '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21', '2011-WS3', '2013-HFB22', \
+    '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21', '2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
-    '2022-BSkG2', '2023-BSkG3' ]
+    '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
 
     :return: The list of tables.
     :rtype: list[str].
@@ -25,9 +25,9 @@ def be_theo_tables():
     if nuda.env.verb: print("\nEnter be_theo_tables()")
     #
     tables = [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
-       '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB22', \
+       '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21','2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
-    '2022-BSkG2', '2023-BSkG3' ]
+    '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
     #
     #print('theory tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -56,8 +56,8 @@ class setupBETheo():
 
     `table` can chosen among the following ones: \
     [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
-    '2005-KTUY', '2007-HFB14', '2010-WS3', '2010-HFB21','2011-WS3', '2013-HFB26', '2021-BSkG1', \
-    '2022-BSkG2', '2023-BSkG3' ]
+    '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21','2011-WS3', '2013-HFB26', '2021-BSkG1', \
+    '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
 
     :param table: Fix the name of `table`. Default value: '1995-DZ'.
     :type table: str, optional. 
@@ -271,7 +271,7 @@ class setupBETheo():
             self.nucBE2A = self.nucBE / self.nucA
             self.Zmax = int( max( self.nucZ ) )
             #
-        elif table.lower()=='2010-ws3':
+        elif table.lower()=='2010-ws*':
             #
             # read the WS3 theoretical mass table
             #
@@ -460,21 +460,21 @@ class setupBETheo():
             self.nucBE2A = self.nucBE / self.nucA
             self.Zmax = int( max( self.nucZ ) )
             #
-        #elif table.lower()=='2024-bskg4':
+        elif table.lower()=='2025-bskg4':
             #
             # read the BSkG4 theoretical mass table
             #
-            #file_in = nuda.param.path_data+'nuclei/masses/Theory/2024-BSkG4.txt'
-            #if nuda.env.verb: print('Reads file:',file_in)
-            #self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely, arXiv:2411.08007 (2024).'
-            #self.note = "write here notes about this EOS."
-            #self.label = 'BSkG4-2024'
-            #self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            #self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
-            #self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
-            #self.nucA = self.nucZ + self.nucN
-            #self.nucBE = self.nucBE2A * self.nucA
-            #self.Zmax = int( max( self.nucZ ) )
+            file_in = nuda.param.path_data+'nuclei/masses/Theory/2025-BSkG4.txt'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely,  EPJA 61, 35 (2025).'
+            self.note = "write here notes about this EOS."
+            self.label = 'BSkG4-2024'
+            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
+            self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
+            self.nucA = self.nucZ + self.nucN
+            self.nucBE = self.nucBE2A * self.nucA
+            self.Zmax = int( max( self.nucZ ) )
             #
         #
         if nuda.env.verb: print("Exit setupBETheo()")
