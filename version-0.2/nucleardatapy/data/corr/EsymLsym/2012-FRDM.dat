@@ -1,0 +1,6 @@
+# FRDM (rectangle) corresponds to the values of S0 and L inferred from
+# finite-range droplet mass model calculations
+# P. M\"oller, W.D. Myers, H. Sagawa, S. Yoshida, Phys. Rev. Lett. 108, 052501 (2012)
+# Esym (MeV), Lsym_min (MeV), Lsym_max (MeV)
+32   55   85
+33   55   85
