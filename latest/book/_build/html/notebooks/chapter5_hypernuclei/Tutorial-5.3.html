@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.3. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi &#8212; Nuclear data toolkit</title>
+    <title>5.3. Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi &#8212; Nuclear data toolkit</title>
   
   
   
@@ -189,8 +189,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.1.html">2.1. Free Fermi gas (FFG)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.2.html">2.2. Microscopic calculations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.3.html">2.3. Chapter 2 tutorial 3: uncertainties in the theoretical predictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: pairing gap (micro)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.5.html">2.5. Chapter 2 tutorial 4: Landau parameters (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: Landau effective mass (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.5.html">2.5. Chapter 2 tutorial 5: pairing gap (micro)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.10.html">2.6. Chapter 2 tutorial 10: phenomenological interactions (pheno)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.20.html">2.7. Chapter 2 tutorial 20: Nuclear Empirical Parameters (NEP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.30.html">2.8. Chapter 2 tutorial 30: figures with micro and pheno together</a></li>
@@ -209,7 +209,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorial_chap5.html">5. Chapter 5: Hyper-nuclei</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-5.1.html">5.1. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-5.2.html">5.2. Chapter 5 Tutorial 1: experimental hyper-nuclei with 2 Lambda</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-5.4.html">5.4. Chapter 5 Tutorial 4: experimental hyper-nuclear chart</a></li>
 </ul>
 </details></li>
@@ -442,7 +442,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi</h1>
+    <h1>Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -456,8 +456,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-tutorial-1-experimental-hyper-nuclei-with-1-xi">
-<h1><span class="section-number">5.3. </span>Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi<a class="headerlink" href="#chapter-5-tutorial-1-experimental-hyper-nuclei-with-1-xi" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-tutorial-3-experimental-hyper-nuclei-with-1-xi">
+<h1><span class="section-number">5.3. </span>Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi<a class="headerlink" href="#chapter-5-tutorial-3-experimental-hyper-nuclei-with-1-xi" title="Link to this heading">#</a></h1>
 <p>In this tutorial, you will learn how to get experimental data associated to hyper-nuclei.</p>
 <hr class="docutils" />
 <p>Import the libraries that will be employed in this tutorial.</p>
@@ -481,17 +481,17 @@ document.write(`
 <span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
 <span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
 <span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig</span><span class="w">     </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupFFGNuc_fig</span><span class="w">       </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_err_NM_fig</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupFFGNuc_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_fig</span><span class="w">         </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_err_NM_fig</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
@@ -627,7 +627,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: [&#39;2016-1L-GHM&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: [&#39;2015-1Xi-Nakazawa&#39;]
 </pre></div>
 </div>
 </div>
@@ -635,7 +635,7 @@ document.write(`
 <p>Select a table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table1L</span> <span class="o">=</span> <span class="s1">&#39;2016-1L-GHM&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table1Xi</span> <span class="o">=</span> <span class="s1">&#39;2015-1Xi-Nakazawa&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -643,35 +643,28 @@ document.write(`
 <p>Instantiate <code class="docutils literal notranslate"><span class="pre">hnuc</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hnuc</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">hnuc</span><span class="o">.</span><span class="n">setupRE1LExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table1</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hnuc</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">hnuc</span><span class="o">.</span><span class="n">setupRE1XiExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table1Xi</span> <span class="p">)</span>
 <span class="n">hnuc</span><span class="o">.</span><span class="n">print_outputs</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hnuc</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">hnuc</span><span class="o">.</span><span class="n">setupRE1LExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">hnuc</span><span class="o">.</span><span class="n">print_outputs</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;table&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Print output:
+   table: 2015-1Xi-Nakazawa
+   ref: K.Y. Nakazawa, S. Endo, K. Fukunaga, S.H. Hoshino et al., PTEP 033D02 (2015).
+   key: KNakazawa:2015
+   label: []
+   note: write here notes about this table.
+   A: [15]
+   Z: [7]
+   N: [7]
+   S: [-2]
+  ch: [6]
+ symb: [&#39;N&#39;]
+ xibe: [4.378]
+ xibe_err: [0.25]
 </pre></div>
 </div>
-</div>
-</div>
-<p>Plot the hyper-nuclear chart:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hnuc_setupChart_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">table1L</span><span class="p">,</span> <span class="n">table2L</span><span class="p">,</span> <span class="n">table1Xi</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-</pre></div>
-</div>
-<img alt="../../_images/cac11a3e0287b3e71f73adc7caa40cdae68a1eacef826f074bc50f352e5147ea.png" src="../../_images/cac11a3e0287b3e71f73adc7caa40cdae68a1eacef826f074bc50f352e5147ea.png" />
 </div>
 </div>
 </section>

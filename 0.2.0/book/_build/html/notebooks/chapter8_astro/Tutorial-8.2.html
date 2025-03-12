@@ -189,8 +189,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.1.html">2.1. Free Fermi gas (FFG)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.2.html">2.2. Microscopic calculations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.3.html">2.3. Chapter 2 tutorial 3: uncertainties in the theoretical predictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: pairing gap (micro)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.5.html">2.5. Chapter 2 tutorial 4: Landau parameters (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: Landau effective mass (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.5.html">2.5. Chapter 2 tutorial 5: pairing gap (micro)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.10.html">2.6. Chapter 2 tutorial 10: phenomenological interactions (pheno)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.20.html">2.7. Chapter 2 tutorial 20: Nuclear Empirical Parameters (NEP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter2_matter/Tutorial-2.30.html">2.8. Chapter 2 tutorial 30: figures with micro and pheno together</a></li>
@@ -209,7 +209,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter5_hypernuclei/tutorial_chap5.html">5. Chapter 5: Hyper-nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.1.html">5.1. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.2.html">5.2. Chapter 5 Tutorial 1: experimental hyper-nuclei with 2 Lambda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.4.html">5.4. Chapter 5 Tutorial 4: experimental hyper-nuclear chart</a></li>
 </ul>
 </details></li>
@@ -481,17 +481,17 @@ document.write(`
 <span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
 <span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
 <span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig</span><span class="w">     </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupFFGNuc_fig</span><span class="w">       </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_err_NM_fig</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupFFGNuc_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_fig</span><span class="w">         </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_err_NM_fig</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
@@ -796,7 +796,7 @@ source: J1600+3053, obss: [1]
 <p>Figure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">astro_setupMasses_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sources</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">astro_setupMasses_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sources</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -189,8 +189,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-2.1.html">2.1. Free Fermi gas (FFG)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Microscopic calculations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-2.3.html">2.3. Chapter 2 tutorial 3: uncertainties in the theoretical predictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: pairing gap (micro)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.5.html">2.5. Chapter 2 tutorial 4: Landau parameters (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.4.html">2.4. Chapter 2 tutorial 4: Landau effective mass (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.5.html">2.5. Chapter 2 tutorial 5: pairing gap (micro)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-2.10.html">2.6. Chapter 2 tutorial 10: phenomenological interactions (pheno)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-2.20.html">2.7. Chapter 2 tutorial 20: Nuclear Empirical Parameters (NEP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial-2.30.html">2.8. Chapter 2 tutorial 30: figures with micro and pheno together</a></li>
@@ -209,7 +209,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter5_hypernuclei/tutorial_chap5.html">5. Chapter 5: Hyper-nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.1.html">5.1. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.2.html">5.2. Chapter 5 Tutorial 1: experimental hyper-nuclei with 2 Lambda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Chapter 5 Tutorial 1: experimental hyper-nuclei with 1 Xi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Chapter 5 Tutorial 3: experimental hyper-nuclei with 1 Xi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.4.html">5.4. Chapter 5 Tutorial 4: experimental hyper-nuclear chart</a></li>
 </ul>
 </details></li>
@@ -481,17 +481,17 @@ document.write(`
 <span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
 <span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
 <span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig</span><span class="w">     </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupFFGNuc_fig</span><span class="w">       </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.plot.matter_setupMicro_err_NM_fig</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupFFGNuc_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_fig</span><span class="w">         </span><span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_err_NM_fig</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">plot</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
@@ -626,7 +626,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2006-BHF-AM&#39;, &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;]
 </pre></div>
 </div>
 </div>
@@ -739,7 +739,7 @@ model -&gt;  1998-VAR-AM-APR
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2006-BHF-AM&#39;, &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;]
 model: 1981-VAR-AM-FP
 model -&gt;  1981-VAR-AM-FP
 model: 1998-VAR-AM-APR
@@ -776,6 +776,8 @@ model: 2012-AFDMC-NM-FIT-7
 model -&gt;  2012-AFDMC-NM-FIT-7
 model: 2022-AFDMC-NM
 model -&gt;  2022-AFDMC-NM
+model: 2006-BHF-AM
+model -&gt;  2006-BHF-AM
 model: 2024-BHF-AM-2BF-Av8p
 model -&gt;  2024-BHF-AM-2BF-Av8p
 model: 2024-BHF-AM-2BF-Av18
@@ -877,7 +879,7 @@ nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
     <span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="n">matter</span>  <span class="p">)</span>
     <span class="k">for</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">mbs</span><span class="p">:</span>
         <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models_mb_matter</span><span class="p">(</span> <span class="n">mb</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
-        <span class="c1">#nuda.plot.matter_setupMicro_E_fig( pname=None, mb, models, band, matter )</span>
+        <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupMicro_E_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mb</span> <span class="o">=</span> <span class="n">mb</span><span class="p">,</span> <span class="n">models</span> <span class="o">=</span> <span class="n">models</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -896,16 +898,120 @@ model -&gt;  2016-QMC-NM
 model -&gt;  2020-MBPT-AM
 For mb (in SM): VAR
 models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+Plot name: None
+model -&gt;  1981-VAR-AM-FP
+model: 1981-VAR-AM-FP  delta: 1.0
+model -&gt;  1998-VAR-AM-APR
+model: 1998-VAR-AM-APR  delta: 1.0
+model -&gt;  1998-VAR-AM-APR-fit
+model: 1998-VAR-AM-APR-fit  delta: 1.0
 For mb (in SM): AFDMC
 models2: [&#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;]
+Plot name: None
+model -&gt;  2012-AFDMC-NM-RES-1
+model: 2012-AFDMC-NM-RES-1  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-2
+model: 2012-AFDMC-NM-RES-2  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-3
+model: 2012-AFDMC-NM-RES-3  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-4
+model: 2012-AFDMC-NM-RES-4  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-5
+model: 2012-AFDMC-NM-RES-5  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-6
+model: 2012-AFDMC-NM-RES-6  delta: 1.0
+model -&gt;  2012-AFDMC-NM-RES-7
+model: 2012-AFDMC-NM-RES-7  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-1
+model: 2012-AFDMC-NM-FIT-1  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-2
+model: 2012-AFDMC-NM-FIT-2  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-3
+model: 2012-AFDMC-NM-FIT-3  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-4
+model: 2012-AFDMC-NM-FIT-4  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-5
+model: 2012-AFDMC-NM-FIT-5  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-6
+model: 2012-AFDMC-NM-FIT-6  delta: 1.0
+model -&gt;  2012-AFDMC-NM-FIT-7
+model: 2012-AFDMC-NM-FIT-7  delta: 1.0
+model -&gt;  2022-AFDMC-NM
+model: 2022-AFDMC-NM  delta: 1.0
 For mb (in SM): BHF
-models2: [&#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;]
+models2: [&#39;2006-BHF-AM&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;]
+Plot name: None
+model -&gt;  2006-BHF-AM
+model: 2006-BHF-AM  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-Av8p
+model: 2024-BHF-AM-23BF-Av8p  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-Av18
+model: 2024-BHF-AM-23BF-Av18  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-BONN
+model: 2024-BHF-AM-23BF-BONN  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-CDBONN
+model: 2024-BHF-AM-23BF-CDBONN  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97a
+model: 2024-BHF-AM-23BF-NSC97a  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97b
+model: 2024-BHF-AM-23BF-NSC97b  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97c
+model: 2024-BHF-AM-23BF-NSC97c  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97d
+model: 2024-BHF-AM-23BF-NSC97d  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97e
+model: 2024-BHF-AM-23BF-NSC97e  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-NSC97f
+model: 2024-BHF-AM-23BF-NSC97f  delta: 1.0
+model -&gt;  2024-BHF-AM-23BF-SSCV14
+model: 2024-BHF-AM-23BF-SSCV14  delta: 1.0
 For mb (in SM): QMC
 models2: [&#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;]
+Plot name: None
+model -&gt;  2008-QMC-NM-swave
+model: 2008-QMC-NM-swave  delta: 1.0
+model -&gt;  2010-QMC-NM-AV4
+model: 2010-QMC-NM-AV4  delta: 1.0
+model -&gt;  2009-DLQMC-NM
+model: 2009-DLQMC-NM  delta: 1.0
+model -&gt;  2013-QMC-NM
+model: 2013-QMC-NM  delta: 1.0
+model -&gt;  2014-AFQMC-NM
+model: 2014-AFQMC-NM  delta: 1.0
+model -&gt;  2016-QMC-NM
+model: 2016-QMC-NM  delta: 1.0
+model -&gt;  2018-QMC-NM
+model: 2018-QMC-NM  delta: 1.0
+model -&gt;  2024-QMC-NM
+model: 2024-QMC-NM  delta: 1.0
 For mb (in SM): MBPT
 models2: [&#39;2016-MBPT-AM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;]
+Plot name: None
+model -&gt;  2016-MBPT-AM
+model: 2016-MBPT-AM  delta: 1.0
+model -&gt;  2010-MBPT-NM
+model: 2010-MBPT-NM  delta: 1.0
+model -&gt;  2016-MBPT-AM
+model: 2016-MBPT-AM  delta: 1.0
+model -&gt;  2019-MBPT-AM-L59
+model: 2019-MBPT-AM-L59  delta: 1.0
+model -&gt;  2019-MBPT-AM-L69
+model: 2019-MBPT-AM-L69  delta: 1.0
+model -&gt;  2020-MBPT-AM
+model: 2020-MBPT-AM  delta: 1.0
 For mb (in SM): NLEFT
 models2: [&#39;2024-NLEFT-AM&#39;]
+Plot name: None
+model -&gt;  2024-NLEFT-AM
+sm_popt: [-9.17066374 10.01180281 -3.0695996 ]
+sm_pcov: [[ 0.5046284  -0.83636905  0.3404081 ]
+ [-0.83636905  1.40263159 -0.57637576]
+ [ 0.3404081  -0.57637576  0.2387368 ]]
+nm_popt: [-1.18794127  0.71930869 -0.11294904]
+nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
+ [-0.01702128  0.02165017 -0.00663766]
+ [ 0.00515286 -0.00663766  0.00205605]]
+model: 2024-NLEFT-AM  delta: 1.0
 
 Band in SM
 model -&gt;  2016-MBPT-AM
@@ -916,18 +1022,92 @@ model -&gt;  2016-MBPT-AM
 model -&gt;  2020-MBPT-AM
 For mb (in SM): VAR
 models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+Plot name: None
+model -&gt;  1981-VAR-AM-FP
+model: 1981-VAR-AM-FP  delta: 0.0
+model -&gt;  1998-VAR-AM-APR
+model: 1998-VAR-AM-APR  delta: 0.0
+model -&gt;  1998-VAR-AM-APR-fit
+model: 1998-VAR-AM-APR-fit  delta: 0.0
 For mb (in SM): AFDMC
 models2: []
-For mb (in SM): BHF
-models2: [&#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;]
-For mb (in SM): QMC
-models2: []
-For mb (in SM): MBPT
-models2: [&#39;2016-MBPT-AM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;]
-For mb (in SM): NLEFT
-models2: [&#39;2024-NLEFT-AM&#39;]
+Plot name: None
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/margueron/Git/GitHub/nucleardatapy/version-0.2/nucleardatapy/fig/matter_setupMicro_fig.py:161: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  fig.legend(loc=&#39;upper left&#39;,bbox_to_anchor=(0.1,1.0),fontsize=&#39;8&#39;,ncol=3,frameon=False)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For mb (in SM): BHF
+models2: [&#39;2006-BHF-AM&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;]
+Plot name: None
+model -&gt;  2006-BHF-AM
+model: 2006-BHF-AM  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-Av8p
+model: 2024-BHF-AM-23BF-Av8p  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-Av18
+model: 2024-BHF-AM-23BF-Av18  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-BONN
+model: 2024-BHF-AM-23BF-BONN  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-CDBONN
+model: 2024-BHF-AM-23BF-CDBONN  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97a
+model: 2024-BHF-AM-23BF-NSC97a  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97b
+model: 2024-BHF-AM-23BF-NSC97b  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97c
+model: 2024-BHF-AM-23BF-NSC97c  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97d
+model: 2024-BHF-AM-23BF-NSC97d  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97e
+model: 2024-BHF-AM-23BF-NSC97e  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-NSC97f
+model: 2024-BHF-AM-23BF-NSC97f  delta: 0.0
+model -&gt;  2024-BHF-AM-23BF-SSCV14
+model: 2024-BHF-AM-23BF-SSCV14  delta: 0.0
+For mb (in SM): QMC
+models2: []
+Plot name: None
+For mb (in SM): MBPT
+models2: [&#39;2016-MBPT-AM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;]
+Plot name: None
+model -&gt;  2016-MBPT-AM
+model: 2016-MBPT-AM  delta: 0.0
+model -&gt;  2016-MBPT-AM
+model: 2016-MBPT-AM  delta: 0.0
+model -&gt;  2019-MBPT-AM-L59
+model: 2019-MBPT-AM-L59  delta: 0.0
+model -&gt;  2019-MBPT-AM-L69
+model: 2019-MBPT-AM-L69  delta: 0.0
+model -&gt;  2020-MBPT-AM
+model: 2020-MBPT-AM  delta: 0.0
+For mb (in SM): NLEFT
+models2: [&#39;2024-NLEFT-AM&#39;]
+Plot name: None
+model -&gt;  2024-NLEFT-AM
+sm_popt: [-9.17066374 10.01180281 -3.0695996 ]
+sm_pcov: [[ 0.5046284  -0.83636905  0.3404081 ]
+ [-0.83636905  1.40263159 -0.57637576]
+ [ 0.3404081  -0.57637576  0.2387368 ]]
+nm_popt: [-1.18794127  0.71930869 -0.11294904]
+nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
+ [-0.01702128  0.02165017 -0.00663766]
+ [ 0.00515286 -0.00663766  0.00205605]]
+model: 2024-NLEFT-AM  delta: 0.0
+</pre></div>
+</div>
+<img alt="../../_images/9d64d5ff97a36cfeab10b74d5fb7c1bc7076142a65b1153cb0826868d7c8d568.png" src="../../_images/9d64d5ff97a36cfeab10b74d5fb7c1bc7076142a65b1153cb0826868d7c8d568.png" />
+<img alt="../../_images/7c17fd6fe794d6835121f7cb4489940cbb56c903bb6272475cbebf32e394ed67.png" src="../../_images/7c17fd6fe794d6835121f7cb4489940cbb56c903bb6272475cbebf32e394ed67.png" />
+<img alt="../../_images/573d527e13df7382590aa34ddc0e48e35c4076ce793c9a23a17cec105e15f881.png" src="../../_images/573d527e13df7382590aa34ddc0e48e35c4076ce793c9a23a17cec105e15f881.png" />
+<img alt="../../_images/1ae69d78aeb597d03b14bcdcb7a475ee411cdef69681368e8d4e0c471fe15155.png" src="../../_images/1ae69d78aeb597d03b14bcdcb7a475ee411cdef69681368e8d4e0c471fe15155.png" />
+<img alt="../../_images/8beb6a640ff2ce39c673e615fec09456af65bab47b084612be9715dbc0d47604.png" src="../../_images/8beb6a640ff2ce39c673e615fec09456af65bab47b084612be9715dbc0d47604.png" />
+<img alt="../../_images/1a18f45e870c856a9262f9a90c8462524470d6c5ca573ba9e7ab86e14c8a9ea7.png" src="../../_images/1a18f45e870c856a9262f9a90c8462524470d6c5ca573ba9e7ab86e14c8a9ea7.png" />
+<img alt="../../_images/b6aaf079599e8a70feb843454727318b9cafdb65dd98081b63ddc565e4931c59.png" src="../../_images/b6aaf079599e8a70feb843454727318b9cafdb65dd98081b63ddc565e4931c59.png" />
+<img alt="../../_images/f0b60de522c402350b3b2f92631eac71276dad800020a84ae095d8e29bc736a4.png" src="../../_images/f0b60de522c402350b3b2f92631eac71276dad800020a84ae095d8e29bc736a4.png" />
+<img alt="../../_images/72d1db08f81ece5d46f03036f9d622de33e9f11ce3d33eb1e59e4a83fe5d8139.png" src="../../_images/72d1db08f81ece5d46f03036f9d622de33e9f11ce3d33eb1e59e4a83fe5d8139.png" />
+<img alt="../../_images/f0b60de522c402350b3b2f92631eac71276dad800020a84ae095d8e29bc736a4.png" src="../../_images/f0b60de522c402350b3b2f92631eac71276dad800020a84ae095d8e29bc736a4.png" />
+<img alt="../../_images/af40208230552853a845c02caaaf4473bf946c58a0768461792aee9522bed1ee.png" src="../../_images/af40208230552853a845c02caaaf4473bf946c58a0768461792aee9522bed1ee.png" />
+<img alt="../../_images/4bd0e97373d335def6f151bd0a603228d04239fce0cf3ac678aecf385f770ed3.png" src="../../_images/4bd0e97373d335def6f151bd0a603228d04239fce0cf3ac678aecf385f770ed3.png" />
 </div>
 </div>
 </section>
