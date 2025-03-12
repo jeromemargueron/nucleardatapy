@@ -23,15 +23,15 @@ def main():
     # plot Esym
     #
     pname = 'figs/plot_eos_setupAMLeq_xe.png'
-    nuda.plot.eos_setupAMLeq_xe_fig( pname, micro_models, pheno_models )
+    nuda.fig.eos_setupAMLeq_xe_fig( pname, micro_models, pheno_models )
     #
     pname = 'figs/plot_eos_setupAMLeq_xmu.png'
-    nuda.plot.eos_setupAMLeq_xmu_fig( pname, micro_models, pheno_models )
+    nuda.fig.eos_setupAMLeq_xmu_fig( pname, micro_models, pheno_models )
     #
     micro_models = [ ]
     pheno_models = [ 'DDRHF' ]
     pname = 'figs/plot_eos_setupAMLeq_xexmu.png'
-    nuda.plot.eos_setupAMLeq_xexmu_fig( pname, micro_models, pheno_models )
+    nuda.fig.eos_setupAMLeq_xexmu_fig( pname, micro_models, pheno_models )
     #
     print(50*'-')
     print("Exit eos_setupAMLeq_plot.py:")

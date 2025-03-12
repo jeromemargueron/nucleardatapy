@@ -39,7 +39,7 @@ def main():
     # plot the results:
     #
     pname = 'figs/plot_astro_setupMtov.png'
-    nuda.plot.astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, sources_up2, sources_up3 )
+    nuda.fig.astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, sources_up2, sources_up3 )
     #
     print(50*'-')
     print("Exit astro_setupMtov_plot.py:")
