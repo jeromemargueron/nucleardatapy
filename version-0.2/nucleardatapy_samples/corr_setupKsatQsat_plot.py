@@ -24,7 +24,7 @@ def main():
     constraints, constraints_lower = nuda.corr.KsatQsat_constraints()
     #
     pname = 'figs/plot_corr_setupKsatQsat.png'
-    nuda.plot.corr_setupKsatQsat_fig( pname, constraints )
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
     #
     print(50*'-')
     print("Exit corr_setupKsatQsat_plot.py:")

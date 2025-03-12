@@ -34,7 +34,7 @@ def main():
     # plot Esym
     #
     pname = 'figs/plot_matter_ESM.png'
-    nuda.plot.matter_ESM_fig( pname, micro_mbs, pheno_models, band )
+    nuda.fig.matter_ESM_fig( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')
     print("Exit matter_ESM_plot.py:")

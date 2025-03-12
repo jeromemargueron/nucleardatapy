@@ -16,14 +16,14 @@ def micro_LP_models():
     print them all on the prompt. These models are the following ones: \
     '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
     '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7', \
-    '2007-BHF-NM-LP-BONNC'.
+    '2006-BHF-SM-AV18', '2006-BHF-NM-AV18', '2006-IBHF-SM-AV18', '2006-IBHF-NM-AV18', '2007-BHF-NM-LP-BONNC'.
 
     :return: The list of models.
     :rtype: list[str].
     """
     models = [ '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
     '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7', \
-    '2007-BHF-NM-LP-BONNC' ]
+    '2006-BHF-SM-AV18', '2006-BHF-NM-AV18', '2006-IBHF-SM-AV18', '2006-IBHF-NM-AV18', '2007-BHF-NM-LP-BONNC' ]
     if nuda.env.verb: print('models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     return models, models_lower
@@ -37,7 +37,7 @@ class setupMicroLP():
     the following choices: \
     '1994-BHF-SM-LP-AV14-GAP', '1994-BHF-SM-LP-AV14-CONT', \
     '1994-BHF-SM-LP-REID-GAP', '1994-BHF-SM-LP-REID-CONT', '1994-BHF-SM-LP-AV14-CONT-0.7',\
-    '2007-BHF-NM-LP-BONNC'.
+    '2006-BHF-SM-AV18', '2006-BHF-NM-AV18', '2006-IBHF-SM-AV18', '2006-IBHF-NM-AV18', '2007-BHF-NM-LP-BONNC'.
 
     :param model: Fix the name of model. Default value: '1994-BHF-LP'.
     :type model: str, optional. 
@@ -68,6 +68,15 @@ class setupMicroLP():
             print('list of models:',models)
             print('-- Exit the code --')
             exit()
+        #
+        for ell in range(0,8):
+            self.sm_LP['F'][ell]  = None
+            self.sm_LP['G'][ell]  = None
+            self.sm_LP['Fp'][ell] = None
+            self.sm_LP['Gp'][ell] = None
+            self.nm_LP['F'][ell]  = None
+            self.nm_LP['G'][ell]  = None
+        self.every = 1
         #
         if '1994-bhf-sm-lp' in model.lower():
             #
@@ -174,6 +183,58 @@ class setupMicroLP():
             #print('F:',self.sm_LP['F'][0])
             #print('G:',self.sm_LP['G'][0])
         #
+        elif model.lower() == '2006-bhf-sm-av18':
+            #
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-BHF-SM-AV18.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
+            self.note = "write here notes about this EOS."
+            self.err = False
+            self.label = 'BHF-AV18-2006'
+            self.marker = 's'
+            self.sm_kfn, self.sm_LP['F'][0], self.sm_LP['Fp'][0], self.sm_LP['G'][0], self.sm_LP['Gp'][0] = \
+              np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True, dtype=float )
+            self.every = 300
+        #
+        elif model.lower() == '2006-bhf-nm-av18':
+            #
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-BHF-NM-AV18.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
+            self.note = "write here notes about this EOS."
+            self.err = False
+            self.label = 'BHF-AV18-2006'
+            self.marker = 's'
+            self.nm_kfn, self.nm_LP['F'][0], self.nm_LP['G'][0] = \
+              np.loadtxt( file_in, usecols=(0,1,2), comments='#', unpack = True, dtype=float )
+            self.every = 300
+        #
+        elif model.lower() == '2006-ibhf-sm-av18':
+            #
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-IBHF-SM-AV18.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
+            self.note = "write here notes about this EOS."
+            self.err = False
+            self.label = 'IBHF-AV18-2006'
+            self.marker = 'o'
+            self.sm_kfn, self.sm_LP['F'][0], self.sm_LP['Fp'][0], self.sm_LP['G'][0], self.sm_LP['Gp'][0] = \
+              np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True, dtype=float )
+            self.every = 300
+        #
+        elif model.lower() == '2006-ibhf-nm-av18':
+            #
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-IBHF-NM-AV18.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
+            self.note = "write here notes about this EOS."
+            self.err = False
+            self.label = 'IBHF-AV18-2006'
+            self.marker = 'o'
+            self.nm_kfn, self.nm_LP['F'][0], self.nm_LP['G'][0] = \
+              np.loadtxt( file_in, usecols=(0,1,2), comments='#', unpack = True, dtype=float )
+            self.every = 300
+        #
         elif model.lower() == '2007-bhf-nm-lp-bonnc':
             #
             file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2007-BHF-NM.dat')
@@ -181,20 +242,10 @@ class setupMicroLP():
             self.ref = 'Armen Sedrakian, Herbert Müther, Peter Schuck, Phys Rev C 76, 055805 (2007)'
             self.note = "write here notes about this EOS."
             self.err = False
-            #
             self.label = 'BHF-BonnC-2007'
             self.marker = 's'
-            #
             self.nm_kfn, self.nm_effmass, lp_f, lp_g, self.nm_gap, self.nm_Tc = \
               np.loadtxt( file_in, usecols=(0,1,2,3,4,5), comments='#', unpack = True, dtype=float )
-            #print('kfn:',self.nm_kfn)
-            for ell in range(0,8):
-                self.sm_LP['F'][ell]  = None
-                self.sm_LP['G'][ell]  = None
-                self.sm_LP['Fp'][ell] = None
-                self.sm_LP['Gp'][ell] = None
-                self.nm_LP['F'][ell]  = None
-                self.nm_LP['G'][ell]  = None
             self.nm_LP['F'][0]  = lp_f
             self.nm_LP['G'][0]  = lp_g
             #print('F:',self.nm_LP['F'][0])

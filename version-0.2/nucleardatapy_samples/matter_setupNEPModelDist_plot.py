@@ -24,7 +24,7 @@ def main():
     # plot distribution of NEP
     #
     pname = 'figs/plot_matter_setupNEPModelDist.png'
-    nuda.plot.matter_setupNEPModelDist_fig( pname, models )
+    nuda.fig.matter_setupNEPModelDist_fig( pname, models )
     #
     print(50*'-')
     print("Exit matter_setupNEPModelDist_plot.py:")

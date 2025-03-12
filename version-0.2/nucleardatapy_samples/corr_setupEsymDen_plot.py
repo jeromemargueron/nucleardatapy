@@ -20,7 +20,7 @@ def main():
         #
         pname = 'figs/plot_corr_setupEsymDen_'+str(int(Ksym))+'.png'
         #
-        nuda.plot.corr_setupEsymDen_fig( pname, constraints, Ksym )
+        nuda.fig.corr_setupEsymDen_fig( pname, constraints, Ksym )
     #
     print(50*'-')
     print("Exit corr_setupEsymDen_plot.py:")

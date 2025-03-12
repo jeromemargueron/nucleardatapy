@@ -18,7 +18,7 @@ def main():
     constraints, constraints_lower = nuda.corr.EsymLsym_constraints()
     #
     pname = 'figs/plot_corr_setupEsymLsym.png'
-    nuda.plot.corr_setupEsymLsym_fig( pname, constraints )
+    nuda.fig.corr_setupEsymLsym_fig( pname, constraints )
     #
     print(50*'-')
     print("Exit corr_setupEsymLsym_fig.py:")

@@ -18,7 +18,7 @@ def main():
     # plot crust
     #
     pname = 'figs/plot_crust_setupCrust.png'
-    nuda.plot.crust_setupCrust_fig( pname, models )
+    nuda.fig.crust_setupCrust_fig( pname, models )
     #
     print(50*'-')
     print("Exit crust_setupCrust_plot.py:")

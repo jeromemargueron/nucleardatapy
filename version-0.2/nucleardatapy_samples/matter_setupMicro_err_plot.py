@@ -18,7 +18,7 @@ def main():
     # plot errors in NM
     #
     pname = 'figs/plot_matter_setupMicro_err_NM.png'
-    nuda.plot.matter_setupMicro_err_NM_fig( pname, models )
+    nuda.fig.matter_setupMicro_err_NM_fig( pname, models )
     #
     print(50*'-')
     print("Exit matter_setupMicro_err_plot.py:")

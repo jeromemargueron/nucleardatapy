@@ -31,7 +31,7 @@ def main():
     #
     pname = 'figs/plot_matter_setupPhenoEsym.png'
     #
-    nuda.plot.matter_setupPhenoEsym_fig( pname, models, bandEsym )
+    nuda.fig.matter_setupPhenoEsym_fig( pname, models, bandEsym )
     #
     print(50*'-')
     print("Exit matter_setupPhenoEsym_plot.py:")

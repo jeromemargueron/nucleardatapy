@@ -260,8 +260,8 @@ class setupMicroGap():
             self.nm_kfn_effmass, effmass_lo, effmass_up \
                 = np.loadtxt( file_effmass, usecols = (0, 1, 2), delimiter=',', comments='#', unpack = True)
             self.nm_den_effmass = nuda.den_n( self.nm_kfn_effmass )
-            self.nn_effmass = 0.5 * ( effmass_up + effmass_lo )
-            self.nn_effmass_err = 0.5 * ( effmass_up - effmass_up )
+            self.nm_effmass = 0.5 * ( effmass_up + effmass_lo )
+            self.nm_effmass_err = 0.5 * ( effmass_up - effmass_up )
             self.nm_kfn_1s0, gap_lo, gap_up \
                 = np.loadtxt( file_1s0, usecols = (0, 1, 2), delimiter=',', comments='#', unpack = True)
             self.nm_den_1s0 = nuda.den_n( self.nm_kfn_1s0 )
