@@ -870,6 +870,7 @@ version-0.2/nucleardatapy/matter/setup_ffg.py
 version-0.2/nucleardatapy/matter/setup_hic.py
 version-0.2/nucleardatapy/matter/setup_micro.py
 version-0.2/nucleardatapy/matter/setup_micro_band.py
+version-0.2/nucleardatapy/matter/setup_micro_effmass.py
 version-0.2/nucleardatapy/matter/setup_micro_esym.py
 version-0.2/nucleardatapy/matter/setup_micro_gap.py
 version-0.2/nucleardatapy/matter/setup_micro_lp.py
@@ -909,6 +910,7 @@ version-0.2/nucleardatapy/plot/matter_setupHIC_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicroEsym_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_LP_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_band_fig.py
+version-0.2/nucleardatapy/plot/matter_setupMicro_effmass_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_err_NM_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_fig.py
 version-0.2/nucleardatapy/plot/matter_setupMicro_gap_fig.py
