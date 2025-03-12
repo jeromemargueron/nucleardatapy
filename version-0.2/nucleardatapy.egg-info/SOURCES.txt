@@ -1,3 +1,4 @@
+LICENSE
 MANIFEST.in
 README.md
 install.sh
@@ -8,6 +9,7 @@ docs/Makefile
 docs/conf.py
 docs/index.rst
 docs/make.bat
+docs/nucleardatapy.pdf
 docs/source/api.rst
 docs/source/miscelaneous.rst
 docs/source/usage.rst
