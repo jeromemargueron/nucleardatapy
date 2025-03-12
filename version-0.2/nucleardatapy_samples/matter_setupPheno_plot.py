@@ -46,7 +46,7 @@ def main():
             #
             pname = 'figs/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
             #
-            nuda.plot.matter_setupPheno_E_fig( pname, model, band, matter )
+            nuda.fig.matter_setupPheno_E_fig( pname, model, band, matter )
 
     #
     print(50*'-')

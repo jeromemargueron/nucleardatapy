@@ -21,9 +21,9 @@ def main():
     #
     # plot effective mass
     #
-    pname = 'figs/plot_matter_setupMicro_effmass.png'
+    pname = 'figs/plot_matter_setupMicro_effmass_NM.png'
     #
-    nuda.plot.matter_setupMicro_effmass_fig( pname, models )
+    nuda.fig.matter_setupMicro_effmass_fig( pname, models, matter = 'NM' )
     #
     print(50*'-')
     print("Exit matter_setupMicro_effmass_plot.py:")

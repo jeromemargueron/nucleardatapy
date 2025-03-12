@@ -1,3 +1,5 @@
+import os
+import sys
 import math
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
@@ -10,7 +12,7 @@ def micro_effmass_models( matter = 'NM' ):
     """
     Return a list with the name of the models available in this toolkit and \
     print them all on the prompt. These models are the following ones: \
-    '2008-BCS-NM', '2008-AFDMC-NM', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+    '2008-BCS-NM', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO'
 
@@ -21,8 +23,8 @@ def micro_effmass_models( matter = 'NM' ):
     """
     #
     if nuda.env.verb: print("\nEnter micro_effmass_models()")
-    #
-    models_all = [ '2008-BCS-NM', '2008-AFDMC-NM', \
+    # '2008-AFDMC-NM', 
+    models_all = [ '2008-BCS-NM', \
             '2017-MBPT-NM-GAP-EMG-450-500-N2LO', '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
             '2022-AFDMC-NM' ]
@@ -48,7 +50,7 @@ class setupMicroEffmass():
 
     This choice is defined in `model`, which can chosen among \
     the following choices: \
-    '2008-BCS-NM', '2008-AFDMC-NM', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
+    '2008-BCS-NM', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
     '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO'
 
@@ -73,9 +75,9 @@ class setupMicroEffmass():
         if nuda.env.verb: print("model:",model)
         print("-> model:",model)
         #
-        self = setupMicroGap.init_self( self )
+        self = setupMicroEffmass.init_self( self )
         #
-        models, models_lower, models_all, models_all_lower = micro_gap_models( matter = matter )
+        models, models_lower, models_all, models_all_lower = micro_effmass_models( matter = matter )
         #
         if model.lower() not in models_all_lower:
             print('setup_micro_effmass: The model name ',model,' is not in the list of models.')
@@ -93,6 +95,8 @@ class setupMicroEffmass():
             self.marker = 'o'
             self.every = 1
             #self.linestyle = 'dotted'
+            self.err = False
+            self.nm_effmass_err = None
             self.nm_kfn, nm_gap, nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -107,10 +111,13 @@ class setupMicroEffmass():
             self.marker = 'D'
             self.every = 1
             #self.linestyle = 'solid'
-            self.gap_err = False
+            self.err = False
+            self.nm_effmass_err = None
             self.nm_kfn, nm_gap, nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
             self.nm_den  = nuda.den_n( self.nm_kfn )
+            print('kfn:',self.nm_kfn)
+            print('ms:',self.nm_effmass)
             #
         elif '2017-mbpt-nm-gap-em' in model.lower() :
             #
@@ -192,10 +199,13 @@ class setupMicroEffmass():
         #: Attribute the neutron matter effective mass.
         self.nm_effmass = None
         self.sm_effmass = None
+        self.nm_effmass_err = None
+        self.sm_effmass_err = None
         #: Attribute the plot label data.
         self.label = ''
         #: Attribute the plot marker.
         self.marker = None
+        self.err = False
         #: Attribute the plot every data.
         self.every = 1
         #

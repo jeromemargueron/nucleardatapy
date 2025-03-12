@@ -22,23 +22,23 @@ def matter_setupMicro_effmass_fig( pname, models, matter = 'NM' ):
     print('models:',models)
     print('matter:',matter)
     #
-    fig, axs = plt.subplots(2,2)
+    fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_ylabel(r'$m^*/m$')
+    axs[0].set_ylabel(r'Landau effective mass $m^*/m$')
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    #axs[0].set_xlim([0, 0.048])
-    #axs[0].set_ylim([0, 3.0])
+    axs[0].set_xlim([0, 0.34])
+    axs[0].set_ylim([0.4, 1.2])
     #axs[0].tick_params('x', labelbottom=False)
     #
-    #axs[1].set_xlim([0, 1.6])
-    #axs[1].set_ylim([0, 3.0])
+    axs[1].set_xlim([0, 2.0])
+    axs[1].set_ylim([0.4, 1.2])
     #axs[1].tick_params('x', labelbottom=False)
-    #axs[1].tick_params('y', labelleft=False)
+    axs[1].tick_params('y', labelleft=False)
     axs[1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
     #
-    axs[1,0].set_ylabel(r'$\Delta_{1S0}/E_F$')
+    #axs[1,0].set_ylabel(r'$\Delta_{1S0}/E_F$')
     #
     for model in models:
         #
@@ -50,8 +50,8 @@ def matter_setupMicro_effmass_fig( pname, models, matter = 'NM' ):
                     axs[0].errorbar( ms.nm_den, ms.nm_effmass, yerr=ms.nm_effmass_err, marker=ms.marker, markevery=ms.every, linestyle='none', label=ms.label )
                     axs[1].errorbar( ms.nm_kfn, ms.nm_effmass, yerr=ms.nm_effmass_err, marker=ms.marker, markevery=ms.every, linestyle='none' )
                 else:
-                    axs[0].plot( ms.nm_den, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none', label=gap.label )
-                    axs[1].plot( ms.nm_kfn, gap.nm_gap_1s0, marker=gap.marker, markevery=gap.every, linestyle='none' )
+                    axs[0].plot( ms.nm_den, ms.nm_effmass, marker=ms.marker, markevery=ms.every, linestyle='none', label=ms.label )
+                    axs[1].plot( ms.nm_kfn, ms.nm_effmass, marker=ms.marker, markevery=ms.every, linestyle='none' )
         elif matter.lower() == 'sm':
             if ms.sm_effmass is not None:
                 if ms.sm_effmass_err is not None:

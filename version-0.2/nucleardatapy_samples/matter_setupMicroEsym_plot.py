@@ -33,7 +33,7 @@ def main():
     #
     pname = 'figs/plot_matter_setupMicroEsym.png'
     #
-    nuda.plot.matter_setupMicroEsym_fig( pname, models, bandEsym )
+    nuda.fig.matter_setupMicroEsym_fig( pname, models, bandEsym )
     #
     print(50*'-')
     print("Exit matter_setupMicroEsym_plot.py:")

@@ -15,7 +15,7 @@ def main():
     #
     pname = 'figs/plot_hnuc_setupRE1LExp.png'
     #
-    nuda.plot.hnuc_setupRE1LExp_fig( pname, tables )
+    nuda.fig.hnuc_setupRE1LExp_fig( pname, tables )
     #
     print(50*'-')
     print("Exit hnuc_setupRE1LExp_plot.py:")

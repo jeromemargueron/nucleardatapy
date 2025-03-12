@@ -21,7 +21,7 @@ def main():
     #
     pname = 'figs/plot_hnuc_setupChart.png'
     #
-    nuda.plot.hnuc_setupChart_fig( pname, table1L, table2L, table1Xi )
+    nuda.fig.hnuc_setupChart_fig( pname, table1L, table2L, table1Xi )
     #
     print(50*'-')
     print("Exit hnuc_setupChart_fig.py:")

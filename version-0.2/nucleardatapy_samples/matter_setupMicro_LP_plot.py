@@ -31,7 +31,7 @@ def main():
     #
     pname = 'figs/plot_matter_setupMicro_LP0_NM.png'
     #
-    nuda.plot.matter_setupMicro_LP_fig( pname, models, matter = 'NM', ell = 0 )
+    nuda.fig.matter_setupMicro_LP_fig( pname, models, matter = 'NM', ell = 0 )
     #
     print(50*'-')
     print("Exit matter_setupMicro_LP_plot.py:")
