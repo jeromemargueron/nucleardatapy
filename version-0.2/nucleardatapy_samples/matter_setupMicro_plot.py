@@ -48,7 +48,7 @@ def main():
             #
             pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
             #
-            nuda.plot.matter_setupMicro_E_fig( pname, mb, models, band, matter )
+            nuda.fig.matter_setupMicro_E_fig( pname, mb, models, band, matter )
             #
     #
     print(50*'-')

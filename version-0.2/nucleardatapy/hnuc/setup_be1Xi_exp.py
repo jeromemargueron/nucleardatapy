@@ -164,8 +164,8 @@ class setupRE1XiExp():
       if any(self.S): print(f"   S: {self.S}")
       if any(self.ch): print(f"  ch: {self.ch}")
       if any(self.symb): print(f" symb: {self.symb}")
-      if any(self.lre): print(f" xibe: {self.xire}")
-      if any(self.lre_err): print(f" xibe_err: {self.xire_err}")
+      if any(self.xire): print(f" xibe: {self.xire}")
+      if any(self.xire_err): print(f" xibe_err: {self.xire_err}")
       #
       if nuda.env.verb: print("Exit print_outputs()")
       #

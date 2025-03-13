@@ -65,7 +65,7 @@ class setupMicroGap():
     **Attributes:**
     """
     #
-    def __init__( self, model = '2008-BCS-NM' ):
+    def __init__( self, model = '2008-BCS-NM', matter = 'NM' ):
         """
         Parameters
         ----------
@@ -82,7 +82,7 @@ class setupMicroGap():
         #
         self = setupMicroGap.init_self( self )
         #
-        models, models_lower, models_all, models_all_lower = micro_gap_models()
+        models, models_lower, models_all, models_all_lower = micro_gap_models( matter = matter )
         #
         if model.lower() not in models_all_lower:
             print('setup_micro_gap: The model name ',model,' is not in the list of models.')
@@ -260,8 +260,8 @@ class setupMicroGap():
             self.nm_kfn_effmass, effmass_lo, effmass_up \
                 = np.loadtxt( file_effmass, usecols = (0, 1, 2), delimiter=',', comments='#', unpack = True)
             self.nm_den_effmass = nuda.den_n( self.nm_kfn_effmass )
-            self.nn_effmass = 0.5 * ( effmass_up + effmass_lo )
-            self.nn_effmass_err = 0.5 * ( effmass_up - effmass_up )
+            self.nm_effmass = 0.5 * ( effmass_up + effmass_lo )
+            self.nm_effmass_err = 0.5 * ( effmass_up - effmass_up )
             self.nm_kfn_1s0, gap_lo, gap_up \
                 = np.loadtxt( file_1s0, usecols = (0, 1, 2), delimiter=',', comments='#', unpack = True)
             self.nm_den_1s0 = nuda.den_n( self.nm_kfn_1s0 )
@@ -337,26 +337,37 @@ class setupMicroGap():
         self.note = ''
         #: Attribute the neutron matter Fermi momentum for which the effective mass is provided.
         self.nm_kfn_effmass = None
+        self.sm_kfn_effmass = None
         #: Attribute the neutron matter densities for which the effective mass is provided.
         self.nm_den_effmass = None
+        self.sm_den_effmass = None
         #: Attribute the neutron matter Fermi momentum for which the 1S0 pairing gap is provided.
         self.nm_kfn_1s0 = None
+        self.sm_kfn_1s0 = None
         #: Attribute the neutron matter densities for which the 1S0 pairing gap is provided.
         self.nm_den_1s0 = None
+        self.sm_den_1s0 = None
         #: Attribute the neutron matter Fermi momentum for which the 3PF2 pairing gap is provided.
         self.nm_kfn_3pf2 = None
+        self.sm_kfn_3pf2 = None
         #: Attribute the neutron matter densities for which the 3PF2 pairing gap is provided.
         self.nm_den_3pf2 = None
+        self.sm_den_3pf2 = None
         #: Attribute the neutron matter effective mass.
         self.nm_effmass = None
+        self.sm_effmass = None
         #: Attribute the neutron matter 1S0 pairing gap.
         self.nm_gap_1s0 = None
+        self.sm_gap_1s0 = None
         #: Attribute the uncertainty in the neutron matter 1S0 pairing gap.
         self.nm_gap_1s0_err = None
+        self.sm_gap_1s0_err = None
         #: Attribute the neutron matter 3PF2 pairing gap.
         self.nm_gap_3pf2 = None
+        self.sm_gap_3pf2 = None
         #: Attribute the uncertainty in the neutron matter 3PF2 pairing gap.
         self.nm_gap_3pf2_err = None
+        self.sm_gap_3pf2_err = None
         #: Attribute the plot label data.
         self.label = ''
         #: Attribute the plot marker.

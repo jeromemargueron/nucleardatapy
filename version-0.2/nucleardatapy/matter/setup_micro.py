@@ -56,7 +56,7 @@ def micro_models_mb( mb ):
     '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
     '2022-AFDMC-NM',
     If `mb` == 'BHF': \
-    '2006-BHF-AM*', \
+    '2006-BHF-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
     '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -85,7 +85,7 @@ def micro_models_mb( mb ):
             '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
             '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM' ]
     elif mb.lower() == 'bhf':
-        models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+        models = [ '2006-BHF-AM', '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
             '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
             '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
@@ -153,6 +153,7 @@ def micro_models_old():
     '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
+    '2006-BHF-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
     '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -177,6 +178,7 @@ def micro_models_old():
             '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
             '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
             '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
+            '2006-BHF-AM', \
             '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
             '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -484,10 +486,8 @@ class setupMicro():
             self.flag_kf = False
             self.flag_den = False
             #
-            print('not yet available')
-            exit()
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF-NM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF-SM.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-E2A-NM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-E2A-SM.dat')
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
             self.ref = 'L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
@@ -496,6 +496,21 @@ class setupMicro():
             self.marker = 'o'
             self.every = 1
             #self.linestyle = 'solid'
+            self.err = True
+            #
+            self.nm_den, self.nm_e2a \
+                = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
+            self.nm_e2v     = self.nm_e2a * self.nm_den
+            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            #
+            self.sm_den, self.sm_e2a \
+                = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.sm_e2v     = self.sm_e2a * self.sm_den
+            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
             #
         elif model.lower() == '2008-qmc-nm-swave':
             #

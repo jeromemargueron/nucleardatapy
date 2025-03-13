@@ -35,7 +35,7 @@ def main():
     # plot E/A for a given asymmetric parameter asy
     #
     pname = 'figs/plot_eos_setupAM_e.png'
-    nuda.plot.eos_setupAM_e_fig( pname, micro_models, pheno_models, asy )
+    nuda.fig.eos_setupAM_e_fig( pname, micro_models, pheno_models, asy )
     #
     print(50*'-')
     print("Exit eos_setupAM_e_fig.py:")

@@ -21,7 +21,7 @@ def main():
     print('sources considered:',sources)
     #
     pname = 'figs/plot_astro_setupMasses.png'
-    nuda.plot.astro_setupMasses_fig( pname, sources )
+    nuda.fig.astro_setupMasses_fig( pname, sources )
     #
     print(50*'-')
     print("Exit astro_setupMasses_plot.py:")

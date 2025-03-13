@@ -169,18 +169,15 @@ class setupMup():
         #
         if nuda.env.verb: print("Enter print_output()")
         #
-        if nuda.env.verb_output:
-            print("- Print output:")
-            print("   source:  ",self.source)
-            print("   hyp:",self.hyp)
-            print("   mup:",self.mup)
-            print("   sigma(mup):",self.sig_up,self.sig_do)
-            print("   latexCite:",self.latexCite)
-            print("   ref:    ",self.ref)
-            print("   label:  ",self.label)
-            print("   note:   ",self.note)
-        else:
-            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        print("- Print output:")
+        print("   source:  ",self.source)
+        print("   hyp:",self.hyp)
+        print("   mup:",self.mup)
+        print("   sigma(mup):",self.sig_up,self.sig_do)
+        print("   latexCite:",self.latexCite)
+        print("   ref:    ",self.ref)
+        print("   label:  ",self.label)
+        print("   note:   ",self.note)
         #
         if nuda.env.verb: print("Exit print_output()")
         #

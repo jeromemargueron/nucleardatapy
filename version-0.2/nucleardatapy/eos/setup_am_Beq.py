@@ -22,7 +22,7 @@ def func_betaeq(var,*args):
         eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_el * den )**nuda.cst.third
         n_mu = x_mu * den
         kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
-        eq2 = kFmu - math.sqrt( kFe**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
+        eq2 = kFmu - math.sqrt( kFel**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
     return (eq1,eq2)
 
 class setupAMBeq():
@@ -104,9 +104,9 @@ class setupAMBeq():
                 self.x_mu.append( x_mu )
             self.x_el = np.array( self.x_el, dtype = float )
             self.x_mu = np.array( self.x_mu, dtype = float )
-            #print('x_e:',self.x_e)
+            #print('x_el:',self.x_el)
             #print('x_mu:',self.x_mu)
-            self.x_p = self.x_e + self.x_mu
+            self.x_p = self.x_el + self.x_mu
             self.x_n = 1.0 - self.x_p
             self.asy = self.x_n - self.x_p
             self.n_n = self.x_n * self.den
@@ -188,7 +188,7 @@ class setupAMBeq():
         #: Attribute the proton fraction.
         self.x_p = None
         #: Attribute the electron fraction.
-        self.x_e = None
+        self.x_el = None
         #: Attribute the muon fraction.
         self.x_mu = None
         #: Attribute the matter asymmetry parameter (n_n-n_p)/(n_n+n_p).

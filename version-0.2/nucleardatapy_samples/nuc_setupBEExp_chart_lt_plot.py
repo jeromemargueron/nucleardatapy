@@ -32,7 +32,7 @@ def main():
         version = versions[i]
         pname = 'figs/plot_nuc_setupBEExp_chart_lt_'+table+'_'+version+'.png'
         print(f'Plot name: {pname}')
-        nuda.plot.nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables )
+        nuda.fig.nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables )
         #
     #
     print(50*'-')

@@ -36,6 +36,12 @@ jobs:
       - name: Run tests
         run: pytest version-0.2/tests/ --verbose
 
+      - name: Upload Version Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2/__init__.py
+
       - name: Build Sphinx documentation
         working-directory: docs
         run: make html
@@ -51,13 +57,40 @@ jobs:
           path: |
             docs/_build/html/
             book/_build/html/
+
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' # Only deploy from main branch
+    if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Check out the repository (develop branch)
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Download version file
+        uses: actions/download-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2
+
+      - name: Debug Directory Structure
+        run: ls -R
+
+      - name: Extract version from __init__.py
+        id: version
+        run: |
+          if [ -f version-0.2/__init__.py ]; then
+            VERSION=$(grep -oP "__version__\s*=\s*['\"]\K[^'\"]+" version-0.2/__init__.py)
+            echo "Extracted version: $VERSION"
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          else
+            echo "Error: version-0.2/__init__.py not found!"
+            exit 1
+          fi
+
       - name: Check out gh-pages branch
         uses: actions/checkout@v4
         with:
@@ -71,10 +104,10 @@ jobs:
 
       - name: Copy docs to versioned folder
         run: |
-          VERSION=$(cat version-0.2/__init__.py | grep __version__ | cut -d '"' -f2)
           mkdir -p docs/$VERSION
+          mkdir -p docs/latest
           cp -r public/* docs/$VERSION
-          cp -r public/* docs/latest  # Always update 'latest'
+          cp -r public/* docs/latest
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

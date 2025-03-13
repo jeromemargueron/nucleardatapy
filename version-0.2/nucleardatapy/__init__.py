@@ -20,4 +20,4 @@ from nucleardatapy.astro   import *
 #
 from nucleardatapy.hnuc    import *
 #
-from nucleardatapy.plot    import *
+from nucleardatapy.fig     import *

@@ -117,14 +117,11 @@ class setupMtov():
         #
         if nuda.env.verb: print("Enter print_output()")
         #
-        if nuda.env.verb_output:
-            print("- Print output:")
-            print("   sources_lo:  ",self.sources_lo)
-            print("   sources_up:  ",self.sources_up)
-            print("   mass:",self.mass)
-            print("   proba_tot:",self.proba_tot)
-        else:
-            print(f"- No output for source {self.source}. To get output, write 'verb_output = True' in env.py.")
+        print("- Print output:")
+        print("   sources_lo:  ",self.sources_lo)
+        print("   sources_up:  ",self.sources_up)
+        print("   mass:",self.mass)
+        print("   proba_tot:",self.proba_tot)
         #
         if nuda.env.verb: print("Exit print_output()")
         #

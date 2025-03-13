@@ -5,7 +5,50 @@ options:
 chapters:
   - file: nuda_intro
 
-  - file: notebooks/chapter1/tutorial1
+  - file: notebooks/chapter1_introduction/tutorial_chap1
     sections:
-      - file: notebooks/chapter1/tutorial-1
-      - file: notebooks/chapter1/tutorial-2
+      - file: notebooks/chapter1_introduction/Chapter1_1
+      - file: notebooks/chapter1_introduction/Chapter1_2
+
+  - file: notebooks/chapter2_matter/tutorial_chap2
+    sections:
+      - file: notebooks/chapter2_matter/Tutorial-2.1
+      - file: notebooks/chapter2_matter/Tutorial-2.2
+      - file: notebooks/chapter2_matter/Tutorial-2.3
+      - file: notebooks/chapter2_matter/Tutorial-2.4
+      - file: notebooks/chapter2_matter/Tutorial-2.5
+      - file: notebooks/chapter2_matter/Tutorial-2.10
+      - file: notebooks/chapter2_matter/Tutorial-2.20
+      - file: notebooks/chapter2_matter/Tutorial-2.30
+
+  - file: notebooks/chapter3_correlations/tutorial_chap3
+    sections:
+      - file: notebooks/chapter3_correlations/Tutorial-3.1
+      - file: notebooks/chapter3_correlations/Tutorial-3.2
+      - file: notebooks/chapter3_correlations/Tutorial-3.3
+
+  - file: notebooks/chapter4_nuclei/tutorial_chap4
+    sections:
+      - file: notebooks/chapter4_nuclei/Tutorial-4.1
+
+  - file: notebooks/chapter5_hypernuclei/tutorial_chap5
+    sections:
+      - file: notebooks/chapter5_hypernuclei/Tutorial-5.1
+      - file: notebooks/chapter5_hypernuclei/Tutorial-5.2
+      - file: notebooks/chapter5_hypernuclei/Tutorial-5.3
+      - file: notebooks/chapter5_hypernuclei/Tutorial-5.4
+
+  - file: notebooks/chapter6_eos/tutorial_chap6
+    sections:
+      - file: notebooks/chapter6_eos/Tutorial-6.1
+
+  - file: notebooks/chapter7_crust/tutorial_chap7
+    sections:
+      - file: notebooks/chapter7_crust/Tutorial-7.1
+
+  - file: notebooks/chapter8_astro/tutorial_chap8
+    sections:
+      - file: notebooks/chapter8_astro/Tutorial-8.1
+      - file: notebooks/chapter8_astro/Tutorial-8.2
+      - file: notebooks/chapter8_astro/Tutorial-8.3
+      - file: notebooks/chapter8_astro/Tutorial-8.4

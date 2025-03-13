@@ -22,7 +22,7 @@ def main():
     print('sources considered:',sources)
     #
     pname = 'figs/plot_astro_setupMR.png'
-    nuda.plot.astro_setupMR_fig( pname, sources, sources_av )
+    nuda.fig.astro_setupMR_fig( pname, sources, sources_av )
     #
     print(50*'-')
     print("Exit astro_setupMR_plot.py:")
