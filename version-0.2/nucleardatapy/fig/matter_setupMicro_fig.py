@@ -29,17 +29,17 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[0,0].set_ylabel(r'$E_\text{NM}/A$ (MeV)')
-    axs[0,0].set_xlim([0, 0.33])
+    axs[0,0].set_xlim([0, 0.34])
     axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$E_\text{NM}/E_\text{NRFFG}$')
-    axs[1,0].set_xlim([0, 0.33])
+    axs[1,0].set_xlim([0, 0.34])
     axs[1,1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
     axs[0,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('y', labelleft=False)
     axs[0,0].tick_params('x', labelbottom=False)
     axs[0,1].tick_params('x', labelbottom=False)
     if matter.lower() == 'nm':
+        axs[0,0].set_ylabel(r'$E_\text{NM}/A$ (MeV)')
+        axs[1,0].set_ylabel(r'$E_\text{NM}/E_\text{NRFFG}$')
         axs[0,0].set_ylim([0, 35])
         axs[0,1].set_xlim([0.5, 2.0])
         axs[0,1].set_ylim([0, 35])
@@ -48,6 +48,8 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
         axs[1,1].set_ylim([0.3, 0.84])
         delta = 1.0
     elif matter.lower() == 'sm':
+        axs[0,0].set_ylabel(r'$E_\text{SM}/A$ (MeV)')
+        axs[1,0].set_ylabel(r'$E_\text{SM}/E_\text{NRFFG}$')
         axs[0,0].set_ylim([-20, 10])
         axs[0,1].set_xlim([0, 1.5])
         axs[0,1].set_ylim([-20, 10])
@@ -60,8 +62,28 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
         #
         mic = nuda.matter.setupMicro( model = model, var2 = delta )
         print('model:',model,' delta:',delta)
-        if mic.nm_e2a is not None and 'FIT' not in model:
+        if not mic.err:
+            print('=> model:',model,not mic.err)
+            if 'fit' in model:
+                axs[0,0].plot( mic.den, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, markevery=mic.every, label=mic.label )
+                axs[0,1].plot( mic.kfn, mic.e2a, marker=mic.marker, linestyle=mic.linestyle )
+                axs[1,0].plot( mic.den, mic.e2a/nuda.effg_nr(mic.kfn), marker=mic.marker, linestyle=mic.linestyle )
+                axs[1,1].plot( mic.kfn, mic.e2a/nuda.effg_nr(mic.kfn), marker=mic.marker, linestyle=mic.linestyle )
+            else:
+                if matter.lower() == 'nm':
+                    axs[0,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle, markevery=mic.every, label=mic.label )
+                    axs[0,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, linestyle=mic.linestyle )
+                    axs[1,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle )
+                    axs[1,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, linestyle=mic.linestyle )
+                elif matter.lower() == 'sm':
+                    axs[0,0].plot( mic.sm_den, mic.sm_e2a, marker=mic.marker, linestyle=mic.linestyle, markevery=mic.every, label=mic.label )
+                    axs[0,1].plot( mic.sm_kfn, mic.sm_e2a, marker=mic.marker, linestyle=mic.linestyle )
+                    axs[1,0].plot( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, linestyle=mic.linestyle )
+                    axs[1,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, linestyle=mic.linestyle )
+        else:
+            #
             if 'NLEFT' in model:
+                #
                 if matter.lower() == 'nm':
                     axs[0,0].errorbar( mic.nm_den, mic.nm_e2adata, yerr=mic.nm_e2adata_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
                     axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2adata, yerr=mic.nm_e2adata_err, linestyle = 'dotted', linewidth = 1, alpha=0.6 )
@@ -83,60 +105,32 @@ def matter_setupMicro_E_fig( pname, mb, models, band, matter ):
                     axs[0,1].fill_between( mic.sm_kfn, y1=(mic.sm_e2a-mic.sm_e2a_err), y2=(mic.sm_e2a+mic.sm_e2a_err), alpha=0.3 )
                     axs[1,0].fill_between( mic.sm_den, y1=(mic.sm_e2a-mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), y2=(mic.sm_e2a+mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), alpha=0.3 )
                     axs[1,1].fill_between( mic.sm_kfn, y1=(mic.sm_e2a-mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), y2=(mic.sm_e2a+mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), alpha=0.3 )
+                #
             if mic.marker:
-                if mic.err:
-                    if matter.lower() == 'nm':
-                        axs[0,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label, errorevery=mic.every )
-                        axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                        axs[1,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                        axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                    elif matter.lower() == 'sm':
-                        axs[0,0].errorbar( mic.sm_den, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label, errorevery=mic.every )
-                        axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                        axs[1,0].errorbar( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                        axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
-                else:
-                    if matter.lower() == 'nm':
-                        axs[0,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label )
-                        axs[0,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, markevery=mic.every, linestyle='None' )
-                        axs[1,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None' )
-                        axs[1,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None' )
-                    elif matter.lower() == 'sm':
-                        axs[0,0].plot( mic.sm_den, mic.sm_e2a, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label )
-                        axs[0,1].plot( mic.sm_kfn, mic.sm_e2a, marker=mic.marker, markevery=mic.every, linestyle='None' )
-                        axs[1,0].plot( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None' )
-                        axs[1,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None' )
+                #
+                if matter.lower() == 'nm':
+                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                elif matter.lower() == 'sm':
+                    axs[0,0].errorbar( mic.sm_den, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                    axs[1,0].errorbar( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                    axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle='None', errorevery=mic.every )
+                #
             else:
-                if mic.err:
-                    if matter.lower() == 'nm':
-                        axs[0,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                        axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                        axs[1,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                        axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                    elif matter.lower() == 'sm':
-                        axs[0,0].errorbar( mic.sm_den, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
-                        axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                        axs[1,0].errorbar( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                        axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
-                else:
-                    if matter.lower() == 'nm':
-                        axs[0,0].plot( mic.nm_den, mic.nm_e2a, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label )
-                        axs[0,1].plot( mic.nm_kfn, mic.nm_e2a, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-                        axs[1,0].plot( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-                        axs[1,1].plot( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-                    elif matter.lower() == 'sm':
-                        axs[0,0].plot( mic.sm_den, mic.sm_e2a, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label )
-                        axs[0,1].plot( mic.sm_kfn, mic.sm_e2a, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-                        axs[1,0].plot( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-                        axs[1,1].plot( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle )
-        elif mic.e2a is not None: 
-            if 'fit' in model:
-                #print('den:',mic.den)
-                #print('e2a:',mic.e2a)                
-                axs[0,0].plot( mic.den, mic.e2a, marker=mic.marker, linestyle=mic.linestyle, markevery=mic.every, label=mic.label )
-                axs[0,1].plot( mic.kfn, mic.e2a, marker=mic.marker, linestyle=mic.linestyle )
-                axs[1,0].plot( mic.den, mic.e2a/nuda.effg_nr(mic.kfn), marker=mic.marker, linestyle=mic.linestyle )
-                axs[1,1].plot( mic.kfn, mic.e2a/nuda.effg_nr(mic.kfn), marker=mic.marker, linestyle=mic.linestyle )
+                #
+                if matter.lower() == 'nm':
+                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a, yerr=mic.nm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
+                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
+                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err/nuda.effg_nr(mic.nm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
+                elif matter.lower() == 'sm':
+                    axs[0,0].errorbar( mic.sm_den, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, label=mic.label, errorevery=mic.every )
+                    axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2a, yerr=mic.sm_e2a_err, marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
+                    axs[1,0].errorbar( mic.sm_den, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
+                    axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2a/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err/nuda.effg_nr(mic.sm_kfn), marker=mic.marker, markevery=mic.every, linestyle=mic.linestyle, errorevery=mic.every )
         #
         if nuda.env.verb_output: mic.print_outputs( )
         #

@@ -24,7 +24,7 @@ def micro_esym_mbs():
     #
     if nuda.env.verb: print("\nEnter micro_mbs()")
     #
-    mbs = [ 'VAR', 'BHF', 'MBPT', 'NLEFT' ]
+    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT' ]
     mbs_lower = [ item.lower() for item in mbs ]
     #
     if nuda.env.verb: print("Exit micro_mbs()")
@@ -64,13 +64,20 @@ def micro_esym_models_mb( mb ):
     #print('mb:',mb)
     if mb.lower() == 'var':
         models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit' ]
-    elif mb.lower() == 'bhf':
-        models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    elif mb.lower() == 'bhf2':
+        models = [ '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
+            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f' ]
+        #models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+        #    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+        #    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14' ]
+    elif mb.lower() == 'bhf23':
+        models = [ '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', \
+            '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', \
+            '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f' ]
+        #models = [ '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', \
+        #    '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', \
+        #    '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
     elif mb.lower() == 'mbpt':
         models = [ '2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
     elif mb.lower() == 'nleft':

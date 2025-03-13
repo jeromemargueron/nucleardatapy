@@ -29,6 +29,7 @@ def main():
     #
     #micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()    
     micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()    
+    micro_mbs.remove( 'BHF2' )
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym

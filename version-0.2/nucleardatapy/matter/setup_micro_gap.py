@@ -28,7 +28,7 @@ def micro_gap_models( matter = 'NM' ):
     #
     if nuda.env.verb: print("\nEnter micro_gap_models()")
     #
-    models_all = [ '2006-BHF-NM', '2006-BHF-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', \
+    models_all = [ '2006-BHF-Av18-NM', '2006-BHF-Av18-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', \
             '2017-MBPT-NM-GAP-EMG-450-500-N2LO', '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
             '2022-AFDMC-NM' ]
@@ -98,7 +98,7 @@ class setupMicroGap():
             if nuda.env.verb: print('Reads file (self energy):',file_in_se)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
             self.note = ""
-            self.label = 'BHF-2006'
+            self.label = 'EBHF-Av18-2006'
             self.marker = 'o'
             self.every = 1
             #self.linestyle = 'dotted'
@@ -118,7 +118,7 @@ class setupMicroGap():
             if nuda.env.verb: print('Reads file (self energy):',file_in_se)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
             self.note = ""
-            self.label = 'BHF-2006'
+            self.label = 'EBHF-Av18-2006'
             self.marker = 'o'
             self.every = 1
             #self.linestyle = 'dotted'

@@ -196,3 +196,44 @@ class setupRchTheo():
       if nuda.env.verb: print("Exit print_outputs()")
       #
 
+class setupRchTheoIsotopes():
+   """
+   Instantiate the object with charge radii choosen \
+   from a table.
+
+   This method provide a list if radii for an isotopic chain defined by Zref.
+
+   :param table: Fix the name of `table`. Default value: '2013-Angeli'.
+   :type table: str, optional. 
+
+   **Attributes:**
+   """
+   #
+   def __init__( self, rch, Zref = 50 ):
+      """
+      Parameters
+      ----------
+      model : str, optional
+      The model to consider. Choose between: 1998-VAR-AM-APR (default), 2008-AFDMC-NM, ...
+      """
+      #
+      if nuda.env.verb: print("\nEnter setupRchExpIsotopes()")
+      #
+      self.label = 'Isotope Z='+str(Zref)
+      #
+      Nref = []
+      Aref = []
+      Rchref = []
+      Rchref_err = []
+      for k in range(len(rch.nucZ)):
+         if int( rch.nucZ[k] ) == Zref:
+            Nref.append( rch.nucN[k] )
+            Aref.append( rch.nucA[k] )
+            Rchref.append( rch.nucRch[k] )
+      self.N = np.array( Nref, dtype = int )
+      self.A = np.array( Aref, dtype = int )
+      self.Rch = np.array( Rchref, dtype = float )
+      #
+      if nuda.env.verb: print("Exit setupRchExpIsotopes()")
+      #
+

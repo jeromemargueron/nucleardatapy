@@ -28,13 +28,13 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_\text{SM}(n)$')
-    axs[0].set_xlim([0, 0.33])
-    axs[0].set_ylim([-25, 5])
+    axs[0].set_xlim([0, 0.34])
+    axs[0].set_ylim([-22, 5])
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'$e_{sym}(n)$')
-    axs[1].set_xlim([0, 0.33])
-    axs[1].set_ylim([-25, 5])
+    axs[1].set_xlim([0, 0.34])
+    axs[1].set_ylim([-22, 5])
     axs[1].tick_params('y', labelleft=False)
     #
     mb_check = []

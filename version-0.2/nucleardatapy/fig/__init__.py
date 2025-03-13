@@ -26,6 +26,8 @@ from nucleardatapy.fig.corr_setupEsymLsym_fig       import *
 from nucleardatapy.fig.corr_setupEsymDen_fig        import *
 #
 from nucleardatapy.fig.nuc_setupBEExp_fig           import *
+from nucleardatapy.fig.nuc_setupRchExp_fig          import *
+from nucleardatapy.fig.nuc_setupRchTheo_fig         import *
 #
 from nucleardatapy.fig.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.fig.hnuc_setupChart_fig          import *

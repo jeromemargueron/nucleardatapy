@@ -46,6 +46,22 @@ def main():
             #
             models, models_lower = nuda.matter.micro_models_mb_matter( mb, matter = matter )
             #
+            print('models:',models)
+            if models:
+                print('there are models')
+            if not models:
+                print('there are no models')
+                continue
+            # remove FIT from AFDMC for the plot:
+            if mb == 'AFDMC':
+                models2 = []
+                for model in models:
+                    if 'FIT' not in model:
+                        models2.append( model )
+                models = models2
+                print('AFDMC')
+                print('models:',models)
+            #
             pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
             #
             nuda.fig.matter_setupMicro_E_fig( pname, mb, models, band, matter )
