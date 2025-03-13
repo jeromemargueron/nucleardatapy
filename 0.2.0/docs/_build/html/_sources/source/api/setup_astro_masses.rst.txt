@@ -11,7 +11,7 @@ astro.setupMasses
 
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/plots/plot_astro_setupMasses.py
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_astro_setupMasses.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/plots/figs/plot_astro_setupMasses.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

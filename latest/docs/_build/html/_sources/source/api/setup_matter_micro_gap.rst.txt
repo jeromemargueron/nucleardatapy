@@ -11,7 +11,7 @@ matter.setupMicroGap
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupMicroGap.py
 	   
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_matter_setupMicro_gap_1s0_NM.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/plots/figs/plot_matter_setupMicro_gap_1s0_NM.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

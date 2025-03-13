@@ -112,7 +112,7 @@
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_mbs()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">mbs</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;VAR&#39;</span><span class="p">,</span> <span class="s1">&#39;AFDMC&#39;</span><span class="p">,</span> <span class="s1">&#39;BHF&#39;</span><span class="p">,</span> <span class="s1">&#39;QMC&#39;</span><span class="p">,</span> <span class="s1">&#39;MBPT&#39;</span><span class="p">,</span> <span class="s1">&#39;NLEFT&#39;</span> <span class="p">]</span>
+    <span class="n">mbs</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;VAR&#39;</span><span class="p">,</span> <span class="s1">&#39;AFDMC&#39;</span><span class="p">,</span> <span class="s1">&#39;BHF2&#39;</span><span class="p">,</span> <span class="s1">&#39;BHF23&#39;</span><span class="p">,</span> <span class="s1">&#39;QMC&#39;</span><span class="p">,</span> <span class="s1">&#39;MBPT&#39;</span><span class="p">,</span> <span class="s1">&#39;NLEFT&#39;</span> <span class="p">]</span>
     <span class="n">mbs_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">mbs</span> <span class="p">]</span>
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit micro_mbs()&quot;</span><span class="p">)</span>
@@ -141,18 +141,19 @@
 <span class="sd">    &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, \</span>
 <span class="sd">    &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, \</span>
 <span class="sd">    &#39;2022-AFDMC-NM&#39;,</span>
-<span class="sd">    If `mb` == &#39;BHF&#39;: \</span>
-<span class="sd">    &#39;2006-BHF-AM&#39;, \</span>
+<span class="sd">    If `mb` == &#39;BHF2&#39;: \</span>
 <span class="sd">    &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, \</span>
 <span class="sd">    &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, \</span>
 <span class="sd">    &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;,\</span>
+<span class="sd">    If `mb` == &#39;BHF23&#39;: \</span>
+<span class="sd">    &#39;2006-BHF-AM-Av18&#39;, \</span>
 <span class="sd">    &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, \</span>
 <span class="sd">    &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, \</span>
 <span class="sd">    &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;,\</span>
 <span class="sd">    &#39;2024-BHF-AM-23BFmicro-Av18&#39;, &#39;2024-BHF-AM-23BFmicro-BONNB&#39;, &#39;2024-BHF-AM-23BFmicro-NSC93&#39;,\</span>
 <span class="sd">    If `mb` == &#39;QMC&#39;: \</span>
 <span class="sd">    &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;,  \</span>
-<span class="sd">    &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, \</span>
+<span class="sd">    &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, \</span>
 <span class="sd">    &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, \</span>
 <span class="sd">    If `mb` == &#39;MBPT&#39;: \</span>
 <span class="sd">    &#39;2010-MBPT-NM&#39;, &#39;2020-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;</span>
@@ -170,19 +171,27 @@
             <span class="s1">&#39;2012-AFDMC-NM-RES-5&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-RES-6&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-RES-7&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2012-AFDMC-NM-FIT-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-FIT-2&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-FIT-3&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-FIT-4&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2012-AFDMC-NM-FIT-5&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-FIT-6&#39;</span><span class="p">,</span> <span class="s1">&#39;2012-AFDMC-NM-FIT-7&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-AFDMC-NM&#39;</span> <span class="p">]</span>
-    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;bhf&#39;</span><span class="p">:</span>
-        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2006-BHF-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-CDBONN&#39;</span><span class="p">,</span> \
+    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;bhf2&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-CDBONN&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2024-BHF-AM-2BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97d&#39;</span><span class="p">,</span> \
-            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-SSCV14&#39;</span><span class="p">,</span>\
-            <span class="s1">&#39;2024-BHF-AM-23BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-CDBONN&#39;</span><span class="p">,</span> \
-            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97d&#39;</span><span class="p">,</span> \
-            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-SSCV14&#39;</span> <span class="p">]</span>
+            <span class="s1">&#39;2024-BHF-AM-2BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97f&#39;</span> <span class="p">]</span>
+        <span class="c1">#models = [ &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, \</span>
+        <span class="c1">#    &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, \</span>
+        <span class="c1">#    &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39; ]</span>
+    <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;bhf23&#39;</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2006-BHF-AM-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-BONN&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-CDBONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97c&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2024-BHF-AM-23BF-NSC97d&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-23BF-NSC97f&#39;</span> <span class="p">]</span>
+        <span class="c1">#models = [ &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, \</span>
+        <span class="c1">#    &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, \</span>
+        <span class="c1">#    &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39; ]</span>
     <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;qmc&#39;</span><span class="p">:</span>
         <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2008-QMC-NM-swave&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-QMC-NM-AV4&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-DLQMC-NM&#39;</span><span class="p">,</span> \
-            <span class="s1">&#39;2013-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-AFQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2013-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-AFQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2018-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-QMC-NM&#39;</span> <span class="p">]</span>
     <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;mbpt&#39;</span><span class="p">:</span>
-        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2010-MBPT-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L59&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L69&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L59&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L69&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
+<span class="c1"># &#39;2010-MBPT-NM&#39; is removed because they do not provide e2a, only pressure </span>
     <span class="k">elif</span> <span class="n">mb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nleft&#39;</span><span class="p">:</span>
         <span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2024-NLEFT-AM&#39;</span> <span class="p">]</span>
     <span class="c1">#</span>
@@ -267,7 +276,7 @@
             <span class="s1">&#39;2013-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-AFQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2018-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L59&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-MBPT-AM-L69&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2020-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-AFDMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-NLEFT-AM&#39;</span><span class="p">,</span> \
-            <span class="s1">&#39;2006-BHF-AM&#39;</span><span class="p">,</span> \
+            <span class="s1">&#39;2006-BHF-AM-Av18&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2024-BHF-AM-2BF-Av8p&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-Av18&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-BONN&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-CDBONN&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2024-BHF-AM-2BF-NSC97a&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97b&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97c&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97d&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2024-BHF-AM-2BF-NSC97e&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-NSC97f&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-BHF-AM-2BF-SSCV14&#39;</span><span class="p">,</span>\
@@ -294,13 +303,12 @@
     <span class="c1">#</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For mb (in SM):&#39;</span><span class="p">,</span><span class="n">mb</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_models</span><span class="p">()</span>
+    <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">micro_models_mb</span><span class="p">(</span> <span class="n">mb</span> <span class="p">)</span>
     <span class="c1">#</span>
     <span class="n">models2</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">models</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">model</span> <span class="ow">and</span> <span class="s1">&#39;2BF&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span> <span class="ow">and</span> <span class="p">(</span> <span class="n">matter</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="n">model</span> <span class="ow">or</span> <span class="s1">&#39;AM&#39;</span> <span class="ow">in</span> <span class="n">model</span> <span class="p">):</span>
+        <span class="k">if</span> <span class="n">matter</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="n">model</span> <span class="ow">or</span> <span class="s1">&#39;AM&#39;</span> <span class="ow">in</span> <span class="n">model</span><span class="p">:</span>
             <span class="n">models2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">model</span> <span class="p">)</span>
-            <span class="c1">#print(&#39;   models:&#39;,model)</span>
     <span class="c1">#</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models2:&#39;</span><span class="p">,</span><span class="n">models2</span><span class="p">)</span>
     <span class="n">models2_lower</span> <span class="o">=</span> <span class="p">[</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">models2</span> <span class="p">]</span>
@@ -308,9 +316,9 @@
     <span class="k">return</span> <span class="n">models2</span><span class="p">,</span> <span class="n">models2_lower</span></div>
 
 
-<div class="viewcode-block" id="micro_models_mb_SM">
-<a class="viewcode-back" href="../../../source/api/setup_matter_micro.html#nucleardatapy.matter.setup_micro.micro_models_mb_SM">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">micro_models_mb_SM</span><span class="p">(</span> <span class="n">mb</span> <span class="p">):</span>
+<div class="viewcode-block" id="micro_models_mb_SM_old">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro.html#nucleardatapy.matter.setup_micro.micro_models_mb_SM_old">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_models_mb_SM_old</span><span class="p">(</span> <span class="n">mb</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
@@ -332,9 +340,9 @@
     <span class="k">return</span> <span class="n">models2</span><span class="p">,</span> <span class="n">models2_lower</span></div>
 
 
-<div class="viewcode-block" id="micro_models_mb_NM">
-<a class="viewcode-back" href="../../../source/api/setup_matter_micro.html#nucleardatapy.matter.setup_micro.micro_models_mb_NM">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">micro_models_mb_NM</span><span class="p">(</span> <span class="n">mb</span> <span class="p">):</span>
+<div class="viewcode-block" id="micro_models_mb_NM_old">
+<a class="viewcode-back" href="../../../source/api/setup_matter_micro.html#nucleardatapy.matter.setup_micro.micro_models_mb_NM_old">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">micro_models_mb_NM_old</span><span class="p">(</span> <span class="n">mb</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#</span>
@@ -488,6 +496,10 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1"># Read files associated to model</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1">#</span>
         <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1981-var-am-fp&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flag_nm</span> <span class="o">=</span> <span class="kc">True</span>
@@ -504,7 +516,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;FP-1981&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;dashed&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>
@@ -532,7 +545,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;APR-1998&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;^&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;dashed&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>
@@ -554,9 +568,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;Use interpolation functions suggested in APR paper.&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;APR-1998-Fit&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dashed&#39;</span>
             <span class="c1"># Define constants for APRfit and for A18+dv+UIX*</span>
             <span class="k">global</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p5</span><span class="p">,</span> <span class="n">p6</span><span class="p">,</span> <span class="n">p7</span><span class="p">,</span> <span class="n">p8</span><span class="p">,</span> <span class="n">p9</span><span class="p">,</span> <span class="n">p10</span><span class="p">,</span> <span class="n">p11</span><span class="p">,</span> <span class="n">p12</span><span class="p">,</span> <span class="n">p13</span><span class="p">,</span> <span class="n">p14</span><span class="p">,</span> <span class="n">p15</span><span class="p">,</span> <span class="n">p16</span><span class="p">,</span> <span class="n">p17</span><span class="p">,</span> <span class="n">p18</span><span class="p">,</span> <span class="n">p19</span><span class="p">,</span> <span class="n">p20</span><span class="p">,</span> <span class="n">p21</span>
             <span class="p">(</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p5</span><span class="p">,</span> <span class="n">p6</span><span class="p">,</span> <span class="n">p7</span><span class="p">,</span> <span class="n">p8</span><span class="p">,</span> <span class="n">p9</span><span class="p">,</span> <span class="n">p10</span><span class="p">,</span> <span class="n">p11</span><span class="p">,</span> <span class="n">p12</span><span class="p">,</span> <span class="n">p13</span><span class="p">,</span> <span class="n">p14</span><span class="p">,</span> <span class="n">p15</span><span class="p">,</span> <span class="n">p16</span><span class="p">,</span> <span class="n">p17</span><span class="p">,</span> <span class="n">p18</span><span class="p">,</span> <span class="n">p19</span><span class="p">,</span> <span class="n">p20</span><span class="p">,</span> <span class="n">p21</span> <span class="p">)</span> <span class="o">=</span> \
@@ -580,24 +595,24 @@
             <span class="n">cs_pre</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs2</span> <span class="o">=</span> <span class="n">cs_pre</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">den</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">h2a</span>
             <span class="c1">#</span>
-        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2006-bhf-am&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2006-bhf-am-av18&#39;</span><span class="p">:</span>
             <span class="c1">#</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flag_nm</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flag_sm</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flag_kf</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">flag_den</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="c1">#</span>
-            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-E2A-NM.dat&#39;</span><span class="p">)</span>
-            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-E2A-SM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-Av18-E2A-NM.dat&#39;</span><span class="p">)</span>
+            <span class="n">file_in2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">path_data</span><span class="p">,</span><span class="s1">&#39;matter/micro/2006-BHF/2006-BHF-Av18-E2A-SM.dat&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in1</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006-23BF-Av18&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="c1">#</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -627,7 +642,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-swave-2008&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="n">gap2ef</span><span class="p">,</span> <span class="n">gap2ef_err</span><span class="p">,</span> <span class="n">e2effg</span><span class="p">,</span> <span class="n">e2effg_err</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -651,7 +666,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AFDMC-2009&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -674,7 +689,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;dLQMC-2009&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="n">gap2ef</span><span class="p">,</span> <span class="n">gap2ef_err</span><span class="p">,</span> <span class="n">e2effg</span><span class="p">,</span> <span class="n">e2effg_err</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -698,8 +713,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-AV4-2008&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="n">gap2ef</span><span class="p">,</span> <span class="n">gap2ef_err</span><span class="p">,</span> <span class="n">e2effg</span><span class="p">,</span> <span class="n">e2effg_err</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>     <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">den_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="p">)</span>
@@ -722,7 +737,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2010&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="p">)</span>
             <span class="c1">#self.nm_pre_err = np.abs( 0.01 * self.nm_pre )</span>
@@ -749,7 +765,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AFDMC-2012-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="c1">#self.linestyle = &#39;None&#39;</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span> <span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="n">ETOT</span><span class="p">,</span> <span class="n">ETOT_ERR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span> <span class="p">]:</span>
@@ -783,7 +801,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AFDMC-2012-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-FIT&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dashed&#39;</span>
             <span class="n">ind</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">alfa</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="c1">#name = np.loadtxt( file_in, usecols=(5), unpack = True )</span>
             <span class="n">nmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">alfa</span><span class="p">)</span>
@@ -834,7 +853,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-2013&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_up</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre_up</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -873,7 +892,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AFQMC-2014&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_2bf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_23bf</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">kf_n</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span> <span class="p">)</span>
@@ -896,7 +916,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-2016&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_up</span> \
@@ -918,7 +938,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2016&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">4</span>
             <span class="c1"># read the results for the 7 hamiltonians</span>
@@ -994,7 +1014,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-2018&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_up</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -1021,7 +1041,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2019-L59&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="n">Kin</span><span class="p">,</span> <span class="n">HF_tot</span><span class="p">,</span> <span class="n">Scnd_tot</span><span class="p">,</span> <span class="n">Trd_tot</span><span class="p">,</span> <span class="n">Fth_tot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> \
                  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">uncertainty_stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span><span class="n">err</span><span class="o">=</span><span class="s1">&#39;MBPT&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="p">)</span>
@@ -1051,7 +1072,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2019-L69&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="n">Kin</span><span class="p">,</span> <span class="n">HF_tot</span><span class="p">,</span> <span class="n">Scnd_tot</span><span class="p">,</span> <span class="n">Trd_tot</span><span class="p">,</span> <span class="n">Fth_tot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> \
                  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">uncertainty_stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span><span class="n">err</span><span class="o">=</span><span class="s1">&#39;MBPT&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="p">)</span>
@@ -1078,7 +1100,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;MBPT-2020&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">6</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_lo_err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_nlo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_nlo_err</span><span class="p">,</span> \
@@ -1112,7 +1134,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;AFDMC+corr.-2022&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="c1"># read e2a</span>
@@ -1142,7 +1164,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NLEFT-2024&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="c1">#</span>
@@ -1403,8 +1425,8 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file:&#39;</span><span class="p">,</span><span class="n">file_in2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;I. Vida</span><span class="se">\\</span><span class="s1">~na, J. Margueron, H.J. Schulze, Universe 10, 5 (2024).&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">2</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="c1">#</span>
@@ -1441,7 +1463,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;QMC-2024&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1">#self.linestyle = &#39;solid&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_stat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_ekm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_gp</span> \
                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -1449,6 +1471,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_stat</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_ekm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err_gp</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2v</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2v_err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_err</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span>
+        <span class="c1">#</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1"># END OF</span>
+        <span class="c1"># Read files associated to model</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1"># Compute thermodynamic quantities</span>
+        <span class="c1"># ==============================</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flag_nm</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flag_kf</span><span class="p">:</span>
@@ -1542,6 +1574,11 @@
                 <span class="n">cs_sm_pre</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
                 <span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">cs_sm_pre</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_h2a</span>
                 <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="c1"># ==============================</span>
+        <span class="c1"># END OF</span>
+        <span class="c1"># Compute thermodynamic quantities</span>
+        <span class="c1"># ==============================</span>
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>

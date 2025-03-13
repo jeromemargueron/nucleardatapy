@@ -111,7 +111,7 @@
     <span class="c1">#</span>
     <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Enter micro_gap_models()&quot;</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">models_all</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2006-BHF-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2006-BHF-SM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-BCS-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-QMC-NM-swave&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-DLQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-QMC-NM-AV4&#39;</span><span class="p">,</span> \
+    <span class="n">models_all</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2006-BHF-Av18-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2006-BHF-Av18-SM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-BCS-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2008-QMC-NM-swave&#39;</span><span class="p">,</span> <span class="s1">&#39;2009-DLQMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-QMC-NM-AV4&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;</span><span class="p">,</span> \
             <span class="s1">&#39;2022-AFDMC-NM&#39;</span> <span class="p">]</span>
@@ -184,7 +184,7 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (self energy):&#39;</span><span class="p">,</span><span class="n">file_in_se</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;EBHF-Av18-2006&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="c1">#self.linestyle = &#39;dotted&#39;</span>
@@ -204,7 +204,7 @@
             <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reads file (self energy):&#39;</span><span class="p">,</span><span class="n">file_in_se</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="s1">&#39;L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BHF-2006&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;EBHF-Av18-2006&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="c1">#self.linestyle = &#39;dotted&#39;</span>

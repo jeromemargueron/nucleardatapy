@@ -71,6 +71,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#nucleardatapy.nuc.setup_rch_theo.setupRchTheo.ref"><code class="docutils literal notranslate"><span class="pre">setupRchTheo.ref</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#nucleardatapy.nuc.setup_rch_theo.setupRchTheoIsotopes"><code class="docutils literal notranslate"><span class="pre">setupRchTheoIsotopes</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="setup_nuc_isgmr_exp.html">nuc.setupISGMRExp</a></li>
@@ -212,9 +213,30 @@ ones: ‘2013-Angeli’.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="nucleardatapy.nuc.setup_rch_theo.setupRchTheoIsotopes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nucleardatapy.nuc.setup_rch_theo.</span></span><span class="sig-name descname"><span class="pre">setupRchTheoIsotopes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Zref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/nucleardatapy/nuc/setup_rch_theo.html#setupRchTheoIsotopes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nucleardatapy.nuc.setup_rch_theo.setupRchTheoIsotopes" title="Link to this definition"></a></dt>
+<dd><p>Instantiate the object with charge radii choosen    from a table.</p>
+<p>This method provide a list if radii for an isotopic chain defined by Zref.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em><em>, </em><em>optional.</em>) – Fix the name of <cite>table</cite>. Default value: ‘2013-Angeli’.</p>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>between</strong> (<em>The model to consider. Choose</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <p>Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupRchTheo.py</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../_images/plot_nuc_setupRchTheo.png"><img alt="map to buried treasure" src="../../_images/plot_nuc_setupRchTheo.png" style="width: 448.0px; height: 336.0px;" />
+<a class="reference internal image-reference" href="../../_images/plot_nuc_setupRchTheo.png"><img alt="map to buried treasure" src="../../_images/plot_nuc_setupRchTheo.png" style="width: 896.0px; height: 672.0px;" />
 </a>
 <figcaption>
 <p><span class="caption-text">Charge radii for Zn, Sn, and Pb isotopes and for the theoretical models available in the nuda toolkit.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
