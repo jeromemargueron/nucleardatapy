@@ -83,10 +83,15 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># 1.15.0</span>
 
-<span class="c1">#nucleardatapy_tk = os.getenv(&#39;NUCLEARDATAPY_TK&#39;)</span>
-<span class="c1">#sys.path.insert(0, nucleardatapy_tk)</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rch_emp</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">formula</span> <span class="p">):</span>
+   <span class="k">if</span> <span class="n">formula</span> <span class="o">==</span> <span class="s1">&#39;classic&#39;</span><span class="p">:</span>
+      <span class="k">return</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mf">0.3333</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_rch_theo: formula is badly defined &#39;</span><span class="p">,</span><span class="n">formula</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_rch_theo: exit&#39;</span><span class="p">)</span>
+      <span class="n">exit</span><span class="p">()</span>
 
 <div class="viewcode-block" id="rch_theo_tables">
 <a class="viewcode-back" href="../../../source/api/setup_nuc_rch_theo.html#nucleardatapy.nuc.setup_rch_theo.rch_theo_tables">[docs]</a>
