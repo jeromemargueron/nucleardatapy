@@ -2,10 +2,15 @@ import os
 import sys
 import numpy as np  # 1.15.0
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
+
+def rch_emp( A, Z, formula ):
+   if formula == 'classic':
+      return 1.2 * A**0.3333
+   else:
+      print('setup_rch_theo: formula is badly defined ',formula)
+      print('setup_rch_theo: exit')
+      exit()
 
 def rch_theo_tables():
     """

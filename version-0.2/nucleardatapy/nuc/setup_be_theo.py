@@ -3,10 +3,17 @@ import sys
 import math
 import numpy as np  # 1.15.0
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
+
+def delta_emp( A, Z, formula ):
+   if formula == 'classic':
+      return 12.0 / A**0.5
+   elif formula == 'Vogel':
+      return ( 7.2 - 44.0 * ( 1.0 - 2.0 * Z / A )**2 ) / A**0.3333
+   else:
+      print('setup_be_theo: formula is badly defined ',formula)
+      print('setup_be_theo: exit')
+      exit()
 
 def be_theo_tables():
     """

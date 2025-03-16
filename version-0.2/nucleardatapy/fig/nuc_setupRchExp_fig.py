@@ -22,6 +22,53 @@ def nuc_setupRchExp_fig( pname, tables ):
     #
     print(f'Plot name: {pname}')
     #
+    fig, axs = plt.subplots(1,1)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    #
+    axs.set_ylabel(r'$R_{ch}$')
+    axs.set_xlabel(r'A')
+    axs.set_xlim([10, 220])
+    axs.set_ylim([4.2, 5.8])
+    #
+    Zrefs = [ 20, 28, 40, 50, 60, 70, 82 ]
+    #
+    for table in tables:
+        #
+        rch = nuda.nuc.setupRchExp( table = table )
+        #
+        for Zref in Zrefs:
+            print('For Zref:',Zref)
+            rchIsot = nuda.nuc.setupRchExpIsotopes( rch, Zref = Zref )
+            axs.errorbar( rchIsot.N, rchIsot.Rch, yerr=rchIsot.Rch_err, fmt='o', label=rchIsot.label )
+    #
+    #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
+    axs.legend(loc='upper left',fontsize='8')
+    #
+    if pname is not None:
+    	plt.savefig(pname, dpi=200)
+    	plt.close()
+    #
+
+def nuc_setupRchExp_3Zref_fig( pname, tables ):
+    """
+    Plot nuclear chart (N versus Z).\
+    The plot is 1x1 with:\
+    [0]: nuclear chart.
+
+    :param pname: name of the figure (*.png)
+    :type pname: str.
+    :param table: table.
+    :type table: str.
+    :param version: version of table to run on.
+    :type version: str.
+    :param theo_tables: object instantiated on the reference band.
+    :type theo_tables: object.
+
+    """
+    #
+    print(f'Plot name: {pname}')
+    #
     fig, axs = plt.subplots(1,3)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
@@ -86,6 +133,6 @@ def nuc_setupRchExp_fig( pname, tables ):
     axs[0].legend(loc='upper left',fontsize='8')
     #
     if pname is not None:
-    	plt.savefig(pname, dpi=200)
-    	plt.close()
+        plt.savefig(pname, dpi=200)
+        plt.close()
     #
