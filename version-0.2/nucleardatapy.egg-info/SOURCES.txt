@@ -588,6 +588,9 @@ version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-GAP-NM-FreeSp
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-GAP-NM-SelfEnergy.dat
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-GAP-SM-FreeSpectrum.dat
 version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-GAP-SM-SelfEnergy.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-effmass-SM.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-effmass-beta0.2.dat
+version-0.2/nucleardatapy/data/matter/micro/2006-BHF/2006-BHF-Av18-effmass-beta0.4.dat
 version-0.2/nucleardatapy/data/matter/micro/2016-MBPT-AM/EOS_spec_4_beta_0.0.txt
 version-0.2/nucleardatapy/data/matter/micro/2016-MBPT-AM/EOS_spec_4_beta_0.1.txt
 version-0.2/nucleardatapy/data/matter/micro/2016-MBPT-AM/EOS_spec_4_beta_0.2.txt
