@@ -194,6 +194,7 @@ class setupRchExpIsotopes():
             Rchref_err.append( rch.nucRch_err[k] )
       self.N = np.array( Nref, dtype = int )
       self.A = np.array( Aref, dtype = int )
+      self.Z = Zref * np.ones( self.N.size )
       self.Rch = np.array( Rchref, dtype = float )
       self.Rch_err = np.array( Rchref_err, dtype = float )
       #

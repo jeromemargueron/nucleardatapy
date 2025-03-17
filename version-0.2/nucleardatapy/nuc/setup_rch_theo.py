@@ -7,10 +7,32 @@ import nucleardatapy as nuda
 def rch_emp( A, Z, formula ):
    if formula == 'classic':
       return 1.2 * A**0.3333
+   elif formula == '1994-NPP':
+      # B. Nerlo-Pomorska and K. Pomorski, Z. Phys. A 348, 169 (1994)
+      r0 = 1.240
+      b = 0.191
+      c = 1.646
+   elif formula == '2013-BAKS-1':
+      # T. Bayram, S. Akkoyun, S. Okan Kara, A. Sinan, Acta Phys. Pol. B 44, 1791 (2013)
+      r0 = 0.951
+      b = 0.0
+      c = 0.0
+   elif formula == '2013-BAKS-2':
+      # T. Bayram, S. Akkoyun, S. Okan Kara, A. Sinan, Acta Phys. Pol. B 44, 1791 (2013)
+      r0 = 0.996
+      b = 0.278
+      c = 0.0
+   elif formula == '2013-BAKS-3':
+      # T. Bayram, S. Akkoyun, S. Okan Kara, A. Sinan, Acta Phys. Pol. B 44, 1791 (2013)
+      r0 = 0.966
+      b = 0.182
+      c = 1.652
    else:
       print('setup_rch_theo: formula is badly defined ',formula)
       print('setup_rch_theo: exit')
       exit()
+      #return ( 1.19 - 0.8 * (1-2*Z/A)**2 ) * A**0.3333 - 0.3* A**0.1666 
+   return r0 * ( 1.0 - b * (1.0-2.0*Z/A) + c/ A  ) * A**0.3333
 
 def rch_theo_tables():
     """
@@ -237,6 +259,7 @@ class setupRchTheoIsotopes():
             Rchref.append( rch.nucRch[k] )
       self.N = np.array( Nref, dtype = int )
       self.A = np.array( Aref, dtype = int )
+      self.Z = Zref * np.ones( self.N.size )
       self.Rch = np.array( Rchref, dtype = float )
       #
       if nuda.env.verb: print("Exit setupRchExpIsotopes()")

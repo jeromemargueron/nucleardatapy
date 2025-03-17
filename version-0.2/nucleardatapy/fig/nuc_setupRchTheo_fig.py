@@ -28,28 +28,54 @@ def nuc_setupRchTheo_fig( pname, tables, table_exp ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.9, wspace=0.35, hspace=0.3)
     #
-    axs[0].set_ylabel(r'$R_{ch}$')
-    axs[0].set_xlabel(r'A')
-    axs[0].set_xlim([10, 220])
-    axs[0].set_ylim([4.2, 5.8])
+    axs.set_ylabel(r'$R_{ch}$')
+    axs.set_xlabel(r'N')
+    axs.set_xlim([10, 160])
+    axs.set_ylim([3.0, 6.5])
     #
     Zrefs = [ 20, 28, 40, 50, 60, 70, 82, 90 ]
     #
-    for table in tables:
+    for indZ,Zref in enumerate(Zrefs):
+        rchExpIsot = nuda.nuc.setupRchExpIsotopes( rch_exp, Zref = Zref )
+        if indZ == 0:
+            axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3, label=table_exp )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k', label='empirical(classic)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'NPP-1994' ), linestyle='dashed', color='red', label='empirical(NPP-1994)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-1-2013' ), linestyle='dotted', color='k', label='empirical(BAKS-1-2013)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-3-2013' ), linestyle='dotted', color='red', label='empirical(BAKS-3-2013)' )
+        else:
+            axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3 )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'NPP-1994' ), linestyle='dashed', color='red' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-1-2013' ), linestyle='dotted', color='k' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-3-2013' ), linestyle='dotted', color='red' )
+    #
+    for indT,table in enumerate(tables):
         #
         rch = nuda.nuc.setupRchTheo( table = table )
         #
-        for ind,Zref in enumerate(Zrefs):
+        for indZ,Zref in enumerate(Zrefs):
             print('For Zref:',Zref)
             rchIsot = nuda.nuc.setupRchTheoIsotopes( rch, Zref = Zref )
-            axs.plot( rchIsot.A, rchIsot.Rch, label=rch.label )
-            rchExpIsot = nuda.nuc.setupRchExpIsotopes( rch_exp, Zref = Zref )
-            if ind == 7:
-                axs.errorbar( rchExpIsot.A, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, fmt='o', label=rchExpIsot.label )
+            if indZ == 0:
+                axs.plot( rchIsot.N, rchIsot.Rch, color=nuda.param.col[indT], label=rch.label )
             else:
-                axs.errorbar( rchExpIsot.A, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, fmt='o' )                
+                axs.plot( rchIsot.N, rchIsot.Rch, color=nuda.param.col[indT] )                
+            #if indT == 0 and indZ == 0:
+            #    axs.plot( rchIsot.N, nuda.nuc.rch_emp( rchIsot.A, rchIsot.Z, 'classic' ), linestyle='dashed', color='k', label='empirical(classic)' )
+            #else:
+            #    axs.plot( rchIsot.N, nuda.nuc.rch_emp( rchIsot.A, rchIsot.Z, 'classic' ), linestyle='dashed', color='k' )
             #
     axs.legend(loc='upper left',fontsize='7',frameon=False)
+    #
+    axs.text( 50,3.7,'Ca')
+    axs.text( 70,4.2,'Ni')
+    axs.text( 95,4.6,'Zr')
+    axs.text(118,5.0,'Sn')
+    axs.text( 50,4.8,'Nd')
+    axs.text( 62,5.1,'Yb')
+    axs.text( 88,5.3,'Pb')
+    axs.text(120,5.7,'Ac')
     #
     if pname is not None:
         plt.savefig(pname, dpi=200)

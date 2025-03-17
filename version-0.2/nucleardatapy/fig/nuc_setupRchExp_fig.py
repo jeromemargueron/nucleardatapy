@@ -27,9 +27,9 @@ def nuc_setupRchExp_fig( pname, tables ):
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
     axs.set_ylabel(r'$R_{ch}$')
-    axs.set_xlabel(r'A')
-    axs.set_xlim([10, 220])
-    axs.set_ylim([4.2, 5.8])
+    axs.set_xlabel(r'N')
+    axs.set_xlim([10, 140])
+    axs.set_ylim([3.2, 5.8])
     #
     Zrefs = [ 20, 28, 40, 50, 60, 70, 82 ]
     #
@@ -40,7 +40,8 @@ def nuc_setupRchExp_fig( pname, tables ):
         for Zref in Zrefs:
             print('For Zref:',Zref)
             rchIsot = nuda.nuc.setupRchExpIsotopes( rch, Zref = Zref )
-            axs.errorbar( rchIsot.N, rchIsot.Rch, yerr=rchIsot.Rch_err, fmt='o', label=rchIsot.label )
+            axs.errorbar( rchIsot.N, rchIsot.Rch, yerr=rchIsot.Rch_err, fmt='s', markersize=3, label=nuda.param.elements[int(Zref)-1] )
+            #axs.errorbar( rchIsot.N, rchIsot.Rch, yerr=rchIsot.Rch_err, fmt='o', label=rchIsot.label )
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs.legend(loc='upper left',fontsize='8')
