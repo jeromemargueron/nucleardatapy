@@ -11,14 +11,15 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    #tables, tables_lower = nudy.tables_masses_exp()
+    #tables, tables_lower = nuda.nuc.be_exp_tables()
     tables = [ 'AME' ]
+    #versions, versions_lower = nuda.nuc.be_exp_versions()
     versions = [ '2020' ]
     #
-    pname = 'figs/plot_nuc_setupBEExp_S2n_Nref50.png'
+    pname = 'figs/plot_nuc_setupBEExp_S2n_Zref50.png'
     nuda.fig.nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 50 )
     #
-    pname = 'figs/plot_nuc_setupBEExp_S2n_Nref20.png'
+    pname = 'figs/plot_nuc_setupBEExp_S2n_Zref20.png'
     nuda.fig.nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 20 )
     #
     print(50*'-')

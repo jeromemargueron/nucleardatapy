@@ -11,8 +11,9 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    #tables, tables_lower = nudy.tables_masses_exp()
+    #tables, tables_lower = nuda.nuc.be_exp_tables()
     tables = [ 'AME' ]
+    #versions, versions_lower = nuda.nuc.be_exp_versions()
     versions = [ '2020' ]
     #
     pname = 'figs/plot_nuc_setupBEExp_D3n_Zref50.png'

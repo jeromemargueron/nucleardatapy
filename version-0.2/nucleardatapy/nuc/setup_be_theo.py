@@ -77,9 +77,9 @@ class setupBETheo():
         #
         tables, tables_lower = be_theo_tables()
         if table.lower() not in tables_lower:
-            print('Table ',table,' is not in the list of tables.')
-            print('list of tables:',tables)
-            print('-- Exit the code --')
+            print('setup_be_theo: Table ',table,' is not in the list of tables.')
+            print('setup_be_theo: list of tables:',tables)
+            print('setup_be_theo: -- Exit the code --')
             exit()
         self.table = table
         if nuda.env.verb: print("table:",table)
@@ -515,11 +515,11 @@ class setupBETheo():
         if nuda.env.verb: print("Enter S2n()")
         #
         if Zmin > Zmax:
-            print('In S2n attribute function of setup_be_theo.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_theo: In S2n attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Bad definition of Zmin and Zmax')
+            print('setup_be_theo: It is expected that Zmin<=Zmax')
+            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_theo: exit')
             exit()
         #
         S2n_Z = []
@@ -570,11 +570,11 @@ class setupBETheo():
         if nuda.env.verb: print("Enter S2p()")
         #
         if Nmin > Nmax:
-            print('In S2p attribute function of setup_be_exp.py:')
-            print('Bad definition of Nmin and Nmax')
-            print('It is expected that Nmin<=Nmax')
-            print('Nmin,Nmax:',Nmin,Nmax)
-            print('exit')
+            print('setup_be_theo: In S2p attribute function of setup_be_exp.py:')
+            print('setup_be_theo: Bad definition of Nmin and Nmax')
+            print('setup_be_theo: It is expected that Nmin<=Nmax')
+            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_theo: exit')
             exit()
         #
         S2p_Z = []
@@ -632,17 +632,17 @@ class setupBETheo():
         if nuda.env.verb: print("Enter drip_S2n()")
         #
         if Zmin > Zmax:
-            print('In drip_S2n attribute function of setup_be_theo.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Bad definition of Zmin and Zmax')
+            print('setup_be_theo: It is expected that Zmin<=Zmax')
+            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_theo: exit')
             exit()
         #
         if not any(self.S2n_Z):
-            print('In drip_S2n attribute function of setup_be_theo.py:')
-            print('Should compute first S2n')
-            print('exit')
+            print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Should compute first S2n')
+            print('setup_be_theo: exit')
             exit()
         #
         #Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )
@@ -686,17 +686,17 @@ class setupBETheo():
         if nuda.env.verb: print("Enter drip_S2p()")
         #
         if Nmin > Nmax:
-            print('In drip_S2p attribute function of setup_be_theo.py:')
-            print('Bad definition of Nmin and Nmax')
-            print('It is expected that Nmin<=Nmax')
-            print('Nmin,Nmax:',Nmin,Nmax)
-            print('exit')
+            print('setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Bad definition of Nmin and Nmax')
+            print('setup_be_theo: It is expected that Nmin<=Nmax')
+            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_theo: exit')
             exit()
         #
         if not any(self.S2p_N):
-            print('In drip_S2p attribute function of setup_be_theo.py:')
-            print('Should compute first S2p')
-            print('exit')
+            print('setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Should compute first S2p')
+            print('setup_be_theo: exit')
             exit()
         #
         self.drip_S2p_Z = []
@@ -722,28 +722,28 @@ class setupBETheo():
         return self
         #
     #
-    def D3p_n( self, Zmin = 1, Zmax = 95 ):
+    def D3n( self, Zmin = 1, Zmax = 95 ):
         """
-        Compute the three-points odd-even mass staggering (D3p_n)
-        D3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
+        Compute the three-points odd-even mass staggering (D3n)
+        D3N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
         """
         #
-        if nuda.env.verb: print("Enter D3p_n()")
+        if nuda.env.verb: print("Enter D3n()")
         #
         if Zmin > Zmax:
-            print('In D3p_n attribute function of setup_be_exp.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_theo: In D3n attribute function of setup_be_exp.py:')
+            print('setup_be_theo: Bad definition of Zmin and Zmax')
+            print('setup_be_theo: It is expected that Zmin<=Zmax')
+            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_theo: exit')
             exit()
         #
-        D3p_n_Z_even = []
-        D3p_n_Z_odd = []
-        D3p_n_N_even = []
-        D3p_n_N_odd = []
-        D3p_n_even = []
-        D3p_n_odd = []
+        D3n_Z_even = []
+        D3n_Z_odd = []
+        D3n_N_even = []
+        D3n_N_odd = []
+        D3n_even = []
+        D3n_odd = []
         #
         for ind,Z in enumerate(self.nucZ):
             #
@@ -775,46 +775,46 @@ class setupBETheo():
                     break
             if flag_find1*flag_find2 == 1: 
                 if sign > 0: #even
-                    D3p_n_Z_even.append( self.nucZ[ind] )
-                    D3p_n_N_even.append( self.nucN[ind] )
-                    D3p_n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+                    D3n_Z_even.append( self.nucZ[ind] )
+                    D3n_N_even.append( self.nucN[ind] )
+                    D3n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
                 else:
-                    D3p_n_Z_odd.append( self.nucZ[ind] )
-                    D3p_n_N_odd.append( self.nucN[ind] )
-                    D3p_n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_n_N_even = np.array( D3p_n_N_even, dtype = int )
-        self.D3p_n_N_odd  = np.array( D3p_n_N_odd,  dtype = int )
-        self.D3p_n_Z_even = np.array( D3p_n_Z_even, dtype = int )
-        self.D3p_n_Z_odd  = np.array( D3p_n_Z_odd,  dtype = int )
-        self.D3p_n_even   = np.array( D3p_n_even,   dtype = float )
-        self.D3p_n_odd    = np.array( D3p_n_odd,    dtype = float )            
+                    D3n_Z_odd.append( self.nucZ[ind] )
+                    D3n_N_odd.append( self.nucN[ind] )
+                    D3n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+        self.D3n_N_even = np.array( D3n_N_even, dtype = int )
+        self.D3n_N_odd  = np.array( D3n_N_odd,  dtype = int )
+        self.D3n_Z_even = np.array( D3n_Z_even, dtype = int )
+        self.D3n_Z_odd  = np.array( D3n_Z_odd,  dtype = int )
+        self.D3n_even   = np.array( D3n_even,   dtype = float )
+        self.D3n_odd    = np.array( D3n_odd,    dtype = float )            
         #
-        if nuda.env.verb: print("Exit D3p_n()")
+        if nuda.env.verb: print("Exit D3n()")
         #
         return self
     #
-    def D3p_p( self, Nmin = 1, Nmax = 95 ):
+    def D3p( self, Nmin = 1, Nmax = 95 ):
         """
-        Compute the three-points odd-even mass staggering (D3p_p)
-        D3p^Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
+        Compute the three-points odd-even mass staggering (D3p)
+        D3Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
         """
         #
-        if nuda.env.verb: print("Enter D3p_p()")
+        if nuda.env.verb: print("Enter D3p()")
         #
         if Nmin > Nmax:
-            print('In D3p_p attribute function of setup_be_exp.py:')
-            print('Bad definition of Nmin and Nmax')
-            print('It is expected that Nmin<=Nmax')
-            print('Nmin,Nmax:',Nmin,Nmax)
-            print('exit')
+            print('setup_be_theo: In D3p attribute function of setup_be_exp.py:')
+            print('setup_be_theo: Bad definition of Nmin and Nmax')
+            print('setup_be_theo: It is expected that Nmin<=Nmax')
+            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_theo: exit')
             exit()
         #
-        D3p_p_Z_even = []
-        D3p_p_Z_odd = []
-        D3p_p_N_even = []
-        D3p_p_N_odd = []
-        D3p_p_even = []
-        D3p_p_odd = []
+        D3p_Z_even = []
+        D3p_Z_odd = []
+        D3p_N_even = []
+        D3p_N_odd = []
+        D3p_even = []
+        D3p_odd = []
         #
         for ind,N in enumerate(self.nucN):
             #
@@ -846,21 +846,21 @@ class setupBETheo():
                     break
             if flag_find1*flag_find2 == 1: 
                 if sign > 0: #even
-                    D3p_p_Z_even.append( self.nucZ[ind] )
-                    D3p_p_N_even.append( self.nucN[ind] )
-                    D3p_p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+                    D3p_Z_even.append( self.nucZ[ind] )
+                    D3p_N_even.append( self.nucN[ind] )
+                    D3p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
                 else:
-                    D3p_p_Z_odd.append( self.nucZ[ind] )
-                    D3p_p_N_odd.append( self.nucN[ind] )
-                    D3p_p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_p_N_even = np.array( D3p_p_N_even, dtype = int )
-        self.D3p_p_N_odd  = np.array( D3p_p_N_odd,  dtype = int )
-        self.D3p_p_Z_even = np.array( D3p_p_Z_even, dtype = int )
-        self.D3p_p_Z_odd  = np.array( D3p_p_Z_odd,  dtype = int )
-        self.D3p_p_even   = np.array( D3p_p_even,   dtype = float )
-        self.D3p_p_odd    = np.array( D3p_p_odd,    dtype = float )            
+                    D3p_Z_odd.append( self.nucZ[ind] )
+                    D3p_N_odd.append( self.nucN[ind] )
+                    D3p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+        self.D3p_N_even = np.array( D3p_N_even, dtype = int )
+        self.D3p_N_odd  = np.array( D3p_N_odd,  dtype = int )
+        self.D3p_Z_even = np.array( D3p_Z_even, dtype = int )
+        self.D3p_Z_odd  = np.array( D3p_Z_odd,  dtype = int )
+        self.D3p_even   = np.array( D3p_even,   dtype = float )
+        self.D3p_odd    = np.array( D3p_odd,    dtype = float )            
         #
-        if nuda.env.verb: print("Exit D3p_p()")
+        if nuda.env.verb: print("Exit D3p()")
         #
         return self
     #
@@ -880,10 +880,10 @@ class setupBETheo():
         if nuda.env.verb: print("Enter diff()")
         #
         if self.table == table:
-            print('we have self.table = table')
-            print('self.table:',self.table)
-            print('table:',table)
-            print('exit()')
+            print('setup_be_theo: we have self.table = table')
+            print('setup_be_theo: self.table:',self.table)
+            print('setup_be_theo: table:',table)
+            print('setup_be_theo: exit()')
             exit()
         #
         # table_ref
@@ -975,10 +975,10 @@ class setupBETheo():
         if nuda.env.verb: print("Enter diff()")
         #
         if self.table == table_exp:
-            print('we have self.table = table_exp')
-            print('self.table:',self.table)
-            print('table:',table_exp)
-            print('exit()')
+            print('setup_be_theo: we have self.table = table_exp')
+            print('setup_be_theo: self.table:',self.table)
+            print('setup_be_theo: table:',table_exp)
+            print('setup_be_theo: exit()')
             exit()
         #
         # table_ref

@@ -141,18 +141,18 @@ class setupBEExp():
         #
         tables, tables_lower = be_exp_tables()
         if table.lower() not in tables_lower:
-            print('Table ',table,' is not in the list of tables.')
-            print('list of tables:',tables)
-            print('-- Exit the code --')
+            print('setup_be_exp.py: Table ',table,' is not in the list of tables.')
+            print('setup_be_exp.py: list of tables:',tables)
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.table = table
         if nuda.env.verb: print("table:",table)
         #
         versions, versions_lower = be_exp_versions( table = table )
         if version.lower() not in versions_lower:
-            print('Version ',version,' is not in the list of versions.')
-            print('list of versions:',versions)
-            print('-- Exit the code --')
+            print('setup_be_exp.py: Version ',version,' is not in the list of versions.')
+            print('setup_be_exp.py: list of versions:',versions)
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.version = version
         if nuda.env.verb: print("version:",version)
@@ -478,15 +478,15 @@ class setupBEExp():
         if nuda.env.verb: print("Enter select()")
         #
         if interp.lower() not in [ 'y', 'n' ]:
-            print('Interp ',interp,' is not "y" or "n".')
-            print('-- Exit the code --')
+            print('setup_be_exp.py: Interp ',interp,' is not "y" or "n".')
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.nucInterp = interp
         if nuda.env.verb: print("interp:",interp)
         #
         if state.lower() not in [ 'gs' ]:
-            print('State ',state,' is not "gs".')
-            print('-- Exit the code --')
+            print('setup_be_exp.py: State ',state,' is not "gs".')
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.state = state
         if nuda.env.verb: print("state:",state)
@@ -494,8 +494,8 @@ class setupBEExp():
         nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive' ]
         #
         if nucleus.lower() not in nuclei:
-            print('Nucleus ',nucleus,' is not in the list: ',nuclei)
-            print('-- Exit the code --')
+            print('setup_be_exp.py: Nucleus ',nucleus,' is not in the list: ',nuclei)
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.nucleus = nucleus
         if nuda.env.verb: print("nucleus:",nucleus)
@@ -600,11 +600,11 @@ class setupBEExp():
         if nuda.env.verb: print("Enter drip()")
         #
         if Zmin > Zmax:
-            print('In isotopes attribute function of setup_be_exp.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_exp.py: In isotopes attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
+            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
+            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_exp.py: exit')
             exit()
         #
         Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )
@@ -662,24 +662,24 @@ class setupBEExp():
         **Attributes:**
         """
         #
-        if self.year is None:
-            print('There is no year in the experimental mass table')
-            print('Table:',self.table)
-            print('Version:',self.version)
-            print('Exit()')
+        if self.nucYear is None:
+            print('setup_be_exp.py: There is no year in the experimental mass table')
+            print('setup_be_exp.py: Table:',self.table)
+            print('setup_be_exp.py: Version:',self.version)
+            print('setup_be_exp.py: Exit()')
             exit()
         if year_min > int(self.version) or year_max < yearMin:
-            print('year_min or year_max is not well defined')
-            print('year_min:',year_min,' >? ',int(self.version))
-            print('year_max:',year_max,' <? ',yearMin)
-            print('-- Exit the code --')
+            print('setup_be_exp.py: year_min or year_max is not well defined')
+            print('setup_be_exp.py: year_min:',year_min,' >? ',int(self.version))
+            print('setup_be_exp.py: year_max:',year_max,' <? ',yearMin)
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.year_min = year_min
         self.year_max = year_max
         #
         if state.lower() not in [ 'gs' ]:
-            print('State ',state,' is not "gs".')
-            print('-- Exit the code --')
+            print('setup_be_exp.py: State ',state,' is not "gs".')
+            print('setup_be_exp.py: -- Exit the code --')
             exit()
         self.state = state
         #
@@ -722,7 +722,7 @@ class setupBEExp():
             #print('discovery year:',nucYear)
             nbNucTot = nbNucTot + 1
             # skip nucleus if interpolated data
-            if flagInterp == 'y':
+            if nucInterp == 'y':
                 continue
             # skip nuclei not in GS
             if state == 'gs' and nucI != 0:
@@ -734,12 +734,12 @@ class setupBEExp():
             if nucZ > self.sel_Zmax: self.sel_Zmax = nucZ
             self.sel_N.append( nucN )
             self.sel_symb.append( nucSymb )
-            self.sel_I.append( flagI )
-            self.sel_Interp.append( flagInterp )
+            self.sel_I.append( nucI )
+            self.sel_Interp.append( nucInterp )
             self.sel_HT.append( nucHT )
             self.sel_year.append( nucYear )
             self.sel_BE.append( nucBE )
-            self.sel_BE_err.append( nucBE_err )
+            self.sel_BE_err.append( nucdBE )
         self.sel_nbNucTot = nbNucTot
         self.sel_nbNucSta = nbNucSta
         self.sel_nbNucSel = nbNucSel
@@ -760,11 +760,11 @@ class setupBEExp():
         if nuda.env.verb: print("Enter S2n()")
         #
         if Zmin > Zmax:
-            print('In S2n attribute function of setup_be_exp.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_exp.py: In S2n attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
+            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
+            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_exp.py: exit')
             exit()
         #
         S2n_Z = []
@@ -820,11 +820,11 @@ class setupBEExp():
         if nuda.env.verb: print("Enter S2p()")
         #
         if Nmin > Nmax:
-            print('In S2p attribute function of setup_be_exp.py:')
-            print('Bad definition of Nmin and Nmax')
-            print('It is expected that Nmin<=Nmax')
-            print('Nmin,Nmax:',Nmin,Nmax)
-            print('exit')
+            print('setup_be_exp.py: In S2p attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Nmin and Nmax')
+            print('setup_be_exp.py: It is expected that Nmin<=Nmax')
+            print('setup_be_exp.py: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_exp.py: exit')
             exit()
         #
         S2p_Z = []
@@ -871,7 +871,7 @@ class setupBEExp():
         #
         return self
     #
-    def D3p_n( self, Zmin = 1, Zmax = 95 ):
+    def D3n( self, Zmin = 1, Zmax = 95 ):
         """
         Compute the three-points odd-even mass staggering (D3p_n)
         D_3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
@@ -880,19 +880,19 @@ class setupBEExp():
         if nuda.env.verb: print("Enter D3p_n()")
         #
         if Zmin > Zmax:
-            print('In D3p_n attribute function of setup_be_exp.py:')
-            print('Bad definition of Zmin and Zmax')
-            print('It is expected that Zmin<=Zmax')
-            print('Zmin,Zmax:',Zmin,Zmax)
-            print('exit')
+            print('setup_be_exp.py: In D3p_n attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
+            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
+            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_exp.py: exit')
             exit()
         #
-        D3p_n_Z_even = []
-        D3p_n_Z_odd = []
-        D3p_n_N_even = []
-        D3p_n_N_odd = []
-        D3p_n_even = []
-        D3p_n_odd = []
+        D3n_Z_even = []
+        D3n_Z_odd = []
+        D3n_N_even = []
+        D3n_N_odd = []
+        D3n_even = []
+        D3n_odd = []
         #
         for ind,Z in enumerate(self.nucZ):
             #
@@ -929,26 +929,26 @@ class setupBEExp():
                     break
             if flag_find1*flag_find2 == 1: 
                 if sign > 0: #even
-                    D3p_n_Z_even.append( self.nucZ[ind] )
-                    D3p_n_N_even.append( self.nucN[ind] )
-                    D3p_n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+                    D3n_Z_even.append( self.nucZ[ind] )
+                    D3n_N_even.append( self.nucN[ind] )
+                    D3n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
                 else:
-                    D3p_n_Z_odd.append( self.nucZ[ind] )
-                    D3p_n_N_odd.append( self.nucN[ind] )
-                    D3p_n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_n_N_even = np.array( D3p_n_N_even, dtype = int )
-        self.D3p_n_N_odd  = np.array( D3p_n_N_odd,  dtype = int )
-        self.D3p_n_Z_even = np.array( D3p_n_Z_even, dtype = int )
-        self.D3p_n_Z_odd  = np.array( D3p_n_Z_odd,  dtype = int )
-        self.D3p_n_even   = np.array( D3p_n_even,   dtype = float )
-        self.D3p_n_odd    = np.array( D3p_n_odd,    dtype = float )            
+                    D3n_Z_odd.append( self.nucZ[ind] )
+                    D3n_N_odd.append( self.nucN[ind] )
+                    D3n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+        self.D3n_N_even = np.array( D3n_N_even, dtype = int )
+        self.D3n_N_odd  = np.array( D3n_N_odd,  dtype = int )
+        self.D3n_Z_even = np.array( D3n_Z_even, dtype = int )
+        self.D3n_Z_odd  = np.array( D3n_Z_odd,  dtype = int )
+        self.D3n_even   = np.array( D3n_even,   dtype = float )
+        self.D3n_odd    = np.array( D3n_odd,    dtype = float )            
         #
         if nuda.env.verb: print("Exit D3p_n()")
         #
         return self
     #
     #
-    def D3p_p( self, Nmin = 1, Nmax = 95 ):
+    def D3p( self, Nmin = 1, Nmax = 95 ):
         """
         Compute the three-points odd-even mass staggering (D3p_p)
         D_3p^P = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
@@ -957,19 +957,19 @@ class setupBEExp():
         if nuda.env.verb: print("Enter D3p_p()")
         #
         if Nmin > Nmax:
-            print('In D3p_p attribute function of setup_be_exp.py:')
-            print('Bad definition of Nmin and Nmax')
-            print('It is expected that Nmin<=Nmax')
-            print('Nmin,Nmax:',Nmin,Nmax)
-            print('exit')
+            print('setup_be_exp.py: In D3p_p attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Nmin and Nmax')
+            print('setup_be_exp.py: It is expected that Nmin<=Nmax')
+            print('setup_be_exp.py: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_exp.py: exit')
             exit()
         #
-        D3p_p_Z_even = []
-        D3p_p_Z_odd = []
-        D3p_p_N_even = []
-        D3p_p_N_odd = []
-        D3p_p_even = []
-        D3p_p_odd = []
+        D3p_Z_even = []
+        D3p_Z_odd = []
+        D3p_N_even = []
+        D3p_N_odd = []
+        D3p_even = []
+        D3p_odd = []
         #
         for ind,N in enumerate(self.nucN):
             #
@@ -1006,19 +1006,19 @@ class setupBEExp():
                     break
             if flag_find1*flag_find2 == 1: 
                 if sign > 0: #even
-                    D3p_p_Z_even.append( self.nucZ[ind] )
-                    D3p_p_N_even.append( self.nucN[ind] )
-                    D3p_p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+                    D3p_Z_even.append( self.nucZ[ind] )
+                    D3p_N_even.append( self.nucN[ind] )
+                    D3p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
                 else:
-                    D3p_p_Z_odd.append( self.nucZ[ind] )
-                    D3p_p_N_odd.append( self.nucN[ind] )
-                    D3p_p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_p_N_even = np.array( D3p_p_N_even, dtype = int )
-        self.D3p_p_N_odd  = np.array( D3p_p_N_odd,  dtype = int )
-        self.D3p_p_Z_even = np.array( D3p_p_Z_even, dtype = int )
-        self.D3p_p_Z_odd  = np.array( D3p_p_Z_odd,  dtype = int )
-        self.D3p_p_even   = np.array( D3p_p_even,   dtype = float )
-        self.D3p_p_odd    = np.array( D3p_p_odd,    dtype = float )            
+                    D3p_Z_odd.append( self.nucZ[ind] )
+                    D3p_N_odd.append( self.nucN[ind] )
+                    D3p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+        self.D3p_N_even = np.array( D3p_N_even, dtype = int )
+        self.D3p_N_odd  = np.array( D3p_N_odd,  dtype = int )
+        self.D3p_Z_even = np.array( D3p_Z_even, dtype = int )
+        self.D3p_Z_odd  = np.array( D3p_Z_odd,  dtype = int )
+        self.D3p_even   = np.array( D3p_even,   dtype = float )
+        self.D3p_odd    = np.array( D3p_odd,    dtype = float )            
         #
         if nuda.env.verb: print("Exit D3p_p()")
         #

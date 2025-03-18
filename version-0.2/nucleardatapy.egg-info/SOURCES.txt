@@ -897,6 +897,7 @@ version-0.2/nucleardatapy/fig/matter_setupMicro_gap_fig.py
 version-0.2/nucleardatapy/fig/matter_setupNEPModelDist_fig.py
 version-0.2/nucleardatapy/fig/matter_setupPhenoEsym_fig.py
 version-0.2/nucleardatapy/fig/matter_setupPheno_fig.py
+version-0.2/nucleardatapy/fig/nuc_setupBEExp_chart_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupBEExp_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupBETheo_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupISGMRExp_fig.py

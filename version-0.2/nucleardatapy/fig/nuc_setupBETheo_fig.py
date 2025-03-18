@@ -232,15 +232,15 @@ def nuc_setupBETheo_D3n_fig( pname, tables, Zref = 50 ):
     for i,table in enumerate( tables ):
         #
         mas = nuda.nuc.setupBETheo( table = table )
-        d3p = mas.D3p_n( Zmin = Zref, Zmax = Zref )
+        d3p = mas.D3n( Zmin = Zref, Zmax = Zref )
         #
-        axs.plot( d3p.D3p_n_N_even, d3p.D3p_n_even, linestyle='solid', linewidth=1, label=table+'(even)' )
+        axs.plot( d3p.D3n_N_even, d3p.D3n_even, linestyle='solid', linewidth=1, label=table+'(even)' )
     #
     exp_table = 'AME'
     exp_version = '2020'
     mas_exp = nuda.nuc.setupBEExp( table = exp_table, version = exp_version )
-    d3p_exp = mas_exp.D3p_n( Zmin = Zref, Zmax = Zref )
-    axs.scatter( d3p_exp.D3p_n_N_even, d3p_exp.D3p_n_even, label=exp_table+' '+exp_version+'(even)' )
+    d3n_exp = mas_exp.D3n( Zmin = Zref, Zmax = Zref )
+    axs.scatter( d3n_exp.D3n_N_even, d3n_exp.D3n_even, label=exp_table+' '+exp_version+'(even)' )
     #
     #axs.legend(loc='upper right',fontsize='10', ncol=4)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='7',ncol=4,frameon=False)
@@ -294,15 +294,15 @@ def nuc_setupBETheo_D3p_fig( pname, tables, Nref = 50 ):
     for i,table in enumerate( tables ):
         #
         mas = nuda.nuc.setupBETheo( table = table )
-        d3p = mas.D3p_p( Nmin = Nref, Nmax = Nref )
+        d3p = mas.D3p( Nmin = Nref, Nmax = Nref )
         #
-        axs.plot( d3p.D3p_p_Z_even, d3p.D3p_p_even, linestyle='solid', linewidth=1, label=table+'(even)' )
+        axs.plot( d3p.D3p_Z_even, d3p.D3p_even, linestyle='solid', linewidth=1, label=table+'(even)' )
     #
     exp_table = 'AME'
     exp_version = '2020'
     mas_exp = nuda.nuc.setupBEExp( table = exp_table, version = exp_version )
-    d3p_exp = mas_exp.D3p_p( Nmin = Nref, Nmax = Nref )
-    axs.scatter( d3p_exp.D3p_p_Z_even, d3p_exp.D3p_p_even, label=exp_table+' '+exp_version+'(even)' )
+    d3p_exp = mas_exp.D3p( Nmin = Nref, Nmax = Nref )
+    axs.scatter( d3p_exp.D3p_Z_even, d3p_exp.D3p_even, label=exp_table+' '+exp_version+'(even)' )
     #
     #axs.legend(loc='upper right',fontsize='8', ncol=4)
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='7',ncol=4,frameon=False)

@@ -21,9 +21,9 @@ def rch_exp_tables():
     #
     tables = [ '2013-Angeli' ]
     #
-    print('tables available in the toolkit:',tables)
+    #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
-    print('tables available in the toolkit:',tables_lower)
+    #print('tables available in the toolkit:',tables_lower)
     #
     if nuda.env.verb: print("Exit rch_exp_tables()")
     #
