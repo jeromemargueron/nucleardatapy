@@ -1,14 +1,9 @@
-import os
-import sys
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 
-# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-# sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
-def nskin_theo_models():
+def rnp_theo_models():
     """
     Return a the neutron skin values of the models available in this toolkit and print them all on the prompt.
 
@@ -16,29 +11,29 @@ def nskin_theo_models():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter nskin_theo_models()")
+    if nuda.env.verb: print("\nEnter rnp_theo_models()")
     #
     models = [ 'Skyrme', 'NLRH', 'DDRH' ]
     #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
-    if nuda.env.verb: print("Exit nskin_theo_models()")
+    if nuda.env.verb: print("Exit rnp_theo_models()")
     #
     return models, models_lower
 
-# def nskin_theo_nucleus():
+# def rnp_theo_nucleus():
 #     #
-#     if nuda.env.verb: print("\nEnter nskin_theo_nucleus()")
+#     if nuda.env.verb: print("\nEnter rnp_theo_nucleus()")
 #     #
 #     nucleus = [ '48Ca', '208Pb']
 #     nucleus_lower = [ item.lower() for item in nucleus ]
 #     #
-#     if nuda.env.verb: print("Exit nskin_theo_nucleus()")
+#     if nuda.env.verb: print("Exit rnp_theo_nucleus()")
 #     #
 #     return nucleus, nucleus_lower
 # 
 
-def nskin_theo_params( model ):
+def rnp_theo_params( model ):
     """
     Return a list with the parameterizations available in 
     this toolkit for a given model and print them all on the prompt.
@@ -58,7 +53,7 @@ def nskin_theo_params( model ):
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter nskin_theo_params()")
+    if nuda.env.verb: print("\nEnter rnp_theo_params()")
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
@@ -77,11 +72,11 @@ def nskin_theo_params( model ):
     #print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
     #
-    if nuda.env.verb: print("Exit nskin_theo_params()")
+    if nuda.env.verb: print("Exit rnp_theo_params()")
     #
     return params, params_lower
 
-class SetupNeutronSkinTheo():
+class setupRnpTheo():
     """
     Instantiate the object with results based on phenomenological\
     interactions and choosen by the toolkit practitioner. \
@@ -110,7 +105,7 @@ class SetupNeutronSkinTheo():
     #
     def __init__( self, model = 'Skyrme', param = 'SLY5', nucleus = '208Pb' ):
         #
-        if nuda.env.verb: print("\nEnter SetupNeutronSkinTheo()")
+        if nuda.env.verb: print("\nEnter setupRnpTheo()")
         #
         #: Attribute model.
         self.model = model
@@ -126,9 +121,9 @@ class SetupNeutronSkinTheo():
         if nuda.env.verb: print("nucleus:",nucleus)
         print("-> nucleus:",nucleus)
         # 
-        self = SetupNeutronSkinTheo.init_self( self )
+        self = nuda.nuc.setupRnpTheo.init_self( self )
         #
-        models, models_lower = nskin_theo_models( )
+        models, models_lower = rnp_theo_models( )
         #
         if model.lower() not in models_lower:
             print('The model name ',model,' is not in the list of models.')
@@ -136,7 +131,7 @@ class SetupNeutronSkinTheo():
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = nskin_theo_params( model = model )
+        params, params_lower = rnp_theo_params( model = model )
         #
         if param.lower() not in params_lower:
             print('The param set ',param,' is not in the list of param.')
@@ -144,7 +139,7 @@ class SetupNeutronSkinTheo():
             print('-- Exit the code --')
             exit()
         #
-        # nucleus, nucleus_lower = nskin_theo_nucleus( )
+        # nucleus, nucleus_lower = rnp_theo_nucleus( )
         # #
         # if nucleus.lower() not in nucleus_lower:
         #     print('The param set ',nucleus,' is not in the list of param.')
@@ -154,70 +149,70 @@ class SetupNeutronSkinTheo():
         # #            
         if model.lower() == 'skyrme':
             #
-             file_in1 = os.path.join(nuda.param.path_data,'NeutronSkin/skyrmeNskin-'+nucleus+'.dat')
+             file_in1 = os.path.join(nuda.param.path_data,'Neutrornp/skyrmernp-'+nucleus+'.dat')
              if nuda.env.verb: print('Reads file1:',file_in1)
              name = np.loadtxt( file_in1, usecols=(0), comments='#', unpack = True, dtype=str )
-             Rn, Rp, Rskin = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
+             Rn, Rp, Rnp = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
              #: Attribute providing the label the data is references for figures.
              self.label = 'SKY-'+param
              #: Attribute providing additional notes about the data.
              self.note = "write here notes about this EOS."
              #
              if param in name:
-                 self.nskin = True
+                 self.rnp = True
                  ind = np.where(name == param )
                  self.Rn = Rn[ind][0]; 
                  self.Rp = Rp[ind][0]; 
-                 self.Rskin = Rskin[ind][0];
+                 self.Rnp = Rnp[ind][0];
              else:
-                 self.nskin = False
+                 self.rnp = False
             #
         elif model.lower() == 'nlrh':
             #
-             file_in1 = os.path.join(nuda.param.path_data,'NeutronSkin/nlrhNskin-'+nucleus+'.dat')
+             file_in1 = os.path.join(nuda.param.path_data,'rnp/nlrhrnp-'+nucleus+'.dat')
              if nuda.env.verb: print('Reads file1:',file_in1)
              name = np.loadtxt( file_in1, usecols=(0), comments='#', unpack = True, dtype=str )
-             Rn, Rp, Rskin = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
+             Rn, Rp, Rnp = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
              #: Attribute providing the label the data is references for figures.
              self.label = 'NLRH-'+param
              #: Attribute providing additional notes about the data.
              self.note = "write here notes about this EOS."
              #
              if param in name:
-                 self.nskin = True
+                 self.rnp = True
                  ind = np.where(name == param )
                  self.Rn = Rn[ind][0]; 
                  self.Rp = Rp[ind][0]; 
-                 self.Rskin = Rskin[ind][0];
+                 self.Rnp = Rnp[ind][0];
              else:
-                 self.nskin = False
+                 self.rnp = False
             #
         elif model.lower() == 'ddrh':
             #
-             file_in1 = os.path.join(nuda.param.path_data,'NeutronSkin/ddrhNskin-'+nucleus+'.dat')
+             file_in1 = os.path.join(nuda.param.path_data,'rnp/ddrhrnp-'+nucleus+'.dat')
              if nuda.env.verb: print('Reads file1:',file_in1)
              name = np.loadtxt( file_in1, usecols=(0), comments='#', unpack = True, dtype=str )
-             Rn, Rp, Rskin = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
+             Rn, Rp, Rnp = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
              #: Attribute providing the label the data is references for figures.
              self.label = 'DDRH-'+param
              #: Attribute providing additional notes about the data.
              self.note = "write here notes about this EOS."
              #
              if param in name:
-                 self.nskin = True
+                 self.rnp = True
                  ind = np.where(name == param )
                  self.Rn = Rn[ind][0]; 
                  self.Rp = Rp[ind][0]; 
-                 self.Rskin = Rskin[ind][0];
+                 self.Rnp = Rnp[ind][0];
              else:
-                 self.nskin = False
+                 self.rnp = False
             #
         # 
         self.Rn_unit = 'fm'
         self.Rp_unit = 'fm'
-        self.Rskin_unit = 'fm'
+        self.Rnp_unit = 'fm'
         #
-        if nuda.env.verb: print("Exit SetupNeutronSkinThe()")
+        if nuda.env.verb: print("Exit setupRnpTheo()")
     #
     def print_outputs( self ):
         """
@@ -234,7 +229,7 @@ class SetupNeutronSkinTheo():
         #
         print(f"   Rn: {np.round(self.Rn,4)} in {self.Rn_unit}")
         print(f"   Rp: {np.round(self.Rn,4)} in {self.Rp_unit}")
-        print(f"   Rskin: {np.round(self.Rskin,4)} in {self.Rskin_unit}")
+        print(f"   Rnp: {np.round(self.Rnp,4)} in {self.Rnp_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
@@ -250,7 +245,7 @@ class SetupNeutronSkinTheo():
         #: Attribute the symmetric matter density.
         self.Rp = []
         #: Attribute the neutron matter neutron Fermi momentum.
-        self.Rskin = []
+        self.Rnp = []
         #: Attribute the plot linestyle.
         self.linestyle = None
         #: Attribute the plot marker.

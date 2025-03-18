@@ -1,14 +1,9 @@
-import os
-import sys
 import math
-import numpy as np  # 1.15.0
-
-# nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-# sys.path.insert(0, nucleardatapy_tk)
+#import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
-def nskin_exp():
+def rnp_exp():
     """
     Return a list of the nuclei (source) for which a neutron skin is given
 
@@ -16,7 +11,7 @@ def nskin_exp():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter nskin_exp()")
+    if nuda.env.verb: print("\nEnter rnp_exp()")
     #
     sources = [ '48Ca', '208Pb' ]
     #
@@ -24,11 +19,11 @@ def nskin_exp():
     sources_lower = [ item.lower() for item in sources ]
     # print('sources available in the toolkit:',sources_lower)
     #
-    if nuda.env.verb: print("Exit nskin_exp()")
+    if nuda.env.verb: print("Exit rnp_exp()")
     #
     return sources, sources_lower
 
-def nskin_exp_source(source):
+def rnp_exp_source(source):
     """
     Return a list of values for a given source (nuclei).
 
@@ -37,7 +32,7 @@ def nskin_exp_source(source):
     :return: The list of calculations.
     :rtype: list[int].
     """
-    if nuda.env.verb: print("\nEnter nskin_exp_source()")
+    if nuda.env.verb: print("\nEnter rnp_exp_source()")
 
     cals = []
     if source.lower() == '48ca':
@@ -47,10 +42,10 @@ def nskin_exp_source(source):
     else:
         raise ValueError(f"Source '{source}' is not supported. Supported sources are: '48Ca' and '208Pb'.")
 
-    if nuda.env.verb: print("Exit nskin_source()")
+    if nuda.env.verb: print("Exit rnp_source()")
     return cals
 
-class SetupNeutronSkinExp():
+class setupRnpExp():
     """
     Instantiate the neutron skin calculations for a given source and cal.
 
@@ -69,11 +64,11 @@ class SetupNeutronSkinExp():
     """
     def __init__(self, source = '208Pb', cal = 1 ):
         #
-        if nuda.env.verb: print("Enter SetupNeutronSkin()")
+        if nuda.env.verb: print("Enter setupRnpExp()")
         #
         # some checks
         #
-        sources, sources_lower = nskin_exp()
+        sources, sources_lower = rnp_exp()
         if source.lower() not in sources_lower:
             print('Source ',source,' is not in the list of sources.')
             print('list of sources:',sources)
@@ -82,7 +77,7 @@ class SetupNeutronSkinExp():
         self.source = source
         if nuda.env.verb: print("source:",source)
         #
-        cals = nskin_exp_source( source = source )
+        cals = rnp_exp_source( source = source )
         if cal not in cals:
             print('cal ',cal,' is not in the list of cal.')
             print('list of cal:',cals)
@@ -95,9 +90,9 @@ class SetupNeutronSkinExp():
         #
         file_in = None
         if source.lower() == '48ca':
-            file_in = nuda.param.path_data + 'nuclei/nskin/48Ca.dat'
+            file_in = nuda.param.path_data + 'nuclei/rnp/48Ca.dat'
         elif source.lower() == '208pb':
-            file_in = nuda.param.path_data + 'nuclei/nskin/208Pb.dat'
+            file_in = nuda.param.path_data + 'nuclei/rnp/208Pb.dat'
         else:
             raise ValueError(f"Unsupported source '{source}'. Expected '48Ca' or '208Pb'.")
         if file_in is None:
@@ -445,11 +440,11 @@ class SetupNeutronSkinExp():
         #: Attribute the negative uncertainty.
         self.prad_sig_do = None
         #: Attributethe neutron skin of the source.
-        self.nskin = None
+        self.rnp = None
         #: Attribute the positive uncertainty.
-        self.nskin_sig_up = None
+        self.rnp_sig_up = None
         #: Attribute the negative uncertainty.
-        self.nskin_sig_do = None
+        self.rnp_sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
         #
@@ -469,16 +464,16 @@ class SetupNeutronSkinExp():
                 if int(a) == cal:
                     self.nrad = safe_float(ele[1])
                     self.nrad_sig_up = safe_float(ele[2])
-                    self.nrad_sig_do = safe_float(ele[3])
+                    self.nrad_sig_lo = safe_float(ele[3])
                     self.prad = safe_float(ele[4])
                     self.prad_sig_up = safe_float(ele[5])
-                    self.prad_sig_do = safe_float(ele[6])
-                    self.nskin = safe_float(ele[7])
-                    self.nskin_sig_up = safe_float(ele[8])
-                    self.nskin_sig_do = safe_float(ele[9])
+                    self.prad_sig_lo = safe_float(ele[6])
+                    self.rnp = safe_float(ele[7])
+                    self.rnp_sig_up = safe_float(ele[8])
+                    self.rnp_sig_lo = safe_float(ele[9])
                     self.latexCite = ele[10].replace('\n','').replace(' ','')
         #
-        if nuda.env.verb: print("Exit SetupNeutronSkin()")
+        if nuda.env.verb: print("Exit setupRnpExp()")
         #
     #
     def print_outputs( self ):
@@ -492,11 +487,11 @@ class SetupNeutronSkinExp():
         print("   source:  ",self.source)
         print("   cal:",self.cal)
         print("   Rn:",self.nrad,' in fm')
-        print("   sigma(Rn):",self.nrad_sig_up,self.nrad_sig_do,' in fm')
+        print("   sigma(Rn):",self.nrad_sig_up,self.nrad_sig_lo,' in fm')
         print("   Rp:",self.prad,' in fm')
-        print("   sigma(Rp):",self.prad_sig_up,self.prad_sig_do,' in fm')
-        print("   Rskin:",self.nskin,' in fm')
-        print("   sigma(Rskin):",self.nskin_sig_up,self.nskin_sig_do,' in fm')
+        print("   sigma(Rp):",self.prad_sig_up,self.prad_sig_lo,' in fm')
+        print("   Rnp:",self.rnp,' in fm')
+        print("   sigma(Rnp):",self.rnp_sig_up,self.rnp_sig_lo,' in fm')
         print("   latexCite:",self.latexCite)
         print("   ref:    ",self.ref)
         print("   label:  ",self.label)
@@ -505,7 +500,7 @@ class SetupNeutronSkinExp():
         if nuda.env.verb: print("Exit print_output()")
         #
     #
-class setupNeutronSkinAverage():
+class setupRnpAverage():
     """
     Instantiate the experimental/analitical data for a given source and averaged over cal.
 
@@ -520,7 +515,7 @@ class setupNeutronSkinAverage():
     """
     def __init__(self, source = '208Pb' ):
         #
-        if nuda.env.verb: print("Enter setupNeutronSkinAverage()")
+        if nuda.env.verb: print("Enter setupRnpAverage()")
         #
         self.source = source
         self.latexCite = None
@@ -528,22 +523,20 @@ class setupNeutronSkinAverage():
         self.label = source+' average'
         self.note = 'compute the centroid and standard deviation from the data.'
         #
-        cals = nskin_exp_source( source = source )
+        cals = rnp_exp_source( source = source )
         # print('cals:',cals)
         #
         # search for the boundary for the neutron skin:
         nsmin = 0.5; nsmax = 0.0;
         for cal in cals:
-            nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
-            # nskin.print_outputs( )
-            # print(f"Valor de nskin_sig_do: {nskin.nskin_sig_do}")
-            if nskin.nskin_sig_do is None or nskin.nskin_sig_do >= 1000:
-               nskin.nskin_sig_do = 0
-            if nskin.nskin_sig_up is None or nskin.nskin_sig_up >= 1000:
-               nskin.nskin_sig_up = 0   
-            nsdo = nskin.nskin - 0.5*nskin.nskin_sig_do
-            nsup = nskin.nskin + 0.5*nskin.nskin_sig_up
-            if nsdo < nsmin: nsmin = nsdo
+            rnp = nuda.nuc.setupRnpExp( source = source, cal = cal )
+            if rnp.rnp_sig_lo is None or rnp.rnp_sig_lo >= 1000:
+               rnp.rnp_sig_lo = 0
+            if rnp.rnp_sig_up is None or rnp.rnp_sig_up >= 1000:
+               rnp.rnp_sig_up = 0   
+            nslo = rnp.rnp - 0.5*rnp.rnp_sig_lo
+            nsup = rnp.rnp + 0.5*rnp.rnp_sig_up
+            if nslo < nsmin: nsmin = nslo
             if nsup > nsmax: nsmax = nsup
         #print('nsmin:',nsmin)
         #print('nsmax:',nsmax)
@@ -552,20 +545,20 @@ class setupNeutronSkinAverage():
         #print('ax:',ax)
         ay = np.zeros(300)
         for cal in cals:
-            nskin = nuda.SetupNeutronSkinExp( source = source, cal = cal )
-            #nskin.print_outputs( )
-            ay += gauss(ax,nskin.nskin,nskin.nskin_sig_up,nskin.nskin_sig_do)
+            rnp = nuda.nuc.setupRnpExp( source = source, cal = cal )
+            #rnp.print_outputs( )
+            ay += gauss(ax,rnp.rnp,rnp.rnp_sig_up,rnp.rnp_sig_lo)
         # determine the centroid and standard deviation from the distribution of cal. 
         nor = sum( ay )
         cen = sum( ay*ax )
         std = sum ( ay*ax**2 )
-        self.nskin_cen = cen / nor
-        self.sig_std = round( math.sqrt( std/nor - self.nskin_cen**2 ), 3 )
-        self.nskin_cen = round( self.nskin_cen, 3)
-        #print('nskin:',self.nskin_cen)
+        self.rnp_cen = cen / nor
+        self.sig_std = round( math.sqrt( std/nor - self.rnp_cen**2 ), 3 )
+        self.rnp_cen = round( self.rnp_cen, 3)
+        #print('rnp:',self.rnp_cen)
         #print('std:',self.sig_std)
         #
-        if nuda.env.verb: print("Exit setupNeutronSkinAverage()")
+        if nuda.env.verb: print("Exit setupRnpAverage()")
     #
     def print_output( self ):
         """
@@ -578,7 +571,7 @@ class setupNeutronSkinAverage():
         if nuda.env.verb_output:
             print("- Print output:")
             print("   source:  ",self.source)
-            print("   nskin_cen:",self.nskin_cen)
+            print("   rnp_cen:",self.rnp_cen)
             print("   sig_std:",self.sig_std)
             print("   latexCite:",self.latexCite)
             print("   ref:    ",self.ref)
@@ -591,20 +584,20 @@ class setupNeutronSkinAverage():
         #
     #
 
-def gauss( ax, nskin, nskin_sig_up, nskin_sig_do ):
-    if nskin_sig_do is None or nskin_sig_do == 0 or nskin_sig_do >= 1000:
-        nskin_sig_do = 0.0001
-    if nskin_sig_up is None or nskin_sig_up == 0 or nskin_sig_up >= 1000:
-        nskin_sig_up = 0.0001
-    fac = math.sqrt( 2*math.pi )
+def gauss( ax, rnp, rnp_sig_up, rnp_sig_lo ):
+    if rnp_sig_lo is None or rnp_sig_lo == 0 or rnp_sig_lo >= 1000:
+        rnp_sig_lo = 0.0001
+    if rnp_sig_up is None or rnp_sig_up == 0 or rnp_sig_up >= 1000:
+        rnp_sig_up = 0.0001
+    fac = math.sqrt( 2.0 * math.pi )
     gauss = []
     for x in ax:
-        if x < nskin: 
-            z = ( x - nskin ) / nskin_sig_do
-            norm = nskin_sig_do * fac
+        if x < rnp: 
+            z = ( x - rnp ) / rnp_sig_lo
+            norm = rnp_sig_lo * fac
         else:
-            z = ( x - nskin ) / nskin_sig_up
-            norm = nskin_sig_up * fac
-        gauss.append( math.exp( -0.5*z**2 ) / norm )
+            z = ( x - rnp ) / rnp_sig_up
+            norm = rnp_sig_up * fac
+        gauss.append( math.exp( -0.5 * z**2 ) / norm )
     return gauss
 

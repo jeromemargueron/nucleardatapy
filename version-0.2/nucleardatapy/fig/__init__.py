@@ -20,14 +20,19 @@ from nucleardatapy.fig.matter_setupNEPModelDist_fig import *
 from nucleardatapy.fig.matter_Esym_fig              import *
 from nucleardatapy.fig.matter_ESM_fig               import *
 from nucleardatapy.fig.matter_ENM_fig               import *
+from nucleardatapy.fig.matter_cs2_fig               import *
 #
 from nucleardatapy.fig.corr_setupKsatQsat_fig       import *
 from nucleardatapy.fig.corr_setupEsymLsym_fig       import *
 from nucleardatapy.fig.corr_setupEsymDen_fig        import *
 #
 from nucleardatapy.fig.nuc_setupBEExp_fig           import *
+from nucleardatapy.fig.nuc_setupBETheo_fig          import *
 from nucleardatapy.fig.nuc_setupRchExp_fig          import *
 from nucleardatapy.fig.nuc_setupRchTheo_fig         import *
+from nucleardatapy.fig.nuc_setupISGMRExp_fig        import *
+from nucleardatapy.fig.nuc_setupRnpExp_fig          import *
+from nucleardatapy.fig.nuc_setupRnpTheo_fig         import *
 #
 from nucleardatapy.fig.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.fig.hnuc_setupChart_fig          import *

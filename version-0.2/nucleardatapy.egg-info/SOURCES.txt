@@ -859,9 +859,9 @@ version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/Dat
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/Makefile_ifc
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/input04.f90
 version-0.2/nucleardatapy/data/nuclei/masses/UNEDF/ExpDatabase_Fortran90_v04/main04.f90
-version-0.2/nucleardatapy/data/nuclei/nskin/208Pb.dat
-version-0.2/nucleardatapy/data/nuclei/nskin/48Ca.dat
 version-0.2/nucleardatapy/data/nuclei/radch/2013-Angeli.csv
+version-0.2/nucleardatapy/data/nuclei/rnp/208Pb.dat
+version-0.2/nucleardatapy/data/nuclei/rnp/48Ca.dat
 version-0.2/nucleardatapy/eos/__init__.py
 version-0.2/nucleardatapy/eos/setup_am.py
 version-0.2/nucleardatapy/eos/setup_am_Beq.py
@@ -884,6 +884,7 @@ version-0.2/nucleardatapy/fig/hnuc_setupRE1LExp_fig.py
 version-0.2/nucleardatapy/fig/matter_ENM_fig.py
 version-0.2/nucleardatapy/fig/matter_ESM_fig.py
 version-0.2/nucleardatapy/fig/matter_Esym_fig.py
+version-0.2/nucleardatapy/fig/matter_cs2_fig.py
 version-0.2/nucleardatapy/fig/matter_setupFFGNuc_fig.py
 version-0.2/nucleardatapy/fig/matter_setupHIC_fig.py
 version-0.2/nucleardatapy/fig/matter_setupMicroEsym_fig.py
@@ -897,8 +898,12 @@ version-0.2/nucleardatapy/fig/matter_setupNEPModelDist_fig.py
 version-0.2/nucleardatapy/fig/matter_setupPhenoEsym_fig.py
 version-0.2/nucleardatapy/fig/matter_setupPheno_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupBEExp_fig.py
+version-0.2/nucleardatapy/fig/nuc_setupBETheo_fig.py
+version-0.2/nucleardatapy/fig/nuc_setupISGMRExp_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupRchExp_fig.py
 version-0.2/nucleardatapy/fig/nuc_setupRchTheo_fig.py
+version-0.2/nucleardatapy/fig/nuc_setupRnpExp_fig.py
+version-0.2/nucleardatapy/fig/nuc_setupRnpTheo_fig.py
 version-0.2/nucleardatapy/hnuc/__init__.py
 version-0.2/nucleardatapy/hnuc/setup_be1L_exp.py
 version-0.2/nucleardatapy/hnuc/setup_be1Xi_exp.py
@@ -921,10 +926,10 @@ version-0.2/nucleardatapy/nuc/__init__.py
 version-0.2/nucleardatapy/nuc/setup_be_exp.py
 version-0.2/nucleardatapy/nuc/setup_be_theo.py
 version-0.2/nucleardatapy/nuc/setup_isgmr_exp.py
-version-0.2/nucleardatapy/nuc/setup_nskin_exp.py
-version-0.2/nucleardatapy/nuc/setup_nskin_theo.py
 version-0.2/nucleardatapy/nuc/setup_rch_exp.py
 version-0.2/nucleardatapy/nuc/setup_rch_theo.py
+version-0.2/nucleardatapy/nuc/setup_rnp_exp.py
+version-0.2/nucleardatapy/nuc/setup_rnp_theo.py
 version-0.2/tests/__init__.py
 version-0.2/tests/test_astro_setupMasses.py
 version-0.2/tests/test_corr_setupKsatQsat.py
