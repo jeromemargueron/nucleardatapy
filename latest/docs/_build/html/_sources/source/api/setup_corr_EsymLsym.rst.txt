@@ -9,9 +9,9 @@ corr.setupEsymLsym
 .. automodule:: nucleardatapy.corr.setup_EsymLsym
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_corr_setupEsymLsym.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/corr_setupEsymLsym_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/plots/figs/plot_corr_setupEsymLsym.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_corr_setupEsymLsym.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
