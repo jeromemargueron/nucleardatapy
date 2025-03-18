@@ -9,9 +9,9 @@ matter.setupHIC
 .. automodule:: nucleardatapy.matter.setup_hic
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupHIC.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupHIC_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/plots/figs/plot_matter_setupHIC.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupHIC.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
