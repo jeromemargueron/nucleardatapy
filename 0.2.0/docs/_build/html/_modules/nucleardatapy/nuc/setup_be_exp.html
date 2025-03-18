@@ -230,18 +230,18 @@
         <span class="c1">#</span>
         <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">be_exp_tables</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables_lower</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span> <span class="o">=</span> <span class="n">be_exp_versions</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="p">)</span>
         <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">versions_lower</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Version &#39;</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="s1">&#39; is not in the list of versions.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of versions:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Version &#39;</span><span class="p">,</span><span class="n">version</span><span class="p">,</span><span class="s1">&#39; is not in the list of versions.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: list of versions:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;version:&quot;</span><span class="p">,</span><span class="n">version</span><span class="p">)</span>
@@ -572,15 +572,15 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter select()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">interp</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span> <span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interp &#39;</span><span class="p">,</span><span class="n">interp</span><span class="p">,</span><span class="s1">&#39; is not &quot;y&quot; or &quot;n&quot;.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Interp &#39;</span><span class="p">,</span><span class="n">interp</span><span class="p">,</span><span class="s1">&#39; is not &quot;y&quot; or &quot;n&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nucInterp</span> <span class="o">=</span> <span class="n">interp</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;interp:&quot;</span><span class="p">,</span><span class="n">interp</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;gs&#39;</span> <span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State &#39;</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="s1">&#39; is not &quot;gs&quot;.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: State &#39;</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="s1">&#39; is not &quot;gs&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;state:&quot;</span><span class="p">,</span><span class="n">state</span><span class="p">)</span>
@@ -588,8 +588,8 @@
         <span class="n">nuclei</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;stable&#39;</span><span class="p">,</span> <span class="s1">&#39;unstable&#39;</span><span class="p">,</span> <span class="s1">&#39;longlive&#39;</span><span class="p">,</span> <span class="s1">&#39;shortlive&#39;</span><span class="p">,</span> <span class="s1">&#39;veryshortlive&#39;</span> <span class="p">]</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nucleus</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nuclei</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nucleus &#39;</span><span class="p">,</span><span class="n">nucleus</span><span class="p">,</span><span class="s1">&#39; is not in the list: &#39;</span><span class="p">,</span><span class="n">nuclei</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Nucleus &#39;</span><span class="p">,</span><span class="n">nucleus</span><span class="p">,</span><span class="s1">&#39; is not in the list: &#39;</span><span class="p">,</span><span class="n">nuclei</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nucleus</span> <span class="o">=</span> <span class="n">nucleus</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nucleus:&quot;</span><span class="p">,</span><span class="n">nucleus</span><span class="p">)</span>
@@ -697,11 +697,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In isotopes attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: In isotopes attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="n">Nstable</span><span class="p">,</span> <span class="n">Zstable</span> <span class="o">=</span> <span class="n">stable_fit</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zmin</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zmax</span> <span class="p">)</span>
@@ -762,24 +762,24 @@
 <span class="sd">        **Attributes:**</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There is no year in the experimental mass table&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Version:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exit()&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucYear</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: There is no year in the experimental mass table&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Version:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Exit()&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">year_min</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year_max</span> <span class="o">&lt;</span> <span class="n">yearMin</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;year_min or year_max is not well defined&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;year_min:&#39;</span><span class="p">,</span><span class="n">year_min</span><span class="p">,</span><span class="s1">&#39; &gt;? &#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;year_max:&#39;</span><span class="p">,</span><span class="n">year_max</span><span class="p">,</span><span class="s1">&#39; &lt;? &#39;</span><span class="p">,</span><span class="n">yearMin</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: year_min or year_max is not well defined&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: year_min:&#39;</span><span class="p">,</span><span class="n">year_min</span><span class="p">,</span><span class="s1">&#39; &gt;? &#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: year_max:&#39;</span><span class="p">,</span><span class="n">year_max</span><span class="p">,</span><span class="s1">&#39; &lt;? &#39;</span><span class="p">,</span><span class="n">yearMin</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">year_min</span> <span class="o">=</span> <span class="n">year_min</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">year_max</span> <span class="o">=</span> <span class="n">year_max</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">state</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;gs&#39;</span> <span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State &#39;</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="s1">&#39; is not &quot;gs&quot;.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: State &#39;</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="s1">&#39; is not &quot;gs&quot;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
         <span class="c1">#</span>
@@ -822,7 +822,7 @@
             <span class="c1">#print(&#39;discovery year:&#39;,nucYear)</span>
             <span class="n">nbNucTot</span> <span class="o">=</span> <span class="n">nbNucTot</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="c1"># skip nucleus if interpolated data</span>
-            <span class="k">if</span> <span class="n">flagInterp</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nucInterp</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="c1"># skip nuclei not in GS</span>
             <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;gs&#39;</span> <span class="ow">and</span> <span class="n">nucI</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -834,12 +834,12 @@
             <span class="k">if</span> <span class="n">nucZ</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Zmax</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_Zmax</span> <span class="o">=</span> <span class="n">nucZ</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sel_N</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucN</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sel_symb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucSymb</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sel_I</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">flagI</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sel_Interp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">flagInterp</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_I</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucI</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_Interp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucInterp</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sel_HT</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucHT</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sel_year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucYear</span> <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucBE</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucBE_err</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sel_BE_err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">nucdBE</span> <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucTot</span> <span class="o">=</span> <span class="n">nbNucTot</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSta</span> <span class="o">=</span> <span class="n">nbNucSta</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sel_nbNucSel</span> <span class="o">=</span> <span class="n">nbNucSel</span>
@@ -863,11 +863,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: In S2n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="n">S2n_Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -926,11 +926,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: In S2p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="n">S2p_Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -978,9 +978,9 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.D3p_n">
-<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3p_n">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupBEExp.D3n">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3n">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the three-points odd-even mass staggering (D3p_n)</span>
 <span class="sd">        D_3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2</span>
@@ -989,19 +989,19 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: In D3p_n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_odd</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Z</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
             <span class="c1">#</span>
@@ -1038,19 +1038,19 @@
                     <span class="k">break</span>
             <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
                 <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
-                    <span class="n">D3p_n_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                    <span class="n">D3n_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">D3p_n_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+                    <span class="n">D3n_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
@@ -1058,9 +1058,9 @@
 
     <span class="c1">#</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupBEExp.D3p_p">
-<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3p_p">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupBEExp.D3p">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_exp.html#nucleardatapy.nuc.setup_be_exp.setupBEExp.D3p">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the three-points odd-even mass staggering (D3p_p)</span>
 <span class="sd">        D_3p^P = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2</span>
@@ -1069,19 +1069,19 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: In D3p_p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_exp.py: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_odd</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
             <span class="c1">#</span>
@@ -1118,19 +1118,19 @@
                     <span class="k">break</span>
             <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
                 <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
-                    <span class="n">D3p_p_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                    <span class="n">D3p_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">D3p_p_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+                    <span class="n">D3p_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>

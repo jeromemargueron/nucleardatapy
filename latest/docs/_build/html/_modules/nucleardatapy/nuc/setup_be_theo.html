@@ -166,9 +166,9 @@
         <span class="c1">#</span>
         <span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">be_theo_tables</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">table</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tables_lower</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Table &#39;</span><span class="p">,</span><span class="n">table</span><span class="p">,</span><span class="s1">&#39; is not in the list of tables.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;table:&quot;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
@@ -609,11 +609,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="n">S2n_Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -667,11 +667,11 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter S2p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In S2p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In S2p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="n">S2p_Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -732,17 +732,17 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip_S2n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In drip_S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S2n_Z</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In drip_S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Should compute first S2n&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Should compute first S2n&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="c1">#Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )</span>
@@ -789,17 +789,17 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter drip_S2p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In drip_S2p attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S2p_N</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In drip_S2p attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Should compute first S2p&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Should compute first S2p&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">drip_S2p_Z</span> <span class="o">=</span> <span class="p">[]</span>
@@ -826,30 +826,30 @@
 
         <span class="c1">#</span>
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupBETheo.D3p_n">
-<a class="viewcode-back" href="../../../source/api/setup_nuc_be_theo.html#nucleardatapy.nuc.setup_be_theo.setupBETheo.D3p_n">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupBETheo.D3n">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_theo.html#nucleardatapy.nuc.setup_be_theo.setupBETheo.D3n">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3n</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the three-points odd-even mass staggering (D3p_n)</span>
-<span class="sd">        D3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2</span>
+<span class="sd">        Compute the three-points odd-even mass staggering (D3n)</span>
+<span class="sd">        D3N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_n()&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Zmin</span> <span class="o">&gt;</span> <span class="n">Zmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In D3n attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Zmin and Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Zmin&lt;=Zmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Zmin,Zmax:&#39;</span><span class="p">,</span><span class="n">Zmin</span><span class="p">,</span><span class="n">Zmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_n_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3n_odd</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">Z</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">):</span>
             <span class="c1">#</span>
@@ -881,49 +881,49 @@
                     <span class="k">break</span>
             <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
                 <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
-                    <span class="n">D3p_n_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                    <span class="n">D3n_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">D3p_n_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_n_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_n_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_n_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+                    <span class="n">D3n_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3n_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3n_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3n_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_n()&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3n()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="c1">#</span>
-<div class="viewcode-block" id="setupBETheo.D3p_p">
-<a class="viewcode-back" href="../../../source/api/setup_nuc_be_theo.html#nucleardatapy.nuc.setup_be_theo.setupBETheo.D3p_p">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">D3p_p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
+<div class="viewcode-block" id="setupBETheo.D3p">
+<a class="viewcode-back" href="../../../source/api/setup_nuc_be_theo.html#nucleardatapy.nuc.setup_be_theo.setupBETheo.D3p">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">D3p</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="mi">95</span> <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the three-points odd-even mass staggering (D3p_p)</span>
-<span class="sd">        D3p^Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2</span>
+<span class="sd">        Compute the three-points odd-even mass staggering (D3p)</span>
+<span class="sd">        D3Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p_p()&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter D3p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">Nmin</span> <span class="o">&gt;</span> <span class="n">Nmax</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In D3p_p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: In D3p attribute function of setup_be_exp.py:&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Bad definition of Nmin and Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: It is expected that Nmin&lt;=Nmax&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Nmin,Nmax:&#39;</span><span class="p">,</span><span class="n">Nmin</span><span class="p">,</span><span class="n">Nmax</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
-        <span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_even</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">D3p_p_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_Z_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_Z_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_N_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_N_odd</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_even</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">D3p_odd</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1">#</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span><span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">):</span>
             <span class="c1">#</span>
@@ -955,21 +955,21 @@
                     <span class="k">break</span>
             <span class="k">if</span> <span class="n">flag_find1</span><span class="o">*</span><span class="n">flag_find2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
                 <span class="k">if</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#even</span>
-                    <span class="n">D3p_p_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+                    <span class="n">D3p_Z_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_N_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_even</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">D3p_p_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
-                    <span class="n">D3p_p_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_p_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_p_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
+                    <span class="n">D3p_Z_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucZ</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_N_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucN</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="n">D3p_odd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sign</span><span class="o">/</span><span class="mf">2.0</span><span class="o">*</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucBE</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_N_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_N_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_N_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_N_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_Z_even</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_Z_even</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_Z_odd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_Z_odd</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_even</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_even</span><span class="p">,</span>   <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">D3p_odd</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">D3p_odd</span><span class="p">,</span>    <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span> <span class="p">)</span>            
         <span class="c1">#</span>
-        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p_p()&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exit D3p()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
@@ -992,10 +992,10 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter diff()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">==</span> <span class="n">table</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;we have self.table = table&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;self.table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;table:&#39;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit()&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: we have self.table = table&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: self.table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: table:&#39;</span><span class="p">,</span><span class="n">table</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit()&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="c1"># table_ref</span>
@@ -1090,10 +1090,10 @@
         <span class="k">if</span> <span class="n">nuda</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter diff()&quot;</span><span class="p">)</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">==</span> <span class="n">table_exp</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;we have self.table = table_exp&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;self.table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;table:&#39;</span><span class="p">,</span><span class="n">table_exp</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exit()&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: we have self.table = table_exp&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: self.table:&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: table:&#39;</span><span class="p">,</span><span class="n">table_exp</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit()&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="c1"># table_ref</span>
