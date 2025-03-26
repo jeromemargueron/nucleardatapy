@@ -40,15 +40,15 @@ def nuc_setupRchTheo_fig( pname, tables, table_exp ):
         if indZ == 0:
             axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3, label=table_exp )
             axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k', label='empirical(classic)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'NPP-1994' ), linestyle='dashed', color='red', label='empirical(NPP-1994)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-1-2013' ), linestyle='dotted', color='k', label='empirical(BAKS-1-2013)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-3-2013' ), linestyle='dotted', color='red', label='empirical(BAKS-3-2013)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '1994-NPP' ), linestyle='dashed', color='red', label='empirical(NPP-1994)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-1' ), linestyle='dotted', color='k', label='empirical(BAKS-1-2013)' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-3' ), linestyle='dotted', color='red', label='empirical(BAKS-3-2013)' )
         else:
             axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3 )
             axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'NPP-1994' ), linestyle='dashed', color='red' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-1-2013' ), linestyle='dotted', color='k' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'BAKS-3-2013' ), linestyle='dotted', color='red' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '1994-NPP' ), linestyle='dashed', color='red' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-1' ), linestyle='dotted', color='k' )
+            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-3' ), linestyle='dotted', color='red' )
     #
     for indT,table in enumerate(tables):
         #

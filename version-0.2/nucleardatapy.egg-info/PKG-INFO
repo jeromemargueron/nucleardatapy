@@ -1,4 +1,4 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: nucleardatapy
 Version: 0.2.0
 Summary: A toolkit for nuclear data processing and analysis.
@@ -16,6 +16,7 @@ License-File: LICENSE
 Requires-Dist: numpy
 Requires-Dist: scipy
 Requires-Dist: pandas
+Dynamic: license-file
 
 # The toolkit `nucleardatapy`
 
