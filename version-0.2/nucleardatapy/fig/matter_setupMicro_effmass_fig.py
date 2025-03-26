@@ -28,15 +28,27 @@ def matter_setupMicro_effmass_fig( pname, models, matter = 'NM' ):
     #
     axs[0].set_ylabel(r'Landau effective mass $m^*/m$')
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_xlim([0, 0.34])
-    axs[0].set_ylim([0.4, 1.2])
     #axs[0].tick_params('x', labelbottom=False)
     #
-    axs[1].set_xlim([0, 2.0])
-    axs[1].set_ylim([0.4, 1.2])
     #axs[1].tick_params('x', labelbottom=False)
     axs[1].tick_params('y', labelleft=False)
     axs[1].set_xlabel(r'$k_{F_n}$ (fm$^{-1}$)')
+    #
+    if matter.lower() == 'nm':
+        axs[0].set_xlim([0, 0.34])
+        axs[0].set_ylim([0.6, 1.1])
+        axs[1].set_xlim([0, 2.0])
+        axs[1].set_ylim([0.6, 1.1])
+    elif matter.lower() == 'sm':
+        axs[0].set_xlim([0, 0.34])
+        axs[0].set_ylim([0.6, 1.1])
+        axs[1].set_xlim([0, 2.0])
+        axs[1].set_ylim([0.6, 1.1])
+    elif matter.lower() == 'am':
+        axs[0].set_xlim([0.05, 0.27])
+        axs[0].set_ylim([0.7, 1.0])
+        axs[1].set_xlim([0.7, 1.8])
+        axs[1].set_ylim([0.7, 1.0])
     #
     #axs[1,0].set_ylabel(r'$\Delta_{1S0}/E_F$')
     #
@@ -44,6 +56,8 @@ def matter_setupMicro_effmass_fig( pname, models, matter = 'NM' ):
         #
         ms = nuda.matter.setupMicroEffmass( model = model, matter = matter )
         #
+        axs[0].text(0.08,0.75,'in '+matter)
+        axs[1].text(0.90,0.75,'in '+matter)
         if matter.lower() == 'nm':
             if ms.nm_effmass is not None:
                 if ms.nm_effmass_err is not None:
@@ -60,6 +74,47 @@ def matter_setupMicro_effmass_fig( pname, models, matter = 'NM' ):
                 else:
                     axs[0].plot( ms.sm_den, ms.sm_effmass, marker=ms.marker, markevery=ms.every, linestyle='none', label=ms.label )
                     axs[1].plot( ms.sm_kfn, ms.sm_effmass, marker=ms.marker, markevery=ms.every, linestyle='none' )
+        elif matter.lower() == 'am':
+            if ms.sm_effmass_n is not None:
+                if ms.sm_effmass_err is not None:
+                    axs[0].errorbar( ms.sm_den, ms.sm_effmass, yerr=ms.sm_effmass_err, marker=ms.marker, markevery=ms.every, linestyle='none', label=ms.label )
+                    axs[1].errorbar( ms.sm_kfn, ms.sm_effmass, yerr=ms.sm_effmass_err, marker=ms.marker, markevery=ms.every, linestyle='none' )
+                else:
+                    ms_n_00, ms_p_00 = nuda.matter.effmass_emp( ms.sm_den , 0.0, mb = 'BHF' )
+                    ms_n_02, ms_p_02 = nuda.matter.effmass_emp( ms.am02_den , 0.2, mb = 'BHF' )
+                    ms_n_04, ms_p_04 = nuda.matter.effmass_emp( ms.am04_den , 0.4, mb = 'BHF' )
+                    axs[0].plot( ms.sm_den, ms.sm_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none', label=ms.label+'(neutrons)' )
+                    axs[0].plot( ms.am02_den, ms.am02_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none' )
+                    axs[0].plot( ms.am04_den, ms.am04_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none' )
+                    axs[0].plot( ms.sm_den, ms.sm_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none', label=ms.label+'(protons)' )
+                    axs[0].plot( ms.am02_den, ms.am02_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none' )
+                    axs[0].plot( ms.am04_den, ms.am04_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none' )
+                    axs[0].plot( ms.sm_den, ms_n_00, color=nuda.param.col[1], linestyle='solid', label='Fit(neutrons)' )
+                    axs[0].plot( ms.am02_den, ms_n_02, color=nuda.param.col[1], linestyle='solid' )
+                    axs[0].plot( ms.am04_den, ms_n_04, color=nuda.param.col[1], linestyle='solid' )
+                    axs[0].plot( ms.sm_den, ms_p_00, color=nuda.param.col[2], linestyle='solid', label='Fit(protons)' )
+                    axs[0].plot( ms.am02_den, ms_p_02, color=nuda.param.col[2], linestyle='solid' )
+                    axs[0].plot( ms.am04_den, ms_p_04, color=nuda.param.col[2], linestyle='solid' )
+                    axs[1].plot( ms.sm_kfn, ms.sm_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.am02_kfn, ms.am02_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.am04_kfn, ms.am04_effmass_n, marker='^', color=nuda.param.col[1], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.sm_kfn, ms.sm_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.am02_kfn, ms.am02_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.am04_kfn, ms.am04_effmass_p, marker='v', color=nuda.param.col[2], markevery=ms.every, linestyle='none' )
+                    axs[1].plot( ms.sm_kfn, ms_n_00, color=nuda.param.col[1], linestyle='solid' )
+                    axs[1].plot( ms.am02_kfn, ms_n_02, color=nuda.param.col[1], linestyle='solid' )
+                    axs[1].plot( ms.am04_kfn, ms_n_04, color=nuda.param.col[1], linestyle='solid' )
+                    axs[1].plot( ms.sm_kfn, ms_p_00, color=nuda.param.col[2], linestyle='solid' )
+                    axs[1].plot( ms.am02_kfn, ms_p_02, color=nuda.param.col[2], linestyle='solid' )
+                    axs[1].plot( ms.am04_kfn, ms_p_04, color=nuda.param.col[2], linestyle='solid' )
+                    axs[0].text(0.23,0.84,r'$\delta=0.4$',rotation=0)
+                    axs[0].text(0.23,0.81,r'$\delta=0.2$',rotation=0)
+                    axs[0].text(0.23,0.785,'SM',rotation=0)
+                    axs[0].text(0.23,0.76,r'$\delta=0.2$',rotation=0)
+                    axs[0].text(0.23,0.74,r'$\delta=0.4$',rotation=0)
+                    axs[1].text(0.90,0.92,'SM',rotation=0)
+                    axs[1].text(0.90,0.94,r'$\delta=0.2$',rotation=0)
+                    axs[1].text(0.95,0.96,r'$\delta=0.4$',rotation=0)
         if nuda.env.verb_output: ms.print_outputs( )
     #
     #axs[1,0].legend(loc='upper right',fontsize='8')

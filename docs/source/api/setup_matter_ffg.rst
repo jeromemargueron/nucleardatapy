@@ -9,9 +9,9 @@ matter.setupFFG
 .. automodule:: nucleardatapy.matter.setup_ffg
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_matter_setupFFGNuc.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupFFGNuc_plot.py
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_matter_setupFFGNuc.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupFFGNuc.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

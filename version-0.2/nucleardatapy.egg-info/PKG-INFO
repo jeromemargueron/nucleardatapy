@@ -5,7 +5,6 @@ Summary: A toolkit for nuclear data processing and analysis.
 Author: Jerome Margueron, Sudhanva Lalit
 Author-email: 
 License: MIT
-Classifier: Development Status :: 1 - Alpha
 Classifier: Intended Audience :: Science/Research
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python
@@ -13,6 +12,7 @@ Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: numpy
 Requires-Dist: scipy
 Requires-Dist: pandas

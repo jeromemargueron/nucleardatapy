@@ -9,9 +9,9 @@ nuc.setupRchExp
 .. automodule:: nucleardatapy.nuc.setup_rch_exp
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupRchExp.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/nuc_setupRchExp_plot.py
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupRchExp.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_nuc_setupRchExp.png
 	:scale: 70 %
 	:alt: map to buried treasure
 

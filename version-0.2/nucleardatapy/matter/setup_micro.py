@@ -29,7 +29,7 @@ def micro_mbs():
     #
     if nuda.env.verb: print("\nEnter micro_mbs()")
     #
-    mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    mbs = [ 'VAR', 'AFDMC', 'BHF2', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
     mbs_lower = [ item.lower() for item in mbs ]
     #
     if nuda.env.verb: print("Exit micro_mbs()")
@@ -55,18 +55,19 @@ def micro_models_mb( mb ):
     '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
     '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
     '2022-AFDMC-NM',
-    If `mb` == 'BHF': \
-    '2006-BHF-AM', \
+    If `mb` == 'BHF2': \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
     '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
     '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
+    If `mb` == 'BHF23': \
+    '2006-BHF-AM-Av18', \
     '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
     '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
     '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
     '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
     If `mb` == 'QMC': \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM',  \
-    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
     '2018-QMC-NM', '2024-QMC-NM', \
     If `mb` == 'MBPT': \
     '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
@@ -84,19 +85,27 @@ def micro_models_mb( mb ):
             '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
             '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
             '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM' ]
-    elif mb.lower() == 'bhf':
-        models = [ '2006-BHF-AM', '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+    elif mb.lower() == 'bhf2':
+        models = [ '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
+            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f' ]
+        #models = [ '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
+        #    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
+        #    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14' ]
+    elif mb.lower() == 'bhf23':
+        models = [ '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', \
+            '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', \
+            '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f' ]
+        #models = [ '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', \
+        #    '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', \
+        #    '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
     elif mb.lower() == 'qmc':
         models = [ '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', \
-            '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+            '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
             '2018-QMC-NM', '2024-QMC-NM' ]
     elif mb.lower() == 'mbpt':
-        models = [ '2010-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
+        models = [ '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
+# '2010-MBPT-NM' is removed because they do not provide e2a, only pressure 
     elif mb.lower() == 'nleft':
         models = [ '2024-NLEFT-AM' ]
     #
@@ -178,7 +187,7 @@ def micro_models_old():
             '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
             '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
             '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
-            '2006-BHF-AM', \
+            '2006-BHF-AM-Av18', \
             '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
             '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
             '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
@@ -202,20 +211,19 @@ def micro_models_mb_matter( mb, matter ):
     #
     print('For mb (in SM):',mb)
     #
-    models, models_lower = micro_models()
+    models, models_lower = micro_models_mb( mb )
     #
     models2 = []
     for j,model in enumerate(models):
-        if mb in model and '2BF' not in model and ( matter.upper() in model or 'AM' in model ):
+        if matter.upper() in model or 'AM' in model:
             models2.append( model )
-            #print('   models:',model)
     #
     print('models2:',models2)
     models2_lower = [ item.lower() for item in models2 ]
     #
     return models2, models2_lower
 
-def micro_models_mb_SM( mb ):
+def micro_models_mb_SM_old( mb ):
     """
     """
     #
@@ -236,7 +244,7 @@ def micro_models_mb_SM( mb ):
     #
     return models2, models2_lower
 
-def micro_models_mb_NM( mb ):
+def micro_models_mb_NM_old( mb ):
     """
     """
     #
@@ -387,6 +395,10 @@ class setupMicro():
             print('setup_micro: -- Exit the code --')
             exit()
         #
+        # ==============================
+        # Read files associated to model
+        # ==============================
+        #
         if model.lower() == '1981-var-am-fp':
             #
             self.flag_nm = True
@@ -403,7 +415,8 @@ class setupMicro():
             self.label = 'FP-1981'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'dashed'
+            self.err = False
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_e2v = self.nm_e2a * self.nm_den
@@ -431,7 +444,8 @@ class setupMicro():
             self.label = 'APR-1998'
             self.marker = '^'
             self.every = 1
-            #self.linestyle = 'dashed'
+            self.err = False
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
             self.nm_e2v = self.nm_e2a * self.nm_den
@@ -453,9 +467,10 @@ class setupMicro():
             self.ref = 'Akmal, Pandharipande and Ravenhall, Phys. Rev. C 58, 1804 (1998)'
             self.note = "Use interpolation functions suggested in APR paper."
             self.label = 'APR-1998-Fit'
-            self.marker = None
+            self.marker = '.'
             self.every = 1
-            self.linestyle = 'solid'
+            self.err = False
+            self.linestyle = 'dashed'
             # Define constants for APRfit and for A18+dv+UIX*
             global p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21
             ( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
@@ -479,24 +494,24 @@ class setupMicro():
             cs_pre = CubicSpline( self.den, self.pre )
             self.cs2 = cs_pre( self.den, 1 ) / self.h2a
             #
-        elif model.lower() == '2006-bhf-am':
+        elif model.lower() == '2006-bhf-am-av18':
             #
             self.flag_nm = True
             self.flag_sm = True
             self.flag_kf = False
             self.flag_den = False
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-E2A-NM.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-E2A-SM.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-E2A-NM.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-E2A-SM.dat')
             if nuda.env.verb: print('Reads file:',file_in1)
             if nuda.env.verb: print('Reads file:',file_in2)
             self.ref = 'L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)'
             self.note = ""
-            self.label = 'BHF-2006'
+            self.label = 'BHF-2006-23BF-Av18'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'solid'
-            self.err = True
+            self.linestyle = 'solid'
+            self.err = False
             #
             self.nm_den, self.nm_e2a \
                 = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
@@ -526,7 +541,7 @@ class setupMicro():
             self.label = 'QMC-swave-2008'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -550,7 +565,7 @@ class setupMicro():
             self.label = 'AFDMC-2009'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -573,7 +588,7 @@ class setupMicro():
             self.label = 'dLQMC-2009'
             self.marker = 'v'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -597,8 +612,8 @@ class setupMicro():
             self.label = 'QMC-AV4-2008'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
             self.err = True
+            self.linestyle = 'solid'
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -621,7 +636,8 @@ class setupMicro():
             self.label = 'MBPT-2010'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.err = False
+            self.linestyle = 'solid'
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             #self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
@@ -648,7 +664,9 @@ class setupMicro():
             self.label = 'AFDMC-2012-'+str(k)
             self.marker = 's'
             self.every = 1
-            self.linestyle = 'None'
+            self.err = True
+            self.linestyle = 'solid'
+            #self.linestyle = 'None'
             if k in [ 1, 7 ]:
                 self.nm_den, ETOT, ETOT_ERR = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             elif k in [ 2, 3, 4, 5, 6 ]:
@@ -682,7 +700,8 @@ class setupMicro():
             self.label = 'AFDMC-2012-'+str(k)+'-FIT'
             self.marker = 's'
             self.every = 1
-            self.linestyle = 'solid'
+            self.err = True
+            self.linestyle = 'dashed'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #name = np.loadtxt( file_in, usecols=(5), unpack = True )
             nmodel = np.size(alfa)
@@ -733,7 +752,7 @@ class setupMicro():
             self.label = 'QMC-2013'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -772,7 +791,8 @@ class setupMicro():
             self.label = 'AFQMC-2014'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.err = False
+            self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -795,7 +815,7 @@ class setupMicro():
             self.note = ""
             self.label = 'QMC-2016'
             self.marker = 's'
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.every = 1
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
@@ -817,7 +837,7 @@ class setupMicro():
             self.note = ""
             self.label = 'MBPT-2016'
             self.marker = 's'
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.every = 4
             # read the results for the 7 hamiltonians
@@ -893,7 +913,7 @@ class setupMicro():
             self.label = 'QMC-2018'
             self.marker = 's'
             self.every = 2
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -920,7 +940,8 @@ class setupMicro():
             self.label = 'MBPT-2019-L59'
             self.marker = 's'
             self.every = 2
-            #self.linestyle = 'solid'
+            self.err = False
+            self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
@@ -950,7 +971,8 @@ class setupMicro():
             self.label = 'MBPT-2019-L69'
             self.marker = 's'
             self.every = 2
-            #self.linestyle = 'solid'
+            self.err = False
+            self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
             self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den,err='MBPT') * self.sm_e2a )
@@ -977,7 +999,7 @@ class setupMicro():
             self.note = ""
             self.label = 'MBPT-2020'
             self.marker = 's'
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.every = 6
             self.err = True
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
@@ -1011,7 +1033,7 @@ class setupMicro():
             self.label = 'AFDMC+corr.-2022'
             self.linestyle = 'solid'
             self.marker = 'o'
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.every = 1
             self.err = True
             # read e2a
@@ -1041,7 +1063,7 @@ class setupMicro():
             self.note = ""
             self.label = 'NLEFT-2024'
             self.marker = 's'
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.every = 2
             self.err = True
             #
@@ -1302,8 +1324,8 @@ class setupMicro():
             if nuda.env.verb: print('Reads file:',file_in2)
             self.ref = 'I. Vida\\~na, J. Margueron, H.J. Schulze, Universe 10, 5 (2024).'
             self.note = ""
-            self.marker = 's'
-            #self.linestyle = 'solid'
+            self.marker = 'o'
+            self.linestyle = 'solid'
             self.every = 2
             self.err = False
             #
@@ -1340,7 +1362,7 @@ class setupMicro():
             self.label = 'QMC-2024'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.linestyle = 'solid'
             self.err = True
             self.nm_den, self.nm_e2a, self.nm_e2a_err_stat, self.nm_e2a_err_ekm, self.nm_e2a_err_gp \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -1348,6 +1370,16 @@ class setupMicro():
             self.nm_e2a_err = self.nm_e2a_err_stat + self.nm_e2a_err_ekm + self.nm_e2a_err_gp
             self.nm_e2v     = self.nm_e2a * self.nm_den
             self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+        #
+        # ==============================
+        # END OF
+        # Read files associated to model
+        # ==============================
+        #
+        #
+        # ==============================
+        # Compute thermodynamic quantities
+        # ==============================
         #
         if self.flag_nm:
             if self.flag_kf:
@@ -1441,6 +1473,11 @@ class setupMicro():
                 cs_sm_pre = CubicSpline( x, y )
                 sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
                 #
+        #
+        # ==============================
+        # END OF
+        # Compute thermodynamic quantities
+        # ==============================
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'

@@ -27,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
-          pip install jupyter-book  # Install jupyter-book
+          pip install jupyter jupyter-book myst-nb  # Install jupyter-book
           pip install -e .  # Install nucleardatapy in editable mode
 
       - name: Check test discovery
@@ -60,15 +60,15 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Check out the repository (develop branch)
+      - name: Check out the repository (main branch)
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: main
 
       - name: Download version file
         uses: actions/download-artifact@v4
