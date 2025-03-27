@@ -476,11 +476,16 @@ class setupBETheo():
             self.ref = 'G. Grams, W. Ryssens, N. Shchechilin, A. Sanchez-Fernandez, N. Chamel, and S. Goriely,  EPJA 61, 35 (2025).'
             self.note = "write here notes about this EOS."
             self.label = 'BSkG4-2024'
-            self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            #self.nucZr, self.nucNr, self.nucBE2A  = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.nucZr, self.nucNr, self.nucMass, self.Ebind, self.beta20, self.beta22, self.beta2, \
+            self.beta30, self.beta32, self.Erot, self.gap_n, self.gap_p, self.moi = \
+            np.loadtxt( file_in, usecols=(0,1,3,5,6,7,8,9,10,11,12,13,17), unpack = True )
             self.nucZ = np.array( [ int(ele) for ele in self.nucZr ] )
             self.nucN = np.array( [ int(ele) for ele in self.nucNr ] )
             self.nucA = self.nucZ + self.nucN
-            self.nucBE = self.nucBE2A * self.nucA
+            #self.nucBE = self.nucBE2A * self.nucA
+            self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
+            self.nucBE2A = self.nucBE / self.nucA
             self.Zmax = int( max( self.nucZ ) )
             #
         #
