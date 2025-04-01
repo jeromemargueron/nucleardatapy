@@ -20,7 +20,7 @@ def crust_setupCrust_fig( pname, models ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.8, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.78, wspace=0.3, hspace=0.3 )
     #
     axs[0].set_xlabel(r'n (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_{int}(n)$')
@@ -44,7 +44,7 @@ def crust_setupCrust_fig( pname, models ):
             axs[1].plot( crust.den, crust.Z, linestyle=crust.linestyle )
     #axs[0].legend(loc='upper left',fontsize='8', ncol=1)
     #axs[1].legend(loc='upper left',fontsize='8', ncol=1)
-    fig.legend(loc='upper left',bbox_to_anchor=(0.01,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.01,1.01),columnspacing=2,fontsize='7.5',ncol=4,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)
