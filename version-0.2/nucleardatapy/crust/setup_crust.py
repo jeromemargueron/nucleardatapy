@@ -21,7 +21,8 @@ def crust_models():
     #
     if nuda.env.verb: print("\nEnter models_crust()")
     #
-    models = [ '1973-Negele-Vautherin', '2020-MVCD-D1S', '2020-MVCD-D1M', '2020-MVCD-D1MS',\
+    models = [ '1973-Negele-Vautherin', '2018-PCPFDDG-BSK22', '2018-PCPFDDG-BSK24', '2018-PCPFDDG-BSK25', '2018-PCPFDDG-BSK26',\
+    '2020-MVCD-D1S', '2020-MVCD-D1M', '2020-MVCD-D1MS',\
     '2022-crustGMRS-BSK14', '2022-crustGMRS-BSK16', '2022-crustGMRS-DHSL59', '2022-crustGMRS-DHSL69',\
     '2022-crustGMRS-F0', '2022-crustGMRS-H1', '2022-crustGMRS-H2', '2022-crustGMRS-H3', \
     '2022-crustGMRS-H4', '2022-crustGMRS-H5', '2022-crustGMRS-H7', '2022-crustGMRS-LNS5', \
@@ -138,6 +139,50 @@ class setupCrust():
             self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
+            #
+            #
+        elif '2018-pcpfddg' in model.lower():
+            #
+            # Note: N_bound or N_g cannot be determined from the tables (Jerome).
+            # It is right?
+            #
+            if model.lower()=='2018-pcpfddg-bsk22':
+                file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK22.dat'
+                self.label = 'PCPFDDG-BSK22-2018'
+            elif model.lower()=='2018-pcpfddg-bsk24':
+                file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK24.dat'
+                self.label = 'PCPFDDG-BSK24-2018'
+            elif model.lower()=='2018-pcpfddg-bsk25':
+                file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK25.dat'
+                self.label = 'PCPFDDG-BSK25-2018'
+            elif model.lower()=='2018-pcpfddg-bsk26':
+                file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK26.dat'
+                self.label = 'PCPFDDG-BSK26-2018'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref = 'Pearson J.M., Chamel N., Potekhin A.Y., Fantina, A.F., Ducoin C., Dutta A.K., Goriely S., MNRS 481, 2994 (2018).'
+            self.note = "4th-order Extended  Thomas-Fermi (ETF) method with proton shell correction via the Strutinsky integral (SI) with Brussels-Montreal functionals."
+            self.linestyle = 'dashdot'
+            self.latexCite = 'MPearson:2018'
+            self.ncl = 0.16 # in fm-3
+            self.den, self.Z, self.xp, self.N,  self.RWS, self.pre, self.e2a_etf, self.e2a_int, self.e2a_tot, self.mu_p, self.mu_n, self.mu_e, self.ng,self.Zcl, self.Ncl \
+                = np.loadtxt( file_in, usecols=(0,1,2,3,5,7,8,9,10,14,15,16,23,25,27), unpack = True )
+            self.den_cgs = self.den / 1.e-39 # in cm-3
+            self.N = np.array([ int(item) for item in self.N ])
+            self.Z = np.array([ int(item) for item in self.Z ])
+            self.A  = self.N + self.Z
+            self.xn = self.N / self.A
+            # bound nucleons
+            self.Z_bound = np.array([ int(item) for item in self.Zcl ])
+            self.N_bound = np.array([ int(item) for item in self.Ncl ])
+            self.A_bound = self.N_bound + self.Z_bound
+            self.I_bound = ( self.N_bound - self.Z_bound ) / self.A_bound
+            self.xn_bound = self.N_bound / self.A_bound
+            #
+            #self.xn_bound = self.N_bound / self.A
+            #self.N_g = self.N - self.N_bound
+            #self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
+            self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
+            #self.e2a_int = self.e2a_tot - self.e2a_rm
             #
         elif '2022-crustgmrs' in model.lower():
             #
