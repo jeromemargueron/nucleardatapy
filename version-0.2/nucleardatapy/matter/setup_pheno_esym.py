@@ -192,9 +192,9 @@ class setupPhenoEsym():
         #
         # Symmetry energy for the densities defined in self.den
         #
-        self.e2a_sm = cs_sm_e2a( self.den )
-        self.e2a_nm = cs_nm_e2a( self.den )
-        self.esym = self.e2a_nm - self.e2a_sm
+        self.sm_e2a = cs_sm_e2a( self.den )
+        self.nm_e2a = cs_nm_e2a( self.den )
+        self.esym = self.nm_e2a - self.sm_e2a
         self.sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
         self.sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.sm_pre
         #

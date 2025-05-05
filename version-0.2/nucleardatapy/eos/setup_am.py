@@ -75,33 +75,41 @@ class setupAM():
         self.linestyle = esym.linestyle
         self.marker = esym.marker
         #print('type esym:',type(esym.esym))
-        self.den = esym.den
-        self.esym = esym.esym
-        #print('esym:',self.esym)
-        self.x_n = ( 1.0 + self.asy ) / 2.0
-        self.x_p = ( 1.0 - self.asy ) / 2.0
-        self.x_mu = x_mu
-        self.x_el = self.x_p - self.x_mu
-        self.n_n = self.x_n * self.den
-        self.n_p = self.x_p * self.den
-        self.kfn = nuda.kf_n( self.n_n )
-        self.n_el = self.x_el * self.den
-        self.n_mu = self.x_mu * self.den
-        #
-        # Thermodynamical variables
-        self.e2a_nuc = esym.e2a_sm + esym.esym * self.asy**2
-        self.e2v_nuc = self.e2a_nuc * self.den
-        lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
-        self.e2a_el = lep.e2a_el
-        self.e2a_mu = lep.e2a_mu
-        self.e2a_lep = lep.e2a_el + lep.e2a_mu
-        self.pre_el = lep.pre_el
-        self.pre_mu = lep.pre_mu
-        self.pre_lep = lep.pre_el + lep.pre_mu
-        # self.h2a
-        # self.h2v
-        # self.cs2
-
+        if esym.esym is not None:
+            self.den = esym.den
+            self.esym = esym.esym
+            #print('esym:',self.esym)
+            self.x_n = ( 1.0 + self.asy ) / 2.0
+            self.x_p = ( 1.0 - self.asy ) / 2.0
+            self.x_mu = x_mu
+            self.x_el = self.x_p - self.x_mu
+            self.x_lep = self.x_el + self.x_mu
+            self.n_n = self.x_n * self.den
+            self.n_p = self.x_p * self.den
+            self.kfn = nuda.kf_n( self.n_n )
+            self.n_el = self.x_el * self.den
+            self.n_mu = self.x_mu * self.den
+            #
+            # Thermodynamical variables
+            self.e2a_nuc = esym.sm_e2a + esym.esym * self.asy**2
+            self.e2v_nuc = self.e2a_nuc * self.den
+            self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
+            lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
+            self.e2a_el = self.x_el * lep.e2n_el
+            self.e2a_mu = self.x_mu * lep.e2n_mu
+            self.e2a_lep = self.x_lep * lep.e2n_lep
+            self.e2v_lep = self.e2a_lep / self.den
+            self.pre_el = lep.pre_el
+            self.pre_mu = lep.pre_mu
+            self.pre_lep = lep.pre_el + lep.pre_mu
+            # self.h2a
+            # self.h2v
+            # self.cs2
+            # total
+            self.e2a_tot = self.e2a_nuc + self.e2a_lep
+            self.e2v_tot = self.e2v_nuc + self.e2v_lep
+            self.pre_tot = self.pre_nuc + self.pre_lep
+            #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'

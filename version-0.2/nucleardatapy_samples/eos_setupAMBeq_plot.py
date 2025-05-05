@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-
-
 def main():
     #
     print(50*'-')
@@ -32,7 +30,18 @@ def main():
     pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     #pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
-    # plot Esym
+    # plot energy per particle
+    #
+    pname = 'figs/plot_eos_setupAMBeq_e2a_nuc.png'
+    nuda.fig.eos_setupAMBeq_e2a_nuc_fig( pname, micro_models, pheno_models )
+    #
+    pname = 'figs/plot_eos_setupAMBeq_e2a_lep.png'
+    nuda.fig.eos_setupAMBeq_e2a_lep_fig( pname, micro_models, pheno_models )
+    #
+    pname = 'figs/plot_eos_setupAMBeq_e2a_tot.png'
+    nuda.fig.eos_setupAMBeq_e2a_tot_fig( pname, micro_models, pheno_models )
+    #
+    # plot particle fractions
     #
     pname = 'figs/plot_eos_setupAMBeq_xp.png'
     nuda.fig.eos_setupAMBeq_xp_fig( pname, micro_models, pheno_models )

@@ -12,7 +12,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter matter_ENM_plot.py:")
+    print("Enter matter_preNM_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -30,16 +30,22 @@ def main():
     #micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()    
     micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()
     micro_mbs.remove( 'BHF2' )
+    print('micro_mbs:',micro_mbs)
     #micro_mbs = [ 'VAR' ]
+    #micro_mbs = [ 'AFDMC' ]
+    #micro_mbs = [ 'QMC' ]
+    #micro_mbs = [ 'BHF23' ]
+    #micro_mbs = [ 'MBPT' ]
+    #micro_mbs = [ 'NLEFT' ]
     pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
-    # plot Esym
+    # plot pressure
     #
-    pname = 'figs/plot_matter_ENM.png'
-    nuda.fig.matter_ENM_fig( pname, micro_mbs, pheno_models, band )
+    pname = 'figs/plot_matter_preNM.png'
+    nuda.fig.matter_preNM_fig( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')
-    print("Exit matter_ENM_plot.py:")
+    print("Exit matter_preNM_plot.py:")
     print(50*'-')
     #
 

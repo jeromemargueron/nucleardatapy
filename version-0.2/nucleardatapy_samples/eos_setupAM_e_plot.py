@@ -6,22 +6,12 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter eos_setupAM_e_fig.py:")
+    print("Enter eos_setupAM_e_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
     #
     nuda.create_folder_fig()
-    #
-    # fix the asymmetry parameter
-    #
-    asy = 0.5
-    #
-    # fix the uncertainty band
-    #
-    #den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
-    #models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
-    #band = nuda.SetupEOSMicroBand( models, den=den, matter='ESYM' )
     #
     # list the available models
     #
@@ -32,13 +22,13 @@ def main():
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
-    # plot E/A for a given asymmetric parameter asy
+    # plot E/A
     #
     pname = 'figs/plot_eos_setupAM_e.png'
-    nuda.fig.eos_setupAM_e_fig( pname, micro_models, pheno_models, asy )
+    nuda.fig.eos_setupAM_e_fig( pname, micro_models, pheno_models )
     #
     print(50*'-')
-    print("Exit eos_setupAM_e_fig.py:")
+    print("Exit eos_setupAM_e_plot.py:")
     print(50*'-')
     #
     

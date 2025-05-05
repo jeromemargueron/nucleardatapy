@@ -30,7 +30,7 @@ def matter_Esym_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$e_\text{sym}(n)$')
+    axs[0].set_ylabel(r'$e_\text{sym}(n_\text{nuc})$')
     axs[0].set_xlim([0, 0.34])
     axs[0].set_ylim([0, 60])
     #
@@ -49,36 +49,36 @@ def matter_Esym_fig( pname, micro_mbs, pheno_models, band ):
         #
         for model in models:
             #
-            esym = nuda.matter.setupMicroEsym( model = model )
+            micro = nuda.matter.setupMicroEsym( model = model )
             #
-            if esym.esym is not None:
+            if micro.esym is not None:
                 print('mb:',mb,'model:',model)
                 if mb in mb_check:
-                    if esym.marker:
-                        if esym.err:
-                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, errorevery=esym.every, color=nuda.param.col[k] )
+                    if micro.marker:
+                        if micro.err:
+                            axs[0].errorbar( micro.den, micro.esym, yerr=micro.esym_err, marker=micro.marker, linestyle=None, errorevery=micro.every, color=nuda.param.col[k] )
                         else:
-                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, markevery=esym.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.den, micro.esym, marker=micro.marker, linestyle=None, markevery=micro.every, color=nuda.param.col[k] )
                     else:
-                        if esym.err:
-                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, errorevery=esym.every, color=nuda.param.col[k] )
+                        if micro.err:
+                            axs[0].errorbar( micro.den, micro.esym, yerr=micro.esym_err, marker=micro.marker, linestyle=micro.linestyle, errorevery=micro.every, color=nuda.param.col[k] )
                         else:
-                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, markevery=esym.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.den, micro.esym, marker=micro.marker, linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[k] )
                 else:
                     mb_check.append(mb)
                     k += 1
-                    if esym.marker:
-                        if esym.err:
-                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=None, label=mb, errorevery=esym.every, color=nuda.param.col[k] )
+                    if micro.marker:
+                        if micro.err:
+                            axs[0].errorbar( micro.den, micro.esym, yerr=micro.esym_err, marker=micro.marker, linestyle=None, label=mb, errorevery=micro.every, color=nuda.param.col[k] )
                         else:
-                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=None, label=mb, markevery=esym.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.den, micro.esym, marker=micro.marker, linestyle=None, label=mb, markevery=micro.every, color=nuda.param.col[k] )
                     else:
-                        if esym.err:
-                            axs[0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle=esym.linestyle, label=mb, errorevery=esym.every, color=nuda.param.col[k] )
+                        if micro.err:
+                            axs[0].errorbar( micro.den, micro.esym, yerr=micro.esym_err, marker=micro.marker, linestyle=micro.linestyle, label=mb, errorevery=micro.every, color=nuda.param.col[k] )
                         else:
-                            axs[0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, label=mb, markevery=esym.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.den, micro.esym, marker=micro.marker, linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[k] )
                     #axs[0].plot( esym.den, esym.esym, color=nuda.param.col[k], label=mb )
-            if nuda.env.verb: esym.print_outputs( )
+            if nuda.env.verb: micro.print_outputs( )
     axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
@@ -94,19 +94,19 @@ def matter_Esym_fig( pname, micro_mbs, pheno_models, band ):
         #
         for param in params:
             #
-            esym = nuda.matter.setupPhenoEsym( model = model, param = param )
+            pheno = nuda.matter.setupPhenoEsym( model = model, param = param )
             #
-            if esym.esym is not None: 
+            if pheno.esym is not None: 
                 print('model:',model,' param:',param)
                 if model in model_check:
-                    axs[1].plot( esym.den, esym.esym, color=nuda.param.col[k] )
+                    axs[1].plot( pheno.den, pheno.esym, color=nuda.param.col[k] )
                 else:
                     model_check.append(model)
                     k += 1
-                    axs[1].plot( esym.den, esym.esym, color=nuda.param.col[k], label=model )
+                    axs[1].plot( pheno.den, pheno.esym, color=nuda.param.col[k], label=model )
                 #pheno.label=None
                 #axs[1].plot( esym.den, esym.esym, label=esym.label )
-            if nuda.env.verb: esym.print_outputs( )
+            if nuda.env.verb: pheno.print_outputs( )
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
