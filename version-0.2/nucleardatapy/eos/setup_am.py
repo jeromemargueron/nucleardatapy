@@ -56,9 +56,9 @@ class setupAM():
             models, models_lower = nuda.matter.pheno_esym_models()
         #
         if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
-            print('-- Exit the code --')
+            print('setup_am: The model name ',model,' is not in the list of models.')
+            print('setup_am: list of models:',models)
+            print('setup_am: -- Exit the code --')
             exit()
         #
         if kind == 'micro':
@@ -111,7 +111,7 @@ class setupAM():
             self.pre_tot = self.pre_nuc + self.pre_lep
             #
         self.den_unit = 'fm$^{-3}$'
-        self.kf_unit = 'fm$^{-1}$'
+        self.kf_unit  = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
         self.e2v_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'

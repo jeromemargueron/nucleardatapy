@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupAMBeq_e2a_nuc_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -24,7 +24,7 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.95, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{nuc}/A$')
@@ -38,28 +38,53 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, models_micro, models_pheno ):
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.e2a_nuc, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.e2a_nuc is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.e2a_nuc, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.e2a_nuc, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.e2a_nuc is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.e2a_nuc, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.e2a_nuc, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.e2a_nuc, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
@@ -69,11 +94,13 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, models_micro, models_pheno ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_e2a_lep_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -94,7 +121,104 @@ def eos_setupAMBeq_e2a_lep_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.95, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    #
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_ylabel(r'$P_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_xlim([0, 0.35])
+    axs[0].set_ylim([-2, 80])
+    #axs[0].set_tick_params('y', right=True)
+    #axs[0].set_tick_params('x', top=True)
+    #
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlim([0, 0.35])
+    axs[1].set_ylim([-2, 80])
+    axs[1].tick_params('y', labelleft=False)
+    #
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
+        #
+        print('mb:',mb,kmb)
+        #
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.pre_nuc is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.pre_nuc, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.pre_nuc, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
+    axs[0].text(0.02,20,'microscopic models',fontsize='10')
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
+        #
+        params, params_lower = nuda.matter.pheno_esym_params( model = model )
+        #
+        for param in params:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if beta.pre_nuc is not None: 
+                print('model:',model,' param:',param)
+                #beta.label=None
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.pre_nuc, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.pre_nuc, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+            if nuda.env.verb_output: pheno.print_outputs( )
+    #
+    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].text(0.02,20,'phenomenological models',fontsize='10')
+    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
+    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
+    if pname is not None: 
+        plt.savefig(pname, dpi=200)
+        plt.close()
+
+def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models ):
+    """
+    Plot nuclear chart (N versus Z).\
+    The plot is 1x2 with:\
+    [0]: nuclear chart.
+
+    :param pname: name of the figure (*.png)
+    :type pname: str.
+    :param table: table.
+    :type table: str.
+    :param version: version of table to run on.
+    :type version: str.
+    :param theo_tables: object instantiated on the reference band.
+    :type theo_tables: object.
+
+    """
+    #
+    print(f'Plot name: {pname}')
+    #
+    fig, axs = plt.subplots(1,2)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{lep}/A$')
@@ -108,28 +232,53 @@ def eos_setupAMBeq_e2a_lep_fig( pname, models_micro, models_pheno ):
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.e2a_lep, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.e2a_lep is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.e2a_lep, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.e2a_lep, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.e2a_lep is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.e2a_lep, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.e2a_lep, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.e2a_lep, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
@@ -139,11 +288,13 @@ def eos_setupAMBeq_e2a_lep_fig( pname, models_micro, models_pheno ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_e2a_tot_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -164,7 +315,104 @@ def eos_setupAMBeq_e2a_tot_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.95, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    #
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_ylabel(r'$P_\text{lep}$ (fm$^{-3}$)')
+    axs[0].set_xlim([0, 0.35])
+    axs[0].set_ylim([-2, 80])
+    #axs[0].set_tick_params('y', right=True)
+    #axs[0].set_tick_params('x', top=True)
+    #
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlim([0, 0.35])
+    axs[1].set_ylim([-2, 80])
+    axs[1].tick_params('y', labelleft=False)
+    #
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
+        #
+        print('mb:',mb,kmb)
+        #
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.pre_lep is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.pre_lep, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.pre_lep, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
+    axs[0].text(0.02,20,'microscopic models',fontsize='10')
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
+        #
+        params, params_lower = nuda.matter.pheno_esym_params( model = model )
+        #
+        for param in params:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if beta.pre_lep is not None: 
+                print('model:',model,' param:',param)
+                #beta.label=None
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.pre_lep, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.pre_lep, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+            if nuda.env.verb_output: pheno.print_outputs( )
+    #
+    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].text(0.02,20,'phenomenological models',fontsize='10')
+    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
+    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
+    if pname is not None: 
+        plt.savefig(pname, dpi=200)
+        plt.close()
+
+def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models ):
+    """
+    Plot nuclear chart (N versus Z).\
+    The plot is 1x2 with:\
+    [0]: nuclear chart.
+
+    :param pname: name of the figure (*.png)
+    :type pname: str.
+    :param table: table.
+    :type table: str.
+    :param version: version of table to run on.
+    :type version: str.
+    :param theo_tables: object instantiated on the reference band.
+    :type theo_tables: object.
+
+    """
+    #
+    print(f'Plot name: {pname}')
+    #
+    fig, axs = plt.subplots(1,2)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{tot}/A$')
@@ -178,28 +426,53 @@ def eos_setupAMBeq_e2a_tot_fig( pname, models_micro, models_pheno ):
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.e2a_tot, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.e2a_tot is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.e2a_tot, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.e2a_tot, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.e2a_tot is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.e2a_tot, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.e2a_tot, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.e2a_tot, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
@@ -209,11 +482,122 @@ def eos_setupAMBeq_e2a_tot_fig( pname, models_micro, models_pheno ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_xp_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
+    """
+    Plot nuclear chart (N versus Z).\
+    The plot is 1x2 with:\
+    [0]: nuclear chart.
+
+    :param pname: name of the figure (*.png)
+    :type pname: str.
+    :param table: table.
+    :type table: str.
+    :param version: version of table to run on.
+    :type version: str.
+    :param theo_tables: object instantiated on the reference band.
+    :type theo_tables: object.
+
+    """
+    #
+    print(f'Plot name: {pname}')
+    #
+    p_den = 0.32
+    p_cen = 31.5
+    p_std = 30.5
+    p_micro_cen = 16.5
+    p_micro_std =  3.0
+    p_pheno_cen = 31.5
+    p_pheno_std = 30.5
+    #
+    fig, axs = plt.subplots(1,2)
+    fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    #
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_ylabel(r'$P_\text{tot}$ (fm$^{-3}$)')
+    axs[0].set_xlim([0, 0.35])
+    axs[0].set_ylim([-2, 80])
+    #axs[0].set_tick_params('y', right=True)
+    #axs[0].set_tick_params('x', top=True)
+    #
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlim([0, 0.35])
+    axs[1].set_ylim([-2, 80])
+    axs[1].tick_params('y', labelleft=False)
+    #
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
+        #
+        print('mb:',mb,kmb)
+        #
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.pre_tot is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.pre_tot, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.pre_tot, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
+    axs[0].errorbar( p_den, p_cen, yerr=p_std, color='k' )
+    axs[0].errorbar( p_den+0.005, p_micro_cen, yerr=p_micro_std, color='r' )
+    axs[0].text(0.02,20,'microscopic models',fontsize='10')
+    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
+    #
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
+        #
+        params, params_lower = nuda.matter.pheno_esym_params( model = model )
+        #
+        for param in params:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if beta.pre_tot is not None: 
+                print('model:',model,' param:',param)
+                #beta.label=None
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.pre_tot, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.pre_tot, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+            if nuda.env.verb_output: pheno.print_outputs( )
+    #
+    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
+    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].errorbar( p_den, p_cen, yerr=p_std, color='k' )
+    axs[1].errorbar( p_den+0.005, p_pheno_cen, yerr=p_pheno_std, color='r' )
+    axs[1].text(0.02,20,'phenomenological models',fontsize='10')
+    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
+    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
+    #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
+    if pname is not None: 
+        plt.savefig(pname, dpi=200)
+        plt.close()
+
+def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -234,7 +618,7 @@ def eos_setupAMBeq_xp_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'proton fraction $x_p$')
@@ -250,28 +634,53 @@ def eos_setupAMBeq_xp_fig( pname, models_micro, models_pheno ):
     #setp(axs[1].get_yticklabels(), visible=False)
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.x_p, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.x_p is not None:
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.x_p, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.x_p, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.x_p is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.x_p, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.x_p, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.x_p, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
@@ -281,11 +690,13 @@ def eos_setupAMBeq_xp_fig( pname, models_micro, models_pheno ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)
     	plt.close()
 
-def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -306,7 +717,7 @@ def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'electron fraction $x_e$')
@@ -319,37 +730,64 @@ def eos_setupAMBeq_xe_fig( pname, models_micro, models_pheno ):
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.x_el is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.x_el is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
+    #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)
     	plt.close()
 
-def eos_setupAMBeq_xmu_fig( pname, models_micro, models_pheno ):
+def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -370,7 +808,7 @@ def eos_setupAMBeq_xmu_fig( pname, models_micro, models_pheno ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'muon fraction $x_\mu$')
@@ -383,31 +821,58 @@ def eos_setupAMBeq_xmu_fig( pname, models_micro, models_pheno ):
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #
-    for model in models_micro:
+    mb_check = []
+    #
+    for kmb,mb in enumerate(micro_mbs):
         #
-        beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-        if nuda.env.verb_output: beta.print_outputs( )
+        print('mb:',mb,kmb)
         #
-        if beta.esym is not None: 
-            print('model:',model)
-            axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+        models, models_lower = nuda.matter.micro_esym_models_mb( mb )
+        #
+        print('models:',models)
+        #
+        if mb == 'VAR':
+            models.remove('1998-VAR-AM-APR-fit')
+            models_lower.remove('1998-var-am-apr-fit')
+        #
+        for model in models:
+            #
+            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: beta.print_outputs( )
+            #
+            if beta.x_mu is not None: 
+                print('model:',model)
+                if mb in mb_check:
+                    axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                else:
+                    mb_check.append(mb)
+                    axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
+        #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
     #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
-    for model in models_pheno:
+    model_check = []
+    #
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_esym_params( model = model )
         #
         for param in params:
             #
             beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.esym is not None: 
+            if beta.x_mu is not None: 
                 print('model:',model,' param:',param)
                 #beta.label=None
-                axs[1].plot( beta.den, beta.x_mu, linestyle=beta.linestyle, label=beta.label, markevery=beta.every )
+                if model in model_check:
+                    axs[1].plot( beta.den, beta.x_mu, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                else:
+                    model_check.append(model)
+                    axs[1].plot( beta.den, beta.x_mu, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
+    #
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)

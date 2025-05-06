@@ -368,7 +368,10 @@ class setupFFGLep():
         self.e2v_el_int = self.e2v_el - nuda.cst.mec2*self.den_el
         self.e2n_el_int = self.e2v_el_int / self.den_el
         self.e2v_mu_int = self.e2v_mu - nuda.cst.mmuc2*self.den_mu
-        self.e2n_mu_int = self.e2v_mu_int / self.den_mu
+        self.e2n_mu_int = np.zeros( np.size(self.den_mu) )
+        for k,n_mu in enumerate(self.den_mu):
+            if n_mu > 0.0:
+                self.e2n_mu_int[k] = self.e2v_mu_int[k] / self.den_mu[k]
         self.e2v_lep_int = self.e2v_el_int + self.e2v_mu_int
         self.e2n_lep_int = self.e2v_lep_int / self.den_lep
         #: Attribute FFG pressure (degeneracy = 2)
