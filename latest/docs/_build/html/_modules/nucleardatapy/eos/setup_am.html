@@ -139,9 +139,9 @@
             <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_esym_models</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">models_lower</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_am: The model name &#39;</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="s1">&#39; is not in the list of models.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_am: list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_am: -- Exit the code --&#39;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">()</span>
         <span class="c1">#</span>
         <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;micro&#39;</span><span class="p">:</span>
@@ -194,7 +194,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">pre_tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_nuc</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_lep</span>
             <span class="c1">#</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">den_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-3}$&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span> <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kf_unit</span>  <span class="o">=</span> <span class="s1">&#39;fm$^{-1}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2a_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">e2v_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pre_unit</span> <span class="o">=</span> <span class="s1">&#39;MeV fm$^{-3}$&#39;</span>
