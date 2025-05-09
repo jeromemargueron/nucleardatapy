@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def hnuc_setupRE1LExp_plot( pname, tables ):
+def hnuc_setupRE1LExp_fig( pname, tables ):
     #
     # plot
     #
