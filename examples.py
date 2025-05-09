@@ -1,31 +1,22 @@
 
-import os
-import sys
-import numpy as np
-
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def main():
     #
     print(50*'-')
-    print("Enter sample_SetupEOSMicro.py:")
+    print("This is an exemple showning how to employ the toolkit:")
     print(50*'-')
     #
-    keys = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2008-AFDMC-NM', '2008-QMC-NM-swave', '2008-QMC-NM-AV4', \
-             '2009-dQMC-NM', '2010-NM-Hebeler', '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
-             '2016-MBPT-AM', '2018-QMC-NM', '2020-MBPT-AM-DHSL59', '2020-MBPT-AM-DHSL69', \
-             '2023-MBPT-AM' ]
+    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '2016-QMC-NM', '2016-MBPT-AM', \
+             '2018-QMC-NM', '2023-MBPT-AM' ]
     #
-    for key in keys:
+    for model in models:
         #
-        mic = nuda.eos.Micro( model = key )
-        nuda.print_outputs()
+        micro = nuda.matter.setupMicro( model = model )
+        micro.print_outputs()
     #
     print(50*'-')
-    print("Exit sample_SetupEOSMicro.py:")
+    print("End of the example")
     print(50*'-')
     #
     

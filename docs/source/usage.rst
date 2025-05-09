@@ -6,63 +6,42 @@ Usage
 Installation
 ------------
 
-To use nucleardatapy, first download the .zip file from the git repository, or clone it in your local computer:
+To install the toolkit, launch:
 
 .. code-block:: console
 
-   $ git clone https://github.com/jeromemargueron/nucleardatapy
+   $ pip install nucleardatapy
 
-If you have downloaded the .zip file, you can unzip it anywhere in your local computer:
+This installs the lattest version of the toolkit.
 
-.. code-block:: console
+Now everything is done about the installation.
 
-   $ unzip nucleardatapy.zip
+Test
+------------
 
-Then, in all cases, you shall enter into the new folder `/nucleardatapy`:
+A set of tests can be easily performed. They are stored in tests/ folder.
 
-.. code-block:: console
-
-   $ cd nucleardatapy
-
-and launch the install script:
+Launch:
 
 .. code-block:: console
 
-   $ bash install.sh
+   $ bash run_tests.sh
 
-This will copy the Python toolkit into $HOME/mylib/ as well as a few samples. It will also give you the content of the global variable NUCLEARDATAPY_TK. If you edit install.sh, you can change the version (by default it is set to the latest one) as well as the destination folder (by default it is $HOME/mylib).
-
-Finally, you will have to create the global variable NUCLEARDATAPY_TK with its right content. If you do not want to create it each time you open a new terminal, then you can define it in your .profile or .zprofil or .bash file as:
-
-.. code-block:: console
-
-   export NUCLEARDATAPY_TK=$HOME/mylib/nucleardatapy
-
-.. note::
-
-   The exact path to write above is given at the end of the installation.
-
+   
 .. _Use:
 
 Use nucleardatapy
 -----------------
 
-Go to the folder `mylib/nucleardatapy/samples/nucleardatapy_samples/` and try that:
+The GitHub folder `nucleardatapy/nucleardatapy_samples/` contains a
+lot of examples on how to use the function and to draw figures. They
+are all python scripts that can be launched with `python3`. For
+instance, you can grab these samples anywhere in your computer and
+try:
 
 .. code-block:: console
 
-   $ python3 sample_SetupMicroMatter.py
-
-.. _Test:
-
-Test nucleardatapy
-------------------
-
-A set of tests can be easily performed. They are stored in tests/ folder.
-
-.. code-block:: console
-
-   $ bash run_tests.sh
+   $ python3 matter_setupMicro_script.py
 
 .. _Get started:
 
@@ -73,12 +52,12 @@ How to obtain microscopic results for APR equation of state:
 
 .. code-block:: python
 
-   import os
-   nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-   sys.path.insert(0, nucleardatapy_tk)
-
    import nucleardatapy as nuda
 
-   mic = nuda.SetupMicroMatter( model = '1998-VAR-AM-APR' )
+   # Instantiate the micro object with the content of the APR equation
+   of state
+   micro = nuda.matter.setMicro( model = '1998-VAR-AM-APR')
 
-   mic.print_outputs( )
+   # print outputs from the micro object
+   micro.print_outputs( )
+
