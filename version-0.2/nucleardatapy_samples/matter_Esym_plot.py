@@ -27,9 +27,12 @@ def main():
     #
     # list the available models
     #
-    micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()    
-    micro_mbs.remove( 'BHF2' )
-    pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    #micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()    
+    #micro_mbs.remove( 'BHF2' )
+    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT' ]
+    #
+    #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
+    pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot Esym
     #

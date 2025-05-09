@@ -209,7 +209,7 @@ def micro_models_mb_matter( mb, matter ):
     #
     if nuda.env.verb: print("\nEnter micro_models_mb_matter()")
     #
-    print('For mb (in SM):',mb)
+    print('For mb (in '+matter+'):',mb)
     #
     models, models_lower = micro_models_mb( mb )
     #
@@ -415,7 +415,8 @@ class setupMicro():
             self.label = 'FP-1981'
             self.marker = 'o'
             self.every = 1
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
@@ -444,7 +445,8 @@ class setupMicro():
             self.label = 'APR-1998'
             self.marker = '^'
             self.every = 1
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.nm_den, self.nm_e2a = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
             self.sm_den, self.sm_e2a = np.loadtxt( file_in2, usecols=(0,1), unpack = True )
@@ -469,13 +471,17 @@ class setupMicro():
             self.label = 'APR-1998-Fit'
             self.marker = '.'
             self.every = 1
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'dashed'
             # Define constants for APRfit and for A18+dv+UIX*
             global p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21
             ( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
             ( 337.2, -382.0, 89.8, 0.457, -59.0, -19.1, 214.6, -384.0, 6.4, 69.0, -33.0, 0.35, 0.0, 0.0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0.0 )
             #
+            # density
+            #self.nm_den = self.den
+            #self.sm_den = self.den
             # energy per unit volume
             self.e2v = APRfit_compute( self.den, self.xpr )
             # energy per particle
@@ -511,7 +517,8 @@ class setupMicro():
             self.marker = 'o'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             #
             self.nm_den, self.nm_e2a \
                 = np.loadtxt( file_in1, usecols=(0,1), unpack = True )
@@ -542,7 +549,8 @@ class setupMicro():
             self.marker = 'o'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -566,7 +574,8 @@ class setupMicro():
             self.marker = 'o'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False            
             self.nm_kfn, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -589,7 +598,8 @@ class setupMicro():
             self.marker = 'v'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -612,7 +622,8 @@ class setupMicro():
             self.label = 'QMC-AV4-2008'
             self.marker = 's'
             self.every = 1
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.linestyle = 'solid'
             self.nm_kfn, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -636,7 +647,8 @@ class setupMicro():
             self.label = 'MBPT-2010'
             self.marker = 's'
             self.every = 1
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.nm_den, self.nm_pre = np.loadtxt( file_in, usecols=(0,1), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -663,8 +675,11 @@ class setupMicro():
             self.note = "We do not have the data for this model, but we have a fit of the data."
             self.label = 'AFDMC-2012-'+str(k)
             self.marker = 's'
-            self.every = 1
-            self.err = True
+            self.every = 3
+            if k==1: self.every = 4
+            if k==7: self.every = 4
+            self.e_err = True
+            self.p_err = False
             self.linestyle = 'solid'
             #self.linestyle = 'None'
             if k in [ 1, 7 ]:
@@ -700,7 +715,8 @@ class setupMicro():
             self.label = 'AFDMC-2012-'+str(k)+'-FIT'
             self.marker = 's'
             self.every = 1
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.linestyle = 'dashed'
             ind, a, alfa, b, beta = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             #name = np.loadtxt( file_in, usecols=(5), unpack = True )
@@ -753,7 +769,8 @@ class setupMicro():
             self.marker = 's'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_pre_low, self.nm_pre_up \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -791,7 +808,8 @@ class setupMicro():
             self.label = 'AFQMC-2014'
             self.marker = 's'
             self.every = 1
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.nm_den, self.nm_e2a_2bf, self.nm_e2a_23bf \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -816,7 +834,8 @@ class setupMicro():
             self.label = 'QMC-2016'
             self.marker = 's'
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.every = 1
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up \
                 = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
@@ -838,7 +857,8 @@ class setupMicro():
             self.label = 'MBPT-2016'
             self.marker = 's'
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.every = 4
             # read the results for the 7 hamiltonians
             length = np.zeros( (11), dtype=int )
@@ -914,7 +934,8 @@ class setupMicro():
             self.marker = 's'
             self.every = 2
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.nm_den, self.nm_e2a_low, self.nm_e2a_up, self.nm_e2a, self.nm_e2a_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -931,8 +952,8 @@ class setupMicro():
             # here, the L59 case is compute alone, it would be interesting to compute the uncertainty
             # in the previous MBPT calculation (based on H1-H7) adding this new calculation.
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL59.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL59.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-SM-DHSL59.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-NM-DHSL59.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
@@ -940,7 +961,8 @@ class setupMicro():
             self.label = 'MBPT-2019-L59'
             self.marker = 's'
             self.every = 2
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -962,8 +984,8 @@ class setupMicro():
             #
             # same remarck as for L59
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL69.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL69.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-SM-DHSL69.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-NM-DHSL69.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
@@ -971,7 +993,8 @@ class setupMicro():
             self.label = 'MBPT-2019-L69'
             self.marker = 's'
             self.every = 2
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             self.linestyle = 'solid'
             self.sm_kfn, self.sm_den, Kin, HF_tot, Scnd_tot, Trd_tot, Fth_tot, self.sm_e2a \
                  = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -991,17 +1014,18 @@ class setupMicro():
             self.flag_kf = False
             self.flag_den = True
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-SM.csv')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-NM.csv')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM.csv')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM.csv')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
             self.note = ""
             self.label = 'MBPT-2020'
-            self.marker = 's'
+            self.marker = 'o'
             self.linestyle = 'solid'
             self.every = 6
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.sm_den, self.sm_e2a_lo, self.sm_e2a_lo_err, self.sm_e2a_nlo, self.sm_e2a_nlo_err, \
                 self.sm_e2a_n2lo, self.sm_e2a_n2lo_err, self.sm_e2a_n3lo, self.sm_e2a_n3lo_err \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7, 8), delimiter=',', comments='#', unpack = True)
@@ -1035,7 +1059,8 @@ class setupMicro():
             self.marker = 'o'
             self.linestyle = 'solid'
             self.every = 1
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             # read e2a
             self.nm_kfn, e2effg, e2effg_err = np.loadtxt( file_in, usecols=(0,1,2), delimiter=',', comments='#', unpack = True )
             self.nm_den     = nuda.den_n( self.nm_kfn )
@@ -1065,7 +1090,8 @@ class setupMicro():
             self.marker = 's'
             self.linestyle = 'solid'
             self.every = 2
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             #
             # Read SM results
             #
@@ -1327,7 +1353,8 @@ class setupMicro():
             self.marker = 'o'
             self.linestyle = 'solid'
             self.every = 2
-            self.err = False
+            self.e_err = False
+            self.p_err = False
             #
             self.sm_den, self.sm_vS0T0, self.sm_vS0T1, self.sm_vS1T0, self.sm_vS1T1, self.sm_vtot, self.sm_kin, self.sm_etot \
                 = np.loadtxt( file_in1, usecols = (0, 1, 2, 3, 4, 5, 6, 7), comments='#', unpack = True)
@@ -1363,7 +1390,8 @@ class setupMicro():
             self.marker = 's'
             self.every = 1
             self.linestyle = 'solid'
-            self.err = True
+            self.e_err = True
+            self.p_err = False
             self.nm_den, self.nm_e2a, self.nm_e2a_err_stat, self.nm_e2a_err_ekm, self.nm_e2a_err_gp \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -1387,10 +1415,10 @@ class setupMicro():
                 x = np.insert( self.nm_kfn, 0, 0.0 )
                 y = np.insert( self.nm_e2a, 0, 0.0 )
                 cs_nm_e2a = CubicSpline( x, y )
-                self.nm_pre = np.array( nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
+                self.nm_pre = np.array( nuda.cst.third * self.nm_kfn * self.nm_den * cs_nm_e2a( self.nm_kfn, 1 ) )
                 y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
                 cs_nm_e2a_err = CubicSpline( x, y_err )
-                self.nm_pre_err = nuda.cst.three * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
+                self.nm_pre_err = nuda.cst.third * self.nm_kfn * self.nm_den * cs_nm_e2a_err( self.nm_kfn, 1 )
                 # chemical potential
                 self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
                 self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
@@ -1408,10 +1436,10 @@ class setupMicro():
                 x = np.insert( self.nm_den, 0, 0.0 )
                 y = np.insert( self.nm_e2a, 0, 0.0 )
                 cs_nm_e2a = CubicSpline( x, y )
-                self.nm_pre = np.array( cs_nm_e2a( self.nm_den, 1 ) )
+                self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1 ) )
                 y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
                 cs_nm_e2a_err = CubicSpline( x, y_err )
-                self.nm_pre_err = cs_nm_e2a_err( self.nm_den, 1 )
+                self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err( self.nm_den, 1 )
                 #
                 # chemical potential
                 self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
@@ -1432,10 +1460,10 @@ class setupMicro():
                 x = np.insert( self.sm_kfn, 0, 0.0 )
                 y = np.insert( self.sm_e2a, 0, 0.0 )
                 cs_sm_e2a = CubicSpline( x, y )
-                self.sm_pre = np.array( nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_kfn, 1 ) )
+                self.sm_pre = np.array( nuda.cst.third * self.sm_kfn * self.sm_den * cs_sm_e2a( self.sm_kfn, 1 ) )
                 y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
                 cs_sm_e2a_err = CubicSpline( x, y_err )
-                self.sm_pre_err = nuda.cst.three * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
+                self.sm_pre_err = nuda.cst.third * self.sm_kfn * self.sm_den * cs_sm_e2a_err( self.sm_kfn, 1 )
                 #
                 # chemical potential
                 self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
@@ -1455,10 +1483,10 @@ class setupMicro():
                 x = np.insert( self.sm_den, 0, 0.0 )
                 y = np.insert( self.sm_e2a, 0, 0.0 )
                 cs_sm_e2a = CubicSpline( x, y )
-                self.sm_pre = np.array( cs_sm_e2a( self.sm_den, 1 ) )
+                self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1 ) )
                 y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
                 cs_sm_e2a_err = CubicSpline( x, y_err )
-                self.sm_pre_err = cs_sm_e2a_err( self.sm_den, 1 )
+                self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err( self.sm_den, 1 )
                 #
                 # chemical potential
                 self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)

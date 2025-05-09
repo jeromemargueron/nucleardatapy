@@ -15,3 +15,4 @@ from nucleardatapy.matter.setup_hic            import *
 from nucleardatapy.matter.setup_nep            import *
 from nucleardatapy.matter.setup_nep_dist       import *
 from nucleardatapy.matter.setup_nep_model_dist import *
+from nucleardatapy.matter.setup_check          import *

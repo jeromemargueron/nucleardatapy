@@ -50,6 +50,7 @@ def matter_setupMicro_band_fig( pname, models, den, matter ):
         #
         mic = nuda.matter.setupMicro( model = model )
         if nuda.env.verb_output: mic.print_outputs( )
+        #
         if mic.nm_e2a is not None: 
             print('model:',model)
             if matter.lower() == 'nm':

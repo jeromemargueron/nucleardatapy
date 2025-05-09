@@ -358,19 +358,26 @@ class setupFFGLep():
         #: Attribute muon Fermi energy (degeneracy = 2)
         self.eF_mu = np.sqrt( nuda.cst.mmuc2**2 + (nuda.cst.hbc*self.kf_mu)**2 )
         #: Attribute FFG energy per particle (degeneracy = 2)
-        self.e2v_el, self.e2a_el = feden( 2.0, self.kf_el, nuda.cst.mec2 )
-        self.e2v_mu, self.e2a_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2 )
+        # energy
+        self.e2v_el, self.e2n_el = feden( 2.0, self.kf_el, nuda.cst.mec2 )
+        self.e2v_mu, self.e2n_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2 )
         self.e2v_lep = self.e2v_el + self.e2v_mu
+        self.e2n_lep = self.e2v_lep / self.den_lep
         #self.e2a_el = self.e2v_el / self.den_e
-        self.e2a_el_int = self.e2a_el - nuda.cst.mec2*self.den_el / ( self.den_lep )
-        #self.e2a_mu = self.e2v_mu / self.den_mu
-        self.e2a_mu_int = self.e2a_mu - nuda.cst.mmuc2*self.den_mu / ( self.den_lep )
-        self.e2a_lep = self.e2a_el + self.e2a_mu
-        self.e2a_int_lep = self.e2a_el_int + self.e2a_mu_int
+        # internal energy
+        self.e2v_el_int = self.e2v_el - nuda.cst.mec2*self.den_el
+        self.e2n_el_int = self.e2v_el_int / self.den_el
+        self.e2v_mu_int = self.e2v_mu - nuda.cst.mmuc2*self.den_mu
+        self.e2n_mu_int = np.zeros( np.size(self.den_mu) )
+        for k,n_mu in enumerate(self.den_mu):
+            if n_mu > 0.0:
+                self.e2n_mu_int[k] = self.e2v_mu_int[k] / self.den_mu[k]
+        self.e2v_lep_int = self.e2v_el_int + self.e2v_mu_int
+        self.e2n_lep_int = self.e2v_lep_int / self.den_lep
         #: Attribute FFG pressure (degeneracy = 2)
         self.pre_el = fpres( 2.0, self.kf_el, nuda.cst.mec2)
         self.pre_mu = fpres( 2.0, self.kf_mu, nuda.cst.mmuc2)
-        self.pre_lep = self.pre_el + self.pre_mu
+        self.pre_lep = self.x_el * self.pre_el + self.x_mu * self.pre_mu
         #: Attribute enthalpy
         self.h2v_el = self.e2v_el + self.pre_el
         self.h2v_mu = self.e2v_mu + self.pre_mu

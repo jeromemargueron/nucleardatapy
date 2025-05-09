@@ -55,10 +55,13 @@ class setupMicroBand():
         #
         if matter.lower() == 'nm':
             print('\nBand in NM')
+            xfac = 1.2
         elif matter.lower() == 'sm':
             print('\nBand in SM')
+            xfac = 1.8
         elif matter.lower() == 'esym':
             print('\nBand for Esym')
+            xfac = 1.4
         #
         self = setupMicroBand.init_self( self )
         #
@@ -112,6 +115,7 @@ class setupMicroBand():
             den_min_tmp = []; den_max_tmp = [];
             for model in models:
                 mic = nuda.matter.setupMicro( model = model )
+                #?? esym = nuda.matter.setupMicroEsym( model = model )
                 if matter.lower() == 'nm':
                     nm_den_min = min( mic.nm_den )
                     nm_den_max = max( mic.nm_den )
@@ -166,6 +170,7 @@ class setupMicroBand():
             if nuda.env.verb: print('model:',model)
             # Load the results from model
             mic = nuda.matter.setupMicro( model = model )
+            #?? esym = nuda.matter.setupMicroEsym( model = model )
             # Prepare spline for E/A and E/A_err
             if matter.lower() == 'nm':
                 cs_e2a = CubicSpline( mic.nm_den, mic.nm_e2a )
@@ -193,7 +198,7 @@ class setupMicroBand():
             self.e2a.append( np.mean(mat[k,:]*e2a)/np.mean(mat[k,:]) )
             self.e2a_std.append(  np.mean(mat[k,:]*e2a**2)/np.mean(mat[k,:]) )
         self.e2a = np.array(self.e2a, dtype=float )
-        self.e2a_std = np.sqrt( np.array(self.e2a_std, dtype=float ) - self.e2a**2 )
+        self.e2a_std = xfac * np.sqrt( np.array(self.e2a_std, dtype=float ) - self.e2a**2 )
         #
         if nuda.env.verb: print("Exit setupMicroBand()")
         #

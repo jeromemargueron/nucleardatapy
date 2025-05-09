@@ -15,10 +15,14 @@ def main():
     #
     # create the groups of figures
     #
-    mbs, mbs_lower = nuda.matter.micro_mbs()
-    #mbs = [ 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT' ]
+    #mbs, mbs_lower = nuda.matter.micro_mbs()
     #mbs = [ 'VAR' ]
+    #mbs = [ 'MBPT' ]
     #mbs = [ 'NLEFT' ]
+    #mbs = [ 'AFDMC' ]
+    #mbs = [ 'QMC' ]
+    #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
+    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
     print('mbs:',mbs)
     #
     # list the different matter cases investigated
@@ -34,7 +38,8 @@ def main():
         elif matter.lower() == 'sm':
             bmodels = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
         #
-        band = nuda.matter.setupMicroBand( bmodels, matter=matter  )
+        den = np.array([0.06,0.08,0.1,0.12,0.14,0.16])
+        band = nuda.matter.setupMicroBand( bmodels, matter = matter, den = den  )
         #
         # plot E/A in matter grouped by mb
         #
@@ -64,7 +69,7 @@ def main():
             #
             pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
             #
-            nuda.fig.matter_setupMicro_E_fig( pname, mb, models, band, matter )
+            nuda.fig.matter_setupMicro_E_fig( pname, mb, models, band )
             #
     #
     print(50*'-')

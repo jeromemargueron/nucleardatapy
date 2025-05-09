@@ -157,8 +157,8 @@ class setupPheno():
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, a, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, a, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.sm_kf = self.sm_kfn
             #
         #

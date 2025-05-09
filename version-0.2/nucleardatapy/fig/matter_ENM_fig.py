@@ -23,11 +23,10 @@ def matter_ENM_fig( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(1,2)
-    #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$e_\text{NM}(n)$')
+    axs[0].set_ylabel(r'$e_\text{NM}(n_\text{nuc})$')
     axs[0].set_xlim([0, 0.34])
     axs[0].set_ylim([0, 35])
     #
@@ -38,81 +37,91 @@ def matter_ENM_fig( pname, micro_mbs, pheno_models, band ):
     axs[1].tick_params('y', labelleft=False)
     #
     mb_check = []
-    k = 0
     #
-    for mb in micro_mbs:
+    for kmb,mb in enumerate(micro_mbs):
         #
         models, models_lower = nuda.matter.micro_models_mb( mb )
         #
         for model in models:
             #
-            enm = nuda.matter.setupMicro( model = model )
+            micro = nuda.matter.setupMicro( model = model )
+            if nuda.env.verb: micro.print_outputs( )
             #
-            if enm.nm_e2a is not None:
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+            #
+            if micro.nm_e2a is not None:
                 print('mb:',mb,'model:',model)
                 if mb in mb_check:
-                    if enm.marker:
-                        if enm.err:
-                            axs[0].errorbar( enm.nm_den, enm.nm_e2a, yerr=enm.nm_e2a_err, marker=enm.marker, linestyle=None, errorevery=enm.every, color=nuda.param.col[k] )
+                    if micro.marker:
+                        if micro.e_err:
+                            axs[0].errorbar( micro.nm_den, micro.nm_e2a, yerr=micro.nm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
-                            axs[0].plot( enm.nm_den, enm.nm_e2a, marker=enm.marker, linestyle=None, markevery=enm.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.nm_den, micro.nm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                     else:
-                        if enm.err:
-                            axs[0].errorbar( enm.nm_den, enm.nm_e2a, yerr=enm.nm_e2a_err, marker=enm.marker, linestyle=enm.linestyle, errorevery=enm.every, color=nuda.param.col[k] )
+                        if micro.e_err:
+                            axs[0].errorbar( micro.nm_den, micro.nm_e2a, yerr=micro.nm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
-                            axs[0].plot( enm.nm_den, enm.nm_e2a, marker=enm.marker, linestyle=enm.linestyle, markevery=enm.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.nm_den, micro.nm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    k += 1
-                    if enm.marker:
-                        if enm.err:
-                            axs[0].errorbar( enm.nm_den, enm.nm_e2a, yerr=enm.nm_e2a_err, marker=enm.marker, linestyle=None, label=mb, errorevery=enm.every, color=nuda.param.col[k] )
+                    if micro.marker:
+                        if micro.e_err:
+                            axs[0].errorbar( micro.nm_den, micro.nm_e2a, yerr=micro.nm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
-                            axs[0].plot( enm.nm_den, enm.nm_e2a, marker=enm.marker, linestyle=None, label=mb, markevery=enm.every, color=nuda.param.col[k] )
+                            axs[0].plot( micro.nm_den, micro.nm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
                     else:
-                        if enm.err:
-                            axs[0].errorbar( enm.nm_den, enm.nm_e2a, yerr=enm.nm_e2a_err, marker=enm.marker, linestyle=enm.linestyle, label=mb, errorevery=enm.every, color=nuda.param.col[k] )
+                        if micro.e_err:
+                            axs[0].errorbar( micro.nm_den, micro.nm_e2a, yerr=micro.nm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
-                            axs[0].plot( enm.nm_den, enm.nm_e2a, marker=enm.marker, linestyle=enm.linestyle, label=mb, markevery=enm.every, color=nuda.param.col[k] )
-                    #axs[0].plot( esym.den, esym.esym, color=nuda.param.col[k], label=mb )
-            if nuda.env.verb: esm.print_outputs( )
+                            axs[0].plot( micro.nm_den, micro.nm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
+            # end model
+        # end mb
     axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[0].text(0.06,2,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
-    k = 0
     #
-    for model in pheno_models:
+    for kmodel,model in enumerate(pheno_models):
         #
         params, params_lower = nuda.matter.pheno_params( model = model )
         #
         for param in params:
             #
-            enm = nuda.matter.setupPheno( model = model, param = param )
+            pheno = nuda.matter.setupPheno( model = model, param = param )
+            if nuda.env.verb: pheno.print_outputs( )
             #
-            if enm.nm_e2a is not None: 
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+            #
+            if pheno.nm_e2a is not None: 
                 print('model:',model,' param:',param)
                 if model in model_check:
-                    axs[1].plot( enm.nm_den, enm.nm_e2a, color=nuda.param.col[k] )
+                    axs[1].plot( pheno.nm_den, pheno.nm_e2a, linestyle=lstyle, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    k += 1
-                    axs[1].plot( enm.nm_den, enm.nm_e2a, color=nuda.param.col[k], label=model )
-                #pheno.label=None
-                #axs[1].plot( esym.den, esym.esym, label=esym.label )
-            if nuda.env.verb: esym.print_outputs( )
+                    axs[1].plot( pheno.nm_den, pheno.nm_e2a, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
+            # end param
+        # end model
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
     axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
     axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.06,2,'phenomenological models',fontsize='10')
+    #
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
-    #plt.tight_layout()
     if pname is not None:
     	plt.savefig(pname, dpi=200)
     	plt.close()

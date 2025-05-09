@@ -13,8 +13,6 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
-    #
     # create the models for the figures
     #
     #models, models_lower = nuda.modelsPheno()
@@ -36,7 +34,8 @@ def main():
         elif matter.lower() == 'sm':
             bmodels = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
         #
-        band = nuda.matter.setupMicroBand( bmodels, den=den, matter=matter  )
+        den = np.array([0.06,0.08,0.1,0.12,0.14,0.16])
+        band = nuda.matter.setupMicroBand( bmodels, den=den, matter = matter )
         #
         # plot E/A in matter grouped by mb
         #
@@ -46,7 +45,7 @@ def main():
             #
             pname = 'figs/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
             #
-            nuda.fig.matter_setupPheno_E_fig( pname, model, band, matter )
+            nuda.fig.matter_setupPheno_E_fig( pname, model, band )
 
     #
     print(50*'-')
