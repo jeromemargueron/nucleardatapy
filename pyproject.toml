@@ -12,7 +12,7 @@ description = "A toolkit for nuclear data processing and analysis."
 license = {text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.9"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
     "numpy",
     "scipy",
@@ -20,7 +20,6 @@ dependencies = [
 ]
 
 classifiers = [
-    "Development Status :: 1 - Alpha",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",

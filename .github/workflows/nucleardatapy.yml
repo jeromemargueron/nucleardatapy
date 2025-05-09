@@ -1,0 +1,116 @@
+name: CI/CD for nucleardatapy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
+          pip install jupyter jupyter-book myst-nb  # Install jupyter-book
+          pip install -e .  # Install nucleardatapy in editable mode
+
+      - name: Check test discovery
+        run: pytest --collect-only version-0.2/tests/
+
+      - name: Run tests
+        run: pytest version-0.2/tests/ --verbose
+
+      - name: Upload Version Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2/__init__.py
+
+      - name: Build Sphinx documentation
+        working-directory: docs
+        run: make html
+
+      - name: Build Jupyter Book
+        working-directory: book
+        run: jupyter-book build .
+
+      - name: Upload documentation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-docs
+          path: |
+            docs/_build/html/
+            book/_build/html/
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repository (main branch)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download version file
+        uses: actions/download-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2
+
+      - name: Debug Directory Structure
+        run: ls -R
+
+      - name: Extract version from __init__.py
+        id: version
+        run: |
+          if [ -f version-0.2/__init__.py ]; then
+            VERSION=$(grep -oP "__version__\s*=\s*['\"]\K[^'\"]+" version-0.2/__init__.py)
+            echo "Extracted version: $VERSION"
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+          else
+            echo "Error: version-0.2/__init__.py not found!"
+            exit 1
+          fi
+
+      - name: Check out gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Download built documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: built-docs
+          path: public
+
+      - name: Copy docs to versioned folder
+        run: |
+          mkdir -p docs/$VERSION
+          mkdir -p docs/latest
+          cp -r public/* docs/$VERSION
+          cp -r public/* docs/latest
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs

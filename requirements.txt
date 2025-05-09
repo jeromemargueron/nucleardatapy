@@ -1,5 +1,7 @@
-os
-sys
 numpy
 scipy
-random
+matplotlib
+pandas
+pytest
+sphinx
+sphinx_rtd_theme

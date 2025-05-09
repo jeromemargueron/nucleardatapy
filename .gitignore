@@ -12,3 +12,4 @@ samples/nucleardatapy_plots/.DS_Store
 __pycache__
 .ipynb_checkpoints
 *.pyc
+*.cpython*

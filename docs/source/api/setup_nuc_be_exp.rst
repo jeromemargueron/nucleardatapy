@@ -9,15 +9,15 @@ nuc.setupBEExp
 .. automodule:: nucleardatapy.nuc.setup_be_exp
 	:members:
 
-Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/plots/plot_nuc_setupBEExp.py
+Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/nuc_setupBEExp_plot.py
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupBEExp_AME_2020.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_nuc_setupBEExp_AME_2020.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
 	The nuclear chart based on AME 2020 table. The different colors correspond to the different measured half-times of nuclei.
 
-.. figure:: ../../../version-0.1/nucleardatapy_samples/plots/figs/plot_nuc_setupBEExp_AME_2020_year.png
+.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_nuc_setupBEExp_AME_2020_year.png
 	:scale: 70 %
 	:alt: map to buried treasure
 
