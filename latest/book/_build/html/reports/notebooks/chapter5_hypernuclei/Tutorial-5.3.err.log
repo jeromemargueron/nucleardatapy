@@ -42,14 +42,14 @@ import nucleardatapy as nuda
 [32m      2[39m [33;03mThis module provides microscopic, phenomenological and experimental data constraints.[39;00m
 [32m      3[39m [33;03m"""[39;00m
 [32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupFFGNuc_fig[39;00m[38;5;250m        [39m[38;5;28;01mimport[39;00m *
-[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_fig[39;00m[38;5;250m         [39m[38;5;28;01mimport[39;00m *
+[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_fig[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m *
 [32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_err_NM_fig[39;00m[38;5;250m  [39m[38;5;28;01mimport[39;00m *
 
 [36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/fig/matter_setupFFGNuc_fig.py:3[39m
 [32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
-[32m----> [39m[32m3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnuda[39;00m
-[32m      7[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mmatter_setupFFGNuc_EP_fig[39m( pname, mss = [ [32m1.0[39m ], den = np.linspace([32m0.01[39m,[32m0.35[39m,[32m10[39m), kfn = np.linspace([32m0.5[39m,[32m2.0[39m,[32m10[39m) ):
+[32m----> [39m[32m3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mmpl[39;00m
+[32m      4[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m      5[39m mpl.use([33m"[39m[33mAgg[39m[33m"[39m)  [38;5;66;03m# Use a non-interactive backend[39;00m
 
 [36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/__init__.py:1296[39m
 [32m   1292[39m     rcParams[[33m'[39m[33mbackend_fallback[39m[33m'[39m] = [38;5;28;01mFalse[39;00m

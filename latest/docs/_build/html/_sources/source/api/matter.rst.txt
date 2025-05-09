@@ -14,3 +14,4 @@ Matter
    setup_matter_pheno
    setup_matter_pheno_esym
    setup_matter_hic
+   setup_matter_check
