@@ -49,32 +49,33 @@ def matter_setupPhenoEsym_fig( pname, models, band ):
         for param in params:
             #
             print('in Sample: model, param',model,param)
-            esym = nuda.matter.setupPhenoEsym( model = model, param = param )
+            pheno = nuda.matter.setupPhenoEsym( model = model, param = param )
+            if nuda.env.verb_output: pheno.print_outputs( )
             #
-            #print("esym:",esym.esym)
-            #print("den:",esym.den)
-            if esym.esym is not None:
-                print("esym_err:",esym.esym_err)
-                if esym.esym_err is not None:
-                    if not nuda.matter.checkPheno(esym,band,'Esym'):
-                        axs[0,0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle='none', errorevery=esym.every )
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+            #
+            #print("esym:",pheno.esym)
+            #print("den:",pheno.den)
+            if pheno.esym is not None:
+                print("esym_err:",pheno.esym_err)
+                if pheno.esym_err is None:
+                    if check.isInside:
+                        axs[0,0].plot( pheno.den, pheno.esym, marker=pheno.marker, linestyle=lstyle, label=pheno.label )
                     else:
-                        axs[0,0].errorbar( esym.den, esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle='none', errorevery=esym.every, label=esym.label )
-                    axs[0,1].errorbar( esym.kf,  esym.esym, yerr=esym.esym_err, marker=esym.marker, linestyle='none', errorevery=esym.every )
-                    axs[1,0].errorbar( esym.den, esym.esym/nuda.esymffg_nr(esym.kf), yerr=esym.esym_err/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle='none', errorevery=esym.every )
-                    axs[1,1].errorbar( esym.kf,  esym.esym/nuda.esymffg_nr(esym.kf), yerr=esym.esym_err/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle='none', errorevery=esym.every )
+                        axs[0,0].plot( pheno.den, pheno.esym, marker=pheno.marker, linestyle=lstyle )
+                    axs[0,1].plot( pheno.kf,  pheno.esym, marker=pheno.marker, linestyle=lstyle )
+                    axs[1,0].plot( pheno.den, pheno.esym/nuda.esymffg_nr(pheno.kf), marker=pheno.marker, linestyle=lstyle )
+                    axs[1,1].plot( pheno.kf,  pheno.esym/nuda.esymffg_nr(pheno.kf), marker=pheno.marker, linestyle=lstyle )
                 else:
-                    if not nuda.matter.checkPheno(esym,band,'Esym'):
-                        axs[0,0].plot( esym.den, esym.esym, marker=esym.marker, linestyle='dotted' )
-                        axs[0,1].plot( esym.kf,  esym.esym, marker=esym.marker, linestyle='dotted' )
-                        axs[1,0].plot( esym.den, esym.esym/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle='dotted' )
-                        axs[1,1].plot( esym.kf,  esym.esym/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle='dotted' )
-                    else:
-                        axs[0,0].plot( esym.den, esym.esym, marker=esym.marker, linestyle=esym.linestyle, label=esym.label )
-                        axs[0,1].plot( esym.kf,  esym.esym, marker=esym.marker, linestyle=esym.linestyle )
-                        axs[1,0].plot( esym.den, esym.esym/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle=esym.linestyle )
-                        axs[1,1].plot( esym.kf,  esym.esym/nuda.esymffg_nr(esym.kf), marker=esym.marker, linestyle=esym.linestyle )
-            if nuda.env.verb_output: esym.print_outputs( )
+                    axs[0,0].errorbar( pheno.den, pheno.esym, yerr=pheno.esym_err, marker=pheno.marker, linestyle=lstyle, errorevery=pheno.every, label=pheno.label )
+                    axs[0,1].errorbar( pheno.kf,  pheno.esym, yerr=pheno.esym_err, marker=pheno.marker, linestyle=lstyle, errorevery=pheno.every )
+                    axs[1,0].errorbar( pheno.den, pheno.esym/nuda.esymffg_nr(pheno.kf), yerr=pheno.esym_err/nuda.esymffg_nr(pheno.kf), marker=pheno.marker, linestyle=lstyle, errorevery=pheno.every )
+                    axs[1,1].errorbar( pheno.kf,  pheno.esym/nuda.esymffg_nr(pheno.kf), yerr=pheno.esym_err/nuda.esymffg_nr(pheno.kf), marker=pheno.marker, linestyle=lstyle, errorevery=pheno.every )
             #
         axs[0,0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True  )
         axs[0,0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed', visible=True  )
@@ -89,8 +90,8 @@ def matter_setupPhenoEsym_fig( pname, models, band ):
         axs[1,1].plot( band.kfn, (band.e2a-band.e2a_std)/nuda.esymffg_nr(band.kfn), color='k', linestyle='dashed', visible=True  )
         axs[1,1].plot( band.kfn, (band.e2a+band.e2a_std)/nuda.esymffg_nr(band.kfn), color='k', linestyle='dashed', visible=True  )
     #
-    axs[0,0].plot( esym.den, nuda.esymffg_nr(esym.kf), linestyle='dashed' )
-    axs[0,1].plot( esym.kf,  nuda.esymffg_nr(esym.kf), linestyle='dashed' )
+    axs[0,0].plot( pheno.den, nuda.esymffg_nr(pheno.kf), linestyle='dashed' )
+    axs[0,1].plot( pheno.kf,  nuda.esymffg_nr(pheno.kf), linestyle='dashed' )
 
     #axs[1,0].legend(loc='upper right',fontsize='8')
     fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
@@ -98,3 +99,4 @@ def matter_setupPhenoEsym_fig( pname, models, band ):
     if pname is not None:
     	plt.savefig(pname, dpi=300)
     	plt.close()
+    #

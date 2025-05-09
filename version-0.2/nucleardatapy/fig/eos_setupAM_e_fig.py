@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupAM_e_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -70,8 +70,6 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models ):
         #
         print('asy:',asy)
         #
-        #k = 0
-        #
         for kmb,mb in enumerate(micro_mbs):
             #
             print('mb:',mb,kmb)
@@ -84,38 +82,39 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models ):
             if mb == 'VAR':
                 models.remove('1998-VAR-AM-APR-fit')
                 models_lower.remove('1998-var-am-apr-fit')
-            #if mb == 'AFDMC':
-            #    for k in range(7):
-            #        print('k:',k)
-            #        models.remove('2012-AFDMC-NM-RES-'+str(k+1))
-            #        models_lower.remove('2012-afdmc-nm-res-'+str(k+1))
             #
             for model in models:
                 #
                 micro = nuda.eos.setupAM( model = model, kind = 'micro', asy = asy )
                 if nuda.env.verb_output: micro.print_outputs( )
                 #
+                check = nuda.matter.setupCheck( eos = micro, band = band )
+                #
+                if check.isInside:
+                    lstyle = 'solid'
+                else:
+                    lstyle = 'dashed'
+                    continue
+                #
                 if micro.e2a_lep is not None: 
                     if mb in mb_check:
                         print('model:',model)
                         print('den:',micro.den)
                         print('e2a_lep:',micro.e2a_lep)
-                        axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                     else:
                         mb_check.append(mb)
-                        #k += 1
                         print('mb:',mb)
                         print('model:',model)
                         print('den:',micro.den)
                         print('e2a_lep:',micro.e2a_lep)
-                        axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
-
-        #
-        #k = 0
+                        axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                # end of model
+            # end of mb
         #
         for kmodel,model in enumerate(pheno_models):
             #
@@ -124,22 +123,29 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models ):
             for param in params:
                 #
                 pheno = nuda.eos.setupAM( model = model, param = param, kind = 'pheno', asy = asy )
+                if nuda.env.verb_output: pheno.print_outputs( )
+                #
+                check = nuda.matter.setupCheck( eos = pheno, band = band )
+                #
+                if check.isInside:
+                    lstyle = 'solid'
+                else:
+                    lstyle = 'dashed'
+                    continue
                 #
                 if pheno.e2a_lep is not None: 
                     print('model:',model,' param:',param)
                     if model in model_check:
-                        axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                     else:
                         model_check.append(model)
-                        #k += 1
-                        axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=pheno.linestyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                #
-                if nuda.env.verb_output: pheno.print_outputs( )
-        #
+                        axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                # end of param
+            # end of model
     #
     axs[0,0].text(0.02,0,'microscopic models',fontsize='10')
     axs[0,1].text(0.02,0,'phenomenological models',fontsize='10')
@@ -164,3 +170,4 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models ):
     if pname is not None: 
         plt.savefig(pname, dpi=200)
         plt.close()
+    #

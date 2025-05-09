@@ -87,6 +87,10 @@ class setupAMLeq():
         self.marker = esym.marker
         #print('type esym:',type(esym.esym))
         if esym.esym is not None:
+            self.nm_den = esym.nm_den
+            self.nm_e2a = esym.nm_e2a
+            self.sm_den = esym.sm_den
+            self.sm_e2a = esym.sm_e2a
             self.den = esym.den
             self.esym = esym.esym
             #print('esym:',self.esym)
@@ -116,9 +120,9 @@ class setupAMLeq():
             self.n_mu = self.x_mu * self.den
             #
             # Thermodynamical variables
-            self.e2a_nuc = esym.sm_e2a + esym.esym * self.asy**2
+            self.e2a_nuc = esym.esym_sm_e2a + esym.esym * self.asy**2
             self.e2v_nuc = self.e2a_nuc * self.den
-            self.pre_nuc = esym.sm_pre + esym.sym_pre * self.asy**2
+            self.pre_nuc = esym.esym_sm_pre + esym.esym_sym_pre * self.asy**2
             lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
             self.e2a_el = self.x_el * lep.e2n_el
             self.e2a_mu = self.x_mu * lep.e2n_mu

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -54,19 +54,28 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.e2a_nuc is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.e2a_nuc is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.e2a_nuc, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.e2a_nuc, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -76,23 +85,28 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.e2a_nuc is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.e2a_nuc is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.e2a_nuc, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.e2a_nuc, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -100,7 +114,7 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -151,19 +165,27 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.pre_nuc is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.pre_nuc is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.pre_nuc, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.pre_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.pre_nuc, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.pre_nuc, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -173,23 +195,28 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.pre_nuc is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.pre_nuc is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.pre_nuc, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.pre_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.pre_nuc, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.pre_nuc, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -197,7 +224,7 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -248,19 +275,29 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.e2a_lep is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            #
+            if micro.e2a_lep is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.e2a_lep, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.e2a_lep, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -270,23 +307,29 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.e2a_lep is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.e2a_lep is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
+                #micro.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.e2a_lep, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.e2a_lep, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -294,7 +337,7 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -345,19 +388,29 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.pre_lep is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            #
+            if micro.pre_lep is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.pre_lep, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.pre_lep, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.pre_lep, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.pre_lep, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -367,23 +420,28 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.pre_lep is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.pre_lep is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.pre_lep, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.pre_lep, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.pre_lep, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.pre_lep, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -391,7 +449,7 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -442,19 +500,28 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.e2a_tot is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.e2a_tot is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.e2a_tot, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.e2a_tot, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -464,23 +531,28 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.e2a_tot is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.e2a_tot is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.e2a_tot, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.e2a_tot, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -488,7 +560,7 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -508,12 +580,12 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
     print(f'Plot name: {pname}')
     #
     p_den = 0.32
-    p_cen = 31.5
-    p_std = 30.5
-    p_micro_cen = 16.5
+    p_cen = 20.0
+    p_std = 11.0
+    p_micro_cen = 16.3
     p_micro_std =  3.0
-    p_pheno_cen = 31.5
-    p_pheno_std = 30.5
+    p_pheno_cen = 20.0
+    p_pheno_std = 11.0
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
@@ -547,21 +619,31 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.pre_tot is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            #
+            if micro.pre_tot is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.pre_tot, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.pre_tot, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.pre_tot, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.pre_tot, marker='o', linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].errorbar( p_den, p_cen, yerr=p_std, color='k' )
     axs[0].errorbar( p_den+0.005, p_micro_cen, yerr=p_micro_std, color='r' )
     axs[0].text(0.02,20,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -571,25 +653,30 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.pre_tot is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.pre_tot is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.pre_tot, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.pre_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.pre_tot, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.pre_tot, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].errorbar( p_den, p_cen, yerr=p_std, color='k' )
     axs[1].errorbar( p_den+0.005, p_pheno_cen, yerr=p_pheno_std, color='r' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -597,7 +684,7 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models ):
         plt.savefig(pname, dpi=200)
         plt.close()
 
-def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -650,19 +737,28 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.x_p is not None:
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.x_p is not None:
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.x_p, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.x_p, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.x_p, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.x_p, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -672,23 +768,28 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.x_p is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.x_p is not None:
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.x_p, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.x_p, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.x_p, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.x_p, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
@@ -696,7 +797,7 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models ):
     	plt.savefig(pname, dpi=200)
     	plt.close()
 
-def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -746,19 +847,29 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.x_el is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            #
+            if micro.x_el is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.x_el, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.x_el, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.x_el, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -768,16 +879,27 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.x_el is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.x_el is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
+                #micro.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.x_el, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.x_el, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.x_el, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
@@ -787,7 +909,7 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models ):
     	plt.savefig(pname, dpi=200)
     	plt.close()
 
-def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models ):
+def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -837,19 +959,28 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models ):
         #
         for model in models:
             #
-            beta = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
-            if nuda.env.verb_output: beta.print_outputs( )
+            micro = nuda.eos.setupAMBeq( model = model, kind = 'micro' )
+            if nuda.env.verb_output: micro.print_outputs( )
             #
-            if beta.x_mu is not None: 
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if micro.x_mu is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.x_mu, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( beta.den, beta.x_mu, marker='o', linestyle=beta.linestyle, label=mb, markevery=beta.every, color=nuda.param.col[kmb] )
-        #
+                    axs[0].plot( micro.den, micro.x_mu, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
+    #
     axs[0].text(0.02,0.18,'microscopic models',fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
     #
     model_check = []
     #
@@ -859,16 +990,26 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models ):
         #
         for param in params:
             #
-            beta = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
-            if beta.x_mu is not None: 
+            pheno = nuda.eos.setupAMBeq( model = model, param = param, kind = 'pheno' )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
+            if pheno.x_mu is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( beta.den, beta.x_mu, linestyle=beta.linestyle, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.x_mu, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( beta.den, beta.x_mu, linestyle=beta.linestyle, label=model, markevery=beta.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.x_mu, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
             if nuda.env.verb_output: pheno.print_outputs( )
+            # end of param
+        # end of model
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
@@ -877,3 +1018,4 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models ):
     if pname is not None: 
     	plt.savefig(pname, dpi=200)
     	plt.close()
+    #

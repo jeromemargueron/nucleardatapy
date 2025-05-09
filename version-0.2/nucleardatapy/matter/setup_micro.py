@@ -209,7 +209,7 @@ def micro_models_mb_matter( mb, matter ):
     #
     if nuda.env.verb: print("\nEnter micro_models_mb_matter()")
     #
-    print('For mb (in SM):',mb)
+    print('For mb (in '+matter+'):',mb)
     #
     models, models_lower = micro_models_mb( mb )
     #
@@ -479,6 +479,9 @@ class setupMicro():
             ( p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21 ) = \
             ( 337.2, -382.0, 89.8, 0.457, -59.0, -19.1, 214.6, -384.0, 6.4, 69.0, -33.0, 0.35, 0.0, 0.0, 287.0, -1.54, 175.0, -1.45, 0.32, 0.195, 0.0 )
             #
+            # density
+            #self.nm_den = self.den
+            #self.sm_den = self.den
             # energy per unit volume
             self.e2v = APRfit_compute( self.den, self.xpr )
             # energy per particle
@@ -672,7 +675,9 @@ class setupMicro():
             self.note = "We do not have the data for this model, but we have a fit of the data."
             self.label = 'AFDMC-2012-'+str(k)
             self.marker = 's'
-            self.every = 1
+            self.every = 3
+            if k==1: self.every = 4
+            if k==7: self.every = 4
             self.e_err = True
             self.p_err = False
             self.linestyle = 'solid'
@@ -947,8 +952,8 @@ class setupMicro():
             # here, the L59 case is compute alone, it would be interesting to compute the uncertainty
             # in the previous MBPT calculation (based on H1-H7) adding this new calculation.
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL59.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL59.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-SM-DHSL59.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-NM-DHSL59.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
@@ -979,8 +984,8 @@ class setupMicro():
             #
             # same remarck as for L59
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM-DHSL69.dat')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM-DHSL69.dat')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-SM-DHSL69.dat')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2019-MBPT-NM-DHSL69.dat')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, K. Hebeler, A. Schwenk, Phys. Rev. Lett. 122, 042501 (2019)'
@@ -1009,14 +1014,14 @@ class setupMicro():
             self.flag_kf = False
             self.flag_den = True
             #
-            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-SM.csv')
-            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2023-MBPT-NM.csv')
+            file_in1 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-SM.csv')
+            file_in2 = os.path.join(nuda.param.path_data,'matter/micro/2020-MBPT-NM.csv')
             if nuda.env.verb: print('Reads file1:',file_in1)
             if nuda.env.verb: print('Reads file2:',file_in2)
             self.ref = 'C. Drischler, R.J. Furnstahl, J.A. Melendez, D.R. Phillips, Phys. Rev. Lett. 125(20), 202702 (2020).; C. Drischler, J. A. Melendez, R. J. Furnstahl, and D. R. Phillips, Phys. Rev. C 102, 054315'
             self.note = ""
             self.label = 'MBPT-2020'
-            self.marker = 's'
+            self.marker = 'o'
             self.linestyle = 'solid'
             self.every = 6
             self.e_err = True

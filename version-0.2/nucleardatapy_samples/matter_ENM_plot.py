@@ -4,9 +4,6 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def main():
@@ -27,10 +24,12 @@ def main():
     #
     # list the available models
     #
-    micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()
-    micro_mbs.remove( 'BHF2' )
+    #micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()
+    #micro_mbs.remove( 'BHF2' )
     #micro_mbs = [ 'VAR' ]
-
+    #micro_mbs = [ 'MBPT' ]
+    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
+    #
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #

@@ -155,10 +155,10 @@ class setupPhenoEsym():
         # =========================
         #
         pheno = nuda.matter.setupPheno( model = model, param = param )
-        sm_den = pheno.sm_den
-        sm_e2a = pheno.sm_e2a
-        nm_den = pheno.nm_den
-        nm_e2a = pheno.nm_e2a
+        self.sm_den = pheno.sm_den
+        self.sm_e2a = pheno.sm_e2a
+        self.nm_den = pheno.nm_den
+        self.nm_e2a = pheno.nm_e2a
         #pheno.print_outputs( )
         #
         # ===========================
@@ -173,18 +173,18 @@ class setupPhenoEsym():
         #
         # E/A in SM (cubic spline)
         #
-        x = np.insert( sm_den, 0, 0.0 ); y = np.insert( sm_e2a, 0, 0.0 )
+        x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a, 0, 0.0 )
         cs_sm_e2a = CubicSpline( x, y )
         #
         # E/A in NM (cubic spline)
         #
-        x = np.insert( nm_den, 0, 0.0 ); y = np.insert( nm_e2a, 0, 0.0 )
+        x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a, 0, 0.0 )
         cs_nm_e2a = CubicSpline( x, y )
         #
         # density for Esym (no extroplation, only interpolation)
         #
-        self.den_min = max( min( nm_den), min( sm_den) )
-        self.den_max = min( max( nm_den), max( sm_den) )
+        self.den_min = max( min( self.nm_den), min( self.sm_den) )
+        self.den_max = min( max( self.nm_den), max( self.sm_den) )
         self.kf_min = nuda.kf( self.den_min ); self.kf_max = nuda.kf( self.den_max )
         den_step = ( self.den_max - self.den_min ) / float( self.nesym )
         self.den = self.den_min + np.arange(self.nesym+1) * den_step
@@ -192,11 +192,11 @@ class setupPhenoEsym():
         #
         # Symmetry energy for the densities defined in self.den
         #
-        self.sm_e2a = cs_sm_e2a( self.den )
-        self.nm_e2a = cs_nm_e2a( self.den )
-        self.esym = self.nm_e2a - self.sm_e2a
-        self.sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
-        self.sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.sm_pre
+        self.esym_sm_e2a = cs_sm_e2a( self.den )
+        self.esym_nm_e2a = cs_nm_e2a( self.den )
+        self.esym = self.esym_nm_e2a - self.esym_sm_e2a
+        self.esym_sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
+        self.esym_sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.esym_sm_pre
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'

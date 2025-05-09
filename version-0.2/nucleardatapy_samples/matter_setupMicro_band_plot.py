@@ -14,7 +14,7 @@ def main():
     #
     # plot E/A + band for NM
     #
-    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+    den = np.array([0.06,0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
     pname = 'figs/plot_matter_setupMicroBand_NM.png'
     nuda.fig.matter_setupMicro_band_fig( pname, models, den=den, matter='NM' )

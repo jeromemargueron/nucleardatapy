@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupAM_e_asy_nuc_fig( pname, micro_mbs, pheno_models, asy ):
+def eos_setupAM_e_asy_nuc_fig( pname, micro_mbs, pheno_models, asy, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -56,18 +56,24 @@ def eos_setupAM_e_asy_nuc_fig( pname, micro_mbs, pheno_models, asy ):
             micro = nuda.eos.setupAM( model = model, kind = 'micro', asy = asy )
             if nuda.env.verb_output: micro.print_outputs( )
             #
+            check = nuda.matter.setupCheck( eos = micro, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
             if micro.e2a_nuc is not None: 
                 if mb in mb_check:
-                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
-            #
-        #
+                    axs[0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+            # end of model
+        # end of mb
     axs[0].text(0.02,-8,'microscopic models',fontsize='10')
     axs[0].text(0.02,-9.5,r'for $\delta=$'+str(asy),fontsize='10')
-    #axs[0].legend(loc='upper left',fontsize='8', ncol=3)
-    #axs[0].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
     #
     model_check = []
     #
@@ -78,30 +84,32 @@ def eos_setupAM_e_asy_nuc_fig( pname, micro_mbs, pheno_models, asy ):
         for param in params:
             #
             pheno = nuda.eos.setupAM( model = model, param = param, kind = 'pheno', asy = asy )
+            if nuda.env.verb_output: pheno.print_outputs( )
+            #
+            check = nuda.matter.setupCheck( eos = pheno, band = band )
+            #
+            if check.isInside:
+                lstyle = 'solid'
+            else:
+                lstyle = 'dashed'
+                #continue
+            #
             if pheno.e2a_nuc is not None: 
                 print('model:',model,' param:',param)
-                #beta.label=None
                 if model in model_check:
-                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=pheno.linestyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=pheno.linestyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
-            #                    
-            if nuda.env.verb_output: pheno.print_outputs( )
+                    axs[1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+            # end of param
+        # end of model
     #
-    #axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    #axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    #axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
     axs[1].text(0.02,-8,'phenomenological models',fontsize='10')
     axs[1].text(0.02,-9.5,r'for $\delta=$'+str(asy),fontsize='10')
-    #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
-    #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
-    #axs[1].legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
-    #fig.legend(loc='lower center',bbox_to_anchor=(0.5,1.02),mode='expand',columnspacing=0,fontsize='8', ncol=2,frameon=False)
-    #plt.tight_layout(rect=[0,0,1,0.95])
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
         plt.close()
+    #
