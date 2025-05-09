@@ -1,7 +1,8 @@
 
 import numpy as np
+import matplotlib as mpl
 import matplotlib.pyplot as plt
-
+mpl.use("Agg")  # Use a non-interactive backend
 import nucleardatapy as nuda
 
 def matter_setupFFGNuc_EP_fig( pname, mss = [ 1.0 ], den = np.linspace(0.01,0.35,10), kfn = np.linspace(0.5,2.0,10) ):
