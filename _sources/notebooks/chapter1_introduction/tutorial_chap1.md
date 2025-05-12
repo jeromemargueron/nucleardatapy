@@ -3,5 +3,5 @@
 This chapter is an introduction to NUDA, the nuclear data toolkit.
 
 :::{important}
-Important stuff goes here
+Remember to import nucleardatapy!
 :::
