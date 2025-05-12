@@ -44,7 +44,7 @@ def micro_models_mb( mb ):
     :param mb: The mb approach for which there are parametrizations. \
     They should be chosen among the following options: 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
     :type mb: str.
-    :return: The list of parametrizations. \
+    :return: The list of parametrizations.
 
     These models are the following ones: \
     If `mb` == 'VAR': \

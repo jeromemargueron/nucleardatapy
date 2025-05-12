@@ -12,6 +12,7 @@ class setupCheck():
     :type eos: object. 
     :param band: object containing the band employed to check the eos.
     :type band: object. 
+    
     **Attributes:**
     
     """
