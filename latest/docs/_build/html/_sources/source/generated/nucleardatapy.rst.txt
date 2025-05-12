@@ -1,6 +1,0 @@
-﻿nucleardatapy
-=============
-
-.. automodule:: nucleardatapy
-
-   
