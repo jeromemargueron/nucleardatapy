@@ -49,7 +49,7 @@ jobs:
       - name: Build Jupyter Book
         working-directory: book
         run: |
-          pip install -e .  # install your package from project root
+          pip install -e ../version-0.2  # install your package from project root
           jupyter-book build . --all --verbose
 
       - name: Upload documentation artifacts
