@@ -7,8 +7,8 @@ chapters:
 
   - file: notebooks/chapter1_introduction/tutorial_chap1
     sections:
-      - file: notebooks/chapter1_introduction/Chapter1_1
-      - file: notebooks/chapter1_introduction/Chapter1_2
+      - file: notebooks/chapter1_introduction/Tutorial-1.1
+      - file: notebooks/chapter1_introduction/Tutorial-1.2
 
   - file: notebooks/chapter2_matter/tutorial_chap2
     sections:
@@ -20,6 +20,7 @@ chapters:
       - file: notebooks/chapter2_matter/Tutorial-2.10
       - file: notebooks/chapter2_matter/Tutorial-2.20
       - file: notebooks/chapter2_matter/Tutorial-2.30
+      - file: notebooks/chapter2_matter/Tutorial-2.31
 
   - file: notebooks/chapter3_correlations/tutorial_chap3
     sections:
@@ -30,6 +31,10 @@ chapters:
   - file: notebooks/chapter4_nuclei/tutorial_chap4
     sections:
       - file: notebooks/chapter4_nuclei/Tutorial-4.1
+      - file: notebooks/chapter4_nuclei/Tutorial-4.2
+      - file: notebooks/chapter4_nuclei/Tutorial-4.3
+      - file: notebooks/chapter4_nuclei/Tutorial-4.4
+      - file: notebooks/chapter4_nuclei/Tutorial-4.5
 
   - file: notebooks/chapter5_hypernuclei/tutorial_chap5
     sections:

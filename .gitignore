@@ -2,6 +2,8 @@
 docs/.DS_Store
 docs/source/.DS_Store
 docs/_build
+book/.DS_Store
+book/_build
 samples/nucleardatapy_plots/figs/plot_SetupEsymLsym.png
 data/isgmr/.DS_Store
 .DS_Store

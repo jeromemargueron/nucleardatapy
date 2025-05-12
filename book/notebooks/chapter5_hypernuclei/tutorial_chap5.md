@@ -1,6 +1,6 @@
 # Chapter 5: Hyper-nuclei
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this chapter we will talk about hyper-nuclei.
 
 :::{important}
 Important stuff goes here
