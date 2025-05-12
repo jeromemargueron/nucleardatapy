@@ -48,8 +48,10 @@ jobs:
 
       - name: Build Jupyter Book
         working-directory: book
+        env:
+          PYTHONPATH: ${{ github.workspace }}/version-0.2
         run: |
-          pip install -e ../version-0.2  # install your package from project root
+          pip install -e ${{ github.workspace }}
           jupyter-book build . --all --verbose
 
       - name: Upload documentation artifacts
