@@ -1,6 +1,6 @@
 # Chapter 8: Astrophysical Data
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this chapter we will talk about astrophysical data.
 
 :::{important}
 Important stuff goes here

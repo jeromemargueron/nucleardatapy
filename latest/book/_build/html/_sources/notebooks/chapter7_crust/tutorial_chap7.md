@@ -1,6 +1,6 @@
 # Chapter 7: Neutron Star Crusts
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this chapter, we will talk about neutron star crusts.
 
 :::{important}
 Important stuff goes here

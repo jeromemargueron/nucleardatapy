@@ -1,6 +1,6 @@
 # Chapter 3: Correlations
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this capter we study correlations.
 
 :::{important}
 Important stuff goes here

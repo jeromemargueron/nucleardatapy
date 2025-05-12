@@ -1,6 +1,6 @@
 # Chapter 2: Matter
 
-NUDA is a nuclear astro toolkit, blah blah...
+This chapter is an introduction to matter.
 
 :::{important}
 Important stuff goes here

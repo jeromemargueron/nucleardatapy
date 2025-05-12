@@ -1,6 +1,6 @@
 # Chapter 4: Nuclei
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this chapter we will talk about nuclei.
 
 :::{important}
 Important stuff goes here

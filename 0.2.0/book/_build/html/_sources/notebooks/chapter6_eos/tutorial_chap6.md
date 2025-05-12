@@ -1,6 +1,6 @@
 # Chapter 6: Equations of State
 
-NUDA is a nuclear astro toolkit, blah blah...
+In this chapter we will talk about equations of state.
 
 :::{important}
 Important stuff goes here
