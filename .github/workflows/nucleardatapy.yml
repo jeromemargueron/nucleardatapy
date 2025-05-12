@@ -58,26 +58,26 @@ jobs:
             docs/_build/html/
             book/_build/html/
 
-deploy:
-  needs: build
-  if: github.ref == 'refs/heads/main'
-  runs-on: ubuntu-latest
-  permissions:
-    contents: write
-  steps:
-    - name: Check out the repository (main branch)
-      uses: actions/checkout@v4
-      with:
-        ref: main
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repository (main branch)
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
-    - name: Download built documentation
-      uses: actions/download-artifact@v4
-      with:
-        name: built-docs
-        path: public
+      - name: Download built documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: built-docs
+          path: public
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: public/book/_build/html
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public/book/_build/html
