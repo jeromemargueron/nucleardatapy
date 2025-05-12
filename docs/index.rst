@@ -40,11 +40,12 @@ Complement
    :caption: Contents:
 
    source/api/matter
-   source/api/eos
+   source/api/corr
    source/api/nuc
+   source/api/hnuc
+   source/api/eos
    source/api/crust
    source/api/astro
-   source/api/corr
    
 Indices and tables
 ------------------
