@@ -33,40 +33,11 @@ This python toolkit is designed to provide:
 
 To install the toolkit, launch:
 ```
-$ bash install.sh
+$ pip install nucleardatapy
 ```
+This installs the lattest version of the toolkit.
 
-In `install.sh`, the default directory where the toolkit is installed is `mylib` in the home directory. There, you have `mylib/nucleardatapy` folder pointing to the version of the toolkit defined in `install.sh` (currently `VER=0.1`). These default options could be changed directly in the header of `install.sh`.
-
-Create an environement variable that will be used by python:
-```
-export NUCLEARDATAPY_TK=/path/to/nucleardatapy
-```
-
-Add this environement variable to the one of python:
-```
-export PYTHONPATH=$NUCLEARDATAPY_TK
-```
-
-In this way, your library will be visible everywhere in your computer.
-
-Put these commands in your `.profile` or `.zprofile` or `.bashrc` for instance (depending on your OS).
-
-The first time, you should run again the `.zprofile` for instance:
-
-```
-$ source .zprofile
-```
-
-Now everything is done about the installation. You can go to the folder `mylib` in your home directory.
-
-## Use nucleardatapy python toolkit
-
-Go to the folder `mylib/nucleardatapy/samples/nucleardatapy_samples/` and try that:
-
-```
-$ python3 sample_SetupMicro.py
-```
+Now everything is done about the installation. 
 
 ## Test the python toolkit
 
@@ -78,23 +49,57 @@ Launch:
 $ bash run_tests.sh
 ```
 
+## Short introduction to the toolkit:
+
+The call of the toolkit in python code is performed in the usual way:
+```Python
+import nucleardatapy as nuda
+```
+
+The list of functions and global variables available in the toolkit can be printed from the following instruction:
+```Python
+print(dir(nuda))
+```
+
+A detailed view of the function can be obtained in the following way
+```Python
+print(help(nuda))
+```
+
+The principle of the toolkit is that it instantiates objects that contain all the information available. For instance, the following command
+```Python
+mass = nuda.astro.setupMasses()
+```
+instantiate the object `mass` with the default mass of pulsars. In this case, it is the mass of PSR J1614-2230. All the properties that this object provide can be listed in the following way:
+```Python
+mass.__dict__
+```
+
+## Use nucleardatapy python toolkit
+
+The GitHub folder `nucleardatapy/nucleardatapy_samples/` contains a lot of examples on how to use the function and to draw figures. They are all python scripts that can be launched with `python3`. For instance, you can grab these samples anywhere in your computer and try:
+```
+$ python3 matter_setupMicro_script.py
+```
+
+There are also tutorials that can be employed to learn how to use the different functions in the toolkit. The tutorials are written for `jupyter notebook`.
+
 ## Get started
-How to obtain microscopic results for APR equation of state:
+
+Here is an example to obtain microscopic results for APR equation of state:
 
 ```Python
-import os
-import sys
-nuda_tk = os.getenv('NUCLEARDATAPY_TK')
-sys.path.insert(0, nuda_tk)
-
 import nucleardatapy as nuda
 
-# Instantiate a microscopic object
-mic = nuda.SetMicroMatter( model = '1998-VAR-AM-APR')
+# Instantiate a micro object
+micro = nuda.matter.setMicro( model = '1998-VAR-AM-APR')
 
 # print outputs
-mic.print_outputs( )
+micro.print_outputs( )
 ```
+
+More examples are shown in the associated paper[Give reference here], as well as in the sample folder or tutorials as previously written.
+
 
 ## Contributing
 
@@ -102,12 +107,11 @@ The file `how_to_contribute.md` details how contributors could join our team or 
 
 ## License
 
-TBC.
+CC BY-NC-ND 4.0
 
 ## Report issues
 
-For the current version, we report issues chatting among us. 
-Once this toolkit is released, we should setup a way that users could contact us and report issues or difficulties in installing or using the toolkit.
+Issues can be reported using GitHub.
 
 ## Thanks
 
