@@ -1,4 +1,5 @@
 
+
 =====================
 matter.setupMicroGap
 =====================
@@ -12,7 +13,7 @@ matter.setupMicroGap
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupMicroGap_plot.py
 	   
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicro_gap_1s0_NM.png
-	:scale: 70 %
+	:width: 70%
 	:alt: map to buried treasure
 
 	This figure shows the 1S0 pairing gap in neutron matter (NM) over the Fermi energy (top) and the pairing gap (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the models available in the nucleardatapy toolkit.
