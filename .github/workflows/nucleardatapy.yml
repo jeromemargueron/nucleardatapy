@@ -1,4 +1,4 @@
-name: Build Jupyter Book (tox-based)
+name: Build & publish Jupyter Book
 
 env:
   CLONE_PATH: ${{ github.workspace }}
@@ -12,41 +12,39 @@ on:
 
 jobs:
   build:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: ["3.12"]
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.12"
 
-      - name: Install OpenMPI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openmpi-bin
-
-      - name: Install tox
+      - name: Install tox and dependencies
         run: |
           python -m pip install --upgrade pip
           pip install tox
 
-      - name: Build Jupyter Book via tox
+      - name: Build Jupyter Book using tox
         run: |
           pushd $CLONE_PATH
-          tox -r -e book
+          tox -e book
           popd
 
-      - name: Archive examples Jupyter book
+      - name: Upload Jupyter Book artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: ${{ env.EXAMPLES_BOOK }}
 
-      - name: Deploy Jupyter Book
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
