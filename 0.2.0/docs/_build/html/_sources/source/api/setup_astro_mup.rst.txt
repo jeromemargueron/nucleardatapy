@@ -1,4 +1,5 @@
 
+
 ==============
 astro.setupMup
 ==============
@@ -12,7 +13,7 @@ astro.setupMup
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/astro_setupMup_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_astro_setupMup.png
-	:scale: 70 %
+	:width: 70 %
 	:alt: map to buried treasure
 
 	The upper masses measured from GW observations. The different colors correspond to the different sources.

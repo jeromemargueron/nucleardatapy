@@ -1,4 +1,5 @@
 
+
 ====================
 matter.setupMicroLP
 ====================
@@ -12,14 +13,14 @@ matter.setupMicroLP
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupMicroLP_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicroLP0_SM.png
-	:scale: 70 %
+	:width: 70%
 	:alt: map to buried treasure
 
 	This figure shows the L=0 Landau parameters in SM for different NN interactions obtained
 	from BHF calculations.
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicroLP1_SM.png
-	:scale: 70 %
+	:width: 70%
 	:alt: map to buried treasure
 
 	This figure shows the L=1 Landau parameters in SM for different NN interactions obtained

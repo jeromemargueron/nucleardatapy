@@ -1,4 +1,5 @@
 
+
 ================
 nuc.setupRchExp
 ================
@@ -12,7 +13,7 @@ nuc.setupRchExp
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/nuc_setupRchExp_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_nuc_setupRchExp.png
-	:scale: 70 %
+	:width: 70%
 	:alt: map to buried treasure
 
 	Charge radii for Zn, Sn, and Pb isotopes and for the models available in the nuda toolkit.

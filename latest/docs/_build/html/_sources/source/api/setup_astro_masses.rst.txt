@@ -1,4 +1,5 @@
 
+
 ==================
 astro.setupMasses
 ==================
@@ -12,7 +13,7 @@ astro.setupMasses
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/astro_setupMasses_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_astro_setupMasses.png
-	:scale: 70 %
+	:width: 70 %
 	:alt: map to buried treasure
 
 	The masses measured for massive neutron stars is radio-astronomy. The different colors correspond to the different sources.

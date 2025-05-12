@@ -1,4 +1,5 @@
 
+
 ===================
 corr.setupEsymLsym
 ===================
@@ -12,7 +13,7 @@ corr.setupEsymLsym
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/corr_setupEsymLsym_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_corr_setupEsymLsym.png
-	:scale: 70 %
+	:width: 70 %
 	:alt: map to buried treasure
 
 	This figure shows the Esym,2 versus Lsym,2 correlation for the different constraints availble in the nucleardatapy toolkit.

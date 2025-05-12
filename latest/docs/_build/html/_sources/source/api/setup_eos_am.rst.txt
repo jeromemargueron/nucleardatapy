@@ -12,7 +12,7 @@ eos.setupAM
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/eos_setupAM_plot.py
 
 .. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_eos_setupAM.png
-	:scale: 70 %
+	:width: 70%
 	:alt: map to buried treasure
 
 	This figure shows the energy per particle in asymmetric matter (AM) with d=0.5. (left) Microscopic models and (right) phenomenological models available in the nucleardatapy toolkit.
