@@ -76,18 +76,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-
       - name: Download Jupyter Book documentation
         uses: actions/download-artifact@v4
         with:
           name: jupyter-book-docs
           path: jb_public
-
-      - name: Debug: List files before deployment
+      - name: List files before deployment
         run: |
           echo "Files in jb_public before deployment (ls -R jb_public):"
           ls -R jb_public # List files before deployment
-
       - name: Deploy Jupyter Book to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
