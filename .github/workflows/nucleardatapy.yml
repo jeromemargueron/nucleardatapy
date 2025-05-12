@@ -1,90 +1,52 @@
-name: CI/CD for nucleardatapy
+name: Build Jupyter Book (tox-based)
+
+env:
+  CLONE_PATH: ${{ github.workspace }}
+  EXAMPLES_BOOK: ${{ github.workspace }}/book/_build/html
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
 
-      - name: Set Matplotlib backend to Agg
+      - name: Install OpenMPI
         run: |
-          mkdir -p $HOME/.matplotlib
-          echo "matplotlib.use('Agg')" > $HOME/.matplotlib/matplotlibrc
+          sudo apt-get update
+          sudo apt-get install -y openmpi-bin
 
-      - name: Install dependencies
+      - name: Install tox
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
-          pip install jupyter jupyter-book myst-nb  # Install jupyter-book
-          pip install -e ${{ github.workspace }}  # Install nucleardatapy in editable mode
+          pip install tox
 
-      - name: Check test discovery
-        run: pytest --collect-only version-0.2/tests/
-
-      - name: Run tests
-        run: pytest version-0.2/tests/ --verbose
-
-      - name: Upload Version Info
-        uses: actions/upload-artifact@v4
-        with:
-          name: version-info
-          path: version-0.2/__init__.py
-
-      - name: Build Sphinx documentation
-        working-directory: docs
-        run: make html
-
-      - name: Build Jupyter Book
-        working-directory: book
-        env:
-          PYTHONPATH: ${{ github.workspace }}/version-0.2
+      - name: Build Jupyter Book via tox
         run: |
-          pip install -e ${{ github.workspace }}
-          jupyter-book build . --all --verbose
+          pushd $CLONE_PATH
+          tox -r -e book
+          popd
 
-      - name: Upload documentation artifacts
-        uses: actions/upload-artifact@v4
+      - name: Archive examples Jupyter book
+        uses: actions/upload-pages-artifact@v2
         with:
-          name: built-docs
-          path: |
-            docs/_build/html/
-            book/_build/html/
+          path: ${{ env.EXAMPLES_BOOK }}
 
-  deploy:
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Check out the repository (main branch)
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Download built documentation
-        uses: actions/download-artifact@v4
-        with:
-          name: built-docs
-          path: public
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: public/book/_build/html
+      - name: Deploy Jupyter Book
+        id: deployment
+        uses: actions/deploy-pages@v2
