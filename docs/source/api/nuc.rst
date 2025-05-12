@@ -1,5 +1,5 @@
 
-Nuc
+Nuclei
 ======
 
 .. toctree::
