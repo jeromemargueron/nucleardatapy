@@ -9,12 +9,23 @@ build:
   os: ubuntu-24.04
   tools:
     python: "3.13"
+  jobs: # Add this jobs section
+    pre_build: # Commands to run before the main build command (sphinx/mkdocs)
+      - | # Use a multi-line string for multiple commands
+        echo "--- Debugging Environment ---"
+        echo "sys.path before Sphinx build:"
+        python -c "import sys; print(sys.path)"
+        echo "PYTHONPATH environment variable:"
+        echo $PYTHONPATH
+        echo "Attempting to import nucleardatapy before Sphinx build:"
+        python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
+        echo "Attempting to import matplotlib before Sphinx build:"
+        python -c "try: import matplotlib; print('Successfully imported matplotlib'); except ImportError as e: print(f'Failed to import matplotlib: {e}')"
+        echo "--- End Debugging Environment ---"
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
-  builder: html
   configuration: docs/conf.py
-  fail_on_warning: false # Set to true if you want to fail the build on warnings
 
 # Optionally, but recommended,
 # declare the Python requirements required to build your documentation
@@ -26,4 +37,7 @@ python:
       path: .
 
     # Install documentation-specific requirements from a separate file
-    - requirements: docs/requirements.txt # Make sure this file exists and lists sphinx, themes, extensions, etc.
+    - requirements: docs/requirements.txt
+
+  # If your main project requirements are separate and needed for docs runtime:
+  # - requirements: requirements.txt
