@@ -1,54 +1,142 @@
-name: Build & publish Jupyter book
-env:
-  CLONE_PATH: ${{ github.workspace }}
-  EXAMPLES_BOOK: ${{ github.workspace }}/book/_build/html
+name: CI/CD for nucleardatapy
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.12"]
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version}}
+          python-version: "3.12"
 
-      - name: Install OpenMPI
+      - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get -y install openmpi-bin
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
+          pip install jupyter jupyter-book myst-nb  # Install jupyter-book
+          pip install -e .  # Install nucleardatapy in editable mode
 
-      - name: Setup python with tox
-        run: |
-          $CLONE_PATH/.github/workflows/setup_base_python.sh ${{ runner.os }}
+      - name: Check test discovery
+        run: pytest --collect-only version-0.2/tests/
+
+      - name: Run tests
+        run: pytest version-0.2/tests/ --verbose
+
+      - name: Upload Version Info
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-info
+          path: version-0.2/__init__.py
+
+      - name: Build Sphinx documentation
+        working-directory: docs
+        run: make html
 
       - name: Build Jupyter Book
-        run: |
-          pushd $CLONE_PATH
-          tox -r -e book
-          popd
+        working-directory: book
+        run: jupyter-book build .
 
-      - name: Archive examples Jupyter book
-        uses: actions/upload-pages-artifact@v4 # Changed to v4
+      - name: Upload documentation artifacts
+        uses: actions/upload-artifact@v4
         with:
-          path: ${{ env.EXAMPLES_BOOK }}
+          name: built-docs
+          path: |
+            docs/_build/html/
+            book/_build/html/
+  # ... (your build job remains the same) ...
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' # Only deploy on pushes to the main branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push to gh-pages branch
+    steps:
+      # No initial checkout of main needed if we are not using version info from main for this simplified deploy
+      # - name: Check out the repository (main branch)
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: main
 
-      - name: Publish Taweret Jupyter Book
-        id: deployment
-        uses: actions/deploy-pages@v2
+      # Version extraction can be kept if you want to use $VERSION for other purposes or for a separate versioned deployment later
+      # For now, let's simplify and assume we are deploying the "latest" or main build.
+      # - name: Download version file
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: version-info
+      #     path: version-0.2 # This path might need to be ./ if __init__.py is at root of artifact
+
+      # - name: Extract version from __init__.py
+      #   id: version
+      #   run: |
+      #     if [ -f version-0.2/__init__.py ]; then # Adjust path if necessary
+      #       VERSION=$(grep -oP "__version__\s*=\s*['\"]\K[^'\"]+" version-0.2/__init__.py)
+      #       echo "Extracted version: $VERSION"
+      #       echo "VERSION=$VERSION" >> $GITHUB_ENV
+      #     else
+      #       echo "Warning: version-0.2/__init__.py not found! Using 'latest' as fallback."
+      #       echo "VERSION=latest" >> $GITHUB_ENV
+      #     fi
+
+      # Checkout the gh-pages branch to deploy to it.
+      # The JamesIves action can also create it if it doesn't exist.
+      - name: Check out gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages # Action will deploy to this branch
+
+      - name: Download built documentation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: built-docs # This artifact contains book/_build/html and docs/_build/html
+          path: public # Downloads to public/book/_build/html and public/docs/_build/html
+
+      - name: Debug Downloaded Artifacts Structure
+        run: |
+          echo "Structure of 'public' directory after download:"
+          ls -R public
+
+      - name: Prepare deployment folder for Jupyter Book
+        id: prepare_deploy
+        run: |
+          DEPLOY_FOLDER="deploy_root" # Temporary folder for deployment contents
+          mkdir -p $DEPLOY_FOLDER
+
+          echo "Checking for Jupyter Book build output..."
+          if [ -d "public/book/_build/html" ] && [ "$(ls -A public/book/_build/html)" ]; then
+            echo "Jupyter Book build output found. Copying to $DEPLOY_FOLDER..."
+            cp -r public/book/_build/html/* $DEPLOY_FOLDER/
+            
+            echo "Adding .nojekyll file to $DEPLOY_FOLDER..."
+            touch $DEPLOY_FOLDER/.nojekyll
+            
+            echo "Contents of $DEPLOY_FOLDER ready for deployment:"
+            ls -A $DEPLOY_FOLDER
+            echo "DEPLOY_PATH=$DEPLOY_FOLDER" >> $GITHUB_OUTPUT
+          else
+            echo "Error: Jupyter Book build output not found or is empty at public/book/_build/html/"
+            exit 1
+          fi
+
+      - name: Deploy Jupyter Book to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: ${{ steps.prepare_deploy.outputs.DEPLOY_PATH }} # The folder the action should deploy.
+          clean: true # Automatically remove deleted files from the deploy branch
+          # Optional: If your repo is private and using a PAT or SSH
+          # token: ${{ secrets.ACCESS_TOKEN }}
+          # ssh-key: ${{ secrets.DEPLOY_KEY }}
