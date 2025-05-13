@@ -22,16 +22,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      # --- More Targeted Debugging Steps ---
-      - name: Debug Python Paths before Install
-        run: |
-          echo "sys.path before installation:"
-          python -c "import sys; print(sys.path)"
-          echo "PYTHONPATH environment variable:"
-          echo $PYTHONPATH
-          echo "VIRTUAL_ENV environment variable:"
-          echo $VIRTUAL_ENV
-      # --- End More Targeted Debugging Steps ---
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -39,35 +29,7 @@ jobs:
           pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
           pip install jupyter jupyter-book myst-nb  # Install jupyter-book
           pip install -e .  # Install nucleardatapy in editable mode
-          pip list # List installed packages to confirm nucleardatapy and others are there
 
-      # --- More Targeted Debugging Steps ---
-      - name: Debug Python Paths after Install
-        run: |
-          echo "sys.path after installation:"
-          python -c "import sys; print(sys.path)"
-          echo "PYTHONPATH environment variable:"
-          echo $PYTHONPATH
-          echo "VIRTUAL_ENV environment variable:"
-          echo $VIRTUAL_ENV
-          echo "Attempting to import nucleardatapy from repository root:"
-          python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); import sys; print('nucleardatapy location:', nucleardatapy.__file__); print('nucleardatapy.__file__ added to sys.path:', nucleardatapy.__file__ in sys.path or os.path.dirname(nucleardatapy.__file__) in sys.path) except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
-
-      - name: Debug Import within Docs Directory
-        working-directory: docs
-        run: |
-          echo "Attempting to import nucleardatapy from docs directory:"
-          python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); import sys; print('nucleardatapy location:', nucleardatapy.__file__); print('nucleardatapy.__file__ added to sys.path:', nucleardatapy.__file__ in sys.path or os.path.dirname(nucleardatapy.__file__) in sys.path) except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
-
-      - name: Debug Import within Book Directory (where the error occurred)
-        working-directory: book
-        run: |
-          echo "Attempting to import nucleardatapy from book directory:"
-          python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); import sys; print('nucleardatapy location:', nucleardatapy.__file__); print('nucleardatapy.__file__ added to sys.path:', nucleardatapy.__file__ in sys.path or os.path.dirname(nucleardatapy.__file__) in sys.path) except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
-          # Explicitly trigger matplotlib import here if nucleardatapy import succeeds
-          echo "Attempting to import matplotlib from book directory:"
-          python -c "try: import matplotlib; print('Successfully imported matplotlib'); except ImportError as e: print(f'Failed to import matplotlib: {e}')"
-      # --- End More Targeted Debugging Steps ---
       - name: Check test discovery
         run: pytest --collect-only version-0.2/tests/
 
@@ -82,11 +44,11 @@ jobs:
 
       - name: Build Sphinx documentation
         working-directory: docs
-        run: make html # Ensure your docs/Makefile uses the correct python interpreter
+        run: make html
 
       - name: Build Jupyter Book
         working-directory: book
-        run: jupyter-book build . # Ensure your book build environment uses the correct python interpreter
+        run: jupyter-book build .
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v4
@@ -95,7 +57,7 @@ jobs:
           path: |
             docs/_build/html/
             book/_build/html/
-
+  # ... (your build job remains the same) ...
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main' # Only deploy on pushes to the main branch
