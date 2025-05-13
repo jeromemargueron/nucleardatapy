@@ -7,12 +7,15 @@ name = "nucleardatapy"
 authors = [
     {name = "Jerome Margueron"},
     {name = "Sudhanva Lalit"},
+    {name = "Mariana Dutra"},
+    {name = "Guilherme Grams"},
+    {name = "Rohit Kumar"},
 ]
 description = "A toolkit for nuclear data processing and analysis."
-license = {text = "MIT" }
+license = {file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
     "numpy",
     "scipy",
@@ -21,7 +24,7 @@ dependencies = [
 
 classifiers = [
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
+    "License :: Other/Proprietary License", # non-OSI Licenses
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
