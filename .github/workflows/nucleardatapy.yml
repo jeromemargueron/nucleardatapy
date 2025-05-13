@@ -45,7 +45,7 @@ jobs:
           popd
 
       - name: Archive examples Jupyter book
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4 # Changed to v4
         with:
           path: ${{ env.EXAMPLES_BOOK }}
 
