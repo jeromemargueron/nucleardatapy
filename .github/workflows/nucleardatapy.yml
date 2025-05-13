@@ -55,9 +55,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/version-0.2
         run: |
           pip install -e ${{ github.workspace }}
-          # Create the output directory if it doesn't exist
-          mkdir -p book/_build/html
-          jupyter-book build . --all  --verbose # Removed the --output
+          jupyter-book build . --all --verbose
           echo "Jupyter Book build output (ls -R book/_build/html):"
           ls -R book/_build/html
 
@@ -83,10 +81,6 @@ jobs:
         with:
           name: jupyter-book-docs
           path: jb_public
-      - name: List files before deployment
-        run: |
-          echo "Files in jb_public before deployment (ls -R jb_public):"
-          ls -R jb_public
       - name: Deploy Jupyter Book to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
