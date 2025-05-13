@@ -13,9 +13,15 @@ build:
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
   configuration: docs/conf.py
+
 # Optionally, but recommended,
 # declare the Python requirements required to build your documentation
 # See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
   install:
-    - requirements: docs/requirements.txt
+    # Install your project package from the repository root
+    - method: pip
+      path: .
+
+    # Install documentation-specific requirements from a separate file
+    - requirements: docs/requirements.txt # Make sure this file exists and lists sphinx, themes, extensions, etc.
