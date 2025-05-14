@@ -27,12 +27,12 @@ def matter_ENM_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$e_\text{NM}(n_\text{nuc})$')
-    axs[0].set_xlim([0, 0.34])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 35])
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'$e_{sym}(n)$')
-    axs[1].set_xlim([0, 0.34])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 35])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -82,8 +82,8 @@ def matter_ENM_fig( pname, micro_mbs, pheno_models, band ):
             # end model
         # end mb
     axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
     axs[0].text(0.06,2,'microscopic models',fontsize='10')
     #
     model_check = []
@@ -114,13 +114,13 @@ def matter_ENM_fig( pname, micro_mbs, pheno_models, band ):
             # end param
         # end model
     axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed' )
-    axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed' )
+    axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
     axs[1].text(0.06,2,'phenomenological models',fontsize='10')
     #
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.07,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)

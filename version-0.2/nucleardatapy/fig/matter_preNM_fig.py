@@ -25,8 +25,8 @@ def matter_preNM_fig( pname, micro_mbs, pheno_models, band ):
     p_den = 0.32
     p_cen = 23.0
     p_std = 14.5 
-    p_micro_cen = 15.0
-    p_micro_std =  6.5
+    p_micro_cen = 17.0
+    p_micro_std =  8.5
     p_pheno_cen = 23.0
     p_pheno_std = 14.5
     #

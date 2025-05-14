@@ -23,39 +23,39 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(3,2)
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     #axs[0,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0,0].set_ylabel(r'$E_\text{lep}/A$')
-    axs[0,0].set_xlim([0, 0.28])
+    axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([-2, 38])
     axs[0,0].tick_params('x', labelbottom=False)
     #
     #axs[0,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0,1].set_xlim([0, 0.28])
+    axs[0,1].set_xlim([0, 0.33])
     axs[0,1].set_ylim([-2, 38])
     axs[0,1].tick_params('y', labelleft=False)
     axs[0,1].tick_params('x', labelbottom=False)
     #
     #axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[1,0].set_ylabel(r'$E_\text{nuc}/A$')
-    axs[1,0].set_xlim([0, 0.28])
+    axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([-10, 30])
     axs[1,0].tick_params('x', labelbottom=False)
     #
     #axs[1,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,1].set_xlim([0, 0.28])
+    axs[1,1].set_xlim([0, 0.33])
     axs[1,1].set_ylim([-10, 30])
     axs[1,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('x', labelbottom=False)
     #
     axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[2,0].set_ylabel(r'$E_\text{tot}/A$')
-    axs[2,0].set_xlim([0, 0.28])
+    axs[2,0].set_xlim([0, 0.33])
     axs[2,0].set_ylim([-2, 38])
     #
     axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[2,1].set_xlim([0, 0.28])
+    axs[2,1].set_xlim([0, 0.33])
     axs[2,1].set_ylim([-2, 38])
     axs[2,1].tick_params('y', labelleft=False)
     #
@@ -165,7 +165,7 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     axs[2,0].text(0.1,15,r'$\delta=0.8$',fontsize='10')
     axs[2,1].text(0.1,15,r'$\delta=0.8$',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)

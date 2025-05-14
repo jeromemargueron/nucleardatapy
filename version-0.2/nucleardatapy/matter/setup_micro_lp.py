@@ -212,7 +212,7 @@ class setupMicroLP():
         #
         elif model.lower() == '2006-ebhf-sm-av18':
             #
-            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-IBHF-SM-AV18.dat')
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-EBHF-SM-AV18.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
             self.note = "write here notes about this EOS."
@@ -225,7 +225,7 @@ class setupMicroLP():
         #
         elif model.lower() == '2006-ebhf-nm-av18':
             #
-            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-IBHF-NM-AV18.dat')
+            file_in = os.path.join(nuda.param.path_data,'LandauParameters/micro/2006-EBHF-NM-AV18.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys Rev C 74, 064301 (2006)'
             self.note = "write here notes about this EOS."

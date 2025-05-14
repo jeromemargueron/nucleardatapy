@@ -6,7 +6,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter matter_setupMicro_plot.py:")
+    print("Enter matter_setupCheck_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -20,9 +20,9 @@ def main():
     #mbs = [ 'MBPT' ]
     #mbs = [ 'NLEFT' ]
     #mbs = [ 'AFDMC' ]
-    #mbs = [ 'QMC' ]
+    mbs = [ 'QMC' ]
     #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
-    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
+    #mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
     print('mbs:',mbs)
     #
     # list the different matter cases investigated
@@ -67,13 +67,13 @@ def main():
                 print('AFDMC')
                 print('models:',models)
             #
-            pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
+            pname = 'figs/plot_matter_setupCheck_'+matter+'_'+mb+'.png'
             #
-            nuda.fig.matter_setupMicro_E_fig( pname, mb, models, band )
+            nuda.fig.matter_setupCheck_fig( pname, mb, models, band )
             #
     #
     print(50*'-')
-    print("Exit matter_setupMicro_plot.py:")
+    print("Exit matter_setupCheck_plot.py:")
     print(50*'-')
     #
     

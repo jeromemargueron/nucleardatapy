@@ -24,16 +24,16 @@ def eos_setupAM_e_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
     #
     fig, axs = plt.subplots(1,2)
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{lep}/A$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-10, 35])
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'$E/A$')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-10, 35])
     axs[1].tick_params('y', labelleft=False)
     #

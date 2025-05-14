@@ -25,25 +25,27 @@ def matter_setupPhenoEsym_fig(pname, models, band):
     #
     fig, axs = plt.subplots(2, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(
-        left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.2, hspace=0.2
-    )
+    fig.subplots_adjust( left=0.12, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     axs[0, 0].set_ylabel(r"$E_\mathrm{sym}$ (MeV)")
-    axs[0, 0].set_xlim([0, 0.3])
+    axs[0, 0].set_xlim([0, 0.33])
     axs[0, 0].set_ylim([0, 50])
+    axs[0, 0].tick_params("x", labelbottom=False)
     #
     axs[0, 1].set_xlim([0.5, 2.0])
     axs[0, 1].set_ylim([0, 50])
+    axs[0, 1].tick_params("x", labelbottom=False)
+    axs[0, 1].tick_params("y", labelleft=False)
     #
     axs[1, 0].set_ylabel(r"$E_\mathrm{sym}/E_\mathrm{sym, FFG}$")
-    axs[1, 0].set_xlabel(r"n (fm$^{-3}$)")
-    axs[1, 0].set_xlim([0, 0.3])
-    axs[1, 0].set_ylim([1, 4])
+    axs[1, 0].set_xlabel(r"$n_\mathrm{nuc}$ (fm$^{-3}$)")
+    axs[1, 0].set_xlim([0, 0.33])
+    axs[1, 0].set_ylim([1, 3.6])
     #
     axs[1, 1].set_xlabel(r"$k_F$ (fm$^{-1}$)")
     axs[1, 1].set_xlim([0.5, 2.0])
-    axs[1, 1].set_ylim([1, 4])
+    axs[1, 1].set_ylim([1, 3.6])
+    axs[1, 1].tick_params("y", labelleft=False)
     #
     for model in models:
         #
@@ -143,14 +145,14 @@ def matter_setupPhenoEsym_fig(pname, models, band):
             (band.e2a - band.e2a_std),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[0, 0].plot(
             band.den,
             (band.e2a + band.e2a_std),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[0, 1].fill_between(
             band.kfn,
@@ -165,14 +167,14 @@ def matter_setupPhenoEsym_fig(pname, models, band):
             (band.e2a - band.e2a_std),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[0, 1].plot(
             band.kfn,
             (band.e2a + band.e2a_std),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[1, 0].fill_between(
             band.den,
@@ -187,14 +189,14 @@ def matter_setupPhenoEsym_fig(pname, models, band):
             (band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kfn),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[1, 0].plot(
             band.den,
             (band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kfn),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[1, 1].fill_between(
             band.kf,
@@ -209,18 +211,18 @@ def matter_setupPhenoEsym_fig(pname, models, band):
             (band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kfn),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
         axs[1, 1].plot(
             band.kfn,
             (band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kfn),
             color="k",
             linestyle="dashed",
-            visible=True,
+            visible=True, zorder = 100
         )
-    #
-    axs[0, 0].plot(pheno.den, nuda.esymffg_nr(pheno.kf), linestyle="dashed")
-    axs[0, 1].plot(pheno.kf, nuda.esymffg_nr(pheno.kf), linestyle="dashed")
+    # FFG symmetry energy
+    #axs[0, 0].plot(pheno.den, nuda.esymffg_nr(pheno.kf), linestyle="dotted")
+    #axs[0, 1].plot(pheno.kf, nuda.esymffg_nr(pheno.kf), linestyle="dotted")
 
     # axs[1,0].legend(loc='upper right',fontsize='8')
     fig.legend(

@@ -226,6 +226,7 @@ class setupPheno():
             if nuda.env.verb: print('Reads file2:',file_in2)
             #self.ref = ''
             self.label = 'DDRH-'+param
+            if param == "DDMEd": self.label = "DDRH-DDME$\\delta$"
             self.note = "write here notes about this EOS."
             self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )

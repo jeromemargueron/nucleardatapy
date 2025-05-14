@@ -19,13 +19,13 @@ def main():
     #
     pname = 'figs/plot_matter_setupMicro_LP0_SM.png'
     #
-    nuda.plot.matter_setupMicro_LP_fig( pname, models, matter = 'SM', ell = 0 )
+    nuda.fig.matter_setupMicro_LP_fig( pname, models, matter = 'SM', ell = 0 )
     #
     # plot Landau Parameters L=1 in SM
     #
-    #pname = 'figs/plot_matter_setupMicro_LP1_SM.png'
+    pname = 'figs/plot_matter_setupMicro_LP1_SM.png'
     #
-    #nuda.plot.matter_setupMicro_LP_fig( pname, models, matter = 'SM', ell = 1 )
+    nuda.fig.matter_setupMicro_LP_fig( pname, models, matter = 'SM', ell = 1 )
     #
     # plot Landau Parameters L=0 in NM
     #

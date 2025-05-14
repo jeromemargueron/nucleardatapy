@@ -25,12 +25,12 @@ def matter_preSM_fig( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     p_den = 0.32
-    p_cen = 11.5
-    p_std =  5.5
-    p_micro_cen =  9.0
-    p_micro_std =  3.0
-    p_pheno_cen = 14.5
-    p_pheno_std =  2.5
+    p_cen = 16.0
+    p_std = 12.0
+    p_micro_cen = 10.0
+    p_micro_std =  6.0
+    p_pheno_cen = 19.0
+    p_pheno_std =  9.0
     #
     fig, axs = plt.subplots(1,2)
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"

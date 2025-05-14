@@ -24,17 +24,17 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{nuc}/A$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -135,7 +135,7 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$P_\text{nuc}$ (fm$^{-3}$)')
@@ -245,17 +245,17 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{lep}/A$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -358,7 +358,7 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$P_\text{lep}$ (fm$^{-3}$)')
@@ -470,17 +470,17 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$E_\text{tot}/A$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -580,16 +580,16 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     p_den = 0.32
-    p_cen = 20.0
-    p_std = 11.0
+    p_cen = 23.0
+    p_std = 14.0
     p_micro_cen = 16.3
     p_micro_std =  3.0
-    p_pheno_cen = 20.0
-    p_pheno_std = 11.0
+    p_pheno_cen = 23.0
+    p_pheno_std = 14.0
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$P_\text{tot}$ (fm$^{-3}$)')
@@ -705,18 +705,18 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'proton fraction $x_p$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'proton fraction $x_p$')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])
     #setp(axs[1].get_yticklabels(), visible=False)
     axs[1].tick_params('y', labelleft=False)
@@ -818,16 +818,16 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'electron fraction $x_e$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'electron fraction $x_e$')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #
@@ -930,16 +930,16 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.90, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'muon fraction $x_\mu$')
-    axs[0].set_xlim([0, 0.28])
+    axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #
     axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'muon fraction $x_\mu$')
-    axs[1].set_xlim([0, 0.28])
+    axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])
     axs[1].tick_params('y', labelleft=False)
     #
