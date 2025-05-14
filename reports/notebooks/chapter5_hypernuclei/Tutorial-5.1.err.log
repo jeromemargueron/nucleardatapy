@@ -42,7 +42,7 @@ import nucleardatapy as nuda
 [32m      2[39m [33;03mThis module provides microscopic, phenomenological and experimental data constraints.[39;00m
 [32m      3[39m [33;03m"""[39;00m
 [32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupFFGNuc_fig[39;00m[38;5;250m        [39m[38;5;28;01mimport[39;00m *
-[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_fig[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m *
+[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_fig[39;00m[38;5;250m         [39m[38;5;28;01mimport[39;00m *
 [32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_err_NM_fig[39;00m[38;5;250m  [39m[38;5;28;01mimport[39;00m *
 
 [36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/fig/matter_setupFFGNuc_fig.py:2[39m
