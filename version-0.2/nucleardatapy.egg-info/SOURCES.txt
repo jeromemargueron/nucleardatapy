@@ -467,8 +467,8 @@ version-0.2/nucleardatapy/crust/setup_crust.py
 version-0.2/nucleardatapy/data/LandauParameters/micro/1994-BHF-SM.dat
 version-0.2/nucleardatapy/data/LandauParameters/micro/2006-BHF-NM-AV18.dat
 version-0.2/nucleardatapy/data/LandauParameters/micro/2006-BHF-SM-AV18.dat
-version-0.2/nucleardatapy/data/LandauParameters/micro/2006-IBHF-NM-AV18.dat
-version-0.2/nucleardatapy/data/LandauParameters/micro/2006-IBHF-SM-AV18.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-EBHF-NM-AV18.dat
+version-0.2/nucleardatapy/data/LandauParameters/micro/2006-EBHF-SM-AV18.dat
 version-0.2/nucleardatapy/data/LandauParameters/micro/2007-BHF-NM.dat
 version-0.2/nucleardatapy/data/LandauParameters/pheno/2013-BSk22.dat
 version-0.2/nucleardatapy/data/LandauParameters/pheno/2016-BSk31.dat

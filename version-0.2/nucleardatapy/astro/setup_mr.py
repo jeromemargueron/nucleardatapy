@@ -39,7 +39,7 @@ def mr_obss( source ):
     if source.lower()=='j0030+0451':
         obss = [ 1, 2, 3, 4 ]
     elif source.lower()=='j0740+6620':
-        obss = [ 1, 2 ]
+        obss = [ 1, 2, 3 ]
     elif source.lower()=='j0437-4715':
         obss = [ 1 ]
     #
@@ -141,6 +141,14 @@ class setupMR():
                 self.ref='T.E. Riley, A.L. Watts, P.S. Ray, S. Bogdanov, et al., ApJL 918, L27 (2021).'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0740 Riley 2021'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 's'
+            elif obs==3:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='T. Salmi, D. Choudhury, Y. Kini, T.E. Riley et al., ApJ 974, 294 (2024).'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0740 Salmi 2024'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this observation."
                 self.marker = 's'

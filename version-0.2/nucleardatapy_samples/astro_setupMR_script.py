@@ -31,7 +31,11 @@ def main():
     #
     # Average
     #
+    print('averages:')
+    #
     sources_av = [ 'J0030+0451', 'J0740+6620' ]
+    #
+    print('sources considered:',sources_av)
     #
     for source in sources_av:
         #
@@ -39,7 +43,7 @@ def main():
         #
         obss = nuda.astro.mr_obss( source = source )
         print(f'source: {source}, obss: {obss}')
-        mrav = nuda.astro.setupMRAverage( source = source )
+        mrav = nuda.astro.setupMRAverage( source = source, obss = obss )
         if nuda.env.verb_output: mrav.print_output( )
         if nuda.env.verb_latex: mrav.print_latex( )
         #

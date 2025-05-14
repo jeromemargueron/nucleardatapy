@@ -56,17 +56,19 @@ def astro_setupMR_fig( pname, sources, sources_av ):
             #
         isource += 1
         #
-    isource = 1
-    for source in sources_av:
+    #isource = 1
+    for isource,source in enumerate(sources_av):
+        #if source.lower() == 'j0030+0451': 
+        #    obss = [ 1, 2 ]
+        #if source.lower() == 'j0740+6620': 
+        #    obss = [ 1, 2, 3 ]
+        obss = nuda.astro.mr_obss( source = source )
         if source.lower() == 'j0030+0451': 
-            obss = [ 1, 2 ]
-        if source.lower() == 'j0740+6620': 
             obss = [ 1, 2 ]
         mrav = nuda.astro.setupMRAverage( source = source, obss = obss )
         if nuda.env.verb_output: mrav.print_output( )
         if nuda.env.verb_latex: mrav.print_latex( )
-        axs.errorbar( mrav.rad_cen, mrav.mass_cen, xerr=mrav.rad_sig_std, yerr=mrav.mass_sig_std, ms=12, label=mrav.label, color=nuda.param.col[isource], marker='^', linestyle = 'solid', linewidth = 3 )
-        isource += 1
+        axs.errorbar( mrav.rad_cen, mrav.mass_cen, xerr=mrav.rad_sig_std, yerr=mrav.mass_sig_std, ms=12, label=mrav.label, color=nuda.param.col[isource+1], marker='^', linewidth = 3 )
     #
     # write source name in plot:
     #
