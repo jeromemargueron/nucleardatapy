@@ -5,22 +5,54 @@
 version: 2
 
 # Set the OS, Python version, and other tools you might need
+# ... other parts of the file ...
+
+# ... other parts of the file ...
+
 build:
   os: ubuntu-24.04
   tools:
-    python: "3.13"
-  jobs: # Add this jobs section
-    pre_build: # Commands to run before the main build command (sphinx/mkdocs)
+    python: "3.13" # Or "3.12"
+  jobs:
+    pre_build: # Add this jobs section
       - | # Use a multi-line string for multiple commands
         echo "--- Debugging Environment ---"
         echo "sys.path before Sphinx build:"
         python -c "import sys; print(sys.path)"
         echo "PYTHONPATH environment variable:"
         echo $PYTHONPATH
+
+        # Create and run script to check nucleardatapy import
         echo "Attempting to import nucleardatapy before Sphinx build:"
-        python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
+        echo "import sys" > check_nucleardatapy_import.py
+        echo "try:" >> check_nucleardatapy_import.py
+        echo "    import nucleardatapy" >> check_nucleardatapy_import.py
+        echo "    print('nucleardatapy import successful')" >> check_nucleardatapy_import.py
+        echo "    sys.exit(0)" >> check_nucleardatapy_import.py
+        echo "except ImportError:" >> check_nucleardatapy_import.py
+        echo "    print('nucleardatapy import failed: Module not found')" >> check_nucleardatapy_import.py
+        echo "    sys.exit(1)" >> check_nucleardatapy_import.py
+        # Execute the temporary script
+        python check_nucleardatapy_import.py
+        # Clean up the temporary script
+        rm check_nucleardatapy_import.py
+
+
+        # Create and run script to check matplotlib import
         echo "Attempting to import matplotlib before Sphinx build:"
-        python -c "try: import matplotlib; print('Successfully imported matplotlib'); except ImportError as e: print(f'Failed to import matplotlib: {e}')"
+        echo "import sys" > check_matplotlib_import.py
+        echo "try:" >> check_matplotlib_import.py
+        echo "    import matplotlib" >> check_matplotlib_import.py
+        echo "    print('matplotlib import successful')" >> check_matplotlib_import.py
+        echo "    sys.exit(0)" >> check_matplotlib_import.py
+        echo "except ImportError:" >> check_matplotlib_import.py
+        echo "    print('matplotlib import failed: Module not found')" >> check_matplotlib_import.py
+        echo "    sys.exit(1)" >> check_matplotlib_import.py
+        # Execute the temporary script
+        python check_matplotlib_import.py
+        # Clean up the temporary script
+        rm check_matplotlib_import.py
+
         echo "--- End Debugging Environment ---"
 
 # Build documentation in the "docs/" directory with Sphinx

@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
           pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
           pip install jupyter jupyter-book myst-nb  # Install jupyter-book
-          pip install -e .  # Install nucleardatapy in editable mode
+          pip install nucleardatapy  # Install nucleardatapy in editable mode
 
       - name: Check test discovery
         run: pytest --collect-only version-0.2/tests/
