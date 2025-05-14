@@ -7,10 +7,12 @@ version: 2
 # Set the OS, Python version, and other tools you might need
 # ... other parts of the file ...
 
+# ... other parts of the file ...
+
 build:
-  os: ubuntu-22.04
+  os: ubuntu-24.04
   tools:
-    python: "3.12"
+    python: "3.13" # Or "3.12"
   jobs:
     pre_build: # Add this jobs section
       - | # Use a multi-line string for multiple commands
@@ -19,13 +21,37 @@ build:
         python -c "import sys; print(sys.path)"
         echo "PYTHONPATH environment variable:"
         echo $PYTHONPATH
-        echo "Attempting to import nucleardatapy before Sphinx build:"
-        # Simplified import check - will print '0' for success, '1' for failure
-        python -c "import sys; try: import nucleardatapy; sys.exit(0) except ImportError: sys.exit(1)" && echo "nucleardatapy import successful" || echo "nucleardatapy import failed"
 
+        # Create and run script to check nucleardatapy import
+        echo "Attempting to import nucleardatapy before Sphinx build:"
+        echo "import sys" > check_nucleardatapy_import.py
+        echo "try:" >> check_nucleardatapy_import.py
+        echo "    import nucleardatapy" >> check_nucleardatapy_import.py
+        echo "    print('nucleardatapy import successful')" >> check_nucleardatapy_import.py
+        echo "    sys.exit(0)" >> check_nucleardatapy_import.py
+        echo "except ImportError:" >> check_nucleardatapy_import.py
+        echo "    print('nucleardatapy import failed: Module not found')" >> check_nucleardatapy_import.py
+        echo "    sys.exit(1)" >> check_nucleardatapy_import.py
+        # Execute the temporary script
+        python check_nucleardatapy_import.py
+        # Clean up the temporary script
+        rm check_nucleardatapy_import.py
+
+
+        # Create and run script to check matplotlib import
         echo "Attempting to import matplotlib before Sphinx build:"
-        # Simplified import check - will print '0' for success, '1' for failure
-        python -c "import sys; try: import matplotlib; sys.exit(0) except ImportError: sys.exit(1)" && echo "matplotlib import successful" || echo "matplotlib import failed"
+        echo "import sys" > check_matplotlib_import.py
+        echo "try:" >> check_matplotlib_import.py
+        echo "    import matplotlib" >> check_matplotlib_import.py
+        echo "    print('matplotlib import successful')" >> check_matplotlib_import.py
+        echo "    sys.exit(0)" >> check_matplotlib_import.py
+        echo "except ImportError:" >> check_matplotlib_import.py
+        echo "    print('matplotlib import failed: Module not found')" >> check_matplotlib_import.py
+        echo "    sys.exit(1)" >> check_matplotlib_import.py
+        # Execute the temporary script
+        python check_matplotlib_import.py
+        # Clean up the temporary script
+        rm check_matplotlib_import.py
 
         echo "--- End Debugging Environment ---"
 
