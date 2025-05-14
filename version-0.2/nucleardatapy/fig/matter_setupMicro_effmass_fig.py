@@ -59,6 +59,8 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
         #
         ms = nuda.matter.setupMicroEffmass(model=model, matter=matter)
         #
+        lstyle = None
+        #
         axs[0].text(0.08, 0.75, "in " + matter)
         axs[1].text(0.90, 0.75, "in " + matter)
         if matter.lower() == "nm":
@@ -70,7 +72,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.nm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label,
                     )
                     axs[1].errorbar(
@@ -79,7 +81,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.nm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                 else:
                     axs[0].plot(
@@ -87,7 +89,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         ms.nm_effmass,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label,
                     )
                     axs[1].plot(
@@ -95,7 +97,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         ms.nm_effmass,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
         elif matter.lower() == "sm":
             if ms.sm_effmass is not None:
@@ -106,7 +108,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.sm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label,
                     )
                     axs[1].errorbar(
@@ -115,7 +117,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.sm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                 else:
                     axs[0].plot(
@@ -123,7 +125,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         ms.sm_effmass,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label,
                     )
                     axs[1].plot(
@@ -131,7 +133,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         ms.sm_effmass,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
         elif matter.lower() == "am":
             if ms.sm_effmass_n is not None:
@@ -142,7 +144,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.sm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label,
                     )
                     axs[1].errorbar(
@@ -151,23 +153,19 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         yerr=ms.sm_effmass_err,
                         marker=ms.marker,
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                 else:
-                    ms_n_00, ms_p_00 = nuda.matter.effmass_emp(ms.sm_den, 0.0, mb="BHF")
-                    ms_n_02, ms_p_02 = nuda.matter.effmass_emp(
-                        ms.am02_den, 0.2, mb="BHF"
-                    )
-                    ms_n_04, ms_p_04 = nuda.matter.effmass_emp(
-                        ms.am04_den, 0.4, mb="BHF"
-                    )
+                    ms_n_00, ms_p_00 = nuda.matter.effmass_emp( ms.sm_den, 0.0, mb="BHF" )
+                    ms_n_02, ms_p_02 = nuda.matter.effmass_emp( ms.am02_den, 0.2, mb="BHF" )
+                    ms_n_04, ms_p_04 = nuda.matter.effmass_emp( ms.am04_den, 0.4, mb="BHF" )
                     axs[0].plot(
                         ms.sm_den,
                         ms.sm_effmass_n,
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label + "(neutrons)",
                     )
                     axs[0].plot(
@@ -176,7 +174,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[0].plot(
                         ms.am04_den,
@@ -184,7 +182,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[0].plot(
                         ms.sm_den,
@@ -192,7 +190,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                         label=ms.label + "(protons)",
                     )
                     axs[0].plot(
@@ -201,7 +199,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[0].plot(
                         ms.am04_den,
@@ -209,41 +207,27 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[0].plot(
                         ms.sm_den,
                         ms_n_00,
                         color=nuda.param.col[1],
-                        linestyle="solid",
+                        linestyle="dotted",
                         label="Fit(neutrons)",
                     )
-                    axs[0].plot(
-                        ms.am02_den, ms_n_02, color=nuda.param.col[1], linestyle="solid"
-                    )
-                    axs[0].plot(
-                        ms.am04_den, ms_n_04, color=nuda.param.col[1], linestyle="solid"
-                    )
-                    axs[0].plot(
-                        ms.sm_den,
-                        ms_p_00,
-                        color=nuda.param.col[2],
-                        linestyle="solid",
-                        label="Fit(protons)",
-                    )
-                    axs[0].plot(
-                        ms.am02_den, ms_p_02, color=nuda.param.col[2], linestyle="solid"
-                    )
-                    axs[0].plot(
-                        ms.am04_den, ms_p_04, color=nuda.param.col[2], linestyle="solid"
-                    )
+                    axs[0].plot( ms.am02_den, ms_n_02, color=nuda.param.col[1], linestyle="dotted" )
+                    axs[0].plot( ms.am04_den, ms_n_04, color=nuda.param.col[1], linestyle="dotted" )
+                    axs[0].plot( ms.sm_den, ms_p_00, color=nuda.param.col[2], linestyle="dotted", label="Fit(protons)" )
+                    axs[0].plot( ms.am02_den, ms_p_02, color=nuda.param.col[2], linestyle="dotted" )
+                    axs[0].plot( ms.am04_den, ms_p_04, color=nuda.param.col[2], linestyle="dotted" )
                     axs[1].plot(
                         ms.sm_kfn,
                         ms.sm_effmass_n,
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[1].plot(
                         ms.am02_kfn,
@@ -251,7 +235,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[1].plot(
                         ms.am04_kfn,
@@ -259,7 +243,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="^",
                         color=nuda.param.col[1],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[1].plot(
                         ms.sm_kfn,
@@ -267,7 +251,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[1].plot(
                         ms.am02_kfn,
@@ -275,7 +259,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
                     axs[1].plot(
                         ms.am04_kfn,
@@ -283,26 +267,14 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
                         marker="v",
                         color=nuda.param.col[2],
                         markevery=ms.every,
-                        linestyle="none",
+                        linestyle=lstyle,
                     )
-                    axs[1].plot(
-                        ms.sm_kfn, ms_n_00, color=nuda.param.col[1], linestyle="solid"
-                    )
-                    axs[1].plot(
-                        ms.am02_kfn, ms_n_02, color=nuda.param.col[1], linestyle="solid"
-                    )
-                    axs[1].plot(
-                        ms.am04_kfn, ms_n_04, color=nuda.param.col[1], linestyle="solid"
-                    )
-                    axs[1].plot(
-                        ms.sm_kfn, ms_p_00, color=nuda.param.col[2], linestyle="solid"
-                    )
-                    axs[1].plot(
-                        ms.am02_kfn, ms_p_02, color=nuda.param.col[2], linestyle="solid"
-                    )
-                    axs[1].plot(
-                        ms.am04_kfn, ms_p_04, color=nuda.param.col[2], linestyle="solid"
-                    )
+                    axs[1].plot( ms.sm_kfn, ms_n_00, color=nuda.param.col[1], linestyle="dotted" )
+                    axs[1].plot( ms.am02_kfn, ms_n_02, color=nuda.param.col[1], linestyle="dotted" )
+                    axs[1].plot( ms.am04_kfn, ms_n_04, color=nuda.param.col[1], linestyle="dotted" )
+                    axs[1].plot( ms.sm_kfn, ms_p_00, color=nuda.param.col[2], linestyle="dotted" )
+                    axs[1].plot( ms.am02_kfn, ms_p_02, color=nuda.param.col[2], linestyle="dotted" )
+                    axs[1].plot( ms.am04_kfn, ms_p_04, color=nuda.param.col[2], linestyle="dotted" )
                     axs[0].text(0.23, 0.84, r"$\delta=0.4$", rotation=0)
                     axs[0].text(0.23, 0.81, r"$\delta=0.2$", rotation=0)
                     axs[0].text(0.23, 0.785, "SM", rotation=0)
@@ -327,3 +299,4 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
     if pname is not None:
         plt.savefig(pname, dpi=300)
         plt.close()
+    #

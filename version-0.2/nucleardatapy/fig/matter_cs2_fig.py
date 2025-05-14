@@ -24,14 +24,14 @@ def matter_cs2_fig( pname, micro_models, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.3, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'n (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$c_{s,NM}^2(n)$')
     axs[0].set_xlim([0, 0.3])
     axs[0].set_ylim([0, 0.5])
     #
-    axs[1].set_xlabel(r'n (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[1].set_ylabel(r'$c_{s,NM}^2(n)$')
     axs[1].set_xlim([0, 0.3])
     axs[1].set_ylim([0, 0.5])

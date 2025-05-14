@@ -34,7 +34,7 @@ def main():
         elif matter.lower() == 'sm':
             bmodels = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
         #
-        den = np.array([0.06,0.08,0.1,0.12,0.14,0.16])
+        den = np.array([0.08,0.1,0.12,0.14,0.16])
         band = nuda.matter.setupMicroBand( bmodels, den=den, matter = matter )
         #
         # plot E/A in matter grouped by mb

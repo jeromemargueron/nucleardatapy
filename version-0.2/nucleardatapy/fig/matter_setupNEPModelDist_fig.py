@@ -21,9 +21,7 @@ def matter_setupNEPModelDist_fig(pname, models):
     #
     fig, axs = plt.subplots(5, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(
-        left=0.12, bottom=0.06, right=None, top=0.9, wspace=0.3, hspace=0.4
-    )
+    fig.subplots_adjust( left=0.12, bottom=0.06, right=0.95, top=0.9, wspace=0.3, hspace=0.4 )
     #
     axs[0, 0].set_ylabel(r"$E_\text{sat}$")
     axs[0, 0].set_xlim([-16.5, -15])

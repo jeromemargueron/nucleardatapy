@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import nucleardatapy as nuda
 
 
-def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
+def matter_setupMicro_LP_fig( pname, models, matter="SM", ell=0 ):
     """
     Plot nucleonic energy per particle E/A in matter.\
     The plot is 2x2 with:\
@@ -26,14 +26,10 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
     #
     if matter.lower() == "sm":
         fig, axs = plt.subplots(2, 2)
-        fig.subplots_adjust(
-            left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.05
-        )
+        fig.subplots_adjust( left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.05 )
     elif matter.lower() == "nm":
         fig, axs = plt.subplots(1, 2)
-        fig.subplots_adjust(
-            left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.3
-        )
+        fig.subplots_adjust( left=0.12, bottom=0.12, right=0.98, top=0.98, wspace=0.15, hspace=0.05 )
     else:
         print("matter_setupMicro_LP_fig: issue with matter:", matter)
         print("matter_setupMicro_LP_fig: --- exit() ---")
@@ -60,16 +56,16 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
             axs[1, 0].set_ylabel(r"$F_0^\prime$")
         if ell == 1:
             axs[1, 0].set_ylabel(r"$F_1^\prime$")
-        axs[1, 0].set_xlabel(r"$k_F$ (fm$^{-1}$)")
+        axs[1, 0].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
         axs[1, 0].set_xlim([0, 2.0])
-        axs[1, 0].set_ylim([-2.1, 1.6])
+        axs[1, 0].set_ylim([-1.1, 2.6])
         if ell == 0:
             axs[1, 1].set_ylabel(r"$G_0^\prime$")
         if ell == 1:
             axs[1, 1].set_ylabel(r"$G_1^\prime$")
-        axs[1, 1].set_xlabel(r"$k_F$ (fm$^{-1}$)")
+        axs[1, 1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
         axs[1, 1].set_xlim([0, 2.0])
-        axs[1, 1].set_ylim([-2.1, 1.6])
+        axs[1, 1].set_ylim([-1.1, 2.6])
         axs[1, 1].tick_params("y", labelleft=False)
     elif matter.lower() == "nm":
         if ell == 0:
@@ -91,10 +87,11 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
     for model in models:
         #
         mic = nuda.matter.setupMicroLP(model=model)
+        #
         if matter in model:
             print("\nmodel:", model, "\n")
             if mic.err:
-                if matter.lower() == "sm" and mic.sm_kfn is not None:
+                if matter.lower() == "sm" and mic.sm_LP["F"][ell] is not None:
                     axs[0, 0].errorbar(
                         mic.sm_kfn,
                         mic.sm_LP["F"][ell],
@@ -127,7 +124,7 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
                         linestyle="none",
                         label=mic.label,
                     )
-                elif matter.lower() == "nm" and mic.nm_kfn is not None:
+                elif matter.lower() == "nm" and mic.nm_LP["F"][ell] is not None:
                     axs[0].errorbar(
                         mic.nm_kfn,
                         mic.nm_LP["F"][ell],
@@ -143,7 +140,7 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
                         label=mic.label,
                     )
             else:
-                if matter.lower() == "sm" and mic.sm_kfn is not None:
+                if matter.lower() == "sm" and mic.sm_LP["F"][ell] is not None:
                     axs[0, 0].plot(
                         mic.sm_kfn,
                         mic.sm_LP["F"][ell],
@@ -176,7 +173,7 @@ def matter_setupMicro_LP_fig(pname, models, matter="SM", ell=0):
                         markevery=mic.every,
                         label=mic.label,
                     )
-                elif matter.lower() == "nm" and mic.nm_kfn is not None:
+                elif matter.lower() == "nm" and mic.nm_LP["F"][ell] is not None:
                     axs[0].plot(
                         mic.nm_kfn,
                         mic.nm_LP["F"][ell],

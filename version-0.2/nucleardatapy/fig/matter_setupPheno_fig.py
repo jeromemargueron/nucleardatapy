@@ -130,10 +130,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             alpha=band.alpha,
         )
         axs[0, 0].plot(
-            band.den, (band.e2a - band.e2a_std), color="k", linestyle="dashed"
+            band.den, (band.e2a - band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 0].plot(
-            band.den, (band.e2a + band.e2a_std), color="k", linestyle="dashed"
+            band.den, (band.e2a + band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 1].fill_between(
             band.kfn,
@@ -143,10 +143,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             alpha=band.alpha,
         )
         axs[0, 1].plot(
-            band.kfn, (band.e2a - band.e2a_std), color="k", linestyle="dashed"
+            band.kfn, (band.e2a - band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 1].plot(
-            band.kfn, (band.e2a + band.e2a_std), color="k", linestyle="dashed"
+            band.kfn, (band.e2a + band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 0].fill_between(
             band.den,
@@ -156,16 +156,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             alpha=band.alpha,
         )
         axs[1, 0].plot(
-            band.den,
-            (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.den, (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 0].plot(
-            band.den,
-            (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.den, (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 1].fill_between(
             band.kfn,
@@ -175,16 +169,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             alpha=band.alpha,
         )
         axs[1, 1].plot(
-            band.kfn,
-            (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.kfn, (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 1].plot(
-            band.kfn,
-            (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.kfn, (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
     elif matter.lower() == "sm":
         axs[0, 0].fill_between(
@@ -196,10 +184,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             visible=True,
         )
         axs[0, 0].plot(
-            band.den, (band.e2a - band.e2a_std), color="k", linestyle="dashed"
+            band.den, (band.e2a - band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 0].plot(
-            band.den, (band.e2a + band.e2a_std), color="k", linestyle="dashed"
+            band.den, (band.e2a + band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 1].fill_between(
             band.kfn,
@@ -210,10 +198,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             visible=True,
         )
         axs[0, 1].plot(
-            band.kfn, (band.e2a - band.e2a_std), color="k", linestyle="dashed"
+            band.kfn, (band.e2a - band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[0, 1].plot(
-            band.kfn, (band.e2a + band.e2a_std), color="k", linestyle="dashed"
+            band.kfn, (band.e2a + band.e2a_std), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 0].fill_between(
             band.den,
@@ -224,16 +212,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             visible=True,
         )
         axs[1, 0].plot(
-            band.den,
-            (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.den, (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 0].plot(
-            band.den,
-            (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.den, (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 1].fill_between(
             band.kfn,
@@ -244,16 +226,10 @@ def matter_setupPheno_E_fig(pname, model, band):
             visible=True,
         )
         axs[1, 1].plot(
-            band.kfn,
-            (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.kfn, (band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
         axs[1, 1].plot(
-            band.kfn,
-            (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn),
-            color="k",
-            linestyle="dashed",
+            band.kfn, (band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn), color="k", linestyle="dashed", zorder = 100
         )
     #
     # if model != 'Skyrme':

@@ -28,7 +28,7 @@ def micro_gap_models( matter = 'NM' ):
     #
     if nuda.env.verb: print("\nEnter micro_gap_models()")
     #
-    models_all = [ '2006-BHF-Av18-NM', '2006-BHF-Av18-SM', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', \
+    models_all = [ '2006-BHF-NM-Av18', '2006-BHF-SM-Av18', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', \
             '2017-MBPT-NM-GAP-EMG-450-500-N2LO', '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', \
             '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', \
             '2022-AFDMC-NM' ]
@@ -90,11 +90,11 @@ class setupMicroGap():
             print('setup_micro_gap: -- Exit the code --')
             exit()
         #
-        if model.lower() == '2006-bhf-nm':
+        if model.lower() == '2006-bhf-nm-av18':
             #
-            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-NM-FreeSpectrum.dat')
+            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-GAP-NM-FreeSpectrum.dat')
             if nuda.env.verb: print('Reads file (free spectrum):',file_in_fs)
-            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-NM-SelfEnergy.dat')
+            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-GAP-NM-SelfEnergy.dat')
             if nuda.env.verb: print('Reads file (self energy):',file_in_se)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
             self.note = ""
@@ -110,11 +110,11 @@ class setupMicroGap():
                 = np.loadtxt( file_in_se, usecols=(0,1,2), unpack = True )
             self.nm_den_1s0 = nuda.den_n( self.nm_kfn_1s0 )
             #
-        elif model.lower() == '2006-bhf-sm':
+        elif model.lower() == '2006-bhf-sm-av18':
             #
-            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-SM-FreeSpectrum.dat')
+            file_in_fs = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-GAP-SM-FreeSpectrum.dat')
             if nuda.env.verb: print('Reads file (free spectrum):',file_in_fs)
-            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-GAP-SM-SelfEnergy.dat')
+            file_in_se = os.path.join(nuda.param.path_data,'matter/micro/2006-BHF/2006-BHF-Av18-GAP-SM-SelfEnergy.dat')
             if nuda.env.verb: print('Reads file (self energy):',file_in_se)
             self.ref = 'L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)'
             self.note = ""
@@ -310,6 +310,7 @@ class setupMicroGap():
         print("   label: ",self.label)
         print("   marker:",self.marker)
         print("   every: ",self.every)
+        # NM
         if self.nm_den_effmass is not None: print(f"   nm_den_effmass: {np.round(self.nm_den_effmass,3)} in {self.den_unit}")
         if self.nm_kfn_effmass is not None: print(f"   nm_kfn_effmass: {np.round(self.nm_kfn_effmass,3)} in {self.kf_unit}")
         if self.nm_den_1s0 is not None: print(f"   nm_den_1s0: {np.round(self.nm_den_1s0,3)} in {self.den_unit}")
@@ -321,6 +322,11 @@ class setupMicroGap():
         if self.nm_gap_1s0_err is not None: print(f"   nm_gap_1s0_err: {np.round(self.nm_gap_1s0_err,3)} in {self.gap_unit}")
         if self.nm_gap_3pf2 is not None: print(f"   nm_gap_3pf2: {np.round(self.nm_gap_3pf2,3)} in {self.gap_unit}")
         if self.nm_gap_3pf2_err is not None: print(f"   nm_gap_3pf2_err: {np.round(self.nm_gap_3pf2_err,3)} in {self.gap_unit}")
+        # SM
+        if self.sm_den_1s0 is not None: print(f"   sm_den_1s0: {np.round(self.sm_den_1s0,3)} in {self.den_unit}")
+        if self.sm_kfn_1s0 is not None: print(f"   sm_kfn_1s0: {np.round(self.sm_kfn_1s0,3)} in {self.kf_unit}")
+        if self.sm_gap_1s0 is not None: print(f"   sm_gap_1s0: {np.round(self.sm_gap_1s0,3)} in {self.gap_unit}")
+        if self.sm_gap_1s0_err is not None: print(f"   sm_gap_1s0_err: {np.round(self.sm_gap_1s0_err,3)} in {self.gap_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #

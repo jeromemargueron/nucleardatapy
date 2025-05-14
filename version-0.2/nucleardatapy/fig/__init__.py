@@ -2,7 +2,7 @@
 This module provides microscopic, phenomenological and experimental data constraints.
 """
 from nucleardatapy.fig.matter_setupFFGNuc_fig        import *
-from nucleardatapy.fig.matter_setupMicro_fig import *
+from nucleardatapy.fig.matter_setupMicro_fig         import *
 from nucleardatapy.fig.matter_setupMicro_err_NM_fig  import *
 from nucleardatapy.fig.matter_setupMicro_band_fig    import *
 from nucleardatapy.fig.matter_setupMicro_effmass_fig import *
@@ -16,6 +16,8 @@ from nucleardatapy.fig.matter_setupPhenoEsym_fig    import *
 from nucleardatapy.fig.matter_setupHIC_fig          import *
 #
 from nucleardatapy.fig.matter_setupNEPModelDist_fig import *
+#
+from nucleardatapy.fig.matter_setupCheck_fig        import *
 #
 from nucleardatapy.fig.matter_Esym_fig              import *
 from nucleardatapy.fig.matter_ESM_fig               import *

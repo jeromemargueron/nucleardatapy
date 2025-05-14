@@ -39,8 +39,8 @@ def matter_setupHIC_fig(pname, constraints):
     #
     # axs[0,0].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
     # axs[0,1].set_xlabel(r'$n$ (fm$^{-3}$)',fontsize='12')
-    axs[1, 0].set_xlabel(r"$n$ (fm$^{-3}$)", fontsize="12")
-    axs[1, 1].set_xlabel(r"$n$ (fm$^{-3}$)", fontsize="12")
+    axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
+    axs[1, 1].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
     #
     axs[0, 0].set_ylabel(r"$p_\mathrm{SM}$ (MeV fm$^{-3}$)", fontsize="12")
     axs[0, 1].set_ylabel(r"$e_\mathrm{SM}$ (MeV)", fontsize="12")
