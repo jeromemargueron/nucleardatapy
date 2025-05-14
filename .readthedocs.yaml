@@ -5,12 +5,14 @@
 version: 2
 
 # Set the OS, Python version, and other tools you might need
+# ... other parts of the file ...
+
 build:
   os: ubuntu-22.04
   tools:
     python: "3.12"
-  jobs: # Add this jobs section
-    pre_build: # Commands to run before the main build command (sphinx/mkdocs)
+  jobs:
+    pre_build: # Add this jobs section
       - | # Use a multi-line string for multiple commands
         echo "--- Debugging Environment ---"
         echo "sys.path before Sphinx build:"
@@ -18,9 +20,13 @@ build:
         echo "PYTHONPATH environment variable:"
         echo $PYTHONPATH
         echo "Attempting to import nucleardatapy before Sphinx build:"
-        python -c "try: import nucleardatapy; print('Successfully imported nucleardatapy'); except ImportError as e: print(f'Failed to import nucleardatapy: {e}')"
+        # Simplified import check - will print '0' for success, '1' for failure
+        python -c "import sys; try: import nucleardatapy; sys.exit(0) except ImportError: sys.exit(1)" && echo "nucleardatapy import successful" || echo "nucleardatapy import failed"
+
         echo "Attempting to import matplotlib before Sphinx build:"
-        python -c "try: import matplotlib; print('Successfully imported matplotlib'); except ImportError as e: print(f'Failed to import matplotlib: {e}')"
+        # Simplified import check - will print '0' for success, '1' for failure
+        python -c "import sys; try: import matplotlib; sys.exit(0) except ImportError: sys.exit(1)" && echo "matplotlib import successful" || echo "matplotlib import failed"
+
         echo "--- End Debugging Environment ---"
 
 # Build documentation in the "docs/" directory with Sphinx
