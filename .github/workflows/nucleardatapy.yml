@@ -49,7 +49,7 @@ jobs:
       - name: Build Jupyter Book
         working-directory: book
         run: |
-          pip install -r book/requirements.txt  # Ensure nucleardatapy is installed for Jupyter Book
+          pip install -r requirements.txt  # Ensure nucleardatapy is installed for Jupyter Book
           jupyter-book build book/
 
       - name: Upload documentation artifacts

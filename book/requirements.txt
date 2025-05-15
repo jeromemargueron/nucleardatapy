@@ -5,3 +5,4 @@ pandas
 pytest
 jupyter-book
 myst-nb
+nucleardatapy
