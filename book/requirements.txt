@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+pandas
+pytest
+jupyter-book
+myst-nb

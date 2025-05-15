@@ -48,7 +48,9 @@ jobs:
 
       - name: Build Jupyter Book
         working-directory: book
-        run: jupyter-book build .
+        run: |
+          pip install nucleardatapy  # Ensure nucleardatapy is installed for Jupyter Book
+          jupyter-book build .
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v4
