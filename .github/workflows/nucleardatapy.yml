@@ -69,10 +69,10 @@ jobs:
     steps:
       # Checkout the gh-pages branch to deploy to it.
       # The JamesIves action can also create it if it doesn't exist.
-      # - name: Check out gh-pages branch
-      #   uses: actions/checkout@v4
-      #   with:
-      #     ref: gh-pages # Action will deploy to this branch
+      - name: Check out gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages # Action will deploy to this branch
 
       - name: Download built documentation artifacts
         uses: actions/download-artifact@v4
