@@ -6,7 +6,7 @@ pertaining to each method in the package. The first chapter contains detailed in
 ## Documentation
 
 The full documentation of the package can be found here:
-**insert link here**
+[https://nucleardatapy.readthedocs.io/en/latest/index.html](https://nucleardatapy.readthedocs.io/en/latest/index.html)
 
 ## Running the notebooks
 
