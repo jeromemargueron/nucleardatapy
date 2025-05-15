@@ -40,17 +40,17 @@ class setupCheck():
         if 'fit' in eos.model:
             if self.matter.lower() == 'nm' or self.matter.lower() == 'sm':
                 self.x = np.insert( eos.den, 0, 0.0 )
-                self.y = np.insert( eos.e2a, 0, 0.0 )
+                self.y = np.insert( eos.e2a_int, 0, 0.0 )
             elif self.matter.lower() == 'esym':
                 self.x = np.insert( eos.den, 0, 0.0 )
                 self.y = np.insert( eos.esym, 0, 0.0 )
         else:
             if self.matter.lower() == 'nm':
                 self.x = np.insert( eos.nm_den, 0, 0.0 )
-                self.y = np.insert( eos.nm_e2a, 0, 0.0 )
+                self.y = np.insert( eos.nm_e2a_int, 0, 0.0 )
             elif self.matter.lower() == 'sm':
                 self.x = np.insert( eos.sm_den, 0, 0.0 )
-                self.y = np.insert( eos.sm_e2a, 0, 0.0 )
+                self.y = np.insert( eos.sm_e2a_int, 0, 0.0 )
             elif self.matter.lower() == 'esym':
                 self.x = np.insert( eos.den, 0, 0.0 )
                 self.y = np.insert( eos.esym, 0, 0.0 )
@@ -58,11 +58,11 @@ class setupCheck():
                 print('setup_check: issue with matter:',self.matter)
                 exit()
         cs_e2a = CubicSpline( self.x, self.y )
-        self.eos_e2a = cs_e2a(band.den)
+        self.eos_e2a_int = cs_e2a(band.den)
         flag = True
         for ind,den in enumerate(band.den):
             #if abs(cs_e2a(den)-band.e2a[ind]) > band.e2a_std[ind]:
-            if abs(self.eos_e2a[ind]-band.e2a[ind]) > band.e2a_std[ind]:
+            if abs(self.eos_e2a_int[ind]-band.e2a_int[ind]) > band.e2a_std[ind]:
                 flag = False
         #: Attribute is eos is inside the band.
         self.isInside = flag
@@ -89,7 +89,7 @@ class setupCheck():
         if self.y is not None: print(f"   e2a: {np.round(self.y,2)} in {self.e2a_unit}")
         print('BAND:')
         if self.band.den is not None: print(f"   den: {np.round(self.band.den,2)} in {self.den_unit}")
-        if self.band.e2a is not None: print(f"   e2a: {np.round(self.band.e2a,2)} in {self.e2a_unit}")
+        if self.band.e2a_int is not None: print(f"   e2a_int: {np.round(self.band.e2a_int,2)} in {self.e2a_unit}")
         if self.band.e2a_std is not None: print(f"   e2a_std: {np.round(self.band.e2a_std,2)} in {self.e2a_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")

@@ -1,5 +1,3 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
@@ -220,24 +218,24 @@ class setupMicroEsym():
             #
             mic = nuda.matter.setupMicro( model = model, var1 = var1, var2 = 0.0 )
             self.sm_den = mic.den
-            self.sm_e2a = mic.e2a
+            self.sm_e2a_int = mic.e2a_int
             self.sm_e2a_err = mic.e2a_err
             #
             # NM
             #
             mic = nuda.matter.setupMicro( model = model, var1 = var1, var2 = 1.0 )
             self.nm_den = mic.den
-            self.nm_e2a = mic.e2a
+            self.nm_e2a_int = mic.e2a_int
             self.nm_e2a_err = mic.e2a_err
             #
         else:
             #
             mic = nuda.matter.setupMicro( model = model )
             self.sm_den = mic.sm_den
-            self.sm_e2a = mic.sm_e2a
+            self.sm_e2a_int = mic.sm_e2a_int
             self.sm_e2a_err = mic.sm_e2a_err
             self.nm_den = mic.nm_den
-            self.nm_e2a = mic.nm_e2a
+            self.nm_e2a_int = mic.nm_e2a_int
             self.nm_e2a_err = mic.nm_e2a_err
             #mic.print_outputs( )
             #
@@ -250,20 +248,20 @@ class setupMicroEsym():
         self.note = mic.note
         self.label = mic.label
         self.marker = mic.marker
-        self.every = 2*mic.every
+        self.every = mic.every
         self.linestyle = mic.linestyle
         self.err = True
         #
         # E/A in SM (cubic spline)
         #
-        x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a, 0, 0.0 )
+        x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a_int, 0, 0.0 )
         cs_sm_e2a = CubicSpline( x, y )
         y_err = np.insert( self.sm_e2a_err, 0, 0.0 )
         cs_sm_e2a_err = CubicSpline( x, y_err )
         #
         # E/A in NM (cubic spline)
         #
-        x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a, 0, 0.0 )
+        x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a_int, 0, 0.0 )
         cs_nm_e2a = CubicSpline( x, y )
         y_err = np.insert( self.nm_e2a_err, 0, 0.0 )
         cs_nm_e2a_err = CubicSpline( x, y_err )
@@ -279,9 +277,9 @@ class setupMicroEsym():
         #
         # Symmetry energy for the densities defined in self.den
         #
-        self.esym_sm_e2a = cs_sm_e2a( self.den )
-        self.esym_nm_e2a = cs_nm_e2a( self.den )
-        self.esym = self.esym_nm_e2a - self.esym_sm_e2a
+        self.esym_sm_e2a_int = cs_sm_e2a( self.den )
+        self.esym_nm_e2a_int = cs_nm_e2a( self.den )
+        self.esym = self.esym_nm_e2a_int - self.esym_sm_e2a_int
         self.esym_err = np.sqrt( cs_nm_e2a_err( self.den )**2 + cs_sm_e2a_err( self.den )**2 )
         self.esym_sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
         self.esym_sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.esym_sm_pre

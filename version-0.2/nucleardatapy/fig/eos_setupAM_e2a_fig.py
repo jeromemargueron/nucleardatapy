@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
+def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     """
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
@@ -26,7 +26,7 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     #axs[0,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0,0].set_ylabel(r'$E_\text{lep}/A$')
+    axs[0,0].set_ylabel(r'$E_\text{lep}^\text{int}/A$')
     axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([-2, 38])
     axs[0,0].tick_params('x', labelbottom=False)
@@ -38,7 +38,7 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     axs[0,1].tick_params('x', labelbottom=False)
     #
     #axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$E_\text{nuc}/A$')
+    axs[1,0].set_ylabel(r'$E_\text{nuc}^\text{int}/A$')
     axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([-10, 30])
     axs[1,0].tick_params('x', labelbottom=False)
@@ -50,7 +50,7 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
     axs[1,1].tick_params('x', labelbottom=False)
     #
     axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[2,0].set_ylabel(r'$E_\text{tot}/A$')
+    axs[2,0].set_ylabel(r'$E_\text{tot}^\text{int}/A$')
     axs[2,0].set_xlim([0, 0.33])
     axs[2,0].set_ylim([-2, 38])
     #
@@ -102,8 +102,8 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
                         print('den:',micro.den)
                         print('e2a_lep:',micro.e2a_lep)
                         axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[1,0].plot( micro.den, micro.e2a_int_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[2,0].plot( micro.den, micro.e2a_int_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                     else:
                         mb_check.append(mb)
                         print('mb:',mb)
@@ -111,8 +111,8 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
                         print('den:',micro.den)
                         print('e2a_lep:',micro.e2a_lep)
                         axs[0,0].plot( micro.den, micro.e2a_lep, marker='o', linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[1,0].plot( micro.den, micro.e2a_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
-                        axs[2,0].plot( micro.den, micro.e2a_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[1,0].plot( micro.den, micro.e2a_int_nuc, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                        axs[2,0].plot( micro.den, micro.e2a_int_tot, marker='o', linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 # end of model
             # end of mb
         #
@@ -137,13 +137,13 @@ def eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band ):
                     print('model:',model,' param:',param)
                     if model in model_check:
                         axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[1,1].plot( pheno.den, pheno.e2a_int_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[2,1].plot( pheno.den, pheno.e2a_int_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                     else:
                         model_check.append(model)
                         axs[0,1].plot( pheno.den, pheno.e2a_lep, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[1,1].plot( pheno.den, pheno.e2a_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
-                        axs[2,1].plot( pheno.den, pheno.e2a_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[1,1].plot( pheno.den, pheno.e2a_int_nuc, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                        axs[2,1].plot( pheno.den, pheno.e2a_int_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 # end of param
             # end of model
     #

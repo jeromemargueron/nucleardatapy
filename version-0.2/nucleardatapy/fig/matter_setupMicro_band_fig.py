@@ -34,13 +34,13 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
     axs[1].set_xlim([0, 0.2])
     #
     if matter.lower() == "nm":
-        axs[0].set_ylabel(r"$E_\text{NM}$", fontsize="14")
-        axs[1].set_ylabel(r"$E_\text{NM}/E_\text{NM,NRFFG}$", fontsize="14")
+        axs[0].set_ylabel(r"$E_\text{NM}^\text{int}$", fontsize="14")
+        axs[1].set_ylabel(r"$E_\text{NM}^\text{int}/E_\text{NM,NRFFG}$", fontsize="14")
         axs[0].set_ylim([0, 20])
         axs[1].set_ylim([0.2, 0.9])
     elif matter.lower() == "sm":
-        axs[0].set_ylabel(r"$E_\text{SM}$", fontsize="14")
-        axs[1].set_ylabel(r"$E_\text{SM}/E_\text{SM,NRFFG}$", fontsize="14")
+        axs[0].set_ylabel(r"$E_\text{SM}^\text{int}$", fontsize="14")
+        axs[1].set_ylabel(r"$E_\text{SM}^\text{int}/E_\text{SM,NRFFG}$", fontsize="14")
         axs[0].set_ylim([-20, 0])
         axs[1].set_ylim([-1.0, 0.0])
     elif matter.lower() == "esym":
@@ -55,12 +55,12 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
         if nuda.env.verb_output:
             mic.print_outputs()
         #
-        if mic.nm_e2a is not None:
+        if mic.nm_e2a_int is not None:
             print("model:", model)
             if matter.lower() == "nm":
                 axs[0].errorbar(
                     mic.nm_den,
-                    mic.nm_e2a,
+                    mic.nm_e2a_int,
                     yerr=mic.nm_e2a_err,
                     linestyle=mic.linestyle,
                     label=mic.label,
@@ -68,7 +68,7 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
                 )
                 axs[1].errorbar(
                     mic.nm_den,
-                    mic.nm_e2a / nuda.effg_nr(mic.nm_kfn),
+                    mic.nm_e2a_int / nuda.effg_nr(mic.nm_kfn),
                     yerr=mic.nm_e2a_err / nuda.effg_nr(mic.nm_kfn),
                     linestyle=mic.linestyle,
                     label=mic.label,
@@ -77,7 +77,7 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
             elif matter.lower() == "sm":
                 axs[0].errorbar(
                     mic.sm_den,
-                    mic.sm_e2a,
+                    mic.sm_e2a_int,
                     yerr=mic.sm_e2a_err,
                     linestyle=mic.linestyle,
                     label=mic.label,
@@ -85,7 +85,7 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
                 )
                 axs[1].errorbar(
                     mic.sm_den,
-                    mic.sm_e2a / nuda.effg_nr(mic.sm_kfn),
+                    mic.sm_e2a_int / nuda.effg_nr(mic.sm_kfn),
                     yerr=mic.sm_e2a_err / nuda.effg_nr(mic.sm_kfn),
                     linestyle=mic.linestyle,
                     label=mic.label,
@@ -114,32 +114,32 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
     #
     axs[0].fill_between(
         band.den,
-        y1=band.e2a - band.e2a_std,
-        y2=band.e2a + band.e2a_std,
+        y1=band.e2a_int - band.e2a_std,
+        y2=band.e2a_int + band.e2a_std,
         color=band.color,
         alpha=band.alpha,
     )
     if matter.lower() == "nm":
         axs[1].fill_between(
             band.den,
-            y1=(band.e2a - band.e2a_std) / nuda.effg_nr(band.kfn),
-            y2=(band.e2a + band.e2a_std) / nuda.effg_nr(band.kfn),
+            y1=(band.e2a_int - band.e2a_std) / nuda.effg_nr(band.kfn),
+            y2=(band.e2a_int + band.e2a_std) / nuda.effg_nr(band.kfn),
             color=band.color,
             alpha=band.alpha,
         )
     elif matter.lower() == "sm":
         axs[1].fill_between(
             band.den,
-            y1=(band.e2a - band.e2a_std) / nuda.effg_nr(band.kf),
-            y2=(band.e2a + band.e2a_std) / nuda.effg_nr(band.kf),
+            y1=(band.e2a_int - band.e2a_std) / nuda.effg_nr(band.kf),
+            y2=(band.e2a_int + band.e2a_std) / nuda.effg_nr(band.kf),
             color=band.color,
             alpha=band.alpha,
         )
     elif matter.lower() == "esym":
         axs[1].fill_between(
             band.den,
-            y1=(band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kf),
-            y2=(band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kf),
+            y1=(band.e2a_int - band.e2a_std) / nuda.esymffg_nr(band.kf),
+            y2=(band.e2a_int + band.e2a_std) / nuda.esymffg_nr(band.kf),
             color=band.color,
             alpha=band.alpha,
         )

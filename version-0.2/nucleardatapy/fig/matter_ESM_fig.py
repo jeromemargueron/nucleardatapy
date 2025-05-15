@@ -23,10 +23,10 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
     print(f'Plot name: {pname}')
     #
     fig, axs = plt.subplots(1,2)
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$e_\text{SM}(n_\text{nuc})$')
+    axs[0].set_ylabel(r'$e_\text{SM}^\text{int}(n_\text{nuc})$')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-22, 5])
     #
@@ -44,6 +44,8 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
         #
         for model in models:
             #
+            if 'fit' in model: continue
+            #
             micro = nuda.matter.setupMicro( model = model )
             if nuda.env.verb: micro.print_outputs( )
             #
@@ -54,48 +56,48 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
             else:
                 lstyle = 'dashed'
             #
-            if micro.sm_e2a is not None:
+            if micro.sm_e2a_int is not None:
                 print('mb:',mb,'model:',model)
                 if mb in mb_check:
                     if micro.marker:
                         print('with marker 1:',micro.marker)
                         if micro.e_err:
                             print('with error',micro.e_err)
-                            axs[0].errorbar( micro.sm_den, micro.sm_e2a, yerr=micro.sm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].errorbar( micro.sm_den, micro.sm_e2a_int, yerr=micro.sm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
                             print('with no error',micro.e_err)
-                            axs[0].plot( micro.sm_den, micro.sm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
+                            axs[0].plot( micro.sm_den, micro.sm_e2a_int, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                     else:
                         print('with no marker',micro.marker)
                         if micro.e_err:
                             print('with error',micro.e_err)
-                            axs[0].errorbar( micro.sm_den, micro.sm_e2a, yerr=micro.sm_e2a_err, marker=micro.marker, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].errorbar( micro.sm_den, micro.sm_e2a_int, yerr=micro.sm_e2a_err, marker=micro.marker, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
                             print('with no error',micro.e_err)
-                            axs[0].plot( micro.sm_den, micro.sm_e2a, marker=micro.marker, linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].plot( micro.sm_den, micro.sm_e2a_int, marker=micro.marker, linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
                     if micro.marker:
                         print('with marker 2:',micro.marker)
                         if micro.e_err:
                             print('with error',micro.e_err)
-                            axs[0].errorbar( micro.sm_den, micro.sm_e2a, yerr=micro.sm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].errorbar( micro.sm_den, micro.sm_e2a_int, yerr=micro.sm_e2a_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
                             print('with no error',micro.e_err)
-                            axs[0].plot( micro.sm_den, micro.sm_e2a, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
+                            axs[0].plot( micro.sm_den, micro.sm_e2a_int, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
                     else:
                         print('with no marker',micro.marker)
                         if micro.e_err:
                             print('with error',micro.e_err)
-                            axs[0].errorbar( micro.sm_den, micro.sm_e2a, yerr=micro.sm_e2a_err, marker=micro.marker, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].errorbar( micro.sm_den, micro.sm_e2a_int, yerr=micro.sm_e2a_err, marker=micro.marker, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                         else:
                             print('with no error',micro.e_err)
-                            axs[0].plot( micro.sm_den, micro.sm_e2a, marker=micro.marker, linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+                            axs[0].plot( micro.sm_den, micro.sm_e2a_int, marker=micro.marker, linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
             # end of model
         # end of mb
-    axs[0].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    axs[0].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
-    axs[0].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[0].fill_between( band.den, y1=(band.e2a_int-band.e2a_std), y2=(band.e2a_int+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    axs[0].plot( band.den, (band.e2a_int-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[0].plot( band.den, (band.e2a_int+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
     axs[0].text(0.03,2,'microscopic models',fontsize='10')
     #
     model_check = []
@@ -116,18 +118,18 @@ def matter_ESM_fig( pname, micro_mbs, pheno_models, band ):
             else:
                 lstyle = 'dashed'
             #
-            if pheno.sm_e2a is not None: 
+            if pheno.sm_e2a_int is not None: 
                 print('model:',model,' param:',param)
                 if model in model_check:
-                    axs[1].plot( pheno.sm_den, pheno.sm_e2a, linestyle=lstyle, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.sm_den, pheno.sm_e2a_int, linestyle=lstyle, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( pheno.sm_den, pheno.sm_e2a, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
+                    axs[1].plot( pheno.sm_den, pheno.sm_e2a_int, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
             # end of param
         # end of model
-    axs[1].fill_between( band.den, y1=(band.e2a-band.e2a_std), y2=(band.e2a+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
-    axs[1].plot( band.den, (band.e2a-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
-    axs[1].plot( band.den, (band.e2a+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[1].fill_between( band.den, y1=(band.e2a_int-band.e2a_std), y2=(band.e2a_int+band.e2a_std), color=band.color, alpha=band.alpha, visible=True )
+    axs[1].plot( band.den, (band.e2a_int-band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
+    axs[1].plot( band.den, (band.e2a_int+band.e2a_std), color='k', linestyle='dashed', zorder = 100 )
     axs[1].text(0.03,2,'phenomenological models',fontsize='10')
     #
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)

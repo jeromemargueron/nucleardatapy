@@ -139,6 +139,10 @@ class setupPheno():
         #
         params, params_lower = pheno_params( model = model )
         #
+        self.nm_rmass = nuda.cst.mnc2
+        self.sm_rmass = 0.5 * ( nuda.cst.mnc2 + nuda.cst.mpc2 )
+        #self.rmass = (1.0-self.xpr) * nuda.cst.mnc2 + self.xpr * nuda.cst.mpc2
+        #
         if param.lower() not in params_lower:
             print('The param set ',param,' is not in the list of param.')
             print('list of param:',params)
@@ -157,8 +161,12 @@ class setupPheno():
             self.label = 'SKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, a, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, a, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, a, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, a, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             #
         #
@@ -174,15 +182,19 @@ class setupPheno():
             self.label = 'ESKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_e2a, self.sm_pre = np.loadtxt( file_in1, usecols=(0,1,2), comments='#', unpack = True )
-            self.nm_den, self.nm_e2a, self.nm_pre = np.loadtxt( file_in2, usecols=(0,1,2), comments='#', unpack = True )
+            self.sm_den, self.sm_e2a_int, self.sm_pre = np.loadtxt( file_in1, usecols=(0,1,2), comments='#', unpack = True )
+            self.nm_den, self.nm_e2a_int, self.nm_pre = np.loadtxt( file_in2, usecols=(0,1,2), comments='#', unpack = True )
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kf = self.sm_kfn
             # enthalpy
-            self.sm_h2a = nuda.cst.mnuc2 + self.sm_e2a + self.sm_pre / self.sm_den
-            self.nm_h2a = nuda.cst.mnuc2 + self.nm_e2a + self.nm_pre / self.nm_den
+            self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
+            self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed
             x = np.insert( self.sm_den, 0, 0.0 )
             y = np.insert( self.sm_pre, 0, 0.0 )
@@ -214,8 +226,12 @@ class setupPheno():
             #self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             #
         elif model.lower() == 'ddrh':
@@ -228,8 +244,12 @@ class setupPheno():
             self.label = 'DDRH-'+param
             if param == "DDMEd": self.label = "DDRH-DDME$\\delta$"
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             #
         elif model.lower() == 'ddrhf':
@@ -241,8 +261,12 @@ class setupPheno():
             #self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             #
         self.den_unit = 'fm$^{-3}$'
@@ -307,6 +331,10 @@ class setupPheno():
         self.sm_kfn = []
         #: Attribute the symmetric matter Fermi momentum.
         self.sm_kf = []
+        #: Attribute the neutron matter internal energy per particle.
+        self.nm_e2a_int = []
+        #: Attribute the symmetric matter internal energy per particle.
+        self.sm_e2a_int = []
         #: Attribute the neutron matter energy per particle.
         self.nm_e2a = []
         #: Attribute the symmetric matter energy per particle.
@@ -328,27 +356,4 @@ class setupPheno():
         #
         return self
 
-def checkPheno(obj,band,matter):
-    '''
-    Check if the phenomenological EOS is inside the band.
-    Return True if inside the band, otherwise return False.
-    '''
-    if matter.lower() == 'nm':
-        x = np.insert( obj.nm_den, 0, 0.0 )
-        y = np.insert( obj.nm_e2a, 0, 0.0 )
-    elif matter.lower() == 'sm':
-        x = np.insert( obj.sm_den, 0, 0.0 )
-        y = np.insert( obj.sm_e2a, 0, 0.0 )
-    elif matter.lower() == 'esym':
-        x = np.insert( obj.den, 0, 0.0 )
-        y = np.insert( obj.esym, 0, 0.0 )
-    else:
-        print('checkPheno: issue with matter:',matter)
-        exit()
-    cs_e2a = CubicSpline( x, y )
-    flag = True
-    for ind,den in enumerate(band.den):
-        if abs(cs_e2a(den)-band.e2a[ind]) > band.e2a_std[ind]:
-            flag = False
-    return flag
 

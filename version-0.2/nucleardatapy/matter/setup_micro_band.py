@@ -173,10 +173,10 @@ class setupMicroBand():
             #?? esym = nuda.matter.setupMicroEsym( model = model )
             # Prepare spline for E/A and E/A_err
             if matter.lower() == 'nm':
-                cs_e2a = CubicSpline( mic.nm_den, mic.nm_e2a )
+                cs_e2a = CubicSpline( mic.nm_den, mic.nm_e2a_int )
                 cs_e2a_err = CubicSpline( mic.nm_den, mic.nm_e2a_err )
             elif matter.lower() == 'sm':
-                cs_e2a = CubicSpline( mic.sm_den, mic.sm_e2a )
+                cs_e2a = CubicSpline( mic.sm_den, mic.sm_e2a_int )
                 cs_e2a_err = CubicSpline( mic.sm_den, mic.sm_e2a_err )
             elif matter.lower() == 'esym':
                 esym = nuda.matter.setupMicroEsym( model = model )
@@ -193,12 +193,12 @@ class setupMicroBand():
         #
         #    compute centroid and standard deviation as function of the density
         #
-        self.e2a = []; self.e2a_std = [];
+        self.e2a_int = []; self.e2a_std = [];
         for k,kfn in enumerate(self.kfn):
-            self.e2a.append( np.mean(mat[k,:]*e2a)/np.mean(mat[k,:]) )
+            self.e2a_int.append( np.mean(mat[k,:]*e2a)/np.mean(mat[k,:]) )
             self.e2a_std.append(  np.mean(mat[k,:]*e2a**2)/np.mean(mat[k,:]) )
-        self.e2a = np.array(self.e2a, dtype=float )
-        self.e2a_std = xfac * np.sqrt( np.array(self.e2a_std, dtype=float ) - self.e2a**2 )
+        self.e2a_int = np.array(self.e2a_int, dtype=float )
+        self.e2a_std = xfac * np.sqrt( np.array(self.e2a_std, dtype=float ) - self.e2a_int**2 )
         #
         if nuda.env.verb: print("Exit setupMicroBand()")
         #

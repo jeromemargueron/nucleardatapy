@@ -6,7 +6,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter eos_setupAM_e_plot.py:")
+    print("Enter eos_setupAM_e2a_asy_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -29,17 +29,33 @@ def main():
     #micro_mbs = [ 'NLEFT' ]
     micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT' ]
     print('micro_mbs:',micro_mbs)
-
+    #
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
-    # plot E/A
+    # fix the asymmetry parameters
     #
-    pname = 'figs/plot_eos_setupAM_e.png'
-    nuda.fig.eos_setupAM_e_fig( pname, micro_mbs, pheno_models, band )
+    asys = [ 0.6, 0.7, 0.8, 0.9 ]
+    #
+    for asy in asys:
+        #
+        # plot nuclear E/A for a given asymmetric parameter asy
+        #
+        pname = 'figs/plot_eos_setupAM_e2a_asy'+str(asy)+'_nuc.png'
+        nuda.fig.eos_setupAM_e2a_asy_nuc_fig( pname, micro_mbs, pheno_models, asy, band )
+        #
+        # plot lepton E/A for a given asymmetric parameter asy
+        #
+        pname = 'figs/plot_eos_setupAM_e2a_asy'+str(asy)+'_lep.png'
+        nuda.fig.eos_setupAM_e2a_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band )
+        #
+        # plot total (nuc+lep) E/A for a given asymmetric parameter asy
+        #
+        pname = 'figs/plot_eos_setupAM_e2a_asy'+str(asy)+'_tot.png'
+        nuda.fig.eos_setupAM_e2a_asy_tot_fig( pname, micro_mbs, pheno_models, asy, band )
     #
     print(50*'-')
-    print("Exit eos_setupAM_e_plot.py:")
+    print("Exit eos_setupAM_e2a_asy_plot.py:")
     print(50*'-')
     #
     

@@ -52,6 +52,11 @@ def main():
     #
     # plot particle fractions
     #
+    pname = 'figs/plot_eos_setupAMBeq_eos.png'
+    nuda.fig.eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band )
+    #
+    # plot particle fractions
+    #
     pname = 'figs/plot_eos_setupAMBeq_xp.png'
     nuda.fig.eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band )
     #

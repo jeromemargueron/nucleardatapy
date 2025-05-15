@@ -1,13 +1,8 @@
-import os
-import sys
 import math
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
-
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -156,9 +151,9 @@ class setupPhenoEsym():
         #
         pheno = nuda.matter.setupPheno( model = model, param = param )
         self.sm_den = pheno.sm_den
-        self.sm_e2a = pheno.sm_e2a
+        self.sm_e2a_int = pheno.sm_e2a_int
         self.nm_den = pheno.nm_den
-        self.nm_e2a = pheno.nm_e2a
+        self.nm_e2a_int = pheno.nm_e2a_int
         #pheno.print_outputs( )
         #
         # ===========================
@@ -173,12 +168,12 @@ class setupPhenoEsym():
         #
         # E/A in SM (cubic spline)
         #
-        x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a, 0, 0.0 )
+        x = np.insert( self.sm_den, 0, 0.0 ); y = np.insert( self.sm_e2a_int, 0, 0.0 )
         cs_sm_e2a = CubicSpline( x, y )
         #
         # E/A in NM (cubic spline)
         #
-        x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a, 0, 0.0 )
+        x = np.insert( self.nm_den, 0, 0.0 ); y = np.insert( self.nm_e2a_int, 0, 0.0 )
         cs_nm_e2a = CubicSpline( x, y )
         #
         # density for Esym (no extroplation, only interpolation)
@@ -192,9 +187,9 @@ class setupPhenoEsym():
         #
         # Symmetry energy for the densities defined in self.den
         #
-        self.esym_sm_e2a = cs_sm_e2a( self.den )
-        self.esym_nm_e2a = cs_nm_e2a( self.den )
-        self.esym = self.esym_nm_e2a - self.esym_sm_e2a
+        self.esym_sm_e2a_int = cs_sm_e2a( self.den )
+        self.esym_nm_e2a_int = cs_nm_e2a( self.den )
+        self.esym = self.esym_nm_e2a_int - self.esym_sm_e2a_int
         self.esym_sm_pre = self.den**2 * cs_sm_e2a( self.den, 1 )
         self.esym_sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.esym_sm_pre
         #

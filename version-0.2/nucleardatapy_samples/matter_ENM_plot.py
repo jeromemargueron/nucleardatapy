@@ -1,8 +1,5 @@
 
-import os
-import sys
 import numpy as np
-import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
@@ -18,7 +15,7 @@ def main():
     #
     # fix the uncertainty band
     #
-    den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+    den = np.array([0.08,0.1,0.12,0.14,0.16])
     models = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
     band = nuda.matter.setupMicroBand( models, den=den, matter='NM' )
     #

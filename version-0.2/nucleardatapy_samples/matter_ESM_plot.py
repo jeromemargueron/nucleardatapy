@@ -4,9 +4,6 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def main():

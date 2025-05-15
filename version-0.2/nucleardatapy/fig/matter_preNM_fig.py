@@ -32,7 +32,7 @@ def matter_preNM_fig( pname, micro_mbs, pheno_models, band ):
     #
     fig, axs = plt.subplots(1,2)
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
+    fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.3 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$p_\text{NM}(n_\text{nuc})$')
@@ -137,7 +137,7 @@ def matter_preNM_fig( pname, micro_mbs, pheno_models, band ):
     #
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     #plt.tight_layout()
     if pname is not None:
