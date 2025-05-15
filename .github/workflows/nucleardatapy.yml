@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
           pip install sphinx sphinx-rtd-theme recommonmark # Install Sphinx and the theme
           pip install jupyter jupyter-book myst-nb  # Install jupyter-book
-          pip install nucleardatapy  # Install nucleardatapy in editable mode
+          pip install -e .  # Install nucleardatapy in editable mode
 
       - name: Check test discovery
         run: pytest --collect-only version-0.2/tests/
@@ -49,8 +49,8 @@ jobs:
       - name: Build Jupyter Book
         working-directory: book
         run: |
-          pip install nucleardatapy  # Ensure nucleardatapy is installed for Jupyter Book
-          jupyter-book build .
+          pip install -r docs/requirements.txt  # Ensure nucleardatapy is installed for Jupyter Book
+          jupyter-book build book/
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v4
@@ -59,7 +59,7 @@ jobs:
           path: |
             docs/_build/html/
             book/_build/html/
-  # ... (your build job remains the same) ...
+
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main' # Only deploy on pushes to the main branch
@@ -67,38 +67,12 @@ jobs:
     permissions:
       contents: write # Required to push to gh-pages branch
     steps:
-      # No initial checkout of main needed if we are not using version info from main for this simplified deploy
-      # - name: Check out the repository (main branch)
-      #   uses: actions/checkout@v4
-      #   with:
-      #     ref: main
-
-      # Version extraction can be kept if you want to use $VERSION for other purposes or for a separate versioned deployment later
-      # For now, let's simplify and assume we are deploying the "latest" or main build.
-      # - name: Download version file
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: version-info
-      #     path: version-0.2 # This path might need to be ./ if __init__.py is at root of artifact
-
-      # - name: Extract version from __init__.py
-      #   id: version
-      #   run: |
-      #     if [ -f version-0.2/__init__.py ]; then # Adjust path if necessary
-      #       VERSION=$(grep -oP "__version__\s*=\s*['\"]\K[^'\"]+" version-0.2/__init__.py)
-      #       echo "Extracted version: $VERSION"
-      #       echo "VERSION=$VERSION" >> $GITHUB_ENV
-      #     else
-      #       echo "Warning: version-0.2/__init__.py not found! Using 'latest' as fallback."
-      #       echo "VERSION=latest" >> $GITHUB_ENV
-      #     fi
-
       # Checkout the gh-pages branch to deploy to it.
       # The JamesIves action can also create it if it doesn't exist.
-      - name: Check out gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages # Action will deploy to this branch
+      # - name: Check out gh-pages branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: gh-pages # Action will deploy to this branch
 
       - name: Download built documentation artifacts
         uses: actions/download-artifact@v4
