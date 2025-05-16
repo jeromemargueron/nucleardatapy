@@ -36,12 +36,12 @@ def matter_eosSM_fig( pname, micro_mbs, pheno_models, band ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=None, top=0.9, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$\rho_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$\rho_\text{nuc} c^2$ (fm$^{-3}$)')
     axs[0].set_ylabel(r'$p_\text{SM}(n_\text{nuc})$')
     axs[0].set_xlim([0, 350])
     axs[0].set_ylim([-2, 45])
     #
-    axs[1].set_xlabel(r'$\rho_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$\rho_\text{nuc} c^2$ (fm$^{-3}$)')
     #axs[1].set_ylabel(r'$e_{sym}(n)$')
     axs[1].set_xlim([0, 350])
     axs[1].set_ylim([-2, 45])
