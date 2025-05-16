@@ -471,140 +471,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># Import matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># Import nucleardatapy package</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Import nucleardatapy package</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig</span><span class="w">     </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupFFGNuc_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_fig</span><span class="w">         </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_err_NM_fig</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>  <span class="c1"># Use a non-interactive backend</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.12.10</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1296</span>
-<span class="g g-Whitespace">   </span><span class="mi">1292</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend_fallback&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1295</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1296</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1299</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_backend</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">auto_select</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1300</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1301</span><span class="sd">     Return the name of the current backend.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1302</span><span class="sd"> </span>
-<span class="sd">   (...)   1320     matplotlib.use</span>
-<span class="g g-Whitespace">   </span><span class="mi">1321</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/__init__.py:769,</span> in <span class="ni">RcParams.__setitem__</span><span class="nt">(self, key, val)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>             <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">769</span>     <span class="n">cval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span> <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">771</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ve</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/rcsetup.py:273,</span> in <span class="ni">validate_backend</span><span class="nt">(s)</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">273</span>     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">_auto_backend_sentinel</span> <span class="ow">or</span> <span class="n">backend_registry</span><span class="o">.</span><span class="n">is_valid_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="k">return</span> <span class="n">s</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:244,</span> in <span class="ni">BackendRegistry.is_valid_backend</span><span class="nt">(self, backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="k">return</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="c1"># Only load entry points if really need to and not already done so.</span>
-<span class="ne">--&gt; </span><span class="mi">244</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_entry_points_loaded</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="n">backend</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_to_gui_framework</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span>     <span class="k">return</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:116,</span> in <span class="ni">BackendRegistry._ensure_entry_points_loaded</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_entry_points_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># Load entry points, if they have not already been loaded.</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">116</span>         <span class="n">entries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_entry_points</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_and_store_entry_points</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:136,</span> in <span class="ni">BackendRegistry._read_entry_points</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_entry_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="c1"># Read entry points of modules that self-advertise as Matplotlib backends.</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="c1"># Expects entry points like this one from matplotlib-inline (in pyproject.toml</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="c1"># format):</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="c1">#   [project.entry-points.&quot;matplotlib.backend&quot;]</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1">#   inline = &quot;matplotlib_inline.backend_inline&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">im</span>
-<span class="ne">--&gt; </span><span class="mi">136</span>     <span class="n">entry_points</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">entry_points</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;matplotlib.backend&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entry_points</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># For backward compatibility, if matplotlib-inline and/or ipympl are installed</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># but too old to include entry points, create them. Do not import ipympl</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="c1"># directly as this calls matplotlib.use() whilst in this function.</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:913,</span> in <span class="ni">entry_points</span><span class="nt">(**params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd"> Pass selection parameters (group or name) to filter the</span>
-<span class="sd">   (...)    908 :return: EntryPoints for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">    911     dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">913</span> <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:911,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">def</span><span class="w"> </span><span class="nf">entry_points</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EntryPoints</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd">     Pass selection parameters (group or name) to filter the</span>
-<span class="sd">   (...)    908     :return: EntryPoints for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span>     <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">--&gt; 911         dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/_itertools.py:15,</span> in <span class="ni">unique_everseen</span><span class="nt">(iterable, key)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">yield</span> <span class="n">element</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:795,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Find metadata directories in paths heuristically.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span> <span class="n">prepared</span> <span class="o">=</span> <span class="n">Prepared</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span> <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">--&gt; 795     path.search(prepared) for path</span> in <span class="ni">map</span><span class="nt">(FastPath, paths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:693,</span> in <span class="ni">FastPath.search</span><span class="nt">(self, name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">693</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mtime</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:698,</span> in <span class="ni">FastPath.mtime</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">695</span> <span class="nd">@property</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">def</span><span class="w"> </span><span class="nf">mtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">OSError</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">698</span>         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
-
-<span class="ne">TypeError</span>: stat: path should be string, bytes, os.PathLike or integer, not NoneType
 </pre></div>
 </div>
 </div>
@@ -635,7 +505,6 @@ model -&gt;  1981-VAR-AM-FP
 mb: VAR model: 1981-VAR-AM-FP
 model -&gt;  1998-VAR-AM-APR
 mb: VAR model: 1998-VAR-AM-APR
-model -&gt;  1998-VAR-AM-APR-fit
 model -&gt;  2012-AFDMC-NM-RES-1
 mb: AFDMC model: 2012-AFDMC-NM-RES-1
 model -&gt;  2012-AFDMC-NM-RES-2
@@ -770,7 +639,9 @@ model: Skyrme  param: SLY5
 model: Skyrme  param: SLY230A
 model: Skyrme  param: SLY230B
 model: Skyrme  param: SV
-model: Skyrme  param: T6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: T6
 model: Skyrme  param: T44
 model: Skyrme  param: UNEDF0
 model: Skyrme  param: UNEDF1
@@ -791,7 +662,6 @@ model: DDRHF  param: PKO2
 model: DDRHF  param: PKO3
 </pre></div>
 </div>
-<img alt="../../_images/d7b10f1eb8ca787f8113fb903a40b2ba468f4781b9bbaa12dd818aab02f3e9f5.png" src="../../_images/d7b10f1eb8ca787f8113fb903a40b2ba468f4781b9bbaa12dd818aab02f3e9f5.png" />
 </div>
 </div>
 <p>plot energy per particle in SM:</p>
@@ -815,72 +685,116 @@ model -&gt;  2020-MBPT-AM
 Plot name: None
 model -&gt;  1981-VAR-AM-FP
 mb: VAR model: 1981-VAR-AM-FP
+with marker 2: o
+with no error False
 model -&gt;  1998-VAR-AM-APR
 mb: VAR model: 1998-VAR-AM-APR
-model -&gt;  1998-VAR-AM-APR-fit
-model -&gt;  2024-BHF-AM-2BF-Av8p
-mb: BHF model: 2024-BHF-AM-2BF-Av8p
+with marker 1: ^
+with no error False
 model -&gt;  2024-BHF-AM-2BF-Av18
-mb: BHF model: 2024-BHF-AM-2BF-Av18
+mb: BHF2 model: 2024-BHF-AM-2BF-Av18
+with marker 2: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-BONN
-mb: BHF model: 2024-BHF-AM-2BF-BONN
+mb: BHF2 model: 2024-BHF-AM-2BF-BONN
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-CDBONN
-mb: BHF model: 2024-BHF-AM-2BF-CDBONN
+mb: BHF2 model: 2024-BHF-AM-2BF-CDBONN
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97a
-mb: BHF model: 2024-BHF-AM-2BF-NSC97a
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97a
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97b
-mb: BHF model: 2024-BHF-AM-2BF-NSC97b
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97b
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97c
-mb: BHF model: 2024-BHF-AM-2BF-NSC97c
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97c
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97d
-mb: BHF model: 2024-BHF-AM-2BF-NSC97d
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97d
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97e
-mb: BHF model: 2024-BHF-AM-2BF-NSC97e
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97e
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-2BF-NSC97f
-mb: BHF model: 2024-BHF-AM-2BF-NSC97f
-model -&gt;  2024-BHF-AM-2BF-SSCV14
-mb: BHF model: 2024-BHF-AM-2BF-SSCV14
-model -&gt;  2024-BHF-AM-23BF-Av8p
-mb: BHF model: 2024-BHF-AM-23BF-Av8p
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97f
+with marker 1: o
+with no error False
+model -&gt;  2006-BHF-AM-Av18
+mb: BHF23 model: 2006-BHF-AM-Av18
+with marker 2: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-Av18
-mb: BHF model: 2024-BHF-AM-23BF-Av18
+mb: BHF23 model: 2024-BHF-AM-23BF-Av18
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-BONN
-mb: BHF model: 2024-BHF-AM-23BF-BONN
+mb: BHF23 model: 2024-BHF-AM-23BF-BONN
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-CDBONN
-mb: BHF model: 2024-BHF-AM-23BF-CDBONN
+mb: BHF23 model: 2024-BHF-AM-23BF-CDBONN
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97a
-mb: BHF model: 2024-BHF-AM-23BF-NSC97a
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97a
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97b
-mb: BHF model: 2024-BHF-AM-23BF-NSC97b
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97b
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97c
-mb: BHF model: 2024-BHF-AM-23BF-NSC97c
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97c
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97d
-mb: BHF model: 2024-BHF-AM-23BF-NSC97d
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97d
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97e
-mb: BHF model: 2024-BHF-AM-23BF-NSC97e
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97e
+with marker 1: o
+with no error False
 model -&gt;  2024-BHF-AM-23BF-NSC97f
-mb: BHF model: 2024-BHF-AM-23BF-NSC97f
-model -&gt;  2024-BHF-AM-23BF-SSCV14
-mb: BHF model: 2024-BHF-AM-23BF-SSCV14
-model -&gt;  2010-MBPT-NM
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97f
+with marker 1: o
+with no error False
 model -&gt;  2016-MBPT-AM
 mb: MBPT model: 2016-MBPT-AM
+with marker 2: s
+with error True
 model -&gt;  2019-MBPT-AM-L59
 mb: MBPT model: 2019-MBPT-AM-L59
+with marker 1: s
+with no error False
 model -&gt;  2019-MBPT-AM-L69
 mb: MBPT model: 2019-MBPT-AM-L69
+with marker 1: s
+with no error False
 model -&gt;  2020-MBPT-AM
 mb: MBPT model: 2020-MBPT-AM
+with marker 1: o
+with error True
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066374 10.01180281 -3.0695996 ]
-sm_pcov: [[ 0.5046284  -0.83636905  0.3404081 ]
- [-0.83636905  1.40263159 -0.57637576]
- [ 0.3404081  -0.57637576  0.2387368 ]]
-nm_popt: [-1.18794127  0.71930869 -0.11294904]
+sm_popt: [-9.17066387 10.01180304 -3.06959969]
+sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
+ [-0.83636905  1.40263157 -0.57637575]
+ [ 0.34040809 -0.57637575  0.23873679]]
+nm_popt: [-1.18794131  0.71930874 -0.11294906]
 nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
  [-0.01702128  0.02165017 -0.00663766]
  [ 0.00515286 -0.00663766  0.00205605]]
 mb: NLEFT model: 2024-NLEFT-AM
+with marker 2: s
+with error True
 model: Skyrme  param: BSK14
 model: Skyrme  param: BSK16
 model: Skyrme  param: BSK17
@@ -929,12 +843,13 @@ model: DDRH  param: DDMEd
 model: DDRH  param: PKDD
 model: DDRH  param: TW99
 model: DDRHF  param: PKA1
-model: DDRHF  param: PKO1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRHF  param: PKO1
 model: DDRHF  param: PKO2
 model: DDRHF  param: PKO3
 </pre></div>
 </div>
-<img alt="../../_images/3cde601eda242926974aa4a2a3a6115ea63c2535d65c772ad79613b9c57c42ec.png" src="../../_images/3cde601eda242926974aa4a2a3a6115ea63c2535d65c772ad79613b9c57c42ec.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -958,7 +873,9 @@ model -&gt;  2016-MBPT-AM
 model -&gt;  2020-MBPT-AM
 -&gt; model: 2020-MBPT-AM
 model -&gt;  2020-MBPT-AM
-model -&gt;  2016-MBPT-AM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model -&gt;  2016-MBPT-AM
 -&gt; model: 2016-MBPT-AM
 model -&gt;  2016-MBPT-AM
 model -&gt;  2020-MBPT-AM
@@ -971,76 +888,63 @@ mb: VAR model: 1981-VAR-AM-FP
 -&gt; model: 1998-VAR-AM-APR
 model -&gt;  1998-VAR-AM-APR
 mb: VAR model: 1998-VAR-AM-APR
--&gt; model: 1998-VAR-AM-APR-fit
-model -&gt;  1998-VAR-AM-APR-fit
-model -&gt;  1998-VAR-AM-APR-fit
-mb: VAR model: 1998-VAR-AM-APR-fit
--&gt; model: 2024-BHF-AM-2BF-Av8p
-model -&gt;  2024-BHF-AM-2BF-Av8p
-mb: BHF model: 2024-BHF-AM-2BF-Av8p
 -&gt; model: 2024-BHF-AM-2BF-Av18
 model -&gt;  2024-BHF-AM-2BF-Av18
-mb: BHF model: 2024-BHF-AM-2BF-Av18
+mb: BHF2 model: 2024-BHF-AM-2BF-Av18
 -&gt; model: 2024-BHF-AM-2BF-BONN
 model -&gt;  2024-BHF-AM-2BF-BONN
-mb: BHF model: 2024-BHF-AM-2BF-BONN
+mb: BHF2 model: 2024-BHF-AM-2BF-BONN
 -&gt; model: 2024-BHF-AM-2BF-CDBONN
 model -&gt;  2024-BHF-AM-2BF-CDBONN
-mb: BHF model: 2024-BHF-AM-2BF-CDBONN
+mb: BHF2 model: 2024-BHF-AM-2BF-CDBONN
 -&gt; model: 2024-BHF-AM-2BF-NSC97a
 model -&gt;  2024-BHF-AM-2BF-NSC97a
-mb: BHF model: 2024-BHF-AM-2BF-NSC97a
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97a
 -&gt; model: 2024-BHF-AM-2BF-NSC97b
 model -&gt;  2024-BHF-AM-2BF-NSC97b
-mb: BHF model: 2024-BHF-AM-2BF-NSC97b
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97b
 -&gt; model: 2024-BHF-AM-2BF-NSC97c
 model -&gt;  2024-BHF-AM-2BF-NSC97c
-mb: BHF model: 2024-BHF-AM-2BF-NSC97c
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97c
 -&gt; model: 2024-BHF-AM-2BF-NSC97d
 model -&gt;  2024-BHF-AM-2BF-NSC97d
-mb: BHF model: 2024-BHF-AM-2BF-NSC97d
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97d
 -&gt; model: 2024-BHF-AM-2BF-NSC97e
 model -&gt;  2024-BHF-AM-2BF-NSC97e
-mb: BHF model: 2024-BHF-AM-2BF-NSC97e
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97e
 -&gt; model: 2024-BHF-AM-2BF-NSC97f
 model -&gt;  2024-BHF-AM-2BF-NSC97f
-mb: BHF model: 2024-BHF-AM-2BF-NSC97f
--&gt; model: 2024-BHF-AM-2BF-SSCV14
-model -&gt;  2024-BHF-AM-2BF-SSCV14
-mb: BHF model: 2024-BHF-AM-2BF-SSCV14
--&gt; model: 2024-BHF-AM-23BF-Av8p
-model -&gt;  2024-BHF-AM-23BF-Av8p
-mb: BHF model: 2024-BHF-AM-23BF-Av8p
+mb: BHF2 model: 2024-BHF-AM-2BF-NSC97f
+-&gt; model: 2006-BHF-AM-Av18
+model -&gt;  2006-BHF-AM-Av18
+mb: BHF23 model: 2006-BHF-AM-Av18
 -&gt; model: 2024-BHF-AM-23BF-Av18
 model -&gt;  2024-BHF-AM-23BF-Av18
-mb: BHF model: 2024-BHF-AM-23BF-Av18
+mb: BHF23 model: 2024-BHF-AM-23BF-Av18
 -&gt; model: 2024-BHF-AM-23BF-BONN
 model -&gt;  2024-BHF-AM-23BF-BONN
-mb: BHF model: 2024-BHF-AM-23BF-BONN
+mb: BHF23 model: 2024-BHF-AM-23BF-BONN
 -&gt; model: 2024-BHF-AM-23BF-CDBONN
 model -&gt;  2024-BHF-AM-23BF-CDBONN
-mb: BHF model: 2024-BHF-AM-23BF-CDBONN
+mb: BHF23 model: 2024-BHF-AM-23BF-CDBONN
 -&gt; model: 2024-BHF-AM-23BF-NSC97a
 model -&gt;  2024-BHF-AM-23BF-NSC97a
-mb: BHF model: 2024-BHF-AM-23BF-NSC97a
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97a
 -&gt; model: 2024-BHF-AM-23BF-NSC97b
 model -&gt;  2024-BHF-AM-23BF-NSC97b
-mb: BHF model: 2024-BHF-AM-23BF-NSC97b
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97b
 -&gt; model: 2024-BHF-AM-23BF-NSC97c
 model -&gt;  2024-BHF-AM-23BF-NSC97c
-mb: BHF model: 2024-BHF-AM-23BF-NSC97c
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97c
 -&gt; model: 2024-BHF-AM-23BF-NSC97d
 model -&gt;  2024-BHF-AM-23BF-NSC97d
-mb: BHF model: 2024-BHF-AM-23BF-NSC97d
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97d
 -&gt; model: 2024-BHF-AM-23BF-NSC97e
 model -&gt;  2024-BHF-AM-23BF-NSC97e
-mb: BHF model: 2024-BHF-AM-23BF-NSC97e
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97e
 -&gt; model: 2024-BHF-AM-23BF-NSC97f
 model -&gt;  2024-BHF-AM-23BF-NSC97f
-mb: BHF model: 2024-BHF-AM-23BF-NSC97f
--&gt; model: 2024-BHF-AM-23BF-SSCV14
-model -&gt;  2024-BHF-AM-23BF-SSCV14
-mb: BHF model: 2024-BHF-AM-23BF-SSCV14
+mb: BHF23 model: 2024-BHF-AM-23BF-NSC97f
 -&gt; model: 2019-MBPT-AM-L59
 model -&gt;  2019-MBPT-AM-L59
 mb: MBPT model: 2019-MBPT-AM-L59
@@ -1049,24 +953,30 @@ model -&gt;  2016-MBPT-AM
 mb: MBPT model: 2016-MBPT-AM
 -&gt; model: 2019-MBPT-AM-L69
 model -&gt;  2019-MBPT-AM-L69
-mb: MBPT model: 2019-MBPT-AM-L69
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mb: MBPT model: 2019-MBPT-AM-L69
 -&gt; model: 2020-MBPT-AM
 model -&gt;  2020-MBPT-AM
 mb: MBPT model: 2020-MBPT-AM
 -&gt; model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066374 10.01180281 -3.0695996 ]
-sm_pcov: [[ 0.5046284  -0.83636905  0.3404081 ]
- [-0.83636905  1.40263159 -0.57637576]
- [ 0.3404081  -0.57637576  0.2387368 ]]
-nm_popt: [-1.18794127  0.71930869 -0.11294904]
+sm_popt: [-9.17066387 10.01180304 -3.06959969]
+sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
+ [-0.83636905  1.40263157 -0.57637575]
+ [ 0.34040809 -0.57637575  0.23873679]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nm_popt: [-1.18794131  0.71930874 -0.11294906]
 nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
  [-0.01702128  0.02165017 -0.00663766]
  [ 0.00515286 -0.00663766  0.00205605]]
 mb: NLEFT model: 2024-NLEFT-AM
 model: Skyrme  param: BSK14
 model: Skyrme  param: BSK16
-model: Skyrme  param: BSK17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: BSK17
 model: Skyrme  param: BSK27
 model: Skyrme  param: F-
 model: Skyrme  param: F+
@@ -1117,7 +1027,6 @@ model: DDRHF  param: PKO2
 model: DDRHF  param: PKO3
 </pre></div>
 </div>
-<img alt="../../_images/f38662dfb0675353c086bbcd5fd7e46723e8dd6d0dd3f4d0524fd4e9d929faab.png" src="../../_images/f38662dfb0675353c086bbcd5fd7e46723e8dd6d0dd3f4d0524fd4e9d929faab.png" />
 </div>
 </div>
 </section>

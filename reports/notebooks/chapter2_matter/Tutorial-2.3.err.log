@@ -18,139 +18,43 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Import numpy
-import numpy as np
-# Import nucleardatapy package
-import nucleardatapy as nuda
+band = nuda.matter.setupMicroBand( models, matter='NM' )
+band.print_outputs( )
 ------------------
 
+----- stdout -----
+
+Band in NM
+model ->  2013-QMC-NM
+model ->  2016-QMC-NM
+model ->  2016-MBPT-AM
+model ->  2013-QMC-NM
+model ->  2016-QMC-NM
+model ->  2016-MBPT-AM
+model ->  2013-QMC-NM
+model ->  2016-QMC-NM
+model ->  2016-MBPT-AM
+- Print output:
+   models : ['2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM']
+   den_min: 0.04
+   den_max: 0.16
+   den : [0.04  0.052 0.064 0.076 0.088 0.1   0.112 0.124 0.136 0.148 0.16 ]
+   kfn : [1.06 1.15 1.24 1.31 1.38 1.44 1.49 1.54 1.59 1.64 1.68]
+------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mTypeError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 4[39m
-[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
-[32m      3[39m [38;5;66;03m# Import nucleardatapy package[39;00m
-[32m----> [39m[32m4[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnuda[39;00m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[11][39m[32m, line 2[39m
+[32m      1[39m band = nuda.matter.setupMicroBand( models, matter=[33m'[39m[33mNM[39m[33m'[39m )
+[32m----> [39m[32m2[39m [43mband[49m[43m.[49m[43mprint_outputs[49m[43m([49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/__init__.py:23[39m
-[32m     21[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mhnuc[39;00m[38;5;250m    [39m[38;5;28;01mimport[39;00m *
-[32m     22[39m [38;5;66;03m#[39;00m
-[32m---> [39m[32m23[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[38;5;250m     [39m[38;5;28;01mimport[39;00m *
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_band.py:218[39m, in [36msetupMicroBand.print_outputs[39m[34m(self)[39m
+[32m    216[39m [38;5;28mprint[39m([33m"[39m[33m   den :[39m[33m"[39m,np.round([38;5;28mself[39m.den,[32m3[39m))
+[32m    217[39m [38;5;28mprint[39m([33m"[39m[33m   kfn :[39m[33m"[39m,np.round([38;5;28mself[39m.kfn,[32m2[39m))
+[32m--> [39m[32m218[39m [38;5;28mprint[39m([33m"[39m[33m   e2a :[39m[33m"[39m,np.round([38;5;28;43mself[39;49m[43m.[49m[43me2a[49m,[32m2[39m))
+[32m    219[39m [38;5;28mprint[39m([33m"[39m[33m   std :[39m[33m"[39m,np.round([38;5;28mself[39m.e2a_std,[32m3[39m))
+[32m    220[39m [38;5;66;03m#if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")[39;00m
+[32m    221[39m [38;5;66;03m#[39;00m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/fig/__init__.py:4[39m
-[32m      1[39m [33;03m"""[39;00m
-[32m      2[39m [33;03mThis module provides microscopic, phenomenological and experimental data constraints.[39;00m
-[32m      3[39m [33;03m"""[39;00m
-[32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupFFGNuc_fig[39;00m[38;5;250m        [39m[38;5;28;01mimport[39;00m *
-[32m      5[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_fig[39;00m[38;5;250m         [39m[38;5;28;01mimport[39;00m *
-[32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnucleardatapy[39;00m[34;01m.[39;00m[34;01mfig[39;00m[34;01m.[39;00m[34;01mmatter_setupMicro_err_NM_fig[39;00m[38;5;250m  [39m[38;5;28;01mimport[39;00m *
-
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/fig/matter_setupFFGNuc_fig.py:2[39m
-[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
-[32m----> [39m[32m2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mmpl[39;00m
-[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      5[39m mpl.use([33m"[39m[33mAgg[39m[33m"[39m)  [38;5;66;03m# Use a non-interactive backend[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/__init__.py:1296[39m
-[32m   1292[39m     rcParams[[33m'[39m[33mbackend_fallback[39m[33m'[39m] = [38;5;28;01mFalse[39;00m
-[32m   1295[39m [38;5;28;01mif[39;00m os.environ.get([33m'[39m[33mMPLBACKEND[39m[33m'[39m):
-[32m-> [39m[32m1296[39m     [43mrcParams[49m[43m[[49m[33;43m'[39;49m[33;43mbackend[39;49m[33;43m'[39;49m[43m][49m = os.environ.get([33m'[39m[33mMPLBACKEND[39m[33m'[39m)
-[32m   1299[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mget_backend[39m(*, auto_select=[38;5;28;01mTrue[39;00m):
-[32m   1300[39m [38;5;250m    [39m[33;03m"""[39;00m
-[32m   1301[39m [33;03m    Return the name of the current backend.[39;00m
-[32m   1302[39m 
-[32m   (...)[39m[32m   1320[39m [33;03m    matplotlib.use[39;00m
-[32m   1321[39m [33;03m    """[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/__init__.py:769[39m, in [36mRcParams.__setitem__[39m[34m(self, key, val)[39m
-[32m    767[39m             [38;5;28;01mreturn[39;00m
-[32m    768[39m [38;5;28;01mtry[39;00m:
-[32m--> [39m[32m769[39m     cval = [38;5;28;43mself[39;49m[43m.[49m[43mvalidate[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[43mval[49m[43m)[49m
-[32m    770[39m [38;5;28;01mexcept[39;00m [38;5;167;01mValueError[39;00m [38;5;28;01mas[39;00m ve:
-[32m    771[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33mf[39m[33m"[39m[33mKey [39m[38;5;132;01m{[39;00mkey[38;5;132;01m}[39;00m[33m: [39m[38;5;132;01m{[39;00mve[38;5;132;01m}[39;00m[33m"[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;28;01mNone[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/rcsetup.py:273[39m, in [36mvalidate_backend[39m[34m(s)[39m
-[32m    272[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mvalidate_backend[39m(s):
-[32m--> [39m[32m273[39m     [38;5;28;01mif[39;00m s [38;5;129;01mis[39;00m _auto_backend_sentinel [38;5;129;01mor[39;00m [43mbackend_registry[49m[43m.[49m[43mis_valid_backend[49m[43m([49m[43ms[49m[43m)[49m:
-[32m    274[39m         [38;5;28;01mreturn[39;00m s
-[32m    275[39m     [38;5;28;01melse[39;00m:
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:244[39m, in [36mBackendRegistry.is_valid_backend[39m[34m(self, backend)[39m
-[32m    241[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mTrue[39;00m
-[32m    243[39m [38;5;66;03m# Only load entry points if really need to and not already done so.[39;00m
-[32m--> [39m[32m244[39m [38;5;28;43mself[39;49m[43m.[49m[43m_ensure_entry_points_loaded[49m[43m([49m[43m)[49m
-[32m    245[39m [38;5;28;01mif[39;00m backend [38;5;129;01min[39;00m [38;5;28mself[39m._backend_to_gui_framework:
-[32m    246[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mTrue[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:116[39m, in [36mBackendRegistry._ensure_entry_points_loaded[39m[34m(self)[39m
-[32m    113[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_ensure_entry_points_loaded[39m([38;5;28mself[39m):
-[32m    114[39m     [38;5;66;03m# Load entry points, if they have not already been loaded.[39;00m
-[32m    115[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m._loaded_entry_points:
-[32m--> [39m[32m116[39m         entries = [38;5;28;43mself[39;49m[43m.[49m[43m_read_entry_points[49m[43m([49m[43m)[49m
-[32m    117[39m         [38;5;28mself[39m._validate_and_store_entry_points(entries)
-[32m    118[39m         [38;5;28mself[39m._loaded_entry_points = [38;5;28;01mTrue[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:136[39m, in [36mBackendRegistry._read_entry_points[39m[34m(self)[39m
-[32m    128[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_read_entry_points[39m([38;5;28mself[39m):
-[32m    129[39m     [38;5;66;03m# Read entry points of modules that self-advertise as Matplotlib backends.[39;00m
-[32m    130[39m     [38;5;66;03m# Expects entry points like this one from matplotlib-inline (in pyproject.toml[39;00m
-[32m    131[39m     [38;5;66;03m# format):[39;00m
-[32m    132[39m     [38;5;66;03m#   [project.entry-points."matplotlib.backend"][39;00m
-[32m    133[39m     [38;5;66;03m#   inline = "matplotlib_inline.backend_inline"[39;00m
-[32m    134[39m     [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mimportlib[39;00m[34;01m.[39;00m[34;01mmetadata[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mim[39;00m
-[32m--> [39m[32m136[39m     entry_points = [43mim[49m[43m.[49m[43mentry_points[49m[43m([49m[43mgroup[49m[43m=[49m[33;43m"[39;49m[33;43mmatplotlib.backend[39;49m[33;43m"[39;49m[43m)[49m
-[32m    137[39m     entries = [(entry.name, entry.value) [38;5;28;01mfor[39;00m entry [38;5;129;01min[39;00m entry_points]
-[32m    139[39m     [38;5;66;03m# For backward compatibility, if matplotlib-inline and/or ipympl are installed[39;00m
-[32m    140[39m     [38;5;66;03m# but too old to include entry points, create them. Do not import ipympl[39;00m
-[32m    141[39m     [38;5;66;03m# directly as this calls matplotlib.use() whilst in this function.[39;00m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:913[39m, in [36mentry_points[39m[34m(**params)[39m
-[32m    902[39m [38;5;250m[39m[33;03m"""Return EntryPoint objects for all installed packages.[39;00m
-[32m    903[39m 
-[32m    904[39m [33;03mPass selection parameters (group or name) to filter the[39;00m
-[32m   (...)[39m[32m    908[39m [33;03m:return: EntryPoints for all installed packages.[39;00m
-[32m    909[39m [33;03m"""[39;00m
-[32m    910[39m eps = itertools.chain.from_iterable(
-[32m    911[39m     dist.entry_points [38;5;28;01mfor[39;00m dist [38;5;129;01min[39;00m _unique(distributions())
-[32m    912[39m )
-[32m--> [39m[32m913[39m [38;5;28;01mreturn[39;00m [43mEntryPoints[49m[43m([49m[43meps[49m[43m)[49m.select(**params)
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:911[39m, in [36m<genexpr>[39m[34m(.0)[39m
-[32m    901[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mentry_points[39m(**params) -> EntryPoints:
-[32m    902[39m [38;5;250m    [39m[33;03m"""Return EntryPoint objects for all installed packages.[39;00m
-[32m    903[39m 
-[32m    904[39m [33;03m    Pass selection parameters (group or name) to filter the[39;00m
-[32m   (...)[39m[32m    908[39m [33;03m    :return: EntryPoints for all installed packages.[39;00m
-[32m    909[39m [33;03m    """[39;00m
-[32m    910[39m     eps = itertools.chain.from_iterable[43m([49m
-[32m--> [39m[32m911[39m [43m        [49m[43mdist[49m[43m.[49m[43mentry_points[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mdist[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43m_unique[49m[43m([49m[43mdistributions[49m[43m([49m[43m)[49m[43m)[49m
-[32m    912[39m [43m    [49m[43m)[49m
-[32m    913[39m     [38;5;28;01mreturn[39;00m EntryPoints(eps).select(**params)
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/_itertools.py:15[39m, in [36munique_everseen[39m[34m(iterable, key)[39m
-[32m     13[39m         [38;5;28;01myield[39;00m element
-[32m     14[39m [38;5;28;01melse[39;00m:
-[32m---> [39m[32m15[39m [43m    [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43melement[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43miterable[49m[43m:[49m
-[32m     16[39m [43m        [49m[43mk[49m[43m [49m[43m=[49m[43m [49m[43mkey[49m[43m([49m[43melement[49m[43m)[49m
-[32m     17[39m [43m        [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mk[49m[43m [49m[38;5;129;43;01mnot[39;49;00m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mseen[49m[43m:[49m
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:795[39m, in [36m<genexpr>[39m[34m(.0)[39m
-[32m    792[39m [38;5;250m[39m[33;03m"""Find metadata directories in paths heuristically."""[39;00m
-[32m    793[39m prepared = Prepared(name)
-[32m    794[39m [38;5;28;01mreturn[39;00m itertools.chain.from_iterable(
-[32m--> [39m[32m795[39m     [43mpath[49m[43m.[49m[43msearch[49m[43m([49m[43mprepared[49m[43m)[49m [38;5;28;01mfor[39;00m path [38;5;129;01min[39;00m [38;5;28mmap[39m(FastPath, paths)
-[32m    796[39m )
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:693[39m, in [36mFastPath.search[39m[34m(self, name)[39m
-[32m    692[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msearch[39m([38;5;28mself[39m, name):
-[32m--> [39m[32m693[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m.lookup([38;5;28;43mself[39;49m[43m.[49m[43mmtime[49m).search(name)
-
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:698[39m, in [36mFastPath.mtime[39m[34m(self)[39m
-[32m    695[39m [38;5;129m@property[39m
-[32m    696[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mmtime[39m([38;5;28mself[39m):
-[32m    697[39m     [38;5;28;01mwith[39;00m suppress([38;5;167;01mOSError[39;00m):
-[32m--> [39m[32m698[39m         [38;5;28;01mreturn[39;00m [43mos[49m[43m.[49m[43mstat[49m[43m([49m[38;5;28;43mself[39;49m[43m.[49m[43mroot[49m[43m)[49m.st_mtime
-[32m    699[39m     [38;5;28mself[39m.lookup.cache_clear()
-
-[31mTypeError[39m: stat: path should be string, bytes, os.PathLike or integer, not NoneType
+[31mAttributeError[39m: 'setupMicroBand' object has no attribute 'e2a'
 

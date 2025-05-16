@@ -471,140 +471,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># Import matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># Import nucleardatapy package</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Import nucleardatapy package</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">23</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.hnuc</span><span class="w">    </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1">#</span>
-<span class="ne">---&gt; </span><span class="mi">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig</span><span class="w">     </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This module provides microscopic, phenomenological and experimental data constraints.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupFFGNuc_fig</span><span class="w">        </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_fig</span><span class="w">         </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">nucleardatapy.fig.matter_setupMicro_err_NM_fig</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">version</span><span class="o">-</span><span class="mf">0.2</span><span class="o">/</span><span class="n">nucleardatapy</span><span class="o">/</span><span class="n">fig</span><span class="o">/</span><span class="n">matter_setupFFGNuc_fig</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;Agg&quot;</span><span class="p">)</span>  <span class="c1"># Use a non-interactive backend</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.12.10</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1296</span>
-<span class="g g-Whitespace">   </span><span class="mi">1292</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend_fallback&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1295</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1296</span>     <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MPLBACKEND&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1299</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_backend</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">auto_select</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1300</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1301</span><span class="sd">     Return the name of the current backend.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1302</span><span class="sd"> </span>
-<span class="sd">   (...)   1320     matplotlib.use</span>
-<span class="g g-Whitespace">   </span><span class="mi">1321</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/__init__.py:769,</span> in <span class="ni">RcParams.__setitem__</span><span class="nt">(self, key, val)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>             <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">769</span>     <span class="n">cval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span> <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">771</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ve</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/rcsetup.py:273,</span> in <span class="ni">validate_backend</span><span class="nt">(s)</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">273</span>     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">_auto_backend_sentinel</span> <span class="ow">or</span> <span class="n">backend_registry</span><span class="o">.</span><span class="n">is_valid_backend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="k">return</span> <span class="n">s</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:244,</span> in <span class="ni">BackendRegistry.is_valid_backend</span><span class="nt">(self, backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="k">return</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="c1"># Only load entry points if really need to and not already done so.</span>
-<span class="ne">--&gt; </span><span class="mi">244</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_entry_points_loaded</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="n">backend</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_to_gui_framework</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span>     <span class="k">return</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:116,</span> in <span class="ni">BackendRegistry._ensure_entry_points_loaded</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_entry_points_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># Load entry points, if they have not already been loaded.</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">116</span>         <span class="n">entries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_entry_points</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_and_store_entry_points</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_entry_points</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/matplotlib/backends/registry.py:136,</span> in <span class="ni">BackendRegistry._read_entry_points</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_entry_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="c1"># Read entry points of modules that self-advertise as Matplotlib backends.</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="c1"># Expects entry points like this one from matplotlib-inline (in pyproject.toml</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="c1"># format):</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="c1">#   [project.entry-points.&quot;matplotlib.backend&quot;]</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="c1">#   inline = &quot;matplotlib_inline.backend_inline&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">im</span>
-<span class="ne">--&gt; </span><span class="mi">136</span>     <span class="n">entry_points</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">entry_points</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;matplotlib.backend&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">entries</span> <span class="o">=</span> <span class="p">[(</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">entry_points</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># For backward compatibility, if matplotlib-inline and/or ipympl are installed</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># but too old to include entry points, create them. Do not import ipympl</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="c1"># directly as this calls matplotlib.use() whilst in this function.</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:913,</span> in <span class="ni">entry_points</span><span class="nt">(**params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd"> Pass selection parameters (group or name) to filter the</span>
-<span class="sd">   (...)    908 :return: EntryPoints for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">    911     dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">913</span> <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:911,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="k">def</span><span class="w"> </span><span class="nf">entry_points</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EntryPoints</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return EntryPoint objects for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">904</span><span class="sd">     Pass selection parameters (group or name) to filter the</span>
-<span class="sd">   (...)    908     :return: EntryPoints for all installed packages.</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span>     <span class="n">eps</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">--&gt; 911         dist.entry_points for dist</span> in <span class="ni">_unique(distributions</span><span class="nt">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="k">return</span> <span class="n">EntryPoints</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/_itertools.py:15,</span> in <span class="ni">unique_everseen</span><span class="nt">(iterable, key)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">yield</span> <span class="n">element</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:795,</span> in <span class="ni">&lt;genexpr&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Find metadata directories in paths heuristically.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span> <span class="n">prepared</span> <span class="o">=</span> <span class="n">Prepared</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span> <span class="k">return</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
-<span class="nn">--&gt; 795     path.search(prepared) for path</span> in <span class="ni">map</span><span class="nt">(FastPath, paths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:693,</span> in <span class="ni">FastPath.search</span><span class="nt">(self, name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">693</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mtime</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/importlib/metadata/__init__.py:698,</span> in <span class="ni">FastPath.mtime</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">695</span> <span class="nd">@property</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">def</span><span class="w"> </span><span class="nf">mtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">OSError</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">698</span>         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">st_mtime</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
-
-<span class="ne">TypeError</span>: stat: path should be string, bytes, os.PathLike or integer, not NoneType
 </pre></div>
 </div>
 </div>
@@ -710,7 +580,7 @@ Call average for source: GW190814
    hyps: [1]
 
 - Print output:
-   sources_lo:   [&#39;J1614–2230&#39;, &#39;J1600+3053&#39;, &#39;J0740+6620&#39;]
+   sources_lo:   [&#39;J1614–2230&#39;, &#39;J0348+0432&#39;, &#39;J0740+6620&#39;]
    sources_up:   [&#39;GW170817&#39;, &#39;GW190814&#39;]
    mass: [1.5        1.50668896 1.51337793 1.52006689 1.52675585 1.53344482
  1.54013378 1.54682274 1.55351171 1.56020067 1.56688963 1.5735786
@@ -768,67 +638,67 @@ Call average for source: GW190814
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
- 0.00000000e+00 0.00000000e+00 2.96479006e-22 1.58057366e-21
- 1.04883964e-20 7.83155359e-20 5.46330327e-19 3.62638886e-18
- 2.28913227e-17 1.37462144e-16 7.85297906e-16 4.26830621e-15
- 2.20736424e-14 1.08622696e-13 5.08660350e-13 2.26689573e-12
- 9.61546775e-12 3.88228140e-11 1.49220311e-10 5.46065150e-10
- 1.90279972e-09 6.31446099e-09 1.99592116e-08 6.01023535e-08
- 1.72451359e-07 4.71590631e-07 1.22940612e-06 3.05618237e-06
- 7.24694383e-06 1.63975495e-05 3.54184776e-05 7.30653767e-05
- 1.44031636e-04 2.71479696e-04 4.89620481e-04 8.45633055e-04
- 1.39996625e-03 2.22404723e-03 3.39478987e-03 4.98608637e-03
- 7.05852167e-03 9.64951348e-03 1.27665101e-02 1.63854486e-02
- 2.04553888e-02 2.49084736e-02 2.96727778e-02 3.46848012e-02
- 3.98986466e-02 4.52901349e-02 5.08557270e-02 5.66075221e-02
- 6.25663436e-02 6.87548985e-02 7.51924063e-02 8.18912918e-02
- 8.88558461e-02 9.60823465e-02 1.03560018e-01 1.11272314e-01
- 1.19198182e-01 1.27313153e-01 1.35590224e-01 1.44000564e-01
- 1.52514101e-01 1.61100034e-01 1.69727295e-01 1.78364990e-01
- 1.86982819e-01 1.95551468e-01 2.04042980e-01 2.12431088e-01
- 2.20691509e-01 2.28802202e-01 2.36743564e-01 2.44498588e-01
- 2.52052958e-01 2.59395105e-01 2.66516197e-01 2.73410093e-01
- 2.80073248e-01 2.86504575e-01 2.92705284e-01 2.98678675e-01
- 3.04429926e-01 3.09965847e-01 3.15294641e-01 3.20425638e-01
- 3.25369049e-01 3.30135708e-01 3.34736824e-01 3.39183746e-01
- 3.43487732e-01 3.47659732e-01 3.51710178e-01 3.55648792e-01
- 3.59484385e-01 3.63224684e-01 3.66876136e-01 3.70443737e-01
- 3.73930840e-01 3.77338965e-01 3.80667606e-01 3.83914025e-01
- 3.87073041e-01 3.90136820e-01 3.93094650e-01 3.95932738e-01
- 3.98634005e-01 4.01177905e-01 4.03540281e-01 4.05693261e-01
- 4.07605210e-01 4.09240768e-01 4.10560960e-01 4.11523427e-01
- 4.12082763e-01 4.12190987e-01 4.11798150e-01 4.10853082e-01
- 4.09304284e-01 4.07100946e-01 4.04194090e-01 4.00537814e-01
- 3.96090601e-01 3.90816679e-01 3.84687373e-01 3.77682418e-01
- 3.69791184e-01 3.61013758e-01 3.51361840e-01 3.40859410e-01
- 3.29543113e-01 3.17462348e-01 3.04679010e-01 2.91266899e-01
- 2.77310772e-01 2.62905065e-01 2.48152304e-01 2.33161243e-01
- 2.18044790e-01 2.02917769e-01 1.87894605e-01 1.73086988e-01
- 1.58601620e-01 1.44538093e-01 1.30986991e-01 1.18028270e-01
- 1.05729963e-01 9.41472618e-02 8.33219771e-02 7.32823986e-02
- 6.40435354e-02 5.56077111e-02 4.79654737e-02 4.10967688e-02
- 3.49723149e-02 2.95551195e-02 2.48020679e-02 2.06655236e-02
- 1.70948826e-02 1.40380297e-02 1.14426593e-02 9.25742647e-03
- 7.43291341e-03 5.92239845e-03 4.68243118e-03 3.67322143e-03
- 2.85885829e-03 2.20737951e-03 1.69071509e-03 1.28452981e-03
- 9.67989528e-04 7.23474569e-04 5.36261311e-04 3.94190075e-04
- 2.87334202e-04 2.07681929e-04 1.48839452e-04 1.05760737e-04
- 7.45071344e-05 5.20378042e-05 3.60304164e-05 2.47303958e-05
- 1.68262482e-05 1.13480596e-05 7.58609608e-06 5.02646238e-06
- 3.30095395e-06 2.14850106e-06 1.38591777e-06 8.85997264e-07
- 5.61316854e-07 3.52413726e-07 2.19257924e-07 1.35177590e-07
- 8.25829929e-08 4.99922941e-08 2.99869606e-08 1.78225381e-08
- 1.04955576e-08 6.12395274e-09 3.54030204e-09 2.02779059e-09
- 1.15072787e-09 6.46966253e-10 3.60365402e-10 1.98861303e-10
- 1.08716815e-10 5.88811348e-11 3.15924000e-11 1.67923038e-11
- 8.84206244e-12 4.61218948e-12 2.38322907e-12 1.21990080e-12
- 6.18555289e-13 3.10687048e-13 1.54580220e-13 7.61845344e-14
- 3.71926617e-14 1.79854446e-14 8.61500166e-15 4.08745351e-15
- 1.92094035e-15 8.94202284e-16 4.12292774e-16 1.88302385e-16
- 8.51766443e-17 3.81647494e-17 1.69357387e-17 7.44449001e-18
- 3.23989345e-18 1.39770327e-18 5.95570743e-19 2.53016692e-19
- 1.06138484e-19 4.38754880e-20 1.80203823e-20 7.35589138e-21
- 2.84290769e-21 1.31402191e-21 3.36279013e-22 2.57304090e-22
+ 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
+ 4.47502603e-36 1.64797202e-34 4.30934700e-33 1.12872036e-31
+ 2.69143117e-30 5.91248561e-29 1.19840316e-27 2.24586836e-26
+ 3.89056634e-25 6.23105700e-24 9.22726791e-23 1.26354938e-21
+ 1.60018698e-20 1.87440956e-19 2.03111608e-18 2.03633006e-17
+ 1.88919995e-16 1.62220015e-15 1.28948515e-14 9.49099307e-14
+ 6.46992180e-13 4.08600917e-12 2.39137364e-11 1.29746102e-10
+ 6.52844219e-10 3.04778480e-09 1.32079267e-08 5.31625503e-08
+ 1.98873459e-07 6.91936511e-07 2.24098331e-06 6.76257489e-06
+ 1.90356183e-05 5.00444029e-05 1.23058671e-04 2.83507814e-04
+ 6.13120833e-04 1.24738700e-03 2.39329853e-03 4.34232155e-03
+ 7.47279103e-03 1.22373861e-02 1.91349073e-02 2.86698075e-02
+ 4.13058024e-02 5.74201741e-02 7.72635909e-02 1.00928227e-01
+ 1.28326280e-01 1.59181765e-01 1.93039218e-01 2.29291969e-01
+ 2.67229319e-01 3.06097396e-01 3.45164537e-01 3.83780552e-01
+ 4.21420584e-01 4.57708073e-01 4.92415936e-01 5.25449393e-01
+ 5.56816574e-01 5.86594038e-01 6.14893551e-01 6.41834702e-01
+ 6.67525639e-01 6.92052236e-01 7.15474453e-01 7.37827959e-01
+ 7.59128865e-01 7.79379764e-01 7.98575725e-01 8.16709467e-01
+ 8.33775334e-01 8.49772052e-01 8.64704407e-01 8.78584047e-01
+ 8.91429643e-01 9.03266607e-01 9.14126508e-01 9.24046311e-01
+ 9.33067510e-01 9.41235222e-01 9.48597273e-01 9.55203302e-01
+ 9.61103908e-01 9.66349845e-01 9.70991285e-01 9.75077132e-01
+ 9.78654419e-01 9.81767747e-01 9.84458805e-01 9.86765926e-01
+ 9.88723699e-01 9.90362609e-01 9.91708713e-01 9.92783328e-01
+ 9.93602733e-01 9.94177875e-01 9.94514077e-01 9.94610737e-01
+ 9.94461037e-01 9.94051646e-01 9.93362445e-01 9.92366271e-01
+ 9.91028709e-01 9.89307940e-01 9.87154685e-01 9.84512256e-01
+ 9.81316745e-01 9.77497390e-01 9.72977128e-01 9.67673376e-01
+ 9.61499042e-01 9.54363796e-01 9.46175591e-01 9.36842443e-01
+ 9.26274444e-01 9.14385976e-01 9.01098105e-01 8.86341075e-01
+ 8.70056863e-01 8.52201698e-01 8.32748473e-01 8.11688963e-01
+ 7.89035750e-01 7.64823769e-01 7.39111397e-01 7.11981006e-01
+ 6.83538924e-01 6.53914766e-01 6.23260108e-01 5.91746517e-01
+ 5.59562953e-01 5.26912617e-01 4.94009301e-01 4.61073358e-01
+ 4.28327399e-01 3.95991865e-01 3.64280603e-01 3.33396595e-01
+ 3.03527996e-01 2.74844585e-01 2.47494775e-01 2.21603251e-01
+ 1.97269318e-01 1.74565988e-01 1.53539815e-01 1.34211463e-01
+ 1.16576936e-01 1.00609414e-01 8.62615767e-02 7.34683218e-02
+ 6.21497355e-02 5.22142083e-02 4.35615667e-02 3.60861144e-02
+ 2.96794851e-02 2.42332295e-02 1.96410769e-02 1.58008348e-02
+ 1.26159059e-02 9.99642477e-03 7.86003067e-03 6.13230416e-03
+ 4.74690853e-03 3.64548026e-03 2.77731711e-03 2.09891209e-03
+ 1.57337918e-03 1.16981256e-03 8.62615528e-04 6.30829141e-04
+ 4.57484134e-04 3.28993562e-04 2.34597831e-04 1.65868851e-04
+ 1.16275921e-04 8.08126801e-05 5.56820790e-05 3.80346800e-05
+ 2.57546341e-05 1.72872489e-05 1.15020571e-05 7.58558659e-06
+ 4.95852305e-06 3.21255885e-06 2.06287104e-06 1.31281178e-06
+ 8.27999246e-07 5.17538525e-07 3.20574771e-07 1.96779118e-07
+ 1.19696437e-07 7.21482692e-08 4.30926726e-08 2.55037752e-08
+ 1.49561605e-08 8.69044032e-09 5.00335379e-09 2.85410847e-09
+ 1.61310237e-09 9.03292136e-10 5.01143735e-10 2.75459242e-10
+ 1.50005369e-10 8.09290342e-11 4.32557581e-11 2.29044389e-11
+ 1.20150585e-11 6.24391792e-12 3.21446195e-12 1.63935921e-12
+ 8.28227824e-13 4.14505812e-13 2.05500086e-13 1.00922934e-13
+ 4.90975195e-14 2.36601185e-14 1.12942832e-14 5.34044888e-15
+ 2.50134974e-15 1.16050181e-15 5.33309238e-16 2.42776301e-16
+ 1.09461592e-16 4.88886464e-17 2.16255733e-17 9.47610309e-18
+ 4.11121571e-18 1.76812321e-18 7.51107549e-19 3.18128309e-19
+ 1.33052630e-19 5.48381728e-20 2.24568253e-20 9.14020325e-21
+ 3.52234790e-21 1.62343060e-21 4.14290641e-22 3.16110422e-22
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
  0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00
@@ -871,7 +741,6 @@ source: GW170817
 source: GW190814
 </pre></div>
 </div>
-<img alt="../../_images/68291dc871d0eae16db340eed90e900b350d29b0734ff39f2d997d3d61d85eed.png" src="../../_images/68291dc871d0eae16db340eed90e900b350d29b0734ff39f2d997d3d61d85eed.png" />
 </div>
 </div>
 </section>
