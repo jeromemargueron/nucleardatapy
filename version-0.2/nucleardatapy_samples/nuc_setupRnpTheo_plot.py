@@ -4,7 +4,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter nuc_setupRnpExp_plot.py:")
+    print("Enter nuc_setupRnpTheo_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -23,9 +23,10 @@ def main():
     nuda.fig.nuc_setupRnpTheo_fig( pname, source = source )
     #
     print(50*'-')
-    print("Exit nuc_setupRnpExp_plot.py:")
+    print("Exit nuc_setupRnpTheo_plot.py:")
     print(50*'-')
     #
 
 if __name__ == "__main__":
     main()
+
