@@ -1,4 +1,5 @@
 import numpy as np  # 1.15.0
+import os
 from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
@@ -149,7 +150,7 @@ class setupRnpTheo():
         # #            
         if model.lower() == 'skyrme':
             #
-             file_in1 = os.path.join(nuda.param.path_data,'Neutrornp/skyrmernp-'+nucleus+'.dat')
+             file_in1 = os.path.join(nuda.param.path_data,'rnp/skyrmernp-'+nucleus+'.dat')
              if nuda.env.verb: print('Reads file1:',file_in1)
              name = np.loadtxt( file_in1, usecols=(0), comments='#', unpack = True, dtype=str )
              Rn, Rp, Rnp = np.loadtxt( file_in1, usecols=(1,2,3), comments='#', unpack = True )
