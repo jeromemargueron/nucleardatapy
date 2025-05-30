@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import nucleardatapy as nuda
 
 mpl.use("Agg")  # Use a non-interactive backend
-import nucleardatapy as nuda
 
 
 def matter_setupFFGNuc_EP_fig(
