@@ -55,7 +55,7 @@ def nep_params( model ):
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
-        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
+        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2','F-', \
             'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
             'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
             'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
@@ -66,7 +66,7 @@ def nep_params( model ):
             'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
             'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60']
     elif model.lower() == 'eskyrme':
-        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
+        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32',  'BSkG3', 'BSkG4' ]
     elif model.lower() == 'gogny':
         params = [ 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' ]
     elif model.lower() == 'fayans':

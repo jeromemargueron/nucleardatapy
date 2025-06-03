@@ -12,7 +12,7 @@ def main():
     # chose a list of models
     #
     #models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
-    models = [ 'Skyrme' ]
+    models = [ 'ESkyrme' ]
     #models, models_lower = nuda.matter.nep_models()
     #
     dist = nuda.matter.setupNEPDist( models )

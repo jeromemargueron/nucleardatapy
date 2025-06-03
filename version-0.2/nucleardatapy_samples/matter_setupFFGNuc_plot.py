@@ -13,9 +13,9 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    den = np.linspace(0.01,0.35,10)
-    kfn = np.linspace(0.5,2.0,10)
-    mss = [ 1.0, 0.6, 0.4 ]
+    den = np.linspace(0.01,2.0,30)
+    kfn = np.linspace(0.5,2.0,30)
+    mss = [ 1.0, 1., 1. ]
     #mss = [ 1.0, 0.7 ]
     #
     pname = 'figs/plot_matter_setupFFGNuc_EP.png'
