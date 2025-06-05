@@ -25,30 +25,55 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-pheno = nuda.matter.setupMicroGap( model = model )
-pheno.print_outputs()
+den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+models = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
+band = nuda.matter.setupMicroBand( models, den=den, matter='NM' )
+micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()
+pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+nuda.fig.matter_ENM_fig( None, micro_mbs, pheno_models, band )
 ------------------
 
 ----- stdout -----
--> model: 2006-BHF-NM
-setup_micro_gap: The model name  2006-BHF-NM  is not in the list of models.
-setup_micro_gap: list of models: ['2006-BHF-NM-Av18', '2008-BCS-NM', '2008-QMC-NM-swave', '2009-DLQMC-NM', '2010-QMC-NM-AV4', '2017-MBPT-NM-GAP-EMG-450-500-N2LO', '2017-MBPT-NM-GAP-EMG-450-500-N3LO', '2017-MBPT-NM-GAP-EMG-450-700-N2LO', '2017-MBPT-NM-GAP-EMG-450-700-N3LO', '2017-MBPT-NM-GAP-EM-500-N2LO', '2017-MBPT-NM-GAP-EM-500-N3LO', '2022-AFDMC-NM']
-setup_micro_gap: -- Exit the code --
+
+Band in NM
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model ->  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model ->  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m pheno = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroGap[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
-[32m      2[39m pheno.print_outputs()
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 6[39m
+[32m      4[39m micro_mbs, micro_mbs_lower = nuda.matter.micro_mbs()
+[32m      5[39m pheno_models = [ [33m'[39m[33mSkyrme[39m[33m'[39m, [33m'[39m[33mNLRH[39m[33m'[39m, [33m'[39m[33mDDRH[39m[33m'[39m, [33m'[39m[33mDDRHF[39m[33m'[39m ]
+[32m----> [39m[32m6[39m [43mnuda[49m[43m.[49m[43mfig[49m[43m.[49m[43mmatter_ENM_fig[49m( [38;5;28;01mNone[39;00m, micro_mbs, pheno_models, band )
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_gap.py:91[39m, in [36msetupMicroGap.__init__[39m[34m(self, model, matter)[39m
-[32m     89[39m     [38;5;28mprint[39m([33m'[39m[33msetup_micro_gap: list of models:[39m[33m'[39m,models)
-[32m     90[39m     [38;5;28mprint[39m([33m'[39m[33msetup_micro_gap: -- Exit the code --[39m[33m'[39m)
-[32m---> [39m[32m91[39m     [43mexit[49m()
-[32m     92[39m [38;5;66;03m#[39;00m
-[32m     93[39m [38;5;28;01mif[39;00m model.lower() == [33m'[39m[33m2006-bhf-nm-av18[39m[33m'[39m:
-[32m     94[39m     [38;5;66;03m#[39;00m
-
-[31mNameError[39m: name 'exit' is not defined
+[31mAttributeError[39m: module 'nucleardatapy.fig' has no attribute 'matter_ENM_fig'
 

@@ -585,6 +585,15 @@ document.write(`
  1045.55 1049.36 1053.21 1057.12 1061.07 1065.06 1069.11 1073.19 1077.32
  1081.5  1085.72 1089.98 1094.29 1098.64 1103.03 1107.47 1111.95 1116.47
  1121.03 1125.63 1130.28 1134.96 1139.69 1144.46 1149.27 1154.12 1159.01] in MeV
+   sm_cs2: [-0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.   -0.    0.    0.01
+  0.01  0.02  0.02  0.03  0.04  0.04  0.05  0.06  0.07  0.08  0.08  0.09
+  0.1   0.11  0.12  0.13  0.14  0.15  0.16  0.17  0.18  0.19  0.2   0.21
+  0.22  0.23  0.25  0.26  0.27  0.28  0.29  0.3   0.31  0.32  0.33  0.35
+  0.36  0.37  0.38  0.39  0.4   0.41  0.42  0.43  0.44  0.46  0.47  0.48
+  0.49  0.5   0.51  0.52  0.53  0.54  0.55  0.56  0.57  0.58  0.59  0.6
+  0.61  0.62  0.63  0.64  0.65  0.66  0.66  0.67  0.68  0.69  0.7   0.71
+  0.72  0.73  0.73  0.74  0.75  0.76  0.77  0.78  0.78  0.79  0.8   0.81
+  0.81  0.82  0.83]
    nm_den: [0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1  0.11 0.12 0.13 0.14
  0.15 0.16 0.17 0.18 0.19 0.2  0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28
  0.29 0.3  0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4  0.41 0.42
@@ -612,6 +621,14 @@ document.write(`
  1047.62 1050.02 1052.45 1054.9  1057.38 1059.88 1062.4  1064.95 1067.53
  1070.12 1072.74 1075.39 1078.06 1080.75 1083.46 1086.2  1088.96 1091.74
  1094.55 1097.38 1100.24 1103.11 1106.01 1108.93 1111.88 1114.84 1117.83] in MeV
+   nm_cs2: [0.   0.   0.   0.   0.01 0.01 0.01 0.01 0.01 0.02 0.02 0.02 0.02 0.03
+ 0.03 0.03 0.04 0.04 0.05 0.05 0.05 0.06 0.06 0.07 0.07 0.08 0.08 0.09
+ 0.09 0.1  0.11 0.11 0.12 0.12 0.13 0.14 0.14 0.15 0.15 0.16 0.17 0.17
+ 0.18 0.19 0.19 0.2  0.21 0.21 0.22 0.23 0.23 0.24 0.25 0.26 0.26 0.27
+ 0.28 0.28 0.29 0.3  0.31 0.31 0.32 0.33 0.34 0.34 0.35 0.36 0.36 0.37
+ 0.38 0.39 0.39 0.4  0.41 0.42 0.42 0.43 0.44 0.44 0.45 0.46 0.47 0.47
+ 0.48 0.49 0.49 0.5  0.51 0.51 0.52 0.53 0.54 0.54 0.55 0.56 0.56 0.57
+ 0.58]
 </pre></div>
 </div>
 </div>
@@ -803,23 +820,47 @@ param: PKO3
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
 model: Skyrme
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_E_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
 
-<span class="ne">TypeError</span>: matter_setupPheno_E_fig() takes 3 positional arguments but 4 were given
+<span class="ne">AttributeError</span>: module &#39;nucleardatapy.fig&#39; has no attribute &#39;matter_setupPheno_E_fig&#39;
 </pre></div>
 </div>
 </div>

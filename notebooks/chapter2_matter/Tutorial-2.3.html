@@ -519,6 +519,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 </pre></div>
 </div>
 </div>
@@ -551,6 +555,7 @@ document.write(`
    nm_e2v: [ 37.82   56.814  75.868  95.003 114.231 133.577 153.016 172.582 192.266] in MeV fm$^{-3}$
    nm_e2v_err: [0.022 0.063 0.12  0.191 0.285 0.396 0.534 0.688 0.848] in MeV fm$^{-3}$
    nm_pre: [0.13  0.281 0.518 0.869 1.367 2.047 2.947 4.106 5.568] in MeV fm$^{-3}$
+   nm_cs2: [0.006 0.01  0.015 0.022 0.03  0.04  0.052 0.066 0.082]
 </pre></div>
 </div>
 </div>
@@ -585,14 +590,34 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2013-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2016-QMC-NM&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-QMC-NM&#39;]
 model: 2013-QMC-NM
 model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 model: 2016-MBPT-AM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2016-QMC-NM
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2020-MBPT-AM
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2024-QMC-NM
 model -&gt;  2024-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: True
 </pre></div>
 </div>
 </div>
@@ -608,14 +633,34 @@ model -&gt;  2024-QMC-NM
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
 model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 model: 2013-QMC-NM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2016-MBPT-AM
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2016-QMC-NM
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2020-MBPT-AM
 model -&gt;  2024-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: True
 model: 2024-QMC-NM
 </pre></div>
 </div>
@@ -656,14 +701,50 @@ model: 2024-QMC-NM
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
 model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 - Print output:
    models : [&#39;2013-QMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;]
    den_min: 0.04

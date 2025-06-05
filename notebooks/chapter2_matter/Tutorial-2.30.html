@@ -507,11 +507,35 @@ For instance the energy per particle in NM can be selected by fixing the variabl
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 </pre></div>
 </div>
 </div>
@@ -527,6 +551,10 @@ model -&gt;  2020-MBPT-AM
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model -&gt;  1998-VAR-AM-APR
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 </pre></div>
 </div>
 </div>
@@ -565,12 +593,12 @@ eos outside band? False
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;SLy5&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
 
-<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno.py:164,</span> in <span class="ni">setupPheno.__init__</span><span class="nt">(self, model, param)</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="c1">#: Attribute providing additional notes about the data.</span>
-<span class="g g-Whitespace">    </span><span class="mi">163</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">164</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_rmass</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_int</span>
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno.py:161,</span> in <span class="ni">setupPheno.__init__</span><span class="nt">(self, model, param)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="c1">#: Attribute providing additional notes about the data.</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">161</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_e2a_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_pre</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in2</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_rmass</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_int</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1395,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1392</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
