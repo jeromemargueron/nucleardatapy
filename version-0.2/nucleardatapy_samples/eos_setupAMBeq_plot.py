@@ -50,6 +50,17 @@ def main():
     pname = 'figs/plot_eos_setupAMBeq_pre_tot.png'
     nuda.fig.eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band )
     #
+    # plot sound speed
+    #
+    pname = 'figs/plot_eos_setupAMBeq_cs2_nuc.png'
+    nuda.fig.eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band )
+    #
+    pname = 'figs/plot_eos_setupAMBeq_cs2_lep.png'
+    nuda.fig.eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band )
+    #
+    pname = 'figs/plot_eos_setupAMBeq_cs2_tot.png'
+    nuda.fig.eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band )
+    #
     # plot particle fractions
     #
     pname = 'figs/plot_eos_setupAMBeq_eos.png'

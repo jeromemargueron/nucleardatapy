@@ -3,9 +3,6 @@ import sys
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 def pheno_models():
@@ -168,6 +165,29 @@ class setupPheno():
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
+            # pressure in SM
+            x = np.insert( self.sm_den, 0, 0.0 )
+            y = np.insert( self.sm_e2a_int, 0, 0.0 )
+            cs_sm_e2a = CubicSpline( x, y )
+            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1) )
+            # pressure in NM
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_e2a_int, 0, 0.0 )
+            cs_nm_e2a = CubicSpline( x, y )
+            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1) )
+            # enthalpy
+            self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
+            self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
+            # sound speed in SM
+            x = np.insert(self.sm_den, 0, 0.0)
+            y = np.insert(self.sm_pre, 0, 0.0)
+            cs_sm_pre = CubicSpline(x, y)
+            self.sm_cs2 = cs_sm_pre(self.sm_den, 1) / self.sm_h2a
+            # sound speed in NM
+            x = np.insert(self.nm_den, 0, 0.0)
+            y = np.insert(self.nm_pre, 0, 0.0)
+            cs_nm_pre = CubicSpline(x, y)
+            self.nm_cs2 = cs_nm_pre(self.nm_den, 1) / self.nm_h2a
             #
         #
         elif model.lower() == 'eskyrme':
@@ -195,11 +215,12 @@ class setupPheno():
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
-            # sound speed
+            # sound speed in SM
             x = np.insert( self.sm_den, 0, 0.0 )
             y = np.insert( self.sm_pre, 0, 0.0 )
             cs_sm_pre = CubicSpline( x, y )
             self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            # sound speed in NM
             x = np.insert( self.nm_den, 0, 0.0 )
             y = np.insert( self.nm_pre, 0, 0.0 )
             cs_nm_pre = CubicSpline( x, y )
@@ -226,13 +247,26 @@ class setupPheno():
             #self.ref = ''
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2_data = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
+            # enthalpy
+            self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
+            self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
+            # sound speed in SM
+            x = np.insert( self.sm_den, 0, 0.0 )
+            y = np.insert( self.sm_pre, 0, 0.0 )
+            cs_sm_pre = CubicSpline( x, y )
+            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            # sound speed in NM
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_pre, 0, 0.0 )
+            cs_nm_pre = CubicSpline( x, y )
+            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
             #
         elif model.lower() == 'ddrh':
             #
@@ -244,13 +278,26 @@ class setupPheno():
             self.label = 'DDRH-'+param
             if param == "DDMEd": self.label = "DDRH-DDME$\\delta$"
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2_data = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
+            # enthalpy
+            self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
+            self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
+            # sound speed in SM
+            x = np.insert( self.sm_den, 0, 0.0 )
+            y = np.insert( self.sm_pre, 0, 0.0 )
+            cs_sm_pre = CubicSpline( x, y )
+            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            # sound speed in NM
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_pre, 0, 0.0 )
+            cs_nm_pre = CubicSpline( x, y )
+            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
             #
         elif model.lower() == 'ddrhf':
             #
@@ -261,13 +308,26 @@ class setupPheno():
             #self.ref = ''
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
-            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2 = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
-            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.sm_den, self.sm_kfn, self.sm_e2a_int, self.sm_pre, self.sm_cs2_data = np.loadtxt( file_in1, usecols=(0,1,2,3,4), comments='#', unpack = True )
+            self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int 
             self.sm_e2v = self.sm_e2a * self.sm_den
             self.nm_e2v = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
+            # enthalpy
+            self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
+            self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
+            # sound speed in SM
+            x = np.insert( self.sm_den, 0, 0.0 )
+            y = np.insert( self.sm_pre, 0, 0.0 )
+            cs_sm_pre = CubicSpline( x, y )
+            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            # sound speed in NM
+            x = np.insert( self.nm_den, 0, 0.0 )
+            y = np.insert( self.nm_pre, 0, 0.0 )
+            cs_nm_pre = CubicSpline( x, y )
+            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
             #
         self.den_unit = 'fm$^{-3}$'
         self.kfn_unit = 'fm$^{-1}$'
@@ -294,9 +354,11 @@ class setupPheno():
         if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,2)} in {self.den_unit}")
         if any(self.sm_kfn): print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kfn_unit}")
         if any(self.sm_e2a): print(f"   sm_e2a: {np.round(self.sm_e2a,2)} in {self.e2a_unit}")
+        if any(self.sm_cs2): print(f"   sm_cs2: {np.round(self.sm_cs2,2)}")
         if any(self.nm_den): print(f"   nm_den: {np.round(self.nm_den,2)} in {self.den_unit}")
         if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
         if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
+        if any(self.nm_cs2): print(f"   nm_cs2: {np.round(self.nm_cs2,2)}")
         if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
@@ -347,6 +409,14 @@ class setupPheno():
         self.nm_pre = []
         #: Attribute the symmetric matter pressure.
         self.sm_pre = []
+        #: Attribute the neutron matter enthalpy per particle.
+        self.nm_h2a = []
+        #: Attribute the symmetric matter enthalpy per particle.
+        self.sm_h2a = []
+        #: Attribute the symmetric matter enthalpy density.
+        self.sm_h2v = []
+        #: Attribute the neutron matter enthalpy density.
+        self.nm_h2v = []
         #: Attribute the neutron matter sound speed (c_s/c)^2.
         self.nm_cs2 = []
         #: Attribute the symmetric matter sound speed (c_s/c)^2.

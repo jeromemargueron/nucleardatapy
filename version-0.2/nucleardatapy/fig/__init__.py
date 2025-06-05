@@ -19,14 +19,17 @@ from nucleardatapy.fig.matter_setupNEPModelDist_fig import *
 #
 from nucleardatapy.fig.matter_setupCheck_fig        import *
 #
-from nucleardatapy.fig.matter_Esym_fig              import *
-from nucleardatapy.fig.matter_ESM_fig               import *
-from nucleardatapy.fig.matter_ENM_fig               import *
-from nucleardatapy.fig.matter_cs2_fig               import *
-from nucleardatapy.fig.matter_preNM_fig             import *
-from nucleardatapy.fig.matter_preSM_fig             import *
-from nucleardatapy.fig.matter_eosNM_fig             import *
-from nucleardatapy.fig.matter_eosSM_fig             import *
+from nucleardatapy.fig.matter_all_fig              import *
+#
+#from nucleardatapy.fig.matter_Esym_fig              import *
+#from nucleardatapy.fig.matter_ESM_fig               import *
+#from nucleardatapy.fig.matter_ENM_fig               import *
+#from nucleardatapy.fig.matter_cs2_fig               import *
+#from nucleardatapy.fig.matter_preNM_fig             import *
+#from nucleardatapy.fig.matter_preSM_fig             import *
+#from nucleardatapy.fig.matter_eosNM_fig             import *
+#from nucleardatapy.fig.matter_eosSM_fig             import *
+#from nucleardatapy.fig.matter_cs2NM_fig             import *
 #
 from nucleardatapy.fig.corr_setupKsatQsat_fig       import *
 from nucleardatapy.fig.corr_setupEsymLsym_fig       import *
@@ -44,10 +47,10 @@ from nucleardatapy.fig.nuc_setupRnpTheo_fig         import *
 from nucleardatapy.fig.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.fig.hnuc_setupChart_fig          import *
 #
-from nucleardatapy.fig.eos_setupAM_e2a_fig            import *
-from nucleardatapy.fig.eos_setupAM_e2a_asy_nuc_fig    import *
-from nucleardatapy.fig.eos_setupAM_e2a_asy_lep_fig    import *
-from nucleardatapy.fig.eos_setupAM_e2a_asy_tot_fig    import *
+from nucleardatapy.fig.eos_setupAM_fig            import *
+from nucleardatapy.fig.eos_setupAM_asy_nuc_fig    import *
+from nucleardatapy.fig.eos_setupAM_asy_lep_fig    import *
+from nucleardatapy.fig.eos_setupAM_asy_tot_fig    import *
 from nucleardatapy.fig.eos_setupAMBeq_fig           import *
 from nucleardatapy.fig.eos_setupAMLeq_fig           import *
 #

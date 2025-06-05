@@ -104,6 +104,26 @@ def esymffg_nr( kf ):
     """
     return effg_nr( kf ) * ( nuda.cst.two**nuda.cst.twoThird - 1.0 )
 
+def pre_nr( kf ):
+    """
+    Free Fermi gas pressure as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+
+    """
+    return nuda.cst.twoThird * effg_nr( kf ) * den( kf )
+
+def cs2_nr( kf ):
+    """
+    Free Fermi gas sound speed as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+
+    """
+    return nuda.cst.twoThird
+
 # FFG energy
 def feden(gam, kf, mc2):
     den = gam * kf**3 / ( 6 * nuda.cst.pi2 )

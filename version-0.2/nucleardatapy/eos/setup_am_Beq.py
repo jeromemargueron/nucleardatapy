@@ -123,12 +123,14 @@ class setupAMBeq():
             self.x_lep = self.x_el + self.x_mu
             #
             # Thermodynamical variables
+            # nucleons
             self.rmass = self.x_n * nuda.cst.mnc2 + self.x_p * nuda.cst.mpc2
             self.e2a_int_nuc = esym.esym_sm_e2a_int + esym.esym * self.asy**2
             self.e2a_nuc = self.rmass + self.e2a_int_nuc
             self.e2v_int_nuc = self.e2a_int_nuc * self.den
             self.e2v_nuc = self.e2a_nuc * self.den
             self.pre_nuc = esym.esym_sm_pre + esym.esym_sym_pre * self.asy**2
+            # leptons
             lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
             self.e2a_el = self.x_el * lep.e2n_el
             self.e2a_int_el = self.e2a_el - self.x_el * nuda.cst.mec2
@@ -139,16 +141,32 @@ class setupAMBeq():
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
-            # self.h2a
-            # self.h2v
-            # self.cs2
             # total
             self.e2a_int_tot = self.e2a_int_nuc + self.e2a_lep
             self.e2a_tot = self.e2a_nuc + self.e2a_lep
             self.e2v_int_tot = self.e2v_int_nuc + self.e2v_lep
             self.e2v_tot = self.e2v_nuc + self.e2v_lep
             self.pre_tot = self.pre_nuc + self.pre_lep
-            #
+            # enthalpy self.h2a
+            self.h2a_lep = self.e2a_lep + self.pre_lep / self.den
+            self.h2a_nuc = self.e2a_nuc + self.pre_nuc / self.den
+            self.h2a_tot = self.e2a_tot + self.pre_tot / self.den
+            # enthaply density self.h2v
+            self.h2v_lep = self.h2a_lep * self.den
+            self.h2v_nuc = self.h2a_nuc * self.den
+            self.h2v_tot = self.h2a_tot * self.den
+            # sound speed self.cs2
+            x = np.insert(self.den, 0, 0.0)
+            y = np.insert(self.pre_lep, 0, 0.0)
+            cs_pre = CubicSpline(x, y)
+            self.cs2_lep = cs_pre(self.den, 1) / self.h2a_lep
+            y = np.insert(self.pre_nuc, 0, 0.0)
+            cs_pre = CubicSpline(x, y)
+            self.cs2_nuc = cs_pre(self.den, 1) / self.h2a_nuc
+            y = np.insert(self.pre_tot, 0, 0.0)
+            cs_pre = CubicSpline(x, y)
+            self.cs2_tot = cs_pre(self.den, 1) / self.h2a_tot
+            #            #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'

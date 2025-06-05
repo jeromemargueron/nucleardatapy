@@ -13,25 +13,28 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    # create the groups of figures
-    #
-    #mbs, mbs_lower = nuda.matter.micro_mbs()
-    #mbs = [ 'VAR' ]
-    #mbs = [ 'MBPT' ]
-    #mbs = [ 'NLEFT' ]
-    #mbs = [ 'AFDMC' ]
-    #mbs = [ 'QMC' ]
-    #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
-    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
-    print('mbs:',mbs)
-    #
     # list the different matter cases investigated
     #
     matters = [ 'NM', 'SM' ]
     #
     for matter in matters:
         #
-        # fix the uncertainty band in NM
+        # create the groups of figures
+        #
+        #mbs, mbs_lower = nuda.matter.micro_mbs()
+        #mbs = [ 'VAR' ]
+        #mbs = [ 'MBPT' ]
+        #mbs = [ 'NLEFT' ]
+        #mbs = [ 'AFDMC' ]
+        #mbs = [ 'QMC' ]
+        #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
+        if matter.lower() == 'nm':
+            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
+        elif matter.lower() == 'sm':
+            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT' ]
+        print('mbs:',mbs)
+        #
+        # fix the uncertainty band in SM and NM
         #
         if matter.lower() == 'nm':
             bmodels = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
@@ -68,8 +71,13 @@ def main():
                 print('models:',models)
             #
             pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
-            #
             nuda.fig.matter_setupMicro_e2a_fig( pname, mb, models, band )
+            #
+            pname = 'figs/plot_matter_setupMicro_pre_'+matter+'_'+mb+'.png'
+            nuda.fig.matter_setupMicro_pre_fig( pname, mb, models, band )
+            #
+            pname = 'figs/plot_matter_setupMicro_cs2_'+matter+'_'+mb+'.png'
+            nuda.fig.matter_setupMicro_cs2_fig( pname, mb, models, band )
             #
     #
     print(50*'-')
