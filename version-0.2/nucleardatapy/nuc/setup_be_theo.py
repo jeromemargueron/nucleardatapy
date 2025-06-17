@@ -5,22 +5,23 @@ import numpy as np  # 1.15.0
 
 import nucleardatapy as nuda
 
-def delta_emp( A, Z, formula ):
-   if formula == 'classic':
-      return 12.0 / A**0.5
-   elif formula == 'Vogel':
-      return ( 7.2 - 44.0 * ( 1.0 - 2.0 * Z / A )**2 ) / A**0.3333
-   else:
-      print('setup_be_theo: formula is badly defined ',formula)
-      print('setup_be_theo: exit')
-      exit()
+def delta_emp( N, Z, formula ):
+    A = N + Z
+    if formula == 'classic':
+       return 12.0 / A**0.5
+    elif formula == 'Vogel':
+       return ( 7.2 - 44.0 * ( 1.0 - 2.0 * Z / A )**2 ) / A**0.3333
+    else:
+       print('setup_be_theo: formula is badly defined ',formula)
+       print('setup_be_theo: exit')
+       exit()
 
 def be_theo_tables():
     """
     Return a list of the tables available in this toolkit for the masses 
     predicted by theoretical approaches and print them all on the prompt. 
     These tables are the following ones: \
-    [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
     '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21', '2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
     '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
@@ -31,7 +32,7 @@ def be_theo_tables():
     #
     if nuda.env.verb: print("\nEnter be_theo_tables()")
     #
-    tables = [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    tables = [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
        '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21','2011-WS3', '2013-HFB22', \
     '2013-HFB23', '2013-HFB24', '2013-HFB25', '2013-HFB26', '2021-BSkG1', \
     '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
@@ -62,7 +63,7 @@ class setupBETheo():
     This choice is defined in the variable `table`.
 
     `table` can chosen among the following ones: \
-    [ '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
+    [ '1988-GK', '1988-MJ', '1995-DZ', '1995-ETFSI', '1995-FRDM', \
     '2005-KTUY', '2007-HFB14', '2010-WS*', '2010-HFB21','2011-WS3', '2013-HFB26', '2021-BSkG1', \
     '2022-BSkG2', '2023-BSkG3', '2025-BSkG4' ]
 
@@ -488,6 +489,7 @@ class setupBETheo():
             self.nucBE2A = self.nucBE / self.nucA
             self.Zmax = int( max( self.nucZ ) )
             #
+        self.nucI = ( self.nucN - self.nucZ ) / self.nucA
         #
         if nuda.env.verb: print("Exit setupBETheo()")
         #
@@ -511,117 +513,172 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
-    def S2n( self, Zmin = 1, Zmax = 95 ):
+    def isotopes(self, Zref = 50 ):
+        """
+        Method which find the first and last isotopes for Z=Zref.
+
+        :param Zref: Fix the charge for the search of isotopes.
+        :type Zref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter isotopes()")
+        #
+        if Zref < 0:
+            print('setup_be_exp.py: issue with the function isotopes.')
+            print('setup_be_exp.py: Bad definition for Zref')
+            print('setup_be_exp.py: It is expected that Zref>0')
+            print('setup_be_exp.py: Zref:',Zref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        Nstable, Zstable = nuda.nuc.stable_fit_Z( Zmin = Zref, Zmax = Zref )
+        #
+        nucNmin = Nstable[0]
+        nucNmax = Nstable[0]
+        #
+        for ind,A in enumerate(self.nucA):
+            if self.nucZ[ind] == Zref and self.nucN[ind] < nucNmin:
+                nucNmin = self.nucN[ind]
+            if self.nucZ[ind] == Zref and self.nucN[ind] > nucNmax:
+                nucNmax = self.nucN[ind]
+        self.itp_nucZ = Zref
+        self.itp_nucNmin = nucNmin
+        self.itp_nucNmax = nucNmax
+        #
+        if nuda.env.verb: print("Exit isotopes()")
+        #
+        return self
+        #
+    def isotones(self, Nref = 50 ):
+        """
+        Method which find the first and last isotones for N=Nref.
+
+        :param Nref: Fix the neutron number for the search of isotones.
+        :type Nref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter isotones()")
+        #
+        if Nref < 0:
+            print('setup_be_exp.py: issue with the function isotones.')
+            print('setup_be_exp.py: Bad definition for Nref')
+            print('setup_be_exp.py: It is expected that Nref>0')
+            print('setup_be_exp.py: Nref:',Nref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        Nstable, Zstable = nuda.nuc.stable_fit_N( Nmin = Nref, Nmax = Nref )
+        #
+        nucZmin = Zstable[0]
+        nucZmax = Zstable[0]
+        #
+        for ind,A in enumerate(self.nucA):
+            if self.nucN[ind] == Nref and self.nucZ[ind] < nucZmin:
+                nucZmin = self.nucZ[ind]
+            if self.nucN[ind] == Nref and self.nucZ[ind] > nucZmax:
+                nucZmax = self.nucZ[ind]
+        self.itn_nucN = Nref
+        self.itn_nucZmin = nucZmin
+        self.itn_nucZmax = nucZmax
+        #
+        if nuda.env.verb: print("Exit isotones()")
+        #
+        return self
+        #
+    def S2n( self, Zref = 50 ):
         """
         Compute the two-neutron separation energy (S2n)
-        S2n = E(Z,N)-E(Z,N+2)
+        S2n = E(Z,N)-E(Z,N-2)
         """
         #
         if nuda.env.verb: print("Enter S2n()")
         #
-        if Zmin > Zmax:
+        if Zref < 0:
             print('setup_be_theo: In S2n attribute function of setup_be_theo.py:')
-            print('setup_be_theo: Bad definition of Zmin and Zmax')
-            print('setup_be_theo: It is expected that Zmin<=Zmax')
-            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_theo: Bad definition of Zref')
+            print('setup_be_theo: It is expected that Zref>=0')
+            print('setup_be_theo: Zref:',Zref)
             print('setup_be_theo: exit')
             exit()
         #
-        S2n_Z = []
         S2n_N = []
-        S2n = []
+        S2n_E = []
         #
-        for ind,Z in enumerate(self.nucZ):
+        Nmin=self.itp_nucNmin
+        Nmax=self.itp_nucNmax
+        #
+        for N in range(Nmin+2,Nmax+1):
             #
-            if Z > Zmax :
-                break
-            if Z < Zmin :
-                continue
+            flagN = False; flagNm2 = False;
             #
-            N = self.nucN[ind]
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find = 0
-            for ind2,Z2 in enumerate(self.nucZ):
-                if Z == Z2 and self.nucN[ind2] == N-2:
-                    flag_find = 1
-                    break
-            if flag_find == 1: 
-                N2 = self.nucN[ind2]
-                #print('N,N2:',N,N2,'ind,ind2:',ind,ind2)
-                S2n_Z.append( self.nucZ[ind] )
-                S2n_N.append( self.nucN[ind] )
-                S2n.append( self.nucBE[ind2] - self.nucBE[ind] )
+            for ind,Z in enumerate(self.nucZ):
+                #
+                if Z == Zref and self.nucN[ind] == N:
+                    indN = ind
+                    flagN = True
+                if Z == Zref and self.nucN[ind] == N-2:
+                    indNm2 = ind
+                    flagNm2 = True
+                    #
+            if flagN and flagNm2:
+                S2n_N.append( N )
+                S2n_E.append( self.nucBE[indN] - self.nucBE[indNm2] )
         self.S2n_N = np.array( S2n_N, dtype = int )
-        self.S2n_Z = np.array( S2n_Z, dtype = int )
-        self.S2n = np.array( S2n, dtype = float )
-        #print('Z:',self.S2n_Z)
-        #print('N:',self.S2n_N)
-        #print('S2n:',self.S2n)
+        self.S2n_E = np.array( S2n_E, dtype = float )
         #
         if nuda.env.verb: print("Exit S2n()")
         #
         return self
-    #
-    def S2p( self, Nmin = 1, Nmax = 95 ):
+        #
+    def S2p( self, Nref = 50 ):
         """
-        Compute the two-proton separation energy (S2n)
-        S2p = E(Z,N)-E(Z-2,N)
+        Compute the two-proton separation energy (S2p)
+        S2p(Z,Nref) = E(Z,Nref)-E(Z-2,Nref)
         """
         #
         if nuda.env.verb: print("Enter S2p()")
         #
-        if Nmin > Nmax:
-            print('setup_be_theo: In S2p attribute function of setup_be_exp.py:')
-            print('setup_be_theo: Bad definition of Nmin and Nmax')
-            print('setup_be_theo: It is expected that Nmin<=Nmax')
-            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
-            print('setup_be_theo: exit')
+        if Nref < 0:
+            print('setup_be_exp.py: In S2p attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Nref')
+            print('setup_be_exp.py: It is expected that Nref>=0')
+            print('setup_be_exp.py: Nref:',Nref)
+            print('setup_be_exp.py: exit')
             exit()
         #
         S2p_Z = []
-        S2p_N = []
-        S2p = []
+        S2p_E = []
         #
-        for ind,N in enumerate(self.nucN):
+        Zmin=self.itn_nucZmin
+        Zmax=self.itn_nucZmax
+        #
+        for Z in range(Zmin+2,Zmax+1):
             #
-            if N > Nmax :
-                continue
-            if N < Nmin :
-                continue
+            flagZ = False; flagZm2 = False;
             #
-            Z = self.nucZ[ind]
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z-2,N
-            #
-            flag_find = 0
-            for ind2,N2 in enumerate(self.nucN):
-                if N == N2 and self.nucZ[ind2] == Z-2:
-                    flag_find = 1
-                    break
-            if flag_find == 1: 
-                Z2 = self.nucZ[ind2]
-                #print('N,N2:',N,N2,'ind,ind2:',ind,ind2)
-                S2p_Z.append( self.nucZ[ind] )
-                S2p_N.append( self.nucN[ind] )
-                S2p.append( self.nucBE[ind2] - self.nucBE[ind] )
-        self.S2p_N = np.array( S2p_N, dtype = int )
+            for ind,N in enumerate(self.nucN):
+                #
+                if N == Nref and self.nucZ[ind] == Z:
+                    indZ = ind
+                    flagZ = True
+                if N == Nref and self.nucZ[ind] == Z-2:
+                    indZm2 = ind
+                    flagZm2 = True
+                    #
+            if flagZ and flagZm2:
+                S2p_Z.append( Z )
+                S2p_E.append( self.nucBE[indZ] - self.nucBE[indZm2] )
         self.S2p_Z = np.array( S2p_Z, dtype = int )
-        self.S2p = np.array( S2p, dtype = float )
-        #print('Z:',self.S2n_Z)
-        #print('N:',self.S2n_N)
-        #print('S2n:',self.S2n)
-        #print('Z:',self.S2n_Z)
+        self.S2p_E = np.array( S2p_E, dtype = float )
         #
         if nuda.env.verb: print("Exit S2p()")
         #
         return self
-    #
+        #
     def drip_S2n(self, Zmin = 1, Zmax = 95 ):
         """
         Method which find the drip-line nuclei from S2n (neutron side).
@@ -726,8 +783,127 @@ class setupBETheo():
         #
         return self
         #
-    #
-    def D3n( self, Zmin = 1, Zmax = 95 ):
+    def D3n( self, Zref = 50 ):
+        """
+        Compute the three-points odd-even mass staggering (D3n)
+        D3n = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
+        """
+        #
+        if nuda.env.verb: print("Enter D3n()")
+        #
+        if Zref < 0:
+            print('setup_be_theo: In D3n attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Bad definition of Zref')
+            print('setup_be_theo: It is expected that Zref>=0')
+            print('setup_be_theo: Zref:',Zref)
+            print('setup_be_theo: exit')
+            exit()
+        #
+        D3n_N_even = []
+        D3n_E_even = []
+        D3n_N_odd = []
+        D3n_E_odd = []
+        #
+        Nmin=self.itp_nucNmin
+        Nmax=self.itp_nucNmax
+        #
+        for N in range(Nmin+1,Nmax+1):
+            #
+            flagN = False; flagNm1 = False; flagNp1 = False;
+            #
+            for ind,Z in enumerate(self.nucZ):
+                #
+                if Z == Zref and self.nucN[ind] == N:
+                    indN = ind
+                    flagN = True
+                    if N % 2:
+                        sign = -1.0 # odd
+                    else:
+                        sign = 1.0 # even
+                if Z == Zref and self.nucN[ind] == N-1:
+                    indNm1 = ind
+                    flagNm1 = True
+                if Z == Zref and self.nucN[ind] == N+1:
+                    indNp1 = ind
+                    flagNp1 = True
+                    #
+            if flagN and flagNm1 and flagNp1:
+                if sign > 0.0: #even
+                    D3n_N_even.append( N )
+                    D3n_E_even.append( sign/2.0*( -2*self.nucBE[indN] + self.nucBE[indNm1] + self.nucBE[indNp1] ) )
+                else:
+                    D3n_N_odd.append( N )
+                    D3n_E_odd.append( sign/2.0*( -2*self.nucBE[indN] + self.nucBE[indNm1] + self.nucBE[indNp1] ) )
+        self.D3n_N_even = np.array( D3n_N_even, dtype = int )
+        self.D3n_E_even = np.array( D3n_E_even, dtype = float )
+        self.D3n_N_odd = np.array( D3n_N_odd, dtype = int )
+        self.D3n_E_odd = np.array( D3n_E_odd, dtype = float )
+        #
+        if nuda.env.verb: print("Exit D3n()")
+        #
+        return self
+        #
+    def D3p( self, Nref = 50 ):
+        """
+        Compute the three-points odd-even mass staggering (D3n)
+        D3p = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
+        """
+        #
+        if nuda.env.verb: print("Enter D3p()")
+        #
+        if Nref < 0:
+            print('setup_be_theo: In D3p attribute function of setup_be_theo.py:')
+            print('setup_be_theo: Bad definition of Nref')
+            print('setup_be_theo: It is expected that Nref>=0')
+            print('setup_be_theo: Nref:',Nref)
+            print('setup_be_theo: exit')
+            exit()
+        #
+        D3p_Z_even = []
+        D3p_E_even = []
+        D3p_Z_odd = []
+        D3p_E_odd = []
+        #
+        Zmin=self.itn_nucZmin
+        Zmax=self.itn_nucZmax
+        #
+        for Z in range(Zmin+1,Zmax+1):
+            #
+            flagZ = False; flagZm1 = False; flagZp1 = False;
+            #
+            for ind,N in enumerate(self.nucN):
+                #
+                if N == Nref and self.nucZ[ind] == Z:
+                    indZ = ind
+                    flagZ = True
+                    if Z % 2:
+                        sign = -1.0 # odd
+                    else:
+                        sign = 1.0 # even
+                if N == Nref and self.nucZ[ind] == Z-1:
+                    indZm1 = ind
+                    flagZm1 = True
+                if N == Nref and self.nucZ[ind] == Z+1:
+                    indZp1 = ind
+                    flagZp1 = True
+                    #
+            if flagZ and flagZm1 and flagZp1:
+                if sign > 0.0: #even
+                    D3p_Z_even.append( Z )
+                    D3p_E_even.append( sign/2.0*( -2*self.nucBE[indZ] + self.nucBE[indZm1] + self.nucBE[indZp1] ) )
+                else:
+                    D3p_Z_odd.append( Z )
+                    D3p_E_odd.append( sign/2.0*( -2*self.nucBE[indZ] + self.nucBE[indZm1] + self.nucBE[indZp1] ) )
+        self.D3p_Z_even = np.array( D3p_Z_even, dtype = int )
+        self.D3p_E_even = np.array( D3p_E_even, dtype = float )
+        self.D3p_Z_odd = np.array( D3p_Z_odd, dtype = int )
+        self.D3p_E_odd = np.array( D3p_E_odd, dtype = float )
+        #
+        if nuda.env.verb: print("Exit D3p()")
+        #
+        return self
+        #
+    def D3n_old( self, Zmin = 1, Zmax = 95 ):
         """
         Compute the three-points odd-even mass staggering (D3n)
         D3N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
@@ -798,7 +974,7 @@ class setupBETheo():
         #
         return self
     #
-    def D3p( self, Nmin = 1, Nmax = 95 ):
+    def D3p_old( self, Nmin = 1, Nmax = 95 ):
         """
         Compute the three-points odd-even mass staggering (D3p)
         D3Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2

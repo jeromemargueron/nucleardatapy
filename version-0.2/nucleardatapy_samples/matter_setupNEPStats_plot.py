@@ -9,7 +9,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter matter_setupNEPModelDist_plot.py:")
+    print("Enter matter_setupNEPStats_plot.py:")
     print(50*'-')
     #
     # create the folder where the figures are stored
@@ -18,16 +18,16 @@ def main():
     #
     # list the available models
     #
-    #models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     models, models_lower = nuda.matter.nep_models()
+    #models = [ 'Skyrme', 'GSkyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP
     #
-    pname = 'figs/plot_matter_setupNEPModelDist.png'
-    nuda.fig.matter_setupNEPModelDist_fig( pname, models )
+    pname = 'figs/plot_matter_setupNEPStats.png'
+    nuda.fig.matter_setupNEPStats_fig( pname, models )
     #
     print(50*'-')
-    print("Exit matter_setupNEPModelDist_plot.py:")
+    print("Exit matter_setupNEPStats_plot.py:")
     print(50*'-')
     #
 

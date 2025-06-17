@@ -25,17 +25,15 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
     #
     fig, axs = plt.subplots(1, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(
-        left=0.12, bottom=0.12, right=None, top=0.8, wspace=0.05, hspace=0.05
-    )
+    fig.subplots_adjust( left=0.12, bottom=0.12, right=0.95, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_ylabel(r"Landau effective mass $m^*/m$")
-    axs[0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)")
+    axs[0].set_ylabel(r"Landau effective mass $m^*/m$", fontsize='14')
+    axs[0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize='14')
     # axs[0].tick_params('x', labelbottom=False)
     #
     # axs[1].tick_params('x', labelbottom=False)
     axs[1].tick_params("y", labelleft=False)
-    axs[1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
+    axs[1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize='14')
     #
     if matter.lower() == "nm":
         axs[0].set_xlim([0, 0.34])

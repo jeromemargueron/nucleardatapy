@@ -57,7 +57,7 @@ def main():
         # plot e2a in SM and NM
         #
         pname = 'figs/plot_matter_all_e2a_'+matter+'.png'
-        nuda.fig.matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, matter )
+        nuda.fig.matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_plot, band_plot, matter )
         #
         # plot pre in SM and NM
         #
@@ -90,7 +90,7 @@ def main():
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     pname = 'figs/plot_matter_all_Esym.png'
-    nuda.fig.matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
+    nuda.fig.matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_plot, band_plot )
 
 #    pname = 'figs/plot_matter_ESM.png'
 #    nuda.fig.matter_ESM_fig( pname, micro_mbs, pheno_models, band )

@@ -32,8 +32,8 @@ def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.95, wspace=0.3, hspace=0.3)
     #
-    axs.set_ylabel(r'Proton number $Z$')
-    axs.set_xlabel(r'Neutron number $N$')
+    axs.set_ylabel(r'Proton number $Z$ (log scale)',fontsize='14')
+    axs.set_xlabel(r'Neutron number $N$ (log scale)',fontsize='14')
     axs.set_yscale('log')
     axs.set_xscale('log')
     axs.set_xlim([0.8, 140])

@@ -19,9 +19,6 @@ def main():
     pname = 'figs/plot_nuc_setupBEExp_S2p_Nref50.png'
     nuda.fig.nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 50 )
     #
-    pname = 'figs/plot_nuc_setupBEExp_S2p_Nref20.png'
-    nuda.fig.nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 20 )
-    #
     print(50*'-')
     print("Exit nuc_setupBEExp_S2p_plot.py:")
     print(50*'-')

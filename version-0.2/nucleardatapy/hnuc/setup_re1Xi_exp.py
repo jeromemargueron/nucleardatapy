@@ -117,12 +117,12 @@ class setupRE1XiExp():
       #: Strangness number (to be checked)
       self.S = -2*np.ones(len(self.N),dtype=int)
       #: charge of the hypernuclei (=Z-1, since Xi is charged -1)
-      self.ch = self.Z - np.ones(len(self.N),dtype=int)
+      self.Q = self.Z - np.ones(len(self.N),dtype=int)
       #: symbol representing the nucleus
       self.symb = nucSymb
-      #: Attribute 1L binding energy in MeV.
+      #: Attribute 1Xi removal energy in MeV.
       self.xire = np.array( nucxire, dtype = float )
-      #: Attribute 1L binding energy error in MeV.
+      #: Attribute 1Xi removal energy error in MeV.
       self.xire_err = np.array( nucxire_err, dtype = float )
       #: Attribute the probe.
       self.probe = probe
@@ -162,7 +162,7 @@ class setupRE1XiExp():
       if any(self.Z): print(f"   Z: {self.Z}")
       if any(self.N): print(f"   N: {self.N}")
       if any(self.S): print(f"   S: {self.S}")
-      if any(self.ch): print(f"  ch: {self.ch}")
+      if any(self.Q): print(f"   Q: {self.Q}")
       if any(self.symb): print(f" symb: {self.symb}")
       if any(self.xire): print(f" xibe: {self.xire}")
       if any(self.xire_err): print(f" xibe_err: {self.xire_err}")
@@ -183,7 +183,7 @@ class setupRE1XiExp():
          print(rf" index & Z & N & S & ch & symb & RE    & & Ref. \\\\")
          print(rf"       &   &   &   &    &      & (MeV) & & \\\\")
          for ind,A in enumerate(self.A):
-            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.xire[ind]:.3f}\pm {self.xire_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.Q[ind]} & {self.symb[ind]} & ${self.xire[ind]:.3f}\pm {self.xire_err[ind]:.3f}$ & & \\cite{{"+self.keyref+"} \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

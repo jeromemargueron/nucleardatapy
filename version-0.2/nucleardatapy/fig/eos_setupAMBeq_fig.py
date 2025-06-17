@@ -26,14 +26,14 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$E_\text{nuc}^\text{int}/A$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$e_\text{nuc}^\text{int}$ (MeV)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
@@ -137,14 +137,14 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([-2, 60])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([-2, 60])
     axs[1].tick_params('y', labelleft=False)
@@ -247,14 +247,14 @@ def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([-0.05, 0.25])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([-0.05, 0.25])
     axs[1].tick_params('y', labelleft=False)
@@ -357,14 +357,14 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$E_\text{lep}^\text{int}/A$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$_\text{lep}^\text{int}$ (MeV)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
@@ -470,14 +470,14 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$p_\text{lep}$ (MeV fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$p_\text{lep}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([-2, 60])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([-2, 60])
     axs[1].tick_params('y', labelleft=False)
@@ -582,14 +582,14 @@ def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$c_\text{s,lep}^2/c^2$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$c_\text{s,lep}^2/c^2$',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([0.2, 0.5])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([0.2, 0.5])
     axs[1].tick_params('y', labelleft=False)
@@ -695,14 +695,14 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$E_\text{tot}^\text{int}/A$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$e_\text{tot}^\text{int}$ (MeV)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-2, 27])
     axs[1].tick_params('y', labelleft=False)
@@ -814,14 +814,14 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([-2, 60])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([-2, 60])
     axs[1].tick_params('y', labelleft=False)
@@ -930,14 +930,14 @@ def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$c_\text{s,tot}^2/c^2$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$c_\text{s,tot}^2/c^2$',fontsize='14')
     axs[0].set_xlim([0, 0.35])
     axs[0].set_ylim([-0.05, 0.25])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 0.35])
     axs[1].set_ylim([-0.05, 0.25])
     axs[1].tick_params('y', labelleft=False)
@@ -1048,14 +1048,14 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$\rho_\text{tot} c^2$ (MeV fm$^{-3}$)')
-    axs[0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)')
+    axs[0].set_xlabel(r'$\epsilon_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 350])
     axs[0].set_ylim([-2, 30])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$\rho_\text{tot} c^2$ (MeV fm$^{-3}$)')
+    axs[1].set_xlabel(r'$\epsilon_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[1].set_xlim([0, 350])
     axs[1].set_ylim([-2, 30])
     axs[1].tick_params('y', labelleft=False)
@@ -1085,16 +1085,16 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
                 lstyle = 'solid'
             else:
                 lstyle = 'dashed'
-                continue
+                #continue
             #
             #
             if micro.pre_tot is not None: 
                 print('model:',model)
                 if mb in mb_check:
-                    axs[0].plot( micro.e2v_tot, micro.pre_tot, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.eps_tot, micro.pre_tot, marker='o', linestyle=micro.linestyle, markevery=micro.every, color=nuda.param.col[kmb] )
                 else:
                     mb_check.append(mb)
-                    axs[0].plot( micro.e2v_tot, micro.pre_tot, marker='o', linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+                    axs[0].plot( micro.eps_tot, micro.pre_tot, marker='o', linestyle=micro.linestyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
             # end of model
         # end of mb
     #
@@ -1119,15 +1119,15 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
                 lstyle = 'solid'
             else:
                 lstyle = 'dashed'
-                continue
+                #continue
             #
             if pheno.pre_tot is not None: 
                 print('model:',model,' param:',param)
                 if model in model_check:
-                    axs[1].plot( pheno.e2v_tot, pheno.pre_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.eps_tot, pheno.pre_tot, linestyle=lstyle, markevery=pheno.every, color=nuda.param.col[kmodel] )
                 else:
                     model_check.append(model)
-                    axs[1].plot( pheno.e2v_tot, pheno.pre_tot, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
+                    axs[1].plot( pheno.eps_tot, pheno.pre_tot, linestyle=lstyle, label=model, markevery=pheno.every, color=nuda.param.col[kmodel] )
             # end of param
         # end of model
     #
@@ -1164,14 +1164,14 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'proton fraction $x_p$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'proton fraction $x_p$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #axs[0].set_tick_params('y', right=True)
     #axs[0].set_tick_params('x', top=True)
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'proton fraction $x_p$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])
@@ -1277,12 +1277,12 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'electron fraction $x_e$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'electron fraction $x_e$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'electron fraction $x_e$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])
@@ -1389,12 +1389,12 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'muon fraction $x_\mu$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'muon fraction $x_\mu$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.2])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'muon fraction $x_\mu$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.2])

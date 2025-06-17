@@ -27,10 +27,10 @@ def matter_setupMicro_err_NM_fig(pname, models):
         left=0.12, bottom=0.12, right=None, top=0.98, wspace=0.2, hspace=0.2
     )
     #
-    axs.set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
-    axs.set_ylabel(r"$\Delta E_{NM}/E_{NM}$", fontsize="12")
-    axs.set_xlim([0, 0.4])
-    axs.set_ylim([0, 0.3])
+    axs.set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="14")
+    axs.set_ylabel(r"$\Delta E_{int,NM}/E_{int,NM}$", fontsize="14")
+    axs.set_xlim([0, 0.37])
+    axs.set_ylim([0, 0.5])
     #
     for model in models:
         #
@@ -41,7 +41,7 @@ def matter_setupMicro_err_NM_fig(pname, models):
             print("model:", model)
             axs.plot(
                 mic.nm_den,
-                mic.nm_e2a_err / mic.nm_e2a,
+                mic.nm_e2a_err / mic.nm_e2a_int,
                 marker=mic.marker,
                 markevery=mic.every,
                 linestyle=mic.linestyle,

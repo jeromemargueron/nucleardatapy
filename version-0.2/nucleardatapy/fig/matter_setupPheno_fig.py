@@ -29,12 +29,10 @@ def matter_setupPheno_e2a_fig(pname, model, band):
     #
     fig, axs = plt.subplots(2, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(
-        left=0.15, bottom=0.12, right=0.95, top=0.88, wspace=0.05, hspace=0.05
-    )
+    fig.subplots_adjust( left=0.15, bottom=0.12, right=0.95, top=0.88, wspace=0.05, hspace=0.05 )
     #
-    axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
-    axs[1, 1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)", fontsize="12")
+    axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="14")
+    axs[1, 1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize="14")
     axs[0, 0].set_xlim([0, 0.33])
     axs[1, 0].set_xlim([0, 0.33])
     axs[0, 1].set_xlim([0.5, 1.9])
@@ -46,15 +44,15 @@ def matter_setupPheno_e2a_fig(pname, model, band):
     axs[1, 1].tick_params("y", labelleft=False)
     #
     if matter.lower() == "nm":
-        axs[0, 0].set_ylabel(r"$E_\text{NM}/A$ (MeV)", fontsize="12")
-        axs[1, 0].set_ylabel(r"$E_\text{NM}/E_\text{NRFFG,NM}$", fontsize="12")
+        axs[0, 0].set_ylabel(r"$E_\text{int,NM}/A$ (MeV)", fontsize="14")
+        axs[1, 0].set_ylabel(r"$E_\text{int,NM}/E_\text{int,NM}^\text{NR FFG}$", fontsize="14")
         axs[0, 0].set_ylim([0, 30])
         axs[0, 1].set_ylim([0, 30])
         axs[1, 0].set_ylim([0.2, 0.84])
         axs[1, 1].set_ylim([0.2, 0.84])
     elif matter.lower() == "sm":
-        axs[0, 0].set_ylabel(r"$E_\text{SM}/A$ (MeV)", fontsize="12")
-        axs[1, 0].set_ylabel(r"$E_\text{SM}/E_\text{NRFFG,SM}$", fontsize="12")
+        axs[0, 0].set_ylabel(r"$E_\text{int,SM}/A$ (MeV)", fontsize="14")
+        axs[1, 0].set_ylabel(r"$E_\text{int,SM}/E_\text{int,SM}^\text{NR FFG}$", fontsize="14")
         axs[0, 0].set_ylim([-20, 10])
         axs[0, 1].set_ylim([-20, 10])
         axs[1, 0].set_ylim([-2.0, 0.1])
@@ -249,8 +247,8 @@ def matter_setupPheno_pre_fig(pname, model, band):
         left=0.15, bottom=0.12, right=0.95, top=0.88, wspace=0.05, hspace=0.05
     )
     #
-    axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
-    axs[1, 1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)", fontsize="12")
+    axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="14")
+    axs[1, 1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)", fontsize="14")
     axs[0, 0].set_xlim([0, 0.33])
     axs[1, 0].set_xlim([0, 0.33])
     axs[0, 1].set_xlim([0.5, 1.9])
@@ -262,15 +260,15 @@ def matter_setupPheno_pre_fig(pname, model, band):
     axs[1, 1].tick_params("y", labelleft=False)
     #
     if matter.lower() == "nm":
-        axs[0, 0].set_ylabel(r"$p_\text{NM}$ (MeV fm$^{-3}$)", fontsize="12")
-        axs[1, 0].set_ylabel(r"$p_\text{NM}/p_\text{NRFFG,NM}$", fontsize="12")
+        axs[0, 0].set_ylabel(r"$p_\text{NM}$ (MeV fm$^{-3}$)", fontsize="14")
+        axs[1, 0].set_ylabel(r"$p_\text{NM}/p_\text{NRFFG,NM}$", fontsize="14")
         axs[0, 0].set_ylim([-2, 30])
         axs[0, 1].set_ylim([-2, 30])
         axs[1, 0].set_ylim([-0.2, 0.84])
         axs[1, 1].set_ylim([-0.2, 0.84])
     elif matter.lower() == "sm":
-        axs[0, 0].set_ylabel(r"$p_\text{SM}$ (MeV fm$^{-3})", fontsize="12")
-        axs[1, 0].set_ylabel(r"$p_\text{SM}/p_\text{NRFFG,SM}$", fontsize="12")
+        axs[0, 0].set_ylabel(r"$p_\text{SM}$ (MeV fm$^{-3})", fontsize="14")
+        axs[1, 0].set_ylabel(r"$p_\text{SM}/p_\text{NRFFG,SM}$", fontsize="14")
         axs[0, 0].set_ylim([-5, 10])
         axs[0, 1].set_ylim([-5, 10])
         axs[1, 0].set_ylim([-1.5, 0.5])
@@ -359,19 +357,19 @@ def matter_setupPheno_cs2_fig(pname, model, band):
         left=0.15, bottom=0.12, right=0.95, top=0.88, wspace=0.05, hspace=0.05
     )
     #
-    axs[0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="12")
-    axs[1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)", fontsize="12")
+    axs[0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="14")
+    axs[1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)", fontsize="14")
     axs[0].set_xlim([0, 0.33])
     axs[1].set_xlim([0.5, 1.9])
     #
     axs[1].tick_params("y", labelleft=False)
     #
     if matter.lower() == "nm":
-        axs[0].set_ylabel(r"$c_\text{s,NM}^2/c^2$", fontsize="12")
+        axs[0].set_ylabel(r"$c_\text{s,NM}^2/c^2$", fontsize="14")
         axs[0].set_ylim([-0.05, 0.3])
         axs[1].set_ylim([-0.05, 0.3])
     elif matter.lower() == "sm":
-        axs[0].set_ylabel(r"$c_\text{s,SM}^2/c^2$", fontsize="12")
+        axs[0].set_ylabel(r"$c_\text{s,SM}^2/c^2$", fontsize="14")
         axs[0].set_ylim([-0.05, 0.2])
         axs[1].set_ylim([-0.05, 0.2])
     #

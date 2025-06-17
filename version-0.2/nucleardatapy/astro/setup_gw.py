@@ -165,12 +165,12 @@ class setupGW():
                 if int(ele[0]) == hyp:
                     self.mchirp = float(ele[1])
                     self.mchirp_sig_up = float(ele[2])
-                    self.mchirp_sig_do = float(ele[3])
-                    self.q_do = float(ele[4])
+                    self.mchirp_sig_lo = float(ele[3])
+                    self.q_lo = float(ele[4])
                     self.q_up = float(ele[5])
                     self.lam = float(ele[6])
                     self.lam_sig_up = float(ele[7])
-                    self.lam_sig_do = float(ele[8])
+                    self.lam_sig_lo = float(ele[8])
                     self.latexCite = ele[9].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit setupGW()")
@@ -188,10 +188,10 @@ class setupGW():
             print("   source:       ",self.source)
             print("   hyp:          ",self.hyp)
             print("   m_chirp:      ",self.mchirp)
-            print("   sig(m_chirp): ",self.mchirp_sig_up,self.mchirp_sig_do)
-            print("   q_do, q_up:   ",self.q_do, self.q_up)
+            print("   sig(m_chirp): ",self.mchirp_sig_up,self.mchirp_sig_lo)
+            print("   q_lo, q_up:   ",self.q_lo, self.q_up)
             print("   lambda:       ",self.lam)
-            print("   sig(lambda):  ",self.lam_sig_up,self.lam_sig_do)
+            print("   sig(lambda):  ",self.lam_sig_up,self.lam_sig_lo)
             print("   latexCite:    ",self.latexCite)
             print("   ref:          ",self.ref)
             print("   label:        ",self.label)
@@ -210,7 +210,7 @@ class setupGW():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_do}}}$ & $[{self.q_do}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.hyp} & ${self.mchirp:.4f}^{{{+self.mchirp_sig_up}}}_{{{-self.mchirp_sig_lo}}}$ & $[{self.q_lo}:{self.q_up}]$ & ${{{self.lam:.2f}}}^{{{+self.lam_sig_up}}}_{{{-self.lam_sig_lo}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No  table for source {self.source}. To get  table, write  'verb_table = True' in env.py.")
         #
@@ -236,14 +236,14 @@ class setupGW():
         #
         self.mchirp = None
         self.mchirp_sig_up = None
-        self.mchirp_sig_do = None
-        self.q_do = None
+        self.mchirp_sig_lo = None
+        self.q_lo = None
         self.q_up = None
         self.lam  = None
         #: Attribute the lower bound of the tidal deformability for the source.
         self.lambda_sig_up = None
         #: Attribute the upper bound of the tidal deformability for the source.
-        self.lambda_sig_do = None
+        self.lambda_sig_lo = None
         #
         if nuda.env.verb: print("Exit init_self()")
         #
@@ -279,9 +279,9 @@ class setupGWAverage():
         for hyp in hyps:
             gw = nuda.astro.setupGW( source = source, hyp = hyp )
             #gw.print_outputs( )
-            lamdo = gw.lam - 3*gw.lam_sig_do
+            lamlo = gw.lam - 3*gw.lam_sig_lo
             lamup = gw.lam + 3*gw.lam_sig_up
-            if lamdo < lammin: lammin = lamdo
+            if lamlo < lammin: lammin = lamlo
             if lamup > lammax: lammax = lamup
         # construct the distribution of observations in ay
         ax = np.linspace(lammin,lammax,300)
@@ -290,7 +290,7 @@ class setupGWAverage():
             #print('hyp:',hyp)
             gw = nuda.astro.setupGW( source = source, hyp = hyp )
             #gw.print_outputs( )
-            ay += gauss(ax,gw.lam,gw.lam_sig_up,gw.lam_sig_do)
+            ay += gauss(ax,gw.lam,gw.lam_sig_up,gw.lam_sig_lo)
         # determine the centroid and standard deviation from the distribution of obs. 
         nor = sum( ay )
         cen = sum( ay*ax )
@@ -355,13 +355,13 @@ class setupGWAverage():
         #
         return self        
 
-def gauss( ax, lam, sig_up, sig_do ):
+def gauss( ax, lam, sig_up, sig_lo ):
     fac = math.sqrt( 2*math.pi )
     gauss = []
     for x in ax:
         if x < lam: 
-            z = ( x - lam ) / sig_do
-            norm = sig_do * fac
+            z = ( x - lam ) / sig_lo
+            norm = sig_lo * fac
         else:
             z = ( x - lam ) / sig_up
             norm = sig_up * fac

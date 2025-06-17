@@ -11,8 +11,10 @@ def main():
     #         '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
     #          '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2021-PREXII-Zhang' ]
     constraints, constraints_lower = nuda.corr.EsymLsym_constraints()
+    constraints.remove('2013-NS'); constraints.remove('2017-UG')
+    constraints.remove('2023-EDF-D4'); constraints.remove('2023-EDF-D4-IAS'); constraints.remove('2023-EDF-D4-IAS-Rnp');
     print('constraints:',constraints)
-    constraints = [ '2014-IAS' ]
+    #constraints = [ '2014-IAS' ]
     #
     Ksym = -100.0
     #

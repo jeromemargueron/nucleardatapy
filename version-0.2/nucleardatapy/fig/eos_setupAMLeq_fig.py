@@ -30,13 +30,13 @@ def eos_setupAMLeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'electron fraction $x_e$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'electron fraction $x_e$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0.1, 0.3])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    #axs[1].set_ylabel(r'electron fraction $x_e$')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    #axs[1].set_ylabel(r'electron fraction $x_e$',fontsize='14')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0.1, 0.3])
     axs[1].tick_params('y', labelleft=False)
@@ -143,13 +143,13 @@ def eos_setupAMLeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'muon fraction $x_\mu$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'muon fraction $x_\mu$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 0.15])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    #axs[1].set_ylabel(r'muon fraction $x_\mu$')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    #axs[1].set_ylabel(r'muon fraction $x_\mu$',fontsize='14')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 0.15])
     axs[1].tick_params('y', labelleft=False)
@@ -254,8 +254,8 @@ def eos_setupAMLeq_xexmu_fig( pname, micro_mbs, pheno_models, band ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.3, hspace=0.3 )
     #
-    axs.set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='10')
-    axs.set_ylabel(r'$x_e$, $x_\mu$',fontsize='10')
+    axs.set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs.set_ylabel(r'$x_e$, $x_\mu$',fontsize='14')
     axs.set_xlim([0, 0.33])
     axs.set_ylim([0, 0.5])
     #

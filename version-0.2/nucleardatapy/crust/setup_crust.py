@@ -2,9 +2,7 @@ import os
 import sys
 import math
 import numpy as np  # 1.15.0
-
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
+from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
@@ -77,8 +75,8 @@ class setupCrust():
             self.linestyle = 'solid'
             self.latexCite = 'JWNegele:1973'
             self.ncl = 0.17 # in fm-3
-            self.den_cgs, self.N, self.Z, self.mu_n, self.mu_p, self.n_g, self.xpn_bound, self.e2a_int2, \
-                self.e2a_int_g = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
+            self.den_cgs, self.N, self.Z, self.mu_n, self.mu_p, self.den_f, self.xpn_bound, self.e2a_int2, \
+                self.e2a_int_f = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8), unpack = True )
             self.den = self.den_cgs * 1.e-39 # in fm-3
             self.N = np.array([ int(item) for item in self.N ])
             self.Z = np.array([ int(item) for item in self.Z ])
@@ -91,12 +89,12 @@ class setupCrust():
             self.xp_bound = self.Z_bound / self.A_bound
             self.xn_bound = self.N_bound / self.A_bound
             self.I_bound = ( self.N_bound - self.Z_bound ) / self.A_bound
-            self.N_g = self.N - self.N_bound
+            self.N_f = self.N - self.N_bound
             # cluster volume and radius
             self.Vcl = 2 * self.Z_bound / ( (1-self.I_bound) * self.ncl )
             self.Rcl = ( 3 / ( 4 * nuda.cst.pi ) * self.Vcl )**nuda.cst.third
             # unbound (gas) neutrons
-            self.VWS = self.Vcl + self.N_g / self.n_g
+            self.VWS = self.Vcl + self.N_f / self.den_f
             self.RWS = ( 3 / ( 4 * nuda.cst.pi ) * self.VWS )**nuda.cst.third
             # volume fraction
             self.u = self.Vcl / self.VWS
@@ -107,7 +105,7 @@ class setupCrust():
             #
         elif '2020-mvcd' in model.lower():
             #
-            # Note: N_bound or N_g cannot be determined from the tables (Jerome).
+            # Note: N_bound or N_f cannot be determined from the tables (Jerome).
             # It is right?
             #
             if model.lower()=='2020-mvcd-d1s':
@@ -135,7 +133,7 @@ class setupCrust():
             self.xn = self.N / self.A
             #self.N_bound = [ int(item) for item in self.Z * self.xpn_bound ]
             #self.xn_bound = self.N_bound / self.A
-            #self.N_g = self.N - self.N_bound
+            #self.N_f = self.N - self.N_bound
             self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
@@ -143,7 +141,7 @@ class setupCrust():
             #
         elif '2018-pcpfddg' in model.lower():
             #
-            # Note: N_bound or N_g cannot be determined from the tables (Jerome).
+            # Note: N_bound or N_f cannot be determined from the tables (Jerome).
             # It is right?
             #
             if model.lower()=='2018-pcpfddg-bsk22':
@@ -164,7 +162,7 @@ class setupCrust():
             self.linestyle = 'dashdot'
             self.latexCite = 'MPearson:2018'
             self.ncl = 0.16 # in fm-3
-            self.den, self.Z, self.xp, self.N,  self.RWS, self.pre, self.e2a_etf, self.e2a_int, self.e2a_tot, self.mu_p, self.mu_n, self.mu_e, self.ng,self.Zcl, self.Ncl \
+            self.den, self.Z, self.xp, self.N,  self.RWS, self.pre, self.e2a_etf, self.e2a_int, self.e2a_tot, self.mu_p, self.mu_n, self.mu_e, self.den_f,self.Zcl, self.Ncl \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,5,7,8,9,10,14,15,16,23,25,27), unpack = True )
             self.den_cgs = self.den / 1.e-39 # in cm-3
             self.N = np.array([ int(item) for item in self.N ])
@@ -179,7 +177,7 @@ class setupCrust():
             self.xn_bound = self.N_bound / self.A_bound
             #
             #self.xn_bound = self.N_bound / self.A
-            #self.N_g = self.N - self.N_bound
+            #self.N_f = self.N - self.N_bound
             #self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             #self.e2a_int = self.e2a_tot - self.e2a_rm
@@ -387,7 +385,7 @@ class setupCrust():
             self.note = "."
             self.linestyle = 'dotted'
             self.latexCite = 'GGrams:2022'
-            self.den, self.Acl, self.Zcl, self.ncl, self.xe, self.ng, self.VWS, self.e2a_int2, self.pre, self.mu_n, self.mu_p \
+            self.den, self.Acl, self.Zcl, self.ncl, self.xe, self.den_f, self.VWS, self.e2a_int2, self.pre, self.mu_n, self.mu_p \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8,9,10), unpack = True )
             self.den_cgs = self.den / 1.e-39 # in cm-3
             # bound nucleons
@@ -404,11 +402,11 @@ class setupCrust():
             self.u = self.Vcl / self.VWS
             # unbound (gas) neutrons
             self.RWS = ( 3 / ( 4 * nuda.cst.pi ) * self.VWS )**nuda.cst.third
-            self.N_g = self.ng * ( self.VWS - self.Vcl )
+            self.N_f = self.den_f * ( self.VWS - self.Vcl )
             # total number of nucleons
             self.Z = self.Z_bound
-            self.N = self.N_bound + self.N_g
-            self.A = self.A_bound + self.N_g
+            self.N = self.N_bound + self.N_f
+            self.A = self.A_bound + self.N_f
             self.xn = self.N / self.A
             self.xp = self.Z / self.A
             # energy
@@ -417,6 +415,26 @@ class setupCrust():
             self.e2a_int = self.e2a_tot - self.e2a_rm
             # electrons
             self.mu_e = self.mu_n - self.mu_p
+            #
+        #
+        # For all models:
+        #
+        self.eps_tot = self.e2a_tot * self.den
+        self.eps_rm = self.e2a_rm * self.den
+        self.eps_int = self.e2a_int * self.den
+        # compute the pressure from the derivative of the total energy per nucleon
+        x = np.insert(self.den, 0, 0.0)
+        y = np.insert(self.e2a_tot, 0, 0.0)
+        cs_e2a_tot = CubicSpline(x, y)
+        self.pre_tot = np.array( self.den**2 * cs_e2a_tot(self.den, 1) )
+        # enthalpy
+        self.h2a_tot = self.e2a_tot + self.pre_tot / self.den
+        # sound speed in the crust
+        x = np.insert(self.den, 0, 0.0)
+        y = np.insert(self.pre_tot, 0, 0.0)
+        cs_pre_tot = CubicSpline(x, y)
+        self.cs2_tot = cs_pre_tot(self.den, 1) / self.h2a_tot
+        self.cs2_tot = np.abs( self.cs2_tot ) # this shows that the second derivative is not well calculated
     #
     def print_outputs( self ):
        """
@@ -436,17 +454,17 @@ class setupCrust():
        if self.Z is not None: print(f"   Z: {self.Z}")
        if self.N is not None: print(f"   N: {self.N}")
        if self.N_bound is not None: print(f"   N_bound: {self.N_bound}")
-       if self.N_g is not None: print(f"   N_g: {self.N_g}")
+       if self.N_f is not None: print(f"   N_f: {self.N_f}")
        if self.mu_n is not None: print(f"   mu_n(MeV): {self.mu_n}")
        if self.mu_p is not None: print(f"   mu_p(MeV): {self.mu_p}")
-       if self.den_g is not None: print(f"   den_g(fm-3): {self.den_g}")
+       if self.den_f is not None: print(f"   den_f(fm-3): {self.den_f}")
        if self.RWS is not None: print(f"   RWS(fm): {np.round(self.RWS,3)}")
        if self.xpn_bound is not None: print(f"   xpn_bound: {self.xpn_bound}")
        if self.e2a_tot is not None: print(f"   e2a_tot(MeV): {np.round(self.e2a_tot,3)}")
        if self.e2a_rm is not None: print(f"   e2a_rm(MeV): {np.round(self.e2a_rm,3)}")
        if self.e2a_int2 is not None: print(f"   e2a_int2(MeV): {np.round(self.e2a_int2,3)}")
        if self.e2a_int is not None: print(f"   e2a_int(MeV): {np.round(self.e2a_int,3)}")
-       if self.e2a_int_g is not None: print(f"   e2a_int_g(MeV): {np.round(self.e2a_int_g,3)}")
+       if self.e2a_int_f is not None: print(f"   e2a_int_f(MeV): {np.round(self.e2a_int_f,3)}")
        #
        if nuda.env.verb: print("Exit print_outputs()")
        #
@@ -467,10 +485,10 @@ class setupCrust():
         self.Z_bound = None
         #: Attribute N_bound (number of neutrons in the cluster).
         self.N_bound = None
-        #: Attribute N_g (number of neutrons in the gas).
-        self.N_g = None
-        #: Attribute n_g (neutron density in the gas).
-        self.n_g = None
+        #: Attribute N_f (number of free neutrons).
+        self.N_f = None
+        #: Attribute den_f (free neutron density).
+        self.den_f = None
         #: Attribute A (total number of nucleons of the WS cell).
         self.A = None
         #: Attribute Z (total number of protons of the WS cell).
@@ -493,8 +511,6 @@ class setupCrust():
         self.mu_n = None
         #: Attribute the proton chemical potential (in MeV).
         self.mu_p = None
-        #: Attribute the approximate density of neutron in the gas (in fm-3).
-        self.den_g = None
         #: Attribute the radius of the cluster (in fm).
         self.Rcl = None
         #: Attribute the radius of the WS cell (in fm).
@@ -505,8 +521,16 @@ class setupCrust():
         self.e2a_int2 = None
         #: Attribute the internal energy (in MeV).
         self.e2a_int = None
+        #: Attribute the total internal energy (in MeV).
+        self.e2a_tot = None
         #: Attribute the internal energy of the gas component (in MeV).
-        self.e2a_int_g = None
+        self.e2a_int_f = None
+        #: Attribute the rest mass energy density (in MeV fm3).
+        self.eps_rm = None
+        #: Attribute the internal energy density (in MeV fm3).
+        self.eps_int = None
+        #: Attribute the total energy density (in MeV fm3).
+        self.eps_tot = None
         #
         self.ref = None
         self.note = None

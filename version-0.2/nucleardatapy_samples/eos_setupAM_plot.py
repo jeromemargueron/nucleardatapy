@@ -35,8 +35,8 @@ def main():
     #
     # plot E/A
     #
-    #pname = 'figs/plot_eos_setupAM_e2a.png'
-    #nuda.fig.eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band )
+    pname = 'figs/plot_eos_setupAM_e2a.png'
+    nuda.fig.eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot pressure
     #

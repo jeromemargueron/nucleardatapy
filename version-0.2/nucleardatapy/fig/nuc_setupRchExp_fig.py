@@ -26,8 +26,8 @@ def nuc_setupRchExp_fig( pname, tables ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_ylabel(r'$R_{ch}$')
-    axs.set_xlabel(r'N')
+    axs.set_ylabel(r'$R_{ch}$ (fm)',fontsize='14')
+    axs.set_xlabel(r'N',fontsize='14')
     axs.set_xlim([10, 140])
     axs.set_ylim([3.2, 5.8])
     #

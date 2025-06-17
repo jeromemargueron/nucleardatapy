@@ -61,7 +61,7 @@ def main():
     pname = 'figs/plot_eos_setupAMBeq_cs2_tot.png'
     nuda.fig.eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band )
     #
-    # plot particle fractions
+    # plot the eos
     #
     pname = 'figs/plot_eos_setupAMBeq_eos.png'
     nuda.fig.eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band )

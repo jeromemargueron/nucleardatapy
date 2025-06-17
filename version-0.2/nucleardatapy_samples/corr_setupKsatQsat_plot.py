@@ -18,9 +18,11 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    #constraints = [ '2024-DFT-SKY', '2024-DFT-SKY2', '2024-DFT-ESKY', '2024-DFT-DDRH', \
-    #           '2024-DFT-NLRH', '2024-DFT-DDRHF', '2024-DFT-Gogny', \
-    #           '2024-DFT-xEFT' ]
+    #constraints = [ '1991-Pearson', 'EDF-SKY', 'EDF-ESKY', 'EDF-DDRH', \
+    #           'EDF-NLRH', 'EDF-DDRHF', 'EDF-Gogny' ]
+    #constraints = [ '1991-Pearson', 'EDF-SKY', 'EDF-SKY2', 'EDF-ESKY', 'EDF-DDRH', \
+    #           'EDF-NLRH', 'EDF-DDRHF', 'EDF-Gogny', \
+    #           'EDF-xEFT' ]
     constraints, constraints_lower = nuda.corr.KsatQsat_constraints()
     #
     pname = 'figs/plot_corr_setupKsatQsat.png'

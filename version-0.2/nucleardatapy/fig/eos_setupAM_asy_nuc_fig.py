@@ -26,12 +26,12 @@ def eos_setupAM_e2a_asy_nuc_fig( pname, micro_mbs, pheno_models, asy, band ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$E_\text{nuc}^\text{int}/A$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$e_\text{nuc}^\text{int}$ (MeV)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-10, 35])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'$E/A$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-10, 35])
@@ -137,12 +137,12 @@ def eos_setupAM_pre_asy_nuc_fig( pname, micro_mbs, pheno_models, asy, band ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-10, 35])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'$E/A$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-10, 35])
@@ -248,12 +248,12 @@ def eos_setupAM_cs2_asy_nuc_fig( pname, micro_mbs, pheno_models, asy, band ):
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.3 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-0.05, 0.25])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     #axs[1].set_ylabel(r'$E/A$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([-0.05, 0.25])

@@ -101,7 +101,7 @@ class setupMicroGap():
             self.label = 'EBHF-Av18-2006'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'dotted'
+            self.lstyle = 'solid'
             self.gap_err = False
             self.nm_kfn_1s0_fs, self.nm_gap_bare_1s0_fs, self.nm_gap_bare_onebubble_1s0_fs, self.nm_gap_bare_full_1s0_fs \
                 = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
@@ -121,7 +121,7 @@ class setupMicroGap():
             self.label = 'EBHF-Av18-2006'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'dotted'
+            self.lstyle = 'solid'
             self.gap_err = False
             self.sm_kfn_1s0_fs, self.sm_gap_bare_1s0_fs, self.sm_gap_bare_onebubble_1s0_fs, self.sm_gap_bare_full_1s0_fs \
                 = np.loadtxt( file_in_fs, usecols=(0,1,2,3), unpack = True )
@@ -139,7 +139,7 @@ class setupMicroGap():
             self.label = 'BCS-2008'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'dotted'
+            self.lstyle = 'dashed'
             self.gap_err = False
             self.nm_kfn_1s0, self.nm_gap_1s0, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -156,7 +156,7 @@ class setupMicroGap():
             self.label = 'AFDMC-2008'
             self.marker = 'D'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.lstyle = 'solid'
             self.gap_err = False
             self.nm_kfn_1s0, self.nm_gap_1s0, self.nm_chempot, self.nm_effmass \
                 = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -173,7 +173,7 @@ class setupMicroGap():
             self.label = 'QMC-swave-2008'
             self.marker = 'o'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.lstyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -190,7 +190,7 @@ class setupMicroGap():
             self.label = 'dLQMC-2009'
             self.marker = 'v'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.lstyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -207,7 +207,7 @@ class setupMicroGap():
             self.label = 'QMC-AV4-2008'
             self.marker = 's'
             self.every = 1
-            #self.linestyle = 'solid'
+            self.lstyle = 'solid'
             self.gap_err = True
             self.nm_kfn_1s0, gap2ef, gap2ef_err, e2effg, e2effg_err \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4), unpack = True )
@@ -220,7 +220,7 @@ class setupMicroGap():
             self.ref = 'C. Drischler, T. Kr\"uger, K. Hebeler, and A. Schwenk, Phys. Rev. C 95, 024302 (2017).'
             self.note = ""
             self.marker = 's'
-            #self.linestyle = 'solid'
+            self.lstyle = 'dashed'
             self.every = 2
             self.err = True
             if model.lower() == '2017-mbpt-nm-gap-emg-450-500-n2lo':
@@ -280,9 +280,8 @@ class setupMicroGap():
             self.ref = 'S. Gandolfi, G. Palkanoglou, J. Carlson, A. Gezerlis, K.E. Schmidt, Condensed Matter 7(1) (2022).'
             self.note = ""
             self.label = 'AFDMC+corr.-2022'
-            self.linestyle = 'solid'
             self.marker = 'o'
-            #self.linestyle = 'solid'
+            self.lstyle = 'solid'
             self.every = 1
             self.gap_err = True
             # read gap
@@ -376,6 +375,8 @@ class setupMicroGap():
         self.sm_gap_3pf2_err = None
         #: Attribute the plot label data.
         self.label = ''
+        #: Attribute the plot linestyle.
+        self.lstyle = None
         #: Attribute the plot marker.
         self.marker = None
         #: Attribute the plot every data.

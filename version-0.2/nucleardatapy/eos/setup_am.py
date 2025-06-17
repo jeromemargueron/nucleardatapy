@@ -99,8 +99,8 @@ class setupAM():
             self.rmass = self.x_n * nuda.cst.mnc2 + self.x_p * nuda.cst.mpc2
             self.e2a_int_nuc = esym.esym_sm_e2a_int + esym.esym * self.asy**2
             self.e2a_nuc = self.rmass + self.e2a_int_nuc
-            self.e2v_int_nuc = self.e2a_int_nuc * self.den
-            self.e2v_nuc = self.e2a_nuc * self.den
+            self.eps_int_nuc = self.e2a_int_nuc * self.den
+            self.eps_nuc = self.e2a_nuc * self.den
             self.pre_nuc = esym.esym_sm_pre + esym.esym_sym_pre * self.asy**2
             # leptons
             lep = nuda.matter.setupFFGLep( den_el = self.n_el, den_mu = self.n_mu )
@@ -109,15 +109,15 @@ class setupAM():
             self.e2a_mu = self.x_mu * lep.e2n_mu
             self.e2a_int_mu = self.e2a_mu - self.x_mu * nuda.cst.mmuc2
             self.e2a_lep = self.x_lep * lep.e2n_lep
-            self.e2v_lep = self.e2a_lep * self.den
+            self.eps_lep = self.e2a_lep * self.den
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
             # total
             self.e2a_int_tot = self.e2a_int_nuc + self.e2a_lep
             self.e2a_tot = self.e2a_nuc + self.e2a_lep
-            self.e2v_int_tot = self.e2v_int_nuc + self.e2v_lep
-            self.e2v_tot = self.e2v_nuc + self.e2v_lep
+            self.eps_int_tot = self.eps_int_nuc + self.eps_lep
+            self.eps_tot = self.eps_nuc + self.eps_lep
             self.pre_tot = self.pre_nuc + self.pre_lep
             # enthalpy self.h2a
             self.h2a_lep = self.e2a_lep + self.pre_lep / self.den
@@ -142,7 +142,7 @@ class setupAM():
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit  = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
-        self.e2v_unit = 'MeV fm$^{-3}$'
+        self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'
         self.gap_unit = 'MeV'
         #
@@ -165,7 +165,7 @@ class setupAM():
         if self.kfn is not None: print(f"   kfn: {np.round(self.den,3)} in {self.kf_unit}")
         if self.asy is not None: print(f"   asy: {np.round(self.asy,3)}")
         if self.e2a is not None: print(f"   e2a: {np.round(self.e2a,3)} in {self.e2a_unit}")
-        if self.e2v is not None: print(f"   e2v: {np.round(self.e2v,3)} in {self.e2v_unit}")
+        if self.eps is not None: print(f"   eps: {np.round(self.eps,3)} in {self.eps_unit}")
         if self.pre is not None: print(f"   pre: {np.round(self.pre,3)} in {self.pre_unit}")
         if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)}")
         #
@@ -202,7 +202,7 @@ class setupAM():
         #: Attribute the energy per particle.
         self.e2a = None
         #: Attribute the energy per unit volume.
-        self.e2v = None
+        self.eps = None
         #: Attribute the enthalpy per particle.
         self.h2a = None
         #: Attribute the enthalpy per unit volume.

@@ -26,7 +26,7 @@ def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     #axs[0,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0,0].set_ylabel(r'$E_\text{lep}^\text{int}/A$')
+    axs[0,0].set_ylabel(r'$e_\text{lep}^\text{int}$ (MeV)',fontsize='14')
     axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([-2, 38])
     axs[0,0].tick_params('x', labelbottom=False)
@@ -38,7 +38,7 @@ def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     axs[0,1].tick_params('x', labelbottom=False)
     #
     #axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$E_\text{nuc}^\text{int}/A$')
+    axs[1,0].set_ylabel(r'$e_\text{nuc}^\text{int}$ (MeV)',fontsize='14')
     axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([-10, 30])
     axs[1,0].tick_params('x', labelbottom=False)
@@ -49,12 +49,12 @@ def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     axs[1,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('x', labelbottom=False)
     #
-    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[2,0].set_ylabel(r'$E_\text{tot}^\text{int}/A$')
+    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[2,0].set_ylabel(r'$e_\text{tot}^\text{int}$ (MeV)',fontsize='14')
     axs[2,0].set_xlim([0, 0.33])
     axs[2,0].set_ylim([-2, 38])
     #
-    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[2,1].set_xlim([0, 0.33])
     axs[2,1].set_ylim([-2, 38])
     axs[2,1].tick_params('y', labelleft=False)
@@ -195,7 +195,7 @@ def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     #axs[0,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0,0].set_ylabel(r'$p_\text{lep}$ (MeV fm$^{-3}$)')
+    axs[0,0].set_ylabel(r'$p_\text{lep}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([-1, 4])
     axs[0,0].tick_params('x', labelbottom=False)
@@ -207,7 +207,7 @@ def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
     axs[0,1].tick_params('x', labelbottom=False)
     #
     #axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)')
+    axs[1,0].set_ylabel(r'$p_\text{nuc}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([-2, 15])
     axs[1,0].tick_params('x', labelbottom=False)
@@ -218,12 +218,12 @@ def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
     axs[1,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('x', labelbottom=False)
     #
-    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[2,0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)')
+    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[2,0].set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
     axs[2,0].set_xlim([0, 0.33])
     axs[2,0].set_ylim([-2, 15])
     #
-    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[2,1].set_xlim([0, 0.33])
     axs[2,1].set_ylim([-2, 15])
     axs[2,1].tick_params('y', labelleft=False)
@@ -364,7 +364,7 @@ def eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
     #axs[0,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0,0].set_ylabel(r'$c_\text{s,lep}^2/c^2$')
+    axs[0,0].set_ylabel(r'$c_\text{s,lep}^2/c^2$',fontsize='14')
     axs[0,0].set_xlim([0, 0.33])
     axs[0,0].set_ylim([0.2, 0.5])
     axs[0,0].tick_params('x', labelbottom=False)
@@ -376,7 +376,7 @@ def eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band ):
     axs[0,1].tick_params('x', labelbottom=False)
     #
     #axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$')
+    axs[1,0].set_ylabel(r'$c_\text{s,nuc}^2/c^2$',fontsize='14')
     axs[1,0].set_xlim([0, 0.33])
     axs[1,0].set_ylim([-0.05, 0.25])
     axs[1,0].tick_params('x', labelbottom=False)
@@ -387,12 +387,12 @@ def eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band ):
     axs[1,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('x', labelbottom=False)
     #
-    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[2,0].set_ylabel(r'$c_\text{s,tot}^2/c^2$')
+    axs[2,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
+    axs[2,0].set_ylabel(r'$c_\text{s,tot}^2/c^2$',fontsize='14')
     axs[2,0].set_xlim([0, 0.33])
     axs[2,0].set_ylim([-0.05, 0.25])
     #
-    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[2,1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
     axs[2,1].set_xlim([0, 0.33])
     axs[2,1].set_ylim([-0.05, 0.25])
     axs[2,1].tick_params('y', labelleft=False)

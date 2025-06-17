@@ -16,7 +16,6 @@ def main():
         #
         rch = nuda.nuc.setupRchExp( table = table )
         if nuda.env.verb_output: rch.print_outputs( )
-        #Nref, Aref, Rchref, Rchref_err = rch.Rch_isotopes( Zref = 50 )
         rchIsot = nuda.nuc.setupRchExpIsotopes( rch, Zref = Zref )
         print('For isotopes: Zref=',Zref)
         print('N:',rchIsot.N)

@@ -30,27 +30,27 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,1].set_xlabel(r'$k_{F}$ (fm$^{-1}$)')
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+    axs[1,1].set_xlabel(r'$k_{F}$ (fm$^{-1}$)', fontsize = '14' )
     axs[0,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('y', labelleft=False)
     axs[0,0].tick_params('x', labelbottom=False)
     axs[0,1].tick_params('x', labelbottom=False)
     axs[0,0].set_xlim([0, 0.33])
     axs[1,0].set_xlim([0, 0.33])
-    axs[0,1].set_xlim([0.5, 1.9])
-    axs[1,1].set_xlim([0.5, 1.9])
+    axs[0,1].set_xlim([0, 1.9])
+    axs[1,1].set_xlim([0, 1.9])
     if matter.lower() == 'nm':
-        axs[0,0].set_ylabel(r'$E_\text{NM}^\text{int}/A$ (MeV)')
-        axs[1,0].set_ylabel(r'$E_\text{NM}^\text{int}/E_\text{NRFFG}$')
+        axs[0,0].set_ylabel(r'$E_\text{int,NM}/A$ (MeV)', fontsize = '14' )
+        axs[1,0].set_ylabel(r'$E_\text{int,NM}/E_\text{int,NM}^\text{NRFFG}$', fontsize = '14' )
         axs[0,0].set_ylim([0, 30])
         axs[0,1].set_ylim([0, 30])
         axs[1,0].set_ylim([0.2, 0.84])
         axs[1,1].set_ylim([0.2, 0.84])
         delta = 1.0
     elif matter.lower() == 'sm':
-        axs[0,0].set_ylabel(r'$E_\text{SM}^\text{int}/A$ (MeV)')
-        axs[1,0].set_ylabel(r'$E_\text{SM}^\text{int}/E_\text{NRFFG}$')
+        axs[0,0].set_ylabel(r'$E_\text{int,SM}/A$ (MeV)', fontsize = '14' )
+        axs[1,0].set_ylabel(r'$E_\text{int,SM}/E_\text{int,SM}^\text{NRFFG}$', fontsize = '14' )
         axs[0,0].set_ylim([-20, 10])
         axs[0,1].set_ylim([-20, 10])
         axs[1,0].set_ylim([-1.2, 0.5])
@@ -78,22 +78,22 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band ):
                 #
                 print('   => model (NLEFT):',model)
                 if matter.lower() == 'nm':
-                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2adata_int, yerr=mic.nm_e2adata_err, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[0,0].errorbar( mic.nm_den, mic.nm_e2a_int_data, yerr=mic.nm_e2a_err_data, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[0,0].fill_between( mic.nm_den, y1=(mic.nm_e2a_int-mic.nm_e2a_err), y2=(mic.nm_e2a_int+mic.nm_e2a_err), alpha=0.3 )
-                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2adata_int, yerr=mic.nm_e2adata_err, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[0,1].errorbar( mic.nm_kfn, mic.nm_e2a_int_data, yerr=mic.nm_e2a_err_data, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[0,1].fill_between( mic.nm_kfn, y1=(mic.nm_e2a_int-mic.nm_e2a_err), y2=(mic.nm_e2a_int+mic.nm_e2a_err), alpha=0.3 )
-                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2adata_int/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2adata_err/nuda.effg_nr(mic.nm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[1,0].errorbar( mic.nm_den, mic.nm_e2a_int_data/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err_data/nuda.effg_nr(mic.nm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[1,0].fill_between( mic.nm_den, y1=(mic.nm_e2a_int-mic.nm_e2a_err)/nuda.effg_nr(mic.nm_kfn), y2=(mic.nm_e2a_int+mic.nm_e2a_err)/nuda.effg_nr(mic.nm_kfn), alpha=0.3 )
-                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2adata_int/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2adata_err/nuda.effg_nr(mic.nm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[1,1].errorbar( mic.nm_kfn, mic.nm_e2a_int_data/nuda.effg_nr(mic.nm_kfn), yerr=mic.nm_e2a_err_data/nuda.effg_nr(mic.nm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[1,1].fill_between( mic.nm_kfn, y1=(mic.nm_e2a_int-mic.nm_e2a_err)/nuda.effg_nr(mic.nm_kfn), y2=(mic.nm_e2a_int+mic.nm_e2a_err)/nuda.effg_nr(mic.nm_kfn), alpha=0.3 )
                 elif matter.lower() == 'sm':
-                    axs[0,0].errorbar( mic.sm_den, mic.sm_e2adata_int, yerr=mic.sm_e2adata_err, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[0,0].errorbar( mic.sm_den, mic.sm_e2a_int_data, yerr=mic.sm_e2a_err_data, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[0,0].fill_between( mic.sm_den, y1=(mic.sm_e2a_int-mic.sm_e2a_err), y2=(mic.sm_e2a_int+mic.sm_e2a_err), alpha=0.3 )
-                    axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2adata_int, yerr=mic.sm_e2adata_err, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[0,1].errorbar( mic.sm_kfn, mic.sm_e2a_int_data, yerr=mic.sm_e2a_err_data, linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[0,1].fill_between( mic.sm_kfn, y1=(mic.sm_e2a_int-mic.sm_e2a_err), y2=(mic.sm_e2a_int+mic.sm_e2a_err), alpha=0.3 )
-                    axs[1,0].errorbar( mic.sm_den, mic.sm_e2adata_int/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2adata_err/nuda.effg_nr(mic.sm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[1,0].errorbar( mic.sm_den, mic.sm_e2a_int_data/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err_data/nuda.effg_nr(mic.sm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[1,0].fill_between( mic.sm_den, y1=(mic.sm_e2a_int-mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), y2=(mic.sm_e2a_int+mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), alpha=0.3 )
-                    axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2adata_int/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2adata_err/nuda.effg_nr(mic.sm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
+                    axs[1,1].errorbar( mic.sm_kfn, mic.sm_e2a_int_data/nuda.effg_nr(mic.sm_kfn), yerr=mic.sm_e2a_err_data/nuda.effg_nr(mic.sm_kfn), linestyle = 'dotted', markevery=mic.every, linewidth = 1, alpha=0.6 )
                     axs[1,1].fill_between( mic.sm_kfn, y1=(mic.sm_e2a_int-mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), y2=(mic.sm_e2a_int+mic.sm_e2a_err)/nuda.effg_nr(mic.sm_kfn), alpha=0.3 )
                 #
             if mic.marker:
@@ -193,8 +193,8 @@ def matter_setupMicro_pre_fig( pname, mb, models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[1,1].set_xlabel(r'$k_{F}$ (fm$^{-1}$)')
+    axs[1,0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+    axs[1,1].set_xlabel(r'$k_{F}$ (fm$^{-1}$)', fontsize = '14' )
     axs[0,1].tick_params('y', labelleft=False)
     axs[1,1].tick_params('y', labelleft=False)
     axs[0,0].tick_params('x', labelbottom=False)
@@ -204,16 +204,16 @@ def matter_setupMicro_pre_fig( pname, mb, models, band ):
     axs[0,1].set_xlim([0.5, 1.9])
     axs[1,1].set_xlim([0.5, 1.9])
     if matter.lower() == 'nm':
-        axs[0,0].set_ylabel(r'$p_\text{NM}$ (MeV)')
-        axs[1,0].set_ylabel(r'$p_\text{NM}/p_\text{NRFFG}$')
+        axs[0,0].set_ylabel(r'$p_\text{NM}$ (MeV)', fontsize = '14' )
+        axs[1,0].set_ylabel(r'$p_\text{NM}/p_\text{NRFFG}$', fontsize = '14' )
         axs[0,0].set_ylim([-2, 30])
         axs[0,1].set_ylim([-2, 30])
         axs[1,0].set_ylim([-0.2, 0.84])
         axs[1,1].set_ylim([-0.2, 0.84])
         delta = 1.0
     elif matter.lower() == 'sm':
-        axs[0,0].set_ylabel(r'$p_\text{SM}$ (MeV)')
-        axs[1,0].set_ylabel(r'$p_\text{SM}/p_\text{NRFFG}$')
+        axs[0,0].set_ylabel(r'$p_\text{SM}$ (MeV)', fontsize = '14' )
+        axs[1,0].set_ylabel(r'$p_\text{SM}/p_\text{NRFFG}$', fontsize = '14' )
         axs[0,0].set_ylim([-5, 10])
         axs[0,1].set_ylim([-5, 10])
         axs[1,0].set_ylim([-1.2, 0.5])
@@ -321,18 +321,18 @@ def matter_setupMicro_cs2_fig( pname, mb, models, band ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.85, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
     axs[1].set_xlabel(r'$k_{F}$ (fm$^{-1}$)')
     axs[1].tick_params('y', labelleft=False)
     axs[0].set_xlim([0, 0.33])
     axs[1].set_xlim([0.5, 1.9])
     if matter.lower() == 'nm':
-        axs[0].set_ylabel(r'$c_\text{s,NM}^2/c^2$')
+        axs[0].set_ylabel(r'$c_\text{s,NM}^2/c^2$', fontsize = '14' )
         axs[0].set_ylim([-0.05, 0.3])
         axs[1].set_ylim([-0.05, 0.3])
         delta = 1.0
     elif matter.lower() == 'sm':
-        axs[0].set_ylabel(r'$c_\text{s,SM}^2/c^2$')
+        axs[0].set_ylabel(r'$c_\text{s,SM}^2/c^2$', fontsize = '14' )
         axs[0].set_ylim([-0.05, 0.2])
         axs[1].set_ylim([-0.05, 0.2])
         delta = 0.0

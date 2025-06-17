@@ -26,21 +26,21 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.3 )
     #
     if matter.lower() == 'nm':
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$e_\text{NM}^\text{int}(n_\text{nuc})$ (MeV)')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$e_\text{int,NM}(n_\text{nuc})$ (MeV)', fontsize = '14' )
         axs[0].set_xlim([0, 0.33])
         axs[0].set_ylim([0, 35])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.33])
         axs[1].set_ylim([0, 35])
         axs[1].tick_params('y', labelleft=False)
     elif matter.lower() == 'sm':
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$e_\text{SM}^\text{int}(n_\text{nuc})$ (MeV)')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$e_\text{int,SM}(n_\text{nuc})$ (MeV)', fontsize = '14' )
         axs[0].set_xlim([0, 0.33])
         axs[0].set_ylim([-22, 5])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.33])
         axs[1].set_ylim([-22, 5])
@@ -188,12 +188,12 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     if matter.lower() == 'nm':
-        axs[0].text(0.06,2,'microscopic models',fontsize='10')
-        axs[1].text(0.06,2,'phenomenological models',fontsize='10')
+        axs[0].text(0.06,2,'microscopic models',fontsize='12')
+        axs[1].text(0.06,2,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.07,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     elif matter.lower() == 'sm':
-        axs[0].text(0.03,2,'microscopic models',fontsize='10')
-        axs[1].text(0.03,2,'phenomenological models',fontsize='10')
+        axs[0].text(0.03,2,'microscopic models',fontsize='12')
+        axs[1].text(0.03,2,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None:
@@ -230,12 +230,12 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
     #fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
-    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-    axs[0].set_ylabel(r'$e_\text{sym}(n_\text{nuc})$ (MeV)')
+    axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+    axs[0].set_ylabel(r'$e_\text{sym}(n_\text{nuc})$ (MeV)', fontsize = '14' )
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([0, 60])
     #
-    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+    axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
     #axs[1].set_ylabel(r'$e_{sym}(n)$')
     axs[1].set_xlim([0, 0.33])
     axs[1].set_ylim([0, 60])
@@ -291,7 +291,6 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
     axs[0].fill_between( band_plot.den, y1=(band_plot.e2a_int-band_plot.e2a_std), y2=(band_plot.e2a_int+band_plot.e2a_std), color=band_plot.color, alpha=band_plot.alpha, visible=True )
     axs[0].plot( band_plot.den, (band_plot.e2a_int-band_plot.e2a_std), color='k', linestyle='dashed', zorder=100 )
     axs[0].plot( band_plot.den, (band_plot.e2a_int+band_plot.e2a_std), color='k', linestyle='dashed', zorder=100 )
-    axs[0].text(0.05,5,'microscopic models',fontsize='10')
     #
     model_check = []
     #
@@ -323,7 +322,9 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
     axs[1].fill_between( band_plot.den, y1=(band_plot.e2a_int-band_plot.e2a_std), y2=(band_plot.e2a_int+band_plot.e2a_std), color=band_plot.color, alpha=band_plot.alpha, visible=True )
     axs[1].plot( band_plot.den, (band_plot.e2a_int-band_plot.e2a_std), color='k', linestyle='dashed', zorder=100 )
     axs[1].plot( band_plot.den, (band_plot.e2a_int+band_plot.e2a_std), color='k', linestyle='dashed', zorder=100 )
-    axs[1].text(0.05,5,'phenomenological models',fontsize='10')
+    #
+    axs[0].text(0.05,5,'microscopic models',fontsize='12')
+    axs[1].text(0.05,5,'phenomenological models',fontsize='12')
     #
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
@@ -364,11 +365,11 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
         p_micro_std =  8.5
         p_pheno_cen = 23.0
         p_pheno_std = 14.5
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$p_\text{NM}(n_\text{nuc})$ (MeV fm$^{-3}$)')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$p_\text{NM}(n_\text{nuc})$ (MeV fm$^{-3}$)', fontsize = '14' )
         axs[0].set_xlim([0, 0.35])
         axs[0].set_ylim([-2, 45])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.35])
         axs[1].set_ylim([-2, 45])
@@ -380,11 +381,11 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
         p_micro_std =  6.0
         p_pheno_cen = 19.0
         p_pheno_std =  9.0
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$p_\text{SM}(n_\text{nuc})$ (MeV fm$^{-3}$)')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$p_\text{SM}(n_\text{nuc})$ (MeV fm$^{-3}$)', fontsize = '14' )
         axs[0].set_xlim([0, 0.35])
         axs[0].set_ylim([-2, 45])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.35])
         axs[1].set_ylim([-2, 45])
@@ -531,12 +532,12 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     if matter.lower() == 'nm':
-        axs[0].text(0.02,40,'microscopic models',fontsize='10')
-        axs[1].text(0.02,40,'phenomenological models',fontsize='10')
+        axs[0].text(0.02,40,'microscopic models',fontsize='12')
+        axs[1].text(0.02,40,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     elif matter.lower() == 'sm':
-        axs[0].text(0.02,40,'microscopic models',fontsize='10')
-        axs[1].text(0.02,40,'phenomenological models',fontsize='10')
+        axs[0].text(0.02,40,'microscopic models',fontsize='12')
+        axs[1].text(0.02,40,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None:
@@ -567,7 +568,7 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     fig, axs = plt.subplots(1,2)
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.3 )
     #
-    p_e2v = 312.0
+    p_eps = 312.0
     if matter.lower() == 'nm':
         p_cen = 23.0
         p_std = 14.5 
@@ -575,11 +576,11 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
         p_micro_std =  8.5
         p_pheno_cen = 23.0
         p_pheno_std = 14.5
-        axs[0].set_xlabel(r'$\rho_\text{nuc} c^2$ (MeV fm$^{-3}$)')
-        axs[0].set_ylabel(r'$p_\text{NM}(n_\text{nuc})$ (MeV fm$^{-3}$)')
+        axs[0].set_xlabel(r'$\epsilon_\text{NM}$ (MeV fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$p_\text{NM}(n_\text{nuc})$ (MeV fm$^{-3}$)', fontsize = '14' )
         axs[0].set_xlim([0, 350])
         axs[0].set_ylim([-2, 45])
-        axs[1].set_xlabel(r'$\rho_\text{nuc} c^2$ (MeV fm$^{-3}$)')
+        axs[1].set_xlabel(r'$\epsilon_\text{NM}$ (MeV fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 350])
         axs[1].set_ylim([-2, 45])
@@ -591,11 +592,11 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
         p_micro_std =  6.5
         p_pheno_cen = 22.0
         p_pheno_std = 11.0
-        axs[0].set_xlabel(r'$\rho_\text{nuc} c^2$ (MeV fm$^{-3}$)')
-        axs[0].set_ylabel(r'$p_\text{SM}(n_\text{nuc})$ (MeV fm$^{-3}$)')
+        axs[0].set_xlabel(r'$\epsilon_\text{SM}$ (MeV fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$p_\text{SM}(n_\text{nuc})$ (MeV fm$^{-3}$)', fontsize = '14' )
         axs[0].set_xlim([0, 350])
         axs[0].set_ylim([-2, 45])
-        axs[1].set_xlabel(r'$\rho_\text{nuc} c^2$ (MeV fm$^{-3}$)')
+        axs[1].set_xlabel(r'$\epsilon_\text{SM}$ (MeV fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 350])
         axs[1].set_ylim([-2, 45])
@@ -629,26 +630,26 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
                     if mb in mb_check:
                         if micro.marker:
                             if micro.p_err:
-                                axs[0].errorbar( micro.nm_e2v, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.nm_eps, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
-                                axs[0].plot( micro.nm_e2v, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.nm_eps, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                         else:
                             if micro.p_err:
-                                axs[0].errorbar( micro.nm_e2v, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.nm_eps, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
-                                axs[0].plot( micro.nm_e2v, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.nm_eps, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                     else:
                         mb_check.append(mb)
                         if micro.marker:
                             if micro.p_err:
-                                axs[0].errorbar( micro.nm_e2v, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.nm_eps, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
-                                axs[0].plot( micro.nm_e2v, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.nm_eps, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
                         else:
                             if micro.p_err:
-                                axs[0].errorbar( micro.nm_e2v, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.nm_eps, micro.nm_pre, yerr=micro.nm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
-                                axs[0].plot( micro.nm_e2v, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.nm_eps, micro.nm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
                 #
             elif matter.lower() == 'sm':
                 #
@@ -659,42 +660,42 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
                             print('with marker 1:',micro.marker)
                             if micro.p_err:
                                 print('with error',micro.p_err)
-                                axs[0].errorbar( micro.sm_e2v, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.sm_eps, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
                                 print('with no error',micro.p_err)
-                                axs[0].plot( micro.sm_e2v, micro.sm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.sm_eps, micro.sm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, color=nuda.param.col[kmb] )
                         else:
                             print('with no marker',micro.marker)
                             if micro.p_err:
                                 print('with error',micro.p_err)
-                                axs[0].errorbar( micro.sm_e2v, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.sm_eps, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, linestyle=lstyle, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
                                 print('with no error',micro.p_err)
-                                axs[0].plot( micro.sm_e2v, micro.sm_pre, marker=micro.marker, linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.sm_eps, micro.sm_pre, marker=micro.marker, linestyle=lstyle, markevery=micro.every, color=nuda.param.col[kmb] )
                     else:
                         mb_check.append(mb)
                         if micro.marker:
                             print('with marker 2:',micro.marker)
                             if micro.p_err:
                                 print('with error',micro.p_err)
-                                axs[0].errorbar( micro.sm_e2v, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.sm_eps, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
                                 print('with no error',micro.p_err)
-                                axs[0].plot( micro.sm_e2v, micro.sm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.sm_eps, micro.sm_pre, marker=micro.marker, markevery=micro.every, linestyle=lstyle, label=mb, color=nuda.param.col[kmb] )
                         else:
                             print('with no marker',micro.marker)
                             if micro.p_err:
                                 print('with error',micro.p_err)
-                                axs[0].errorbar( micro.sm_e2v, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].errorbar( micro.sm_eps, micro.sm_pre, yerr=micro.sm_pre_err, marker=micro.marker, linestyle=lstyle, label=mb, errorevery=micro.every, color=nuda.param.col[kmb] )
                             else:
                                 print('with no error',micro.p_err)
-                                axs[0].plot( micro.sm_e2v, micro.sm_pre, marker=micro.marker, linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
+                                axs[0].plot( micro.sm_eps, micro.sm_pre, marker=micro.marker, linestyle=lstyle, label=mb, markevery=micro.every, color=nuda.param.col[kmb] )
                 # end of matter
             # end of model
         # end of mb
     #
-    axs[0].errorbar( p_e2v, p_cen, yerr=p_std, color='k' )
-    axs[0].errorbar( p_e2v+5, p_micro_cen, yerr=p_micro_std, color='r' )
+    axs[0].errorbar( p_eps, p_cen, yerr=p_std, color='k' )
+    axs[0].errorbar( p_eps+5, p_micro_cen, yerr=p_micro_std, color='r' )
     #
     model_check = []
     #
@@ -720,34 +721,34 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
                 if pheno.nm_pre is not None: 
                     print('model:',model,' param:',param)
                     if model in model_check:
-                        axs[1].plot( pheno.nm_e2v, pheno.nm_pre, linestyle=lstyle, color=nuda.param.col[kmodel] )
+                        axs[1].plot( pheno.nm_eps, pheno.nm_pre, linestyle=lstyle, color=nuda.param.col[kmodel] )
                     else:
                         model_check.append(model)
-                        axs[1].plot( pheno.nm_e2v, pheno.nm_pre, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
+                        axs[1].plot( pheno.nm_eps, pheno.nm_pre, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
                 #
             elif matter.lower() == 'sm':
                 #
                 if pheno.sm_pre is not None: 
                     print('model:',model,' param:',param)
                     if model in model_check:
-                        axs[1].plot( pheno.sm_e2v, pheno.sm_pre, linestyle=lstyle, color=nuda.param.col[kmodel] )
+                        axs[1].plot( pheno.sm_eps, pheno.sm_pre, linestyle=lstyle, color=nuda.param.col[kmodel] )
                     else:
                         model_check.append(model)
-                        axs[1].plot( pheno.sm_e2v, pheno.sm_pre, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
+                        axs[1].plot( pheno.sm_eps, pheno.sm_pre, linestyle=lstyle, color=nuda.param.col[kmodel], label=model )
             # end of param
         # end of model
     #
-    axs[1].errorbar( p_e2v, p_cen, yerr=p_std, color='k' )
-    axs[1].errorbar( p_e2v+5, p_pheno_cen, yerr=p_pheno_std, color='r' )
+    axs[1].errorbar( p_eps, p_cen, yerr=p_std, color='k' )
+    axs[1].errorbar( p_eps+5, p_pheno_cen, yerr=p_pheno_std, color='r' )
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     if matter.lower() == 'nm':
-        axs[0].text(10,40,'microscopic models',fontsize='10')
-        axs[1].text(10,40,'phenomenological models',fontsize='10')
+        axs[0].text(10,40,'microscopic models',fontsize='12')
+        axs[1].text(10,40,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     elif matter.lower() == 'sm':
-        axs[0].text(10,40,'microscopic models',fontsize='10')
-        axs[1].text(10,40,'phenomenological models',fontsize='10')
+        axs[0].text(10,40,'microscopic models',fontsize='12')
+        axs[1].text(10,40,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None:
@@ -779,21 +780,21 @@ def matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     fig.subplots_adjust(left=0.10, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.3 )
     #
     if matter.lower() == 'nm':
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$c_\text{s,NM}^2/c^2(n_\text{nuc})$')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$c_\text{s,NM}^2/c^2(n_\text{nuc})$', fontsize = '14' )
         axs[0].set_xlim([0, 0.35])
         axs[0].set_ylim([-0.01, 0.4])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.35])
         axs[1].set_ylim([-0.01, 0.4])
         axs[1].tick_params('y', labelleft=False)
     elif matter.lower() == 'sm':
-        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
-        axs[0].set_ylabel(r'$c_\text{s,SM}^2/c^2(n_\text{nuc})$')
+        axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
+        axs[0].set_ylabel(r'$c_\text{s,SM}^2/c^2(n_\text{nuc})$', fontsize = '14' )
         axs[0].set_xlim([0, 0.35])
         axs[0].set_ylim([-0.02, 0.3])
-        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)')
+        axs[1].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)', fontsize = '14' )
         #axs[1].set_ylabel(r'$e_{sym}(n)$')
         axs[1].set_xlim([0, 0.35])
         axs[1].set_ylim([-0.02, 0.3])
@@ -935,12 +936,12 @@ def matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     #axs[1].legend(loc='upper left',fontsize='8', ncol=2)
     #axs[0,1].legend(loc='upper left',fontsize='xx-small', ncol=2)
     if matter.lower() == 'nm':
-        axs[0].text(0.02,0.3,'microscopic models',fontsize='10')
-        axs[1].text(0.02,0.3,'phenomenological models',fontsize='10')
+        axs[0].text(0.02,0.3,'microscopic models',fontsize='12')
+        axs[1].text(0.02,0.3,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.1,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     elif matter.lower() == 'sm':
-        axs[0].text(0.02,0.2,'microscopic models',fontsize='10')
-        axs[1].text(0.02,0.2,'phenomenological models',fontsize='10')
+        axs[0].text(0.02,0.2,'microscopic models',fontsize='12')
+        axs[1].text(0.02,0.2,'phenomenological models',fontsize='12')
         fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None:

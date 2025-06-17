@@ -150,16 +150,16 @@ class setupRE1LExp():
       #: Attribute A (mass of the nucleus).
       self.A = self.Z + self.N + np.ones(len(self.N),dtype=int)
       #: charge of the hypernuclei (=Z, since Lamnda is charged 0)
-      self.ch = self.Z
+      self.Q = self.Z
       #: Strangness number
-      self.S = -2*np.ones(len(self.N),dtype=int)
+      self.S = -1*np.ones(len(self.N),dtype=int)
       #: symbol representing the nucleus
       self.symb = nucSymb
-      #: Attribute the angular momentum of the state.
+      #: Attribute the s.p. state.
       self.sps = nucsps
       #: Attribute the angular momentum of the state.
       self.ell = np.array( nucell, dtype = int )
-      #: Attribute 1L binding energy in MeV.
+      #: Attribute 1L removal energy in MeV.
       self.lre = np.array( nuclre, dtype = float )
       #: Attribute 1L binding energy error in MeV.
       self.lre_err = np.array( nuclre_err, dtype = float )
@@ -204,7 +204,7 @@ class setupRE1LExp():
       if any(self.Z): print(f"   Z: {self.Z}")
       if any(self.N): print(f"   N: {self.N}")
       if any(self.S): print(f"   S: {self.S}")
-      if any(self.ch): print(f"  ch: {self.ch}")
+      if any(self.Q): print(f"   Q: {self.Q}")
       if any(self.symb): print(f" symb: {self.symb}")
       if any(self.ell): print(f" ell: {self.ell}")
       if any(self.lre): print(f"  re: {self.lre}")
@@ -225,7 +225,7 @@ class setupRE1LExp():
          print(rf" index & Z & N & S & ch & symb & $RE$  & Ref. \\\\")
          print(rf"       &   &   &   &    &      & (MeV) &      \\\\")
          for ind,A in enumerate(self.A):
-            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.lre[ind]:.3f}\pm {self.lre_err[ind]:.3f}$ & \cite{{"+self.keyref+"} \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.Q[ind]} & {self.symb[ind]} & ${self.lre[ind]:.3f}\pm {self.lre_err[ind]:.3f}$ & \cite{{"+self.keyref+"} \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

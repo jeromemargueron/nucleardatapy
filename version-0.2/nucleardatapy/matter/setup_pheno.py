@@ -162,8 +162,8 @@ class setupPheno():
             self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, a, self.nm_cs2 = np.loadtxt( file_in2, usecols=(0,1,2,3,4,5), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_e2v = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             # pressure in SM
             x = np.insert( self.sm_den, 0, 0.0 )
@@ -206,8 +206,8 @@ class setupPheno():
             self.nm_den, self.nm_e2a_int, self.nm_pre = np.loadtxt( file_in2, usecols=(0,1,2), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_e2v = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.nm_kfn = nuda.kf_n( self.nm_den )
@@ -251,8 +251,8 @@ class setupPheno():
             self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_e2v = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -282,8 +282,8 @@ class setupPheno():
             self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_e2v = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -312,8 +312,8 @@ class setupPheno():
             self.nm_den, self.nm_kfn, self.nm_e2a_int, self.nm_pre, self.nm_cs2_data = np.loadtxt( file_in2, usecols=(0,1,2,3,4), comments='#', unpack = True )
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int 
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.nm_e2v = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
             self.sm_kf = self.sm_kfn
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den

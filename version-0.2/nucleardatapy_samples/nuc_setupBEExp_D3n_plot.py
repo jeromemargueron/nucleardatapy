@@ -19,9 +19,6 @@ def main():
     pname = 'figs/plot_nuc_setupBEExp_D3n_Zref50.png'
     nuda.fig.nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 )
     #
-    pname = 'figs/plot_nuc_setupBEExp_D3n_Zref20.png'
-    nuda.fig.nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 20 )
-    #
     print(50*'-')
     print("Exit nuc_setupBEExp_D3n_plot.py:")
     print(50*'-')

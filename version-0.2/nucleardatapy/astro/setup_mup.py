@@ -141,7 +141,7 @@ class setupMup():
         #: Attribute the positive uncertainty.
         self.sig_up = None
         #: Attribute the negative uncertainty.
-        self.sig_do = None
+        self.sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
         #
@@ -156,7 +156,7 @@ class setupMup():
                 if int(ele[0]) == hyp:
                     self.mup = float(ele[2])
                     self.sig_up = float(ele[3])
-                    self.sig_do = float(ele[4])
+                    self.sig_lo = float(ele[4])
                     self.latexCite = ele[5].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit setupMup()")
@@ -173,7 +173,7 @@ class setupMup():
         print("   source:  ",self.source)
         print("   hyp:",self.hyp)
         print("   mup:",self.mup)
-        print("   sigma(mup):",self.sig_up,self.sig_do)
+        print("   sigma(mup):",self.sig_up,self.sig_lo)
         print("   latexCite:",self.latexCite)
         print("   ref:    ",self.ref)
         print("   label:  ",self.label)
@@ -190,7 +190,7 @@ class setupMup():
         if nuda.env.verb: print("Enter print_latex()")
         #
         if nuda.env.verb_latex:
-            print(rf"- table: {self.source} & {self.hyp} & ${self.mup:.2f}^{{{+self.sig_up}}}_{{{-self.sig_do}}}$ & \cite{{{self.latexCite}}} \\\\")
+            print(rf"- table: {self.source} & {self.hyp} & ${self.mup:.2f}^{{{+self.sig_up}}}_{{{-self.sig_lo}}}$ & \cite{{{self.latexCite}}} \\\\")
         else:
             print(rf"- No table for source {self.source}. To get table, write 'verb_latex = True' in env.py.")
         #
@@ -228,9 +228,9 @@ class setupMupAverage():
         for hyp in hyps:
             mup = nuda.setupMup( source = source, hyp = hyp )
             #mup.print_outputs( )
-            mupdo = mup.mup - 3*mup.sig_do
+            muplo = mup.mup - 3*mup.sig_lo
             mupup = mup.mup + 3*mup.sig_up
-            if mupdo < mupmin: mupmin = mupdo
+            if muplo < mupmin: mupmin = muplo
             if mupup > mupmax: mupmax = mupup
         # construct the distribution of observations in ay
         ax = np.linspace(mupmin,mupmax,300)
@@ -240,7 +240,7 @@ class setupMupAverage():
             #print('hyp:',hyp)
             mup = nuda.setupMup( source = source, hyp = hyp )
             #mup.print_outputs( )
-            ay += gauss(ax,mup.mup,mup.sig_up,mup.sig_do)
+            ay += gauss(ax,mup.mup,mup.sig_up,mup.sig_lo)
         # determine the centroid and standard deviation from the distribution of obs. 
         nor = sum( ay )
         cen = sum( ay*ax )
@@ -288,13 +288,13 @@ class setupMupAverage():
         if nuda.env.verb: print("Exit print_latex()")
         #
 
-def gauss( ax, mass, sig_up, sig_do ):
+def gauss( ax, mass, sig_up, sig_lo ):
     fac = math.sqrt( 2*math.pi )
     gauss = []
     for x in ax:
         if x < mass: 
-            z = ( x - mass ) / sig_do
-            norm = sig_do * fac
+            z = ( x - mass ) / sig_lo
+            norm = sig_lo * fac
         else:
             z = ( x - mass ) / sig_up
             norm = sig_up * fac

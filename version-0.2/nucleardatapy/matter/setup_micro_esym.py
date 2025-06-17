@@ -287,7 +287,7 @@ class setupMicroEsym():
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.esym_unit = 'MeV'
-        self.e2v_unit = 'MeV fm$^{-3}$'
+        self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'
         #
         if nuda.env.verb: print("Exit setupMicroEsym()")

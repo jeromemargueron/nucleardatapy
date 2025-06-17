@@ -5,13 +5,13 @@ from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
-class setupNEPModelDist():
+class setupNEPStat_model():
     """
     Instantiate the object with results based on phenomenological\
     interactions and choosen by the toolkit practitioner. \
     This choice is defined in the variables `model` and `param`.
 
-    :param model: Fix the name of model: 'Skyrme', 'NLRH', \
+    :param model: Fix the name of model: 'Skyrme', 'GSkyrme', 'NLRH', \
     'DDRH', 'DDRHF'. Default value: 'Skyrme'.
     :type model: str, optional. 
     :param param: Fix the parameterization associated to model. \
@@ -23,14 +23,14 @@ class setupNEPModelDist():
     #
     def __init__( self, model = 'Skyrme' ):
         #
-        if nuda.env.verb: print("\nEnter setupNEPModelDist()")
+        if nuda.env.verb: print("\nEnter setupNEPStat_model()")
         #
         #: Attribute model.
         self.model = model
         if nuda.env.verb: print("model:",model)
         #print("-> model:",model)
         #
-        self = setupNEPModelDist.init_self( self )
+        self = setupNEPStat_model.init_self( self )
         #
         models, models_lower = nuda.matter.nep_models( )
         #
@@ -62,6 +62,7 @@ class setupNEPModelDist():
                 if nep.Zsym is not None: self.Zsym.append( nep.Zsym ); 
                 if nep.kappas is not None: self.kappas.append( nep.kappas ); 
                 if nep.kappav is not None: self.kappav.append( nep.kappav ); 
+                if nep.kappasat is not None: self.kappasat.append( nep.kappasat ); 
                 if nep.kappasym is not None: self.kappasym.append( nep.kappasym ); 
                 if nep.msat is not None: self.msat.append( nep.msat ); 
                 if nep.Dmsat is not None: self.Dmsat.append( nep.Dmsat ); 
@@ -105,6 +106,9 @@ class setupNEPModelDist():
         if any(self.kappav): self.kappav_mean = np.mean(self.kappav); self.kappav_std = np.std(self.kappav)
         else:
             self.kappav_mean = 0.0; self.kappav_std = 0.0
+        if any(self.kappasat): self.kappasat_mean = np.mean(self.kappasat); self.kappasat_std = np.std(self.kappasat)
+        else:
+            self.kappasat_mean = 0.0; self.kappasat_std = 0.0
         if any(self.kappasym): self.kappasym_mean = np.mean(self.kappasym); self.kappasym_std = np.std(self.kappasym)
         else:
             self.kappasym_mean = 0.0; self.kappasym_std = 0.0
@@ -115,7 +119,7 @@ class setupNEPModelDist():
         else:
             self.Dmsat_mean = 0.0; self.Dmsat_std = 0.0
         #
-        if nuda.env.verb: print("Exit SetupNEPModelDist()")
+        if nuda.env.verb: print("Exit SetupNEPStat_model()")
     #
     def print_outputs( self ):
         """
@@ -140,6 +144,7 @@ class setupNEPModelDist():
         if any(self.Zsym): print(f"   Zsym: {np.round(self.Zsym,2)}")
         if any(self.kappas): print(f"   kappas: {np.round(self.kappas,2)}")
         if any(self.kappav): print(f"   kappav: {np.round(self.kappav,2)}")
+        if any(self.kappasat): print(f"   kappasat: {np.round(self.kappasat,2)}")
         if any(self.kappasym): print(f"   kappasym: {np.round(self.kappasym,2)}")
         if any(self.msat): print(f"   msat: {np.round(self.msat,2)}")
         if any(self.Dmsat): print(f"  Dmsat: {np.round(self.Dmsat,2)}")
@@ -186,15 +191,15 @@ class setupNEPModelDist():
         #: Attribute the NEP.
         self.nsat = []; self.Esat = []; self.Ksat = []; self.Qsat = []; self.Zsat = []
         self.Esym = []; self.Lsym = []; self.Ksym = []; self.Qsym = []; self.Zsym = []
-        self.kappas = []; self.kappav = []; self.kappasym = []
+        self.kappas = []; self.kappav = []; self.kappasat = []; self.kappasym = []
         self.msat = []; self.Dmsat = [];
         self.nsat_mean = None; self.Esat_mean = None; self.Ksat_mean = None; self.Qsat_mean = None; self.Zsat_mean = None
         self.Esym_mean = None; self.Lsym_mean = None; self.Ksym_mean = None; self.Qsym_mean = None; self.Zsym_mean = None
-        self.kappas_mean = None; self.kappav_mean = None; self.kappasym_mean = None
+        self.kappas_mean = None; self.kappav_mean = None; self.kappasat_mean = None; self.kappasym_mean = None
         self.msat_mean = None; self.Dmsat_mean = None;
         self.nsat_std = None; self.Esat_std = None; self.Ksat_std = None; self.Qsat_std = None; self.Zsat_std = None
         self.Esym_std = None; self.Lsym_std = None; self.Ksym_std = None; self.Qsym_std = None; self.Zsym_std = None
-        self.kappas_std = None; self.kappav_std = None; self.kappasym_std = None
+        self.kappas_std = None; self.kappav_std = None; self.kappasat_std = None; self.kappasym_std = None
         self.msat_std = None; self.Dmsat_std = None;
         #
         if nuda.env.verb: print("Exit init_self()")

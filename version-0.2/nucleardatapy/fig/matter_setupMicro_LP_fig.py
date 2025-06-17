@@ -40,46 +40,46 @@ def matter_setupMicro_LP_fig( pname, models, matter="SM", ell=0 ):
         axs[0, 0].set_xlim([0, 2.0])
         axs[0, 0].set_ylim([-2.1, 1.6])
         if ell == 0:
-            axs[0, 0].set_ylabel(r"$F_0$")
+            axs[0, 0].set_ylabel(r"$F_0$", fontsize='14')
         if ell == 1:
-            axs[0, 0].set_ylabel(r"$F_1$")
+            axs[0, 0].set_ylabel(r"$F_1$", fontsize='14')
         axs[0, 0].tick_params("x", labelbottom=False)
         if ell == 0:
-            axs[0, 1].set_ylabel(r"$G_0$")
+            axs[0, 1].set_ylabel(r"$G_0$", fontsize='14')
         if ell == 1:
-            axs[0, 1].set_ylabel(r"$G_1$")
+            axs[0, 1].set_ylabel(r"$G_1$", fontsize='14')
         axs[0, 1].set_xlim([0, 2.0])
         axs[0, 1].set_ylim([-2.1, 1.6])
         axs[0, 1].tick_params("x", labelbottom=False)
         axs[0, 1].tick_params("y", labelleft=False)
         if ell == 0:
-            axs[1, 0].set_ylabel(r"$F_0^\prime$")
+            axs[1, 0].set_ylabel(r"$F_0^\prime$", fontsize='14')
         if ell == 1:
-            axs[1, 0].set_ylabel(r"$F_1^\prime$")
-        axs[1, 0].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
+            axs[1, 0].set_ylabel(r"$F_1^\prime$", fontsize='14')
+        axs[1, 0].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize='14')
         axs[1, 0].set_xlim([0, 2.0])
         axs[1, 0].set_ylim([-1.1, 2.6])
         if ell == 0:
-            axs[1, 1].set_ylabel(r"$G_0^\prime$")
+            axs[1, 1].set_ylabel(r"$G_0^\prime$", fontsize='14')
         if ell == 1:
-            axs[1, 1].set_ylabel(r"$G_1^\prime$")
-        axs[1, 1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
+            axs[1, 1].set_ylabel(r"$G_1^\prime$", fontsize='14')
+        axs[1, 1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize='14')
         axs[1, 1].set_xlim([0, 2.0])
         axs[1, 1].set_ylim([-1.1, 2.6])
         axs[1, 1].tick_params("y", labelleft=False)
     elif matter.lower() == "nm":
         if ell == 0:
-            axs[0].set_ylabel(r"$F_0$")
+            axs[0].set_ylabel(r"$F_0$", fontsize='14')
         if ell == 1:
-            axs[0].set_ylabel(r"$F_1$")
-        axs[0].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
+            axs[0].set_ylabel(r"$F_1$", fontsize='14')
+        axs[0].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize='14')
         axs[0].set_xlim([0, 2.0])
         axs[0].set_ylim([-1.1, 1.1])
         if ell == 0:
-            axs[1].set_ylabel(r"$G_0$")
+            axs[1].set_ylabel(r"$G_0$", fontsize='14')
         if ell == 1:
-            axs[1].set_ylabel(r"$G_1$")
-        axs[1].set_xlabel(r"$k_{F_n}$ (fm$^{-1}$)")
+            axs[1].set_ylabel(r"$G_1$", fontsize='14')
+        axs[1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize='14')
         axs[1].set_xlim([0, 2.0])
         axs[1].set_ylim([-1.1, 1.1])
         axs[1].tick_params("y", labelleft=False)
@@ -196,7 +196,7 @@ def matter_setupMicro_LP_fig( pname, models, matter="SM", ell=0 ):
         #
     #
     if matter.lower() == "sm":
-        axs[1, 0].legend(loc="lower left", fontsize="6", ncol=2)
+        axs[1, 0].legend(loc="upper left", fontsize="6", ncol=2)
     elif matter.lower() == "nm":
         axs[0].legend(loc="upper left", fontsize="8", ncol=1)
     #

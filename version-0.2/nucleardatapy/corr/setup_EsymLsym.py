@@ -12,17 +12,19 @@ def EsymLsym_constraints():
     """
     Return a list of constraints available in this toolkit in the \
     following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
-    '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
-    '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
-    '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang'; and \
-    print them all on the prompt.
+    '2014-IAS', '2014-IAS+RNP', '2015-POL-208Pb', '2015-POL-120Sn', \
+    '2015-POL-68Ni', '2017-UG', '2021-PREXII-Reed', \
+    '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang', \
+    '2023-EDF-D4', '2023-EDF-D4-IAS', '2023-EDF-D4-IAS-Rnp'; \
+    and print them all on the prompt.
 
     :return: The list of constraints.
     :rtype: list[str].
     """
     constraints = [ '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', \
-             '2015-POL-208PB', '2015-POL-120SN', '2015-POL-68NI', '2017-UG', \
-              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang' ]
+             '2015-POL-208Pb', '2015-POL-120Sn', '2015-POL-68Ni', '2017-UG', \
+              '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang',\
+              '2023-EDF-D4', '2023-EDF-D4-IAS', '2023-EDF-D4-IAS-Rnp' ]
     #print('Constraints available in the toolkit:',constraints)
     constraints_lower = [ item.lower() for item in constraints ]
     return constraints, constraints_lower
@@ -47,9 +49,10 @@ class setupEsymLsym():
 
     The name of the constraint to be chosen in the \
     following list: '2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', \
-    '2014-IAS', '2014-IAS+RNP', '2015-POL-208PB', '2015-POL-120SN', \
-    '2015-POL-68NI', '2017-UG', '2021-PREXII-Reed', \
-    '2021-PREXII-Reinhard', '2021-PREXII+CREX-Zhang'.
+    '2014-IAS', '2014-IAS+RNP', '2015-POL-208Pb', '2015-POL-120Sn', \
+    '2015-POL-68Ni', '2017-UG', '2021-PREXII-Reed', \
+    '2021-PREXII-Reinhard', '2021-PREXII+CREX-Zhang',\
+    '2023-EDF-D4', '2023-EDF-D4-IAS', '2023-EDF-D4-IAS-Rnp'.
 
     :param constraint: Fix the name of `constraint`. Default value: '2014-IAS'.
     :type constraint: str, optional.
@@ -69,9 +72,9 @@ class setupEsymLsym():
         constraints, constraints_lower = EsymLsym_constraints()
         #
         if constraint.lower() not in constraints_lower:
-            print('The constraint ',constraint,' is not in the list of constraints.')
-            print('list of constraints:',constraints)
-            print('-- Exit the code --')
+            print('setup_EsymLsym.py: The constraint ',constraint,' is not in the list of constraints.')
+            print('setup_EsymLsym.py: list of constraints:',constraints)
+            print('setup_EsymLsym.py: -- Exit the code --')
             exit()
         #
         if constraint.lower() == '2009-hic':
@@ -372,7 +375,7 @@ class setupEsymLsym():
             file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2021-PREXII-Reed.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reed et al., PRL 126, 172503 (2021)'
-            self.label = 'PREXII-Reed'
+            self.label = 'PREXII-Reed-2021'
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -385,7 +388,7 @@ class setupEsymLsym():
             file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2021-PREXII-Reinhard.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Reinhard et al., PRL 127, 232501 (2021)'
-            self.label = 'PREXII-Reinhard'
+            self.label = 'PREXII-Reinhard-2021'
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -398,7 +401,7 @@ class setupEsymLsym():
             file_in = os.path.join(nuda.param.path_data,'corr/EsymLsym/2023-PREXII-Zhang.dat')
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Z. Zhang, L.W. Chen, Phys. Rev. C 108, 024317 (2023).'
-            self.label = 'PREXII+CREX-Zhang'
+            self.label = 'PREXII+CREX-Zhang-2023'
             self.note = "."
             self.Esym, self.Esym_err, self.Lsym, self.Lsym_err = \
                 np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
@@ -406,10 +409,40 @@ class setupEsymLsym():
             self.Lsym_max = self.Lsym + self.Lsym_err
             self.plot = 'point_err_xy'
             #
+        elif constraint.lower() == '2023-edf-d4':
+            #
+            self.ref = 'B.V. Carlson, M. Dutra, O. Lourenco, K. Margueron, Phys. Rev. C 107, 0353805 (2022).'
+            self.label = 'EDF(D4)-2023'
+            self.note = "."
+            # D4:
+            self.Esym = [ 29.85, 31.97, 33.06, 37.26, 39.42, 38.58, 36.44, 30.97, 29.85 ]
+            self.Lsym = [ 50.3, 45.36, 55.45, 99.14, 126.6, 124.57, 115.71, 61.79, 50.3 ]
+            self.plot = 'contour'
+            #
+        elif constraint.lower() == '2023-edf-d4-ias':
+            #
+            self.ref = 'B.V. Carlson, M. Dutra, O. Lourenco, K. Margueron, Phys. Rev. C 107, 0353805 (2022).'
+            self.label = 'EDF(D4+IAS)-2023'
+            self.note = "."
+            # D4+IAS:
+            self.Esym = [ 29.85, 31.97, 33.06, 33.96, 34.54, 30.97, 29.85 ]
+            self.Lsym = [ 50.3, 45.36, 55.45, 71.55, 88.03, 61.79, 50.3 ]
+            self.plot = 'contour'
+            #
+        elif constraint.lower() == '2023-edf-d4-ias-rnp':
+            #
+            self.ref = 'B.V. Carlson, M. Dutra, O. Lourenco, K. Margueron, Phys. Rev. C 107, 0353805 (2022).'
+            self.label = 'EDF(D4+IAS+Rnp)-2023'
+            self.note = "."
+            # D4sym (D4+IAS+\Delta r_{np}):
+            self.Esym = [ 29.85, 32.01, 32.54, 32.74, 31.98, 30.97, 29.85 ]
+            self.Lsym = [ 50.3, 48.15, 61.52, 70.45, 67.44, 61.79, 50.3 ]
+            self.plot = 'contour'
+            #
         else:
             #
-            print('The variable constraint:',constraint)
-            print('does not fit with the options in the code')
+            print('setup_EsymLsym.py: The variable constraint:',constraint)
+            print('setup_EsymLsym.py: does not fit with the options in the code')
 
         if nuda.env.verb: print("Exit setupEsymLsym()")
     #

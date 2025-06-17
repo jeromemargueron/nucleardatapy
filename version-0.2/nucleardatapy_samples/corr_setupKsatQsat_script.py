@@ -11,11 +11,11 @@ def main():
     print("Enter corr_setupKsatQsat_script.py:")
     print(50*'-')
     #
-    #constraints = [ '2024-DFT-SKY', '2024-DFT-ESKY', '2024-DFT-DDRH', \
-    #         '2024-DFT-NLRH', '2024-DFT-DDRHF', '2024-DFT-Gogny', \
-    #         '2024-DFT-xEFT' ]
+    #constraints = [ '1991-Pearson', 'EDF-SKY', 'EDF-ESKY', 'EDF-DDRH', \
+    #         'EDF-NLRH', 'EDF-DDRHF', 'EDF-Gogny', \
+    #         'EDF-xEFT' ]
     #constraints, constraints_lower = nuda.corr.KsatQsat_constraints()
-    constraints = [ '2024-DFT-SKY' ]
+    constraints = [ 'EDF-SKY' ]
     #
     for constraint in constraints:
         #

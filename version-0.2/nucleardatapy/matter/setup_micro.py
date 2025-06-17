@@ -325,53 +325,7 @@ def micro_models_mb_matter(mb, matter):
     #
     return models2, models2_lower
 
-
-def micro_models_mb_SM_old(mb):
-    """ """
-    #
-    if nuda.env.verb:
-        print("\nEnter micro_models_mb_SM()")
-    #
-    print("For mb (in SM):", mb)
-    #
-    models, models_lower = micro_models()
-    #
-    models2 = []
-    for j, model in enumerate(models):
-        if mb in model and "2BF" not in model and ("SM" in model or "AM" in model):
-            models2.append(model)
-            # print('   models:',model)
-    #
-    print("models2:", models2)
-    models2_lower = [item.lower() for item in models2]
-    #
-    return models2, models2_lower
-
-
-def micro_models_mb_NM_old(mb):
-    """ """
-    #
-    if nuda.env.verb:
-        print("\nEnter micro_models_mb_NM()")
-    #
-    print("For mb (in NM):", mb)
-    #
-    models, models_lower = micro_models()
-    #
-    models2 = []
-    for j, model in enumerate(models):
-        if mb in model and "2BF" not in model and ("NM" in model or "AM" in model):
-            models2.append(model)
-            # print('   models:',model)
-    #
-    print("models2:", models2)
-    models2_lower = [item.lower() for item in models2]
-    #
-    return models2, models2_lower
-
-
 # Define functions for APRfit
-
 
 def APRfit_compute(n, x):
     p53 = 5.0 / 3.0
@@ -403,29 +357,17 @@ def APRfit_compute(n, x):
     HH = Hk + Hm + HdH
     #
     nt = 0.32 - 0.12 * (1 - 2 * x) ** 2  # transition density in fm^-3
-    # print('nt:',nt)
-    e2v = np.zeros(len(n))
+    eps = np.zeros(len(n))
     for ind, den in enumerate(n):
         if den < nt:
-            e2v[ind] = HL[ind]
+            eps[ind] = HL[ind]
             indref = ind
-            # print(ind,den,HL[ind],' low')
         else:
-            e2v[ind] = HH[ind]
-            # print(ind,den,HH[ind],' high')
-    # print('indref:',indref,'/',len(n))
-    # imin = max( 0, indref-2 )
-    # imax = min( len(n), indref+3 )
-    # for ind in range(imin,imax+1):
-    # xh = ( n[ind] - n[imin] ) / ( n[imax] - n[imin] )
-    # print('ind:',ind,' xh',xh)
-    # e2v[ind] = (1-xh)*e2v[imin] + xh*e2v[imax]
-    return e2v
-
+            eps[ind] = HH[ind]
+    return eps
 
 def func_GCR_e2a(den, a, alfa, b, beta):
     return a * (den / nuda.cst.nsat) ** alfa + b * (den / nuda.cst.nsat) ** beta
-
 
 def func_GCR_pre(den, a, alfa, b, beta):
     return den * (
@@ -433,25 +375,22 @@ def func_GCR_pre(den, a, alfa, b, beta):
         + b * beta * (den / nuda.cst.nsat) ** beta
     )
 
-
 def func_GCR_cs2(den, a, alfa, b, beta):
     dp_dn = (
         a * alfa * (alfa + 1.0) * (den / nuda.cst.nsat) ** alfa
         + b * beta * (beta + 1.0) * (den / nuda.cst.nsat) ** beta
     )
-    enth = (
+    h2a = (
         nuda.cst.mnuc2
         + func_GCR_e2a(den, a, alfa, b, beta)
         + func_GCR_pre(den, a, alfa, b, beta) / den
     )
-    return dp_dn / enth
-
+    return dp_dn / h2a
 
 def func_e2a_NLEFT2024(kfn, b, c, d):
     a = 1.0
     func = a + b * kfn + c * kfn**2 + d * kfn**3
     return func * nuda.effg_nr(kfn)
-
 
 def func_pre_NLEFT2024(kfn, den, b, c, d):
     func = (
@@ -461,7 +400,6 @@ def func_pre_NLEFT2024(kfn, den, b, c, d):
         + nuda.cst.five * d * kfn**3
     )
     return func * nuda.cst.third * den * nuda.effg_nr(kfn)
-
 
 def func_dpredn_NLEFT2024(kfn, den, b, c, d):
     func = nuda.cst.four + 9.0 * b * kfn + 20.0 * c * kfn**2 + 25.0 * d * kfn**3
@@ -572,14 +510,14 @@ class setupMicro:
             self.sm_den, self.sm_e2a_int = np.loadtxt( file_in2, usecols=(0, 1), unpack=True )
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n( self.nm_den )
             self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
             self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
             self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif model.lower() == "1998-var-am-apr":
             #
@@ -605,14 +543,14 @@ class setupMicro:
             self.sm_den, self.sm_e2a_int = np.loadtxt( file_in2, usecols=(0, 1), unpack=True )
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.sm_e2v = self.sm_e2a * self.sm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
             self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif model.lower() == "1998-var-am-apr-fit":
             #
@@ -679,19 +617,19 @@ class setupMicro:
             )
             #
             # energy per unit volume
-            self.e2v_int = APRfit_compute( self.den, self.xpr )
+            self.eps_int = APRfit_compute( self.den, self.xpr )
             # energy per particle
-            self.e2a_int = self.e2v_int / self.den
+            self.e2a_int = self.eps_int / self.den
             self.e2a = self.rmass + self.e2a_int
-            self.e2v = self.e2a * self.den
+            self.eps = self.e2a * self.den
             self.e2a_err = np.abs( uncertainty_stat(self.den, err="MBPT") * self.e2a_int )
-            self.e2v_err = self.e2a_err * self.den
+            self.eps_err = self.e2a_err * self.den
             # pressure as the first derivative of E/A
             cs_e2a = CubicSpline( self.den, self.e2a_int )
             # pre = n**2 * np.gradient( e2a, n)
             self.pre = self.den**2 * cs_e2a( self.den, 1 )
             # chemical potential
-            self.chempot = ( self.e2v + self.pre ) / self.den
+            #self.chempot = ( self.eps + self.pre ) / self.den
             # enthalpy
             self.h2a = self.e2a + self.pre / self.den
             # sound speed
@@ -723,15 +661,15 @@ class setupMicro:
             self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
             self.sm_den, self.sm_e2a_int = np.loadtxt( file_in2, usecols=(0, 1), unpack=True )
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif model.lower() == "2008-qmc-nm-swave":
             #
@@ -761,8 +699,8 @@ class setupMicro:
             self.nm_e2a_int = e2effg * nuda.effg_nr(self.nm_kfn)
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = e2effg_err * nuda.effg_nr(self.nm_kfn)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2009-afdmc-nm":
             #
@@ -791,8 +729,8 @@ class setupMicro:
             self.nm_den = nuda.den_n(self.nm_kfn)
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             # self.nm_e2a_err = abs( 0.01 * self.nm_e2a )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2009-dlqmc-nm":
             #
@@ -822,8 +760,8 @@ class setupMicro:
             self.nm_e2a_int = np.array(e2effg * nuda.effg_nr(self.nm_kfn))
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = e2effg_err * nuda.effg_nr(self.nm_kfn)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2010-qmc-nm-av4":
             #
@@ -853,8 +791,8 @@ class setupMicro:
             self.nm_e2a_int = np.array(e2effg * nuda.effg_nr(self.nm_kfn))
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = e2effg_err * nuda.effg_nr(self.nm_kfn)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2010-mbpt-nm":
             #
@@ -881,10 +819,8 @@ class setupMicro:
             self.nm_kfn = nuda.kf_n(self.nm_den)
             # self.nm_pre_err = np.abs( 0.01 * self.nm_pre )
             #
-            # compute nm_e2v by integrating the pressure
-            #
             # chemical potential
-            # self.nm_chempot = ( self.nm_pre + self.nm_e2v ) / self.nm_den
+            # self.nm_chempot = ( self.nm_pre + self.nm_eps ) / self.nm_den
             #
         elif "2012-afdmc-nm-res" in model.lower():
             #
@@ -934,8 +870,8 @@ class setupMicro:
             self.nm_e2a_int = ETOT  # / 66.0
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = ETOT_ERR  # / 66.0
-            self.nm_e2v = self.nm_den * self.nm_e2a
-            self.nm_e2v_err = self.nm_den * self.nm_e2a_err
+            self.nm_eps = self.nm_den * self.nm_e2a
+            self.nm_eps_err = self.nm_den * self.nm_e2a_err
             # self.nm_pre =
             # self.nm_chempot =
             # self.nm_cs2 =
@@ -990,14 +926,14 @@ class setupMicro:
             self.nm_e2a_fit_err = np.abs(
                 uncertainty_stat(self.nm_den_fit, err="MBPT") * self.nm_e2a_fit
             )
-            self.nm_e2v_fit = self.nm_den_fit * self.nm_e2a_fit
-            self.nm_e2v_fit_err = self.nm_den_fit * self.nm_e2a_fit_err
+            self.nm_eps_fit = self.nm_den_fit * self.nm_e2a_fit
+            self.nm_eps_fit_err = self.nm_den_fit * self.nm_e2a_fit_err
             # pressure in NM
             self.nm_pre_fit = func_GCR_pre(
                 self.nm_den_fit, a[k - 1], alfa[k - 1], b[k - 1], beta[k - 1]
             )
             # chemical potential
-            self.nm_chempot_fit = (self.nm_pre_fit + self.nm_e2v_fit) / self.nm_den_fit
+            #self.nm_chempot_fit = (self.nm_pre_fit + self.nm_eps_fit) / self.nm_den_fit
             # enthalpy per particle
             self.nm_h2a_fit = self.nm_e2a_fit + self.nm_pre_fit / self.nm_den_fit
             # sound speed in NM
@@ -1010,10 +946,10 @@ class setupMicro:
             self.nm_e2a_int = self.nm_e2a_fit
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = self.nm_e2a_fit_err
-            self.nm_e2v = self.nm_e2v_fit
-            self.nm_e2v_err = self.nm_e2v_fit_err
+            self.nm_eps = self.nm_eps_fit
+            self.nm_eps_err = self.nm_eps_fit_err
             self.nm_pre = self.nm_pre_fit
-            self.nm_chempot = self.nm_chempot_fit
+            #self.nm_chempot = self.nm_chempot_fit
             self.nm_cs2 = self.nm_cs2_fit
             #
         elif model.lower() == "2013-qmc-nm":
@@ -1046,18 +982,18 @@ class setupMicro:
             self.nm_e2a_int = np.array(0.5 * (self.nm_e2a_int_up + self.nm_e2a_int_low))
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = 0.5 * (self.nm_e2a_int_up - self.nm_e2a_int_low)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             self.nm_pre = 0.5 * (self.nm_pre_up + self.nm_pre_low)
             self.nm_pre_err = 0.5 * (self.nm_pre_up - self.nm_pre_low)
             #
             # chemical potential
-            self.nm_chempot = (
-                np.array(self.nm_pre) + np.array(self.nm_e2v)
-            ) / np.array(self.nm_den)
-            self.nm_chempot_err = (
-                np.array(self.nm_pre_err) + np.array(self.nm_e2v_err)
-            ) / np.array(self.nm_den)
+            #self.nm_chempot = (
+            #    np.array(self.nm_pre) + np.array(self.nm_eps)
+            #) / np.array(self.nm_den)
+            #self.nm_chempot_err = (
+            #    np.array(self.nm_pre_err) + np.array(self.nm_eps_err)
+            #) / np.array(self.nm_den)
             #
             # enthalpy
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
@@ -1099,8 +1035,8 @@ class setupMicro:
                 uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int
             )
             # self.nm_e2a_err = np.abs( 0.01 * self.nm_e2a )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2016-qmc-nm":
             #
@@ -1128,8 +1064,8 @@ class setupMicro:
             self.nm_e2a_int = np.array(0.5 * (self.nm_e2a_int_up + self.nm_e2a_int_low))
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = 0.5 * (self.nm_e2a_int_up - self.nm_e2a_int_low)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2016-mbpt-am":
             #
@@ -1207,8 +1143,8 @@ class setupMicro:
             self.nm_e2a_int = np.array(e2a_av[10, :])
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = e2a_err[10, :]
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             # SM
             self.sm_den = np.array(den[0, :])
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
@@ -1217,8 +1153,45 @@ class setupMicro:
             self.sm_e2a_int = np.array(e2a_av[0, :])
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.sm_e2a_err = e2a_err[0, :]
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
+            # AM
+            self.am_den = np.zeros((11,35))
+            self.am_xn = np.zeros((11))
+            self.am_xp = np.zeros((11))
+            self.am_kfn = np.zeros((11,35))
+            self.am_rmass = np.zeros((11))
+            self.am_e2a_int = np.zeros((11,8,35))
+            self.am_eps_int = np.zeros((11,8,35))
+            self.am_e2a = np.zeros((11,8,35))
+            self.am_eps = np.zeros((11,8,35))
+            self.am_e2a_int_av = np.zeros((11,35))
+            self.am_e2a_int_err = np.zeros((11,35))
+            self.am_eps_int_av = np.zeros((11,35))
+            self.am_eps_int_err = np.zeros((11,35))
+            self.am_e2a_av = np.zeros((11,35))
+            self.am_e2a_err = np.zeros((11,35))
+            self.am_eps_av = np.zeros((11,35))
+            self.am_eps_err = np.zeros((11,35))
+            for i in range(0, 11):
+                self.am_den[i] = np.array(den[i, :])
+                self.am_xn[i] = 0.5*(1.0+i/10.0)
+                self.am_xp[i] = 0.5*(1.0-i/10.0)
+                self.am_kfn[i] = nuda.kf_n( self.am_xn[i] * self.am_den[i] )
+                self.am_rmass[i] = self.am_xn[i] * nuda.cst.mnc2 + self.am_xp[i] * nuda.cst.mpc2
+                for j in range(1, 8):
+                    self.am_e2a_int[i,j] = np.array(e2a[j,i,:])
+                    self.am_eps_int[i,j] = self.am_e2a_int[i,j] * self.am_den[i]
+                    self.am_e2a[i,j] = self.am_rmass[i] + self.am_e2a_int[i,j]
+                    self.am_eps[i,j] = self.am_e2a[i,j] * self.am_den[i]
+                self.am_e2a_int_av[i]  = np.array(e2a_av[i, :])
+                self.am_e2a_int_err[i] = np.array(e2a_err[i, :])
+                self.am_eps_int_av[i]  = self.am_e2a_int_av[i]  * self.am_den[i] 
+                self.am_eps_int_err[i] = self.am_e2a_int_err[i] * self.am_den[i]
+                self.am_e2a_av[i]  = self.am_rmass[i] + self.am_e2a_int_av[i]
+                self.am_e2a_err[i] = self.am_rmass[i] + self.am_e2a_int_err[i]
+                self.am_eps_av[i]  = self.am_e2a_av[i]  * self.am_den[i] 
+                self.am_eps_err[i] = self.am_e2a_err[i] * self.am_den[i]
             #
             # Note: here I define the pressure as the derivative of the centroid energy
             # It would however be better to compute the presure for each models and only
@@ -1252,8 +1225,8 @@ class setupMicro:
             ) = np.loadtxt(file_in, usecols=(0, 1, 2, 3, 4), unpack=True)
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_kfn = nuda.kf_n(self.nm_den)
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2019-mbpt-am-l59":
             #
@@ -1300,8 +1273,8 @@ class setupMicro:
             self.sm_e2a_err = np.abs(
                 uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int
             )
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_kfn,
                 self.nm_den,
@@ -1318,8 +1291,8 @@ class setupMicro:
             self.nm_e2a_err = np.abs(
                 uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int
             )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2019-mbpt-am-l69":
             #
@@ -1365,8 +1338,8 @@ class setupMicro:
             self.sm_e2a_err = np.abs(
                 uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int
             )
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_kfn,
                 self.nm_den,
@@ -1383,8 +1356,8 @@ class setupMicro:
             self.nm_e2a_err = np.abs(
                 uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int
             )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2020-mbpt-am":
             #
@@ -1433,8 +1406,8 @@ class setupMicro:
             self.sm_e2a_int = self.sm_e2a_n3lo
             self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.sm_e2a_err = self.sm_e2a_n3lo_err
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_den,
                 self.nm_e2a_lo,
@@ -1456,8 +1429,8 @@ class setupMicro:
             self.nm_e2a_int = self.nm_e2a_n3lo
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = self.nm_e2a_n3lo_err
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2022-afdmc-nm":
             #
@@ -1490,10 +1463,8 @@ class setupMicro:
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
             self.nm_e2a_err = e2effg_err * nuda.effg_nr(self.nm_kfn)
             #
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
-            # self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den,err='MBPT') * self.nm_e2a )
-            # self.nm_e2a_err = self.nm_e2v_err / self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2024-nleft-am":
             #
@@ -1543,16 +1514,16 @@ class setupMicro:
                 delimiter=",",
             )
             self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
-            self.sm_e2adata_int = self.sm_etot_int / self.sm_A
-            self.sm_e2adata_err = self.sm_etot_err / self.sm_A
-            self.sm_e2adata_int_2bf = self.sm_etot_int_2bf / self.sm_A
-            self.sm_e2adata_2bf_err = self.sm_etot_2bf_err / self.sm_A
-            self.sm_e2adata = self.sm_rmass + self.sm_e2adata_int
-            self.sm_e2vdata = self.sm_e2adata * self.sm_den
-            self.sm_e2vdata_err = self.sm_e2adata_err * self.sm_den
+            self.sm_e2a_int_data = self.sm_etot_int / self.sm_A
+            self.sm_e2a_err_data = self.sm_etot_err / self.sm_A
+            self.sm_e2a_int_2bf_data = self.sm_etot_int_2bf / self.sm_A
+            self.sm_e2a_2bf_err_data = self.sm_etot_2bf_err / self.sm_A
+            self.sm_e2a_data = self.sm_rmass + self.sm_e2a_int_data
+            self.sm_eps_data = self.sm_e2a_data * self.sm_den
+            self.sm_eps_err_data = self.sm_e2a_err_data * self.sm_den
             # fit with EFFG
             xdata = self.sm_kfn
-            ydata = self.sm_e2adata_int
+            ydata = self.sm_e2a_int_data
             sm_popt, sm_pcov = curve_fit(func_e2a_NLEFT2024, xdata, ydata)
             print("sm_popt:", sm_popt)
             print("sm_pcov:", sm_pcov)
@@ -1605,8 +1576,8 @@ class setupMicro:
             # print('sm_pcerr:',self.sm_pcerr)
             # self.sm_e2a = self.sm_e2a_fit
             # self.sm_e2a_err = self.sm_e2a_fit_err
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
             # Read NM results
             self.nm_A, self.nm_L, self.nm_den, self.nm_etot_int, self.nm_etot_err = (
@@ -1619,14 +1590,14 @@ class setupMicro:
                 )
             )
             self.nm_kfn = nuda.kf_n(self.nm_den)
-            self.nm_e2adata_int = self.nm_etot_int / self.nm_A
-            self.nm_e2adata_err = self.nm_etot_err / self.nm_A
-            self.nm_e2adata = self.nm_rmass + self.nm_e2adata_int
-            self.nm_e2vdata = self.nm_e2adata * self.nm_den
-            self.nm_e2vdata_err = self.nm_e2adata_err * self.nm_den
+            self.nm_e2a_int_data = self.nm_etot_int / self.nm_A
+            self.nm_e2a_err_data = self.nm_etot_err / self.nm_A
+            self.nm_e2a_data = self.nm_rmass + self.nm_e2a_int_data
+            self.nm_eps_data = self.nm_e2a_data * self.nm_den
+            self.nm_eps_err_data = self.nm_e2a_err_data * self.nm_den
             # fit with EFFG
             xdata = self.nm_kfn
-            ydata = self.nm_e2adata_int
+            ydata = self.nm_e2a_int_data
             nm_popt, nm_pcov = curve_fit(func_e2a_NLEFT2024, xdata, ydata)
             print("nm_popt:", nm_popt)
             print("nm_pcov:", nm_pcov)
@@ -1678,26 +1649,26 @@ class setupMicro:
             # print('nm_pcerr:',self.nm_pcerr)
             # self.nm_e2a = self.nm_e2a_fit
             # self.nm_e2a_err = self.nm_e2a_fit_err
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             self.nm_pre = self.nm_pre
             self.nm_pre_err = self.nm_pre_err
             self.nm_dpredn = self.nm_dpredn
             self.nm_dpredn_err = self.nm_dpredn_err
             #
             # chemical potential
-            self.nm_chempot = (
-                np.array(self.nm_pre) + np.array(self.nm_e2v)
-            ) / np.array(self.nm_den)
-            self.nm_chempot_err = (
-                np.array(self.nm_pre_err) + np.array(self.nm_e2v_err)
-            ) / np.array(self.nm_den)
-            self.sm_chempot = (
-                np.array(self.sm_pre) + np.array(self.sm_e2v)
-            ) / np.array(self.sm_den)
-            self.sm_chempot_err = (
-                np.array(self.sm_pre_err) + np.array(self.sm_e2v_err)
-            ) / np.array(self.sm_den)
+            #self.nm_chempot = (
+            #    np.array(self.nm_pre) + np.array(self.nm_eps)
+            #) / np.array(self.nm_den)
+            #self.nm_chempot_err = (
+            #    np.array(self.nm_pre_err) + np.array(self.nm_eps_err)
+            #) / np.array(self.nm_den)
+            #self.sm_chempot = (
+            #    np.array(self.sm_pre) + np.array(self.sm_eps)
+            #) / np.array(self.sm_den)
+            #self.sm_chempot_err = (
+            #    np.array(self.sm_pre_err) + np.array(self.sm_eps_err)
+            #) / np.array(self.sm_den)
             #
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -2010,8 +1981,8 @@ class setupMicro:
             self.sm_e2a_err = np.abs(
                 uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int
             )
-            self.sm_e2v = self.sm_e2a * self.sm_den
-            self.sm_e2v_err = self.sm_e2a_err * self.sm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
             (
                 self.nm_den,
@@ -2033,8 +2004,8 @@ class setupMicro:
             self.nm_e2a_err = np.abs(
                 uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int
             )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
         elif model.lower() == "2024-qmc-nm":
             #
@@ -2067,14 +2038,13 @@ class setupMicro:
             self.nm_e2a_err = (
                 self.nm_e2a_err_stat + self.nm_e2a_err_ekm + self.nm_e2a_err_gp
             )
-            self.nm_e2v = self.nm_e2a * self.nm_den
-            self.nm_e2v_err = self.nm_e2a_err * self.nm_den
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
         #
         # ==============================
         # END OF
         # Read files associated to model
         # ==============================
-        #
         #
         # ==============================
         # Compute thermodynamic quantities
@@ -2098,8 +2068,8 @@ class setupMicro:
                 cs_nm_e2a_err = CubicSpline(x, y_err)
                 self.nm_pre_err = np.array( nuda.cst.third * self.nm_kfn * self.nm_den * cs_nm_e2a_err(self.nm_kfn, 1) )
                 # chemical potential
-                self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-                self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+                #self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
+                #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
                 #
                 # enthalpy
                 self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
@@ -2133,8 +2103,8 @@ class setupMicro:
                 self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err(self.nm_den, 1)
                 #
                 # chemical potential
-                self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_e2v) ) / np.array(self.nm_den)
-                self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_e2v_err) ) / np.array(self.nm_den)
+                #self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
+                #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
                 #
                 # enthalpy
                 self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
@@ -2160,8 +2130,8 @@ class setupMicro:
                 self.sm_pre_err = ( nuda.cst.third * self.sm_kfn * self.sm_den * cs_sm_e2a_err(self.sm_kfn, 1) )
                 #
                 # chemical potential
-                self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-                self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.sm_den)
+                #self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
+                #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
                 #
                 # enthalpy
                 self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -2190,8 +2160,8 @@ class setupMicro:
                 self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err(self.sm_den, 1)
                 #
                 # chemical potential
-                self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_e2v) ) / np.array(self.sm_den)
-                self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_e2v_err) ) / np.array(self.sm_den)
+                #self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
+                #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
                 #
                 # enthalpy
                 self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -2212,7 +2182,7 @@ class setupMicro:
         self.den_unit = "fm$^{-3}$"
         self.kf_unit = "fm$^{-1}$"
         self.e2a_unit = "MeV"
-        self.e2v_unit = "MeV fm$^{-3}$"
+        self.eps_unit = "MeV fm$^{-3}$"
         self.pre_unit = "MeV fm$^{-3}$"
         #
         if nuda.env.verb:
@@ -2243,8 +2213,8 @@ class setupMicro:
             print(f"   asy: {np.round(self.asy,3)}")
         if self.e2a is not None:
             print(f"   e2a: {np.round(self.e2a,3)} in {self.e2a_unit}")
-        if self.e2v is not None:
-            print(f"   e2v: {np.round(self.e2v,3)} in {self.e2v_unit}")
+        if self.eps is not None:
+            print(f"   eps: {np.round(self.eps,3)} in {self.eps_unit}")
         if self.pre is not None:
             print(f"   pre: {np.round(self.pre,3)} in {self.pre_unit}")
         if self.cs2 is not None:
@@ -2253,8 +2223,8 @@ class setupMicro:
             print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
         if self.sm_kfn is not None:
             print(f"   sm_kfn: {np.round(self.sm_kfn,3)} in {self.kf_unit}")
-        if self.sm_chempot is not None:
-            print(f"   sm_chempot: {np.round(self.sm_chempot,3)} in {self.e2a_unit}")
+        #if self.sm_chempot is not None:
+        #    print(f"   sm_chempot: {np.round(self.sm_chempot,3)} in {self.e2a_unit}")
         if self.sm_effmass is not None:
             print(f"   sm_effmass: {np.round(self.sm_effmass,3)}")
         if self.sm_e2a is not None:
@@ -2267,10 +2237,10 @@ class setupMicro:
             print(
                 f"   sm_e2a_fit_err: {np.round(self.sm_e2a_fit_err,3)} in {self.e2a_unit}"
             )
-        if self.sm_e2v is not None:
-            print(f"   sm_e2v: {np.round(self.sm_e2v,3)} in {self.e2v_unit}")
-        if self.sm_e2v_err is not None:
-            print(f"   sm_e2v_err: {np.round(self.sm_e2v_err,3)} in {self.e2v_unit}")
+        if self.sm_eps is not None:
+            print(f"   sm_eps: {np.round(self.sm_eps,3)} in {self.eps_unit}")
+        if self.sm_eps_err is not None:
+            print(f"   sm_eps_err: {np.round(self.sm_eps_err,3)} in {self.eps_unit}")
         if self.sm_pre is not None:
             print(f"   sm_pre: {np.round(self.sm_pre,3)} in {self.pre_unit}")
         if self.sm_cs2 is not None:
@@ -2280,8 +2250,8 @@ class setupMicro:
             print(f"   nm_den: {np.round(self.nm_den,3)} in {self.den_unit}")
         if self.nm_kfn is not None:
             print(f"   nm_kfn: {np.round(self.nm_kfn,3)} in {self.kf_unit}")
-        if self.nm_chempot is not None:
-            print(f"   nm_chempot: {np.round(self.nm_chempot,3)} in {self.e2a_unit}")
+        #if self.nm_chempot is not None:
+        #    print(f"   nm_chempot: {np.round(self.nm_chempot,3)} in {self.e2a_unit}")
         if self.nm_effmass is not None:
             print(f"   nm_effmass: {np.round(self.nm_effmass,3)}")
         if self.nm_e2a is not None:
@@ -2291,13 +2261,11 @@ class setupMicro:
         if self.nm_e2a_fit is not None:
             print(f"   nm_e2a_fit: {np.round(self.nm_e2a_fit,3)} in {self.e2a_unit}")
         if self.nm_e2a_fit_err is not None:
-            print(
-                f"   nm_e2a_fit_err: {np.round(self.nm_e2a_fit_err,3)} in {self.e2a_unit}"
-            )
-        if self.nm_e2v is not None:
-            print(f"   nm_e2v: {np.round(self.nm_e2v,3)} in {self.e2v_unit}")
-        if self.nm_e2v_err is not None:
-            print(f"   nm_e2v_err: {np.round(self.nm_e2v_err,3)} in {self.e2v_unit}")
+            print(f"   nm_e2a_fit_err: {np.round(self.nm_e2a_fit_err,3)} in {self.e2a_unit}" )
+        if self.nm_eps is not None:
+            print(f"   nm_eps: {np.round(self.nm_eps,3)} in {self.eps_unit}")
+        if self.nm_eps_err is not None:
+            print(f"   nm_eps_err: {np.round(self.nm_eps_err,3)} in {self.eps_unit}")
         if self.nm_pre is not None:
             print(f"   nm_pre: {np.round(self.nm_pre,3)} in {self.pre_unit}")
         if self.nm_cs2 is not None:
@@ -2341,7 +2309,7 @@ class setupMicro:
         #: Attribute the energy per particle.
         self.e2a = None
         #: Attribute the energy per unit volume.
-        self.e2v = None
+        self.eps = None
         #: Attribute the pressure.
         self.pre = None
         #: Attribute the sound speed.
@@ -2367,13 +2335,13 @@ class setupMicro:
         #: Attribute the symmetric matter Fermi momentum.
         self.sm_kf = None
         #: Attribute the neutron matter chemical potential.
-        self.nm_chempot = None
+        #self.nm_chempot = None
         #: Attribute the uncertainty in the neutron matter chemical potential.
-        self.nm_chempot_err = None
+        #self.nm_chempot_err = None
         #: Attribute the symmetric matter chemical potential.
-        self.sm_chempot = None
+        #self.sm_chempot = None
         #: Attribute the uncertainty in the symmetric matter chemical potential.
-        self.sm_chempot_err = None
+        #self.sm_chempot_err = None
         #: Attribute the neutron matter effective mass.
         self.nm_effmass = None
         #: Attribute the symmetric matter effective mass.
@@ -2415,13 +2383,13 @@ class setupMicro:
         #: Attribute the symmetric matter total potential per particle.
         self.sm_vtot = None
         #: Attribute the neutron matter energy per unit volume.
-        self.nm_e2v = None
+        self.nm_eps = None
         #: Attribute the uncertainty in the neutron matter energy per unit volume.
-        self.nm_e2v_err = None
+        self.nm_eps_err = None
         #: Attribute the symmetric matter energy per unit volume.
-        self.sm_e2v = None
+        self.sm_eps = None
         #: Attribute the uncertainty in the symmetric matter energy per unit volume.
-        self.sm_e2v_err = None
+        self.sm_eps_err = None
         #: Attribute the neutron matter pressure.
         self.nm_pre = None
         #: Attribute the uncertainty in the neutron matter pressure.

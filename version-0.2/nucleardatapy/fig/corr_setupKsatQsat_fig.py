@@ -22,10 +22,10 @@ def corr_setupKsatQsat_fig( pname, constraints ):
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
     fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
     #
-    axs.set_xlabel(r'$K_\mathrm{sat}$ (MeV)')
-    axs.set_ylabel(r'$Q_\mathrm{sat}$ (MeV)')
-    axs.set_xlim([190, 360])
-    axs.set_ylim([-1000, 1500])
+    axs.set_xlabel(r'$K_\mathrm{sat}$ (MeV)',fontsize='14')
+    axs.set_ylabel(r'$Q_\mathrm{sat}$ (MeV)',fontsize='14')
+    axs.set_xlim([100, 360])
+    axs.set_ylim([-2500, 2200])
     #axs.tick_params(labelbottom=True, labeltop=False, labelleft=True, labelright=False,
     #                 bottom=True, top=True, left=True, right=True)
 #    axs.xaxis.set_major_locator(MultipleLocator(5))
@@ -44,20 +44,24 @@ def corr_setupKsatQsat_fig( pname, constraints ):
         if nuda.env.verb: print('Qsat:',kq.Qsat)
         if nuda.env.verb: print('len(Ksat):',kq.Ksat.size)
         #
-        if k == 2:
-            kk = 0
+        #if k == 2:
+        #    kk = 0
+        #else:
+        #    kk = k
+        if k == 3 or k == 4 or k == 5: 
+            lstyle = 'dashed'
         else:
-            kk = k
-        axs.scatter( kq.Ksat, kq.Qsat, label=kq.label, color=nuda.param.col[kk], marker=kq.marker )
-        x = np.linspace(min(kq.Ksat),max(kq.Ksat),10)
-        if k == 3 or k == 4 or k == 5:
-            axs.plot( x, nuda.corr.flinear(x,kq.m,kq.c), color=nuda.param.col[kk], linestyle='dashed' )
-        else:
-            axs.plot( x, nuda.corr.flinear(x,kq.m,kq.c), color=nuda.param.col[kk], linestyle='solid' )
+            lstyle = 'solid'
+        if kq.Ksat is not None:
+            axs.scatter( kq.Ksat, kq.Qsat, label=kq.label, color = nuda.param.col[k], marker = kq.marker )
+        if kq.Ksat_lin is not None:
+            axs.plot( kq.Ksat_lin, kq.Qsat_lin, color = nuda.param.col[k], linestyle = lstyle )
+        if kq.Ksat_band is not None:
+            axs.fill_between( kq.Ksat_band, kq.Qsat_lo, kq.Qsat_up, label=kq.label, color = nuda.param.col[k], alpha = 0.5 )
         #
         if nuda.env.verb: kq.print_outputs( )
     #
-    axs.legend(loc='upper left',ncol=3, fontsize='9')
+    axs.legend(loc='upper left',ncol=4, fontsize='10')
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
