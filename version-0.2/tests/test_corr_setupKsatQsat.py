@@ -12,9 +12,11 @@ Ksat_sky = [ 239.3441, 241.6726, 241.6857, 241.6553, 230.0156, 230.0252, 230.008
 
 class corrSetupKQTestCase(unittest.TestCase):
 	def setUp(self):
-		self.kq = nuda.corr.setupKsatQsat( constraint = '2024-DFT-SKY' )
+		self.kq = nuda.corr.setupKsatQsat( constraint = 'EDF-SKY' )
+
 	def test_kq(self):
 		tk_kq = self.kq.Ksat
+		print(tk_kq[2], Ksat_sky[2] )
 		self.assertEqual(tk_kq[2], Ksat_sky[2] )
 
 if __name__ == '__main__':
