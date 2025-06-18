@@ -45,21 +45,21 @@ pheno = nuda.matter.setupPheno( model = model, param = param )
 [32m    162[39m [38;5;28mself[39m.nm_den, [38;5;28mself[39m.nm_kfn, [38;5;28mself[39m.nm_e2a_int, [38;5;28mself[39m.nm_pre, a, [38;5;28mself[39m.nm_cs2 = np.loadtxt( file_in2, usecols=([32m0[39m,[32m1[39m,[32m2[39m,[32m3[39m,[32m4[39m,[32m5[39m), comments=[33m'[39m[33m#[39m[33m'[39m, unpack = [38;5;28;01mTrue[39;00m )
 [32m    163[39m [38;5;28mself[39m.sm_e2a = [38;5;28mself[39m.sm_rmass + [38;5;28mself[39m.sm_e2a_int
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1395[39m, in [36mloadtxt[39m[34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)[39m
-[32m   1392[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(delimiter, [38;5;28mbytes[39m):
-[32m   1393[39m     delimiter = delimiter.decode([33m'[39m[33mlatin1[39m[33m'[39m)
-[32m-> [39m[32m1395[39m arr = [43m_read[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mcomment[49m[43m=[49m[43mcomment[49m[43m,[49m[43m [49m[43mdelimiter[49m[43m=[49m[43mdelimiter[49m[43m,[49m
-[32m   1396[39m [43m            [49m[43mconverters[49m[43m=[49m[43mconverters[49m[43m,[49m[43m [49m[43mskiplines[49m[43m=[49m[43mskiprows[49m[43m,[49m[43m [49m[43musecols[49m[43m=[49m[43musecols[49m[43m,[49m
-[32m   1397[39m [43m            [49m[43munpack[49m[43m=[49m[43munpack[49m[43m,[49m[43m [49m[43mndmin[49m[43m=[49m[43mndmin[49m[43m,[49m[43m [49m[43mencoding[49m[43m=[49m[43mencoding[49m[43m,[49m
-[32m   1398[39m [43m            [49m[43mmax_rows[49m[43m=[49m[43mmax_rows[49m[43m,[49m[43m [49m[43mquote[49m[43m=[49m[43mquotechar[49m[43m)[49m
-[32m   1400[39m [38;5;28;01mreturn[39;00m arr
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1397[39m, in [36mloadtxt[39m[34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)[39m
+[32m   1394[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(delimiter, [38;5;28mbytes[39m):
+[32m   1395[39m     delimiter = delimiter.decode([33m'[39m[33mlatin1[39m[33m'[39m)
+[32m-> [39m[32m1397[39m arr = [43m_read[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mcomment[49m[43m=[49m[43mcomment[49m[43m,[49m[43m [49m[43mdelimiter[49m[43m=[49m[43mdelimiter[49m[43m,[49m
+[32m   1398[39m [43m            [49m[43mconverters[49m[43m=[49m[43mconverters[49m[43m,[49m[43m [49m[43mskiplines[49m[43m=[49m[43mskiprows[49m[43m,[49m[43m [49m[43musecols[49m[43m=[49m[43musecols[49m[43m,[49m
+[32m   1399[39m [43m            [49m[43munpack[49m[43m=[49m[43munpack[49m[43m,[49m[43m [49m[43mndmin[49m[43m=[49m[43mndmin[49m[43m,[49m[43m [49m[43mencoding[49m[43m=[49m[43mencoding[49m[43m,[49m
+[32m   1400[39m [43m            [49m[43mmax_rows[49m[43m=[49m[43mmax_rows[49m[43m,[49m[43m [49m[43mquote[49m[43m=[49m[43mquotechar[49m[43m)[49m
+[32m   1402[39m [38;5;28;01mreturn[39;00m arr
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1022[39m, in [36m_read[39m[34m(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)[39m
-[32m   1020[39m     fname = os.fspath(fname)
-[32m   1021[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fname, [38;5;28mstr[39m):
-[32m-> [39m[32m1022[39m     fh = [43mnp[49m[43m.[49m[43mlib[49m[43m.[49m[43m_datasource[49m[43m.[49m[43mopen[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mrt[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[43m=[49m[43mencoding[49m[43m)[49m
-[32m   1023[39m     [38;5;28;01mif[39;00m encoding [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[32m   1024[39m         encoding = [38;5;28mgetattr[39m(fh, [33m'[39m[33mencoding[39m[33m'[39m, [33m'[39m[33mlatin1[39m[33m'[39m)
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1024[39m, in [36m_read[39m[34m(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)[39m
+[32m   1022[39m     fname = os.fspath(fname)
+[32m   1023[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fname, [38;5;28mstr[39m):
+[32m-> [39m[32m1024[39m     fh = [43mnp[49m[43m.[49m[43mlib[49m[43m.[49m[43m_datasource[49m[43m.[49m[43mopen[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mrt[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[43m=[49m[43mencoding[49m[43m)[49m
+[32m   1025[39m     [38;5;28;01mif[39;00m encoding [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m   1026[39m         encoding = [38;5;28mgetattr[39m(fh, [33m'[39m[33mencoding[39m[33m'[39m, [33m'[39m[33mlatin1[39m[33m'[39m)
 
 [36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/numpy/lib/_datasource.py:192[39m, in [36mopen[39m[34m(path, mode, destpath, encoding, newline)[39m
 [32m    155[39m [38;5;250m[39m[33;03m"""[39;00m

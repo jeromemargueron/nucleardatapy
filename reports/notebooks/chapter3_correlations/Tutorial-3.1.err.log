@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+constraint = '2024-DFT-SKY'
+kq = nuda.corr.setupKsatQsat( constraint = constraint )
+------------------
+
+----- stdout -----
+setup_KsatQsat: The constraint  2024-DFT-SKY  is not in the list of constraints.
+setup_KsatQsat: list of constraints: ['1991-Pearson', '2025-MK-95', '2025-MK-90', '2025-MK-67', 'EDF-SKY', 'EDF-GSKY', 'EDF-ESKY', 'EDF-Fayans', 'EDF-Gogny', 'EDF-DDRH', 'EDF-NLRH', 'EDF-DDRHF', 'EDF-xEFT']
+setup_KsatQsat: -- Exit the code --
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 2[39m
+[32m      1[39m constraint = [33m'[39m[33m2024-DFT-SKY[39m[33m'[39m
+[32m----> [39m[32m2[39m kq = [43mnuda[49m[43m.[49m[43mcorr[49m[43m.[49m[43msetupKsatQsat[49m[43m([49m[43m [49m[43mconstraint[49m[43m [49m[43m=[49m[43m [49m[43mconstraint[49m[43m [49m[43m)[49m
+
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/corr/setup_KsatQsat.py:62[39m, in [36msetupKsatQsat.__init__[39m[34m(self, constraint)[39m
+[32m     60[39m     [38;5;28mprint[39m([33m'[39m[33msetup_KsatQsat: list of constraints:[39m[33m'[39m,constraints)
+[32m     61[39m     [38;5;28mprint[39m([33m'[39m[33msetup_KsatQsat: -- Exit the code --[39m[33m'[39m)
+[32m---> [39m[32m62[39m     [43mexit[49m()
+[32m     63[39m [38;5;66;03m#[39;00m
+[32m     64[39m [38;5;28;01mif[39;00m constraint.lower() == [33m'[39m[33m1991-pearson[39m[33m'[39m:
+[32m     65[39m     [38;5;66;03m#[39;00m
+[32m     66[39m     [38;5;66;03m# pearson correlation[39;00m
+[32m     67[39m     [38;5;66;03m#[39;00m
+[32m     68[39m     [38;5;66;03m#: Attribute providing the label the data is references for figures.[39;00m
+
+[31mNameError[39m: name 'exit' is not defined
+

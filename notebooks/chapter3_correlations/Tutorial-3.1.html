@@ -502,7 +502,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2024-DFT-SKY&#39;, &#39;2024-DFT-SKY2&#39;, &#39;2024-DFT-ESKY&#39;, &#39;2024-DFT-DDRH&#39;, &#39;2024-DFT-NLRH&#39;, &#39;2024-DFT-DDRHF&#39;, &#39;2024-DFT-Fayans&#39;, &#39;2024-DFT-Gogny&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1991-Pearson&#39;, &#39;2025-MK-95&#39;, &#39;2025-MK-90&#39;, &#39;2025-MK-67&#39;, &#39;EDF-SKY&#39;, &#39;EDF-GSKY&#39;, &#39;EDF-ESKY&#39;, &#39;EDF-Fayans&#39;, &#39;EDF-Gogny&#39;, &#39;EDF-DDRH&#39;, &#39;EDF-NLRH&#39;, &#39;EDF-DDRHF&#39;, &#39;EDF-xEFT&#39;]
 </pre></div>
 </div>
 </div>
@@ -513,6 +513,33 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2024-DFT-SKY&#39;</span>
 <span class="n">kq</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">setupKsatQsat</span><span class="p">(</span> <span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>setup_KsatQsat: The constraint  2024-DFT-SKY  is not in the list of constraints.
+setup_KsatQsat: list of constraints: [&#39;1991-Pearson&#39;, &#39;2025-MK-95&#39;, &#39;2025-MK-90&#39;, &#39;2025-MK-67&#39;, &#39;EDF-SKY&#39;, &#39;EDF-GSKY&#39;, &#39;EDF-ESKY&#39;, &#39;EDF-Fayans&#39;, &#39;EDF-Gogny&#39;, &#39;EDF-DDRH&#39;, &#39;EDF-NLRH&#39;, &#39;EDF-DDRHF&#39;, &#39;EDF-xEFT&#39;]
+setup_KsatQsat: -- Exit the code --
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2024-DFT-SKY&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">kq</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">setupKsatQsat</span><span class="p">(</span> <span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span> <span class="p">)</span>
+
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/corr/setup_KsatQsat.py:62,</span> in <span class="ni">setupKsatQsat.__init__</span><span class="nt">(self, constraint)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_KsatQsat: list of constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_KsatQsat: -- Exit the code --&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">62</span>     <span class="n">exit</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="c1">#</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">if</span> <span class="n">constraint</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;1991-pearson&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="c1"># pearson correlation</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="c1">#</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="c1">#: Attribute providing the label the data is references for figures.</span>
+
+<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -570,6 +597,7 @@ constraint: 2024-DFT-Fayans
 constraint: 2024-DFT-Gogny
 </pre></div>
 </div>
+<img alt="../../_images/583208ba5ae701ec6a0582796a525b2aa5d75d5ef37ba7dffffe514e96ae87c7.png" src="../../_images/583208ba5ae701ec6a0582796a525b2aa5d75d5ef37ba7dffffe514e96ae87c7.png" />
 </div>
 </div>
 </section>

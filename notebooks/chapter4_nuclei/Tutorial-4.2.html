@@ -488,7 +488,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D3n&#39;, &#39;D3p&#39;, &#39;S2n&#39;, &#39;S2p&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;isotopes&#39;, &#39;print_outputs&#39;, &#39;select&#39;, &#39;select_year&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D3n&#39;, &#39;D3p&#39;, &#39;S2n&#39;, &#39;S2p&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;isotones&#39;, &#39;isotopes&#39;, &#39;print_outputs&#39;, &#39;select&#39;, &#39;select_year&#39;]
 </pre></div>
 </div>
 </div>
@@ -545,6 +545,17 @@ number of nuclei: 5827
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">s2n</span> <span class="o">=</span> <span class="n">mas</span><span class="o">.</span><span class="n">S2n</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zref</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s2n</span> <span class="o">=</span> <span class="n">mas</span><span class="o">.</span><span class="n">S2n</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zref</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
+
+<span class="ne">TypeError</span>: setupBEExp.S2n() got an unexpected keyword argument &#39;Zmin&#39;
 </pre></div>
 </div>
 </div>
@@ -605,6 +616,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
 </pre></div>
 </div>
+<img alt="../../_images/e3e35774855a94e64e918aff728b5f6de130051ea6ec6386a4e3c56611fc0a1d.png" src="../../_images/e3e35774855a94e64e918aff728b5f6de130051ea6ec6386a4e3c56611fc0a1d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -624,6 +636,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
 </pre></div>
 </div>
+<img alt="../../_images/33a7d22ab582b5c8a609a78e04e1a544ad2fbe1bb77e46d7bc8ba0c0b70eef53.png" src="../../_images/33a7d22ab582b5c8a609a78e04e1a544ad2fbe1bb77e46d7bc8ba0c0b70eef53.png" />
 </div>
 </div>
 </section>

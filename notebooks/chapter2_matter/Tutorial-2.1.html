@@ -580,7 +580,7 @@ The non-relativistic quantities are:
         0.08555556, 0.10166667, 0.11777778, 0.13388889, 0.15      ]),
  &#39;den_p&#39;: array([0.005     , 0.02111111, 0.03722222, 0.05333333, 0.06944444,
         0.08555556, 0.10166667, 0.11777778, 0.13388889, 0.15      ]),
- &#39;kf&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
+ &#39;kf_nuc&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
         1.36319004, 1.44388696, 1.51645008, 1.58266323, 1.64375626]),
  &#39;kf_n&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
         1.36319004, 1.44388696, 1.51645008, 1.58266323, 1.64375626]),
@@ -602,10 +602,10 @@ The non-relativistic quantities are:
         64.2209204 , 72.04935624, 79.4730631 , 86.5646824 , 93.37670705]),
  &#39;e2a_rm&#39;: array([563.3512077, 563.3512077, 563.3512077, 563.3512077, 563.3512077,
         563.3512077, 563.3512077, 563.3512077, 563.3512077, 563.3512077]),
- &#39;e2v_rm&#39;: array([  5.63351208,  23.78593988,  41.93836768,  60.09079549,
+ &#39;eps_rm&#39;: array([  5.63351208,  23.78593988,  41.93836768,  60.09079549,
          78.24322329,  96.3956511 , 114.5480789 , 132.7005067 ,
         150.85293451, 169.00536231]),
- &#39;e2v&#39;: array([  5.69118961,  24.41607596,  43.54871519,  63.00632965,
+ &#39;eps&#39;: array([  5.69118961,  24.41607596,  43.54871519,  63.00632965,
          82.74662667, 102.7419156 , 122.97200004, 143.42119548,
         164.07680589, 184.92824645]),
  &#39;e2a&#39;: array([569.11896085, 578.27548332, 584.9827413 , 590.68434047,
@@ -618,11 +618,11 @@ The non-relativistic quantities are:
  &#39;e2a_nr&#39;: array([569.15407049, 578.51017769, 585.4752169 , 591.46987829,
         596.88021052, 601.88375994, 606.58082144, 611.03504556,
         615.29001714, 619.37723193]),
- &#39;e2v_int&#39;: array([ 0.05767753,  0.63013608,  1.6103475 ,  2.91553416,  4.50340338,
+ &#39;eps_int&#39;: array([ 0.05767753,  0.63013608,  1.6103475 ,  2.91553416,  4.50340338,
          6.3462645 ,  8.42392114, 10.72068877, 13.22387138, 15.92288414]),
- &#39;e2v_int_nr&#39;: array([ 0.05802863,  0.6400454 ,  1.64700957,  2.99932486,  4.65680595,
+ &#39;eps_int_nr&#39;: array([ 0.05802863,  0.6400454 ,  1.64700957,  2.99932486,  4.65680595,
          6.59334783,  8.79002146, 11.23219292, 13.90805897, 16.80780727]),
- &#39;e2v_nr&#39;: array([  5.6915407 ,  24.42598528,  43.58537726,  63.09012035,
+ &#39;eps_nr&#39;: array([  5.6915407 ,  24.42598528,  43.58537726,  63.09012035,
          82.90002924, 102.98899892, 123.33810036, 143.93269962,
         164.76099348, 185.81316958]),
  &#39;esym_nr&#39;: array([ 3.40860771,  8.90439492, 12.99566628, 16.51693668, 19.69497153,
@@ -648,6 +648,7 @@ The non-relativistic quantities are:
  &#39;den_unit&#39;: &#39;fm$^{-3}$&#39;,
  &#39;kf_unit&#39;: &#39;fm$^{-1}$&#39;,
  &#39;e2a_unit&#39;: &#39;MeV&#39;,
+ &#39;eps_unit&#39;: &#39;MeV fm$^{-3}$&#39;,
  &#39;pre_unit&#39;: &#39;MeV fm$^{-3}$&#39;,
  &#39;cs2_unit&#39;: &#39;c$^{2}$&#39;}
 </pre></div>
@@ -666,13 +667,14 @@ The non-relativistic quantities are:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-plot $\delta=0$ (SM)
-plot $\delta=1$ (NM)
-plot $\delta=0$ (SM)
-plot $\delta=1$ (NM)
-plot $\delta=0$ (SM)
-plot $\delta=1$ (NM)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">kfn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mss</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.4</span> <span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupFFGNuc_EP_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">den</span> <span class="o">=</span> <span class="n">den</span><span class="p">,</span> <span class="n">kfn</span> <span class="o">=</span> <span class="n">kfn</span><span class="p">,</span> <span class="n">mss</span> <span class="o">=</span> <span class="n">mss</span> <span class="p">)</span>
+
+<span class="ne">TypeError</span>: matter_setupFFGNuc_EP_fig() got an unexpected keyword argument &#39;kfn&#39;
 </pre></div>
 </div>
 </div>
