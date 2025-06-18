@@ -435,7 +435,7 @@ class setupFFGLep():
         if self.kf_el is not None: print(f"   kf_el: {np.round(self.kf_el,2)} in {self.kf_unit}")
         if self.e2n_lep_int is not None: print(f"   e2n_lep_int: {np.round(self.e2n_lep_int,2)} in {self.e2n_unit}")
         if self.pre_lep is not None: print(f"   pre_lep: {np.round(self.pre_lep,2)} in {self.pre_unit}")
-        if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)} in {self.cs2_unit}")
+        if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
