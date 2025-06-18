@@ -93,10 +93,19 @@ class setupCC():
         eos_pre = []
         eos_cs2 = []
         #
-        if connect == 'density':
+        if connect == 'density' or connect == 'steiner' :
             #
-            b_lo = boundaries[0]
-            b_up = boundaries[1]
+            if connect == 'steiner':
+                #nep = nuda.matter.setupNEP( model = ’ddrhf’ , param = ’pka1’ )
+                #nep=nuda.matter.setupNEP( model = crust_model, )
+                Esym = 32.0
+                Lsym = 50.0
+                tmp = Lsym/70.0
+                b_lo = (Esym/30.0)*(0.1327 - 0.0898*tmp + 0.0228*tmp**2)
+                b_up=b_lo
+            else:
+                b_lo = boundaries[0]
+                b_up = boundaries[1]
             print('Boundaries:',b_lo,b_up)
             for ind,den in enumerate(crust_eos.den):
                 if den < b_lo:
@@ -122,6 +131,12 @@ class setupCC():
             print('setupCC.py: connect:',connect)
             print('setupCC.py: -- Exit the code --')
             exit()
+        self.crust_den = crust_eos.den
+        self.crust_pre = crust_eos.pre_tot
+        self.crust_eps = crust_eos.eps_tot
+        self.core_den = core_eos.den
+        self.core_pre = core_eos.pre_tot
+        self.core_eps = core_eos.eps_tot
         #print('CC eos:')
         #print('densities:',eos_den)
         #print('eps:',eos_eps)
@@ -139,7 +154,7 @@ class setupCC():
         log_pre = np.log10( eos_pre )
         log_cs2 = np.log10( eos_cs2 )
         #
-        if connect == 'density':
+        if connect == 'density' or connect == 'steiner' :
             x = log_den
             ye = log_eps
             yp = log_pre
@@ -156,10 +171,11 @@ class setupCC():
         cs_pre = CubicSpline(x, yp)
         cs_cs2 = CubicSpline(x, yc)
         cs_cs2_beta = CubicSpline(ye, yp)
-        self.eps = cs_eps(log_x)
-        self.pre = cs_pre(log_x)
-        self.cs2 = cs_cs2(log_x)
-        self.cs2_beta = cs_cs2_beta( self.eps, 1 ) # to improve...
+        self.den = eos_x
+        self.eps = np.power(10,cs_eps(log_x))
+        self.pre = np.power(10,cs_pre(log_x))
+        self.cs2 = np.power(10,cs_cs2(log_x))
+        self.cs2_beta = self.pre / self.eps * np.power(10,cs_cs2_beta( self.eps, 1 ) ) # to improve...
         #
         self.den_unit = 'fm$^{-3}$'
         self.e2a_unit = 'MeV'

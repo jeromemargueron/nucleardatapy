@@ -31,14 +31,18 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
     #
     axs.set_xlabel(r'$\epsilon_\text{tot}$ (MeV fm$^{-3}$)')
     axs.set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)')
-    axs.set_xlim([0, 350])
-    axs.set_ylim([-2, 30])
+    axs.set_xlim([1.e-5, 3.e3])
+    axs.set_ylim([1.e-8, 2.e3])
     #axs.set_tick_params('y', right=True)
     #axs.set_tick_params('x', top=True)
-    #axs.set_xscale('log')
-    #axs.set_yscale('log')
+    axs.set_xscale('log')
+    axs.set_yscale('log')
+    #
+    # create the crust+core EOS
     #
     eos_cc = nuda.eos.setupCC( crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries )
+    #
+    # check the core EOS against the band in NM
     #
     if core_kind == 'micro':
         eos = nuda.eos.setupAMBeq( model = core_model, kind = core_kind )
@@ -56,10 +60,14 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
     else:
         lstyle = 'dashed'
     #
+    # plot
+    #
     if eos_cc.pre is not None: 
         axs.plot( eos_cc.eps, eos_cc.pre, marker='o', linestyle=lstyle, markevery=eos_cc.every )
+        axs.plot( eos_cc.crust_eps, eos_cc.crust_pre, marker='x', linestyle=lstyle, markevery=eos_cc.every )
+        axs.plot( eos_cc.core_eps, eos_cc.core_pre, marker='+', linestyle=lstyle, markevery=eos_cc.every )
     #
-    axs.errorbar( p_den, p_cen, yerr=p_std, color='k', linewidth = 3 )
+    #axs.errorbar( p_den, p_cen, yerr=p_std, color='k', linewidth = 3 )
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #

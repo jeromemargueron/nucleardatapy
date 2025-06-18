@@ -52,7 +52,8 @@ def main():
     # connection
     # ==============
     #
-    connect = 'density'
+    connect = 'steiner'
+    #connect = 'density'
     boundaries = [ 0.016, 0.16 ] # in units of fm-3
     #connect = 'epsilon'
     #boundaries = [ 15.0, 150.0 ] # in units of MeV fm-3
