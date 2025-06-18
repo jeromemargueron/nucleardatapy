@@ -415,7 +415,7 @@ class setupFFGLep():
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
-        self.e2a_unit = 'MeV'
+        self.e2n_unit = 'MeV'
         self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'
         #
@@ -433,7 +433,7 @@ class setupFFGLep():
         if self.den_el is not None: print(f"   den_el: {np.round(self.den_el,2)} in {self.den_unit}")
         if self.den_mu is not None: print(f"   den_mu: {np.round(self.den_mu,2)}")
         if self.kf_el is not None: print(f"   kf_el: {np.round(self.kf_el,2)} in {self.kf_unit}")
-        if self.e2a_lep_int is not None: print(f"   e2a_lep_int: {np.round(self.e2a_lep_int,2)} in {self.e2a_unit}")
+        if self.e2n_lep_int is not None: print(f"   e2n_lep_int: {np.round(self.e2n_lep_int,2)} in {self.e2n_unit}")
         if self.pre_lep is not None: print(f"   pre_lep: {np.round(self.pre_lep,2)} in {self.pre_unit}")
         if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)} in {self.cs2_unit}")
         #
