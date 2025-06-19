@@ -22,7 +22,7 @@ def main():
     #
     crust_models, crust_models_lower = nuda.crust.crust_models()
     print('List of crust_models:',crust_models)
-    crust_models = [ '2022-crustGMRS-H4' ]
+    crust_models = [ '2022-GMRS-H4' ]
     #
     # ==============
     # core models
@@ -52,13 +52,15 @@ def main():
     # connection
     # ==============
     #
-    connect = 'steiner'
     #connect = 'density'
-    boundaries = [ 0.016, 0.16 ] # in units of fm-3
-    #connect = 'epsilon'
-    #boundaries = [ 15.0, 150.0 ] # in units of MeV fm-3
+    emp = None
+    #emp = 'simple'
+    #emp = 'Steiner'
+    #boundaries = [ 0.016, 0.16 ] # in units of fm-3
+    connect = 'epsilon'
+    boundaries = [ 15.0, 150.0 ] # in units of MeV fm-3
     #connect = 'pressure'
-    #boundaries = [ 1.0, 20.0 ] # in units of MeV fm-3
+    #boundaries = [ 0.1, 1.0 ] # in units of MeV fm-3
     #
     for crust_model in crust_models:
         #
@@ -70,11 +72,41 @@ def main():
             #
             for core_param in core_params:
                 #
+                # check pressure (n)
+                #
                 if core_param is not None:
-                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+' '+core_model+' '+core_param+' '+connect+'.png'
+                    if emp is not None:
+                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
+                    else:
+                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
                 else:
-                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+' '+core_model+' '+connect+'.png'
-                nuda.fig.eos_setupCC_eos_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries )
+                    if emp is not None:
+                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
+                    else:
+                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'.png'
+                nuda.fig.eos_setupCC_checkpre_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries, emp = emp )
+                #
+                # check EoS pre(eps)
+                #
+                if core_param is not None:
+                    if emp is not None:
+                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
+                    else:
+                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
+                else:
+                    if emp is not None:
+                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
+                    else:
+                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'.png'
+                nuda.fig.eos_setupCC_checkeos_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries, emp = emp )
+                #
+                # EoS pre(eps)
+                #
+                if core_param is not None:
+                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'_'+core_param+'.png'
+                else:
+                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'.png'
+                nuda.fig.eos_setupCC_eos_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param )
                 #
             #
         #

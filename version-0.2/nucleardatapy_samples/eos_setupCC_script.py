@@ -13,7 +13,7 @@ def main():
     #
     crust_models, crust_models_lower = nuda.crust.crust_models()
     print('List of crust_models:',crust_models)
-    crust_models = [ '2022-crustGMRS-H4' ]
+    crust_models = [ '2022-GMRS-H4' ]
     #
     # ==============
     # core models
@@ -44,6 +44,9 @@ def main():
     # ==============
     #
     connect = 'density'
+    emp = None
+    #emp = 'simple'
+    #emp = 'Steiner'
     boundaries = [ 0.016, 0.16 ] # in units of fm-3
     #connect = 'epsilon'
     #boundaries = [ 15.0, 150.0 ] # in units of MeV fm-3

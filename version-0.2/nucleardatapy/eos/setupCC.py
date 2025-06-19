@@ -4,6 +4,19 @@ from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
+def denCC_emp( nsat, Esym, Lsym, emp ):
+    if emp == 'simple':
+        den_cc = 0.5*nsat
+    elif emp == 'Steiner':
+        varEsym = Esym/30.0
+        varLsym = Lsym/70.0
+        den_cc = (varEsym)*(0.1327 - 0.0898*varLsym + 0.0228*varLsym**2)
+    else:
+        print('setupCC, denCC_emp: `emp` is badly defined ',emp)
+        print('setupCC, denCC_emp: exit')
+        exit()
+    return den_cc # in fm-3
+
 class setupCC():
     """
     Instantiate the object with microscopic results choosen \
@@ -17,7 +30,7 @@ class setupCC():
     **Attributes:**
     """
     #
-    def __init__( self, crust_model, core_model = '1998-VAR-AM-APR', core_param = None, core_kind = 'micro', connect = 'density', boundaries = [ 0.016, 0.16 ] ):
+    def __init__( self, crust_model, core_model = '1998-VAR-AM-APR', core_param = None, core_kind = 'micro', connect = 'density', boundaries = [ 0.016, 0.16 ], emp = None ):
         """
         Parameters
         ----------
@@ -37,9 +50,11 @@ class setupCC():
         self = setupCC.init_self( self )
         #
         if core_param is not None:
-            self.label = crust_model+' '+core_model+' '+core_param+' '+connect
+            self.label = connect
+            #self.label = crust_model+' '+core_model+' '+core_param+' '+connect
         else:
-            self.label = crust_model+' '+core_model+' '+connect
+            self.label = connect
+            #self.label = crust_model+' '+core_model+' '+connect
         self.every = 1
         self.linestyle = 'solid'
         self.marker = 'o'
@@ -92,17 +107,27 @@ class setupCC():
         eos_eps = []
         eos_pre = []
         eos_cs2 = []
+        corx_den = []
+        corx_eps = []
+        corx_pre = []
+        corx_cs2 = []
+        crux_den = []
+        crux_eps = []
+        crux_pre = []
+        crux_cs2 = []
         #
-        if connect == 'density' or connect == 'steiner' :
+        print('CC connection:')
+        if connect == 'density' :
             #
-            if connect == 'steiner':
-                #nep = nuda.matter.setupNEP( model = ’ddrhf’ , param = ’pka1’ )
-                #nep=nuda.matter.setupNEP( model = crust_model, )
-                Esym = 32.0
-                Lsym = 50.0
-                tmp = Lsym/70.0
-                b_lo = (Esym/30.0)*(0.1327 - 0.0898*tmp + 0.0228*tmp**2)
-                b_up=b_lo
+            print('density')
+            #
+            if emp is not None:
+                nsat = crust_eos.nsat
+                Esym = crust_eos.Esym
+                Lsym = crust_eos.Lsym
+                print('crust NEP:',nsat,Esym,Lsym)
+                b_lo = 0.8 * denCC_emp( nsat, Esym, Lsym, emp )
+                b_up = 1.2 * b_lo / 0.8
             else:
                 b_lo = boundaries[0]
                 b_up = boundaries[1]
@@ -113,30 +138,104 @@ class setupCC():
                     eos_eps.append( crust_eos.eps_tot[ind] )
                     eos_pre.append( crust_eos.pre_tot[ind] )
                     eos_cs2.append( crust_eos.cs2_tot[ind] )
+                else:
+                    corx_den.append( den )
+                    corx_eps.append( crust_eos.eps_tot[ind] )
+                    corx_pre.append( crust_eos.pre_tot[ind] )
+                    corx_cs2.append( crust_eos.cs2_tot[ind] )
             for ind,den in enumerate(core_eos.den):
                 if den > b_up:
                     eos_den.append( den )
                     eos_eps.append( core_eos.eps_tot[ind] )
                     eos_pre.append( core_eos.pre_tot[ind] )
                     eos_cs2.append( core_eos.cs2_tot[ind] )
+                else:
+                    crux_den.append( den )
+                    crux_eps.append( core_eos.eps_tot[ind] )
+                    crux_pre.append( core_eos.pre_tot[ind] )
+                    crux_cs2.append( core_eos.cs2_tot[ind] )
             #
-#        elif connect == 'epsilon':
-
-
-#        elif connect == 'pressure':
-
-
+        elif connect == 'epsilon':
+            #
+            print('epsilon')
+            #
+            b_lo = boundaries[0]
+            b_up = boundaries[1]
+            print('Boundaries:',b_lo,b_up)
+            for ind,eps in enumerate(crust_eos.eps_tot):
+                if eps < b_lo:
+                    eos_den.append( crust_eos.den[ind] )
+                    eos_eps.append( eps )
+                    eos_pre.append( crust_eos.pre_tot[ind] )
+                    eos_cs2.append( crust_eos.cs2_tot[ind] )
+                else:
+                    corx_den.append( crust_eos.den[ind] )
+                    corx_eps.append( eps )
+                    corx_pre.append( crust_eos.pre_tot[ind] )
+                    corx_cs2.append( crust_eos.cs2_tot[ind] )
+            for ind,eps in enumerate(core_eos.eps_tot):
+                if eps > b_up:
+                    eos_den.append( core_eos.den[ind] )
+                    eos_eps.append( eps )
+                    eos_pre.append( core_eos.pre_tot[ind] )
+                    eos_cs2.append( core_eos.cs2_tot[ind] )
+                else:
+                    crux_den.append( core_eos.den[ind] )
+                    crux_eps.append( eps )
+                    crux_pre.append( core_eos.pre_tot[ind] )
+                    crux_cs2.append( core_eos.cs2_tot[ind] )
+            #
+        elif connect == 'pressure':
+            #
+            print('pressure')
+            #
+            b_lo = boundaries[0]
+            b_up = boundaries[1]
+            print('Boundaries:',b_lo,b_up)
+            for ind,pre in enumerate(crust_eos.pre_tot):
+                if pre < b_lo:
+                    eos_den.append( crust_eos.den[ind] )
+                    eos_eps.append( crust_eos.eps_tot[ind] )
+                    eos_pre.append( pre )
+                    eos_cs2.append( crust_eos.cs2_tot[ind] )
+                else:
+                    corx_den.append( crust_eos.den[ind] )
+                    corx_eps.append( crust_eos.eps_tot[ind] )
+                    corx_pre.append( pre )
+                    corx_cs2.append( crust_eos.cs2_tot[ind] )
+            for ind,pre in enumerate(core_eos.pre_tot):
+                if pre > b_up:
+                    eos_den.append( core_eos.den[ind] )
+                    eos_eps.append( core_eos.eps_tot[ind] )
+                    eos_pre.append( pre )
+                    eos_cs2.append( core_eos.cs2_tot[ind] )
+                else:
+                    crux_den.append( core_eos.den[ind] )
+                    crux_eps.append( core_eos.eps_tot[ind] )
+                    crux_pre.append( pre )
+                    crux_cs2.append( core_eos.cs2_tot[ind] )
+            #
         else:
             print('setupCC.py: Issue with the connection.')
             print('setupCC.py: connect:',connect)
             print('setupCC.py: -- Exit the code --')
             exit()
-        self.crust_den = crust_eos.den
-        self.crust_pre = crust_eos.pre_tot
-        self.crust_eps = crust_eos.eps_tot
-        self.core_den = core_eos.den
-        self.core_pre = core_eos.pre_tot
-        self.core_eps = core_eos.eps_tot
+        self.crust_den = np.array( crust_eos.den )
+        self.crust_pre = np.array( crust_eos.pre_tot )
+        self.crust_eps = np.array( crust_eos.eps_tot )
+        self.crust_cs2 = np.array( crust_eos.cs2_tot )
+        self.core_den = np.array( core_eos.den )
+        self.core_pre = np.array( core_eos.pre_tot )
+        self.core_eps = np.array( core_eos.eps_tot )
+        self.core_cs2 = np.array( core_eos.cs2_tot )
+        self.crux_den = np.array( crux_den )
+        self.crux_pre = np.array( crux_pre )
+        self.crux_eps = np.array( crux_eps )
+        self.crux_cs2 = np.array( crux_cs2 )
+        self.corx_den = np.array( corx_den )
+        self.corx_pre = np.array( corx_pre )
+        self.corx_eps = np.array( corx_eps )
+        self.corx_cs2 = np.array( corx_cs2 )
         #print('CC eos:')
         #print('densities:',eos_den)
         #print('eps:',eos_eps)
@@ -154,29 +253,66 @@ class setupCC():
         log_pre = np.log10( eos_pre )
         log_cs2 = np.log10( eos_cs2 )
         #
-        if connect == 'density' or connect == 'steiner' :
+        if connect == 'density' :
+            #
             x = log_den
             ye = log_eps
             yp = log_pre
             yc = log_cs2
             # fix the density mesh for the output eos
+            print('min(den):',min(eos_den),min(log_den))
+            print('max(den):',max(eos_den),max(log_den))
             eos_x = np.logspace( min(log_den), max(log_den), num = 100 )
             log_x = np.log10( eos_x )
             #
-        print('min(den):',min(eos_den),min(log_den))
-        print('max(den):',max(eos_den),max(log_den))
-        print('eos_x:',eos_x)
-        print('log_x:',log_x)
-        cs_eps = CubicSpline(x, ye)
-        cs_pre = CubicSpline(x, yp)
-        cs_cs2 = CubicSpline(x, yc)
-        cs_cs2_beta = CubicSpline(ye, yp)
-        self.den = eos_x
-        self.eps = np.power(10,cs_eps(log_x))
-        self.pre = np.power(10,cs_pre(log_x))
-        self.cs2 = np.power(10,cs_cs2(log_x))
-        self.cs2_beta = self.pre / self.eps * np.power(10,cs_cs2_beta( self.eps, 1 ) ) # to improve...
-        #
+            print('eos_x:',eos_x)
+            print('log_x:',log_x)
+            #cs_eps = CubicSpline(x, ye)
+            #cs_pre = CubicSpline(x, yp)
+            #cs_cs2 = CubicSpline(x, yc)
+            #cs_cs2_beta = CubicSpline(ye, yp)
+            self.den = eos_x
+            #self.eps = np.power(10,cs_eps(log_x))
+            #self.pre = np.power(10,cs_pre(log_x))
+            #self.cs2 = np.power(10,cs_cs2(log_x))
+            #self.cs2_beta = self.pre / self.eps * np.power(10,cs_cs2_beta( self.eps, 1 ) ) # to improve...
+            # linear interpolation in log-log scale
+            self.eps = np.power(10,np.interp(log_x,x,ye))
+            self.pre = np.power(10,np.interp(log_x,x,yp))
+            self.cs2 = np.power(10,np.interp(log_x,x,yc))
+            #
+        elif connect == 'epsilon' :
+            #
+            yn = log_den
+            x = log_eps
+            yp = log_pre
+            yc = log_cs2
+            # fix the density mesh for the output eos
+            print('min(eps):',min(eos_eps),min(log_eps))
+            print('max(eps):',max(eos_eps),max(log_eps))
+            eos_x = np.logspace( min(log_eps), max(log_eps), num = 100 )
+            log_x = np.log10( eos_x )
+            self.den = np.power(10,np.interp(log_x,x,yn))
+            self.eps = eos_x
+            self.pre = np.power(10,np.interp(log_x,x,yp))
+            self.cs2 = np.power(10,np.interp(log_x,x,yc))
+            #
+        elif connect == 'pressure' :
+            #
+            yn = log_den
+            ye = log_eps
+            x = log_pre
+            yc = log_cs2
+            # fix the density mesh for the output eos
+            print('min(pre):',min(eos_pre),min(log_pre))
+            print('max(pre):',max(eos_pre),max(log_pre))
+            eos_x = np.logspace( min(log_pre), max(log_pre), num = 100 )
+            log_x = np.log10( eos_x )
+            self.den = np.power(10,np.interp(log_x,x,yn))
+            self.eps = np.power(10,np.interp(log_x,x,ye))
+            self.pre = eos_x
+            self.cs2 = np.power(10,np.interp(log_x,x,yc))
+            #
         self.den_unit = 'fm$^{-3}$'
         self.e2a_unit = 'MeV'
         self.eps_unit = 'MeV fm$^{-3}$'

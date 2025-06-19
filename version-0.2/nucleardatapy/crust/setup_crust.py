@@ -6,7 +6,6 @@ from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
-
 def crust_models():
     """
     Return a list of the tables available in this toolkit for the experimental masses and
@@ -19,12 +18,13 @@ def crust_models():
     #
     if nuda.env.verb: print("\nEnter models_crust()")
     #
-    models = [ '1973-Negele-Vautherin', '2018-PCPFDDG-BSK22', '2018-PCPFDDG-BSK24', '2018-PCPFDDG-BSK25', '2018-PCPFDDG-BSK26',\
+    models = [ '1973-Negele-Vautherin', '2018-PCPFDDG-BSK22', \
+    '2018-PCPFDDG-BSK24', '2018-PCPFDDG-BSK25', '2018-PCPFDDG-BSK26',\
     '2020-MVCD-D1S', '2020-MVCD-D1M', '2020-MVCD-D1MS',\
-    '2022-crustGMRS-BSK14', '2022-crustGMRS-BSK16', '2022-crustGMRS-DHSL59', '2022-crustGMRS-DHSL69',\
-    '2022-crustGMRS-F0', '2022-crustGMRS-H1', '2022-crustGMRS-H2', '2022-crustGMRS-H3', \
-    '2022-crustGMRS-H4', '2022-crustGMRS-H5', '2022-crustGMRS-H7', '2022-crustGMRS-LNS5', \
-    '2022-crustGMRS-RATP', '2022-crustGMRS-SGII', '2022-crustGMRS-SLY5' ]
+    '2022-GMRS-BSK14', '2022-GMRS-BSK16', '2022-GMRS-DHSL59', '2022-GMRS-DHSL69',\
+    '2022-GMRS-F0', '2022-GMRS-H1', '2022-GMRS-H2', '2022-GMRS-H3', \
+    '2022-GMRS-H4', '2022-GMRS-H5', '2022-GMRS-H7', '2022-GMRS-LNS5', \
+    '2022-GMRS-RATP', '2022-GMRS-SGII', '2022-GMRS-SLY5' ]
     #
     #print('crust models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
@@ -102,6 +102,10 @@ class setupCrust():
             self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
+            # NEP
+            self.nsat = 0.16
+            self.Esym = 32.0
+            self.Lsym = 50.0
             #
         elif '2020-mvcd' in model.lower():
             #
@@ -111,12 +115,27 @@ class setupCrust():
             if model.lower()=='2020-mvcd-d1s':
                 file_in = nuda.param.path_data+'crust/2020-MVCD-D1S.dat'
                 self.label = 'MVCD-D1S-2020'
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 50.0
+                #
             elif model.lower()=='2020-mvcd-d1m':
                 file_in = nuda.param.path_data+'crust/2020-MVCD-D1M.dat'
                 self.label = 'MVCD-D1M-2020'
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 50.0
+                #
             elif model.lower()=='2020-mvcd-d1ms':
                 file_in = nuda.param.path_data+'crust/2020-MVCD-D1MS.dat'
                 self.label = 'MVCD-D1M$^*$-2020'
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 50.0
+                #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).'
             self.note = "semiclassical variational Wigner-Kirkwood method along with shell and pairing corrections calculated with the Strutinsky integral method and the BCS approximation."
@@ -138,24 +157,51 @@ class setupCrust():
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
             #
-            #
         elif '2018-pcpfddg' in model.lower():
             #
             # Note: N_bound or N_f cannot be determined from the tables (Jerome).
             # It is right?
             #
             if model.lower()=='2018-pcpfddg-bsk22':
+                #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK22.dat'
                 self.label = 'PCPFDDG-BSK22-2018'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk22' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
             elif model.lower()=='2018-pcpfddg-bsk24':
+                #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK24.dat'
                 self.label = 'PCPFDDG-BSK24-2018'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk24' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
             elif model.lower()=='2018-pcpfddg-bsk25':
+                #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK25.dat'
                 self.label = 'PCPFDDG-BSK25-2018'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk25' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
             elif model.lower()=='2018-pcpfddg-bsk26':
+                #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK26.dat'
                 self.label = 'PCPFDDG-BSK26-2018'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk26' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Pearson J.M., Chamel N., Potekhin A.Y., Fantina, A.F., Ducoin C., Dutta A.K., Goriely S., MNRS 481, 2994 (2018).'
             self.note = "4th-order Extended  Thomas-Fermi (ETF) method with proton shell correction via the Strutinsky integral (SI) with Brussels-Montreal functionals."
@@ -182,11 +228,11 @@ class setupCrust():
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             #self.e2a_int = self.e2a_tot - self.e2a_rm
             #
-        elif '2022-crustgmrs' in model.lower():
+        elif '2022-gmrs' in model.lower():
             #
-            #
-            if model.lower()=='2022-crustgmrs-bsk14':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-BSK14.dat'
+            if model.lower()=='2022-gmrs-bsk14':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-BSK14.dat'
                 self.label = 'GMRS BSK14 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.5617840312066730E-004 # in fm-3
@@ -198,8 +244,15 @@ class setupCrust():
                 self.rho_cc = 15.799976089478367 # in MeV/fm3
                 self.pre_cc = 0.32687267610704895 # in MeV/fm3
                 self.mu_n_cc = 7.6209998100288209E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-bsk16':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-BSK16.dat'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk14' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #                
+            elif model.lower()=='2022-gmrs-bsk16':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-BSK16.dat'
                 self.label = 'GMRS BSK16 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.5282142292259004E-004 # in fm-3
@@ -211,34 +264,14 @@ class setupCrust():
                 self.rho_cc = 16.920900617363277 # in MeV/fm3
                 self.pre_cc = 0.36795626298336570 # in MeV/fm3
                 self.mu_n_cc = 8.4609997888086361E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-dhsl59':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-DHSL59.dat'
-                self.label = 'GMRS DHSL59 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.6651916429173218E-004 # in fm-3
-                self.rho_oic = 7.7840639496076998 # in MeV/fm3
-                self.pre_oic = 6.3684106061817061E-004 # in MeV/fm3
-                self.mu_n_oic = 2.8095904260657669E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 7.2109998203862921E-002 # in fm-3
-                self.rho_cc = 17.733669529186933 # in MeV/fm3
-                self.pre_cc = 0.33617646422062142 # in MeV/fm3
-                self.mu_n_cc = 7.2109998203862921E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-dhsl69':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-DHSL69.dat'
-                self.label = 'GMRS DHSL69 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.4301212474202996E-004 # in fm-3
-                self.rho_oic = 7.3077129271105594 # in MeV/fm3
-                self.pre_oic = 5.6022465054447420E-004 # in MeV/fm3
-                self.mu_n_oic = 2.5617840312066730E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 7.3209998176074584E-002 # in fm-3
-                self.rho_cc = 17.399615979167670 # in MeV/fm3
-                self.pre_cc = 0.38035277580973315 # in MeV/fm3
-                self.mu_n_cc = 7.3209998176074584E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-f0':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-F0.dat'
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 50.0
+                #
+            elif model.lower()=='2022-gmrs-f0':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-F0.dat'
                 self.label = 'GMRS F0 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.4950843283419027E-004 # in fm-3
@@ -250,86 +283,15 @@ class setupCrust():
                 self.rho_cc = 18.078177464065167 # in MeV/fm3
                 self.pre_cc = 0.33181818756433845 # in MeV/fm3
                 self.mu_n_cc = 8.3309997920927123E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h1':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H1.dat'
-                self.label = 'GMRS H1 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.5957995753211628E-004 # in fm-3
-                self.rho_oic = 7.0757265666560816 # in MeV/fm3
-                self.pre_oic = 5.2925404120069590E-004 # in MeV/fm3
-                self.mu_n_oic = 2.7364387300962906E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 9.5909997602624350E-002 # in fm-3
-                self.rho_cc = 17.803660783830789 # in MeV/fm3
-                self.pre_cc = 0.48159809254574409 # in MeV/fm3
-                self.mu_n_cc = 9.5909997602624350E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h2':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H2.dat'
-                self.label = 'GMRS H2 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.4301212474202996E-004 # in fm-3
-                self.rho_oic = 6.7775868042313050 # in MeV/fm3
-                self.pre_oic = 5.0750488249204384E-004 # in MeV/fm3
-                self.mu_n_oic = 2.5617840312066730E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 9.2909997678410725E-002 # in fm-3
-                self.rho_cc = 17.632170792314291 # in MeV/fm3
-                self.pre_cc = 0.48032175761400209 # in MeV/fm3
-                self.mu_n_cc = 9.2909997678410725E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h3':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H3.dat'
-                self.label = 'GMRS H3 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.4623885640591057E-004 # in fm-3
-                self.rho_oic = 6.9757456948608496 # in MeV/fm3
-                self.pre_oic = 5.2473617319924773E-004 # in MeV/fm3
-                self.mu_n_oic = 2.5957995753211628E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 8.4509997890612573E-002 # in fm-3
-                self.rho_cc = 17.236262111228385 # in MeV/fm3
-                self.pre_cc = 0.40705940455120337 # in MeV/fm3
-                self.mu_n_cc = 8.4509997890612573E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h4':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H4.dat'
-                self.label = 'GMRS H4 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.5282142292259004E-004 # in fm-3
-                self.rho_oic = 7.1798191275380834 # in MeV/fm3
-                self.pre_oic = 5.4763060342489047E-004 # in MeV/fm3
-                self.mu_n_oic = 2.6651916429173218E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 9.0609997736513612E-002 # in fm-3
-                self.rho_cc = 18.131463559875652 # in MeV/fm3
-                self.pre_cc = 0.47616516763123967 # in MeV/fm3
-                self.mu_n_cc = 9.0609997736513612E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h5':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H5.dat'
-                self.label = 'GMRS H5 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 2.8468963604916567E-004 # in fm-3
-                self.rho_oic = 7.9585404850864840 # in MeV/fm3
-                self.pre_oic = 6.7714839441802323E-004 # in MeV/fm3
-                self.mu_n_oic = 3.0011398166037865E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 8.7009997827457261E-002 # in fm-3
-                self.rho_cc = 19.069132247958592 # in MeV/fm3
-                self.pre_cc = 0.46337573665856840 # in MeV/fm3
-                self.mu_n_cc = 8.7009997827457261E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-h7':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-H7.dat'
-                self.label = 'GMRS H7 2022'
-                # Outer-Inner Crust (OIC) Transition :
-                self.nb_oic = 3.2914459584803760E-004 # in fm-3
-                self.rho_oic = 8.4098882517442597 # in MeV/fm3
-                self.pre_oic = 8.5126111019145174E-004 # in MeV/fm3
-                self.mu_n_oic = 3.4697748949628541E-004 # in MeV
-                # Crust-Core Transition:
-                self.nb_cc = 8.3109997925979548E-002 # in fm-3
-                self.rho_cc = 19.885261960955020 # in MeV/fm3
-                self.pre_cc = 0.48143960493062543 # in MeV/fm3
-                self.mu_n_cc = 8.3109997925979548E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-lns5':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-LNS5.dat'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'F0' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-lns5':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-LNS5.dat'
                 self.label = 'GMRS LNS5 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.6651916429173218E-004 # in fm-3
@@ -341,8 +303,15 @@ class setupCrust():
                 self.rho_cc = 14.391278079363289 # in MeV/fm3
                 self.pre_cc = 0.26627562388273884 # in MeV/fm3
                 self.mu_n_cc = 7.0409998246808533E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-ratp':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-RATP.dat'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'LNS5' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-ratp':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-RATP.dat'
                 self.label = 'GMRS RATP 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.5617840312066730E-004 # in fm-3
@@ -354,8 +323,15 @@ class setupCrust():
                 self.rho_cc = 16.557394274307612 # in MeV/fm3
                 self.pre_cc = 0.35277408994086884 # in MeV/fm3
                 self.mu_n_cc = 8.6009997852719386E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-sgii':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-SGII.dat'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'RATP' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-sgii':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-SGII.dat'
                 self.label = 'GMRS SGII 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.6651916429173218E-004 # in fm-3
@@ -367,8 +343,15 @@ class setupCrust():
                 self.rho_cc = 13.413876317015074 # in MeV/fm3
                 self.pre_cc = 0.20198467236572187 # in MeV/fm3
                 self.mu_n_cc = 6.5309998375645370E-002 # in MeV
-            elif model.lower()=='2022-crustgmrs-sly5':
-                file_in = nuda.param.path_data+'crust/2022-crustGMRS-SLY5.dat'
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'SGII' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-sly5':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-SLY5.dat'
                 self.label = 'GMRS SLy5 2022'
                 # Outer-Inner Crust (OIC) Transition :
                 self.nb_oic = 2.4623885640591057E-004 # in fm-3
@@ -380,6 +363,170 @@ class setupCrust():
                 self.rho_cc = 17.103178025699933 # in MeV/fm3
                 self.pre_cc = 0.31728157118252842 # in MeV/fm3
                 self.mu_n_cc = 7.6309998097761997E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'SLY5' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h1':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H1.dat'
+                self.label = 'GMRS H1 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.5957995753211628E-004 # in fm-3
+                self.rho_oic = 7.0757265666560816 # in MeV/fm3
+                self.pre_oic = 5.2925404120069590E-004 # in MeV/fm3
+                self.mu_n_oic = 2.7364387300962906E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 9.5909997602624350E-002 # in fm-3
+                self.rho_cc = 17.803660783830789 # in MeV/fm3
+                self.pre_cc = 0.48159809254574409 # in MeV/fm3
+                self.mu_n_cc = 9.5909997602624350E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H1MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h2':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H2.dat'
+                self.label = 'GMRS H2 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.4301212474202996E-004 # in fm-3
+                self.rho_oic = 6.7775868042313050 # in MeV/fm3
+                self.pre_oic = 5.0750488249204384E-004 # in MeV/fm3
+                self.mu_n_oic = 2.5617840312066730E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 9.2909997678410725E-002 # in fm-3
+                self.rho_cc = 17.632170792314291 # in MeV/fm3
+                self.pre_cc = 0.48032175761400209 # in MeV/fm3
+                self.mu_n_cc = 9.2909997678410725E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H2MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h3':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H3.dat'
+                self.label = 'GMRS H3 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.4623885640591057E-004 # in fm-3
+                self.rho_oic = 6.9757456948608496 # in MeV/fm3
+                self.pre_oic = 5.2473617319924773E-004 # in MeV/fm3
+                self.mu_n_oic = 2.5957995753211628E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 8.4509997890612573E-002 # in fm-3
+                self.rho_cc = 17.236262111228385 # in MeV/fm3
+                self.pre_cc = 0.40705940455120337 # in MeV/fm3
+                self.mu_n_cc = 8.4509997890612573E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H3MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h4':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H4.dat'
+                self.label = 'GMRS H4 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.5282142292259004E-004 # in fm-3
+                self.rho_oic = 7.1798191275380834 # in MeV/fm3
+                self.pre_oic = 5.4763060342489047E-004 # in MeV/fm3
+                self.mu_n_oic = 2.6651916429173218E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 9.0609997736513612E-002 # in fm-3
+                self.rho_cc = 18.131463559875652 # in MeV/fm3
+                self.pre_cc = 0.47616516763123967 # in MeV/fm3
+                self.mu_n_cc = 9.0609997736513612E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H4MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h5':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H5.dat'
+                self.label = 'GMRS H5 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.8468963604916567E-004 # in fm-3
+                self.rho_oic = 7.9585404850864840 # in MeV/fm3
+                self.pre_oic = 6.7714839441802323E-004 # in MeV/fm3
+                self.mu_n_oic = 3.0011398166037865E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 8.7009997827457261E-002 # in fm-3
+                self.rho_cc = 19.069132247958592 # in MeV/fm3
+                self.pre_cc = 0.46337573665856840 # in MeV/fm3
+                self.mu_n_cc = 8.7009997827457261E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H5MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-h7':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-H7.dat'
+                self.label = 'GMRS H7 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 3.2914459584803760E-004 # in fm-3
+                self.rho_oic = 8.4098882517442597 # in MeV/fm3
+                self.pre_oic = 8.5126111019145174E-004 # in MeV/fm3
+                self.mu_n_oic = 3.4697748949628541E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 8.3109997925979548E-002 # in fm-3
+                self.rho_cc = 19.885261960955020 # in MeV/fm3
+                self.pre_cc = 0.48143960493062543 # in MeV/fm3
+                self.mu_n_cc = 8.3109997925979548E-002 # in MeV
+                # NEP
+                nep = nuda.matter.setupNEP( model = 'xEFT', param = 'H7MM' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                #
+            elif model.lower()=='2022-gmrs-dhsl59':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-DHSL59.dat'
+                self.label = 'GMRS DHSL59 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.6651916429173218E-004 # in fm-3
+                self.rho_oic = 7.7840639496076998 # in MeV/fm3
+                self.pre_oic = 6.3684106061817061E-004 # in MeV/fm3
+                self.mu_n_oic = 2.8095904260657669E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 7.2109998203862921E-002 # in fm-3
+                self.rho_cc = 17.733669529186933 # in MeV/fm3
+                self.pre_cc = 0.33617646422062142 # in MeV/fm3
+                self.mu_n_cc = 7.2109998203862921E-002 # in MeV
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 59.0
+                #
+            elif model.lower()=='2022-gmrs-dhsl69':
+                #
+                file_in = nuda.param.path_data+'crust/2022-GMRS-DHSL69.dat'
+                self.label = 'GMRS DHSL69 2022'
+                # Outer-Inner Crust (OIC) Transition :
+                self.nb_oic = 2.4301212474202996E-004 # in fm-3
+                self.rho_oic = 7.3077129271105594 # in MeV/fm3
+                self.pre_oic = 5.6022465054447420E-004 # in MeV/fm3
+                self.mu_n_oic = 2.5617840312066730E-004 # in MeV
+                # Crust-Core Transition:
+                self.nb_cc = 7.3209998176074584E-002 # in fm-3
+                self.rho_cc = 17.399615979167670 # in MeV/fm3
+                self.pre_cc = 0.38035277580973315 # in MeV/fm3
+                self.mu_n_cc = 7.3209998176074584E-002 # in MeV
+                # NEP
+                self.nsat = 0.16
+                self.Esym = 32.0
+                self.Lsym = 69.0
+                #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'G. Grams, J. Margueron, R. Somasundaram, and S. Reddy, EPJA 58, 56 (2022).'
             self.note = "."
