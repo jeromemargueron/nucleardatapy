@@ -61,6 +61,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model ->  2016-QMC-NM
+----- stdout -----
 flag_nm: True
 flag_sm: False
 flag_kf: True

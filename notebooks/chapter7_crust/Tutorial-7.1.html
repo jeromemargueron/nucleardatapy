@@ -503,7 +503,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1973-Negele-Vautherin&#39;, &#39;2018-PCPFDDG-BSK22&#39;, &#39;2018-PCPFDDG-BSK24&#39;, &#39;2018-PCPFDDG-BSK25&#39;, &#39;2018-PCPFDDG-BSK26&#39;, &#39;2020-MVCD-D1S&#39;, &#39;2020-MVCD-D1M&#39;, &#39;2020-MVCD-D1MS&#39;, &#39;2022-crustGMRS-BSK14&#39;, &#39;2022-crustGMRS-BSK16&#39;, &#39;2022-crustGMRS-DHSL59&#39;, &#39;2022-crustGMRS-DHSL69&#39;, &#39;2022-crustGMRS-F0&#39;, &#39;2022-crustGMRS-H1&#39;, &#39;2022-crustGMRS-H2&#39;, &#39;2022-crustGMRS-H3&#39;, &#39;2022-crustGMRS-H4&#39;, &#39;2022-crustGMRS-H5&#39;, &#39;2022-crustGMRS-H7&#39;, &#39;2022-crustGMRS-LNS5&#39;, &#39;2022-crustGMRS-RATP&#39;, &#39;2022-crustGMRS-SGII&#39;, &#39;2022-crustGMRS-SLY5&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1973-Negele-Vautherin&#39;, &#39;2018-PCPFDDG-BSK22&#39;, &#39;2018-PCPFDDG-BSK24&#39;, &#39;2018-PCPFDDG-BSK25&#39;, &#39;2018-PCPFDDG-BSK26&#39;, &#39;2020-MVCD-D1S&#39;, &#39;2020-MVCD-D1M&#39;, &#39;2020-MVCD-D1MS&#39;, &#39;2022-GMRS-BSK14&#39;, &#39;2022-GMRS-BSK16&#39;, &#39;2022-GMRS-DHSL59&#39;, &#39;2022-GMRS-DHSL69&#39;, &#39;2022-GMRS-F0&#39;, &#39;2022-GMRS-H1&#39;, &#39;2022-GMRS-H2&#39;, &#39;2022-GMRS-H3&#39;, &#39;2022-GMRS-H4&#39;, &#39;2022-GMRS-H5&#39;, &#39;2022-GMRS-H7&#39;, &#39;2022-GMRS-LNS5&#39;, &#39;2022-GMRS-RATP&#39;, &#39;2022-GMRS-SGII&#39;, &#39;2022-GMRS-SLY5&#39;]
 </pre></div>
 </div>
 </div>
@@ -513,6 +513,38 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
     <span class="n">crust</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">crust</span><span class="o">.</span><span class="n">setupCrust</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
     <span class="c1">#crust.print_outputs( )</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>setup_nep: The param set  BSk22  is not in the list of param.
+setup_nep: list of param: [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+setup_nep: -- Exit the code --
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">crust</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">crust</span><span class="o">.</span><span class="n">setupCrust</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="c1">#crust.print_outputs( )</span>
+
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/crust/setup_crust.py:170,</span> in <span class="ni">setupCrust.__init__</span><span class="nt">(self, model)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PCPFDDG-BSK22-2018&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="c1"># NEP</span>
+<span class="ne">--&gt; </span><span class="mi">170</span> <span class="n">nep</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEP</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;BSk22&#39;</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsat</span> <span class="o">=</span> <span class="n">nep</span><span class="o">.</span><span class="n">sat</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="bp">self</span><span class="o">.</span><span class="n">Esym</span> <span class="o">=</span> <span class="n">nep</span><span class="o">.</span><span class="n">Esym</span>
+
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_nep.py:166,</span> in <span class="ni">setupNEP.__init__</span><span class="nt">(self, model, param)</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_nep: list of param:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_nep: -- Exit the code --&#39;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">166</span>     <span class="n">exit</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;skyrme&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>     <span class="c1">#</span>
+
+<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -528,10 +560,6 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
 model: 1973-Negele-Vautherin
-model: 2018-PCPFDDG-BSK22
-model: 2018-PCPFDDG-BSK24
-model: 2018-PCPFDDG-BSK25
-model: 2018-PCPFDDG-BSK26
 model: 2020-MVCD-D1S
 model: 2020-MVCD-D1M
 model: 2020-MVCD-D1MS
@@ -552,6 +580,7 @@ model: 2022-crustGMRS-SGII
 model: 2022-crustGMRS-SLY5
 </pre></div>
 </div>
+<img alt="../../_images/070cee46a363e5a74aef46877bb4e0ccdc1661cf31b6dbdc8cb560b2bc94e3b9.png" src="../../_images/070cee46a363e5a74aef46877bb4e0ccdc1661cf31b6dbdc8cb560b2bc94e3b9.png" />
 </div>
 </div>
 </section>
