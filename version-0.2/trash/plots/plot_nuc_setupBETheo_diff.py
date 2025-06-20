@@ -4,8 +4,6 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
 
 import nucleardatapy as nuda
 
@@ -47,7 +45,6 @@ def plot_nuc_setupBETheo_diff( tables, table_ref = '1995-DZ', Zref = 50 ):
     N_diff, A_diff, BE_diff, BE_diff = mas.diff_exp( table_exp = 'AME', version_exp = '2020', Zref = Zref )
     axs.scatter( N_diff, BE_diff, label='AME2020',zorder=10 )
     #
-    #axs.legend(loc='upper right',fontsize='10', ncol=4)
     fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     plt.savefig(pname, dpi=200)
