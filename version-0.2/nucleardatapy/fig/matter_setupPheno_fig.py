@@ -29,7 +29,7 @@ def matter_setupPheno_e2a_fig(pname, model, band):
     #
     fig, axs = plt.subplots(2, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust( left=0.15, bottom=0.12, right=0.95, top=0.88, wspace=0.05, hspace=0.05 )
+    fig.subplots_adjust( left=0.15, bottom=0.12, right=0.95, top=0.82, wspace=0.05, hspace=0.05 )
     #
     axs[1, 0].set_xlabel(r"$n_\text{nuc}$ (fm$^{-3}$)", fontsize="14")
     axs[1, 1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)", fontsize="14")
