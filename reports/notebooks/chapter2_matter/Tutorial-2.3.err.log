@@ -25,79 +25,33 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-band = nuda.matter.setupMicroBand( models, matter='NM' )
-band.print_outputs( )
+model = '2013-QMC-NM'
+mic = nuda.matter.setupMicro( model = model )
 ------------------
 
 ----- stdout -----
-
-Band in NM
 model ->  2013-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: False
-flag_den: False
-model ->  2016-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: True
-flag_den: False
-model ->  2016-MBPT-AM
-flag_nm: True
-flag_sm: True
-flag_kf: False
-flag_den: True
-model ->  2013-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: False
-flag_den: False
-model ->  2016-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: True
-flag_den: False
-model ->  2016-MBPT-AM
-flag_nm: True
-flag_sm: True
-flag_kf: False
-flag_den: True
-model ->  2013-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: False
-flag_den: False
-model ->  2016-QMC-NM
-flag_nm: True
-flag_sm: False
-flag_kf: True
-flag_den: False
-model ->  2016-MBPT-AM
-flag_nm: True
-flag_sm: True
-flag_kf: False
-flag_den: True
-- Print output:
-   models : ['2013-QMC-NM', '2016-QMC-NM', '2016-MBPT-AM']
-   den_min: 0.04
-   den_max: 0.16
-   den : [0.04  0.052 0.064 0.076 0.088 0.1   0.112 0.124 0.136 0.148 0.16 ]
-   kfn : [1.06 1.15 1.24 1.31 1.38 1.44 1.49 1.54 1.59 1.64 1.68]
+setup_micro: The model name  2013-QMC-NM  is not in the list of models.
+setup_micro: list of models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2018-QMC-NM', '2024-QMC-NM', '2013-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-NLEFT-AM']
+setup_micro: -- Exit the code --
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mAttributeError[39m                            Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[11][39m[32m, line 2[39m
-[32m      1[39m band = nuda.matter.setupMicroBand( models, matter=[33m'[39m[33mNM[39m[33m'[39m )
-[32m----> [39m[32m2[39m [43mband[49m[43m.[49m[43mprint_outputs[49m[43m([49m[43m [49m[43m)[49m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 2[39m
+[32m      1[39m model = [33m'[39m[33m2013-QMC-NM[39m[33m'[39m
+[32m----> [39m[32m2[39m mic = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicro[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_band.py:218[39m, in [36msetupMicroBand.print_outputs[39m[34m(self)[39m
-[32m    216[39m [38;5;28mprint[39m([33m"[39m[33m   den :[39m[33m"[39m,np.round([38;5;28mself[39m.den,[32m3[39m))
-[32m    217[39m [38;5;28mprint[39m([33m"[39m[33m   kfn :[39m[33m"[39m,np.round([38;5;28mself[39m.kfn,[32m2[39m))
-[32m--> [39m[32m218[39m [38;5;28mprint[39m([33m"[39m[33m   e2a :[39m[33m"[39m,np.round([38;5;28;43mself[39;49m[43m.[49m[43me2a[49m,[32m2[39m))
-[32m    219[39m [38;5;28mprint[39m([33m"[39m[33m   std :[39m[33m"[39m,np.round([38;5;28mself[39m.e2a_std,[32m3[39m))
-[32m    220[39m [38;5;66;03m#if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")[39;00m
-[32m    221[39m [38;5;66;03m#[39;00m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro.py:380[39m, in [36msetupMicro.__init__[39m[34m(self, model, var1, var2)[39m
+[32m    378[39m     [38;5;28mprint[39m([33m"[39m[33msetup_micro: list of models:[39m[33m"[39m, models)
+[32m    379[39m     [38;5;28mprint[39m([33m"[39m[33msetup_micro: -- Exit the code --[39m[33m"[39m)
+[32m--> [39m[32m380[39m     [43mexit[49m()
+[32m    381[39m [38;5;66;03m#[39;00m
+[32m    382[39m [38;5;66;03m# ==============================[39;00m
+[32m    383[39m [38;5;66;03m# Read files associated to model[39;00m
+[32m    384[39m [38;5;66;03m# ==============================[39;00m
+[32m    385[39m [38;5;66;03m#[39;00m
+[32m    386[39m [38;5;28mself[39m.nm_rmass = nuda.cst.mnc2
 
-[31mAttributeError[39m: 'setupMicroBand' object has no attribute 'e2a'
+[31mNameError[39m: name 'exit' is not defined
 
