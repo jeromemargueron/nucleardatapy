@@ -95,7 +95,7 @@ class setupGW():
         # fix `file_in` and some properties of the object
         #
         if source.lower()=='gw170817':
-            file_in = nuda.param.path_data+'astro/gw/GW170817.dat'
+            file_in = nuda.param.path_data+'astro/GW/GW170817.dat'
             if hyp==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.P. Abbott, R. Abbott, T.D. Abbott, et al., PRL 119, 161101 (2017)'
@@ -137,7 +137,7 @@ class setupGW():
                 self.note = "write here notes about this observation."
                 self.marker = 's'
         elif source.lower()=='gw190425':
-            file_in = nuda.param.path_data+'astro/gw/GW190425.dat'
+            file_in = nuda.param.path_data+'astro/GW/GW190425.dat'
             if hyp==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='B.P. Abbott, R. Abbott, T.D. Abbott, S. Abraham, et al., ApJL 892, L3 (2020)'
