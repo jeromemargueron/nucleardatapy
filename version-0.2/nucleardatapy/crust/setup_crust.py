@@ -175,68 +175,68 @@ class setupCrust():
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK22.dat'
                 self.label = 'PCPFDDG-BSK22-2018'
                 # NEP
-                #nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk22' )
-                #self.nsat = nep.sat
-                #self.Esym = nep.Esym
-                #self.Lsym = nep.Lsym
-                #self.Ksym = nep.Ksym
-                #self.Qsym = nep.Qsym
-                self.nsat = 0.16
-                self.Esym = 32.0
-                self.Lsym = 50.0
-                self.Ksym = -100.0
-                self.Qsym = 500.0
+                nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk22' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
+                #self.nsat = 0.16
+                #self.Esym = 32.0
+                #self.Lsym = 50.0
+                #self.Ksym = -100.0
+                #self.Qsym = 500.0
                 #
             elif model.lower()=='2018-pcpfddg-bsk24':
                 #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK24.dat'
                 self.label = 'PCPFDDG-BSK24-2018'
                 # NEP
-                #nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk24' )
-                #self.nsat = nep.sat
-                #self.Esym = nep.Esym
-                #self.Lsym = nep.Lsym
-                #self.Ksym = nep.Ksym
-                #self.Qsym = nep.Qsym
-                self.nsat = 0.16
-                self.Esym = 32.0
-                self.Lsym = 50.0
-                self.Ksym = -100.0
-                self.Qsym = 500.0
+                nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk24' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
+                #self.nsat = 0.16
+                #self.Esym = 32.0
+                #self.Lsym = 50.0
+                #self.Ksym = -100.0
+                #self.Qsym = 500.0
                 #
             elif model.lower()=='2018-pcpfddg-bsk25':
                 #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK25.dat'
                 self.label = 'PCPFDDG-BSK25-2018'
                 # NEP
-                #nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk25' )
-                #self.nsat = nep.sat
-                #self.Esym = nep.Esym
-                #self.Lsym = nep.Lsym
-                #self.Ksym = nep.Ksym
-                #self.Qsym = nep.Qsym
-                self.nsat = 0.16
-                self.Esym = 32.0
-                self.Lsym = 50.0
-                self.Ksym = -100.0
-                self.Qsym = 500.0
+                nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk25' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
+                #self.nsat = 0.16
+                #self.Esym = 32.0
+                #self.Lsym = 50.0
+                #self.Ksym = -100.0
+                #self.Qsym = 500.0
                 #
             elif model.lower()=='2018-pcpfddg-bsk26':
                 #
                 file_in = nuda.param.path_data+'crust/2018-PCPFDDG-BSK26.dat'
                 self.label = 'PCPFDDG-BSK26-2018'
                 # NEP
-                #nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk26' )
-                #self.nsat = nep.sat
-                #self.Esym = nep.Esym
-                #self.Lsym = nep.Lsym
-                #self.Ksym = nep.Ksym
-                #self.Qsym = nep.Qsym
-                self.nsat = 0.16
-                self.Esym = 32.0
-                self.Lsym = 50.0
-                self.Ksym = -100.0
-                self.Qsym = 500.0
+                nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk26' )
+                self.nsat = nep.sat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
+                #self.nsat = 0.16
+                #self.Esym = 32.0
+                #self.Lsym = 50.0
+                #self.Ksym = -100.0
+                #self.Qsym = 500.0
                 #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Pearson J.M., Chamel N., Potekhin A.Y., Fantina, A.F., Ducoin C., Dutta A.K., Goriely S., MNRS 481, 2994 (2018).'
