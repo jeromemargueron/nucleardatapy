@@ -12,6 +12,7 @@ def main():
     nuda.create_folder_fig()
     #
     tables, tables_lower = nuda.nuc.be_theo_tables()
+    tables.remove( '1988-GK' )
     #tables = [ '1995-DZ' ]
     #
     pname = 'figs/plot_nuc_setupBETheo_diff_Zref50.png'

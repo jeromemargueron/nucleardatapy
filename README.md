@@ -2,6 +2,8 @@
 
 ## Purpose:
 
+<img align="right" width="250" src="book/logo.png">
+
 The purpose of this toolkit is to provide an easy access to theoretical or experimental or observational data and allows meta-analyses in a straightforward way.
 
 This python toolkit is designed to provide:

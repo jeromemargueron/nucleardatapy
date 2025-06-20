@@ -13,13 +13,13 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    den = np.linspace(0.01,2.0,30)
-    kfn = np.linspace(0.5,2.0,30)
-    mss = [ 1.0, 1., 1. ]
+    den = np.linspace(0.01,0.35,10)
+    kf  = np.linspace(0.5,2.0,10)
+    mss = [ 1.0, 0.6, 0.4 ]
     #mss = [ 1.0, 0.7 ]
     #
     pname = 'figs/plot_matter_setupFFGNuc_EP.png'
-    nuda.fig.matter_setupFFGNuc_EP_fig( pname, den = den, kfn = kfn, mss = mss )
+    nuda.fig.matter_setupFFGNuc_EP_fig( pname, den = den, kf = kf, mss = mss )
     #
     pname = 'figs/plot_matter_setupFFGNuc_EOS.png'
     nuda.fig.matter_setupFFGNuc_EOS_fig( pname, den = den, mss = mss )

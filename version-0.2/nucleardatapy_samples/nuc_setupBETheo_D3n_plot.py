@@ -13,12 +13,10 @@ def main():
     #
     tables, tables_lower = nuda.nuc.be_theo_tables()
     #tables = [ '1995-DZ' ]
+    tables.remove( '1988-GK' )
     #
     pname = 'figs/plot_nuc_setupBETheo_D3n_Zref50.png'
     nuda.fig.nuc_setupBETheo_D3n_fig( pname, tables, Zref = 50 )
-    #
-    pname = 'figs/plot_nuc_setupBETheo_D3n_Zref20.png'
-    nuda.fig.nuc_setupBETheo_D3n_fig( pname, tables, Zref = 20 )
     #
     print(50*'-')
     print("Exit nuc_setupBETheo_D3n_plot.py:")

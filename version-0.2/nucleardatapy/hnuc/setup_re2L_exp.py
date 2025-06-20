@@ -119,14 +119,14 @@ class setupRE2LExp():
       #: Attribute A (mass of the nucleus).
       self.A = self.Z + self.N + 2*np.ones(len(self.N),dtype=int)
       #: charge of the hypernuclei (=Z, since Lamnda is charged 0)
-      self.ch = self.Z
+      self.Q = self.Z
       #: Strangness number
-      self.S = -2*2*np.ones(len(self.N),dtype=int)
+      self.S = -2*np.ones(len(self.N),dtype=int)
       #: symbol representing the nucleus
       self.symb = nucSymb
-      #: Attribute 2L binding energy in MeV.
+      #: Attribute 2L removal energy in MeV.
       self.llre = np.array( nuclre, dtype = float )
-      #: Attribute 2L binding energy error in MeV.
+      #: Attribute 2L removal energy error in MeV.
       self.llre_err = np.array( nuclre_err, dtype = float )
       #: Attribute 2L bond energy in MeV.
       self.lldre = np.array( nucldre, dtype = float )
@@ -171,7 +171,7 @@ class setupRE2LExp():
       if any(self.Z): print(f"   Z: {self.Z}")
       if any(self.N): print(f"   N: {self.N}")
       if any(self.S): print(f"   S: {self.S}")
-      if any(self.ch): print(f"  ch: {self.ch}")
+      if any(self.Q): print(f"   Q: {self.Q}")
       if any(self.symb): print(f" symb: {self.symb}")
       if any(self.llre): print(f" be: {self.llre}")
       if any(self.llre_err): print(f" be_err: {self.llre_err}")
@@ -193,7 +193,7 @@ class setupRE2LExp():
          print(rf" index & Z & N & S & ch & symb & $RE$  & $\Delta RE$ & Ref. \\\\")
          print(rf"       &   &   &   &    &      & (MeV) & (MeV)       & \\\\")
          for ind,A in enumerate(self.A):
-            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.ch[ind]} & {self.symb[ind]} & ${self.llre[ind]:.3f}\pm {self.llre_err[ind]:.3f}$ & ${self.lldre[ind]:.3f}\pm {self.lldre_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
+            print(rf" {ind} & {self.Z[ind]} & {self.N[ind]} & {self.S[ind]} & {self.Q[ind]} & {self.symb[ind]} & ${self.llre[ind]:.3f}\pm {self.llre_err[ind]:.3f}$ & ${self.lldre[ind]:.3f}\pm {self.lldre_err[ind]:.3f}$ & \\cite{{"+self.keyref+"}  \\\\")
       else:
          print(f"- No  table for source {self.table} (average). To get table, write 'verb_latex = True' in env.py.")
       #

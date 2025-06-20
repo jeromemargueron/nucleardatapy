@@ -12,7 +12,7 @@ def main():
     nuda.create_folder_fig()
     #
     #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
-    tables = [ '2018-ISGMR-GARG-LATEX', '2022-ISGMR-average' ]
+    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2022-ISGMR-average' ]
     #
     pname = 'figs/plot_nuc_setupISGMRExp.png'
     #

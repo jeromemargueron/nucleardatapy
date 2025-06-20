@@ -9,10 +9,10 @@ def hnuc_setupRE1LExp_fig( pname, tables ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.95, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=0.95, top=0.95, wspace=0.3, hspace=0.3)
     #
-    axs.set_ylabel(r'Binding Energy (MeV)')
-    axs.set_xlabel(r'$A^{-2/3}$')
+    axs.set_ylabel(r'Removal energy $B_\Lambda$ (MeV)',fontsize='14')
+    axs.set_xlabel(r'$A^{-2/3}$',fontsize='14')
     axs.set_xlim([0.0, 0.28])
     axs.set_ylim([-5.0, 32.0])
     #

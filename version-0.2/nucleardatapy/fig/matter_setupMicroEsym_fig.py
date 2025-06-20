@@ -25,9 +25,9 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
     #
     fig, axs = plt.subplots(2, 2)
     fig.tight_layout()  # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05)
+    fig.subplots_adjust( left=0.12, bottom=0.12, right=0.95, top=0.9, wspace=0.05, hspace=0.05 )
     #
-    axs[0, 0].set_ylabel(r"$E_\mathrm{sym}$ (MeV)")
+    axs[0, 0].set_ylabel(r"$E_\mathrm{sym}$ (MeV)", fontsize="14")
     axs[0, 0].set_xlim([0, 0.33])
     axs[0, 0].set_ylim([0, 50])
     axs[0, 0].tick_params("x", labelbottom=False)
@@ -37,12 +37,12 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
     axs[0, 1].tick_params("x", labelbottom=False)
     axs[0, 1].tick_params("y", labelleft=False)
     #
-    axs[1, 0].set_ylabel(r"$E_\mathrm{sym}/E_\mathrm{sym, FFG, NR}$")
-    axs[1, 0].set_xlabel(r"$n_\mathrm{nuc}$ (fm$^{-3}$)")
+    axs[1, 0].set_ylabel(r"$E_\mathrm{sym}/E_\mathrm{sym, FFG, NR}$", fontsize="14")
+    axs[1, 0].set_xlabel(r"$n_\mathrm{nuc}$ (fm$^{-3}$)", fontsize="14")
     axs[1, 0].set_xlim([0,   0.33])
     axs[1, 0].set_ylim([1.5, 3.6])
     #
-    axs[1, 1].set_xlabel(r"$k_F$ (fm$^{-1}$)")
+    axs[1, 1].set_xlabel(r"$k_F$ (fm$^{-1}$)", fontsize="14")
     axs[1, 1].set_xlim([0.5, 2.0])
     axs[1, 1].set_ylim([1.5, 3.6])
     axs[1, 1].tick_params("y", labelleft=False)

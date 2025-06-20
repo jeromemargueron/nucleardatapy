@@ -28,14 +28,14 @@ def nuc_setupISGMRExp_fig( pname, tables ):
     #
     fig, axs = plt.subplots(1,3)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.1, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=0.95, top=0.85, wspace=0.1, hspace=0.3)
     #
     if obs == 'M12M0':
-        axs[0].set_ylabel(r'$E_{ISGMR}$ ($m_1/m_0$)')
+        axs[0].set_ylabel(r'$E_{ISGMR}$ from $m_1/m_0$ (MeV)',fontsize='14')
     elif obs == 'M12Mm1':
-        axs[0].set_ylabel(r'$E_{ISGMR}$ ($\sqrt{m_1/m_{-1}}$)')
+        axs[0].set_ylabel(r'$E_{ISGMR}$ from $\sqrt{m_1/m_{-1}}$ (MeV)',fontsize='14')
     elif obs == 'M12Mm1':
-        axs[0].set_ylabel(r'$E_{ISGMR}$ ($\sqrt{m_3/m_1}$)')
+        axs[0].set_ylabel(r'$E_{ISGMR}$ from $\sqrt{m_3/m_1}$ (MeV)',fontsize='14')
     #
     for k,table in enumerate( tables ):
         #
@@ -44,7 +44,7 @@ def nuc_setupISGMRExp_fig( pname, tables ):
         for i in [0,1,2]:
             print('For Z = ',nucZ[i])
             axs[i].set_title(nuda.param.elements[nucZ[i]-1])
-            axs[i].set_xlabel(r'A')
+            axs[i].set_xlabel(r'A',fontsize='14')
             axs[i].set_ylim([13, 18])
             if i>0: axs[i].tick_params('y', labelleft=False)
             gmrs = gmr.select( Zref = nucZ[i], obs = obs )

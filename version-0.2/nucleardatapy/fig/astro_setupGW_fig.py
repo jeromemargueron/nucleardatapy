@@ -22,10 +22,10 @@ def astro_setupGW_fig( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.12, right=0.95, top=0.8, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.12, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_xlabel(r'sources',fontsize='12')
-    axs.set_ylabel(r'$\tilde{\Lambda}_{90\%}$',fontsize='12')
+    axs.set_xlabel(r'sources',fontsize='14')
+    axs.set_ylabel(r'$\tilde{\Lambda}_{90\%}$',fontsize='14')
     axs.set_xlim([0.8, 2.5])
     axs.set_ylim([0, 1200])
     #
@@ -46,7 +46,7 @@ def astro_setupGW_fig( pname, sources ):
             gw = nuda.astro.setupGW( source = source, hyp = hyp )
             if nuda.env.verb_output: gw.print_output( )
             if nuda.env.verb_latex: gw.print_latex( )
-            axs.errorbar( isource+ihyp/10, gw.lam, yerr=np.array([(gw.lam_sig_do,gw.lam_sig_up)]).T, label=gw.label, color=nuda.param.col[isource], marker=gw.marker, linestyle = 'solid', linewidth = 1 )
+            axs.errorbar( isource+ihyp/10, gw.lam, yerr=np.array([(gw.lam_sig_lo,gw.lam_sig_up)]).T, label=gw.label, color=nuda.param.col[isource], marker=gw.marker, linestyle = 'solid', linewidth = 1 )
             ihyp += 1
             #
         gwav = nuda.astro.setupGWAverage( source = source )
@@ -58,7 +58,7 @@ def astro_setupGW_fig( pname, sources ):
     #
     axs.set_xticks( ilabel )
     axs.set_xticklabels( xlabel )
-    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=3,frameon=False)
     #
     #
     if pname is not None:

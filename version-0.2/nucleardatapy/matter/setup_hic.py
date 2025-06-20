@@ -9,11 +9,11 @@ sys.path.insert(0, nucleardatapy_tk)
 import nucleardatapy as nuda
 
 
-def hic_constraints():
+def hic_inferences():
     """
-    Return a list of the HIC constraints available in this toolkit 
+    Return a list of the HIC inferences available in this toolkit 
     for the equation of state in SM and NM and print them all on 
-    the prompt. These constraints are the following
+    the prompt. These inferences are the following
     ones: [ '2002-DLL', '2002-KAON', '2016-FOPI', '2011-FOPI-LAND', '2016-ASY-EOS'
     , '2021-SPIRIT','2019-NP-RATIO','2009-ISO-DIFF' ].
 
@@ -21,53 +21,53 @@ def hic_constraints():
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter hic_constraints()")
+    if nuda.env.verb: print("\nEnter hic_inferences()")
     #
-    constraints = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2009-ISO-DIFF' ,'2011-FOPI-LAND'
+    inferences = [ '2002-DLL', '2002-KAON', '2016-FOPI', '2009-ISO-DIFF' ,'2011-FOPI-LAND'
                    , '2016-ASY-EOS','2019-NP-RATIO', '2021-SPIRIT']
     #
-    constraints_lower = [ item.lower() for item in constraints ]
-    if nuda.env.verb: print('HIC constraints available in the toolkit:',constraints_lower)
+    inferences_lower = [ item.lower() for item in inferences ]
+    if nuda.env.verb: print('HIC inferences available in the toolkit:',inferences_lower)
     #
-    if nuda.env.verb: print("Exit hic_constraints()")
+    if nuda.env.verb: print("Exit hic_inferences()")
     #
-    return constraints, constraints_lower
+    return inferences, inferences_lower
 
 
 class setupHIC():
     """
-    Instantiate the constraints on the EOS from HIC.
+    Instantiate the inferences on the EOS from HIC.
 
-    This choice is defined in the variable `constraint`.
+    This choice is defined in the variable `inference`.
 
-    `constraint` can chosen among the following ones: 
+    `inference` can chosen among the following ones: 
     [ '2002-DLL', '2016-FOPI', '2002-KAON','2009-ISO-DIFF', '2011-FOPI_LAND'
     , '2016-ASY_EOS','2019-NP-RATIO', '2021-SPIRIT' ].
 
-    :param constraint: Default value: '2002-DLL'.
-    :type constraint: str, optional. 
+    :param inference: Default value: '2002-DLL'.
+    :type inferences: str, optional. 
 
     **Attributes:**
     """
-    def __init__(self, constraint = '2002-DLL'):
+    def __init__(self, inference = '2002-DLL'):
         #
         if nuda.env.verb: print("Enter setupHIC()")
         #
-        self.constraint = constraint
-        
-        if nuda.env.verb: print("constraint:",constraint)
+        self.inference = inference
+        #
+        if nuda.env.verb: print("inference:",inference)
         #
         self = setupHIC.init_self( self )
         #
-        constraints, constraints_lower = hic_constraints()
-        if constraint.lower() not in constraints_lower:
-            print('The constraint ',constraint,' is not in the list of EOS HIC constraints.')
-            print('list of EOS HIC constraints:',constraints)
+        inferences, inferences_lower = hic_inferences()
+        if inference.lower() not in inferences_lower:
+            print('The inference ',inference,' is not in the list of EOS HIC inferences.')
+            print('list of EOS HIC inferences:',inferences)
             print('-- Exit the code --')
             exit()
         #
         #
-        if constraint.lower()=='2002-dll':
+        if inference.lower()=='2002-dll':
             #
             file_in1 = nuda.param.path_data+'matter/hic/2002-DLL-SM.dat'
             file_in2 = nuda.param.path_data+'matter/hic/2002-DLL-NM-soft.dat'
@@ -81,10 +81,11 @@ class setupHIC():
             self.label_so = 'DLL-2002-Asy_soft'
             self.label_st = 'DLL-2002-Asy_stiff'
             self.color= 'blue'
+            self.den_err = False
             den2densat, self.sm_pre, self.sm_pre_err = np.loadtxt( file_in1, usecols=(0,1,2), unpack = True )
             den2densat, self.nm_pre_so, self.nm_pre_so_err = np.loadtxt( file_in2, usecols=(0,1,2), unpack = True )
             den2densat, self.nm_pre_st, self.nm_pre_st_err = np.loadtxt( file_in3, usecols=(0,1,2), unpack = True )
-            self.den = den2densat * nuda.cst.nsat # in fm-3
+            self.den_pre = den2densat * nuda.cst.nsat # in fm-3
             self.sm_pre_up = self.sm_pre + self.sm_pre_err
             self.sm_pre_lo = self.sm_pre - self.sm_pre_err
             #self.sm_pre = nuda.cst.half * ( self.sm_pre_up + self.sm_pre_lo )
@@ -92,28 +93,29 @@ class setupHIC():
             #self.nm_pre_so = nuda.cst.half * ( self.nm_pre_so_up + self.nm_pre_so_lo )
             #self.nm_pre_so_err = nuda.cst.half * ( self.nm_pre_so_up - self.nm_pre_so_lo )
             # decide that the NM pressure should be the asy-soft one by default
-            self.nm_pre = self.nm_pre_so
-            self.nm_pre_err = self.nm_pre_so_err
-            self.nm_pre_up = self.nm_pre_so + self.nm_pre_so_err
-            self.nm_pre_lo = self.nm_pre_so - self.nm_pre_so_err
-
+            self.nm_pre_so_up = self.nm_pre_so + self.nm_pre_so_err
+            self.nm_pre_so_lo = self.nm_pre_so - self.nm_pre_so_err
             self.nm_pre_st_up = self.nm_pre_st + self.nm_pre_st_err
             self.nm_pre_st_lo = self.nm_pre_st - self.nm_pre_st_err
+            self.nm_pre = self.nm_pre_so
+            self.nm_pre_err = self.nm_pre_so_err
+            self.nm_pre_up = self.nm_pre_so_up
+            self.nm_pre_lo = self.nm_pre_so_lo
             #
-        elif constraint.lower()=='2002-kaon':
+        elif inference.lower()=='2002-kaon':
             file_in = nuda.param.path_data+'matter/hic/2002-KAON.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'C. Fuchs, PPNP 56,1 (2006); W. Lynch et al., PPNP 62, 427 (2009).'
             self.note = "Kaon yield ratios studied to contraint symmetric EOS."
             self.label = 'KAON-2002'
             self.color = 'cyan'
+            self.den_err = False
             den2densat, self.sm_pre_lo, self.sm_pre_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.den = den2densat * nuda.cst.nsat # in fm-3
+            self.den_pre = den2densat * nuda.cst.nsat # in fm-3
             self.sm_pre = nuda.cst.half * ( self.sm_pre_up + self.sm_pre_lo )
             self.sm_pre_err = nuda.cst.half * ( self.sm_pre_up - self.sm_pre_lo )
-            
-
-        elif constraint.lower()=='2016-fopi':
+            #
+        elif inference.lower()=='2016-fopi':
             #
             file_in1 = nuda.param.path_data+'matter/hic/2016-FOPI-E2A.dat'
             file_in2 = nuda.param.path_data+'matter/hic/2016-FOPI-SM.dat'
@@ -122,72 +124,83 @@ class setupHIC():
             self.note = "Elliptical flow data is used to constraint symmetric matter EOS"
             self.label = 'FOPI-2016'
             self.color = 'magenta'
-            den2densat_e2a, self.sm_e2a, self.sm_e2a_err = np.loadtxt( file_in1, usecols=(0,1,2), unpack = True )
+            self.den_err = False
+            den2densat_e2a, self.sm_e2a_int, self.sm_e2a_err = np.loadtxt( file_in1, usecols=(0,1,2), unpack = True )
             den2densat, self.sm_pre_lo, self.sm_pre_up = np.loadtxt( file_in2, usecols=(0,1,2), unpack = True )
             self.den_e2a = den2densat_e2a * nuda.cst.nsat # in fm-3
-            self.den = den2densat * nuda.cst.nsat # in fm-3
-            self.sm_e2a_up = self.sm_e2a + self.sm_e2a_err
-            self.sm_e2a_lo = self.sm_e2a - self.sm_e2a_err
+            self.den_pre = den2densat * nuda.cst.nsat # in fm-3
+            self.sm_e2a_int_up = self.sm_e2a_int + self.sm_e2a_err
+            self.sm_e2a_int_lo = self.sm_e2a_int - self.sm_e2a_err
             self.sm_pre = nuda.cst.half * ( self.sm_pre_up + self.sm_pre_lo )
             self.sm_pre_err = nuda.cst.half * ( self.sm_pre_up - self.sm_pre_lo )
             #
-        elif constraint.lower()=='2009-iso-diff':
+        elif inference.lower()=='2009-iso-diff':
+            #
             file_in = nuda.param.path_data+'matter/hic/2009-iso-diff.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'M. B. Tsang et al., Phys. Rev. Lett. 102, 122701 (2009); W. Lynch, M. B. Tsang, Phys. Lett. B 830, 137098 (2022).'
             self.note = "Isospin diffusion data studied to constraint symmetry energy at sub-saturation."
             self.label = 'Iso Diff-2009'
             self.color = 'k'
-            den2densat, den2densat_err, self.sym_enr_isodiff, self.sym_enr_isodiff_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
-            self.den_isodiff = den2densat * nuda.cst.nsat # in fm-3
-            self.den_isodiff_err = den2densat_err * nuda.cst.nsat # in fm-3
+            self.den_err = True
+            den2densat, den2densat_err, self.esym, self.esym_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
+            self.den_esym = den2densat * nuda.cst.nsat # in fm-3
+            self.den_esym_err = den2densat_err * nuda.cst.nsat # in fm-3
             #
-        elif constraint.lower()=='2011-fopi-land':
+        elif inference.lower()=='2011-fopi-land':
+            #
             file_in = nuda.param.path_data+'matter/hic/2011-FOPI-LAND.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = ' P. Russotto et al., Physics Letters B 697, 471 (2011).'
             self.note = "Sura-saturation information on symmtery energy usinf n/p elliptical flows"
             self.label = 'FOPI-LAND-2011'
             self.color = 'yellow'
-            den2densat, self.sym_enr_lo, self.sym_enr_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.den = den2densat * nuda.cst.nsat # in fm-3
-            self.sym_enr = nuda.cst.half * ( self.sym_enr_up + self.sym_enr_lo )
-            self.sym_enr_err = nuda.cst.half * ( self.sym_enr_up - self.sym_enr_lo )
-            
-        elif constraint.lower()=='2016-asy-eos':
+            self.den_err = False
+            den2densat, self.esym_lo, self.esym_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.den_esym = den2densat * nuda.cst.nsat # in fm-3
+            self.esym = nuda.cst.half * ( self.esym_up + self.esym_lo )
+            self.esym_err = nuda.cst.half * ( self.esym_up - self.esym_lo )
+            #
+        elif inference.lower()=='2016-asy-eos':
+            #
             file_in = nuda.param.path_data+'matter/hic/2016-ASY-EOS.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Russotto et al., Phys. Rev. C 94, 034608 (2016).'
             self.note = "Sura-saturation information on symmtery energy usinf n/p elliptical flows."
             self.label = 'ASY-EOS-2016'
             self.color = 'red'
-            den2densat, self.sym_enr_lo, self.sym_enr_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
-            self.den = den2densat * nuda.cst.nsat # in fm-3
-            self.sym_enr = nuda.cst.half * ( self.sym_enr_up + self.sym_enr_lo )
-            self.sym_enr_err = nuda.cst.half * ( self.sym_enr_up - self.sym_enr_lo )
-        #   
-        elif constraint.lower()=='2019-np-ratio':
+            self.den_err = False
+            den2densat, self.esym_lo, self.esym_up = np.loadtxt( file_in, usecols=(0,1,2), unpack = True )
+            self.den_esym = den2densat * nuda.cst.nsat # in fm-3
+            self.esym = nuda.cst.half * ( self.esym_up + self.esym_lo )
+            self.esym_err = nuda.cst.half * ( self.esym_up - self.esym_lo )
+            #
+        elif inference.lower()=='2019-np-ratio':
+            #
             file_in = nuda.param.path_data+'matter/hic/2019-n2p-ratio.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'P. Morfouace et al., Phys. Lett. B 799, 135045 (2019).'
             self.note = "n/p spectral ratios to constraint symmetry energy at sub-saturation densities"
             self.label = 'n/p ratio-2019'
             self.color = 'green'
-            den2densat, den2densat_err, self.sym_enr_np, self.sym_enr_np_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
-            self.den_np = den2densat * nuda.cst.nsat # in fm-3
-            self.den_np_err = den2densat_err * nuda.cst.nsat # in fm-3
-        #    
-        elif constraint.lower()=='2021-spirit':
+            self.den_err = True
+            den2densat, den2densat_err, self.esym, self.esym_err = np.loadtxt( file_in, usecols=(0,1,2,3), unpack = True )
+            self.den_esym = den2densat * nuda.cst.nsat # in fm-3
+            self.den_esym_err = den2densat_err * nuda.cst.nsat # in fm-3
+            #
+        elif inference.lower()=='2021-spirit':
+            #
             file_in = nuda.param.path_data+'matter/hic/2021-SPIRIT.dat'
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'J. Estee et al., Phys. Rev. Lett. 126, 162701 (2021).'
             self.note = "Pion double ratios is studied in neutron rich and poor colliding nuclei."
             self.label = 'SPIRIT-2021'
             self.color = 'blue'
-            den2densat, den2densat_err, self.sym_enr_spirit, self.sym_enr_spirit_err, self.sym_pre_spirit, self.sym_pre_spirit_err = np.loadtxt( file_in, usecols=(0,1,2,3,4,5), unpack = True )
-            self.den_spirit = den2densat * nuda.cst.nsat # in fm-3
-            self.den_spirit_err = den2densat_err * nuda.cst.nsat # in fm-3
-    #
+            self.den_err = True
+            den2densat, den2densat_err, self.esym, self.esym_err, self.psym, self.psym_err = np.loadtxt( file_in, usecols=(0,1,2,3,4,5), unpack = True )
+            self.den_esym = den2densat * nuda.cst.nsat # in fm-3
+            self.den_esym_err = den2densat_err * nuda.cst.nsat # in fm-3
+            #
     def print_outputs( self ):
        """
        Method which print outputs on terminal's screen.
@@ -197,7 +210,7 @@ class setupHIC():
        if nuda.env.verb: print("Enter print_outputs()")
        #
        print("- Print output:")
-       print("   constraint:",self.constraint)
+       print("   inference:",self.inference)
        print("   ref:     ",self.ref)
        print("   label:   ",self.label)
        print("   note:    ",self.note)
@@ -235,11 +248,11 @@ class setupHIC():
         #: Attribute the density of the system (in fm^-3).
         self.den = None
         #: Attribute the upper limit of the energy per particle in SM (in MeV).
-        self.sm_e2a_up = None
+        self.sm_e2a_int_up = None
         #: Attribute the lower limit of the energy per particle in SM (in MeV).
-        self.sm_e2a_lo = None
+        self.sm_e2a_int_lo = None
         #: Attribute the energy per particle in SM (in MeV).
-        self.sm_e2a = None
+        self.sm_e2a_int = None
         #: Attribute the uncertainty in the energy per particle in SM (in MeV fm-3).
         self.sm_e2a_err = None
         #: Attribute the upper limit of the pressure in SM (in MeV fm-3).
@@ -277,9 +290,9 @@ class setupHIC():
         #: Attribute the lower limit of the pressure in NM for asy-stiff EOS (in MeV fm-3).
         self.nm_pre_st_lo = None
         #: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
-        self.sym_enr_lo = None
+        self.esym_lo = None
         #: Attribute the upper edge of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
-        self.sym_enr_up = None
+        self.esym_up = None
         #: Attribute the centroids of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
         self.sym_enr = None
         #: Attribute the uncertainty of the symmetry energy for FOPI/ASY-EOS constraints (in MeV).
@@ -288,10 +301,14 @@ class setupHIC():
         self.sym_enr_spirit = None
         #: Attribute the uncertainty of the symmetry energy for SPIRIT constraints (in MeV).
         self.sym_enr_spirit_err = None
-        #: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).
-        self.sym_enr_isodiff = None
-        #: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).
-        self.sym_enr_isodiff_err = None
+        #: Attribute the upper boundary of the symmetry energy.
+        self.esym_up = None
+        #: Attribute the lower boundary of the symmetry energy.
+        self.esym_lo = None
+        #: Attribute the centroid of the symmetry energy.
+        self.esym = None
+        #: Attribute the uncertainty of the symmetry energy.
+        self.esym_err = None
         #: Attribute the centroid of the symmetry energy for isospin difusion (in MeV).
         self.sym_enr_np = None
         #: Attribute the uncertainty of the symmetry energy for isospin difusion (in MeV).

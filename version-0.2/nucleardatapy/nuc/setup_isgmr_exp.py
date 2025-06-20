@@ -20,7 +20,7 @@ def isgmr_exp_tables():
     #
     if nuda.env.verb: print("\nEnter isgmr_exp_tables()")
     #
-    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-LATEX', '2022-ISGMR-average' ]
+    tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-few', '2022-ISGMR-average' ]
     #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
     #print('tables available in the toolkit:',tables_lower)
@@ -100,12 +100,12 @@ class setupISGMRExp():
             nucM32M1.append( None ); nucM32M1_errp.append( None ); nucM32M1_errm.append( None )
          nuc = len( nucZ ); nbk = nuc
          #
-      elif table.lower() == '2018-isgmr-garg':
+      elif table.lower() == '2018-isgmr-garg-few':
          #
          file_in = os.path.join(nuda.param.path_data,'nuclei/isgmr/2018-ISGMR-Garg.dat')
          if nuda.env.verb: print('Reads file:',file_in)
          self.ref = 'U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)'
-         self.label = 'Garg-Colo-2018'
+         self.label = 'Garg-Colo-2018-few'
          self.note = "write here notes about this table."
          nucZ, nucA, nucM12Mm1, nucM12Mm1_errp, nucM12Mm1_errm = \
             np.loadtxt( file_in, usecols=(0,1,2,3,4), comments='#', unpack = True )
@@ -122,7 +122,7 @@ class setupISGMRExp():
             nucM32M1.append( None ); nucM32M1_errp.append( None ); nucM32M1_errm.append( None )
          nuc = len( nucZ ); nbk = nuc
          #
-      elif table.lower() == '2018-isgmr-garg-latex':
+      elif table.lower() == '2018-isgmr-garg':
          #
          file_in = os.path.join(nuda.param.path_data,'nuclei/isgmr/2018-ISGMR-Garg.tex')
          if nuda.env.verb: print('Reads file:',file_in)

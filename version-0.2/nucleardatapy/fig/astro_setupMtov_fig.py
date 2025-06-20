@@ -28,10 +28,10 @@ def astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, so
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.9, wspace=0.3, hspace=0.3)
     #
-    axs.set_xlabel(r'M$_\mathrm{tov}$ (M$_\odot$)',fontsize='12')
-    axs.set_ylabel(r'probability (non-normalised)',fontsize='12')
+    axs.set_xlabel(r'M$_\mathrm{tov}$ (M$_\odot$)',fontsize='14')
+    axs.set_ylabel(r'probability (non-normalised)',fontsize='14')
     axs.set_xlim([1.6, 3.4])
     axs.set_ylim([0.0, 1.03])
     #
@@ -76,7 +76,7 @@ def astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, so
     #axs.plot(prob3.mass, prob3.proba_tot, label=prob3.label_tot, color=nuda.param.col[4], linestyle=(1, (4, 8)), linewidth = 3 )
     #
     #axs.legend( loc='upper left',fontsize='8', ncol=1 )
-    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8',ncol=5,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)

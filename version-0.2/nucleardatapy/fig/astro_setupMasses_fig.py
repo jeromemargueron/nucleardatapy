@@ -20,10 +20,10 @@ def astro_setupMasses_fig( pname, sources ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.7, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.75, wspace=0.3, hspace=0.3)
     #
-    axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
-    axs.set_xlabel(r'sources',fontsize='12')
+    axs.set_ylabel(r'M (M$_\odot$)',fontsize='14')
+    axs.set_xlabel(r'sources',fontsize='14')
     axs.set_ylim([1.7, 3.5])
     axs.set_xlim([0.8, 5.5])
     #
@@ -56,7 +56,7 @@ def astro_setupMasses_fig( pname, sources ):
     axs.set_xticks( ilabel )
     axs.set_xticklabels( xlabel )
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
-    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=2,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.5,1.01),columnspacing=2,fontsize='8', ncol=3,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)

@@ -34,11 +34,11 @@ def nuc_setupBEExp_year_fig( pname, table, version ):
     #
     fig, axs = plt.subplots(1,2)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.15, right=None, top=0.85, wspace=0.2, hspace=0.2)
+    fig.subplots_adjust(left=0.12, bottom=0.15, right=0.95, top=0.85, wspace=0.2, hspace=0.2)
     #
     axs[0].set_title(r''+table+' mass table version '+version)
-    axs[0].set_ylabel(r'number of discovered nuclei')
-    axs[0].set_xlabel(r'year')
+    axs[0].set_ylabel(r'number of discovered nuclei',fontsize='14')
+    axs[0].set_xlabel(r'year',fontsize='14')
     axs[0].set_xlim([1890, 2020])
     #axs.set_yscale('log')
     axs[0].set_ylim([0, 250])
@@ -49,7 +49,7 @@ def nuc_setupBEExp_year_fig( pname, table, version ):
     #axs.plot( mas.dist_year*10, mas.dist_nbNuc, linestyle='solid', linewidth=1, color='k')
     #
     axs[1].set_title(r''+table+' mass table version '+version)
-    axs[1].set_xlabel(r'year')
+    axs[1].set_xlabel(r'year',fontsize='14')
     axs[1].set_xlim([2000, 2020])
     axs[1].set_ylim([0, 100])
     axs[1].hist( mas.nucYear, bins=100 )
@@ -89,26 +89,27 @@ def nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.15, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Experimental mass tables',fontsize='12')
-    axs.set_ylabel(r'$S_{2n}$ (MeV)',fontsize='12')
-    axs.set_xlabel(r'N',fontsize='12')
+    axs.set_title(r'Experimental mass tables',fontsize='14')
+    axs.set_ylabel(r'$S_{2n}$ (MeV)',fontsize='14')
+    axs.set_xlabel(r'N',fontsize='14')
     axs.set_xlim([Zref-5, int(1.85*Zref)])
     axs.set_xticks(np.arange(start=Zref-5,stop=2*Zref,step=5))
     #axs.set_ylim([-10, 10])
-    axs.text(int(Zref),10,'For Z='+str(Zref),fontsize='12')
+    axs.text(int(Zref),10,'For Z='+str(Zref),fontsize='14')
     #
     # loop over the tables
     #
     for i,table in enumerate( tables ):
         #
         version = versions[i]
-        # plot nuclear chart:
         mas_exp = nuda.nuc.setupBEExp( table = table, version = version )
-        s2n_exp = mas_exp.S2n( Zmin = Zref, Zmax = Zref )
-        axs.scatter( s2n_exp.S2n_N, s2n_exp.S2n, label=table+' '+version )
-        #axs.plot( s2n_exp.S2n_N, s2n_exp.S2n, linestyle='solid', linewidth=1, label=exp_table+' '+exp_version )
+        mas_exp2 = mas_exp.select( state = 'gs', interp = 'n' )
+        mas_exp3 = mas_exp2.isotopes( Zref = Zref )
+        s2n_exp = mas_exp3.S2n( Zref = Zref )
+        axs.errorbar( s2n_exp.S2n_N, s2n_exp.S2n_E, yerr=s2n_exp.S2n_E_err, fmt='o', label=table+' '+version )
+        #axs.scatter( s2n_exp.S2n_N, s2n_exp.S2n_E, label=exp_table+' '+exp_version )
     #
     axs.legend(loc='upper right',fontsize='10', ncol=1)
     #
@@ -139,31 +140,29 @@ def nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 50 ):
     print('Tables:',tables)
     print('Nref:',Nref)
     #
-    print(f'Plot name: {pname}')
-    #
-    # plot
-    #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.15, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Experimental mass tables',fontsize='12')
-    axs.set_ylabel(r'$S_{2p}$ (MeV)',fontsize='12')
-    axs.set_xlabel(r'Z',fontsize='12')
+    axs.set_title(r'Experimental mass tables',fontsize='14')
+    axs.set_ylabel(r'$S_{2p}$ (MeV)',fontsize='14')
+    axs.set_xlabel(r'Z',fontsize='14')
     axs.set_xlim([0.4*Nref, 1.2*Nref])
     axs.set_xticks(np.arange(start=int(0.4*Nref),stop=1.2*Nref,step=5))
     #axs.set_ylim([-10, 10])
-    axs.text(int(0.7*Nref),10,'For N='+str(Nref),fontsize='12')
+    axs.text(int(0.7*Nref),10,'For N='+str(Nref),fontsize='14')
     #
     # loop over the tables
     #
     for i,table in enumerate( tables ):
         #
         version = versions[i]
-        # plot nuclear chart:
         mas_exp = nuda.nuc.setupBEExp( table = table, version = version )
-        s2p_exp = mas_exp.S2p( Nmin = Nref, Nmax = Nref )
-        axs.scatter( s2p_exp.S2p_Z, s2p_exp.S2p, label=table+' '+version )
+        mas_exp2 = mas_exp.select( state = 'gs', interp = 'n' )
+        mas_exp3 = mas_exp2.isotones( Nref = Nref )
+        s2p_exp = mas_exp3.S2p( Nref = Nref )
+        axs.errorbar( s2p_exp.S2p_Z, s2p_exp.S2p_E, yerr=s2p_exp.S2p_E_err, fmt='o', label=table+' '+version )
+        #axs.scatter( s2p_exp.S2p_Z, s2p_exp.S2p_E, label=table+' '+version )
     #
     axs.legend(loc='upper right',fontsize='10', ncol=1)
     #
@@ -196,15 +195,15 @@ def nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.15, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Experimental mass tables',fontsize='12')
-    axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='12')
-    axs.set_xlabel(r'N',fontsize='12')
+    axs.set_title(r'Experimental mass tables',fontsize='14')
+    axs.set_ylabel(r'$\Delta_{3n}$ (MeV)',fontsize='14')
+    axs.set_xlabel(r'N',fontsize='14')
     axs.set_xlim([Zref-5, int(1.85*Zref)])
     axs.set_xticks(np.arange(start=Zref-5,stop=2*Zref,step=5))
     #axs.set_ylim([-10, 10])
-    axs.text(int(Zref),1.0,'For Z='+str(Zref),fontsize='12')
+    axs.text(int(Zref),1.0,'For Z='+str(Zref),fontsize='14')
     #
     # loop over the tables
     #
@@ -213,9 +212,13 @@ def nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 ):
         version = versions[i]
         # plot nuclear chart:
         mas_exp = nuda.nuc.setupBEExp( table = table, version = version )
-        d3n_exp = mas_exp.D3n( Zmin = Zref, Zmax = Zref )
-        axs.scatter( d3n_exp.D3n_N_even, d3n_exp.D3n_even, label=table+' '+version+'(even)' )
-        axs.scatter( d3n_exp.D3n_N_odd,  d3n_exp.D3n_odd,  label=table+' '+version+'(odd)' )
+        mas_exp2 = mas_exp.select( state = 'gs', interp = 'n' )
+        mas_exp3 = mas_exp2.isotopes( Zref = Zref )
+        D3n_exp = mas_exp3.D3n( Zref = Zref )
+        axs.errorbar( D3n_exp.D3n_N_even, D3n_exp.D3n_E_even, yerr=D3n_exp.D3n_E_err_even, fmt='o', label=table+' '+version )
+        axs.errorbar( D3n_exp.D3n_N_odd,  D3n_exp.D3n_E_odd, yerr=D3n_exp.D3n_E_err_odd, fmt='o', label=table+' '+version )
+        #axs.scatter( d3n_exp.D3n_N_even, d3n_exp.D3n_E_even, label=table+' '+version+'(even)' )
+        #axs.scatter( d3n_exp.D3n_N_odd,  d3n_exp.D3n_E_odd,  label=table+' '+version+'(odd)' )
     #
     axs.legend(loc='upper right',fontsize='10', ncol=1)
     #
@@ -248,15 +251,15 @@ def nuc_setupBEExp_D3p_fig( pname, tables, versions, Nref = 50 ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.14, bottom=0.15, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.14, bottom=0.15, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_title(r'Experimental mass tables',fontsize='12')
-    axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='12')
-    axs.set_xlabel(r'Z',fontsize='12')
+    axs.set_title(r'Experimental mass tables',fontsize='14')
+    axs.set_ylabel(r'$\Delta_{3p}$ (MeV)',fontsize='14')
+    axs.set_xlabel(r'Z',fontsize='14')
     axs.set_xlim([0.4*Nref, 1.2*Nref])
     axs.set_xticks(np.arange(start=int(0.4*Nref),stop=1.2*Nref,step=5))
     #axs.set_ylim([-10, 10])
-    axs.text(int(0.7*Nref),1.4,'For N='+str(Nref),fontsize='12')
+    axs.text(int(0.7*Nref),1.4,'For N='+str(Nref),fontsize='14')
     #
     # loop over the tables
     #
@@ -265,9 +268,13 @@ def nuc_setupBEExp_D3p_fig( pname, tables, versions, Nref = 50 ):
         version = versions[i]
         # plot nuclear chart:
         mas_exp = nuda.nuc.setupBEExp( table = table, version = version )
-        d3p_exp = mas_exp.D3p( Nmin = Nref, Nmax = Nref )
-        axs.scatter( d3p_exp.D3p_Z_even, d3p_exp.D3p_even, label=table+' '+version+'(even)' )
-        axs.scatter( d3p_exp.D3p_Z_odd,  d3p_exp.D3p_odd,  label=table+' '+version+'(odd)' )
+        mas_exp2 = mas_exp.select( state = 'gs', interp = 'n' )
+        mas_exp3 = mas_exp2.isotones( Nref = Nref )
+        D3p_exp = mas_exp3.D3p( Nref = Nref )
+        axs.errorbar( D3p_exp.D3p_Z_even, D3p_exp.D3p_E_even, yerr=D3p_exp.D3p_E_err_even, fmt='o', label=table+' '+version )
+        axs.errorbar( D3p_exp.D3p_Z_odd,  D3p_exp.D3p_E_odd,  yerr=D3p_exp.D3p_E_err_odd,  fmt='o', label=table+' '+version )
+        #axs.scatter( d3p_exp.D3p_Z_even, d3p_exp.D3p_E_even, label=table+' '+version+'(even)' )
+        #axs.scatter( d3p_exp.D3p_Z_odd,  d3p_exp.D3p_E_odd,  label=table+' '+version+'(odd)' )
     #
     axs.legend(loc='upper right',fontsize='10', ncol=1)
     #

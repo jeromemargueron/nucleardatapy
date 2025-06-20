@@ -11,12 +11,12 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    constraints, constraints_lower = nuda.matter.hic_constraints()
-    #constraints = [ '2014-IAS' ]
+    inferences, inferences_lower = nuda.matter.hic_inferences()
+    #inferences = [ '2014-IAS' ]
     #
     pname = 'figs/plot_matter_setupHIC.png'
     #
-    nuda.fig.matter_setupHIC_fig( pname, constraints )
+    nuda.fig.matter_setupHIC_fig( pname, inferences )
     #
     print(50*'-')
     print("Exit matter_setupHIC_plot.py:")

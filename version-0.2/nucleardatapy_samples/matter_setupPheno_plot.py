@@ -44,8 +44,13 @@ def main():
             print('For model:',model)
             #
             pname = 'figs/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_e2a_fig( pname, model, band )
             #
-            nuda.fig.matter_setupPheno_E_fig( pname, model, band )
+            pname = 'figs/plot_matter_setupPheno_pre_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_pre_fig( pname, model, band )
+            #
+            pname = 'figs/plot_matter_setupPheno_cs2_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_cs2_fig( pname, model, band )
 
     #
     print(50*'-')

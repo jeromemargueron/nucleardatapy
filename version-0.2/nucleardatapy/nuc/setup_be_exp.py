@@ -3,9 +3,6 @@ import sys
 import math
 import numpy as np  # 1.15.0
 
-#nucleardatapy_tk = os.getenv('NUCLEARDATAPY_TK')
-#sys.path.insert(0, nucleardatapy_tk)
-
 import nucleardatapy as nuda
 
 CST_AtmMass = 931.494028
@@ -16,26 +13,31 @@ CST_mnc2 = 8.0713171
 CST_dmnc2= 0.0000005
 CST_mHc2 = 7.2889706
 CST_dmHc2= 0.0000001
-yearMin=1851
+yearMin=1890
 
 # time conversion (using tropical year as in NUBASE2020):
 ns = 1e-9
-minutes = 60 # in s
-hours = 60 * minutes # (hours) in s
-days = 24 * hours # (day) in s
-days = 86400 # in s
-months = 30 * days # (month) (30 days) in s
-years = 365.2422 * days # (year) in s
+minute = 60 # in s
+hour = 60 * minute # (hours) in s
+day = 24 * hour # (day) in s # days = 86400 # in s
+month = 30 * day # (month) (30 days) in s
+year = 365.2422 * day # (year) in s
 #print('years:',years)
 #print('type(years):',type(years))
-ILt = 1e30 * years # infinite Large time
+ILt = 1e30 * year # infinite Large time
 ISt = 1.e-30 # infinite Short time
-HTvsl = 1e-3 # half-time for very short live nuclei
-HTsl = hours # half-time for short live nuclei
+HTsl = day # half-time for short live nuclei
+HTvsl = 1.0 # half-time for very short live nuclei
+HThsl = 1.e-3 # half-time for hyper short live nuclei
 
-def stable_fit(Zmin = 1, Zmax = 120):
+def stable_fit_Z(Zmin = 1, Zmax = 120):
     Z = np.linspace(start=Zmin, stop=Zmax, num=1+Zmax-Zmin, dtype = int )
     N = np.array( Z + 6.e-3*Z*Z, dtype = int )
+    return N, Z
+
+def stable_fit_N(Nmin = 1, Nmax = 170):
+    N = np.linspace(start=Nmin, stop=Nmax, num=1+Nmax-Nmin, dtype = int )
+    Z = np.array( N - 3.8e-3*N*N + 9.e-6*N*N*N, dtype = int )
     return N, Z
 
 def be_exp_tables():
@@ -165,6 +167,8 @@ class setupBEExp():
         self.nucSymb = []
         #: Attribute N (number of neutrons of the nucleus).
         self.nucN = []
+        #: Attribute I (isospin asymmetry):
+        self.nucI = []
         #: Attribute I.
         self.flagI = []
         #: Attribute Interp (interpolation). Interp='y' is the nucleus\
@@ -238,6 +242,7 @@ class setupBEExp():
                     #if nucZ < int(Zmin): continue
                     #if int(Z) != 0 and nucZ != int(Z): continue
                     NN = AA - ZZ
+                    II = ( NN - ZZ ) / AA
                     if (nuda.env.verb): print('   nucleus:',AA,ZZ,NN)
                     #if ZZ == 20: print('   nucleus:',AA,ZZ,NN)
                     flagI=int(line[7:8]) # if nuci==0: ground-state (GS)
@@ -312,29 +317,29 @@ class setupBEExp():
                         elif htu==' s':
                             fac = 1.0 # print('second')
                         elif htu==' h':
-                            fac = hours # print('hours')
+                            fac = hour # print('hours')
                         elif htu==' d':
-                            fac = days # print('day')
+                            fac = day # print('day')
                         elif htu==' m':
-                            fac = months # print('month')
+                            fac = month # print('month')
                         elif htu==' y':
-                            fac = years # print('year')
+                            fac = year # print('year')
                         elif htu=='ky':
-                            fac = 1e3 * years # print('Kiloyears (1e3)')
+                            fac = 1e3 * year # print('Kiloyears (1e3)')
                         elif htu=='My':
-                            fac = 1e6 * years # print('Megayears (1e6)')
+                            fac = 1e6 * year # print('Megayears (1e6)')
                         elif htu=='Gy':
-                            fac = 1e9 * years # print('Gigayears (1e9)')
+                            fac = 1e9 * year # print('Gigayears (1e9)')
                         elif htu=='Ty':
-                            fac = 1e12 * years # print('Terayears (1e12)')
+                            fac = 1e12 * year # print('Terayears (1e12)')
                         elif htu=='Py':
-                            fac = 1e15 * years # print('Petayears (1e15)')
+                            fac = 1e15 * year # print('Petayears (1e15)')
                         elif htu=='Ey':
-                            fac = 1e18 * years # print('Exayears (1e18)')
+                            fac = 1e18 * year # print('Exayears (1e18)')
                         elif htu=='Zy':
-                            fac = 1e21 * years # print('Zettayears (1e21)')
+                            fac = 1e21 * year # print('Zettayears (1e21)')
                         elif htu=='Yy':
-                            fac = 1e24 * years # print('Yottayears (1e24)')
+                            fac = 1e24 * year # print('Yottayears (1e24)')
                         else:
                             print('unknown lifetime unit')
                             print('ht:',ht,' unit:',htu)
@@ -403,6 +408,7 @@ class setupBEExp():
                     self.nucZ.append( ZZ )
                     if ZZ > self.Zmax: self.Zmax = ZZ
                     self.nucN.append( NN )
+                    self.nucI.append( II )
                     self.nucSymb.append( symb )
                     self.flagI.append( flagI )
                     self.flagInterp.append( interp )
@@ -432,6 +438,18 @@ class setupBEExp():
             i_year = int( (self.nucYear[i]-self.year_min)/10 )
             self.dist_nbNuc[i_year] += 1
         print( 'dist:',self.dist_nbNuc )
+        #
+        # convert to numpy array:
+        #
+        self.nucA = np.array( self.nucA , dtype = int )
+        self.nucN = np.array( self.nucN , dtype = int )
+        self.nucZ = np.array( self.nucZ , dtype = int )
+        self.flagI = np.array( self.flagI , dtype = int )
+        self.nucYear = np.array( self.nucYear , dtype = int )
+        self.nucI = np.array( self.nucI , dtype = float )
+        self.nucHT = np.array( self.nucHT , dtype = float )
+        self.nucBE = np.array( self.nucBE , dtype = float )
+        self.nucBE_err = np.array( self.nucBE_err , dtype = float )
         #
         if nuda.env.verb: print("Exit SetupNucBEExp()")
         #
@@ -491,7 +509,7 @@ class setupBEExp():
         self.state = state
         if nuda.env.verb: print("state:",state)
         #
-        nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive' ]
+        nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive', 'hypershortlive' ]
         #
         if nucleus.lower() not in nuclei:
             print('setup_be_exp.py: Nucleus ',nucleus,' is not in the list: ',nuclei)
@@ -511,6 +529,7 @@ class setupBEExp():
         #: Attribute sel_symb (symbol of the selected nuclei).
         self.sel_nucSymb = []
         self.sel_nucN = []
+        self.sel_nucI = []
         self.sel_flagI = []
         self.sel_flagInterp = []
         self.sel_nucHT = [] # half-time in s
@@ -525,6 +544,7 @@ class setupBEExp():
             nucA = self.nucA[ind]
             nucZ = self.nucZ[ind]
             nucN = self.nucN[ind]
+            nucI = self.nucI[ind]
             flagI = self.flagI[ind]
             nucSymb = self.nucSymb[ind]
             flagInterp = self.flagInterp[ind]
@@ -546,7 +566,9 @@ class setupBEExp():
                 pass
             elif nucleus.lower() == 'shortlive' and nucStbl == 'n' and nucHT < HTsl and nucHT > HTvsl:
                 pass
-            elif nucleus.lower() == 'veryshortlive' and nucStbl == 'n' and nucHT < HTvsl:
+            elif nucleus.lower() == 'veryshortlive' and nucStbl == 'n' and nucHT < HTvsl  and nucHT > HThsl:
+                pass
+            elif nucleus.lower() == 'hypershortlive' and nucStbl == 'n' and nucHT < HThsl:
                 pass
             else:
                 continue
@@ -567,6 +589,7 @@ class setupBEExp():
             self.sel_nucZ.append( nucZ )
             if nucZ > self.sel_Zmax: self.sel_Zmax = nucZ
             self.sel_nucN.append( nucN )
+            self.sel_nucI.append( nucI )
             self.sel_nucSymb.append( nucSymb )
             self.sel_flagI.append( flagI )
             self.sel_flagInterp.append( flagInterp )
@@ -580,71 +603,19 @@ class setupBEExp():
         print('number of nuclei(Tot):',self.sel_nbNucTot)
         print('number of nuclei(Sta):',self.sel_nbNucSta)
         print('number of nuclei(Sel):',self.sel_nbNucSel)
+        #print(' sel_nucA:',self.sel_nucA)
+        # convert to numpy array:
+        self.sel_nucA = np.array( self.sel_nucA , dtype = int )
+        self.sel_nucN = np.array( self.sel_nucN , dtype = int )
+        self.sel_nucZ = np.array( self.sel_nucZ , dtype = int )
+        self.sel_flagI = np.array( self.sel_flagI , dtype = int )
+        self.sel_nucYear = np.array( self.sel_nucYear , dtype = int )
+        self.sel_nucI = np.array( self.sel_nucI , dtype = float )
+        self.sel_nucHT = np.array( self.sel_nucHT , dtype = float )
+        self.sel_nucBE = np.array( self.sel_nucBE , dtype = float )
+        self.sel_nucBE_err = np.array( self.sel_nucBE_err , dtype = float )
         #
         if nuda.env.verb: print("Exit select()")
-        #
-        return self
-        #
-    def isotopes(self, Zmin = 1, Zmax = 95 ):
-        """
-        Method which find the first and last isotopes for each Zmin<Z<Zmax.
-
-        :param Zmin: Fix the minimum charge for the search of isotopes.
-        :type Zmin: int, optional. Default: 1.
-        :param Zmax: Fix the maximum charge for the search of isotopes.
-        :type Zmax: int, optional. Default: 95.
-
-        **Attributes:**
-        """
-        #
-        if nuda.env.verb: print("Enter drip()")
-        #
-        if Zmin > Zmax:
-            print('setup_be_exp.py: In isotopes attribute function of setup_be_exp.py:')
-            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
-            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
-            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
-            print('setup_be_exp.py: exit')
-            exit()
-        #
-        Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )
-        #
-        self.isotopes_Z = []
-        self.isotopes_Nmin = []
-        self.isotopes_Nmax = []
-        #
-        for ind,Z in enumerate(Zstable):
-            #
-            #print('ind,Z, Nstable:',ind,Z,Nstable[ind])
-            #
-            if Z > Zmax :
-                break
-            if Z < Zmin :
-                continue
-            #
-            Nmin = Nstable[ind]
-            Nmax = Nstable[ind]
-            #
-            #print('sel_Z:',self.sel_Z)
-            #exit()
-            for ind2 in range(self.sel_nbNucSel):
-                #if self.sel_Z[ind] == Z:
-                #    print('sel_Z:',self.sel_Z)
-                #    exit()
-                #print('ind:',ind,Z,self.sel_Zmax,self.sel_Z[ind2],Nmin,Nmax)
-                #print('sel_N:',self.sel_N[ind2])
-                if self.sel_nucZ[ind2] == Z and self.sel_nucN[ind2] < Nmin:
-                    Nmin = self.sel_nucN[ind2]
-                if self.sel_nucZ[ind2] == Z and self.sel_nucN[ind2] > Nmax:
-                    Nmax = self.sel_nucN[ind2]
-            self.isotopes_Z.append( Z )
-            self.isotopes_Nmin.append( Nmin )
-            self.isotopes_Nmax.append( Nmax )
-        #print('drip: Z',self.drip_Z)
-        #print('drip: Nmin:',self.drip_Nmin)
-        #print('drip: Nmax:',self.drip_Nmax)
-        #
-        if nuda.env.verb: print("Exit drip()")
         #
         return self
         #
@@ -751,276 +722,317 @@ class setupBEExp():
         #
         return self
         #
-    def S2n( self, Zmin = 1, Zmax = 95 ):
+    def isotopes(self, Zref = 50 ):
+        """
+        Method which find the first and last isotopes for Z=Zref.
+
+        :param Zref: Fix the charge for the search of isotopes.
+        :type Zref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter isotopes()")
+        #
+        if Zref < 0:
+            print('setup_be_exp.py: issue with the function isotopes.')
+            print('setup_be_exp.py: Bad definition for Zref')
+            print('setup_be_exp.py: It is expected that Zref>0')
+            print('setup_be_exp.py: Zref:',Zref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        Nstable, Zstable = stable_fit_Z( Zmin = Zref, Zmax = Zref )
+        #
+        nucNmin = Nstable[0]
+        nucNmax = Nstable[0]
+        #
+        for ind,A in enumerate(self.sel_nucA):
+            #
+            if self.sel_nucZ[ind] == Zref and self.sel_nucN[ind] < nucNmin:
+                nucNmin = self.sel_nucN[ind]
+            if self.sel_nucZ[ind] == Zref and self.sel_nucN[ind] > nucNmax:
+                nucNmax = self.sel_nucN[ind]
+            #
+        self.itp_nucZ = Zref
+        self.itp_nucNmin = nucNmin
+        self.itp_nucNmax = nucNmax
+        #
+        if nuda.env.verb: print("Exit isotopes()")
+        #
+        return self
+        #
+    def isotones(self, Nref = 50 ):
+        """
+        Method which find the first and last isotones for N=Nref.
+
+        :param Nref: Fix the neutron number for the search of isotones.
+        :type Nref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter isotones()")
+        #
+        if Nref < 0:
+            print('setup_be_exp.py: issue with the function isotones.')
+            print('setup_be_exp.py: Bad definition for Nref')
+            print('setup_be_exp.py: It is expected that Nref>0')
+            print('setup_be_exp.py: Nref:',Nref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        Nstable, Zstable = stable_fit_N( Nmin = Nref, Nmax = Nref )
+        #
+        nucZmin = Zstable[0]
+        nucZmax = Zstable[0]
+        #
+        for ind,A in enumerate(self.sel_nucA):
+            #
+            if self.sel_nucN[ind] == Nref and self.sel_nucZ[ind] < nucZmin:
+                nucZmin = self.sel_nucZ[ind]
+            if self.sel_nucN[ind] == Nref and self.sel_nucZ[ind] > nucZmax:
+                nucZmax = self.sel_nucZ[ind]
+            #
+        self.itn_nucN = Nref
+        self.itn_nucZmin = nucZmin
+        self.itn_nucZmax = nucZmax
+        #
+        if nuda.env.verb: print("Exit isotones()")
+        #
+        return self
+        #
+    def S2n( self, Zref = 50 ):
         """
         Compute the two-neutron separation energy (S2n)
-        S2n = E(Z,N)-E(Z,N-2)
+        S2n(Zref,N) = E(Zref,N)-E(Zref,N-2)
         """
         #
         if nuda.env.verb: print("Enter S2n()")
         #
-        if Zmin > Zmax:
+        if Zref < 0:
             print('setup_be_exp.py: In S2n attribute function of setup_be_exp.py:')
-            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
-            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
-            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
+            print('setup_be_exp.py: Bad definition of Zref')
+            print('setup_be_exp.py: It is expected that Zref>=0')
+            print('setup_be_exp.py: Zref:',Zref)
             print('setup_be_exp.py: exit')
             exit()
         #
-        S2n_Z = []
         S2n_N = []
-        S2n = []
+        S2n_E = []
+        S2n_E_err = []
         #
-        for ind,Z in enumerate(self.nucZ):
+        Nmin=self.itp_nucNmin
+        Nmax=self.itp_nucNmax
+        print('Nmin,Nmax:',Nmin,Nmax)
+        #
+        for N in range(Nmin+2,Nmax+1):
             #
-            if Z > Zmax :
-                continue
-            if Z < Zmin :
-                continue
+            flagN = False; flagNm2 = False;
             #
-            if self.flagI[ind] != 0:
-                continue
-            if self.flagInterp[ind] == 'y':
-                continue                
-            N = self.nucN[ind]
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find = 0
-            for ind2,Z2 in enumerate(self.nucZ):
-                if Z == Z2 and self.nucN[ind2] == N-2 and self.flagI[ind2] == 0 and self.flagInterp[ind2] == 'n':
-                    flag_find = 1
-                    break
-            if flag_find == 1: 
-                N2 = self.nucN[ind2]
-                #print('N,N2:',N,N2,'ind,ind2:',ind,ind2)
-                S2n_Z.append( self.nucZ[ind] )
-                S2n_N.append( self.nucN[ind] )
-                S2n.append( self.nucBE[ind2] - self.nucBE[ind] )
+            for ind,Z in enumerate(self.sel_nucZ):
+                #
+                if Z == Zref and self.sel_nucN[ind] == N:
+                    indN = ind
+                    flagN = True
+                if Z == Zref and self.sel_nucN[ind] == N-2:
+                    indNm2 = ind
+                    flagNm2 = True
+                    #
+            if flagN and flagNm2:
+                S2n_N.append( N )
+                S2n_E.append( self.sel_nucBE[indN] - self.sel_nucBE[indNm2] )
+                S2n_E_err.append( self.sel_nucBE_err[indN] + self.sel_nucBE_err[indNm2] )
         self.S2n_N = np.array( S2n_N, dtype = int )
-        self.S2n_Z = np.array( S2n_Z, dtype = int )
-        self.S2n = np.array( S2n, dtype = float )
-        #print('Z:',self.S2n_Z)
-        #print('N:',self.S2n_N)
-        #print('S2n:',self.S2n)
-        #print('Z:',self.S2n_Z)
+        self.S2n_E = np.array( S2n_E, dtype = float )
+        self.S2n_E_err = np.array( S2n_E_err, dtype = float )
         #
         if nuda.env.verb: print("Exit S2n()")
         #
         return self
-    #
-    def S2p( self, Nmin = 1, Nmax = 95 ):
+        #
+    def S2p( self, Nref = 50 ):
         """
-        Compute the two-proton separation energy (S2n)
-        S2p = E(Z,N)-E(Z-2,N)
+        Compute the two-proton separation energy (S2p)
+        S2p(Z,Nref) = E(Z,Nref)-E(Z-2,Nref)
         """
         #
         if nuda.env.verb: print("Enter S2p()")
         #
-        if Nmin > Nmax:
+        if Nref < 0:
             print('setup_be_exp.py: In S2p attribute function of setup_be_exp.py:')
-            print('setup_be_exp.py: Bad definition of Nmin and Nmax')
-            print('setup_be_exp.py: It is expected that Nmin<=Nmax')
-            print('setup_be_exp.py: Nmin,Nmax:',Nmin,Nmax)
+            print('setup_be_exp.py: Bad definition of Nref')
+            print('setup_be_exp.py: It is expected that Nref>=0')
+            print('setup_be_exp.py: Nref:',Nref)
             print('setup_be_exp.py: exit')
             exit()
         #
         S2p_Z = []
-        S2p_N = []
-        S2p = []
+        S2p_E = []
+        S2p_E_err = []
         #
-        for ind,N in enumerate(self.nucN):
+        Zmin=self.itn_nucZmin
+        Zmax=self.itn_nucZmax
+        print('Zmin,Zmax:',Zmin,Zmax)
+        #
+        for Z in range(Zmin+2,Zmax+1,2):
             #
-            if N > Nmax :
-                continue
-            if N < Nmin :
-                continue
+            flagZ = False; flagZm2 = False;
             #
-            if self.flagI[ind] != 0:
-                continue
-            if self.flagInterp[ind] == 'y':
-                continue                
-            Z = self.nucZ[ind]
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z-2,N
-            #
-            flag_find = 0
-            for ind2,N2 in enumerate(self.nucN):
-                if N == N2 and self.nucZ[ind2] == Z-2 and self.flagI[ind2] == 0 and self.flagInterp[ind2] == 'n':
-                    flag_find = 1
-                    break
-            if flag_find == 1: 
-                Z2 = self.nucZ[ind2]
-                #print('N,N2:',N,N2,'ind,ind2:',ind,ind2)
-                S2p_Z.append( self.nucZ[ind] )
-                S2p_N.append( self.nucN[ind] )
-                S2p.append( self.nucBE[ind2] - self.nucBE[ind] )
-        self.S2p_N = np.array( S2p_N, dtype = int )
+            for ind,N in enumerate(self.sel_nucN):
+                #
+                if N == Nref and self.sel_nucZ[ind] == Z:
+                    indZ = ind
+                    flagZ = True
+                if N == Nref and self.sel_nucZ[ind] == Z-2:
+                    indZm2 = ind
+                    flagZm2 = True
+                    #
+            if flagZ and flagZm2:
+                S2p_Z.append( Z )
+                S2p_E.append( self.sel_nucBE[indZ] - self.sel_nucBE[indZm2] )
+                S2p_E_err.append( self.sel_nucBE_err[indZ] + self.sel_nucBE_err[indZm2] )
         self.S2p_Z = np.array( S2p_Z, dtype = int )
-        self.S2p = np.array( S2p, dtype = float )
-        #print('Z:',self.S2n_Z)
-        #print('N:',self.S2n_N)
-        #print('S2n:',self.S2n)
-        #print('Z:',self.S2n_Z)
+        self.S2p_E = np.array( S2p_E, dtype = float )
+        self.S2p_E_err = np.array( S2p_E_err, dtype = float )
         #
         if nuda.env.verb: print("Exit S2p()")
         #
         return self
-    #
-    def D3n( self, Zmin = 1, Zmax = 95 ):
+        #
+    def D3n( self, Zref = 50 ):
         """
         Compute the three-points odd-even mass staggering (D3p_n)
-        D_3p^N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
+        D3n(Z,N) = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
         """
         #
-        if nuda.env.verb: print("Enter D3p_n()")
+        if nuda.env.verb: print("Enter D3n()")
         #
-        if Zmin > Zmax:
-            print('setup_be_exp.py: In D3p_n attribute function of setup_be_exp.py:')
-            print('setup_be_exp.py: Bad definition of Zmin and Zmax')
-            print('setup_be_exp.py: It is expected that Zmin<=Zmax')
-            print('setup_be_exp.py: Zmin,Zmax:',Zmin,Zmax)
+        if Zref < 0:
+            print('setup_be_exp.py: In D3n attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Zref')
+            print('setup_be_exp.py: It is expected that Zref>=0')
+            print('setup_be_exp.py: Zref:',Zref)
             print('setup_be_exp.py: exit')
             exit()
         #
-        D3n_Z_even = []
-        D3n_Z_odd = []
         D3n_N_even = []
         D3n_N_odd = []
-        D3n_even = []
-        D3n_odd = []
+        D3n_E_even = []
+        D3n_E_odd = []
+        D3n_E_err_even = []
+        D3n_E_err_odd = []
         #
-        for ind,Z in enumerate(self.nucZ):
+        Nmin=self.itp_nucNmin
+        Nmax=self.itp_nucNmax
+        print('Nmin,Nmax:',Nmin,Nmax)
+        #
+        for N in range(Nmin+1,Nmax):
             #
-            if Z > Zmax :
-                continue
-            if Z < Zmin :
-                continue
+            flagN = False; flagNm1 = False; flagNp1 = False;
             #
-            if self.flagI[ind] != 0:
-                continue
-            if self.flagInterp[ind] == 'y':
-                continue
-            #
-            N = self.nucN[ind]
-            #
-            if N % 2 == 0:
-                sign = 1.0 #even
-            else:
-                sign = -1.0 # odd
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find1 = 0
-            for ind1,Z1 in enumerate(self.nucZ):
-                if Z == Z1 and self.nucN[ind1] == N+1 and self.flagI[ind1] == 0 and self.flagInterp[ind1] == 'n':
-                    flag_find1 = 1
-                    break
-            flag_find2 = 0
-            for ind2,Z2 in enumerate(self.nucZ):
-                if Z == Z2 and self.nucN[ind2] == N-1 and self.flagI[ind2] == 0 and self.flagInterp[ind2] == 'n':
-                    flag_find2 = 1
-                    break
-            if flag_find1*flag_find2 == 1: 
-                if sign > 0: #even
-                    D3n_Z_even.append( self.nucZ[ind] )
-                    D3n_N_even.append( self.nucN[ind] )
-                    D3n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+            for ind,Z in enumerate(self.sel_nucZ):
+                #
+                if Z == Zref and self.sel_nucN[ind] == N:
+                    indN = ind
+                    flagN = True
+                    if N % 2:
+                        sign = -1.0 # odd
+                    else:
+                        sign = 1.0 # even
+                if Z == Zref and self.sel_nucN[ind] == N-1:
+                    indNm1 = ind
+                    flagNm1 = True
+                if Z == Zref and self.sel_nucN[ind] == N+1:
+                    indNp1 = ind
+                    flagNp1 = True
+                    #
+            if flagN and flagNm1 and flagNp1:
+                if sign > 0.0: #even
+                    D3n_N_even.append( N )
+                    D3n_E_even.append( sign/2.0*( -2*self.sel_nucBE[indN] + self.sel_nucBE[indNm1] + self.sel_nucBE[indNp1] ) )
+                    D3n_E_err_even.append( 0.5*( 2*self.sel_nucBE_err[indN] + self.sel_nucBE_err[indNm1] + self.sel_nucBE_err[indNp1] ) )
                 else:
-                    D3n_Z_odd.append( self.nucZ[ind] )
-                    D3n_N_odd.append( self.nucN[ind] )
-                    D3n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+                    D3n_N_odd.append( N )
+                    D3n_E_odd.append( sign/2.0*( -2*self.sel_nucBE[indN] + self.sel_nucBE[indNm1] + self.sel_nucBE[indNp1] ) )
+                    D3n_E_err_odd.append( 0.5*( 2*self.sel_nucBE_err[indN] + self.sel_nucBE_err[indNm1] + self.sel_nucBE_err[indNp1] ) )
+            #
         self.D3n_N_even = np.array( D3n_N_even, dtype = int )
-        self.D3n_N_odd  = np.array( D3n_N_odd,  dtype = int )
-        self.D3n_Z_even = np.array( D3n_Z_even, dtype = int )
-        self.D3n_Z_odd  = np.array( D3n_Z_odd,  dtype = int )
-        self.D3n_even   = np.array( D3n_even,   dtype = float )
-        self.D3n_odd    = np.array( D3n_odd,    dtype = float )            
+        self.D3n_E_even = np.array( D3n_E_even, dtype = float )
+        self.D3n_E_err_even = np.array( D3n_E_err_even, dtype = float )
+        self.D3n_N_odd = np.array( D3n_N_odd, dtype = int )
+        self.D3n_E_odd = np.array( D3n_E_odd, dtype = float )
+        self.D3n_E_err_odd = np.array( D3n_E_err_odd, dtype = float )
         #
-        if nuda.env.verb: print("Exit D3p_n()")
+        if nuda.env.verb: print("Exit D3n()")
         #
         return self
-    #
-    #
-    def D3p( self, Nmin = 1, Nmax = 95 ):
+        #
+    def D3p( self, Nref = 50 ):
         """
-        Compute the three-points odd-even mass staggering (D3p_p)
-        D_3p^P = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
+        Compute the three-points odd-even mass staggering (D3p_n)
+        D3p(Z,N) = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
         """
         #
-        if nuda.env.verb: print("Enter D3p_p()")
+        if nuda.env.verb: print("Enter D3p()")
         #
-        if Nmin > Nmax:
-            print('setup_be_exp.py: In D3p_p attribute function of setup_be_exp.py:')
-            print('setup_be_exp.py: Bad definition of Nmin and Nmax')
-            print('setup_be_exp.py: It is expected that Nmin<=Nmax')
-            print('setup_be_exp.py: Nmin,Nmax:',Nmin,Nmax)
+        if Nref < 0:
+            print('setup_be_exp.py: In D3p attribute function of setup_be_exp.py:')
+            print('setup_be_exp.py: Bad definition of Nref')
+            print('setup_be_exp.py: It is expected that Nref>=0')
+            print('setup_be_exp.py: Nref:',Nref)
             print('setup_be_exp.py: exit')
             exit()
         #
         D3p_Z_even = []
         D3p_Z_odd = []
-        D3p_N_even = []
-        D3p_N_odd = []
-        D3p_even = []
-        D3p_odd = []
+        D3p_E_even = []
+        D3p_E_odd = []
+        D3p_E_err_even = []
+        D3p_E_err_odd = []
         #
-        for ind,N in enumerate(self.nucN):
+        Zmin=self.itn_nucZmin
+        Zmax=self.itn_nucZmax
+        print('Zmin,Zmax:',Zmin,Zmax)
+        #
+        for Z in range(Zmin+1,Zmax):
             #
-            if N > Nmax :
-                continue
-            if N < Nmin :
-                continue
+            flagZ = False; flagZm1 = False; flagZp1 = False;
             #
-            if self.flagI[ind] != 0:
-                continue
-            if self.flagInterp[ind] == 'y':
-                continue
-            #
-            Z = self.nucZ[ind]
-            #
-            if Z % 2 == 0:
-                sign = 1.0 #even
-            else:
-                sign = -1.0 # odd
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find1 = 0
-            for ind1,N1 in enumerate(self.nucN):
-                if N == N1 and self.nucZ[ind1] == Z+1 and self.flagI[ind1] == 0 and self.flagInterp[ind1] == 'n':
-                    flag_find1 = 1
-                    break
-            flag_find2 = 0
-            for ind2,N2 in enumerate(self.nucN):
-                if N == N2 and self.nucZ[ind2] == Z-1 and self.flagI[ind2] == 0 and self.flagInterp[ind2] == 'n':
-                    flag_find2 = 1
-                    break
-            if flag_find1*flag_find2 == 1: 
-                if sign > 0: #even
-                    D3p_Z_even.append( self.nucZ[ind] )
-                    D3p_N_even.append( self.nucN[ind] )
-                    D3p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
+            for ind,N in enumerate(self.sel_nucN):
+                #
+                if N == Nref and self.sel_nucZ[ind] == Z:
+                    indZ = ind
+                    flagZ = True
+                    if Z % 2:
+                        sign = -1.0 # odd
+                    else:
+                        sign = 1.0 # even
+                if N == Nref and self.sel_nucZ[ind] == Z-1:
+                    indZm1 = ind
+                    flagZm1 = True
+                if N == Nref and self.sel_nucZ[ind] == Z+1:
+                    indZp1 = ind
+                    flagZp1 = True
+                    #
+            if flagZ and flagZm1 and flagZp1:
+                if sign > 0.0: #even
+                    D3p_Z_even.append( Z )
+                    D3p_E_even.append( sign/2.0*( -2*self.sel_nucBE[indZ] + self.sel_nucBE[indZm1] + self.sel_nucBE[indZp1] ) )
+                    D3p_E_err_even.append( 0.5*( 2*self.sel_nucBE_err[indZ] + self.sel_nucBE_err[indZm1] + self.sel_nucBE_err[indZp1] ) )
                 else:
-                    D3p_Z_odd.append( self.nucZ[ind] )
-                    D3p_N_odd.append( self.nucN[ind] )
-                    D3p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_N_even = np.array( D3p_N_even, dtype = int )
-        self.D3p_N_odd  = np.array( D3p_N_odd,  dtype = int )
+                    D3p_Z_odd.append( Z )
+                    D3p_E_odd.append( sign/2.0*( -2*self.sel_nucBE[indZ] + self.sel_nucBE[indZm1] + self.sel_nucBE[indZp1] ) )
+                    D3p_E_err_odd.append( 0.5*( 2*self.sel_nucBE_err[indZ] + self.sel_nucBE_err[indZm1] + self.sel_nucBE_err[indZp1] ) )
+            #
         self.D3p_Z_even = np.array( D3p_Z_even, dtype = int )
-        self.D3p_Z_odd  = np.array( D3p_Z_odd,  dtype = int )
-        self.D3p_even   = np.array( D3p_even,   dtype = float )
-        self.D3p_odd    = np.array( D3p_odd,    dtype = float )            
+        self.D3p_E_even = np.array( D3p_E_even, dtype = float )
+        self.D3p_E_err_even = np.array( D3p_E_err_even, dtype = float )
+        self.D3p_Z_odd = np.array( D3p_Z_odd, dtype = int )
+        self.D3p_E_odd = np.array( D3p_E_odd, dtype = float )
+        self.D3p_E_err_odd = np.array( D3p_E_err_odd, dtype = float )
         #
-        if nuda.env.verb: print("Exit D3p_p()")
+        if nuda.env.verb: print("Exit D3p()")
         #
         return self
-    #
+        #

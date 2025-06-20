@@ -104,10 +104,30 @@ def esymffg_nr( kf ):
     """
     return effg_nr( kf ) * ( nuda.cst.two**nuda.cst.twoThird - 1.0 )
 
+def pre_nr( kf ):
+    """
+    Free Fermi gas pressure as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+
+    """
+    return nuda.cst.twoThird * effg_nr( kf ) * den( kf )
+
+def cs2_nr( kf ):
+    """
+    Free Fermi gas sound speed as a function of the Fermi momentum.
+
+    :param kf: Fermi momentum.
+    :type kf: float or numpy vector of real numbers.
+
+    """
+    return nuda.cst.twoThird
+
 # FFG energy
 def feden(gam, kf, mc2):
     den = gam * kf**3 / ( 6 * nuda.cst.pi2 )
-    e2v = []
+    eps = []
     e2a = []
     for ind, val_kf in enumerate(kf):
         if val_kf > 1e-12:
@@ -120,14 +140,14 @@ def feden(gam, kf, mc2):
                 r = ( pf + ef ) / mc2
         #term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r) - 8.0 / 3.0 * pf**3 * mc2
                 term = 2.0 * pf * ef**3 - pf * ef * mc2**2 - mc2**4 * np.log(r)
-            e2v.append( gam * term / (16.0 * nuda.cst.pi2 * nuda.cst.hbc**3 ) )
-            e2a.append( e2v[-1] / den[ind] )
+            eps.append( gam * term / (16.0 * nuda.cst.pi2 * nuda.cst.hbc**3 ) )
+            e2a.append( eps[-1] / den[ind] )
         else:
-            e2v.append( 0.0 )
+            eps.append( 0.0 )
             e2a.append( 0.0 )
-    e2v = np.array( e2v, dtype = float )
+    eps = np.array( eps, dtype = float )
     e2a = np.array( e2a, dtype = float )
-    return e2v, e2a
+    return eps, e2a
 
 # FFG pressure
 def fpres(gam, kf, mc2):
@@ -210,7 +230,7 @@ class setupFFGNuc():
         #: Attribute proton density
         self.den_p = self.x_p * den
         #: Attribute Fermi momentum for a Fermi system with degeneracy = 4
-        self.kf = (1.5 * nuda.cst.pi2 * self.den)**nuda.cst.third
+        self.kf_nuc = (1.5 * nuda.cst.pi2 * self.den)**nuda.cst.third
         #: Attribute neutron Fermi momentum (degeneracy = 2)
         self.kf_n = (nuda.cst.three * nuda.cst.pi2 * self.den_n)**nuda.cst.third
         #: Attribute proton Fermi momentum (degeneracy = 2)
@@ -225,11 +245,11 @@ class setupFFGNuc():
         self.eF_p_int_nr = nuda.cst.half * nuda.cst.h2m / ms * self.kf_p**nuda.cst.two
         #: Attribute rest mass energy per particle (degeneracy = 2)
         self.e2a_rm = self.x_n * ms * nuda.cst.mnc2 + self.x_p * ms * nuda.cst.mpc2
-        self.e2v_rm = self.e2a_rm * self.den
+        self.eps_rm = self.e2a_rm * self.den
         #: Attribute FFG energy per particle (degeneracy = 2)
-        e2v_n, e2a_n = feden( 2.0, self.kf_n, ms*nuda.cst.mnc2)
-        e2v_p, e2a_p = feden( 2.0, self.kf_p, ms*nuda.cst.mpc2)
-        self.e2v = e2v_n + e2v_p
+        eps_n, e2a_n = feden( 2.0, self.kf_n, ms*nuda.cst.mnc2)
+        eps_p, e2a_p = feden( 2.0, self.kf_p, ms*nuda.cst.mpc2)
+        self.eps = eps_n + eps_p
         self.e2a = self.x_n * e2a_n + self.x_p * e2a_p
         self.e2a_int = self.e2a - self.e2a_rm
         self.e2a_int_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m / ms * \
@@ -239,9 +259,9 @@ class setupFFGNuc():
              (nuda.cst.one-delta)**nuda.cst.fiveThird )
         self.e2a_nr = self.e2a_rm + self.e2a_int_nr 
         #: Attribute FFG energy per unit volum (degeneracy = 2)
-        self.e2v_int = self.e2a_int * self.den
-        self.e2v_int_nr = self.e2a_int_nr * self.den
-        self.e2v_nr = self.e2a_nr * self.den
+        self.eps_int = self.e2a_int * self.den
+        self.eps_int_nr = self.e2a_int_nr * self.den
+        self.eps_nr = self.e2a_nr * self.den
         #: Attribute FFG symmetry energy (degeneracy = 2)
         self.esym_nr = nuda.cst.threeFifth * nuda.cst.half * nuda.cst.h2m / ms * \
            (3*nuda.cst.pi2*nuda.cst.half*den)**nuda.cst.twoThird * \
@@ -257,14 +277,14 @@ class setupFFGNuc():
         #: Attribute FFG pressure (degeneracy = 2)
         self.pre = fpres( 2.0, self.kf_n, ms*nuda.cst.mnc2 ) + fpres( 2.0, self.kf_p, ms*nuda.cst.mpc2 )
         #print('pre:',self.pre)
-        self.pre_nr = nuda.cst.twoThird * self.e2v_int_nr
+        self.pre_nr = nuda.cst.twoThird * self.eps_int_nr
         #print('pre_nr:',self.pre_nr)
         # spline the pressure p(n) to extract dp/dn:
         #cs_pre = CubicSpline( self.den, self.pre )
         #: Attribute enthalpy
-        self.h2a = ( self.e2v + self.pre ) / self.den
+        self.h2a = ( self.eps + self.pre ) / self.den
         #print('h2a:',self.h2a)
-        self.h2a_nr = ( self.e2v_nr + self.pre_nr ) / self.den
+        self.h2a_nr = ( self.eps_nr + self.pre_nr ) / self.den
         #print('h2a_nr:',self.h2a_nr)
         #: Attribute sound speed squared
         dp_dn = self.x_n * f_dp_dn( self.kf_n, ms*nuda.cst.mnc2 ) + self.x_p * f_dp_dn( self.kf_p, ms*nuda.cst.mpc2 )
@@ -273,7 +293,7 @@ class setupFFGNuc():
         #print('dp_dn_num:',dp_dn_num)
         self.cs2 = dp_dn / self.h2a 
         #self.cs2_num = dp_dn_num / self.h2a
-        #self.cs2_nr = 10.0 / 9.0 * self.e2v_nr / self.den / self.h2a_nr
+        #self.cs2_nr = 10.0 / 9.0 * self.eps_nr / self.den / self.h2a_nr
         dp_dn_nr = 10.0 / 9.0 * self.e2a_int_nr
         #print('dp_dn_nr:',dp_dn_nr)
         #print('dp_dn_nr/dp_dn:',dp_dn_nr/dp_dn)
@@ -282,6 +302,7 @@ class setupFFGNuc():
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
         self.e2a_unit = 'MeV'
+        self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'
         self.cs2_unit = 'c$^{2}$'
         #
@@ -359,37 +380,43 @@ class setupFFGLep():
         self.eF_mu = np.sqrt( nuda.cst.mmuc2**2 + (nuda.cst.hbc*self.kf_mu)**2 )
         #: Attribute FFG energy per particle (degeneracy = 2)
         # energy
-        self.e2v_el, self.e2n_el = feden( 2.0, self.kf_el, nuda.cst.mec2 )
-        self.e2v_mu, self.e2n_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2 )
-        self.e2v_lep = self.e2v_el + self.e2v_mu
-        self.e2n_lep = self.e2v_lep / self.den_lep
-        #self.e2a_el = self.e2v_el / self.den_e
+        self.eps_el, self.e2n_el = feden( 2.0, self.kf_el, nuda.cst.mec2 )
+        self.eps_mu, self.e2n_mu = feden( 2.0, self.kf_mu, nuda.cst.mmuc2 )
+        self.eps_lep = self.eps_el + self.eps_mu
+        self.e2n_lep = self.eps_lep / self.den_lep
+        #self.e2a_el = self.eps_el / self.den_e
         # internal energy
-        self.e2v_el_int = self.e2v_el - nuda.cst.mec2*self.den_el
-        self.e2n_el_int = self.e2v_el_int / self.den_el
-        self.e2v_mu_int = self.e2v_mu - nuda.cst.mmuc2*self.den_mu
+        self.eps_el_int = self.eps_el - nuda.cst.mec2*self.den_el
+        self.e2n_el_int = self.eps_el_int / self.den_el
+        self.eps_mu_int = self.eps_mu - nuda.cst.mmuc2*self.den_mu
         self.e2n_mu_int = np.zeros( np.size(self.den_mu) )
         for k,n_mu in enumerate(self.den_mu):
             if n_mu > 0.0:
-                self.e2n_mu_int[k] = self.e2v_mu_int[k] / self.den_mu[k]
-        self.e2v_lep_int = self.e2v_el_int + self.e2v_mu_int
-        self.e2n_lep_int = self.e2v_lep_int / self.den_lep
+                self.e2n_mu_int[k] = self.eps_mu_int[k] / self.den_mu[k]
+        self.eps_lep_int = self.eps_el_int + self.eps_mu_int
+        self.e2n_lep_int = self.eps_lep_int / self.den_lep
         #: Attribute FFG pressure (degeneracy = 2)
         self.pre_el = fpres( 2.0, self.kf_el, nuda.cst.mec2)
         self.pre_mu = fpres( 2.0, self.kf_mu, nuda.cst.mmuc2)
         self.pre_lep = self.x_el * self.pre_el + self.x_mu * self.pre_mu
         #: Attribute enthalpy
-        self.h2v_el = self.e2v_el + self.pre_el
-        self.h2v_mu = self.e2v_mu + self.pre_mu
-        self.h2v_lep = self.h2v_el + self.h2v_mu
+        self.h2n_el = self.e2n_el + self.pre_el / self.den_el
+        self.h2n_mu = []
+        for ind,den_mu in enumerate(self.den_mu):
+            if den_mu != 0.0:
+                self.h2n_mu.append( self.e2n_mu[ind] + self.pre_mu[ind] / self.den_mu[ind] )
+            else:
+                self.h2n_mu.append( 0.0 )
+        self.h2n_mu = np.array( self.h2n_mu, dtype = float )
+        self.h2n_lep = self.x_el * self.h2n_el + self.x_mu * self.h2n_mu
         #: Attribute sound speed squared
         dp_dn = self.den_el * f_dp_dn( self.kf_el, nuda.cst.mec2 ) + self.den_mu * f_dp_dn( self.kf_mu, nuda.cst.mmuc2 )
-        self.cs2_lep = dp_dn / self.h2v_lep
+        self.cs2_lep = dp_dn / self.h2n_lep
         #
         self.den_unit = 'fm$^{-3}$'
         self.kf_unit = 'fm$^{-1}$'
-        self.e2a_unit = 'MeV'
-        self.e2v_unit = 'MeV fm$^{-3}$'
+        self.e2n_unit = 'MeV'
+        self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'
         #
         if nuda.env.verb: print("Exit setupFFGLep()")
@@ -403,12 +430,12 @@ class setupFFGLep():
         if nuda.env.verb: print("Enter print_outputs()")
         #
         print("- Print output:")
-        if self.den_e is not None: print(f"   den_e: {np.round(self.den_e,2)} in {self.den_unit}")
+        if self.den_el is not None: print(f"   den_el: {np.round(self.den_el,2)} in {self.den_unit}")
         if self.den_mu is not None: print(f"   den_mu: {np.round(self.den_mu,2)}")
-        if self.kf_e is not None: print(f"   kf_e: {np.round(self.kf_e,2)} in {self.kf_unit}")
-        if self.e2a_int_lep is not None: print(f"   e2a_int_lep: {np.round(self.e2a_int_lep,2)} in {self.e2a_unit}")
+        if self.kf_el is not None: print(f"   kf_el: {np.round(self.kf_el,2)} in {self.kf_unit}")
+        if self.e2n_lep_int is not None: print(f"   e2n_lep_int: {np.round(self.e2n_lep_int,2)} in {self.e2n_unit}")
         if self.pre_lep is not None: print(f"   pre_lep: {np.round(self.pre_lep,2)} in {self.pre_unit}")
-        if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)} in {self.cs2_unit}")
+        if self.cs2_lep is not None: print(f"   cs2_lep: {np.round(self.cs2_lep,3)}")
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #

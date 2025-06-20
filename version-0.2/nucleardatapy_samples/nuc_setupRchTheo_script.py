@@ -8,7 +8,8 @@ def main():
     print(50*'-')
     #
     tables, tables_lower = nuda.nuc.rch_theo_tables()
-    tables = [ '2021-BSkG1' ]
+    #tables = [ '2021-BSkG1' ]
+    print('tables:',tables)
     #
     Zref = 50
     #

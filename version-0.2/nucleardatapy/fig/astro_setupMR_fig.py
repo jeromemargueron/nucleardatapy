@@ -22,10 +22,10 @@ def astro_setupMR_fig( pname, sources, sources_av ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.12, bottom=0.12, right=None, top=0.85, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.85, wspace=0.3, hspace=0.3)
     #
-    axs.set_xlabel(r'$R$ (km)',fontsize='12')
-    axs.set_ylabel(r'M (M$_\odot$)',fontsize='12')
+    axs.set_xlabel(r'$R$ (km)',fontsize='14')
+    axs.set_ylabel(r'M (M$_\odot$)',fontsize='14')
     axs.set_xlim([10.5, 16.5])
     axs.set_ylim([1.15, 2.2])
     #
@@ -82,7 +82,7 @@ def astro_setupMR_fig( pname, sources, sources_av ):
             axs.text(10.7,1.5,'J0437-4715')
     #
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
-    axs.legend(loc='lower center',bbox_to_anchor=(0.48,1.01),columnspacing=2,fontsize='8',ncol=3,frameon=False)
+    axs.legend(loc='lower center',bbox_to_anchor=(0.48,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)

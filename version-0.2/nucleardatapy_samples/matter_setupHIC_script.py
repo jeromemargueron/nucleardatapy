@@ -7,12 +7,12 @@ def main():
     print("Enter matter_setupHIC_script.py:")
     print(50*'-')
     #
-    constraints, constraints_lower = nuda.matter.hic_constraints()
+    inferences, inferences_lower = nuda.matter.hic_inferences()
     #
-    for constraint in constraints:
+    for inference in inferences:
         #
-        print('constraint:',constraint)
-        hic = nuda.matter.setupHIC( constraint = constraint )
+        print('inference:',inference)
+        hic = nuda.matter.setupHIC( inference = inference )
         if nuda.env.verb_output: hic.print_outputs( )
     #
     print(50*'-')

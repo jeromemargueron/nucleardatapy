@@ -12,14 +12,14 @@ def nep_models():
     """
     Return a list of models available in this toolkit and print them all on the prompt.
 
-    :return: The list of models with can be 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF'.
+    :return: The list of models with can be 'Skyrme', 'GSkyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF'.
     :rtype: list[str].
     """
     #
     if nuda.env.verb: print("\nEnter pheno_models()")
     #
-    models = [ 'Skyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
-    #models = [ 'Skyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    models = [ 'Skyrme', 'GSkyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF', 'xEFT' ]
+    #models = [ 'Skyrme', 'GSkyrme', 'Skyrme2', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF', 'xEFT' ]
     #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
@@ -36,18 +36,21 @@ def nep_params( model ):
     :type model: str.
     :return: The list of parametrizations. \
     If `models` == 'Skyrme': 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
-    'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
-    'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
-    'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. \
+        'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+        'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
+        'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
+        'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. \
+    If `model` == 'Skyrme2': 'SLy4', 'SkM*', 'SV-min', 'SV-bas', 'SV-K218', \
+        'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
+        'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60'. \
+    If `model` == 'GSkyrme': 'SkK180', 'SkK200', 'SkK220', 'SkK240', 'SkKM'. \
     If `models` == 'ESkyrme': 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', \
-    'BSkG1', 'BSkG2', 'BSkG3'. \
-    If `models` == 'Fayans': 'SLy4', 'SkM*', 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)', \
-    'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',
-    'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60'.
+        'BSkG1', 'BSkG2', 'BSkG3'. \
+    If `models` == 'Fayans': 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)'. \
     If `models` == 'NLRH': 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. \
     If `models` == 'DDRH': 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. \
     If `models` == 'DDRHF': 'PKA1', 'PKO1', 'PKO2', 'PKO3'.
+    If `models` == 'xEFT': 'H1MM', 'H2MM', 'H3MM', 'H4MM', 'H5MM', 'H6MM', 'H7MM'.
     :rtype: list[str].
     """
     #
@@ -65,6 +68,8 @@ def nep_params( model ):
         params = [ 'SLy4', 'SkM*', 'SV-min', 'SV-bas', 'SV-K218', \
             'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
             'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60']
+    elif model.lower() == 'gskyrme':
+        params = [ 'SkK180', 'SkK200', 'SkK220', 'SkK240', 'SkKM' ]
     elif model.lower() == 'eskyrme':
         params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32',  'BSkG3', 'BSkG4' ]
     elif model.lower() == 'gogny':
@@ -77,6 +82,8 @@ def nep_params( model ):
         params = [ 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99' ]
     elif model.lower() == 'ddrhf':
         params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
+    elif model.lower() == 'xeft':
+        params = [ 'H1MM', 'H2MM', 'H3MM', 'H4MM', 'H5MM', 'H6MM', 'H7MM' ]
     #print('For model:',model)
     #print('Parameters available in the toolkit:',params)
     params_lower = [ item.lower() for item in params ]
@@ -102,6 +109,8 @@ class setupNEP():
     'SV-mas08', 'SV-mas10','SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', \
     'SV-kap20', 'SV-kap60'.
 
+    If `models` == 'GSkyrme', `param` can be: 'SkK180', 'SkK200', 'SkK220', 'SkK240', 'SkKM'. \
+
     If `models` == 'ESkyrme', `param` can be: 'BSk22', 'BSk24', 'BSk25', \
     'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3'.
 
@@ -112,6 +121,8 @@ class setupNEP():
     If `models` == 'DDRH', `param` can be: 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. 
 
     If `models` == 'DDRHF', `param` can be: 'PKA1', 'PKO1', 'PKO2', 'PKO3'. 
+
+    If `models` == 'xEFT', `param` can be: 'H1MM', 'H2MM', 'H3MM', 'H4MM', 'H5MM', 'H6MM', 'H7MM'.
     
     :param model: Fix the name of model: 'Skyrme', 'NLRH', \
     'DDRH', 'DDRHF'. Default value: 'Skyrme'.
@@ -166,13 +177,13 @@ class setupNEP():
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype = str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             #print('name:',name)
             #
             #nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat \
@@ -183,18 +194,18 @@ class setupNEP():
             #Qsym = kappav.copy()
             #Zsym = kappav.copy()
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+                msat, kappasat, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
             #print('param:',param)
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind]; 
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
         #
@@ -205,26 +216,64 @@ class setupNEP():
             self.label = 'Skyrme2-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
                 = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            kappas = 1.0/msat - 1.0
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+            kappasat = 1.0/msat - 1.0
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+            else:
+                self.nep = False
+            #
+        elif model.lower() == 'gskyrme':
+            #
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPGSkyrme.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            #: Attribute providing the full reference to the paper to be citted.
+            #self.ref = 'In preparation'
+            #: Attribute providing the label the data is references for figures.
+            self.label = 'GSKY-'+param
+            #: Attribute providing additional notes about the data.
+            self.note = "write here notes about this EOS."
+            names = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            kFsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, Qsym, \
+                msat, mvec = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10), comments='#', unpack = True )
+            nsat = 2.0 * kFsat**3 / ( 3.0 * nuda.cst.pi2 )
+            kappasat = 1.0/msat - 1.0
+            kappasym = 1.0/msat - 1.0/mvec
+            kappav = kappasat - kappasat
+            Zsat = np.zeros( kappasat.size )
+            Zsym = Zsat.copy()
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
+            #
+            if param in names:
+                self.nep = True
+                ind = np.where( names == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = None
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = None
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -238,30 +287,30 @@ class setupNEP():
             self.label = 'ESKY-'+param
             #: Attribute providing additional notes about the data.
             self.note = "write here notes about this EOS."
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
             nsat, Esat, Ksat, Qsat, Esym, Lsym, Ksym, msat = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            kappas = 1.0/msat - 1.0
-            kappav = np.zeros( kappas.size )
+            kappasat = 1.0/msat - 1.0
+            kappav = np.zeros( kappasat.size )
             Zsat = kappav.copy()
             Qsym = kappav.copy()
             Zsym = kappav.copy()
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = None
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = None; self.Zsym = None
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = None;
-                self.kappasym = None; self.Dmsat = None
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = None;
+                self.kappasat = kappasat[ind]; self.kappasym = None; self.Dmsat = None
             else:
                 self.nep = False
             #
@@ -272,23 +321,23 @@ class setupNEP():
             self.label = 'Gogny-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             Ksat, Qsat = np.loadtxt( file_in, usecols=(1,2), comments='#', unpack = True )
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
                 self.nsat = None; self.Esat = None; self.Zsat = None
                 self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None
                 self.msat = None; self.kappas = None; self.kappav = None;
-                self.kappasym = None; self.Dmsat = None
+                self.kappasat = None; self.kappasym = None; self.Dmsat = None
             else:
                 self.nep = False
 #            pass
@@ -300,26 +349,26 @@ class setupNEP():
             self.label = 'Fayans-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             nsat, Esat, Ksat, Qsat, msat, Esym, Lsym, kappav \
                 = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8), comments='#', unpack = True )
-            kappas = 1.0/msat - 1.0
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+            kappasat = 1.0/msat - 1.0
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind];
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -331,25 +380,25 @@ class setupNEP():
             self.label = 'NLRH-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+                msat, kappasat, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind]; 
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -361,25 +410,25 @@ class setupNEP():
             self.label = 'DDRH-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+                msat, kappasat, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind];
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
             else:
                 self.nep = False
             #
@@ -391,25 +440,59 @@ class setupNEP():
             self.label = 'DDRHF-'+param
             self.note = "write here notes about this EOS."
             #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
-            name = []
+            names = []
             with open(file_in,"r") as file:
                 for line in file:
                     if '#' in line:
                         continue
-                    name.append( line.split()[0] )
-            name = np.array( name, dtype = str )
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
             nsat, Esat, Ksat, Qsat, Zsat, Esym, Lsym, Ksym, Qsym, Zsym, \
-                msat, kappas, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
-            kappasym = kappas - kappav
-            Dmsat = -2*kappasym/( (1+kappas)**2-kappasym**2)
+                msat, kappasat, kappav = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12,13), comments='#', unpack = True )
+            kappasym = kappasat - kappav
+            Dmsat = -2*kappasym/( (1+kappasat)**2-kappasym**2)
             #
-            if param in name:
+            if param in names:
                 self.nep = True
-                ind = np.where( name == param )[0][0]
+                ind = np.where( names == param )[0][0]
                 self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind];
                 self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
-                self.msat = msat[ind]; self.kappas = kappas[ind]; self.kappav = kappav[ind];
-                self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind]
+                self.msat = msat[ind]; self.kappas = kappasat[ind]; self.kappav = kappav[ind];
+                self.kappasat = kappasat[ind]; self.kappasym = kappasym[ind]; self.Dmsat = Dmsat[ind];
+            else:
+                self.nep = False
+            #
+        elif model.lower() == 'xeft':
+            #
+            file_in = os.path.join(nuda.param.path_data,'matter/nep/NEPxEFT.dat')
+            if nuda.env.verb: print('Reads file:',file_in)
+            #self.ref = ''
+            self.label = 'xEFT-'+param
+            self.note = "write here notes about this EOS."
+            #name = np.loadtxt( file_in, usecols=(0), comments='#', unpack = True, dtype=str )
+            names = []
+            with open(file_in,"r") as file:
+                for line in file:
+                    if '#' in line:
+                        continue
+                    names.append( line.split()[0] )
+            names = np.array( names, dtype = str )
+            Esat, Esym, nsat, Lsym, Ksat, Ksym, Qsat, Qsym, Zsat, Zsym, Pressure, Ktau,\
+                = np.loadtxt( file_in, usecols=(1,2,3,4,5,6,7,8,9,10,11,12), comments='#', unpack = True )
+            kappas = np.zeros( Esat.size )
+            kappav = np.zeros( Esat.size )
+            kappasat = np.zeros( Esat.size )
+            kappasym = np.zeros( Esat.size )
+            msat = np.zeros( Esat.size )
+            Dmsat = np.zeros( Esat.size )
+            #
+            if param in names:
+                self.nep = True
+                ind = np.where( names == param )[0][0]
+                self.nsat = nsat[ind]; self.Esat = Esat[ind]; self.Ksat = Ksat[ind]; self.Qsat = Qsat[ind]; self.Zsat = Zsat[ind];
+                self.Esym = Esym[ind]; self.Lsym = Lsym[ind]; self.Ksym = Ksym[ind]; self.Qsym = Qsym[ind]; self.Zsym = Zsym[ind];
+                self.msat = None; self.kappas = None; self.kappav = None;
+                self.kappasat = None; self.kappasym = None; self.Dmsat = None;
             else:
                 self.nep = False
             #
@@ -446,7 +529,7 @@ class setupNEP():
         if self.nep:
             print(' sat:',self.Esat,self.nsat,self.Ksat,self.Qsat,self.Zsat)
             print(' sym:',self.Esym,self.Lsym,self.Ksym,self.Qsym,self.Zsym)
-            print(' ms:',self.msat,self.kappas,self.kappav)
+            print(' ms:',self.msat,self.kappasat,self.kappav)
         #
         if nuda.env.verb: print("Exit print_outputs()")
         #
@@ -470,7 +553,7 @@ class setupNEP():
         #: Attribute the NEP.
         self.Esat = None; self.nsat = None; self.Ksat = None; self.Qsat = None; self.Zsat = None;
         self.Esym = None; self.Lsym = None; self.Ksym = None; self.Qsym = None; self.Zsym = None;
-        self.msat = None; self.kappas = None; self.kappav = None; 
+        self.msat = None; self.kappasat = None; self.kappav = None; 
         self.kappasym = None; self.Dmsat = None;
         #
         if nuda.env.verb: print("Exit init_self()")
