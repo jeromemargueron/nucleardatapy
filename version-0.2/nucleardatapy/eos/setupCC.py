@@ -5,11 +5,13 @@ from scipy.interpolate import CubicSpline
 import nucleardatapy as nuda
 
 def denCC_emp( nsat, Esym, Lsym, emp ):
+    varEsym = Esym/30.0
+    varLsym = Lsym/70.0
     if emp == 'simple':
         den_cc = 0.5*nsat
+    elif emp == 'Newton':
+        den_cc = (varEsym)*(0.135 - 0.098*varLsym + 0.026*varLsym**2)
     elif emp == 'Steiner':
-        varEsym = Esym/30.0
-        varLsym = Lsym/70.0
         den_cc = (varEsym)*(0.1327 - 0.0898*varLsym + 0.0228*varLsym**2)
     else:
         print('setupCC, denCC_emp: `emp` is badly defined ',emp)
@@ -134,7 +136,8 @@ class setupCC():
                 nsat = crust_eos.nsat
                 Esym = crust_eos.Esym
                 Lsym = crust_eos.Lsym
-                print('crust NEP:',nsat,Esym,Lsym)
+                #print('crust NEP:',nsat,Esym,Lsym)
+                # opens a small gap -+20% of the empirical density
                 b_lo = 0.8 * denCC_emp( nsat, Esym, Lsym, emp )
                 b_up = 1.2 * b_lo / 0.8
             else:
