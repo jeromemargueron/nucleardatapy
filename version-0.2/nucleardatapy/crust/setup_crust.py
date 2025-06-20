@@ -265,9 +265,10 @@ class setupCrust():
                 self.pre_cc = 0.36795626298336570 # in MeV/fm3
                 self.mu_n_cc = 8.4609997888086361E-002 # in MeV
                 # NEP
-                self.nsat = 0.16
-                self.Esym = 32.0
-                self.Lsym = 50.0
+                nep = nuda.matter.setupNEP( model = 'Skyrme', param = 'BSk16' )
+                self.nsat = nep.nsat
+                self.Esym = nep.Esym
+                self.Lsym = nep.Lsym
                 #
             elif model.lower()=='2022-gmrs-f0':
                 #
