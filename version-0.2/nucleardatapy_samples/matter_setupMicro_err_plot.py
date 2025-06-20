@@ -13,7 +13,7 @@ def main():
     #
     nuda.create_folder_fig()
     #
-    models = [ '2013-QMC-NM', '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM', '2024-QMC-NM' ]
+    models = [ '2013-MBPT-NM', '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM', '2024-QMC-NM' ]
     #
     # plot errors in NM
     #
