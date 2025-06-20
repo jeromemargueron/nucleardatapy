@@ -4,7 +4,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% SKYRME
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKYRME Hartree-Fock
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 @article{Bender:2003,
 title = {Self-consistent mean-field models for nuclear structure},
@@ -95,6 +99,7 @@ url = {https://www.sciencedirect.com/science/article/pii/0375947482904031},
 author = {J. Bartel and P. Quentin and M. Brack and C. Guet and H.-B. Håkansson},
 abstract = {Static nuclear properties associated with a Skyrme-like force in the SkM parametrisation have been extensively studied for both spherical and deformed nuclei through Hartree-Fock plus BCS calculations. These calculations include in particular the determination of the 240Pu fission barrier up to the second saddle point. The validity of some currently used approximations to the Hartree-Fock approach (self-consistent Strutinsky approach, expectation value method and two-step iterative method) has also been assessed. The results of the microscopic calculations have been systematically compared to the corresponding self-consistent results obtained within the extended Thomas-Fermi framework. Such semiclassical calculations also allow a proper characterisation of the SkM force surface properties (in the liquid drop or droplet model sense). Whereas ground-state radii and multipole moments are found in excellent agreement with experimental data, binding energies are systematically too high and fission barriers are significantly too low. These two defects are shown to be correlated through the too low surface tension of the force. A modified parametrisation is discussed which heals both these defects while keeping intact the good reproduction of other properties. This constitutes a first step in the direction of current efforts to determine a better parametrisation of Skyrme-like forces.}
 }
+
 #SkP
 @article{JDobaczewski:1984,
 title = {Hartree-Fock-Bogolyubov description of nuclei near the neutron-drip line},
@@ -172,7 +177,7 @@ author = {P.-G. Reinhard and H. Flocard},
 abstract = {Presently available relativistic and nonrelativistic effective interactions do not predict the same behavior for the isotope shifts in the Pb region. We analyze this difference and find that it is related to the characteristics of the spin-orbit term used in the parametrizations. We show that a simple modification of the spin-orbit contribution to the nonrelativistic Skyrme functional solves this problem.}
 }
 
-@article{Chabanat:1997,
+@article{EChabanat:1997,
 author = {Chabanat, E. and Bonche, P. and Haensel, P. and Meyer, J. and Schaeffer, R.},
 journal = {Nucl. Phys. A},
 volume = {627},
@@ -180,7 +185,7 @@ pages = {710},
 year = {1997}
 }
 
-@article{Chabanat:1998,
+@article{EChabanat:1998,
 author = {E. Chabanat and P. Bonche and P. Haensel and J. Meyer and R. Schaeffer},
 journal = {Nucl. Phys. A},
 volume = {635},
@@ -330,6 +335,7 @@ author = {N. Chamel and S. Goriely and J.M. Pearson},
 keywords = {Nuclear structure, Binding energies and masses, Skyrme–Hartree–Fock–Bogoliubov},
 abstract = {In this latest of our series of Skyrme–HFB mass models, HFB-16, we introduce the new feature of requiring that the contact pairing force reproduce at each density the 1S0 pairing gap of neutron matter as determined in microscopic calculations with realistic nucleon–nucleon forces. We retain the earlier constraints on the Skyrme force of reproducing the energy-density curve of neutron matter, and of having an isoscalar effective mass of 0.8M in symmetric infinite nuclear matter at the saturation density; we also keep the recently adopted device of dropping Coulomb exchange. Furthermore, the correction term for the spurious energy of collective motion has a form that is known to favour fission barriers that are in good agreement with experiment. Despite the extra constraints on the effective force, we have achieved a better fit to the mass data than any other mean field model, the rms error on the 2149 measured masses of nuclei with N and Z⩾ 8 having been reduced to 0.632 MeV; the improvement is particularly striking for the most neutron-rich nuclei. Moreover, it turns out that even with no flexibility at all remaining for the pairing force, the spectral pairing gaps that we find suggest that level densities in good agreement with experiment should be obtained. This new force is thus particularly well-suited for astrophysical applications, such as stellar nucleosynthesis and neutron-star crusts.}
 }
+
 %BSK17
 @article{SGoriely:2009,
 title = {Skyrme-Hartree-Fock-Bogoliubov Nuclear Mass Formulas: Crossing the 0.6 MeV Accuracy Threshold with Microscopically Deduced Pairing},
@@ -361,6 +367,23 @@ publisher = {American Physical Society},
 doi = {10.1103/PhysRevC.80.065804},
 url = {https://link.aps.org/doi/10.1103/PhysRevC.80.065804}
 }
+
+% BSK27
+@article{SGoriely:2013_BSk27,
+title = {Hartree-Fock-Bogoliubov nuclear mass model with 0.50 MeV accuracy based on standard forms of Skyrme and pairing functionals},
+author = {Goriely, S. and Chamel, N. and Pearson, J. M.},
+journal = {Phys. Rev. C},
+volume = {88},
+issue = {6},
+pages = {061302},
+numpages = {5},
+year = {2013},
+month = {Dec},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.88.061302},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.88.061302}
+}
+
 
 %UNEDF0
 @article{MKortelainen:2010,
@@ -425,7 +448,58 @@ url = {https://link.aps.org/doi/10.1103/PhysRevC.86.031306}
 }
 
 
-% NLRH (NL-SH, PK1, PK1R, TM1)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    NLRH (NL-SH, NL3, NL3s, 
+%          PK1, PK1R, TM1)
+%    Non Linear meson coupling in 
+%    Relativistic Hartree
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{BDSerot:1997,
+author = {Serot, Brian D. and Walecka, John Dirk},
+title = {Recent Progress in Quantum Hadrodynamics},
+journal = {International Journal of Modern Physics E},
+volume = {06},
+number = {04},
+pages = {515-631},
+year = {1997},
+doi = {10.1142/S0218301397000299},
+URL = { https://doi.org/10.1142/S0218301397000299 },
+eprint = { https://doi.org/10.1142/S0218301397000299},
+abstract = { Quantum hadrodynamics (QHD) is a framework for describing the nuclear many-body problem as a relativistic system of baryons and mesons. Motivation is given for the utility of such an approach and for the importance of basing it on a local, Lorentz-invariant lagrangian density. Calculations of nuclear matter and finite nuclei in both renormalizable and nonrenormalizable, effective QHD models are discussed. Connections are made between the effective and renormalizable models, as well as between relativistic mean-field theory and more sophisticated treatments. Recent work in QHD involving nuclear structure, electroweak interactions in nuclei, relativistic transport theory, nuclear matter under extreme conditions, and the evaluation of loop diagrams is reviewed. }
+}
+
+%NL-SH
+@article{MMSharma:1993,
+title = {Rho meson coupling in the relativistic mean field theory and description of exotic nuclei},
+journal = {Physics Letters B},
+volume = {312},
+number = {4},
+pages = {377-381},
+year = {1993},
+issn = {0370-2693},
+doi = {https://doi.org/10.1016/0370-2693(93)90970-S},
+url = {https://www.sciencedirect.com/science/article/pii/037026939390970S},
+author = {M.M. Sharma and M.A. Nagarajan and P. Ring},
+abstract = {The role of the isovector rho-meson coupling on the symmetry energy in the relativistic mean-field theory has been investigated. In a multi-dimensional parameter search for an appropriate force within the framework of the non-linear σωϱ model the ϱ-meson coupling has been found to have a significant effect on the neutron skin of nuclei. It has been shown that a low value of ϱ-meson coupling strength remedies the defect of some of the existing parameter sets of providing a higher neutron skin thickness of nuclei. An extraordinarily good description of highly proton- as well as neutron-rich exotic nuclei has been found. It has been observed that the proper description of both proton-rich and neutron-rich nuclei is sensitive to the symmetry energy.}
+}
+
+%TM1
+@article{KSumiyoshi:1995,
+title = {Relativistic mean-field theory with non-linear σ and ω terms for neutron stars and supernovae},
+journal = {Nuclear Physics A},
+volume = {581},
+number = {3},
+pages = {725-746},
+year = {1995},
+issn = {0375-9474},
+doi = {https://doi.org/10.1016/0375-9474(94)00335-K},
+url = {https://www.sciencedirect.com/science/article/pii/037594749400335K},
+author = {K. Sumiyoshi and H. Kuwabara and H. Toki},
+abstract = {We study the properties of dense matter in neutron stars and supernovae in the relativistic mean-field (RMF) theory with non-linear σ and ω terms. The lagrangian of the RMF theory is motivated by the recent success of the relativistic Brueckner-Hartree-Fock (RBHF) theory. The parameters in the lagrangian are determined by the properties of nuclei including unstable ones and provide the equation of state of nuclear matter similar to the one in the RBHF theory. The proton fraction in neutron-star matter is found to be large enough to allow the direct URCA process for rapid cooling of neutron stars. We calculate nuclear matter having arbitrary proton fractions at finite temperature to provide the equation of state for studies of supernova explosions. The properties of supernova matter containing abundant leptons are studied in detail and the consequences on the gravitational mass of hot neutron stars at the birth era are discussed.}
+}
 
 %NL3
 @article{GALalazissis:1997,
@@ -443,7 +517,20 @@ url = {https://link.aps.org/doi/10.1103/PhysRevC.86.031306}
   url = {https://link.aps.org/doi/10.1103/PhysRevC.55.540}
 }
 
-%\bibitem{NLRA1} M. Rashdan, Phys. Rev. C 63, 044303 (2001).
+@article{WLong:2004,
+title = {New effective interactions in relativistic mean field theory with nonlinear terms and density-dependent meson-nucleon coupling},
+author = {Long, Wenhui and Meng, Jie and Giai, Nguyen Van and Zhou, Shan-Gui},
+journal = {Phys. Rev. C},
+volume = {69},
+issue = {3},
+pages = {034319},
+numpages = {15},
+year = {2004},
+month = {Mar},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.69.034319},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.69.034319}
+}
 
 %NL3s
 @article{GALalazissis:2009,
@@ -460,7 +547,45 @@ author = {G.A. Lalazissis and S. Karatzikos and R. Fossion and D. Pena Arteaga a
 abstract = {Covariant density functional theory based on the relativistic mean field (RMF) Lagrangian with the parameter set NL3 has been used in the last ten years with great success. Now we propose a modification of this parameter set, which improves the description of the ground state properties of many nuclei and simultaneously provides an excellent description of excited states with collective character in spherical as well as in deformed nuclei.}
 }
 
-% DDRH (DDME1, DDMEd, PKDD, TW99)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    DDRH (DDME1, DDMEd, PKDD, TW99)
+%    Density dependent Relativistic 
+%    Hartree
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%TW99
+@article{STypel:1999,
+title = {Relativistic mean field calculations with density-dependent meson-nucleon coupling},
+journal = {Nuclear Physics A},
+volume = {656},
+number = {3},
+pages = {331-364},
+year = {1999},
+issn = {0375-9474},
+doi = {https://doi.org/10.1016/S0375-9474(99)00310-3},
+url = {https://www.sciencedirect.com/science/article/pii/S0375947499003103},
+author = {S. Typel and H.H. Wolter},
+keywords = {Relativistic mean field theory, Density-dependent coupling, Rearrangement, Nuclear matter, Finite nuclei, Exotic nuclei},
+abstract = {Nuclear matter and ground state properties for (proton and neutron) semi-closed shell nuclei are described in relativistic mean field theory with coupling constants which depend on the vector density. The parametrization of the density dependence for σ-, ω- and ρ-meson coupling is obtained by fitting to properties of nuclear matter and some finite nuclei. The results are compared to density-dependent coupling constants derived from self-energies of Dirac-Brueckner calculations of nuclear matter. The equation of state for symmetric and asymmetric nuclear matter is discussed. Finite nuclei are described in Hartree approximation, including a charge and a centre-of-mass correction. Pairing is considered in the BCS approximation. Special attention is directed to the predictions for properties at the neutron and proton driplines.}
+}
+
+%DD-ME1
+@article{TNiksic:2002,
+title = {Relativistic Hartree-Bogoliubov model with density-dependent meson-nucleon couplings},
+author = {Nik\ifmmode \check{s}\else \v{s}\fi{}i\ifmmode \acute{c}\else \'{c}\fi{}, T. and Vretenar, D. and Finelli, P. and Ring, P.},
+journal = {Phys. Rev. C},
+volume = {66},
+issue = {2},
+pages = {024306},
+numpages = {15},
+year = {2002},
+month = {Aug},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.66.024306},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.66.024306}
+}
 
 %DD-ME2
 @article{GALalazissis:2005,
@@ -478,9 +603,144 @@ doi = {10.1103/PhysRevC.71.024312},
 url = {https://link.aps.org/doi/10.1103/PhysRevC.71.024312}
 }
 
+%DD-MEd
+@article{XRocaMaza:2011,
+title = {Relativistic mean-field interaction with density-dependent meson-nucleon vertices based on microscopical calculations},
+author = {Roca-Maza, X. and Vi\~nas, X. and Centelles, M. and Ring, P. and Schuck, P.},
+journal = {Phys. Rev. C},
+volume = {84},
+issue = {5},
+pages = {054309},
+numpages = {16},
+year = {2011},
+month = {Nov},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.84.054309},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.84.054309}
+}
 
-$DDRHF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    DDRHF (PKO1, PKO2, PKO3, PKA1)
+%    Density dependent Relativistic 
+%    Hartree-Fock
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%PKO1-3
+% PKO1
+@article{WLong:2006,
+title = {Density-dependent relativistic Hartree–Fock approach},
+journal = {Physics Letters B},
+volume = {640},
+number = {4},
+pages = {150-154},
+year = {2006},
+issn = {0370-2693},
+doi = {https://doi.org/10.1016/j.physletb.2006.07.064},
+url = {https://www.sciencedirect.com/science/article/pii/S0370269306009610},
+author = {Wen-Hui Long and Nguyen {Van Giai} and Jie Meng},
+abstract = {A new relativistic Hartree–Fock approach with density-dependent σ, ω, ρ and π meson–nucleon couplings for finite nuclei and nuclear matter is presented. Good description for finite nuclei and nuclear matter is achieved with a number of adjustable parameters comparable to that of the relativistic mean field approach. With the Fock terms, the contribution of the π-meson is included and the description for the nucleon effective mass and its isospin and energy dependence is improved.}
+}
 
 %PKA1
+@article{WLong:2007,
+title = {Shell structure and \ensuremath{\rho}-tensor correlations in density dependent relativistic Hartree-Fock theory},
+author = {Long, WenHui and Sagawa, Hiroyuki and Giai, Nguyen Van and Meng, Jie},
+journal = {Phys. Rev. C},
+volume = {76},
+issue = {3},
+pages = {034314},
+numpages = {11},
+year = {2007},
+month = {Sep},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.76.034314},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.76.034314}
+}
+
+%PKO2, PKO3
+@article{WLong:2008,
+doi = {10.1209/0295-5075/82/12001},
+url = {https://dx.doi.org/10.1209/0295-5075/82/12001},
+year = {2008},
+month = {mar},
+publisher = {},
+volume = {82},
+number = {1},
+pages = {12001},
+author = {WenHui Long and Hiroyuki Sagawa and Jie Meng and Nguyen Van Giai},
+title = {Evolution of nuclear shell structure due to the pion exchange potential},
+journal = {Europhysics Letters},
+abstract = {The evolution of nuclear shell structure is investigated for the first time within density-dependent relativistic Hartree-Fock theory and the role of π-exchange potential is studied in detail. The energy differences between the neutron orbits {ν1h9/2, ν1i13/2} in the N=82 isotones and between the proton ones {π1g7/2, π1h11/2} in the Z=50 isotopes are extracted as a function of neutron excess N- Z. A kink around Z=58 for the N=82 isotones is found as an effect of pion correlations. It is shown that the inclusion of π-coupling plays a central role to provide substantial isospin dependence of the energy differences. In particular, the tensor part of the π-coupling has an important effect on the characteristic isospin dependence observed in recent experiments.}
+}
+
+@article{SGoriely:2016,
+  title = {Further explorations of Skyrme-Hartree-Fock-Bogoliubov mass formulas. XVI. Inclusion of self-energy effects in pairing},
+  author = {Goriely, S. and Chamel, N. and Pearson, J. M.},
+  journal = {Phys. Rev. C},
+  volume = {93},
+  issue = {3},
+  pages = {034337},
+  numpages = {11},
+  year = {2016},
+  month = {Mar},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevC.93.034337},
+  url = {https://link.aps.org/doi/10.1103/PhysRevC.93.034337}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Meta-model
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@article{JMargueron:2018a,
+title = {Equation of state for dense nucleonic matter from metamodeling. I. Foundational aspects},
+author = {Margueron, J\'er\^ome and Hoffmann Casali, Rudiney and Gulminelli, Francesca},
+journal = {Phys. Rev. C},
+volume = {97},
+issue = {2},
+pages = {025805},
+numpages = {28},
+year = {2018},
+month = {Feb},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.97.025805},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.97.025805}
+}
+
+@article{JMargueron:2018b,
+title = {Equation of state for dense nucleonic matter from metamodeling. II. Predictions for neutron star properties},
+author = {Margueron, J\'er\^ome and Hoffmann Casali, Rudiney and Gulminelli, Francesca},
+journal = {Phys. Rev. C},
+volume = {97},
+issue = {2},
+pages = {025806},
+numpages = {24},
+year = {2018},
+month = {Feb},
+publisher = {American Physical Society},
+doi = {10.1103/PhysRevC.97.025806},
+url = {https://link.aps.org/doi/10.1103/PhysRevC.97.025806}
+}
+
+@ARTICLE{RSomasundaram:2021,
+author = {{Somasundaram}, R. and {Drischler}, C. and {Tews}, I. and {Margueron}, J.},
+title = "{Constraints on the nuclear symmetry energy from asymmetric-matter calculations with chiral N N and 3 N interactions}",
+journal = {\prc},
+keywords = {Nuclear Theory},
+year = 2021,
+month = apr,
+volume = {103},
+number = {4},
+eid = {045803},
+pages = {045803},
+doi = {10.1103/PhysRevC.103.045803},
+archivePrefix = {arXiv},
+eprint = {2009.04737},
+primaryClass = {nucl-th},
+adsurl = {https://ui.adsabs.harvard.edu/abs/2021PhRvC.103d5803S},
+adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
