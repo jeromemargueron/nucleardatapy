@@ -70,10 +70,10 @@ def micro_models_mb(mb):
     '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
     If `mb` == 'QMC': \
     '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM',  \
-    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', \
+    '2014-AFQMC-NM', '2016-QMC-NM', \
     '2018-QMC-NM', '2024-QMC-NM', \
     If `mb` == 'MBPT': \
-    '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
+    '2013-MBPT-NM', '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
     If `mb` == 'NLEFT': \
     '2024-NLEFT-AM', \
     """
@@ -138,7 +138,6 @@ def micro_models_mb(mb):
             "2008-QMC-NM-swave",
             "2010-QMC-NM-AV4",
             "2009-DLQMC-NM",
-            "2013-QMC-NM",
             "2014-AFQMC-NM",
             "2016-QMC-NM",
             "2018-QMC-NM",
@@ -146,6 +145,7 @@ def micro_models_mb(mb):
         ]
     elif mb.lower() == "mbpt":
         models = [
+            "2013-MBPT-NM",
             "2016-MBPT-AM",
             "2019-MBPT-AM-L59",
             "2019-MBPT-AM-L69",
@@ -203,105 +203,6 @@ def micro_models():
         print("Exit micro_models()")
     #
     return models, models_lower
-
-
-def micro_models_old():
-    """
-    Return a list with the name of the models available in this toolkit and \
-    print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
-    '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', \
-    '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
-    '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
-    '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
-    '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2010-MBPT-NM', \
-    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
-    '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
-    '2006-BHF-AM', \
-    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
-    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
-    '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
-    '2024-QMC-NM'
-
-    :return: The list of models.
-    :rtype: list[str].
-    """
-    #
-    if nuda.env.verb:
-        print("\nEnter micro_models_old()")
-    #
-    models = [
-        "1981-VAR-AM-FP",
-        "1998-VAR-AM-APR",
-        "1998-VAR-AM-APR-fit",
-        "2008-QMC-NM-swave",
-        "2010-QMC-NM-AV4",
-        "2009-DLQMC-NM",
-        "2010-MBPT-NM",
-        "2012-AFDMC-NM-RES-1",
-        "2012-AFDMC-NM-RES-2",
-        "2012-AFDMC-NM-RES-3",
-        "2012-AFDMC-NM-RES-4",
-        "2012-AFDMC-NM-RES-5",
-        "2012-AFDMC-NM-RES-6",
-        "2012-AFDMC-NM-RES-7",
-        "2012-AFDMC-NM-FIT-1",
-        "2012-AFDMC-NM-FIT-2",
-        "2012-AFDMC-NM-FIT-3",
-        "2012-AFDMC-NM-FIT-4",
-        "2012-AFDMC-NM-FIT-5",
-        "2012-AFDMC-NM-FIT-6",
-        "2012-AFDMC-NM-FIT-7",
-        "2013-QMC-NM",
-        "2014-AFQMC-NM",
-        "2016-QMC-NM",
-        "2016-MBPT-AM",
-        "2018-QMC-NM",
-        "2019-MBPT-AM-L59",
-        "2019-MBPT-AM-L69",
-        "2020-MBPT-AM",
-        "2022-AFDMC-NM",
-        "2024-NLEFT-AM",
-        "2006-BHF-AM-Av18",
-        "2024-BHF-AM-2BF-Av8p",
-        "2024-BHF-AM-2BF-Av18",
-        "2024-BHF-AM-2BF-BONN",
-        "2024-BHF-AM-2BF-CDBONN",
-        "2024-BHF-AM-2BF-NSC97a",
-        "2024-BHF-AM-2BF-NSC97b",
-        "2024-BHF-AM-2BF-NSC97c",
-        "2024-BHF-AM-2BF-NSC97d",
-        "2024-BHF-AM-2BF-NSC97e",
-        "2024-BHF-AM-2BF-NSC97f",
-        "2024-BHF-AM-2BF-SSCV14",
-        "2024-BHF-AM-23BF-Av8p",
-        "2024-BHF-AM-23BF-Av18",
-        "2024-BHF-AM-23BF-BONN",
-        "2024-BHF-AM-23BF-CDBONN",
-        "2024-BHF-AM-23BF-NSC97a",
-        "2024-BHF-AM-23BF-NSC97b",
-        "2024-BHF-AM-23BF-NSC97c",
-        "2024-BHF-AM-23BF-NSC97d",
-        "2024-BHF-AM-23BF-NSC97e",
-        "2024-BHF-AM-23BF-NSC97f",
-        "2024-BHF-AM-23BF-SSCV14",
-        "2024-QMC-NM",
-    ]
-    #
-    if nuda.env.verb:
-        print("models available in the toolkit:", models)
-    models_lower = [item.lower() for item in models]
-    #
-    if nuda.env.verb:
-        print("Exit micro_models()")
-    #
-    return models, models_lower
-
 
 def micro_models_mb_matter(mb, matter):
     """
@@ -419,7 +320,7 @@ class setupMicro:
     '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', \
     '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', \
     '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', \
-    '2013-QMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
+    '2013-MBPT-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2016-MBPT-AM', \
     '2018-QMC-NM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
     '2020-MBPT-AM', '2022-AFDMC-NM', '2024-NLEFT-AM', \
     '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
@@ -952,19 +853,19 @@ class setupMicro:
             #self.nm_chempot = self.nm_chempot_fit
             self.nm_cs2 = self.nm_cs2_fit
             #
-        elif model.lower() == "2013-qmc-nm":
+        elif model.lower() == "2013-mbpt-nm":
             #
             self.flag_nm = True
             self.flag_sm = False
             self.flag_kf = False
-            self.flag_den = False
+            self.flag_den = True
             #
-            file_in = os.path.join(nuda.param.path_data, "matter/micro/2013-QMC-NM.dat")
+            file_in = os.path.join(nuda.param.path_data, "matter/micro/2013-MBPT-NM.dat")
             if nuda.env.verb:
                 print("Reads file:", file_in)
             self.ref = "I. Tews et al., PRL 110, 032504 (2013)"
             self.note = "write here notes about this EOS."
-            self.label = "QMC-2013"
+            self.label = "MBPT-2013"
             self.marker = "s"
             self.every = 1
             self.linestyle = "solid"

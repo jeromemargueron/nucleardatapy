@@ -19,13 +19,22 @@ def denCC_emp( nsat, Esym, Lsym, emp ):
 
 class setupCC():
     """
-    Instantiate the object with microscopic results choosen \
-    by the toolkit practitioner.
+    Instantiate the object with a full EoS for the crust and the core of neutron stars.
 
-    :param model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
-    :type model: str, optional. 
-    :param kind: chose between 'micro' and 'pheno'.
-    :type kind: str, optional.
+    :param crust_model: Fix the name of model for the crust. Default value: '1998-VAR-AM-APR'.
+    :type crust_model: str, optional. 
+    :param core_model: Fix the name of model. Default value: '1998-VAR-AM-APR'.
+    :type core_model: str, optional. 
+    :param core_param: Fix the name of model. Default value: None.
+    :type core_param: str, optional. 
+    :param core_kind: chose between 'micro' (default) and 'pheno'.
+    :type core_kind: str, optional.
+    :param connect: choose between 'density' in fm-3 (default), 'epsilon' in MeV fm-3 or 'pressure' in MeV fm-3.
+    :type connect: str, optional.
+    :param boundaries: list [ b_down, b_up ] containing the boundaries for the connection.
+    :type boundaries: list, optional.
+    :param emp: choose between different empirical formulae to localise the crust-core transition: None (default) in case of no use of empirical relations, 'simple' for the simple one and 'Steiner' for the empirical relation suggested by A. Steiner. note that if `emp' is taken to be another value that None, this choice will be considered above the boundary limits given in `boundary`.
+    :type emp: str, optional.
 
     **Attributes:**
     """
@@ -139,10 +148,10 @@ class setupCC():
                     eos_pre.append( crust_eos.pre_tot[ind] )
                     eos_cs2.append( crust_eos.cs2_tot[ind] )
                 else:
-                    corx_den.append( den )
-                    corx_eps.append( crust_eos.eps_tot[ind] )
-                    corx_pre.append( crust_eos.pre_tot[ind] )
-                    corx_cs2.append( crust_eos.cs2_tot[ind] )
+                    crux_den.append( den )
+                    crux_eps.append( crust_eos.eps_tot[ind] )
+                    crux_pre.append( crust_eos.pre_tot[ind] )
+                    crux_cs2.append( crust_eos.cs2_tot[ind] )
             for ind,den in enumerate(core_eos.den):
                 if den > b_up:
                     eos_den.append( den )
@@ -150,10 +159,10 @@ class setupCC():
                     eos_pre.append( core_eos.pre_tot[ind] )
                     eos_cs2.append( core_eos.cs2_tot[ind] )
                 else:
-                    crux_den.append( den )
-                    crux_eps.append( core_eos.eps_tot[ind] )
-                    crux_pre.append( core_eos.pre_tot[ind] )
-                    crux_cs2.append( core_eos.cs2_tot[ind] )
+                    corx_den.append( den )
+                    corx_eps.append( core_eos.eps_tot[ind] )
+                    corx_pre.append( core_eos.pre_tot[ind] )
+                    corx_cs2.append( core_eos.cs2_tot[ind] )
             #
         elif connect == 'epsilon':
             #
@@ -169,10 +178,10 @@ class setupCC():
                     eos_pre.append( crust_eos.pre_tot[ind] )
                     eos_cs2.append( crust_eos.cs2_tot[ind] )
                 else:
-                    corx_den.append( crust_eos.den[ind] )
-                    corx_eps.append( eps )
-                    corx_pre.append( crust_eos.pre_tot[ind] )
-                    corx_cs2.append( crust_eos.cs2_tot[ind] )
+                    crux_den.append( crust_eos.den[ind] )
+                    crux_eps.append( eps )
+                    crux_pre.append( crust_eos.pre_tot[ind] )
+                    crux_cs2.append( crust_eos.cs2_tot[ind] )
             for ind,eps in enumerate(core_eos.eps_tot):
                 if eps > b_up:
                     eos_den.append( core_eos.den[ind] )
@@ -180,10 +189,10 @@ class setupCC():
                     eos_pre.append( core_eos.pre_tot[ind] )
                     eos_cs2.append( core_eos.cs2_tot[ind] )
                 else:
-                    crux_den.append( core_eos.den[ind] )
-                    crux_eps.append( eps )
-                    crux_pre.append( core_eos.pre_tot[ind] )
-                    crux_cs2.append( core_eos.cs2_tot[ind] )
+                    corx_den.append( core_eos.den[ind] )
+                    corx_eps.append( eps )
+                    corx_pre.append( core_eos.pre_tot[ind] )
+                    corx_cs2.append( core_eos.cs2_tot[ind] )
             #
         elif connect == 'pressure':
             #
@@ -199,10 +208,10 @@ class setupCC():
                     eos_pre.append( pre )
                     eos_cs2.append( crust_eos.cs2_tot[ind] )
                 else:
-                    corx_den.append( crust_eos.den[ind] )
-                    corx_eps.append( crust_eos.eps_tot[ind] )
-                    corx_pre.append( pre )
-                    corx_cs2.append( crust_eos.cs2_tot[ind] )
+                    crux_den.append( crust_eos.den[ind] )
+                    crux_eps.append( crust_eos.eps_tot[ind] )
+                    crux_pre.append( pre )
+                    crux_cs2.append( crust_eos.cs2_tot[ind] )
             for ind,pre in enumerate(core_eos.pre_tot):
                 if pre > b_up:
                     eos_den.append( core_eos.den[ind] )
@@ -210,10 +219,10 @@ class setupCC():
                     eos_pre.append( pre )
                     eos_cs2.append( core_eos.cs2_tot[ind] )
                 else:
-                    crux_den.append( core_eos.den[ind] )
-                    crux_eps.append( core_eos.eps_tot[ind] )
-                    crux_pre.append( pre )
-                    crux_cs2.append( core_eos.cs2_tot[ind] )
+                    corx_den.append( core_eos.den[ind] )
+                    corx_eps.append( core_eos.eps_tot[ind] )
+                    corx_pre.append( pre )
+                    corx_cs2.append( core_eos.cs2_tot[ind] )
             #
         else:
             print('setupCC.py: Issue with the connection.')
@@ -236,17 +245,8 @@ class setupCC():
         self.corx_pre = np.array( corx_pre )
         self.corx_eps = np.array( corx_eps )
         self.corx_cs2 = np.array( corx_cs2 )
-        #print('CC eos:')
-        #print('densities:',eos_den)
-        #print('eps:',eos_eps)
-        #print('pre:',eos_pre)
-        #print('cs2',eos_cs2)
-        #eos_den = np.array( eos_den, dtype = float )
-        #eos_eps = np.array( eos_eps, dtype = float )
-        #eos_pre = np.array( eos_pre, dtype = float )
-        #eos_cs2 = np.array( eos_cs2, dtype = float )
         #
-        # perform a spline interpolation in log-log scale
+        # perform a simple linear interpolation in log-log scale
         #
         log_den = np.log10( eos_den )
         log_eps = np.log10( eos_eps )

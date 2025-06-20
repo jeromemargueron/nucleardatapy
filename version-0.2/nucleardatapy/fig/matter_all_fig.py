@@ -54,6 +54,9 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
         #
         for model in models:
             #
+            if matter.lower() == 'sm' and 'NM' in model:
+                continue
+            #
             if 'fit' in model: continue
             #
             micro = nuda.matter.setupMicro( model = model )

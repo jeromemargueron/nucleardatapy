@@ -20,7 +20,7 @@ def corr_setupKsatQsat_fig( pname, constraints ):
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"
-    fig.subplots_adjust(left=0.15, bottom=0.12, right=None, top=0.98, wspace=0.3, hspace=0.3)
+    fig.subplots_adjust(left=0.15, bottom=0.12, right=0.95, top=0.98, wspace=0.3, hspace=0.3)
     #
     axs.set_xlabel(r'$K_\mathrm{sat}$ (MeV)',fontsize='14')
     axs.set_ylabel(r'$Q_\mathrm{sat}$ (MeV)',fontsize='14')
@@ -48,7 +48,7 @@ def corr_setupKsatQsat_fig( pname, constraints ):
         #    kk = 0
         #else:
         #    kk = k
-        if k == 3 or k == 4 or k == 5: 
+        if k == 5 or k == 9 or k == 10 or k == 11: 
             lstyle = 'dashed'
         else:
             lstyle = 'solid'
@@ -57,7 +57,7 @@ def corr_setupKsatQsat_fig( pname, constraints ):
         if kq.Ksat_lin is not None:
             axs.plot( kq.Ksat_lin, kq.Qsat_lin, color = nuda.param.col[k], linestyle = lstyle )
         if kq.Ksat_band is not None:
-            axs.fill_between( kq.Ksat_band, kq.Qsat_lo, kq.Qsat_up, label=kq.label, color = nuda.param.col[k], alpha = 0.5 )
+            axs.fill_between( kq.Ksat_band, kq.Qsat_lo, kq.Qsat_up, label=kq.label, color = nuda.param.col[k], alpha = 0.2 )
         #
         if nuda.env.verb: kq.print_outputs( )
     #
