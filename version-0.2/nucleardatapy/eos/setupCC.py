@@ -4,20 +4,27 @@ from scipy.interpolate import CubicSpline
 
 import nucleardatapy as nuda
 
-def denCC_emp( nsat, Esym, Lsym, emp ):
+def denCC_emp( nsat, Esym, Lsym, Ksym, Qsym, emp ):
     varEsym = Esym/30.0
     varLsym = Lsym/70.0
-    if emp == 'simple':
+    den_cc = 0.0
+    pre_cc = 0.0
+    x01 = (0.1-nsat)/(3.0*nsat)
+    if emp == 'Simple':
         den_cc = 0.5*nsat
+    elif emp == 'Ducoin':
+        den_cc = 0.0802 + 0.000323*( Lsym+0.426*Ksym + (Ksym+0.426*Qsym)*x01 )
+        pre_cc = -0.328 + 0.00959 *( Lsym-0.343*Ksym + (Ksym-0.343*Qsym)*x01 )
     elif emp == 'Newton':
         den_cc = (varEsym)*(0.135 - 0.098*varLsym + 0.026*varLsym**2)
+        pre_cc = -0.724 + 0.0157*( Lsym -0.343*Ksym**2 + (1-2*0.343*Qsym)*x01*Ksym )
     elif emp == 'Steiner':
         den_cc = (varEsym)*(0.1327 - 0.0898*varLsym + 0.0228*varLsym**2)
     else:
         print('setupCC, denCC_emp: `emp` is badly defined ',emp)
         print('setupCC, denCC_emp: exit')
         exit()
-    return den_cc # in fm-3
+    return den_cc, pre_cc # in fm-3 and MeV fm-3
 
 class setupCC():
     """
@@ -136,9 +143,11 @@ class setupCC():
                 nsat = crust_eos.nsat
                 Esym = crust_eos.Esym
                 Lsym = crust_eos.Lsym
+                Ksym = crust_eos.Ksym
+                Qsym = crust_eos.Qsym
                 #print('crust NEP:',nsat,Esym,Lsym)
                 # opens a small gap -+20% of the empirical density
-                b_lo = 0.8 * denCC_emp( nsat, Esym, Lsym, emp )
+                b_lo = 0.8 * denCC_emp( nsat, Esym, Lsym, Ksym, Qsym, emp )
                 b_up = 1.2 * b_lo / 0.8
             else:
                 b_lo = boundaries[0]

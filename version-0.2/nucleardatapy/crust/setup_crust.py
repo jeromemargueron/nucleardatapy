@@ -106,6 +106,8 @@ class setupCrust():
             self.nsat = 0.16
             self.Esym = 32.0
             self.Lsym = 50.0
+            self.Ksym = -100.0
+            self.Qsym = 500.0
             #
         elif '2020-mvcd' in model.lower():
             #
@@ -119,6 +121,8 @@ class setupCrust():
                 self.nsat = 0.16
                 self.Esym = 32.0
                 self.Lsym = 50.0
+                self.Ksym = -100.0
+                self.Qsym = 500.0
                 #
             elif model.lower()=='2020-mvcd-d1m':
                 file_in = nuda.param.path_data+'crust/2020-MVCD-D1M.dat'
@@ -127,6 +131,8 @@ class setupCrust():
                 self.nsat = 0.16
                 self.Esym = 32.0
                 self.Lsym = 50.0
+                self.Ksym = -100.0
+                self.Qsym = 500.0
                 #
             elif model.lower()=='2020-mvcd-d1ms':
                 file_in = nuda.param.path_data+'crust/2020-MVCD-D1MS.dat'
@@ -135,6 +141,8 @@ class setupCrust():
                 self.nsat = 0.16
                 self.Esym = 32.0
                 self.Lsym = 50.0
+                self.Ksym = -100.0
+                self.Qsym = 500.0
                 #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'C. Mondal, X. Viñas, M. Centelles, and J.N. De, Phys. Rev. C 102, 015802 (2020).'
@@ -171,6 +179,8 @@ class setupCrust():
                 self.nsat = nep.sat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2018-pcpfddg-bsk24':
                 #
@@ -181,6 +191,8 @@ class setupCrust():
                 self.nsat = nep.sat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2018-pcpfddg-bsk25':
                 #
@@ -191,6 +203,8 @@ class setupCrust():
                 self.nsat = nep.sat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2018-pcpfddg-bsk26':
                 #
@@ -201,6 +215,8 @@ class setupCrust():
                 self.nsat = nep.sat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'Pearson J.M., Chamel N., Potekhin A.Y., Fantina, A.F., Ducoin C., Dutta A.K., Goriely S., MNRS 481, 2994 (2018).'
@@ -249,6 +265,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #                
             elif model.lower()=='2022-gmrs-bsk16':
                 #
@@ -269,6 +287,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-f0':
                 #
@@ -289,6 +309,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-lns5':
                 #
@@ -309,6 +331,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-ratp':
                 #
@@ -329,6 +353,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-sgii':
                 #
@@ -349,6 +375,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-sly5':
                 #
@@ -369,6 +397,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h1':
                 #
@@ -389,6 +419,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h2':
                 #
@@ -409,6 +441,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h3':
                 #
@@ -429,6 +463,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h4':
                 #
@@ -449,6 +485,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h5':
                 #
@@ -469,6 +507,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-h7':
                 #
@@ -489,6 +529,8 @@ class setupCrust():
                 self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
+                self.Ksym = nep.Ksym
+                self.Qsym = nep.Qsym
                 #
             elif model.lower()=='2022-gmrs-dhsl59':
                 #
@@ -508,6 +550,8 @@ class setupCrust():
                 self.nsat = 0.16
                 self.Esym = 32.0
                 self.Lsym = 59.0
+                self.Ksym = -100.0
+                self.Qsym = 500.0
                 #
             elif model.lower()=='2022-gmrs-dhsl69':
                 #
@@ -527,6 +571,8 @@ class setupCrust():
                 self.nsat = 0.16
                 self.Esym = 32.0
                 self.Lsym = 69.0
+                self.Ksym = -100.0
+                self.Qsym = 500.0
                 #
             if nuda.env.verb: print('Reads file:',file_in)
             self.ref = 'G. Grams, J. Margueron, R. Somasundaram, and S. Reddy, EPJA 58, 56 (2022).'
