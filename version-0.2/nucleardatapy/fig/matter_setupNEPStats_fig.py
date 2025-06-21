@@ -86,7 +86,7 @@ def matter_setupNEPStats_fig(pname, models):
         loc="upper left",
         bbox_to_anchor=(0.02, 0.99),
         columnspacing=2,
-        fontsize="8",
+        fontsize="7.5",
         ncol=7,
         frameon=False,
     )

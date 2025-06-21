@@ -33,12 +33,12 @@ def pheno_params( model ):
     :type model: str.
     :return: The list of parametrizations. \
     If `models` == 'Skyrme': 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+    'BSK16', 'BSK17', 'BSK27','BSkG1', 'BSkG2', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
     'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
     'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
     'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. \
     If `models` == 'ESkyrme': 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', \
-    'BSkG1', 'BSkG2', 'BSkG3'. \
+     'BSkG3','BSkG4' . \
     If `models` == 'Fayans': 'SLy4', 'SkM*', 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)', \
     'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',
     'SV-sym28', 'SV-sym32', 'SV-sym34', 'SV-kap00', 'SV-kap20', 'SV-kap60'.
@@ -52,14 +52,14 @@ def pheno_params( model ):
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
-        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
+        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2','F-', \
             'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
             'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
             'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
             'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
             'UNEDF0', 'UNEDF1' ]
     elif model.lower() == 'eskyrme':
-        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
+        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32',  'BSkG3','BSkG4' ]
     elif model.lower() == 'fayans':
         params = [ 'SLy4', 'SkM*', 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)', \
             'SV-min', 'SV-bas', 'SV-K218', 'SV-K226', 'SV-K241', 'SV-mas07', 'SV-mas08', 'SV-mas10',\
@@ -87,13 +87,13 @@ class setupPheno():
     This choice is defined in the variables `model` and `param`.
 
     If `models` == 'Skyrme', `param` can be: 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+    'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2','F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
     'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
     'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
     'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. 
 
     If `models` == 'ESkyrme', `param` can be: 'BSk22', 'BSk24', 'BSk25', \
-    'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3'.
+    'BSk26', 'BSk31', 'BSk32',  'BSkG3','BSkG4' .
 
     If `models` == 'NLRH', `param` can be: 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. 
 

@@ -44,15 +44,15 @@ def matter_setupFFGNuc_EP_fig(
     axs[1, 0].set_ylim([0, 23])
     #
     # axs[0,1].set_ylabel(r'$\Delta/E_F$')
-    axs[0, 1].set_xlim([0.5, 2.0])
-    axs[0, 1].set_ylim([0, 100])
+    #axs[0, 1].set_xlim([0.5, 2.0])
+    #axs[0, 1].set_ylim([0, 100])
     axs[0, 1].tick_params("y", labelleft=False)
     axs[0, 1].tick_params("x", labelbottom=False)
     #
     axs[1, 1].set_xlabel(r"$k_{F}$ (fm$^{-1}$)")
     # axs[1,1].set_ylabel(r'$\Delta$ (MeV)')
-    axs[1, 1].set_xlim([0.5, 2.0])
-    axs[1, 1].set_ylim([0, 23])
+    #axs[1, 1].set_xlim([0.5, 2.0])
+    #axs[1, 1].set_ylim([0, 23])
     axs[1, 1].tick_params("y", labelleft=False)
     #
     for ims, ms in enumerate(mss):

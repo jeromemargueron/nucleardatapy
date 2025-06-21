@@ -18,8 +18,8 @@ def main():
     #
     # list the available models
     #
-    models, models_lower = nuda.matter.nep_models()
-    #models = [ 'Skyrme', 'GSkyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models, models_lower = nuda.matter.nep_models()
+    models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     #
     # plot distribution of NEP
     #

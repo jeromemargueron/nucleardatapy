@@ -16,3 +16,4 @@ __pycache__
 *.pyc
 *.cpython*
 .env
+__pycache__/
