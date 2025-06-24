@@ -43,13 +43,13 @@ chapters:
       - file: notebooks/chapter5_hypernuclei/Tutorial-5.3
       - file: notebooks/chapter5_hypernuclei/Tutorial-5.4
 
-  - file: notebooks/chapter6_eos/tutorial_chap6
+  - file: notebooks/chapter6_crust/tutorial_chap6
     sections:
-      - file: notebooks/chapter6_eos/Tutorial-6.1
+      - file: notebooks/chapter6_crust/Tutorial-6.1
 
-  - file: notebooks/chapter7_crust/tutorial_chap7
+  - file: notebooks/chapter7_eos/tutorial_chap7
     sections:
-      - file: notebooks/chapter7_crust/Tutorial-7.1
+      - file: notebooks/chapter7_eos/Tutorial-7.1
 
   - file: notebooks/chapter8_astro/tutorial_chap8
     sections:

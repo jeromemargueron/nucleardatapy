@@ -11,11 +11,11 @@ authors = [
     {name = "Guilherme Grams"},
     {name = "Rohit Kumar"},
 ]
-description = "A toolkit for nuclear data processing and analysis."
+description = "A toolkit for nuclear data processing and meta-analyses."
 license = {file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
-version = "0.2.1"
+version = "1.0.0"
 dependencies = [
     "numpy",
     "scipy",
@@ -36,5 +36,5 @@ target-version = ['py39']
 
 [project-urls]
 Homepage = "https://github.com/jeromemargueron/nucleardatapy"
-Documentation = "https://nuclear-data-toolkit.readthedocs.io/en/latest/"
+Documentation = "https://nucleardatapy.readthedocs.io/en/latest/"
 Issues = "https://github.com/jeromemargueron/nucleardatapy/issues"

@@ -11,11 +11,17 @@ class CustomInstall(install):
 
 setup(
     name="nucleardatapy",
-    version="0.2.1",
+    version="1.0.0",
     description="A toolkit for nuclear data processing",
-    authors=["Jerome Margueron <marguero@frib.msu.edu>", "Sudhanva Lalit <lalit@frib.msu.edu>", "Mariana Dutra", "Guilherme Grams", "Rohit Kumar"],
-    package_dir={"": "version-0.2"},
-    packages=find_packages(where="version-0.2"),
+    authors=[
+        "Jerome Margueron <marguero@frib.msu.edu>",
+        "Sudhanva Lalit <lalit@frib.msu.edu>",
+        "Mariana Dutra",
+        "Guilherme Grams",
+        "Rohit Kumar",
+    ],
+    package_dir={"": "version-1.0"},
+    packages=find_packages(where="version-1.0"),
     include_package_data=True,
     package_data={"nucleardatapy": ["data/*"]},
     install_requires=["numpy", "scipy", "matplotlib", "pandas", "sphinx"],

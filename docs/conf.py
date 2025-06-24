@@ -24,7 +24,7 @@ copyright = "2024, Jérôme Margueron, IRL NPA, USA"
 author = "Jérôme Margueron, IRL NPA, USA"
 
 # The full version, including alpha/beta/rc tags
-release = "0.2.0"
+release = "1.0.0"
 
 
 # -- General configuration ---------------------------------------------------
