@@ -34,13 +34,13 @@ jobs:
         run: pytest --collect-only version-0.2/tests/
 
       - name: Run tests
-        run: pytest version-0.2/tests/ --verbose
+        run: pytest version-1.0/tests/ --verbose
 
       - name: Upload Version Info
         uses: actions/upload-artifact@v4
         with:
           name: version-info
-          path: version-0.2/__init__.py
+          path: version-1.0/__init__.py
 
       - name: Build Sphinx documentation
         working-directory: docs
