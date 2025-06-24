@@ -31,7 +31,7 @@ jobs:
           pip install -e .  # Install nucleardatapy in editable mode
 
       - name: Check test discovery
-        run: pytest --collect-only version-0.2/tests/
+        run: pytest --collect-only version-1.0/tests/
 
       - name: Run tests
         run: pytest version-1.0/tests/ --verbose
