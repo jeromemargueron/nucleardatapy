@@ -38,7 +38,7 @@ pheno = nuda.matter.setupPheno( model = model, param = param )
 [32m      2[39m param = [33m'[39m[33mSLy5[39m[33m'[39m
 [32m----> [39m[32m3[39m pheno = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupPheno[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m,[49m[43m [49m[43mparam[49m[43m [49m[43m=[49m[43m [49m[43mparam[49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno.py:161[39m, in [36msetupPheno.__init__[39m[34m(self, model, param)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_pheno.py:161[39m, in [36msetupPheno.__init__[39m[34m(self, model, param)[39m
 [32m    159[39m [38;5;66;03m#: Attribute providing additional notes about the data.[39;00m
 [32m    160[39m [38;5;28mself[39m.note = [33m"[39m[33mwrite here notes about this EOS.[39m[33m"[39m
 [32m--> [39m[32m161[39m [38;5;28mself[39m.sm_den, [38;5;28mself[39m.sm_kfn, [38;5;28mself[39m.sm_e2a_int, [38;5;28mself[39m.sm_pre, a, [38;5;28mself[39m.sm_cs2 = [43mnp[49m[43m.[49m[43mloadtxt[49m[43m([49m[43m [49m[43mfile_in1[49m[43m,[49m[43m [49m[43musecols[49m[43m=[49m[43m([49m[32;43m0[39;49m[43m,[49m[32;43m1[39;49m[43m,[49m[32;43m2[39;49m[43m,[49m[32;43m3[39;49m[43m,[49m[32;43m4[39;49m[43m,[49m[32;43m5[39;49m[43m)[49m[43m,[49m[43m [49m[43mcomments[49m[43m=[49m[33;43m'[39;49m[33;43m#[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43munpack[49m[43m [49m[43m=[49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m [49m[43m)[49m
@@ -76,5 +76,5 @@ pheno = nuda.matter.setupPheno( model = model, param = param )
 [32m    528[39m [38;5;28;01melse[39;00m:
 [32m--> [39m[32m529[39m     [38;5;28;01mraise[39;00m [38;5;167;01mFileNotFoundError[39;00m([33mf[39m[33m"[39m[38;5;132;01m{[39;00mpath[38;5;132;01m}[39;00m[33m not found.[39m[33m"[39m)
 
-[31mFileNotFoundError[39m: /home/runner/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/data/matter/pheno/Skyrme/SLy5-SM.dat not found.
+[31mFileNotFoundError[39m: /home/runner/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/data/matter/pheno/Skyrme/SLy5-SM.dat not found.
 

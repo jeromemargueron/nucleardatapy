@@ -41,7 +41,7 @@ setup_KsatQsat: -- Exit the code --
 [32m      1[39m constraint = [33m'[39m[33m2024-DFT-SKY[39m[33m'[39m
 [32m----> [39m[32m2[39m kq = [43mnuda[49m[43m.[49m[43mcorr[49m[43m.[49m[43msetupKsatQsat[49m[43m([49m[43m [49m[43mconstraint[49m[43m [49m[43m=[49m[43m [49m[43mconstraint[49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/corr/setup_KsatQsat.py:62[39m, in [36msetupKsatQsat.__init__[39m[34m(self, constraint)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/corr/setup_KsatQsat.py:62[39m, in [36msetupKsatQsat.__init__[39m[34m(self, constraint)[39m
 [32m     60[39m     [38;5;28mprint[39m([33m'[39m[33msetup_KsatQsat: list of constraints:[39m[33m'[39m,constraints)
 [32m     61[39m     [38;5;28mprint[39m([33m'[39m[33msetup_KsatQsat: -- Exit the code --[39m[33m'[39m)
 [32m---> [39m[32m62[39m     [43mexit[49m()

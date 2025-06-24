@@ -42,7 +42,7 @@ setup_micro_gap: -- Exit the code --
 [32m----> [39m[32m1[39m pheno = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroGap[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
 [32m      2[39m pheno.print_outputs()
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro_gap.py:91[39m, in [36msetupMicroGap.__init__[39m[34m(self, model, matter)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_gap.py:91[39m, in [36msetupMicroGap.__init__[39m[34m(self, model, matter)[39m
 [32m     89[39m     [38;5;28mprint[39m([33m'[39m[33msetup_micro_gap: list of models:[39m[33m'[39m,models)
 [32m     90[39m     [38;5;28mprint[39m([33m'[39m[33msetup_micro_gap: -- Exit the code --[39m[33m'[39m)
 [32m---> [39m[32m91[39m     [43mexit[49m()

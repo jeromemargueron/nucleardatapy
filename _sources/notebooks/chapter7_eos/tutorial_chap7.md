@@ -1,4 +1,4 @@
-# Chapter 6: Equations of State
+# Chapter 7: Equations of State
 
 In this chapter we will talk about equations of state.
 

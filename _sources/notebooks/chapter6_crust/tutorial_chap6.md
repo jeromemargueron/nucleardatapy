@@ -1,4 +1,4 @@
-# Chapter 7: Neutron Star Crusts
+# Chapter 6: Neutron Star Crusts
 
 In this chapter, we will talk about neutron star crusts.
 

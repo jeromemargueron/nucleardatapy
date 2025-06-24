@@ -38,7 +38,7 @@ for model in models:
 [32m----> [39m[32m2[39m     crust = [43mnuda[49m[43m.[49m[43mcrust[49m[43m.[49m[43msetupCrust[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
 [32m      3[39m     [38;5;66;03m#crust.print_outputs( )[39;00m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/crust/setup_crust.py:179[39m, in [36msetupCrust.__init__[39m[34m(self, model)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/crust/setup_crust.py:179[39m, in [36msetupCrust.__init__[39m[34m(self, model)[39m
 [32m    177[39m [38;5;66;03m# NEP[39;00m
 [32m    178[39m nep = nuda.matter.setupNEP( model = [33m'[39m[33mESkyrme[39m[33m'[39m, param = [33m'[39m[33mBSk22[39m[33m'[39m )
 [32m--> [39m[32m179[39m [38;5;28mself[39m.nsat = [43mnep[49m[43m.[49m[43msat[49m

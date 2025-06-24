@@ -219,12 +219,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.4.html">5.4. Experimental hyper-nuclear chart</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter6_eos/tutorial_chap6.html">6. Chapter 6: Equations of State</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter6_eos/Tutorial-6.1.html">6.1. Equation of state (eos)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter6_crust/tutorial_chap6.html">6. Chapter 6: Neutron Star Crusts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter6_crust/Tutorial-6.1.html">6.1. Neutron Star Crust</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter7_crust/tutorial_chap7.html">7. Chapter 7: Neutron Star Crusts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter7_crust/Tutorial-7.1.html">7.1. Neutron Star Crust</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter7_eos/tutorial_chap7.html">7. Chapter 7: Equations of State</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter7_eos/Tutorial-7.1.html">7.1. Equation of state (eos)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter8_astro/tutorial_chap8.html">8. Chapter 8: Astrophysical Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -593,7 +593,7 @@ eos outside band? False
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;SLy5&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
 
-<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_pheno.py:161,</span> in <span class="ni">setupPheno.__init__</span><span class="nt">(self, model, param)</span>
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_pheno.py:161,</span> in <span class="ni">setupPheno.__init__</span><span class="nt">(self, model, param)</span>
 <span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="c1">#: Attribute providing additional notes about the data.</span>
 <span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="s2">&quot;write here notes about this EOS.&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">161</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_den</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_kfn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_e2a_int</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_pre</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sm_cs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span> <span class="n">file_in1</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">)</span>
@@ -631,7 +631,7 @@ eos outside band? False
 <span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">529</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
 
-<span class="ne">FileNotFoundError</span>: /home/runner/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/data/matter/pheno/Skyrme/SLy5-SM.dat not found.
+<span class="ne">FileNotFoundError</span>: /home/runner/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/data/matter/pheno/Skyrme/SLy5-SM.dat not found.
 </pre></div>
 </div>
 </div>

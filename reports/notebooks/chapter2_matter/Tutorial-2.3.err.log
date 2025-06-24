@@ -42,7 +42,7 @@ setup_micro: -- Exit the code --
 [32m      1[39m model = [33m'[39m[33m2013-QMC-NM[39m[33m'[39m
 [32m----> [39m[32m2[39m mic = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicro[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-0.2/nucleardatapy/matter/setup_micro.py:380[39m, in [36msetupMicro.__init__[39m[34m(self, model, var1, var2)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro.py:380[39m, in [36msetupMicro.__init__[39m[34m(self, model, var1, var2)[39m
 [32m    378[39m     [38;5;28mprint[39m([33m"[39m[33msetup_micro: list of models:[39m[33m"[39m, models)
 [32m    379[39m     [38;5;28mprint[39m([33m"[39m[33msetup_micro: -- Exit the code --[39m[33m"[39m)
 [32m--> [39m[32m380[39m     [43mexit[49m()
