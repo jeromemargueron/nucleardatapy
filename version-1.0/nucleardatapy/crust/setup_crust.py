@@ -176,7 +176,7 @@ class setupCrust():
                 self.label = 'PCPFDDG-BSK22-2018'
                 # NEP
                 nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk22' )
-                self.nsat = nep.sat
+                self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
                 self.Ksym = nep.Ksym
@@ -193,7 +193,7 @@ class setupCrust():
                 self.label = 'PCPFDDG-BSK24-2018'
                 # NEP
                 nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk24' )
-                self.nsat = nep.sat
+                self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
                 self.Ksym = nep.Ksym
@@ -210,7 +210,7 @@ class setupCrust():
                 self.label = 'PCPFDDG-BSK25-2018'
                 # NEP
                 nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk25' )
-                self.nsat = nep.sat
+                self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
                 self.Ksym = nep.Ksym
@@ -227,7 +227,7 @@ class setupCrust():
                 self.label = 'PCPFDDG-BSK26-2018'
                 # NEP
                 nep = nuda.matter.setupNEP( model = 'ESkyrme', param = 'BSk26' )
-                self.nsat = nep.sat
+                self.nsat = nep.nsat
                 self.Esym = nep.Esym
                 self.Lsym = nep.Lsym
                 self.Ksym = nep.Ksym
@@ -659,7 +659,7 @@ class setupCrust():
        if nuda.env.verb: print("Enter print_outputs()")
        #
        print("- Print output:")
-       print("   modcrust:",self.modcrust)
+       print("   model:",self.model)
        print("   ref:     ",self.ref)
        print("   label:   ",self.label)
        print("   note:    ",self.note)
