@@ -26,8 +26,8 @@ def astro_setupMR_fig( pname, sources, sources_av ):
     #
     axs.set_xlabel(r'$R$ (km)',fontsize='14')
     axs.set_ylabel(r'M (M$_\odot$)',fontsize='14')
-    axs.set_xlim([10.5, 16.5])
-    axs.set_ylim([1.15, 2.2])
+    axs.set_xlim([9.2, 16.5])
+    axs.set_ylim([0.58, 2.2])
     #
     isource = 1
     xlabel = []
@@ -75,11 +75,15 @@ def astro_setupMR_fig( pname, sources, sources_av ):
     for source in sources:
         print('source:',source)
         if source.lower() == 'j0030+0451':
-            axs.text(13.3,1.25,'J0030+0451')
+            axs.text(13.3,1.55,'J0030+0451')
         elif source.lower() == 'j0740+6620':
             axs.text(13,1.95,'J0740+6620')
         elif source.lower() == 'j0437-4715':
-            axs.text(10.7,1.5,'J0437-4715')
+            axs.text(11.0,1.48,'J0437-4715')
+        elif source.lower() == 'j0614-3329':
+            axs.text(9.8,1.55,'J0614-3329')
+        elif source.lower() == 'j1731-347':
+            axs.text(10.5,0.8,'J1731-347')
     #
     #axs.legend(loc='upper left',fontsize='8', ncol=2)
     axs.legend(loc='lower center',bbox_to_anchor=(0.48,1.01),columnspacing=2,fontsize='8',ncol=4,frameon=False)

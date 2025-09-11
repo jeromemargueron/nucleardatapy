@@ -12,7 +12,8 @@ def main():
     sources, sources_lower = nuda.astro.mr_sources( )
     print('Complete list of available sources:', sources )
     #
-    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
+    #sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
+    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715', 'J0614-3329', 'J1731-347' ]
     #
     print('sources considered:',sources)
     #
@@ -31,6 +32,7 @@ def main():
     #
     # Average
     #
+    #print('')
     print('averages:')
     #
     sources_av = [ 'J0030+0451', 'J0740+6620' ]

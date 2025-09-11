@@ -764,10 +764,13 @@ version-1.0/nucleardatapy/data/LandauParameters/pheno/2016-BSk32.dat
 version-1.0/nucleardatapy/data/LandauParameters/pheno/2021-BSkG1.dat
 version-1.0/nucleardatapy/data/LandauParameters/pheno/2022-BSkG2.dat
 version-1.0/nucleardatapy/data/LandauParameters/pheno/2023-BSkG3.dat
+version-1.0/nucleardatapy/data/astro/.DS_Store
 version-1.0/nucleardatapy/data/astro/GW/GW170817.dat
 version-1.0/nucleardatapy/data/astro/GW/GW190425.dat
+version-1.0/nucleardatapy/data/astro/HESS/J1731-347.dat
 version-1.0/nucleardatapy/data/astro/NICER/J0030+0451.dat
 version-1.0/nucleardatapy/data/astro/NICER/J0437-4715.dat
+version-1.0/nucleardatapy/data/astro/NICER/J0614-3329.dat
 version-1.0/nucleardatapy/data/astro/NICER/J0740+6620.dat
 version-1.0/nucleardatapy/data/astro/masses/GW170817.dat
 version-1.0/nucleardatapy/data/astro/masses/GW190814.dat

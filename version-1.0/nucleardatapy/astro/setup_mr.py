@@ -13,7 +13,7 @@ def mr_sources():
     #
     if nuda.env.verb: print("\nEnter astro_mr()")
     #
-    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715' ]
+    sources = [ 'J0030+0451', 'J0740+6620', 'J0437-4715', 'J0614-3329', 'J1731-347' ]
     #
     #print('sources available in the toolkit:',sources)
     sources_lower = [ item.lower() for item in sources ]
@@ -41,6 +41,10 @@ def mr_obss( source ):
     elif source.lower()=='j0740+6620':
         obss = [ 1, 2, 3 ]
     elif source.lower()=='j0437-4715':
+        obss = [ 1 ]
+    elif source.lower()=='j0614-3329':
+        obss = [ 1 ]
+    elif source.lower()=='j1731-347':
         obss = [ 1 ]
     #
     #print('Observations available in the toolkit:',obss)
@@ -96,7 +100,7 @@ class setupMR():
             file_in = nuda.param.path_data+'astro/NICER/J0030+0451.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, aet al., ApJL 887, L24 (2019).'
+                self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, aet al., ApJL 887, L24 (2019)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0030 Miller 2019'
                 #: Attribute providing additional notes about the observation.
@@ -104,7 +108,7 @@ class setupMR():
                 self.marker = 'o'
             elif obs==2:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='T.E. Riley, A.L. Watts, S. Bogdanov, P.S. Ray, et al., ApJ 887, L21 (2019).'
+                self.ref='T.E. Riley, A.L. Watts, S. Bogdanov, P.S. Ray, et al., ApJ 887, L21 (2019)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0030 Riley 2019'
                 #: Attribute providing additional notes about the observation.
@@ -112,7 +116,7 @@ class setupMR():
                 self.marker = 's'
             elif obs==3:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024).'
+                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0030 Vinciguerra 2024a'
                 #: Attribute providing additional notes about the observation.
@@ -120,7 +124,7 @@ class setupMR():
                 self.marker = 'x'
             elif obs==4:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024).'
+                self.ref='S. Vinciguerra, T. Salmi, A.L. Watts, D. Choudhury, et al., ApJ 961, 62 (2024)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0030 Vinciguerra 2024b'
                 #: Attribute providing additional notes about the observation.
@@ -130,7 +134,7 @@ class setupMR():
             file_in = nuda.param.path_data+'astro/NICER/J0740+6620.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, S. Bogdanov, et al., ApJL 918, L28 (2021).'
+                self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, S. Bogdanov, et al., ApJL 918, L28 (2021)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0740 Miller 2021'
                 #: Attribute providing additional notes about the observation.
@@ -138,7 +142,7 @@ class setupMR():
                 self.marker = 'o'
             elif obs==2:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='T.E. Riley, A.L. Watts, P.S. Ray, S. Bogdanov, et al., ApJL 918, L27 (2021).'
+                self.ref='T.E. Riley, A.L. Watts, P.S. Ray, S. Bogdanov, et al., ApJL 918, L27 (2021)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0740 Riley 2021'
                 #: Attribute providing additional notes about the observation.
@@ -146,7 +150,7 @@ class setupMR():
                 self.marker = 's'
             elif obs==3:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='T. Salmi, D. Choudhury, Y. Kini, T.E. Riley et al., ApJ 974, 294 (2024).'
+                self.ref='T. Salmi, D. Choudhury, Y. Kini, T.E. Riley et al., ApJ 974, 294 (2024)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0740 Salmi 2024'
                 #: Attribute providing additional notes about the observation.
@@ -156,12 +160,32 @@ class setupMR():
             file_in = nuda.param.path_data+'astro/NICER/J0437-4715.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
-                self.ref='D. Choudhury, T. Salmi, S. Vinciguerra, T.E. Riley, et al., ApJL 971, L20 (2024).'
+                self.ref='D. Choudhury, T. Salmi, S. Vinciguerra, T.E. Riley, et al., ApJL 971, L20 (2024)'
                 #: Attribute providing the label the data is references for figures.
                 self.label = 'J0437 Choudhury 2024'
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this observation."
                 self.marker = 'o'
+        elif source.lower()=='j0614-3329':
+            file_in = nuda.param.path_data+'astro/NICER/J0614-3329.dat'
+            if obs==1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='L. Mauviard, S. Guillot, T. Salmi, D. Choudhury, et al., arXiv:2506.14883'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0614 Mauviard 2025'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 'o'
+        elif source.lower()=='j1731-347':
+            file_in = nuda.param.path_data+'astro/HESS/J1731-347.dat'
+            if obs==1:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='V. Doroshenko, V. Suleimanov, G. P\"uhlhofer and A. Santangelo, Nature Astronomy volume 6, pages 1444–1451 (2022)'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J1731 HESS 2022'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 's'
         #
         #: Attribute the observational mass of the source.
         self.mass = None
@@ -184,24 +208,49 @@ class setupMR():
             for line in file:
                 if '#' in line: continue
                 ele = line.split(',')
-                #print('ele[0]:',ele[0],' obs:',obs,' ele[:]:',ele[:])
+                #print('ele[0]:',ele[0],' obs:',obs)
+                #print('ele[:]:',ele[:])
                 if int(ele[0]) == obs:
-                    self.rad = float(ele[1])
-                    self.rad_sig_up = float(ele[2])
-                    self.rad_sig_lo = float(ele[3])
-                    self.mass = float(ele[4])
-                    self.mass_sig_up = float(ele[5])
-                    self.mass_sig_lo = float(ele[6])
-                    #print('ele[7]:',ele[7],' len:',len(ele[7]))
-                    if len(ele[7])>1:
+                    try:
+                        self.rad = float(ele[1])
+                        self.rad_sig_up = float(ele[2])
+                        self.rad_sig_lo = float(ele[3])
+                    except ValueError:
+                        self.rad = 0.0
+                        self.rad_sig_up = 0.0
+                        self.rad_sig_lo = 0.0
+                    try:
+                        self.mass = float(ele[4])
+                        self.mass_sig_up = float(ele[5])
+                        self.mass_sig_lo = float(ele[6])
+                    except ValueError:
+                        self.mass = 0.0
+                        self.mass_sig_up = 0.0
+                        self.mass_sig_lo = 0.0
+                    #print('ele[7]:',ele[7],isinstance(ele[7].replace(' ',''), (int, float)),' len:',len(ele[7]))
+                    #print('ele[10]:',ele[10],isinstance(ele[10].replace(' ',''), (int, float)))
+                    try:
                         self.comp = float(ele[7])
                         self.comp_sig_up = float(ele[8])
                         self.comp_sig_lo = float(ele[9])
-                    else:
+                    except ValueError:
                         self.comp = 0.0
-                        self.comp_sig_up = 1.0
-                        self.comp_sig_lo = 1.0
-                    self.latexCite = ele[10].replace('\n','').replace(' ','')
+                        self.comp_sig_up = 0.0
+                        self.comp_sig_lo = 0.0
+                    try:
+                        self.spin = float(ele[10])
+                    except ValueError:
+                        self.spin = 0.0
+#                    if len(ele[7])>1:
+#                        self.comp = float(ele[7])
+#                        self.comp_sig_up = float(ele[8])
+#                        self.comp_sig_lo = float(ele[9])
+#                    else:
+#                        self.comp = 0.0
+#                        self.comp_sig_up = 1.0
+#                        self.comp_sig_lo = 1.0
+                    self.latexCite = ele[11].replace('\n','').replace(' ','')
+                    #print('outputs:',self.rad,self.mass,self.comp,self.spin,self.latexCite)
         #
         # compute compactness
         #
@@ -318,8 +367,8 @@ class setupMRAverage():
         # construct the distribution of observations in ay
         ar = np.linspace(rmin,rmax,300); ar=np.array( ar )
         am = np.linspace(mmin,mmax,300); am=np.array( am )
-        print('cmax:',cmax)
-        print('cmin:',cmin)
+        #print('cmax:',cmax)
+        #print('cmin:',cmin)
         ac = np.linspace(cmin,cmax,300); ac=np.array( ac )
         #ac = 0.5 * nuda.cst.rshsol_si / 1.e3 * am / ar
         ayr = np.zeros(300); ayr=np.array( ayr )
@@ -341,12 +390,36 @@ class setupMRAverage():
         stdr = sum ( ayr*ar**2 )
         stdm = sum ( aym*am**2 )
         stdc = sum ( ayc*ac**2 )
-        self.rad_cen = cenr / nor
-        self.mass_cen = cenm / nom
-        self.comp_cen = cenc / noc
-        self.rad_sig_std = round( math.sqrt( stdr/nor - self.rad_cen**2 ), 3 )
-        self.mass_sig_std = round( math.sqrt( stdm/nom - self.mass_cen**2 ), 3 )
-        self.comp_sig_std = round( math.sqrt( stdc/noc - self.comp_cen**2 ), 3 )
+        try:
+            if nor != 0.0:            
+                self.rad_cen = cenr / nor
+                self.rad_sig_std = round( math.sqrt( stdr/nor - self.rad_cen**2 ), 3 )
+            else:
+                self.rad_cen = 0.0
+                self.rad_sig_std = 0.0
+        except ZeroDivisionError:
+            self.rad_cen = 0.0
+            self.rad_sig_std = 0.0
+        try:
+            if nom != 0.0:
+                self.mass_cen = cenm / nom
+                self.mass_sig_std = round( math.sqrt( stdm/nom - self.mass_cen**2 ), 3 )
+            else:
+                self.mass_cen = 0.0
+                self.mass_sig_std = 0.0
+        except ZeroDivisionError:
+            self.mass_cen = 0.0
+            self.mass_sig_std = 0.0
+        try:
+            if noc != 0.0:
+                self.comp_cen = cenc / noc
+                self.comp_sig_std = round( math.sqrt( stdc/noc - self.comp_cen**2 ), 3 )
+            else:
+                self.comp_cen = 0.0
+                self.comp_sig_std = 0.0
+        except ZeroDivisionError:
+            self.comp_cen = 0.0
+            self.comp_sig_std = 0.0
         self.rad_cen = round( self.rad_cen, 3)
         self.mass_cen = round( self.mass_cen, 3)
         self.comp_cen = round( self.comp_cen, 3)
@@ -397,11 +470,20 @@ def gauss( ax, cent, sig_up, sig_lo ):
     gauss = []
     for x in ax:
         if x < cent: 
-            z = ( x - cent ) / sig_lo
+            if sig_lo != 0.0:
+                z = ( x - cent ) / sig_lo
+            else:
+                z= x * 0.0
             norm = sig_lo * fac
         else:
-            z = ( x - cent ) / sig_up
+            if sig_up != 0.0:
+                z = ( x - cent ) / sig_up
+            else:
+                z= x * 0.0
             norm = sig_up * fac
-        gauss.append( math.exp( -0.5*z**2 ) / norm )
+        if norm != 0.0:
+            gauss.append( math.exp( -0.5*z**2 ) / norm )
+        else:
+            gauss.append( 0.0 ) 
     return gauss
 
