@@ -25,31 +25,31 @@ build:
         # Check nucleardatapy import using a Here Document
         echo "Attempting to import nucleardatapy before Sphinx build:"
         cat << EOF > check_nucleardatapy_import.py
-import sys
-try:
-    import nucleardatapy
-    print('nucleardatapy import successful')
-    sys.exit(0)
-except ImportError:
-    print('nucleardatapy import failed: Module not found')
-    sys.exit(1)
-EOF
-        python check_nucleardatapy_import.py
-        rm check_nucleardatapy_import.py
+        import sys
+        try:
+            import nucleardatapy
+            print('nucleardatapy import successful')
+            sys.exit(0)
+        except ImportError:
+            print('nucleardatapy import failed: Module not found')
+            sys.exit(1)
+        EOF
+                python check_nucleardatapy_import.py
+                rm check_nucleardatapy_import.py
 
 
-        # Check matplotlib import using a Here Document
-        echo "Attempting to import matplotlib before Sphinx build:"
-        cat << EOF > check_matplotlib_import.py
-import sys
-try:
-    import matplotlib
-    print('matplotlib import successful')
-    sys.exit(0)
-except ImportError:
-    print('matplotlib import failed: Module not found')
-    sys.exit(1)
-EOF
+                # Check matplotlib import using a Here Document
+                echo "Attempting to import matplotlib before Sphinx build:"
+                cat << EOF > check_matplotlib_import.py
+        import sys
+        try:
+            import matplotlib
+            print('matplotlib import successful')
+            sys.exit(0)
+        except ImportError:
+            print('matplotlib import failed: Module not found')
+            sys.exit(1)
+        EOF
         python check_matplotlib_import.py
         rm check_matplotlib_import.py
 
