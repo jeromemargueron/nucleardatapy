@@ -13,6 +13,8 @@ def corr_setupEsymLsym_fig( pname, constraints, origine ):
     :type pname: str.
     :param constraints: list of constraints to run on.
     :type constraints: array of str.
+    :param origine: can be 'finiteNuclei' or 'neutronStar'.
+    :type origine: str.
 
     """
     #

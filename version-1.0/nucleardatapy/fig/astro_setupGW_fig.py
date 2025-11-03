@@ -5,7 +5,7 @@ import nucleardatapy as nuda
 
 def astro_setupGW_fig( pname, sources ):
     """
-    Plot Tidal deformabilities for each sources.\
+    Plot Tidal deformabilities as a function of sources.\
     The plot is 1x1 with:\
     [0]: Tidal deformabilities versus sources.
 

@@ -5,14 +5,18 @@ import nucleardatapy as nuda
 
 def corr_setupEsymDen_fig( pname, constraints, Ksym, origine ):
     """
-    Plot upper boundaries for the tov mass.\
+    Plot Esym or Esym,2 (depending on `origine`) as a function of the density.\
     The plot is 1x1 with:\
     [0]: upper boundary for the mass versus sources.
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param sources: array of sources.
-    :type sources: array of str.
+    :param constraints: array of constraints to run on.
+    :type constraints: array of str.
+    :param Ksym: Value (in MeV) of Ksym.
+    :type Ksym: real number.
+    :param origine: can be 'finiteNuclei' or 'neutronStar'.
+    :type origine: str.
 
     """
     #
