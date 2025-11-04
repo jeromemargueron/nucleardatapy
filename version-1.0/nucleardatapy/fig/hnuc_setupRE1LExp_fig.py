@@ -4,8 +4,16 @@ import matplotlib.pyplot as plt
 import nucleardatapy as nuda
 
 def hnuc_setupRE1LExp_fig( pname, tables ):
-    #
-    # plot
+    """
+    Plot the removal energies as a function of A^{-2/3}.\\
+    The plot is 1x1 with:\\
+    [0]: nuclear chart.\\
+
+    :param pname: name of the figure (\*.png)
+    :type pname: str.
+    :param tables: table.
+    :type tables: str.
+    """
     #
     fig, axs = plt.subplots(1,1)
     fig.tight_layout() # Or equivalently,  "plt.tight_layout()"

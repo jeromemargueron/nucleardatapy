@@ -8,15 +8,18 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
     Plot the EoS with crust and core parts.\
     The plot is 1x1.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param band: object instantiated on the reference band.
+    :type band: object.
+    :param crust_model: the name of the crust model.
+    :type crust_model: str.
+    :param core_kind: the kind of the core model ('micro' or 'pheno').
+    :type core_kind: str.
+    :param core_model: the name of the core model.
+    :type core_model: str.
+    :param core_param: the parameters of the core model.
+    :type core_param: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -91,18 +94,27 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
 
 def eos_setupCC_checkpre_fig( pname, band, crust_model, core_kind, core_model, core_param, connect, boundaries, emp ):
     """
-    Plot the EoS with crust and core parts.\
+    Check the EoS with crust and core parts.\
     The plot is 1x1.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param band: object instantiated on the reference band.
+    :type band: object.
+    :param crust_model: the name of the crust model.
+    :type crust_model: str.
+    :param core_kind: the kind of the core model ('micro' or 'pheno').
+    :type core_kind: str.
+    :param core_model: the name of the core model.
+    :type core_model: str.
+    :param core_param: the parameters of the core model.
+    :type core_param: str.
+    :param connect: The thermodynamic quantity employed to connect the crust and the core. Can be: 'density', 'epsilon' (energy density) or 'pressure'.
+    :type connect: str.
+    :param boundaries: array with lower and upper boundaries to consider. Connected to the variable `connect`. For instance boundaries = [ 0.016, 0.16 ] for 'density' (in units of fm-3), boundaries = [ 15.0, 150.0 ] for 'epsilon' (in units of MeV fm-3), or boundaries = [ 0.1, 1.0 ] for pressure (in units of MeV fm-3).
+    :type boundaries: array of real.
+    :param emp: way to connect the crust and the core. Can be: 'None', 'simple', 'Steiner'.
+    :type emp: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -166,18 +178,27 @@ def eos_setupCC_checkpre_fig( pname, band, crust_model, core_kind, core_model, c
 
 def eos_setupCC_checkeos_fig( pname, band, crust_model, core_kind, core_model, core_param, connect, boundaries, emp ):
     """
-    Plot the EoS with crust and core parts.\
+    Check the EoS with crust and core parts.\
     The plot is 1x1.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param band: object instantiated on the reference band.
+    :type band: object.
+    :param crust_model: the name of the crust model.
+    :type crust_model: str.
+    :param core_kind: the kind of the core model ('micro' or 'pheno').
+    :type core_kind: str.
+    :param core_model: the name of the core model.
+    :type core_model: str.
+    :param core_param: the parameters of the core model.
+    :type core_param: str.
+    :param connect: The thermodynamic quantity employed to connect the crust and the core. Can be: 'density', 'epsilon' (energy density) or 'pressure'.
+    :type connect: str.
+    :param boundaries: array with lower and upper boundaries to consider. Connected to the variable `connect`. For instance boundaries = [ 0.016, 0.16 ] for 'density' (in units of fm-3), boundaries = [ 15.0, 150.0 ] for 'epsilon' (in units of MeV fm-3), or boundaries = [ 0.1, 1.0 ] for pressure (in units of MeV fm-3).
+    :type boundaries: array of real.
+    :param emp: way to connect the crust and the core. Can be: 'None', 'simple', 'Steiner'.
+    :type emp: str.
     """
     #
     print(f'Plot name: {pname}')

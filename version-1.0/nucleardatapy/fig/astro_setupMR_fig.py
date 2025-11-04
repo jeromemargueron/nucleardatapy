@@ -5,8 +5,8 @@ import nucleardatapy as nuda
 
 def astro_setupMR_fig( pname, sources, sources_av ):
     """
-    Plot M-R constraints from observation measurements.\
-    The plot is 1x1 with:\
+    Plot M-R constraints from observation measurements.\\
+    The plot is 1x1 with:\\
     [0]: Masses versus radii.
 
     :param pname: name of the figure (\*.png)

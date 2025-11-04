@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def matter_setupMicro_e2a_fig( pname, mb, models, band ):
+def matter_setupMicro_e2a_fig( pname, mb, models, band, matter ):
     """
     Plot nucleonic energy per particle E/A in matter.\
     The plot is 2x2 with:\
@@ -36,10 +36,10 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band ):
     axs[1,1].tick_params('y', labelleft=False)
     axs[0,0].tick_params('x', labelbottom=False)
     axs[0,1].tick_params('x', labelbottom=False)
-    axs[0,0].set_xlim([0, 0.33])
-    axs[1,0].set_xlim([0, 0.33])
-    axs[0,1].set_xlim([0, 1.9])
-    axs[1,1].set_xlim([0, 1.9])
+    axs[0,0].set_xlim([0,0.33]) #([0.06, 0.28]) #[0, 0.33]
+    axs[1,0].set_xlim([0,0.33]) #([0.06, 0.28]) #[0, 0.33]
+    axs[0,1].set_xlim([0,1.9]) #([0.8, 1.6]) #[0, 1.9]
+    axs[1,1].set_xlim([0,1.9]) #([0.8, 1.6]) #[0, 1.9]
     if matter.lower() == 'nm':
         axs[0,0].set_ylabel(r'$E_\text{int,NM}/A$ (MeV)', fontsize = '14' )
         axs[1,0].set_ylabel(r'$E_\text{int,NM}/E_\text{int,NM}^\text{NRFFG}$', fontsize = '14' )
@@ -51,10 +51,10 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band ):
     elif matter.lower() == 'sm':
         axs[0,0].set_ylabel(r'$E_\text{int,SM}/A$ (MeV)', fontsize = '14' )
         axs[1,0].set_ylabel(r'$E_\text{int,SM}/E_\text{int,SM}^\text{NRFFG}$', fontsize = '14' )
-        axs[0,0].set_ylim([-20, 10])
-        axs[0,1].set_ylim([-20, 10])
-        axs[1,0].set_ylim([-1.2, 0.5])
-        axs[1,1].set_ylim([-1.2, 0.5])
+        axs[0,0].set_ylim([-20,10]) #([-18, -8]) #[-20, 10]
+        axs[0,1].set_ylim([-20,10]) #([-18, -8]) #[-20, 10]
+        axs[1,0].set_ylim([-1.2, 0.5]) #([-1.0, -0.5]) #[-1.2, 0.5]
+        axs[1,1].set_ylim([-1.2, 0.5]) #([-1.0, -0.5]) #[-1.2, 0.5]
         delta = 0.0
     #
     for model in models:
@@ -166,7 +166,7 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band ):
         plt.savefig(pname, dpi=300)
         plt.close()
 
-def matter_setupMicro_pre_fig( pname, mb, models, band ):
+def matter_setupMicro_pre_fig( pname, mb, models, band, matter ):
     """
     Plot nucleonic pressure in matter.\
     The plot is 2x2 with:\
@@ -295,7 +295,7 @@ def matter_setupMicro_pre_fig( pname, mb, models, band ):
         plt.savefig(pname, dpi=300)
         plt.close()
 
-def matter_setupMicro_cs2_fig( pname, mb, models, band ):
+def matter_setupMicro_cs2_fig( pname, mb, models, band, matter ):
     """
     Plot nucleonic pressure in matter.\
     The plot is 1x2 with:\

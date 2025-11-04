@@ -5,11 +5,11 @@ import nucleardatapy as nuda
 
 def astro_setupMasses_fig( pname, sources ):
     """
-    Plot Masses for massives neutron stars as a function of sources.\
-    The plot is 1x1 with:\
+    Plot Masses for massives neutron stars as a function of sources.\\
+    The plot is 1x1 with:\\
     [0]: masses versus sources.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param sources: array of sources.
     :type sources: array of str.

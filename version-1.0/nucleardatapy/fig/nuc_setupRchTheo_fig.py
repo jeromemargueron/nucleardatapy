@@ -5,19 +5,16 @@ import nucleardatapy as nuda
 
 def nuc_setupRchTheo_fig( pname, tables, table_exp ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot the theoretical charge radii from the tables and compare to the experimental value.\\
+    The plot is 1x1 with:\\
+    [0]: Rch as a function of N. \\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: theoretical tables.
+    :type tables: array of str.
+    :param table_exp: experimental table.
+    :type table_exp: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -85,19 +82,16 @@ def nuc_setupRchTheo_fig( pname, tables, table_exp ):
 
 def nuc_setupRchTheo_3Zref_fig( pname, tables, table_exp ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot the theoretical charge radii from the tables and compare to the experimental value.\\
+    The plot is 1x1 with:\\
+    [0]: Rch as a function of N. \\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: theoretical tables.
+    :type tables: array of str.
+    :param table_exp: experimental table.
+    :type table_exp: str.
     """
     #
     print(f'Plot name: {pname}')

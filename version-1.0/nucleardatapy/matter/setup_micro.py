@@ -1369,27 +1369,28 @@ class setupMicro:
             self.flag_sm = True
             self.flag_kf = False
             self.flag_den = True
+            self.model = model
             #
             if model.lower() == "2020-scgf-am-n3lo-414":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-SM-N3LO-414.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-SM-N3LO-414-TD.dat"
                 )
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-NM-N3LO-414.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-NM-N3LO-414-TD.dat"
                 )
             elif model.lower() == "2020-scgf-am-n3lo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-SM-N3LO-450.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-SM-N3LO-450-TD.dat"
                 )
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-NM-N3LO-450.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-NM-N3LO-450-TD.dat"
                 )
             elif model.lower() == "2020-scgf-am-n3lo-500":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-SM-N3LO-500.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-SM-N3LO-500-TD.dat"
                 )
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2020-NM-N3LO-500.dat"
+                    nuda.param.path_data, "matter/micro/2020-SCGF-NM-N3LO-500-TD.dat"
                 )
             if nuda.env.verb:
                 print("Reads file1:", file_in1)
@@ -1398,7 +1399,7 @@ class setupMicro:
             self.ref = "A. Rios, Front. Phys. 8 387 (2020)"
             self.note = ""
             self.label = "SCGF-2020"
-            self.marker = "o"
+            self.marker = "+"
             self.linestyle = "solid"
             self.every = 1
             self.e_err = False
@@ -1411,16 +1412,10 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1,
                 usecols=(0, 3, 6),
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_e2a_int = self.sm_e2a_n3lo
-            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.sm_e2a_err = self.sm_e2a_n2lo_err
-            self.sm_eps = self.sm_e2a * self.sm_den
-            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_den,
                 self.nm_e2a_n3lo,
@@ -1428,16 +1423,21 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in2,
                 usecols=(0, 3, 6),
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a_int = self.nm_e2a_n3lo
+            #
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.nm_e2a_err = self.nm_e2a_n2lo_err
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
             self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif model.lower() == "2022-afdmc-nm":
             #
@@ -2057,47 +2057,47 @@ class setupMicro:
             #
             if model.lower() == "2024-mbpt-am-dn2lo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO450.dat"
                 )
                 cols_sm=(0,3)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO450.dat"
                 )
                 cols_nm=(0,2)
             elif model.lower() == "2024-mbpt-am-dn2lo-500":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO500.dat"
                 )
                 cols_sm=(0,3)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO500.dat"
                 )
                 cols_nm=(0,2)
             elif model.lower() == "2024-mbpt-am-dn2logo-394":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo394.dat"
                 )
                 cols_sm=(0,3)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo394.dat"
                 )
                 cols_nm=(0,2)
             elif model.lower() == "2024-mbpt-am-dn2logo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo450.dat"
                 )
                 cols_sm=(0,3)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo450.dat"
                 )
                 cols_nm=(0,3)
             elif model.lower() == "2024-mbpt-am-n2losat":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-NNLOsat.dat"
                 )
                 cols_sm=(0,3)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-NNLOsat.dat"
                 )
                 cols_nm=(0,3)
             if nuda.env.verb:
@@ -2105,9 +2105,10 @@ class setupMicro:
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
             self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = ""
+            self.note = "We consider MBPT(3) when possible, otherwise MBPT(2)."
             self.label = "MBPT-2024"
-            self.marker = "o"
+            self.model = model
+            self.marker = "x"
             self.linestyle = "solid"
             self.every = 1
             self.e_err = False
@@ -2119,32 +2120,31 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1,
                 usecols=cols_sm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_e2a_int = self.sm_e2a_n2lo
-            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.sm_e2a_err = self.sm_e2a_n2lo_err
-            self.sm_eps = self.sm_e2a * self.sm_den
-            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_den,
                 self.nm_e2a_n2lo,
             ) = np.loadtxt(
                 file_in2,
                 usecols=cols_nm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a_int = self.nm_e2a_n2lo
+            #
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.nm_e2a_err = self.nm_e2a_n2lo_err
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
             self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif "2024-scgf-am" in model.lower():
             #
@@ -2155,47 +2155,47 @@ class setupMicro:
             #
             if model.lower() == "2024-scgf-am-dn2lo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO450.dat"
                 )
                 cols_sm=(0,7)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO450.dat"
                 )
                 cols_nm=(0,5)
             elif model.lower() == "2024-scgf-am-dn2lo-500":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO500.dat"
                 )
                 cols_sm=(0,7)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO500.dat"
                 )
                 cols_nm=(0,5)
             elif model.lower() == "2024-scgf-am-dn2logo-394":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo394.dat"
                 )
                 cols_sm=(0,7)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo394.dat"
                 )
                 cols_nm=(0,5)
             elif model.lower() == "2024-scgf-am-dn2logo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo450.dat"
                 )
                 cols_sm=(0,7)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo450.dat"
                 )
                 cols_nm=(0,7)
             elif model.lower() == "2024-scgf-am-n2losat":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-NNLOsat.dat"
                 )
                 cols_sm=(0,7)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-NNLOsat.dat"
                 )
                 cols_nm=(0,7)
             if nuda.env.verb:
@@ -2203,10 +2203,11 @@ class setupMicro:
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
             self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = ""
-            self.label = "MBPT-2024"
-            self.marker = "o"
+            self.note = "We consider ADC(3)-D when possible, otherwise ADC(3)"
+            self.label = "SCGF-2024"
+            self.marker = "x"
             self.linestyle = "solid"
+            self.model = model
             self.every = 1
             self.e_err = False
             self.p_err = False
@@ -2217,32 +2218,31 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1,
                 usecols=cols_sm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_e2a_int = self.sm_e2a_n2lo
-            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.sm_e2a_err = self.sm_e2a_n2lo_err
-            self.sm_eps = self.sm_e2a * self.sm_den
-            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_den,
                 self.nm_e2a_n2lo,
             ) = np.loadtxt(
                 file_in2,
                 usecols=cols_nm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a_int = self.nm_e2a_n2lo
+            #
             self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.nm_e2a_err = self.nm_e2a_n2lo_err
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
             self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
             self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             #
         elif "2024-cc-am" in model.lower():
             #
@@ -2253,58 +2253,60 @@ class setupMicro:
             #
             if model.lower() == "2024-cc-am-dn2lo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO450.dat"
                 )
                 cols_sm=(0,5)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO450.dat"
                 )
                 cols_nm=(0,4)
             elif model.lower() == "2024-cc-am-dn2lo-500":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLO500.dat"
                 )
                 cols_sm=(0,5)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLO500.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLO500.dat"
                 )
                 cols_nm=(0,4)
             elif model.lower() == "2024-cc-am-dn2logo-394":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo394.dat"
                 )
                 cols_sm=(0,5)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo394.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo394.dat"
                 )
-                cols_nm=(0,7)
+                cols_nm=(0,4)
             elif model.lower() == "2024-cc-am-dn2logo-450":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-DeltaNNLOgo450.dat"
                 )
-                cols_sm=(0,7)
+                cols_sm=(0,5)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-DeltaNNLOgo450.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-DeltaNNLOgo450.dat"
                 )
-                cols_nm=(0,7)
+                cols_nm=(0,5)
             elif model.lower() == "2024-cc-am-n2losat":
                 file_in1 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-SM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-SM-NNLOsat.dat"
                 )
-                cols_sm=(0,7)
+                cols_sm=(0,5)
                 file_in2 = os.path.join(
-                    nuda.param.path_data, "matter/micro/2024-NM-NNLOsat.dat"
+                    nuda.param.path_data, "matter/micro/2024-ABI-NM-NNLOsat.dat"
                 )
-                cols_nm=(0,7)
+                cols_nm=(0,5)
             if nuda.env.verb:
                 print("Reads file1:", file_in1)
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
             self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = ""
+            self.note = "we consider CCD(T)"
             self.label = "CC-2024"
-            self.marker = "o"
+            self.marker = "x"
             self.linestyle = "solid"
+            self.model = model
+#            self.label = model
             self.every = 1
             self.e_err = False
             self.p_err = False
@@ -2315,36 +2317,32 @@ class setupMicro:
             ) = np.loadtxt(
                 file_in1,
                 usecols=cols_sm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.sm_kfn = nuda.kf_n(nuda.cst.half * self.sm_den)
             self.sm_e2a_int = self.sm_e2a_n2lo
-            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
-            self.sm_e2a_err = self.sm_e2a_n2lo_err
-            self.sm_eps = self.sm_e2a * self.sm_den
-            self.sm_eps_err = self.sm_e2a_err * self.sm_den
             (
                 self.nm_den,
                 self.nm_e2a_n2lo,
             ) = np.loadtxt(
                 file_in2,
                 usecols=cols_nm,
-                delimiter=",",
                 comments="#",
                 unpack=True,
             )
-            self.nm_kfn = nuda.kf_n(self.nm_den)
             self.nm_e2a_int = self.nm_e2a_n2lo
-            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
-            self.nm_e2a_err = self.nm_e2a_n2lo_err
-            self.nm_eps = self.nm_e2a * self.nm_den
-            self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
-
-        # "2020-SCGF-AM-N3LO-414", "2020-SCGF-AM-N3LO-450", "2020-SCGF-AM-N3LO-500", "2024-SCGF-AM-DN2LO-450",\
-
+            self.nm_e2a = self.nm_rmass + self.nm_e2a_int
+            self.sm_e2a = self.sm_rmass + self.sm_e2a_int
+            self.nm_eps = self.nm_e2a * self.nm_den
+            self.sm_eps = self.sm_e2a * self.sm_den
+            self.nm_kfn = nuda.kf_n( self.nm_den )
+            self.sm_kfn = nuda.kf_n( nuda.cst.half * self.sm_den )
+            self.nm_e2a_err = np.abs( uncertainty_stat(self.nm_den, err="MBPT") * self.nm_e2a_int )
+            self.sm_e2a_err = np.abs( uncertainty_stat(self.sm_den, err="MBPT") * self.sm_e2a_int )
+            self.nm_eps_err = self.nm_e2a_err * self.nm_den
+            self.sm_eps_err = self.sm_e2a_err * self.sm_den
+            #
         #
         # ==============================
         # END OF
@@ -2403,6 +2401,8 @@ class setupMicro:
                 y = np.insert(self.nm_e2a_int, 0, 0.0)
                 cs_nm_e2a = CubicSpline(x, y)
                 self.nm_pre = np.array(self.nm_den**2 * cs_nm_e2a(self.nm_den, 1))
+                if "2020-scgf-am" in model.lower():
+                    self.nm_pre = self.nm_pre_n3lo
                 y_err = np.insert(self.nm_e2a_err, 0, 0.0)
                 cs_nm_e2a_err = CubicSpline(x, y_err)
                 self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err(self.nm_den, 1)
@@ -2460,6 +2460,8 @@ class setupMicro:
                 y = np.insert(self.sm_e2a_int, 0, 0.0)
                 cs_sm_e2a = CubicSpline(x, y)
                 self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a(self.sm_den, 1) )
+                if "2020-scgf-am" in model.lower():
+                    self.sm_pre = self.sm_pre_n3lo
                 y_err = np.insert(self.sm_e2a_err, 0, 0.0)
                 cs_sm_e2a_err = CubicSpline(x, y_err)
                 self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err(self.sm_den, 1)
@@ -2485,7 +2487,7 @@ class setupMicro:
         # ==============================
         #
         self.den_unit = "fm$^{-3}$"
-        self.kf_unit = "fm$^{-1}$"
+        self.kf_unit  = "fm$^{-1}$"
         self.e2a_unit = "MeV"
         self.eps_unit = "MeV fm$^{-3}$"
         self.pre_unit = "MeV fm$^{-3}$"

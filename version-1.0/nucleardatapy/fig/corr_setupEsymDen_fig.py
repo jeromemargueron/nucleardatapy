@@ -5,11 +5,11 @@ import nucleardatapy as nuda
 
 def corr_setupEsymDen_fig( pname, constraints, Ksym, origine ):
     """
-    Plot Esym or Esym,2 (depending on `origine`) as a function of the density.\
-    The plot is 1x1 with:\
+    Plot Esym or Esym,2 (depending on `origine`) as a function of the density.\\
+    The plot is 1x1 with:\\
     [0]: upper boundary for the mass versus sources.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param constraints: array of constraints to run on.
     :type constraints: array of str.

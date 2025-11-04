@@ -5,19 +5,18 @@ import nucleardatapy as nuda
 
 def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -116,19 +115,18 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon contribution to the pressure in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -226,19 +224,18 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -336,19 +333,18 @@ def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the lepton contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -449,19 +445,18 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the lepton contribution to the pressure in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -561,19 +556,18 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the lepton contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -674,19 +668,18 @@ def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the total (=nucleon+lepton) contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -785,19 +778,18 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the total (=nucleon+lepton) contribution to the pressure in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -909,19 +901,18 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the total (=nucleon+lepton) contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -1019,6 +1010,20 @@ def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
     """
+    Plot the equation of state in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
+
+    :param pname: name of the figure (\*.png)
+    :type pname: str.
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
+
+
     Plot nuclear chart (N versus Z).\
     The plot is 1x2 with:\
     [0]: nuclear chart.
@@ -1143,19 +1148,18 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the proton fraction (=xp) in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -1256,19 +1260,18 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the electron fraction (=xe) in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -1368,19 +1371,18 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the muon fraction (=xmu) in asymmetric matter at beta equilibrium.\\
+    The plot is 2x1 with:\\
+    [0]: microscopic models.  [1]: phenomenologic models.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')

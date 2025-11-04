@@ -5,19 +5,20 @@ import nucleardatapy as nuda
 
 def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the energy per nucleon in asymmetric matter.\\
+    The plot is 2x3 with:\\
+    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
+    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
+    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -174,19 +175,20 @@ def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the pressure in asymmetric matter.\\
+    The plot is 2x3 with:\\
+    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
+    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
+    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -343,19 +345,20 @@ def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the square of the sound speed in asymmetric matter.\\
+    The plot is 2x3 with:\\
+    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
+    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
+    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param micro_mbs: array with names of many-body framework for microscopic interactions.
+    :type micro_mbs: array of str.
+    :param pheno_models: array of interaction names for phenomenologic interactions.
+    :type pheno_models: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f'Plot name: {pname}')

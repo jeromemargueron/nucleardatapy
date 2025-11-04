@@ -24,16 +24,16 @@ def main():
     for i,table in enumerate( tables ):
         #
         version = versions[i]
-        years = range(1880,2020,20)
+        years = range(1880,2060,20)
         print('years[0]:',years[0])
         print('years[1]:',years[1])
         print('len(years):',len(years))
         for ind,year in enumerate(years):
             #
-            year_min=years[ind]
-            year_max=years[ind+1]-1
             if ind >= len(years)-1:
                 break
+            year_min=years[ind]
+            year_max=years[ind+1]-1
             print('year:',year,ind)
             pname = 'figs/plot_nuc_setupBEExp_chart_year_'+table+'_'+version+'_y'+str(year)+'.png'
             print(f'Plot name: {pname}')

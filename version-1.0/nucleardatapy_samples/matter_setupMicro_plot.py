@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # list the different matter cases investigated
     #
@@ -29,12 +31,12 @@ def main():
         #mbs = [ 'QMC' ]
         #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
         if matter.lower() == 'nm':
-            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
+            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC', 'SCGF', 'CC' ]
         elif matter.lower() == 'sm':
-            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT' ]
+            mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'SCGF', 'CC' ]
         print('mbs:',mbs)
         #
-        # fix the uncertainty band in SM and NM
+        # fix the reference band in SM and NM
         #
         if matter.lower() == 'nm':
             bmodels = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
@@ -70,14 +72,14 @@ def main():
                 print('AFDMC')
                 print('models:',models)
             #
-            pname = 'figs/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
-            nuda.fig.matter_setupMicro_e2a_fig( pname, mb, models, band )
+            pname = folder+'/plot_matter_setupMicro_e2a_'+matter+'_'+mb+'.png'
+            nuda.fig.matter_setupMicro_e2a_fig( pname, mb, models, band, matter )
             #
-            pname = 'figs/plot_matter_setupMicro_pre_'+matter+'_'+mb+'.png'
-            nuda.fig.matter_setupMicro_pre_fig( pname, mb, models, band )
+            pname = folder+'/plot_matter_setupMicro_pre_'+matter+'_'+mb+'.png'
+            nuda.fig.matter_setupMicro_pre_fig( pname, mb, models, band, matter )
             #
-            pname = 'figs/plot_matter_setupMicro_cs2_'+matter+'_'+mb+'.png'
-            nuda.fig.matter_setupMicro_cs2_fig( pname, mb, models, band )
+            pname = folder+'/plot_matter_setupMicro_cs2_'+matter+'_'+mb+'.png'
+            nuda.fig.matter_setupMicro_cs2_fig( pname, mb, models, band, matter )
             #
     #
     print(50*'-')

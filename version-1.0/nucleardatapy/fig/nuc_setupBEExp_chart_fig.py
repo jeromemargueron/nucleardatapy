@@ -17,7 +17,6 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     :type version: str.
     :param theo_tables: object instantiated on the reference band.
     :type theo_tables: object.
-
     """
     #
     print(f'Plot name: {pname}')
@@ -132,19 +131,18 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
 
 def nuc_setupBEExp_chart_year_fig( pname, sYear, year_min, year_max ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot nuclear chart (N versus Z) for a range of discovery years.\\
+    The plot is 1x1 with:\\
+    [0]: nuclear chart.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param sYear: select nuclei for given discovery years.
+    :type sYear: object.
+    :param year_min: lower range of the discovery years.
+    :type year_min: real.
+    :param year_max: upper range of the discovery years.
+    :type year_max: real.
     """
     #
     print(f'Plot name: {pname}')
@@ -204,18 +202,18 @@ def nuc_setupBEExp_chart_year_fig( pname, sYear, year_min, year_max ):
 
 def nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot nuclear chart (N versus Z).\\
+    The plot is 1x1 with:\\
+    [0]: nuclear chart.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param table: table.
     :type table: str.
     :param version: version of table to run on.
     :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
+    :param Rch_table: table for Rch.
+    :type Rch_table: str.
 
     """
     #
@@ -242,9 +240,10 @@ def nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table ):
     #
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
-    iso = ustbl.isotopes( Zmin=1, Zmax = 95 )
-    axs.scatter( iso.isotopes_Nmin, iso.isotopes_Z, marker='s', s = 3, linewidth=0, color = 'green', label='AME boundaries' )
-    axs.scatter( iso.isotopes_Nmax, iso.isotopes_Z, marker='s', s = 3, linewidth=0, color = 'green' )
+    for Zref in range(1,95):
+        iso = ustbl.isotopes( Zref = Zref )
+        axs.scatter( iso.itp_nucNmin, iso.itp_nucZ, marker='s', s = 3, linewidth=0, color = 'green' )
+        axs.scatter( iso.itp_nucNmax, iso.itp_nucZ, marker='s', s = 3, linewidth=0, color = 'green' )
     #
     # stable nuclei:
     #
@@ -266,8 +265,8 @@ def nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table ):
     #
     # plot stable_fit
     #
-    N, Z = nuda.stable_fit( Zmin = 1, Zmax = 120 )
-    axs.plot( N, Z, linestyle='dashed', linewidth=1, color='k')
+    #N, Z = nuda.stable_fit_N( Zmin = 1, Zmax = 120 )
+    #axs.plot( N, Z, linestyle='dashed', linewidth=1, color='k')
     #
     # plot shells for isotopes and isotones
     #

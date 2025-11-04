@@ -5,19 +5,18 @@ import nucleardatapy as nuda
 
 def nuc_setupBETheo_diff_fig( pname, tables, table_ref = '1995-DZ', Zref = 50 ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot the energy difference between theoretical mass tables with respect to `table_ref`.\\
+    The plot is 1x1 with:\\
+    [0]: show the energy difference as a function of N.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
+    :param table_ref: reference table.
+    :type table_ref: str.
+    :param Zref: Reference value for Z.
+    :type Zref: integer.
     """
     #
     print(f'Plot name: {pname}')
@@ -68,19 +67,18 @@ def nuc_setupBETheo_diff_fig( pname, tables, table_ref = '1995-DZ', Zref = 50 ):
 
 def nuc_setupBETheo_S2n_fig( pname, tables, Zref = 50 ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot S2n from the data extracted from the theoretical mass table.\\
+    The plot is 1x1 with:\\
+    [0]: show S2n as a function of N.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
+    :param versions: versions of the tables.
+    :type versions: array of str.
+    :param Zref: Reference value for Z.
+    :type Zref: integer.
     """
     #
     print(f'Plot name: {pname}')
@@ -136,19 +134,18 @@ def nuc_setupBETheo_S2n_fig( pname, tables, Zref = 50 ):
 
 def nuc_setupBETheo_S2p_fig( pname, tables, Nref = 50 ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot S2p from the data extracted from the theoretical mass table.\\
+    The plot is 1x1 with:\\
+    [0]: show S2p as a function of Z.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
+    :param versions: versions of the tables.
+    :type versions: array of str.
+    :param Nref: Reference value for N.
+    :type Nref: integer.
     """
     #
     print(f'Plot name: {pname}')
@@ -201,19 +198,18 @@ def nuc_setupBETheo_S2p_fig( pname, tables, Nref = 50 ):
 
 def nuc_setupBETheo_D3n_fig( pname, tables, Zref = 50 ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot D3n (3-point formula for the odd-even mass staggering) from the data extracted from the theoretical mass table.\\
+    The plot is 1x1 with:\\
+    [0]: show D3n as a function of N.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
+    :param versions: versions of the tables.
+    :type versions: array of str.
+    :param Zref: Reference value for Z.
+    :type Zref: integer.
     """
     #
     print(f'Plot name: {pname}')
@@ -272,19 +268,18 @@ def nuc_setupBETheo_D3n_fig( pname, tables, Zref = 50 ):
 
 def nuc_setupBETheo_D3p_fig( pname, tables, Nref = 50 ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot D3p (3-point formula for the odd-even mass staggering) from the data extracted from the theoretical mass table.\\
+    The plot is 1x1 with:\\
+    [0]: show D3p as a function of Z.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
+    :param versions: versions of the tables.
+    :type versions: array of str.
+    :param Nref: Reference value for N.
+    :type Nref: integer.
     """
     #
     print(f'Plot name: {pname}')

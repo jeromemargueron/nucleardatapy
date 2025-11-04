@@ -5,12 +5,12 @@ import nucleardatapy as nuda
 
 def crust_setupCrust_fig( pname, models ):
     """
-    Plot crust predictions for the models given in `models`.\
-    The plot is 1x2 with:\
-    [0]: internal energy per nucleon as a function of the density n.
-    [1]: Z as a function of the density n.
+    Plot crust predictions for the models given in `models`.\\
+    The plot is 1x2 with:\\
+    [0]: internal energy per nucleon as a function of the density n.\\
+    [1]: Z as a function of the density n.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param models: list of different models.
     :type models: str.

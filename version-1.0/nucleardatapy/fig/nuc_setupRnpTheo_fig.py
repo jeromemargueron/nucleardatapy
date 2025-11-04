@@ -7,8 +7,8 @@ import nucleardatapy as nuda
 
 # Dictionary to map sources to LaTeX names
 SOURCE_LABELS_LATEX = {
-    "48Ca": r"$^{48}\mathrm{Ca}$",
-    "208Pb": r"$^{208}\mathrm{Pb}$"
+    "48Ca": r"$^{48}$Ca",
+    "208Pb": r"$^{208}$Pb"
 }
 
 # Directory containing the model data tables
@@ -42,6 +42,16 @@ def read_model_data(directory, source):
     return model_data
 
 def nuc_setupRnpTheo_fig(pname, source):
+    """
+    Plot the theoretical np radii (neutron skin).\\
+    The plot is 1x1 with:\\
+    [0]: Rch as a function of N. \\
+
+    :param pname: name of the figure (\*.png)
+    :type pname: str.
+    :param source: experimental table.
+    :type source: str.
+    """
     print(f'Plot name: {pname}')
     print(f'Using source: {source}')
 

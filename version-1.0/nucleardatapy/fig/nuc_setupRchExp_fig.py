@@ -5,19 +5,14 @@ import nucleardatapy as nuda
 
 def nuc_setupRchExp_fig( pname, tables ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot the experimental charge radii from the tables.\\
+    The plot is 1x1 with:\\
+    [0]: Rch as a function of N. \\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
     """
     #
     print(f'Plot name: {pname}')
@@ -53,19 +48,14 @@ def nuc_setupRchExp_fig( pname, tables ):
 
 def nuc_setupRchExp_3Zref_fig( pname, tables ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
-    [0]: nuclear chart.
+    Plot the experimental charge radii from the tables.\\
+    The plot is 1x1 with:\\
+    [0]: Rch as a function of N. \\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param tables: tables.
+    :type tables: array of str.
     """
     #
     print(f'Plot name: {pname}')

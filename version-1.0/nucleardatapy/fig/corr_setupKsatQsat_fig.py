@@ -5,11 +5,11 @@ import nucleardatapy as nuda
 
 def corr_setupKsatQsat_fig( pname, constraints ):
     """
-    Plot the correlation between Ksat and Qsat.\
-    The plot is 1x1 with:\
+    Plot the correlation between Ksat and Qsat.\\
+    The plot is 1x1 with:\\
     [0]: Ksat - Qsat correlation plot
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param constraints: list of constraints to run on.
     :type constraints: array of str.
