@@ -4,7 +4,7 @@
 matter.setupFFG
 ================
 
-.. currentmodule:: nucleardatapy.mattersetupffg
+.. currentmodule:: nucleardatapy.matter.setup_ffg
 
 .. Don't include inherited members to keep the doc short
 .. automodule:: nucleardatapy.matter.setup_ffg
