@@ -12,7 +12,7 @@ corr.setupKsatQsat
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/corr_setupKsatQsat_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_corr_setupKsatQsat.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_corr_setupKsatQsat.png
 	:width: 70 %
 	:alt: map to buried treasure
 

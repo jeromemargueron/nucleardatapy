@@ -11,7 +11,7 @@ Hyper-Nuclei
    
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/hnuc_setupChart_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_hnuc_setupChart.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_hnuc_setupChart.png
 	:width: 70%
 	:alt: map to buried treasure
 

@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "nucleardatapy"
-copyright = "2024, Jérôme Margueron, IRL NPA, USA"
+copyright = "2025, Jérôme Margueron, IRL NPA, USA"
 author = "Jérôme Margueron, IRL NPA, USA"
 
 # The full version, including alpha/beta/rc tags

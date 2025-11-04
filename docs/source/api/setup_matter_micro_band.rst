@@ -12,19 +12,19 @@ matter.setupMicroBand
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupMicro_band_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_NM.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_NM.png
 	:width: 70%
 	:alt: map to buried treasure
 
 	Uncertainty band in NM obtained from the analysis of different predictions: MBPT-2016, QMC-2016 and MBPT-2020.
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_SM.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_SM.png
 	:width: 70%
 	:alt: map to buried treasure
 
 	Uncertainty band in SM obtained from the analysis of different predictions: MBPT-2016 and MBPT-2020.
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_Esym.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupMicro_Band_Esym.png
 	:width: 70%
 	:alt: map to buried treasure
 

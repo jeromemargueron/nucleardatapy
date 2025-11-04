@@ -46,6 +46,7 @@ Complement
    source/api/eos
    source/api/crust
    source/api/astro
+   source/api/plot
    
 Indices and tables
 ------------------

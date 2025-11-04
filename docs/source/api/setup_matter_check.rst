@@ -12,7 +12,7 @@ matter.setupCheck
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/matter_setupCheck_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_matter_setupCheck_NM_QMC.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupCheck_NM_QMC.png
 	:width: 70 %
 	:alt: map to buried treasure
 

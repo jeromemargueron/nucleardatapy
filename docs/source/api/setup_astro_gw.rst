@@ -12,7 +12,7 @@ astro.setupGW
 
 Here is a figure which is produced with the Python sample: /nucleardatapy_sample/astro_setupGW_plot.py
 
-.. figure:: ../../../version-0.2/nucleardatapy_samples/figs/plot_astro_setupGW.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_astro_setupGW.png
 	:width: 70 %
 	:alt: map to buried treasure
 

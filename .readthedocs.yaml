@@ -4,11 +4,6 @@
 # Required
 version: 2
 
-# Set the OS, Python version, and other tools you might need
-# ... other parts of the file ...
-
-# ... other parts of the file ...
-
 build:
   os: ubuntu-24.04
   tools:
