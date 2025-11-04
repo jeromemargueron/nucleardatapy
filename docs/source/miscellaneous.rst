@@ -1,6 +1,6 @@
 
-Miscelaneous
-============
+Miscellaneous
+=============
 
 .. _Contributing:
 

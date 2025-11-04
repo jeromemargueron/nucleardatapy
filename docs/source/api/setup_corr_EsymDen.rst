@@ -1,8 +1,8 @@
 
 
-==============
+=================
 corr.setupEsymDen
-==============
+=================
 
 .. currentmodule:: nucleardatapy.corr.setupEsymDen
 

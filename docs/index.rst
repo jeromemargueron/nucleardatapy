@@ -30,7 +30,7 @@ Contents
 
    source/usage
    source/api
-   source/miscelaneous
+   source/miscellaneous
 
 Complement
 ----------

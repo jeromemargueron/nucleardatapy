@@ -1,5 +1,5 @@
-Plots
-=====
+nucleardatapy_samples
+=====================
 
 .. toctree::
    :maxdepth: 4
@@ -90,4 +90,5 @@ Plots
    nuc_setupRnpExp_plot
    nuc_setupRnpExp_script
    nuc_setupRnpTheo_plot
+   nuc_setupRnpTheo_plot_old
    nuc_setupRnpTheo_script
