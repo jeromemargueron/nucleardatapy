@@ -9,12 +9,12 @@ def astro_setupMR_fig( pname, sources, sources_av ):
     The plot is 1x1 with:\
     [0]: Masses versus radii.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param sources: array of sources.
     :type sources: array of str.
-    :param sources_av: .
-    :type sources_av: .
+    :param sources_av: array of averaged sources.
+    :type sources_av: array of str.
 
     """
     #

@@ -4,6 +4,7 @@ import numpy as np
 import nucleardatapy as nuda
 
 def main():
+    """Sample script to plot gravitational wave sources."""
     #
     print(50*'-')
     print("Enter astro_setupGW_plot.py:")

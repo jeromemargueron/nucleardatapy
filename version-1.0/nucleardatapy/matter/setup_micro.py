@@ -2343,7 +2343,7 @@ class setupMicro:
             self.nm_eps_err = self.nm_e2a_err * self.nm_den
             #
 
-    "2020-SCGF-AM-N3LO-414", "2020-SCGF-AM-N3LO-450", "2020-SCGF-AM-N3LO-500", "2024-SCGF-AM-DN2LO-450",\
+        # "2020-SCGF-AM-N3LO-414", "2020-SCGF-AM-N3LO-450", "2020-SCGF-AM-N3LO-500", "2024-SCGF-AM-DN2LO-450",\
 
         #
         # ==============================

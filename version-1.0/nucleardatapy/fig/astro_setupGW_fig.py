@@ -9,7 +9,7 @@ def astro_setupGW_fig( pname, sources ):
     The plot is 1x1 with:\
     [0]: Tidal deformabilities versus sources.
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param sources: array of sources names.
     :type sources: array of str.
