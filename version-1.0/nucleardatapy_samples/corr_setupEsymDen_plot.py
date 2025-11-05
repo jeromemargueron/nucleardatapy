@@ -9,7 +9,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     constraints, constraints_lower = nuda.corr.EsymLsym_constraints()
     constraints.remove('2013-NS'); constraints.remove('2017-UG')
@@ -21,7 +23,7 @@ def main():
     #
     for Ksym in Ksyms:
         #
-        pname = 'figs/plot_corr_setupEsym2Den_'+str(int(Ksym))+'.png'
+        pname = folder+'/plot_corr_setupEsym2Den_'+str(int(Ksym))+'.png'
         #
         nuda.fig.corr_setupEsymDen_fig( pname, constraints, Ksym, origine='finiteNuclei' )
     #

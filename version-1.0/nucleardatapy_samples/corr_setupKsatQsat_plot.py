@@ -16,7 +16,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #constraints = [ '1991-Pearson', 'EDF-SKY', 'EDF-ESKY', 'EDF-DDRH', \
     #           'EDF-NLRH', 'EDF-DDRHF', 'EDF-Gogny' ]
@@ -25,7 +27,7 @@ def main():
     #           'EDF-xEFT' ]
     constraints, constraints_lower = nuda.corr.KsatQsat_constraints()
     #
-    pname = 'figs/plot_corr_setupKsatQsat.png'
+    pname = folder+'/plot_corr_setupKsatQsat.png'
     nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
     #
     print(50*'-')

@@ -9,7 +9,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     # 
     # ===============================
     # Neutron Matter (NM)
@@ -19,7 +21,7 @@ def main():
     #
     models, models_lower, models_all, models_all_lower = nuda.matter.micro_effmass_models( matter = 'NM' )
     #
-    pname = 'figs/plot_matter_setupMicro_effmass_NM.png'
+    pname = folder+'/plot_matter_setupMicro_effmass_NM.png'
     #
     nuda.fig.matter_setupMicro_effmass_fig( pname, models, matter = 'NM' )
     #
@@ -27,7 +29,7 @@ def main():
     #
     models, models_lower, models_all, models_all_lower = nuda.matter.micro_effmass_models( matter = 'SM' )
     #
-    pname = 'figs/plot_matter_setupMicro_effmass_SM.png'
+    pname = folder+'/plot_matter_setupMicro_effmass_SM.png'
     #
     nuda.fig.matter_setupMicro_effmass_fig( pname, models, matter = 'SM' )
     #
@@ -35,7 +37,7 @@ def main():
     #
     models, models_lower, models_all, models_all_lower = nuda.matter.micro_effmass_models( matter = 'AM' )
     #
-    pname = 'figs/plot_matter_setupMicro_effmass_AM.png'
+    pname = folder+'/plot_matter_setupMicro_effmass_AM.png'
     #
     nuda.fig.matter_setupMicro_effmass_fig( pname, models, matter = 'AM' )
     #

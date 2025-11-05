@@ -9,17 +9,19 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
     #tables = [ '2018-ISGMR-GARG-LATEX', '2022-ISGMR-average' ]
     #
     source = '48Ca'
-    pname = 'figs/plot_nuc_setupRnpExp_source'+source+'.png'
+    pname = folder+'/plot_nuc_setupRnpExp_source'+source+'.png'
     nuda.fig.nuc_setupRnpExp_fig( pname, source = source )
     #
     source = '208Pb'
-    pname = 'figs/plot_nuc_setupRnpExp_source'+source+'.png'
+    pname = folder+'/plot_nuc_setupRnpExp_source'+source+'.png'
     nuda.fig.nuc_setupRnpExp_fig( pname, source = source )
     #
     print(50*'-')

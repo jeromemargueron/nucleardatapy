@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def matter_setupCheck_fig( pname, mb, models, band ):
+def matter_setupCheck_fig( pname, mb, models, band, matter ):
     """
-    Plot nucleonic energy per particle E/A in matter.\
-    The plot is 1x1 with: E/A versus den.
+    Check E/A from models in `models` and show the reference band.\\
+    The plot is 1x1 with: E/A versus den.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param mb: many-body (mb) approach considered.
     :type mb: str.

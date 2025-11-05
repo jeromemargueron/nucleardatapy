@@ -14,7 +14,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # list the available models
     #
@@ -23,7 +25,7 @@ def main():
     #
     # plot distribution of NEP
     #
-    pname = 'figs/plot_matter_setupNEPStats.png'
+    pname = folder+'/plot_matter_setupNEPStats.png'
     nuda.fig.matter_setupNEPStats_fig( pname, models )
     #
     print(50*'-')

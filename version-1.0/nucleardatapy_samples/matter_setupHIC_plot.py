@@ -9,12 +9,14 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     inferences, inferences_lower = nuda.matter.hic_inferences()
     #inferences = [ '2014-IAS' ]
     #
-    pname = 'figs/plot_matter_setupHIC.png'
+    pname = folder+'/plot_matter_setupHIC.png'
     #
     nuda.fig.matter_setupHIC_fig( pname, inferences )
     #

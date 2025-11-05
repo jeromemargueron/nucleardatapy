@@ -14,7 +14,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # fix the uncertainty band to check (and select models)
     #
@@ -56,22 +58,22 @@ def main():
         #
         # plot e2a in SM and NM
         #
-        pname = 'figs/plot_matter_all_e2a_'+matter+'.png'
+        pname = folder+'/plot_matter_all_e2a_'+matter+'.png'
         nuda.fig.matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_plot, band_plot, matter )
         #
         # plot pre in SM and NM
         #
-        pname = 'figs/plot_matter_all_pre_'+matter+'.png'
+        pname = folder+'/plot_matter_all_pre_'+matter+'.png'
         nuda.fig.matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter )
         #
         # plot eos in SM and NM
         #
-        pname = 'figs/plot_matter_all_eos_'+matter+'.png'
+        pname = folder+'/plot_matter_all_eos_'+matter+'.png'
         nuda.fig.matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter )
         #
         # plot cs2 in SM and NM
         #
-        pname = 'figs/plot_matter_all_cs2_'+matter+'.png'
+        pname = folder+'/plot_matter_all_cs2_'+matter+'.png'
         nuda.fig.matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter )
         #
 
@@ -89,7 +91,7 @@ def main():
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
     #
-    pname = 'figs/plot_matter_all_Esym.png'
+    pname = folder+'/plot_matter_all_Esym.png'
     nuda.fig.matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_plot, band_plot )
 
 #    pname = 'figs/plot_matter_ESM.png'

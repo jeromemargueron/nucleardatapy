@@ -9,7 +9,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # constraints from finite nuclei
     #
@@ -20,14 +22,14 @@ def main():
     constraints, constraints_lower = nuda.corr.EsymLsym_constraints()
     constraints.remove('2013-NS'); constraints.remove('2017-UG')
     #
-    pname = 'figs/plot_corr_setupEsym2Lsym2.png'
+    pname = folder+'/plot_corr_setupEsym2Lsym2.png'
     nuda.fig.corr_setupEsymLsym_fig( pname, constraints, origine='finiteNuclei' )
     #
     # constraint from neutron stars
     #
     constraints = [ '2013-NS', '2017-UG' ]
     #
-    pname = 'figs/plot_corr_setupEsymLsym.png'
+    pname = folder+'/plot_corr_setupEsymLsym.png'
     nuda.fig.corr_setupEsymLsym_fig( pname, constraints, origine='neutronStar' )
     #
     print(50*'-')

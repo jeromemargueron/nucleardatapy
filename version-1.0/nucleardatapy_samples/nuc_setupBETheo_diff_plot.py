@@ -9,16 +9,18 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     tables, tables_lower = nuda.nuc.be_theo_tables()
     tables.remove( '1988-GK' )
     #tables = [ '1995-DZ' ]
     #
-    pname = 'figs/plot_nuc_setupBETheo_diff_Zref50.png'
+    pname = folder+'/plot_nuc_setupBETheo_diff_Zref50.png'
     nuda.fig.nuc_setupBETheo_diff_fig( pname, tables, Zref = 50 )
     #
-    pname = 'figs/plot_nuc_setupBETheo_diff_Zref82.png'
+    pname = folder+'/plot_nuc_setupBETheo_diff_Zref82.png'
     nuda.fig.nuc_setupBETheo_diff_fig( pname, tables, Zref = 82 )
     #
     print(50*'-')

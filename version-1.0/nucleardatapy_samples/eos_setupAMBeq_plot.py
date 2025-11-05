@@ -10,7 +10,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # fix the uncertainty band
     #
@@ -30,51 +32,51 @@ def main():
     #
     # plot energy per particle
     #
-    pname = 'figs/plot_eos_setupAMBeq_e2a_nuc.png'
+    pname = folder+'/plot_eos_setupAMBeq_e2a_nuc.png'
     nuda.fig.eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_e2a_lep.png'
+    pname = folder+'/plot_eos_setupAMBeq_e2a_lep.png'
     nuda.fig.eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_e2a_tot.png'
+    pname = folder+'/plot_eos_setupAMBeq_e2a_tot.png'
     nuda.fig.eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot pressure
     #
-    pname = 'figs/plot_eos_setupAMBeq_pre_nuc.png'
+    pname = folder+'/plot_eos_setupAMBeq_pre_nuc.png'
     nuda.fig.eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_pre_lep.png'
+    pname = folder+'/plot_eos_setupAMBeq_pre_lep.png'
     nuda.fig.eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_pre_tot.png'
+    pname = folder+'/plot_eos_setupAMBeq_pre_tot.png'
     nuda.fig.eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot sound speed
     #
-    pname = 'figs/plot_eos_setupAMBeq_cs2_nuc.png'
+    pname = folder+'/plot_eos_setupAMBeq_cs2_nuc.png'
     nuda.fig.eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_cs2_lep.png'
+    pname = folder+'/plot_eos_setupAMBeq_cs2_lep.png'
     nuda.fig.eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_cs2_tot.png'
+    pname = folder+'/plot_eos_setupAMBeq_cs2_tot.png'
     nuda.fig.eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot the eos
     #
-    pname = 'figs/plot_eos_setupAMBeq_eos.png'
+    pname = folder+'/plot_eos_setupAMBeq_eos.png'
     nuda.fig.eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot particle fractions
     #
-    pname = 'figs/plot_eos_setupAMBeq_xp.png'
+    pname = folder+'/plot_eos_setupAMBeq_xp.png'
     nuda.fig.eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_xe.png'
+    pname = folder+'/plot_eos_setupAMBeq_xe.png'
     nuda.fig.eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMBeq_xmu.png'
+    pname = folder+'/plot_eos_setupAMBeq_xmu.png'
     nuda.fig.eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')

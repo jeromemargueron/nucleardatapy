@@ -9,14 +9,16 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nuda.nuc.be_exp_tables()
     tables = [ 'AME' ]
     #versions, versions_lower = nuda.nuc.be_exp_versions()
     versions = [ '2020' ]
     #
-    pname = 'figs/plot_nuc_setupBEExp_D3n_Zref50.png'
+    pname = folder+'/plot_nuc_setupBEExp_D3n_Zref50.png'
     nuda.fig.nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 )
     #
     print(50*'-')

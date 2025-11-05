@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     # 
     # ===============================
     # Symmetry Energy
@@ -29,7 +31,7 @@ def main():
     #
     # plot symmetry energy
     #
-    pname = 'figs/plot_matter_setupPhenoEsym.png'
+    pname = folder+'/plot_matter_setupPhenoEsym.png'
     #
     nuda.fig.matter_setupPhenoEsym_fig( pname, models, bandEsym )
     #

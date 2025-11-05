@@ -9,12 +9,14 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     tables, tables_lower = nuda.nuc.rch_theo_tables()
     table_exp = '2013-Angeli'
     #
-    pname = 'figs/plot_nuc_setupRchTheo.png'
+    pname = folder+'/plot_nuc_setupRchTheo.png'
     #
     nuda.fig.nuc_setupRchTheo_fig( pname, tables, table_exp )
     #

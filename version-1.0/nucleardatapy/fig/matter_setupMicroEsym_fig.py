@@ -6,19 +6,17 @@ import nucleardatapy as nuda
 
 def matter_setupMicroEsym_fig(pname, mbs, band):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the symmetry energy esym for microscopic models.\\
+    The plot is 2x2 with:\\
+    [0,0]: esym function of the density.          [0,1]: esym function of the Fermi momentum.\\
+    [0,0]: esym/esym,FFG function of the density. [0,1]: esym/esym,FFG function of the Fermi momentum.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
-
+    :param mbs: list of many-body approaches.
+    :type mbs: array of str.
+    :param band: object instantiated on the reference band.
+    :type band: object.
     """
     #
     print(f"Plot name: {pname}")
@@ -40,18 +38,18 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
     axs[1, 0].set_ylabel(r"$E_\mathrm{sym}/E_\mathrm{sym, FFG, NR}$", fontsize="14")
     axs[1, 0].set_xlabel(r"$n_\mathrm{nuc}$ (fm$^{-3}$)", fontsize="14")
     axs[1, 0].set_xlim([0,   0.33])
-    axs[1, 0].set_ylim([1.5, 3.6])
+    axs[1, 0].set_ylim([1.8, 2.9])
     #
     axs[1, 1].set_xlabel(r"$k_F$ (fm$^{-1}$)", fontsize="14")
     axs[1, 1].set_xlim([0.5, 2.0])
-    axs[1, 1].set_ylim([1.5, 3.6])
+    axs[1, 1].set_ylim([1.8, 2.9])
     axs[1, 1].tick_params("y", labelleft=False)
     #
     mb_check = []
     #
     for kmb, mb in enumerate(mbs):
         #
-        models, models_lower = nuda.matter.micro_models_mb(mb)
+        models, models_lower = nuda.matter.micro_esym_models_mb(mb)
         #
         for model in models:
             #
@@ -234,55 +232,55 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
 
     axs[0, 0].fill_between(
         band.den,
-        y1=(band.e2a - band.e2a_std),
-        y2=(band.e2a + band.e2a_std),
+        y1=(band.e2a_int - band.e2a_std),
+        y2=(band.e2a_int + band.e2a_std),
         color=band.color,
         alpha=band.alpha,
         visible=True,
     )
     axs[0, 0].plot(
-        band.den, (band.e2a - band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
+        band.den, (band.e2a_int - band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[0, 0].plot(
-        band.den, (band.e2a + band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
+        band.den, (band.e2a_int + band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[0, 1].fill_between(
         band.kfn,
-        y1=(band.e2a - band.e2a_std),
-        y2=(band.e2a + band.e2a_std),
+        y1=(band.e2a_int - band.e2a_std),
+        y2=(band.e2a_int + band.e2a_std),
         color=band.color,
         alpha=band.alpha,
         visible=True,
     )
     axs[0, 1].plot(
-        band.kfn, (band.e2a - band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
+        band.kfn, (band.e2a_int - band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[0, 1].plot(
-        band.kfn, (band.e2a + band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
+        band.kfn, (band.e2a_int + band.e2a_std), color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[1, 0].fill_between(
         band.den,
-        y1=(band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kf),
-        y2=(band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kf),
+        y1=(band.e2a_int - band.e2a_std) / nuda.esymffg_nr(band.kf),
+        y2=(band.e2a_int + band.e2a_std) / nuda.esymffg_nr(band.kf),
         color=band.color,
         alpha=band.alpha,
         visible=True,
     )
     axs[1, 0].plot(
-        band.den, (band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kf),
+        band.den, (band.e2a_int - band.e2a_std) / nuda.esymffg_nr(band.kf),
         color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[1, 0].plot(
-        band.den, (band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kf),
+        band.den, (band.e2a_int + band.e2a_std) / nuda.esymffg_nr(band.kf),
         color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[1, 1].fill_between(
         band.kfn,
-        y1=(band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kf),
-        y2=(band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kf),
+        y1=(band.e2a_int - band.e2a_std) / nuda.esymffg_nr(band.kf),
+        y2=(band.e2a_int + band.e2a_std) / nuda.esymffg_nr(band.kf),
         color=band.color,
         alpha=band.alpha,
         visible=True,
     )
     axs[1, 1].plot(
-        band.kfn, (band.e2a - band.e2a_std) / nuda.esymffg_nr(band.kf),
+        band.kfn, (band.e2a_int - band.e2a_std) / nuda.esymffg_nr(band.kf),
         color="k", linestyle="dashed", visible=True, zorder = 100 )
     axs[1, 1].plot(
-        band.kfn, (band.e2a + band.e2a_std) / nuda.esymffg_nr(band.kf),
+        band.kfn, (band.e2a_int + band.e2a_std) / nuda.esymffg_nr(band.kf),
         color="k", linestyle="dashed", visible=True, zorder = 100 )
 
     # axs[1,0].legend(loc='upper right',fontsize='8')
@@ -291,7 +289,7 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
         bbox_to_anchor=(0.1, 1.0),
         columnspacing=2,
         fontsize="8",
-        ncol=4,
+        ncol=6,
         frameon=False,
     )
     #

@@ -5,21 +5,21 @@ import nucleardatapy as nuda
 
 mpl.use("Agg")  # Use a non-interactive backend
 
-def matter_setupFFGNuc_EP_fig(
-    pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10), kf=np.linspace(0.5, 2.0, 10)
-):
+def matter_setupFFGNuc_EP_fig( pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10), kf=np.linspace(0.5, 2.0, 10) ):
     """
-    Plot nucleonic FFG energy per particle E/A and pressure in NM and SM.\
+    Plot nucleonic FFG energy per particle and pressure in NM and SM.\
     The plot is 2x2 with:\
     [0,0]: E/A versus den.     [0,1]: E/A versus kfn.\
     [1,0]: pre versus den.     [1,1]: pre versus kfn.\
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param den: density.
+    :param mss: effective mass/bare mass of the nucleons.
+    :type mss: float or numpy vector of real numbers.
+    :param den: densities.
     :type den: float or numpy vector of real numbers.
-    :param kfn: neutron Fermi momentum.
-    :type kfn: float or numpy vector of real numbers.
+    :param kf: Fermi momenta.
+    :type kf: float or numpy vector of real numbers.
 
     """
     #
@@ -205,12 +205,14 @@ def matter_setupFFGNuc_EP_fig(
 def matter_setupFFGNuc_EOS_fig(pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10)):
     """
     Plot nucleonic FFG EOS in NM and SM.\
-    The plot is 1x2 with:\
+    The plot is 2x1 with:\
     [0]: EOS (pre) versus energy density rho.\
     [1]: Sound speed c_s^2 versus energy density rho.\
 
     :param pname: name of the figure (*.png)
     :type pname: str.
+    :param mss: effective mass/bare mass of the nucleons.
+    :type mss: float or numpy vector of real numbers.
     :param den: density.
     :type den: float or numpy vector of real numbers.
 

@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # Experimental mass tables
     #
@@ -35,7 +37,7 @@ def main():
             year_min=years[ind]
             year_max=years[ind+1]-1
             print('year:',year,ind)
-            pname = 'figs/plot_nuc_setupBEExp_chart_year_'+table+'_'+version+'_y'+str(year)+'.png'
+            pname = folder+'/plot_nuc_setupBEExp_chart_year_'+table+'_'+version+'_y'+str(year)+'.png'
             print(f'Plot name: {pname}')
             #
             # year selection

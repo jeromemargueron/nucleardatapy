@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # Experimental mass tables
     #
@@ -29,7 +31,7 @@ def main():
     for i,table in enumerate( tables ):
         #
         version = versions[i]
-        pname = 'figs/plot_nuc_setupBEExp_chart_Rch_'+table+'_'+version+'.png'
+        pname = folder+'/plot_nuc_setupBEExp_chart_Rch_'+table+'_'+version+'.png'
         print(f'Plot name: {pname}')
         nuda.fig.nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table )
         #

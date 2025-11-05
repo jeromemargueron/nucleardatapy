@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nudy.tables_masses_exp()
     tables = [ 'AME' ]
@@ -22,7 +24,7 @@ def main():
     for i,table in enumerate( tables ):
         #
         version = versions[i]
-        pname = 'figs/plot_nuc_setupBEExp_year_'+table+'_'+version+'.png'
+        pname = folder+'/plot_nuc_setupBEExp_year_'+table+'_'+version+'.png'
         nuda.fig.nuc_setupBEExp_year_fig( pname, table, version )
     #
     print(50*'-')

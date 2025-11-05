@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # fix the uncertainty band
     #
@@ -35,17 +37,17 @@ def main():
     #
     # plot E/A
     #
-    pname = 'figs/plot_eos_setupAM_e2a.png'
+    pname = folder+'/plot_eos_setupAM_e2a.png'
     nuda.fig.eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot pressure
     #
-    pname = 'figs/plot_eos_setupAM_pre.png'
+    pname = folder+'/plot_eos_setupAM_pre.png'
     nuda.fig.eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band )
     #
     # plot sound speed
     #
-    pname = 'figs/plot_eos_setupAM_cs2.png'
+    pname = folder+'/plot_eos_setupAM_cs2.png'
     nuda.fig.eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')

@@ -6,15 +6,18 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_band_fig(pname, models, den, matter):
     """
-    Plot the correlation between Esym and Lsym.\
-    The plot is 1x1 with:\
-    [0]: Esym - Lsym correlation plot
+    Plot the reference band together with the models on wich it is constructed.\\
+    The plot is 1x2 with:\\
+    [0]: E versus den  [1]: E/EFFG versus den.\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param constraints: list of constraints to run on.
-    :type constraints: array of str.
-
+    :param models: list of models to run on.
+    :type models: array of str.
+    :param den: numpy array with densities to define the reference band.
+    :type den: array of reals.
+    :param matter: chose between 'SM', 'NM' or 'Esym'.
+    :type matter: str.
     """
     #
     print(f"Plot name: {pname}")

@@ -9,12 +9,14 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nuda.nuc.isgmr_exp_tables()
     tables = [ '2010-ISGMR-LI', '2018-ISGMR-GARG', '2022-ISGMR-average' ]
     #
-    pname = 'figs/plot_nuc_setupISGMRExp.png'
+    pname = folder+'/plot_nuc_setupISGMRExp.png'
     #
     nuda.fig.nuc_setupISGMRExp_fig( pname, tables )
     #

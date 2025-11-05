@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # create the groups of figures
     #
@@ -20,9 +22,11 @@ def main():
     #mbs = [ 'MBPT' ]
     #mbs = [ 'NLEFT' ]
     #mbs = [ 'AFDMC' ]
-    mbs = [ 'QMC' ]
+    #mbs = [ 'QMC' ]
+    #mbs = [ 'SCGF' ]
+    mbs = [ 'CC' ]
     #mbs = [ 'VAR', 'AFDMC', 'BHF23', 'QMC', 'MBPT', 'NLEFT' ]
-    #mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC' ]
+    #mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'AFDMC', 'QMC', 'SCGF', 'CC' ]
     print('mbs:',mbs)
     #
     # list the different matter cases investigated
@@ -67,9 +71,9 @@ def main():
                 print('AFDMC')
                 print('models:',models)
             #
-            pname = 'figs/plot_matter_setupCheck_'+matter+'_'+mb+'.png'
+            pname = folder+'/plot_matter_setupCheck_'+matter+'_'+mb+'.png'
             #
-            nuda.fig.matter_setupCheck_fig( pname, mb, models, band )
+            nuda.fig.matter_setupCheck_fig( pname, mb, models, band, matter )
             #
     #
     print(50*'-')

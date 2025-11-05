@@ -9,7 +9,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # list the available models
     #
@@ -17,7 +19,7 @@ def main():
     #
     # plot crust
     #
-    pname = 'figs/plot_crust_setupCrust.png'
+    pname = folder+'/plot_crust_setupCrust.png'
     nuda.fig.crust_setupCrust_fig( pname, models )
     #
     print(50*'-')

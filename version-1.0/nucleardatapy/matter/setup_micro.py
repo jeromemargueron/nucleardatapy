@@ -30,8 +30,8 @@ def micro_mbs():
     if nuda.env.verb:
         print("\nEnter micro_mbs()")
     #
-    mbs = ["VAR", "AFDMC", "BHF2", "BHF23", "QMC", "MBPT", "NLEFT", "SCGF", "CC"]
-    mbs_lower = [item.lower() for item in mbs]
+    mbs = [ "VAR", "AFDMC", "BHF2", "BHF23", "QMC", "MBPT", "NLEFT", "SCGF", "CC" ]
+    mbs_lower = [ item.lower() for item in mbs ]
     #
     if nuda.env.verb:
         print("Exit micro_mbs()")
@@ -1407,22 +1407,24 @@ class setupMicro:
             self.cs2_err = False
             (
                 self.sm_den,
+                self.nm_chempot_n3lo,
                 self.sm_e2a_n3lo,
                 self.sm_pre_n3lo,
             ) = np.loadtxt(
                 file_in1,
-                usecols=(0, 3, 6),
+                usecols=(0, 2, 3, 6),
                 comments="#",
                 unpack=True,
             )
             self.sm_e2a_int = self.sm_e2a_n3lo
             (
                 self.nm_den,
+                self.nm_chempot_n3lo,
                 self.nm_e2a_n3lo,
                 self.nm_pre_n3lo,
             ) = np.loadtxt(
                 file_in2,
-                usecols=(0, 3, 6),
+                usecols=(0, 2, 3, 6),
                 comments="#",
                 unpack=True,
             )
@@ -2371,8 +2373,8 @@ class setupMicro:
                 cs_nm_e2a_err = CubicSpline(x, y_err)
                 self.nm_pre_err = np.array( nuda.cst.third * self.nm_kfn * self.nm_den * cs_nm_e2a_err(self.nm_kfn, 1) )
                 # chemical potential
-                #self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
-                #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
+                self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
+                self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
                 #
                 # enthalpy
                 self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
@@ -2408,8 +2410,10 @@ class setupMicro:
                 self.nm_pre_err = self.nm_den**2 * cs_nm_e2a_err(self.nm_den, 1)
                 #
                 # chemical potential
-                #self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
-                #self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
+                self.nm_chempot = ( np.array(self.nm_pre) + np.array(self.nm_eps) ) / np.array(self.nm_den)
+                self.nm_chempot_err = ( np.array(self.nm_pre_err) + np.array(self.nm_eps_err) ) / np.array(self.nm_den)
+                if "2020-scgf-am" in model.lower():
+                    self.nm_chempot = self.nm_chempot_n3lo
                 #
                 # enthalpy
                 self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
@@ -2435,8 +2439,8 @@ class setupMicro:
                 self.sm_pre_err = ( nuda.cst.third * self.sm_kfn * self.sm_den * cs_sm_e2a_err(self.sm_kfn, 1) )
                 #
                 # chemical potential
-                #self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
-                #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
+                self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
+                self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
                 #
                 # enthalpy
                 self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
@@ -2467,8 +2471,10 @@ class setupMicro:
                 self.sm_pre_err = self.sm_den**2 * cs_sm_e2a_err(self.sm_den, 1)
                 #
                 # chemical potential
-                #self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
-                #self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
+                self.sm_chempot = ( np.array(self.sm_pre) + np.array(self.sm_eps) ) / np.array(self.sm_den)
+                self.sm_chempot_err = ( np.array(self.sm_pre_err) + np.array(self.sm_eps_err) ) / np.array(self.sm_den)
+                if "2020-scgf-am" in model.lower():
+                    self.sm_chempot = self.sm_chempot_n3lo
                 #
                 # enthalpy
                 self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den

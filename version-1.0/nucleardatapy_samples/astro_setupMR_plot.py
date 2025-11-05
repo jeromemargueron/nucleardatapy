@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     sources, sources_lower = nuda.astro.mr_sources( )
     print('Complete list of available sources:',sources)
@@ -22,7 +24,7 @@ def main():
     #
     print('sources considered:',sources)
     #
-    pname = 'figs/plot_astro_setupMR.png'
+    pname = folder+'/plot_astro_setupMR.png'
     nuda.fig.astro_setupMR_fig( pname, sources, sources_av )
     #
     print(50*'-')

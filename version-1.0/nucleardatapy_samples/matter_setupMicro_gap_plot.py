@@ -9,7 +9,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     # 
     # ===============================
     # Neutron Matter (NM)
@@ -21,13 +23,13 @@ def main():
     #
     # plot 1S0 pairing gaps in NM
     #
-    pname = 'figs/plot_matter_setupMicro_gap_1s0_NM.png'
+    pname = folder+'/plot_matter_setupMicro_gap_1s0_NM.png'
     #
     nuda.fig.matter_setupMicro_gap_1s0_fig( pname, models, matter = 'NM' )
     #
     # plot 3PF2 pairing gaps in NM
     #
-    pname = 'figs/plot_matter_setupMicro_gap_3pf2_NM.png'
+    pname = folder+'/plot_matter_setupMicro_gap_3pf2_NM.png'
     #
     nuda.fig.matter_setupMicro_gap_3pf2_fig( pname, models, matter = 'NM' )
     #
@@ -37,7 +39,7 @@ def main():
     #
     # plot 1S0 pairing gaps in SM
     #
-    pname = 'figs/plot_matter_setupMicro_gap_1s0_SM.png'
+    pname = folder+'/plot_matter_setupMicro_gap_1s0_SM.png'
     #
     nuda.fig.matter_setupMicro_gap_1s0_fig( pname, models, matter = 'SM' )
     #

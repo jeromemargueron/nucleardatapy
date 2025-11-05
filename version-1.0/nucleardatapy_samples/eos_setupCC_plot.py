@@ -8,6 +8,12 @@ def main():
     print("Enter eos_setupCC_plot.py:")
     print(50*'-')
     #
+    # create the folder where the figures are stored
+    #
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
+    #
     # ==============
     # band for the check
     # ==============
@@ -76,36 +82,36 @@ def main():
                 #
                 if core_param is not None:
                     if emp is not None:
-                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
                     else:
-                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
                 else:
                     if emp is not None:
-                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
                     else:
-                        pname = 'figs/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkpre_'+crust_model+'_'+core_model+'_'+connect+'.png'
                 nuda.fig.eos_setupCC_checkpre_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries, emp = emp )
                 #
                 # check EoS pre(eps)
                 #
                 if core_param is not None:
                     if emp is not None:
-                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'_'+emp+'.png'
                     else:
-                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+core_param+'_'+connect+'.png'
                 else:
                     if emp is not None:
-                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'_'+emp+'.png'
                     else:
-                        pname = 'figs/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'.png'
+                        pname = folder+'/plot_eos_setupCC_checkeos_'+crust_model+'_'+core_model+'_'+connect+'.png'
                 nuda.fig.eos_setupCC_checkeos_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param, connect = connect, boundaries = boundaries, emp = emp )
                 #
                 # EoS pre(eps)
                 #
                 if core_param is not None:
-                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'_'+core_param+'.png'
+                    pname = folder+'/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'_'+core_param+'.png'
                 else:
-                    pname = 'figs/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'.png'
+                    pname = folder+'/plot_eos_setupCC_eos_'+crust_model+'_'+core_model+'.png'
                 nuda.fig.eos_setupCC_eos_fig( pname, band, crust_model = crust_model, core_kind=core_kind, core_model = core_model, core_param = core_param )
                 #
             #

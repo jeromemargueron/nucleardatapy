@@ -6,9 +6,13 @@ import nucleardatapy as nuda
 
 def matter_setupNEPStats_fig(pname, models):
     """
-    Plot nucleonic energy per particle E/A in matter.\
+    Plot the PDF for NEPs.\
     The plot is 5x2 with:\
-    [0,0]: E/A versus den (micro). [0,1]: E/A versus den (pheno).\
+    [0,0]: Esat. [0,1]: Esym.\
+    [1,0]: nsat. [1,1]: Lsym.\
+    [2,0]: Ksat. [2,1]: Ksym.\
+    [3,0]: Qsat. [3,1]: Qsym.\
+    [4,0]: m*sat/m. [4,1]: Delta m*sat/m.\
 
     :param pname: name of the figure (*.png)
     :type pname: str.

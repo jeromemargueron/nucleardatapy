@@ -22,7 +22,7 @@ def micro_esym_mbs():
     #
     if nuda.env.verb: print("\nEnter micro_mbs()")
     #
-    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT' ]
+    mbs = [ 'VAR', 'BHF2', 'BHF23', 'MBPT', 'NLEFT', 'SCGF', 'CC' ]
     mbs_lower = [ item.lower() for item in mbs ]
     #
     if nuda.env.verb: print("Exit micro_mbs()")
@@ -53,8 +53,13 @@ def micro_esym_models_mb( mb ):
     '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93',\
     If `mb` == 'MBPT': \
     '2010-MBPT-NM', '2020-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69'
+    If `mb` == 'SCGF': \
+    "2020-SCGF-AM-N3LO-414", "2020-SCGF-AM-N3LO-450", "2020-SCGF-AM-N3LO-500", "2024-SCGF-AM-DN2LO-450",\
+    "2024-SCGF-AM-DN2LO-500", "2024-SCGF-AM-DN2LOgo-394", "2024-SCGF-AM-DN2LOgo-450", "2024-SCGF-AM-N2LOsat",\
     If `mb` == 'NLEFT': \
     '2024-NLEFT-AM', \
+    If `mb` == 'CC': \
+    "2024-CC-AM-DN2LO-450", "2024-CC-AM-DN2LO-500", "2024-CC-AM-DN2LOgo-394", "2024-CC-AM-DN2LOgo-450", "2024-CC-AM-N2LOsat",\
     """
     #
     if nuda.env.verb: print("\nEnter micro_models_mb()")
@@ -77,9 +82,29 @@ def micro_esym_models_mb( mb ):
         #    '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', \
         #    '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
     elif mb.lower() == 'mbpt':
-        models = [ '2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM' ]
+        models = [ '2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM', "2024-MBPT-AM-DN2LO-450",
+            "2024-MBPT-AM-DN2LO-500", "2024-MBPT-AM-DN2LOgo-394", "2024-MBPT-AM-DN2LOgo-450", "2024-MBPT-AM-N2LOsat" ]
     elif mb.lower() == 'nleft':
         models = [ '2024-NLEFT-AM' ]
+    elif mb.lower() == 'scgf':
+        models = [
+            "2020-SCGF-AM-N3LO-414",
+            "2020-SCGF-AM-N3LO-450",
+            "2020-SCGF-AM-N3LO-500",
+            "2024-SCGF-AM-DN2LO-450",
+            "2024-SCGF-AM-DN2LO-500",
+            "2024-SCGF-AM-DN2LOgo-394",
+            "2024-SCGF-AM-DN2LOgo-450",
+            "2024-SCGF-AM-N2LOsat",
+        ]
+    elif mb.lower() == 'cc':
+        models = [
+            "2024-CC-AM-DN2LO-450",
+            "2024-CC-AM-DN2LO-500",
+            "2024-CC-AM-DN2LOgo-394",
+            "2024-CC-AM-DN2LOgo-450",
+            "2024-CC-AM-N2LOsat",
+        ]
     #
     if nuda.env.verb: print('models available in the toolkit:',models)
     #
@@ -116,43 +141,6 @@ def micro_esym_models():
     #print('mbs:',mbs)
     #
     models, models_lower = micro_esym_models_mbs( mbs )
-    #
-    if nuda.env.verb: print("Exit micro_esym_models()")
-    #
-    return models, models_lower
-
-def micro_esym_models_old():
-    """
-    Return a list with the name of the models available in this toolkit and \
-    print them all on the prompt. These models are the following ones: \
-    '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2006-BHF-AM*', \
-    2016-MBPT-AM', 2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-    '2020-MBPT-AM', '2024-NLEFT-AM', \
-    '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
-    '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-    '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-    '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-    '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-    '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14',\
-    '2024-BHF-AM-23BFmicro-Av18', '2024-BHF-AM-23BFmicro-BONNB', '2024-BHF-AM-23BFmicro-NSC93'\
-
-    :return: The list of models.
-    :rtype: list[str].
-    """
-    #
-    if nuda.env.verb: print("\nEnter micro_esym_models()")
-    #
-    models = [ '1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', \
-               '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', \
-             '2020-MBPT-AM', '2024-NLEFT-AM', \
-            '2024-BHF-AM-2BF-Av8p', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', \
-            '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', \
-            '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2024-BHF-AM-2BF-SSCV14',\
-            '2024-BHF-AM-23BF-Av8p', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', \
-            '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', \
-            '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2024-BHF-AM-23BF-SSCV14' ]
-    if nuda.env.verb: print('models available in the toolkit:',models)
-    models_lower = [ item.lower() for item in models ]
     #
     if nuda.env.verb: print("Exit micro_esym_models()")
     #
@@ -231,12 +219,28 @@ class setupMicroEsym():
         else:
             #
             mic = nuda.matter.setupMicro( model = model )
+            self.e_err = mic.e_err
+            self.p_err = mic.p_err
+            self.cs2_err = mic.cs2_err
             self.sm_den = mic.sm_den
-            self.sm_e2a_int = mic.sm_e2a_int
-            self.sm_e2a_err = mic.sm_e2a_err
             self.nm_den = mic.nm_den
+            self.sm_e2a_int = mic.sm_e2a_int
             self.nm_e2a_int = mic.nm_e2a_int
-            self.nm_e2a_err = mic.nm_e2a_err
+            self.sm_e2a_err = np.zeros(np.size(mic.sm_e2a_int))
+            self.nm_e2a_err = np.zeros(np.size(mic.nm_e2a_int))
+            self.sm_pre_err = np.zeros(np.size(mic.sm_e2a_int))
+            self.nm_pre_err = np.zeros(np.size(mic.nm_e2a_int))
+            self.sm_cs2_err = np.zeros(np.size(mic.sm_e2a_int))
+            self.nm_cs2_err = np.zeros(np.size(mic.nm_e2a_int))
+            if self.e_err:
+                self.sm_e2a_err = mic.sm_e2a_err
+                self.nm_e2a_err = mic.nm_e2a_err
+            if self.p_err:
+                self.sm_pre_err = mic.sm_pre_err
+                self.nm_pre_err = mic.nm_pre_err
+            if self.csc2_err:
+                self.sm_cs2_err = mic.sm_cs2_err
+                self.nm_cs2_err = mic.nm_cs2_err
             #mic.print_outputs( )
             #
         #

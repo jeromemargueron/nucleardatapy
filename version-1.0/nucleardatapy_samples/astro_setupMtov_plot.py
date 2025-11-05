@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # sources low
     #
@@ -38,7 +40,7 @@ def main():
     #
     # plot the results:
     #
-    pname = 'figs/plot_astro_setupMtov.png'
+    pname = folder+'/plot_astro_setupMtov.png'
     nuda.fig.astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, sources_up2, sources_up3 )
     #
     print(50*'-')

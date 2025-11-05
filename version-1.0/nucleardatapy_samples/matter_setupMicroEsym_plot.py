@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     # 
     # ===============================
     # Symmetry Energy
@@ -29,13 +31,24 @@ def main():
     #micro_mbs.remove( 'BHF2' )
     #micro_mbs = [ 'VAR' ]
     #micro_mbs = [ 'MBPT' ]
-    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT' ]
+    #micro_mbs = [ 'SCGF' ]
+    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT', 'SCGF', 'CC' ]
     #
-    # plot symmetry energy
+    # plot symmetry energy for all MB approaches
     #
-    pname = 'figs/plot_matter_setupMicroEsym.png'
+    pname = folder+'/plot_matter_setupMicroEsym.png'
     #
     nuda.fig.matter_setupMicroEsym_fig( pname, micro_mbs, bandEsym )
+    #
+    # plot symmetry energy for each MB approaches
+    #
+    for mb in micro_mbs:
+        #
+        pname = folder+'/plot_matter_setupMicroEsym_mb'+str(mb)+'.png'
+        #
+        micro_mbs = [ mb ]
+        nuda.fig.matter_setupMicroEsym_fig( pname, micro_mbs, bandEsym )
+        #
     #
     print(50*'-')
     print("Exit matter_setupMicroEsym_plot.py:")

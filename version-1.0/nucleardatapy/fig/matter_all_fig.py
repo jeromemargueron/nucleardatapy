@@ -5,19 +5,22 @@ import nucleardatapy as nuda
 
 def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, matter ):
     """
-    Plot nucleonic energy per particle E/A in matter.\
-    The plot is 1x2 with:\
-    [0,0]: E/A versus den (micro). [0,1]: E/A versus den (pheno).\
+    Plot nucleonic energy per particle E/A in matter.\\
+    The plot is 1x2 with:\\
+    [0]: E/A versus den (micro). [1]: E/A versus den (pheno).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
     :param pheno_models: models to run on.
     :type pheno_models: array of str.
-    :param band: object instantiated on the reference band.
-    :type band: object.
-
+    :param band_check: object instantiated on the reference band.
+    :type band_check: object.
+    :param band_plot: object instantiated on the reference band.
+    :type band_plot: object.
+    :param matter: can be 'SM' or 'NM'.
+    :type matter: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -208,21 +211,19 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
 def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot ):
     """
     Plot nucleonic symmetry energy.\
-    The plot is 2x2 with:\
-    [0,0]: Esym versus den.            [0,1]: Esym versus kfn.\
-    [1,0]: Esym/Esym_NRFFG versus den. [1,1]: Esym/Esym_NRFFG versus kfn.\
+    The plot is 1x2 with:\
+    [0]: Esym versus den (micro).  [1]: Esym versus den (pheno).\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
-    :param mb: many-body (mb) approach considered.
-    :type mb: str.
-    :param models: models to run on.
-    :type models: array of str.
-    :param band: object instantiated on the reference band.
-    :type band: object.
-    :param matter: can be 'SM' or 'NM'.
-    :type matter: str.
-
+    :param micro_mbs: many-body (mb) approach considered.
+    :type micro_mbs: str.
+    :param pheno_models: models to run on.
+    :type pheno_models: array of str.
+    :param band_check: object instantiated on the reference band.
+    :type band_check: object.
+    :param band_plot: object instantiated on the reference band.
+    :type band_plot: object.
     """
     #
     print(f'Plot name: {pname}')
@@ -340,19 +341,22 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
 
 def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot nucleonic pressure in matter.\
-    The plot is 1x2 with:\
-    [0]: pre versus den (micro). [1]: pre versus den (pheno).\
+    Plot nucleonic pressure in matter.\\
+    The plot is 1x2 with:\\
+    [0]: pre versus den (micro). [1]: pre versus den (pheno).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
     :param pheno_models: models to run on.
     :type pheno_models: array of str.
-    :param band: object instantiated on the reference band.
-    :type band: object.
-
+    :param band_check: object instantiated on the reference band.
+    :type band_check: object.
+    :param band_plot: object instantiated on the reference band.
+    :type band_plot: object.
+    :param matter: can be 'SM' or 'NM'.
+    :type matter: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -551,19 +555,20 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
 def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot EoS in matter.\
-    The plot is 1x2 with:\
-    [0]: pre versus energy-density (micro). [1]: pre versus energy-density (pheno).\
+    Plot EoS in matter.\\
+    The plot is 1x2 with:\\
+    [0]: pre versus eps (micro). [1]: pre versus eps (pheno).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
     :param pheno_models: models to run on.
     :type pheno_models: array of str.
-    :param band: object instantiated on the reference band.
-    :type band: object.
-
+    :param band_check: object instantiated on the reference band.
+    :type band_check: object.
+    :param matter: can be 'SM' or 'NM'.
+    :type matter: str.
     """
     #
     print(f'Plot name: {pname}')
@@ -762,19 +767,20 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
 def matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot nucleonic sound speed in matter.\
-    The plot is 1x2 with:\
-    [0]: cs2 versus den (micro). [1]: cs2 versus den (pheno).\
+    Plot nucleonic sound speed in matter.\\
+    The plot is 1x2 with:\\
+    [0]: cs2 versus den (micro). [1]: cs2 versus den (pheno).\\
 
-    :param pname: name of the figure (*.png)
+    :param pname: name of the figure (\*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
     :param pheno_models: models to run on.
     :type pheno_models: array of str.
-    :param band: object instantiated on the reference band.
-    :type band: object.
-
+    :param band_check: object instantiated on the reference band.
+    :type band_check: object.
+    :param matter: can be 'SM' or 'NM'.
+    :type matter: str.
     """
     #
     print(f'Plot name: {pname}')

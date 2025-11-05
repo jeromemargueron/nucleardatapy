@@ -14,18 +14,15 @@ import nucleardatapy as nuda
 
 def matter_setupHIC_fig(pname, inferences):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x2 with:\
-    [0]: nuclear chart.
+    Plot the inferences from HIC.\
+    The plot is 2x2 with:\
+    [0,0]: pressure in SM versus den. [0,1]: E/A in SM versus den.
+    [1,0]: pressure in NM versus den. [1,1]: Esym versus den.
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param table: table.
-    :type table: str.
-    :param version: version of table to run on.
-    :type version: str.
-    :param theo_tables: object instantiated on the reference band.
-    :type theo_tables: object.
+    :param inferences: inferences for HIC.
+    :type inferences: array of str.
 
     """
     #

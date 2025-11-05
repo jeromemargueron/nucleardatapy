@@ -12,14 +12,16 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nuda.hnuc.be1L_exp_tables()
     table1L = '2016-1L-GHM'
     table2L = '2013-2L-Ahn'
     table1Xi = '2015-1Xi-Nakazawa'
     #
-    pname = 'figs/plot_hnuc_setupChart.png'
+    pname = folder+'/plot_hnuc_setupChart.png'
     #
     nuda.fig.hnuc_setupChart_fig( pname, table1L, table2L, table1Xi )
     #

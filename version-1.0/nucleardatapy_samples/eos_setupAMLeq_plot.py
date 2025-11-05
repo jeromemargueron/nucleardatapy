@@ -10,7 +10,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # fix the uncertainty band
     #
@@ -30,15 +32,15 @@ def main():
     #
     # plot particle fractions
     #
-    pname = 'figs/plot_eos_setupAMLeq_xe.png'
+    pname = folder+'/plot_eos_setupAMLeq_xe.png'
     nuda.fig.eos_setupAMLeq_xe_fig( pname, micro_mbs, pheno_models, band )
     #
-    pname = 'figs/plot_eos_setupAMLeq_xmu.png'
+    pname = folder+'/plot_eos_setupAMLeq_xmu.png'
     nuda.fig.eos_setupAMLeq_xmu_fig( pname, micro_mbs, pheno_models, band )
     #
     micro_models = [ ]
     pheno_models = [ 'DDRHF' ]
-    pname = 'figs/plot_eos_setupAMLeq_xexmu.png'
+    pname = folder+'/plot_eos_setupAMLeq_xexmu.png'
     nuda.fig.eos_setupAMLeq_xexmu_fig( pname, micro_mbs, pheno_models, band )
     #
     print(50*'-')

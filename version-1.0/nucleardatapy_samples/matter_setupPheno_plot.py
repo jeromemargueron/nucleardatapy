@@ -11,7 +11,9 @@ def main():
     #
     # create the folder where the figures are stored
     #
-    nuda.create_folder_fig()
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
     #
     # create the models for the figures
     #
@@ -43,14 +45,14 @@ def main():
             #
             print('For model:',model)
             #
-            pname = 'figs/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
-            nuda.fig.matter_setupPheno_e2a_fig( pname, model, band )
+            pname = folder+'/plot_matter_setupPheno_e2a_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_e2a_fig( pname, model, band, matter )
             #
-            pname = 'figs/plot_matter_setupPheno_pre_'+matter+'_'+model+'.png'
-            nuda.fig.matter_setupPheno_pre_fig( pname, model, band )
+            pname = folder+'/plot_matter_setupPheno_pre_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_pre_fig( pname, model, band, matter )
             #
-            pname = 'figs/plot_matter_setupPheno_cs2_'+matter+'_'+model+'.png'
-            nuda.fig.matter_setupPheno_cs2_fig( pname, model, band )
+            pname = folder+'/plot_matter_setupPheno_cs2_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupPheno_cs2_fig( pname, model, band, matter )
 
     #
     print(50*'-')

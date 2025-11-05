@@ -54,14 +54,18 @@ def pheno_esym_params( model ):
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
-        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'F-', \
+        params = [ 'BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2', 'F-', \
             'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', \
             'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
             'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', \
             'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', \
-            'UNEDF0', 'UNEDF1']
+            'UNEDF0', 'UNEDF1' ]
     elif model.lower() == 'eskyrme':
-        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3' ]
+        params = [ 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32',  'BSkG3','BSkG4' ]
+    elif model.lower() == 'fayans':
+        params = [ 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)' ]
+    elif model.lower() == 'gogny':
+        params = [ 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' ]
     elif model.lower() == 'nlrh':
         params = [ 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1' ]
     elif model.lower() == 'ddrh':
@@ -81,14 +85,18 @@ class setupPhenoEsym():
     interactions and choosen by the toolkit practitioner. \
     This choice is defined in the variables `model` and `param`.
 
-    If `models` == 'skyrme', `param` can be: 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
+    If `models` == 'Skyrme', `param` can be: 'BSK14', \
+    'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2','F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
     'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
     'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
     'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. 
 
     If `models` == 'ESkyrme', `param` can be: 'BSk22', 'BSk24', 'BSk25', \
-    'BSk26', 'BSk31', 'BSk32', 'BSkG1', 'BSkG2', 'BSkG3'.
+    'BSk26', 'BSk31', 'BSk32', 'BSkG3','BSkG4' .
+
+    If `models` == 'Fayans', `param` can be: 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)' \
+
+    If `models` == 'Gogny', `param` can be: 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' \
 
     If `models` == 'NLRH', `param` can be: 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. 
 

@@ -7,18 +7,21 @@ mpl.use("Agg")  # Use a non-interactive backend
 
 def matter_setupFFGLep_fig( pname, den_el=None, den_mu1=None, den_mu2=None, den_mu3=None ):
     """
-    Plot leptonic FFG energy per particle E/A and pressure in NM and SM.\
-    The plot is 2x2 with:\
-    [0,0]: E/A versus den.     [0,1]: E/A versus kfn.\
-    [1,0]: pre versus den.     [1,1]: pre versus kfn.\
+    Plot leptonic FFG energy per particle E/A and pressure in NM and SM.\\
+    The plot is 2x1 with:\\
+    [0]: E/A versus den.\\
+    [1]: pre versus den.\\
 
     :param pname: name of the figure (*.png)
     :type pname: str.
-    :param den: density.
-    :type den: float or numpy vector of real numbers.
-    :param kfn: neutron Fermi momentum.
-    :type kfn: float or numpy vector of real numbers.
-
+    :param den_el: electron densities.
+    :type den_el: float or numpy vector of real numbers.
+    :param den_mu1: muon densities (set 1).
+    :type den_mu1: float or numpy vector of real numbers.
+    :param den_mu2: muon densities (set 2).
+    :type den_mu2: float or numpy vector of real numbers.
+    :param den_mu3: muon densities (set 3).
+    :type den_mu3: float or numpy vector of real numbers.
     """
     #
     print(f"Plot name: {pname}")
