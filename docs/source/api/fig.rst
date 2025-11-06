@@ -1,6 +1,6 @@
 Plots
 =====
-We collect here all plotting modules available in NuclearDataPy.
+We collect here all plotting modules available in nucleardatapy.
 
 astro\_setupGW\_fig 
 ------------------------------
