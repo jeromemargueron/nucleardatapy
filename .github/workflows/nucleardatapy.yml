@@ -56,7 +56,7 @@ jobs:
           # Debug 2: CHECK FOR CONTENT. This will confirm if your .md or .ipynb files are present.
           echo "Listing all files in the 'book' directory (should contain your actual content):"
           find . -maxdepth 1 -print
-          jupyter-book build . --html
+          jupyter-book build --html
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v4
