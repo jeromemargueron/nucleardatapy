@@ -1,8 +1,6 @@
 Plots
 =====
-
-Submodules
-----------
+We collect here all plotting modules available in NuclearDataPy.
 
 astro\_setupGW\_fig 
 ------------------------------

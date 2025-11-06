@@ -57,8 +57,8 @@ jobs:
         with:
           name: built-docs
           path: |
-            docs/_build/html/
-            book/_build/html/
+            docs/
+            book/
 
   deploy:
     needs: build
@@ -91,10 +91,12 @@ jobs:
           DEPLOY_FOLDER="deploy_root" # Temporary folder for deployment contents
           mkdir -p $DEPLOY_FOLDER
 
+          BOOK_PATH="public/book/_build/html"
+
           echo "Checking for Jupyter Book build output..."
-          if [ -d "public/book/_build/html" ] && [ "$(ls -A public/book/_build/html)" ]; then
+          if [ -d "$BOOK_PATH" ] && [ "$(ls -A $BOOK_PATH)" ]; then
             echo "Jupyter Book build output found. Copying to $DEPLOY_FOLDER..."
-            cp -r public/book/_build/html/* $DEPLOY_FOLDER/
+            cp -r $BOOK_PATH/* $DEPLOY_FOLDER/
             
             echo "Adding .nojekyll file to $DEPLOY_FOLDER..."
             touch $DEPLOY_FOLDER/.nojekyll
