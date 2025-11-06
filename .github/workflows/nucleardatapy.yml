@@ -53,7 +53,10 @@ jobs:
           # Debug: Confirm the core config files exist before running build
           echo "Checking for Jupyter Book config files in $(pwd):"
           ls -A _config.yml _toc.yml 
-          jupyter-book build .
+          # Debug 2: CHECK FOR CONTENT. This will confirm if your .md or .ipynb files are present.
+          echo "Listing all files in the 'book' directory (should contain your actual content):"
+          find . -maxdepth 1 -print
+          jupyter-book build . --force
 
       - name: Upload documentation artifacts
         uses: actions/upload-artifact@v4
