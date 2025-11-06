@@ -53,3 +53,15 @@ Here are a set of figures which are produced with the Python sample: /nucleardat
 	:alt: map to buried treasure
 
 	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the MBPT models available in the nucleardatapy toolkit.
+
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupMicro_e2a_NM_SCGF.png
+	:width: 70%
+	:alt: map to buried treasure
+
+	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the SCGF models available in the nucleardatapy toolkit.
+
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_matter_setupMicro_e2a_NM_CC.png
+	:width: 70%
+	:alt: map to buried treasure
+
+	This figure shows the energy in neutron matter (NM) over the free Fermi gas energy (top) and the energy per particle (bottom) as function of the density (left) and the neutron Fermi momentum (right) for the CC models available in the nucleardatapy toolkit.
