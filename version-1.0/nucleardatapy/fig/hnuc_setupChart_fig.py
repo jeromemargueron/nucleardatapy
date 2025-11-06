@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
     """
-    Plot hyper-nuclear chart (N versus Z).\\
-    The plot is 1x1 with:\\
-    [0]: nuclear chart.\\
+    Plot hyper-nuclear chart (N versus Z).
+
+    The plot is 1x1 with:
+
+    [0]: nuclear chart.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

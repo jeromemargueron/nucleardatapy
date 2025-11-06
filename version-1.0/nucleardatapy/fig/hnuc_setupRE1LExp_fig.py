@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def hnuc_setupRE1LExp_fig( pname, tables ):
     """
-    Plot the removal energies as a function of A^{-2/3}.\\
-    The plot is 1x1 with:\\
-    [0]: nuclear chart.\\
+    Plot the removal energies as a function of A^{-2/3}.
+
+    The plot is 1x1 with:
+
+    [0]: nuclear chart.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

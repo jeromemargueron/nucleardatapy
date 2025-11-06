@@ -5,11 +5,15 @@ import nucleardatapy as nuda
 
 def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the energy per nucleon in asymmetric matter.\\
-    The plot is 2x3 with:\\
-    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
-    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
-    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the energy per nucleon in asymmetric matter.
+
+    The plot is 2x3 with:
+
+    [0,0]: microscopic models (nucleon).  [0,1]: phenomenologic models (nucleon).
+
+    [1,0]: microscopic models (lepton).   [1,1]: phenomenologic models (lepton).
+
+    [2,0]: microscopic models (total).    [2,1]: phenomenologic models (total).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -175,11 +179,15 @@ def eos_setupAM_e2a_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the pressure in asymmetric matter.\\
-    The plot is 2x3 with:\\
-    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
-    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
-    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the pressure in asymmetric matter.
+
+    The plot is 2x3 with:
+
+    [0,0]: microscopic models (nucleon).  [0,1]: phenomenologic models (nucleon).
+
+    [1,0]: microscopic models (lepton).   [1,1]: phenomenologic models (lepton).
+
+    [2,0]: microscopic models (total).    [2,1]: phenomenologic models (total).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -345,11 +353,15 @@ def eos_setupAM_pre_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAM_cs2_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the square of the sound speed in asymmetric matter.\\
-    The plot is 2x3 with:\\
-    [0]: microscopic models (nucleon).  [1]: phenomenologic models (nucleon).\\
-    [0]: microscopic models (lepton).   [1]: phenomenologic models (lepton).\\
-    [0]: microscopic models (total).    [1]: phenomenologic models (total).\\
+    Plot the nucleon, lepton and total (nucleon+leptonic) contribution to the square of the sound speed in asymmetric matter.
+    
+    The plot is 2x3 with:
+
+    [0,0]: microscopic models (nucleon).  [0,1]: phenomenologic models (nucleon).
+
+    [1,0]: microscopic models (lepton).   [1,1]: phenomenologic models (lepton).
+
+    [2,0]: microscopic models (total).    [2,1]: phenomenologic models (total).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

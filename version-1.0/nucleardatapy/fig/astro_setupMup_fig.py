@@ -5,8 +5,10 @@ import nucleardatapy as nuda
 
 def astro_setupMup_fig( pname, sources ):
     """
-    Plot mass upper boundaries from GW measurements as a function of GW sources.\\
-    The plot is 1x1 with:\\
+    Plot mass upper boundaries from GW measurements as a function of GW sources.
+
+    The plot is 1x1 with:
+    
     [0]: upper boundary for the mass versus sources.
 
     :param pname: name of the figure (\*.png)

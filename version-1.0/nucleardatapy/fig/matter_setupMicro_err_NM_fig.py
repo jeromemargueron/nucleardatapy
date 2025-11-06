@@ -6,9 +6,11 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_err_NM_fig(pname, models):
     """
-    Plot uncertainties (err) estimated by different authors in NM.\\
-    The plot is 1x1 with:\\
-    [0]: uncertainty for E/A versus den.\\
+    Plot uncertainties (err) estimated by different authors in NM.
+
+    The plot is 1x1 with:
+
+    [0]: uncertainty for E/A versus den.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

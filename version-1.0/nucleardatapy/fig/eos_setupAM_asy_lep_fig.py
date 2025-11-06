@@ -5,10 +5,11 @@ import nucleardatapy as nuda
 
 def eos_setupAM_e2a_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
     """
-    Plot the leptonic contribution to the energy per nucleon in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).\\
-    The plot is 1x2 with:\\
-    [0]: microscopic models.\\
-    [1]: phenomenologic models.\\
+    Plot the leptonic contribution to the energy per nucleon in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).
+
+    The plot is 1x2 with:
+
+    [0]: microscopic models. [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -128,10 +129,11 @@ def eos_setupAM_e2a_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
 
 def eos_setupAM_pre_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
     """
-    Plot the leptonic contribution to the pressure in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).\\
-    The plot is 1x2 with:\\
-    [0]: microscopic models.\\
-    [1]: phenomenologic models.\\
+    Plot the leptonic contribution to the pressure in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).
+
+    The plot is 1x2 with:
+
+    [0]: microscopic models. [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -251,10 +253,11 @@ def eos_setupAM_pre_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
 
 def eos_setupAM_cs2_asy_lep_fig( pname, micro_mbs, pheno_models, asy, band ):
     """
-    Plot the leptonic contribution to the square of the sound speed in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).\\
-    The plot is 1x2 with:\\
-    [0]: microscopic models.\\
-    [1]: phenomenologic models.\\
+    Plot the leptonic contribution to the square of the sound speed in asymmetric matter controlled by the variable `asy` (defined as (N-Z)/A).
+
+    The plot is 1x2 with:
+
+    [0]: microscopic models. [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

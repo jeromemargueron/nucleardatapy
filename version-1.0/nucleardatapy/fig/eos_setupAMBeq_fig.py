@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the nucleon contribution to the energy per nucleon in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -115,9 +117,11 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon contribution to the pressure in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the nucleon contribution to the pressure in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -224,9 +228,11 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the nucleon contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the nucleon contribution to the square of the sound speed in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -333,9 +339,11 @@ def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the lepton contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the lepton contribution to the energy per nucleon in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -445,9 +453,11 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the lepton contribution to the pressure in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the lepton contribution to the pressure in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -556,9 +566,11 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the lepton contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the lepton contribution to the square of the sound speed in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -668,9 +680,11 @@ def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the total (=nucleon+lepton) contribution to the energy per nucleon in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the total (=nucleon+lepton) contribution to the energy per nucleon in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -778,9 +792,11 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the total (=nucleon+lepton) contribution to the pressure in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the total (=nucleon+lepton) contribution to the pressure in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -901,9 +917,11 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the total (=nucleon+lepton) contribution to the square of the sound speed in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the total (=nucleon+lepton) contribution to the square of the sound speed in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -1010,9 +1028,11 @@ def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the equation of state in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the equation of state in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -1148,9 +1168,11 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the proton fraction (=xp) in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the proton fraction (=xp) in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -1260,9 +1282,11 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the electron fraction (=xe) in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the electron fraction (=xe) in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -1371,9 +1395,11 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the muon fraction (=xmu) in asymmetric matter at beta equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the muon fraction (=xmu) in asymmetric matter at beta equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

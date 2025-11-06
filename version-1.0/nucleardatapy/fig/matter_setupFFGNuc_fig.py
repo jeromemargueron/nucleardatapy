@@ -7,10 +7,13 @@ mpl.use("Agg")  # Use a non-interactive backend
 
 def matter_setupFFGNuc_EP_fig( pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10), kf=np.linspace(0.5, 2.0, 10) ):
     """
-    Plot nucleonic FFG energy per particle and pressure in NM and SM.\
-    The plot is 2x2 with:\
-    [0,0]: E/A versus den.     [0,1]: E/A versus kfn.\
-    [1,0]: pre versus den.     [1,1]: pre versus kfn.\
+    Plot nucleonic FFG energy per particle and pressure in NM and SM.
+
+    The plot is 2x2 with:
+
+    [0,0]: E/A versus den.     [0,1]: E/A versus kfn.
+
+    [1,0]: pre versus den.     [1,1]: pre versus kfn.
 
     :param pname: name of the figure (*.png)
     :type pname: str.
@@ -204,10 +207,13 @@ def matter_setupFFGNuc_EP_fig( pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10)
 
 def matter_setupFFGNuc_EOS_fig(pname, mss=[1.0], den=np.linspace(0.01, 0.35, 10)):
     """
-    Plot nucleonic FFG EOS in NM and SM.\
-    The plot is 2x1 with:\
-    [0]: EOS (pre) versus energy density rho.\
-    [1]: Sound speed c_s^2 versus energy density rho.\
+    Plot nucleonic FFG EOS in NM and SM.
+
+    The plot is 2x1 with:
+
+    [0]: EOS (pre) versus energy density rho.
+
+    [1]: Sound speed c_s^2 versus energy density rho.
 
     :param pname: name of the figure (*.png)
     :type pname: str.

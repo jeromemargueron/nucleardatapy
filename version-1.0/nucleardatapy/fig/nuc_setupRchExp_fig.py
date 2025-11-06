@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def nuc_setupRchExp_fig( pname, tables ):
     """
-    Plot the experimental charge radii from the tables.\\
-    The plot is 1x1 with:\\
-    [0]: Rch as a function of N. \\
+    Plot the experimental charge radii from the tables.
+
+    The plot is 1x1 with:
+
+    [0]: Rch as a function of N.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

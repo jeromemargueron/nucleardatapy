@@ -5,12 +5,17 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_LP_fig( pname, models, matter="SM", ell=0 ):
     """
-    Plot nucleonic energy per particle E/A in matter.\\
-    The plot is 2x2 in SM with:\\
-     [0,0]: F_ell versus den.    [0,1]: G_ell versus den.\\
-     [1,0]: F'_ell' versus den.  [1,1]: G'_ell versus den.\\
-    Or the plot is 2x1 in NM with:\\
-     [0]: F_ell versus den.    [1]: G_ell versus den.\\
+    Plot nucleonic energy per particle E/A in matter.
+
+    The plot is 2x2 in SM with:
+
+    [0,0]: F_ell versus den.    [0,1]: G_ell versus den.
+
+    [1,0]: F'_ell' versus den.  [1,1]: G'_ell versus den.
+
+    Or the plot is 2x1 in NM with:
+
+    [0]: F_ell versus den.    [1]: G_ell versus den.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

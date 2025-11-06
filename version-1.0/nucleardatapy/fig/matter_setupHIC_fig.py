@@ -14,9 +14,12 @@ import nucleardatapy as nuda
 
 def matter_setupHIC_fig(pname, inferences):
     """
-    Plot the inferences from HIC.\
-    The plot is 2x2 with:\
+    Plot the inferences from HIC.
+
+    The plot is 2x2 with:
+
     [0,0]: pressure in SM versus den. [0,1]: E/A in SM versus den.
+    
     [1,0]: pressure in NM versus den. [1,1]: Esym versus den.
 
     :param pname: name of the figure (*.png)

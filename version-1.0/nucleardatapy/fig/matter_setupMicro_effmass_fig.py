@@ -6,9 +6,11 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
     """
-    Plot the effective mass as function of the density and Fermi momentum.\\
-    The plot is 1x2 with:\\
-    [0]: effmass(den)  [1]: effmass(kF)\\
+    Plot the effective mass as function of the density and Fermi momentum.
+
+    The plot is 1x2 with:
+
+    [0]: effmass(den).  [1]: effmass(kF).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def nuc_setupRchTheo_fig( pname, tables, table_exp ):
     """
-    Plot the theoretical charge radii from the tables and compare to the experimental value.\\
-    The plot is 1x1 with:\\
-    [0]: Rch as a function of N. \\
+    Plot the theoretical charge radii from the tables and compare to the experimental value.
+
+    The plot is 1x1 with:
+
+    [0]: Rch as a function of N.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

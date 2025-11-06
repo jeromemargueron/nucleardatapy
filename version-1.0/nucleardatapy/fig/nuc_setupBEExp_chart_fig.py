@@ -5,8 +5,10 @@ import nucleardatapy as nuda
 
 def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     """
-    Plot nuclear chart (N versus Z).\
-    The plot is 1x1 with:\
+    Plot nuclear chart (N versus Z).
+
+    The plot is 1x1 with:
+
     [0]: nuclear chart.
 
     :param pname: name of the figure (*.png)
@@ -131,9 +133,11 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
 
 def nuc_setupBEExp_chart_year_fig( pname, sYear, year_min, year_max ):
     """
-    Plot nuclear chart (N versus Z) for a range of discovery years.\\
-    The plot is 1x1 with:\\
-    [0]: nuclear chart.\\
+    Plot nuclear chart (N versus Z) for a range of discovery years.
+
+    The plot is 1x1 with:
+
+    [0]: nuclear chart.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -202,9 +206,11 @@ def nuc_setupBEExp_chart_year_fig( pname, sYear, year_min, year_max ):
 
 def nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table ):
     """
-    Plot nuclear chart (N versus Z).\\
-    The plot is 1x1 with:\\
-    [0]: nuclear chart.\\
+    Plot nuclear chart (N versus Z).
+
+    The plot is 1x1 with:
+
+    [0]: nuclear chart.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

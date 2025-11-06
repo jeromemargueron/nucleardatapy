@@ -5,10 +5,13 @@ import nucleardatapy as nuda
 
 def matter_setupPheno_e2a_fig(pname, model, band, matter):
     """
-    Plot nucleonic internal energy per particle E/A in `matter`.\\
-    The plot is 2x2 with:\\
-    [0,0]: E/A versus den.       [0,1]: E/A versus kfn.\\
-    [1,0]: E/E_NRFFG versus den. [1,1]: E/E_NRFFG versus kfn.\\
+    Plot nucleonic internal energy per particle E/A in `matter`.
+
+    The plot is 2x2 with:
+
+    [0,0]: E/A versus den.       [0,1]: E/A versus kfn.
+
+    [1,0]: E/E_NRFFG versus den. [1,1]: E/E_NRFFG versus kfn.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -218,10 +221,13 @@ def matter_setupPheno_e2a_fig(pname, model, band, matter):
 
 def matter_setupPheno_pre_fig(pname, model, band, matter):
     """
-    Plot nucleonic pressure in matter.\\
-    The plot is 2x2 with:\\
-    [0,0]: pre versus den.           [0,1]: pre versus kfn.\\
-    [1,0]: pre/pre_NRFFG versus den. [1,1]: pre/pre_NRFFG versus kfn.\\
+    Plot nucleonic pressure in matter.
+
+    The plot is 2x2 with:
+
+    [0,0]: pre versus den.           [0,1]: pre versus kfn.
+
+    [1,0]: pre/pre_NRFFG versus den. [1,1]: pre/pre_NRFFG versus kfn.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -329,9 +335,11 @@ def matter_setupPheno_pre_fig(pname, model, band, matter):
 
 def matter_setupPheno_cs2_fig(pname, model, band, matter):
     """
-    Plot nucleonic sound speed in matter.\\
-    The plot is 1x2 with:\\
-    [0]: cs2 versus den.    [1]: cs2 versus kfn.\\
+    Plot nucleonic sound speed in matter.
+
+    The plot is 1x2 with:
+
+    [0]: cs2 versus den.    [1]: cs2 versus kfn.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

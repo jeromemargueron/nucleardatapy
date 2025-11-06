@@ -5,9 +5,12 @@ import nucleardatapy as nuda
 
 def astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, sources_up2, sources_up3 ):
     """
-    Plot the probability distribution functions associated to maximum masses.\\
-    Includes the observation uncertainty in the PDF by using error-function.\\
-    The plot is 1x1 with:\\
+    Plot the probability distribution functions associated to maximum masses.
+
+    Includes the observation uncertainty in the PDF by using error-function.
+
+    The plot is 1x1 with:
+    
     [0]: distribution of maximum mass versus maximum mass.
 
     :param pname: name of the figure (\*.png)

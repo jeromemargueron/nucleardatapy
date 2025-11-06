@@ -6,10 +6,13 @@ import nucleardatapy as nuda
 
 def matter_setupPhenoEsym_fig(pname, models, band):
     """
-    Plot the symmetry energy esym for phenomenologic models.\\
-    The plot is 2x2 with:\\
-    [0,0]: esym function of the density.          [0,1]: esym function of the Fermi momentum.\\
-    [0,0]: esym/esym,FFG function of the density. [0,1]: esym/esym,FFG function of the Fermi momentum.\\
+    Plot the symmetry energy esym for phenomenologic models.
+
+    The plot is 2x2 with:
+
+    [0,0]: esym function of the density.          [0,1]: esym function of the Fermi momentum.
+
+    [0,0]: esym/esym,FFG function of the density. [0,1]: esym/esym,FFG function of the Fermi momentum.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

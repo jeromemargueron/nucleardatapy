@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, matter ):
     """
-    Plot nucleonic energy per particle E/A in matter.\\
-    The plot is 1x2 with:\\
-    [0]: E/A versus den (micro). [1]: E/A versus den (pheno).\\
+    Plot nucleonic energy per particle E/A in matter.
+
+    The plot is 1x2 with:
+
+    [0]: E/A versus den (micro). [1]: E/A versus den (pheno).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -210,9 +212,11 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
 
 def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot ):
     """
-    Plot nucleonic symmetry energy.\
-    The plot is 1x2 with:\
-    [0]: Esym versus den (micro).  [1]: Esym versus den (pheno).\
+    Plot nucleonic symmetry energy.
+
+    The plot is 1x2 with:
+
+    [0]: Esym versus den (micro).  [1]: Esym versus den (pheno).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -341,9 +345,11 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
 
 def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot nucleonic pressure in matter.\\
-    The plot is 1x2 with:\\
-    [0]: pre versus den (micro). [1]: pre versus den (pheno).\\
+    Plot nucleonic pressure in matter.
+
+    The plot is 1x2 with:
+
+    [0]: pre versus den (micro). [1]: pre versus den (pheno).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -555,9 +561,11 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
 def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot EoS in matter.\\
-    The plot is 1x2 with:\\
-    [0]: pre versus eps (micro). [1]: pre versus eps (pheno).\\
+    Plot EoS in matter.
+
+    The plot is 1x2 with:
+
+    [0]: pre versus eps (micro). [1]: pre versus eps (pheno).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -767,9 +775,11 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
 def matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter ):
     """
-    Plot nucleonic sound speed in matter.\\
-    The plot is 1x2 with:\\
-    [0]: cs2 versus den (micro). [1]: cs2 versus den (pheno).\\
+    Plot nucleonic sound speed in matter.
+
+    The plot is 1x2 with:
+
+    [0]: cs2 versus den (micro). [1]: cs2 versus den (pheno).
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

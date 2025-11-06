@@ -5,8 +5,11 @@ import nucleardatapy as nuda
 
 def matter_setupCheck_fig( pname, mb, models, band, matter ):
     """
-    Check E/A from models in `models` and show the reference band.\\
-    The plot is 1x1 with: E/A versus den.\\
+    Check E/A from models in `models` and show the reference band.
+
+    The plot is 1x1 with: 
+    
+    [0]: E/A versus den.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

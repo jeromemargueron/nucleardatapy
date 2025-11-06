@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def nuc_setupISGMRExp_fig( pname, tables ):
     """
-    Plot the experimental ISGMR energy from the tables.\\
-    The plot is 1x3 with:\\
-    [0]: for Zr. [1]: for Sn. [2]: for Pb.\\
+    Plot the experimental ISGMR energy from the tables.
+
+    The plot is 1x3 with:
+
+    [0]: for Zr. [1]: for Sn. [2]: for Pb.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def nuc_setupBEExp_year_fig( pname, table, version ):
     """
-    Plot the histogram for the discovery year.\\
-    The plot is 1x2 with:\\
-    [0]: full range of years. [1]: last two decades.\\
+    Plot the histogram for the discovery year.
+
+    The plot is 1x2 with:
+
+    [0]: full range of years. [1]: last two decades.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -64,9 +66,11 @@ def nuc_setupBEExp_year_fig( pname, table, version ):
 
 def nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 50 ):
     """
-    Plot S2n from the data extracted from the nuclear chart.\\
-    The plot is 1x1 with:\\
-    [0]: show S2n as a function of N.\\
+    Plot S2n from the data extracted from the nuclear chart.
+
+    The plot is 1x1 with:
+
+    [0]: show S2n as a function of N.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -116,9 +120,11 @@ def nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 50 ):
 
 def nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 50 ):
     """
-    Plot S2p from the data extracted from the nuclear chart.\\
-    The plot is 1x1 with:\\
-    [0]: show S2p as a function of Z.\\
+    Plot S2p from the data extracted from the nuclear chart.
+
+    The plot is 1x1 with:
+
+    [0]: show S2p as a function of Z.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -168,9 +174,11 @@ def nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 50 ):
 
 def nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 ):
     """
-    Plot D3n (3-point formula for the odd-even mass staggering) from the data extracted from the nuclear chart.\\
-    The plot is 1x1 with:\\
-    [0]: show D3n as a function of N.\\
+    Plot D3n (3-point formula for the odd-even mass staggering) from the data extracted from the nuclear chart.
+
+    The plot is 1x1 with:
+
+    [0]: show D3n as a function of N.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -223,9 +231,11 @@ def nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 ):
 
 def nuc_setupBEExp_D3p_fig( pname, tables, versions, Nref = 50 ):
     """
-    Plot D3p (3-point formula for the odd-even mass staggering) from the data extracted from the nuclear chart.\\
-    The plot is 1x1 with:\\
-    [0]: show D3p as a function of Z.\\
+    Plot D3p (3-point formula for the odd-even mass staggering) from the data extracted from the nuclear chart.
+
+    The plot is 1x1 with:
+
+    [0]: show D3p as a function of Z.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

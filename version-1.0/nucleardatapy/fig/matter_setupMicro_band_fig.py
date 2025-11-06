@@ -6,9 +6,11 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_band_fig(pname, models, den, matter):
     """
-    Plot the reference band together with the models on wich it is constructed.\\
-    The plot is 1x2 with:\\
-    [0]: E versus den  [1]: E/EFFG versus den.\\
+    Plot the reference band together with the models on wich it is constructed.
+
+    The plot is 1x2 with:
+
+    [0]: E versus den.  [1]: E/EFFG versus den.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

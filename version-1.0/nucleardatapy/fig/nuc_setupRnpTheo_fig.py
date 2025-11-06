@@ -43,9 +43,11 @@ def read_model_data(directory, source):
 
 def nuc_setupRnpTheo_fig(pname, source):
     """
-    Plot the theoretical np radii (neutron skin).\\
-    The plot is 1x1 with:\\
-    [0]: Rch as a function of N. \\
+    Plot the theoretical np radii (neutron skin).
+
+    The plot is 1x1 with:
+
+    [0]: Rch as a function of N. 
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

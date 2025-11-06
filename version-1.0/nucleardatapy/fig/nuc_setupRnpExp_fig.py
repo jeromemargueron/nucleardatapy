@@ -12,9 +12,11 @@ SOURCE_LABELS_LATEX = {
 
 def nuc_setupRnpExp_fig(pname=None, source=None):
     """
-    Plot the experimental np radii (neutron skin).\\
-    The plot is 1x1 with:\\
-    [0]: Rch as a function of N. \\
+    Plot the experimental np radii (neutron skin).
+
+    The plot is 1x1 with:
+
+    [0]: Rch as a function of N. 
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

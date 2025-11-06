@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def eos_setupAMLeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the electron fraction (=xe) in asymmetric matter at lepton equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the electron fraction (=xe) in asymmetric matter at lepton equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -117,9 +119,11 @@ def eos_setupAMLeq_xe_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMLeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the muon fraction (=xmu) in asymmetric matter at lepton equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the muon fraction (=xmu) in asymmetric matter at lepton equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -231,9 +235,11 @@ def eos_setupAMLeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
 
 def eos_setupAMLeq_xexmu_fig( pname, micro_mbs, pheno_models, band ):
     """
-    Plot the electron and muon fractions (=xe and xmu) in asymmetric matter at lepton equilibrium.\\
-    The plot is 2x1 with:\\
-    [0]: microscopic models.  [1]: phenomenologic models.\\
+    Plot the electron and muon fractions (=xe and xmu) in asymmetric matter at lepton equilibrium.
+
+    The plot is 2x1 with:
+
+    [0]: microscopic models.  [1]: phenomenologic models.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

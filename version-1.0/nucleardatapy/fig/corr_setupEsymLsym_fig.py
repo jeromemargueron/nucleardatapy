@@ -5,9 +5,11 @@ import nucleardatapy as nuda
 
 def corr_setupEsymLsym_fig( pname, constraints, origine ):
     """
-    Plot the correlation between Esym and Lsym.\\
-    The plot is 1x1 with:\\
-    [0]: Esym - Lsym correlation plot
+    Plot the correlation between Esym and Lsym.
+
+    The plot is 1x1 with:
+
+    [0]: Esym - Lsym correlation plot.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

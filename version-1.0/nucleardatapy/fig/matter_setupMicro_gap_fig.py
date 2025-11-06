@@ -5,10 +5,13 @@ import nucleardatapy as nuda
 
 def matter_setupMicro_gap_1s0_fig(pname, models, matter="NM"):
     """
-    Plot the 1S0 pairing gap in `matter`.\\
-    The plot is 2x2 with:\\
-    [0,0]: gap versus den.    [0,1]: gap versus kfn.\\
-    [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.\\
+    Plot the 1S0 pairing gap in `matter`.
+
+    The plot is 2x2 with:
+
+    [0,0]: gap versus den.    [0,1]: gap versus kfn.
+
+    [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -102,10 +105,13 @@ def matter_setupMicro_gap_1s0_fig(pname, models, matter="NM"):
 
 def matter_setupMicro_gap_3pf2_fig(pname, models, matter="NM"):
     """
-    Plot the 3PF2 pairing gap in `matter`.\\
-    The plot is 2x2 with:\\
-    [0,0]: gap versus den.    [0,1]: gap versus kfn.\\
-    [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.\\
+    Plot the 3PF2 pairing gap in `matter`.
+
+    The plot is 2x2 with:
+
+    [0,0]: gap versus den.    [0,1]: gap versus kfn.
+
+    [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

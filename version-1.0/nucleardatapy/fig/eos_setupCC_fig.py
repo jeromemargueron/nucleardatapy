@@ -5,8 +5,11 @@ import nucleardatapy as nuda
 
 def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_param ):
     """
-    Plot the EoS with crust and core parts.\
+    Plot the EoS with crust and core parts.
+
     The plot is 1x1.
+
+    [0]: pressure as a function of the energy density.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -94,8 +97,11 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
 
 def eos_setupCC_checkpre_fig( pname, band, crust_model, core_kind, core_model, core_param, connect, boundaries, emp ):
     """
-    Check the EoS with crust and core parts.\
+    Check the EoS with crust and core parts.
+
     The plot is 1x1.
+
+    [0]: pressure and band to check visualy.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.
@@ -178,8 +184,11 @@ def eos_setupCC_checkpre_fig( pname, band, crust_model, core_kind, core_model, c
 
 def eos_setupCC_checkeos_fig( pname, band, crust_model, core_kind, core_model, core_param, connect, boundaries, emp ):
     """
-    Check the EoS with crust and core parts.\
+    Check the EoS with crust and core parts.
+
     The plot is 1x1.
+
+    [0]: pressure and band to check visualy.
 
     :param pname: name of the figure (\*.png)
     :type pname: str.

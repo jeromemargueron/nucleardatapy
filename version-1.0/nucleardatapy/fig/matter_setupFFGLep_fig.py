@@ -7,10 +7,11 @@ mpl.use("Agg")  # Use a non-interactive backend
 
 def matter_setupFFGLep_fig( pname, den_el=None, den_mu1=None, den_mu2=None, den_mu3=None ):
     """
-    Plot leptonic FFG energy per particle E/A and pressure in NM and SM.\\
-    The plot is 2x1 with:\\
-    [0]: E/A versus den.\\
-    [1]: pre versus den.\\
+    Plot leptonic FFG energy per particle E/A and pressure in NM and SM.
+
+    The plot is 2x1 with:
+
+    [0]: E/A versus den.    [1]: pre versus den.
 
     :param pname: name of the figure (*.png)
     :type pname: str.
