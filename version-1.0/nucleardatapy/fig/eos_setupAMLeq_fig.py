@@ -111,7 +111,7 @@ def eos_setupAMLeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.08,0.22,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)
@@ -227,7 +227,7 @@ def eos_setupAMLeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.08,0.12,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None:
     	plt.savefig(pname, dpi=200)

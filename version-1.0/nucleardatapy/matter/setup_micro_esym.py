@@ -238,7 +238,7 @@ class setupMicroEsym():
             if self.p_err:
                 self.sm_pre_err = mic.sm_pre_err
                 self.nm_pre_err = mic.nm_pre_err
-            if self.csc2_err:
+            if self.cs2_err:
                 self.sm_cs2_err = mic.sm_cs2_err
                 self.nm_cs2_err = mic.nm_cs2_err
             #mic.print_outputs( )

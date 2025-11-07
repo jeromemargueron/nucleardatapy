@@ -109,7 +109,7 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -220,7 +220,7 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -331,7 +331,7 @@ def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,0.2,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -362,7 +362,7 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     fig.subplots_adjust(left=0.12, bottom=0.12, right=0.95, top=0.90, wspace=0.05, hspace=0.05 )
     #
     axs[0].set_xlabel(r'$n_\text{nuc}$ (fm$^{-3}$)',fontsize='14')
-    axs[0].set_ylabel(r'$_\text{lep}^\text{int}$ (MeV)',fontsize='14')
+    axs[0].set_ylabel(r'$e_\text{lep}^\text{int}$ (MeV)',fontsize='14')
     axs[0].set_xlim([0, 0.33])
     axs[0].set_ylim([-2, 27])
     #axs[0].set_tick_params('y', right=True)
@@ -445,7 +445,7 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -558,7 +558,7 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -671,7 +671,7 @@ def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,0.45,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -784,7 +784,7 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -909,7 +909,7 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
     axs[1].errorbar( p_den+0.005, p_pheno_cen, yerr=p_pheno_std, color='r' )
     axs[1].text(0.02,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -1020,7 +1020,7 @@ def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
         # end of model
     axs[1].text(0.02,0.2,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -1160,7 +1160,7 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
     axs[1].errorbar( p_den+5.0, p_pheno_cen, yerr=p_pheno_std, color='r', linewidth = 3 )
     axs[1].text(10,20,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
         plt.savefig(pname, dpi=200)
@@ -1274,7 +1274,7 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)
@@ -1387,7 +1387,7 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)
@@ -1498,7 +1498,7 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
     #
     axs[1].text(0.02,0.18,'phenomenological models',fontsize='10')
     #
-    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=5,frameon=False)
+    fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=6,frameon=False)
     #
     if pname is not None: 
     	plt.savefig(pname, dpi=200)

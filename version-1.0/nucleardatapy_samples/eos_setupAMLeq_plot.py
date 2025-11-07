@@ -25,7 +25,7 @@ def main():
     #micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()
     #micro_mbs.remove( 'BHF2' )
     #micro_mbs = [ 'VAR' ]
-    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT' ]
+    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT', 'SCGF', 'CC' ]
     #
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
     pheno_models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]

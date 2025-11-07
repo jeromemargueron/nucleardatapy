@@ -29,7 +29,7 @@ def main():
     #micro_mbs = [ 'BHF23' ]
     #micro_mbs = [ 'MBPT' ]
     #micro_mbs = [ 'NLEFT' ]
-    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT' ]
+    micro_mbs = [ 'VAR', 'BHF23', 'MBPT', 'NLEFT', 'SCGF', 'CC' ]
     print('micro_mbs:',micro_mbs)
 
     #pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()
