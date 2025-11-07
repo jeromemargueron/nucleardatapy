@@ -1,0 +1,63 @@
+version: 1
+project:
+  title: Nuclear data toolkit
+  authors:
+    - name: J. Margueron
+    - name: et al.
+  copyright: '2025'
+  github: jeromemargueron/nucleardatapy
+  bibliography:
+    - references.bib
+  toc:
+    - file: landing.md
+    - file: notebooks/nuda_intro.md
+    - file: notebooks/chapter1_introduction/tutorial_chap1.md
+      children:
+        - file: notebooks/chapter1_introduction/Tutorial-1.1.ipynb
+        - file: notebooks/chapter1_introduction/Tutorial-1.2.ipynb
+    - file: notebooks/chapter2_matter/tutorial_chap2.md
+      children:
+        - file: notebooks/chapter2_matter/Tutorial-2.1.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.2.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.3.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.4.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.5.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.10.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.20.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.30.ipynb
+        - file: notebooks/chapter2_matter/Tutorial-2.31.ipynb
+    - file: notebooks/chapter3_correlations/tutorial_chap3.md
+      children:
+        - file: notebooks/chapter3_correlations/Tutorial-3.1.ipynb
+        - file: notebooks/chapter3_correlations/Tutorial-3.2.ipynb
+        - file: notebooks/chapter3_correlations/Tutorial-3.3.ipynb
+    - file: notebooks/chapter4_nuclei/tutorial_chap4.md
+      children:
+        - file: notebooks/chapter4_nuclei/Tutorial-4.1.ipynb
+        - file: notebooks/chapter4_nuclei/Tutorial-4.2.ipynb
+        - file: notebooks/chapter4_nuclei/Tutorial-4.3.ipynb
+        - file: notebooks/chapter4_nuclei/Tutorial-4.4.ipynb
+        - file: notebooks/chapter4_nuclei/Tutorial-4.5.ipynb
+    - file: notebooks/chapter5_hypernuclei/tutorial_chap5.md
+      children:
+        - file: notebooks/chapter5_hypernuclei/Tutorial-5.1.ipynb
+        - file: notebooks/chapter5_hypernuclei/Tutorial-5.2.ipynb
+        - file: notebooks/chapter5_hypernuclei/Tutorial-5.3.ipynb
+        - file: notebooks/chapter5_hypernuclei/Tutorial-5.4.ipynb
+    - file: notebooks/chapter6_crust/tutorial_chap6.md
+      children:
+        - file: notebooks/chapter6_crust/Tutorial-6.1.ipynb
+    - file: notebooks/chapter7_eos/tutorial_chap7.md
+      children:
+        - file: notebooks/chapter7_eos/Tutorial-7.1.ipynb
+    - file: notebooks/chapter8_astro/tutorial_chap8.md
+      children:
+        - file: notebooks/chapter8_astro/Tutorial-8.1.ipynb
+        - file: notebooks/chapter8_astro/Tutorial-8.2.ipynb
+        - file: notebooks/chapter8_astro/Tutorial-8.3.ipynb
+        - file: notebooks/chapter8_astro/Tutorial-8.4.ipynb
+site:
+  options:
+    logo: logo.png
+    folders: true
+  template: book-theme
