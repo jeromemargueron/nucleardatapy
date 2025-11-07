@@ -40,30 +40,47 @@ flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-> model: 2020-MBPT-AM
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-> model: 2016-MBPT-AM
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-> model: 2020-MBPT-AM
+model ->  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 3[39m
-[32m      1[39m den = np.array([[32m0.04[39m,[32m0.06[39m,[32m0.08[39m,[32m0.1[39m,[32m0.12[39m,[32m0.14[39m,[32m0.16[39m])
-[32m      2[39m models = [ [33m'[39m[33m2016-MBPT-AM[39m[33m'[39m, [33m'[39m[33m2020-MBPT-AM[39m[33m'[39m ]
-[32m----> [39m[32m3[39m band = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroBand[49m[43m([49m[43m [49m[43mmodels[49m[43m,[49m[43m [49m[43mden[49m[43m=[49m[43mden[49m[43m,[49m[43m [49m[43mmatter[49m[43m=[49m[33;43m'[39;49m[33;43mESYM[39;49m[33;43m'[39;49m[43m [49m[43m)[49m
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 6[39m
 [32m      4[39m micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()
 [32m      5[39m pheno_models = [ [33m'[39m[33mSkyrme[39m[33m'[39m, [33m'[39m[33mNLRH[39m[33m'[39m, [33m'[39m[33mDDRH[39m[33m'[39m, [33m'[39m[33mDDRHF[39m[33m'[39m ]
+[32m----> [39m[32m6[39m [43mnuda[49m[43m.[49m[43mfig[49m[43m.[49m[43mmatter_Esym_fig[49m( [38;5;28;01mNone[39;00m, micro_mbs, pheno_models, band )
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_band.py:101[39m, in [36msetupMicroBand.__init__[39m[34m(self, models, nden, ne, den, matter, e2a_min, e2a_max)[39m
-[32m     99[39m         exit()
-[32m    100[39m [38;5;28;01melif[39;00m matter.lower() == [33m'[39m[33mesym[39m[33m'[39m:
-[32m--> [39m[32m101[39m     esym = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroEsym[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
-[32m    102[39m     [38;5;28;01mif[39;00m esym.esym [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[32m    103[39m         [38;5;28mprint[39m([33m'[39m[33mThere are no calculation for Esym for model [39m[33m'[39m,model)
-
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_esym.py:241[39m, in [36msetupMicroEsym.__init__[39m[34m(self, model, var1, var2)[39m
-[32m    239[39m     [38;5;28mself[39m.sm_pre_err = mic.sm_pre_err
-[32m    240[39m     [38;5;28mself[39m.nm_pre_err = mic.nm_pre_err
-[32m--> [39m[32m241[39m [38;5;28;01mif[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mcsc2_err[49m:
-[32m    242[39m     [38;5;28mself[39m.sm_cs2_err = mic.sm_cs2_err
-[32m    243[39m     [38;5;28mself[39m.nm_cs2_err = mic.nm_cs2_err
-
-[31mAttributeError[39m: 'setupMicroEsym' object has no attribute 'csc2_err'
+[31mAttributeError[39m: module 'nucleardatapy.fig' has no attribute 'matter_Esym_fig'
 

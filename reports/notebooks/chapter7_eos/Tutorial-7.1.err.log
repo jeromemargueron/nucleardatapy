@@ -18,40 +18,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-for model in models:
-    mic = nuda.eos.setupAM( model = model, kind = 'micro', asy = asy )
-    mic.print_outputs( )
+nuda.fig.eos_setupAM_e_fig( None, micro_models, pheno_models, asy )
 ------------------
 
------ stdout -----
--> model: 1981-VAR-AM-FP
-model ->  1981-VAR-AM-FP
-flag_nm: True
-flag_sm: True
-flag_kf: True
-flag_den: False
-------------------
 
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 2[39m
-[32m      1[39m [38;5;28;01mfor[39;00m model [38;5;129;01min[39;00m models:
-[32m----> [39m[32m2[39m     mic = [43mnuda[49m[43m.[49m[43meos[49m[43m.[49m[43msetupAM[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m,[49m[43m [49m[43mkind[49m[43m [49m[43m=[49m[43m [49m[33;43m'[39;49m[33;43mmicro[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43masy[49m[43m [49m[43m=[49m[43m [49m[43masy[49m[43m [49m[43m)[49m
-[32m      3[39m     mic.print_outputs( )
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [43mnuda[49m[43m.[49m[43mfig[49m[43m.[49m[43meos_setupAM_e_fig[49m( [38;5;28;01mNone[39;00m, micro_models, pheno_models, asy )
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/eos/setup_am.py:65[39m, in [36msetupAM.__init__[39m[34m(self, model, param, kind, asy, x_mu)[39m
-[32m     63[39m [38;5;66;03m#[39;00m
-[32m     64[39m [38;5;28;01mif[39;00m kind == [33m'[39m[33mmicro[39m[33m'[39m:
-[32m---> [39m[32m65[39m     esym = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroEsym[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
-[32m     66[39m     [38;5;66;03m#eos.print_outputs( )[39;00m
-[32m     67[39m [38;5;28;01melif[39;00m kind == [33m'[39m[33mpheno[39m[33m'[39m:
-
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_esym.py:241[39m, in [36msetupMicroEsym.__init__[39m[34m(self, model, var1, var2)[39m
-[32m    239[39m     [38;5;28mself[39m.sm_pre_err = mic.sm_pre_err
-[32m    240[39m     [38;5;28mself[39m.nm_pre_err = mic.nm_pre_err
-[32m--> [39m[32m241[39m [38;5;28;01mif[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mcsc2_err[49m:
-[32m    242[39m     [38;5;28mself[39m.sm_cs2_err = mic.sm_cs2_err
-[32m    243[39m     [38;5;28mself[39m.nm_cs2_err = mic.nm_cs2_err
-
-[31mAttributeError[39m: 'setupMicroEsym' object has no attribute 'csc2_err'
+[31mAttributeError[39m: module 'nucleardatapy.fig' has no attribute 'eos_setupAM_e_fig'
 
