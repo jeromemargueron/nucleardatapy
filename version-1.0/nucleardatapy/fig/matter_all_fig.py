@@ -207,7 +207,7 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
     if pname is not None:
     	plt.savefig(pname, dpi=200)
     #
-    	plt.close()
+    plt.close()
     #
 
 def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot ):

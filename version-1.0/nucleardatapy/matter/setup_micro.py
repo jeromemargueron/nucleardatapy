@@ -1407,7 +1407,7 @@ class setupMicro:
             self.cs2_err = False
             (
                 self.sm_den,
-                self.nm_chempot_n3lo,
+                self.sm_chempot_n3lo,
                 self.sm_e2a_n3lo,
                 self.sm_pre_n3lo,
             ) = np.loadtxt(

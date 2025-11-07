@@ -4,13 +4,14 @@ project:
   authors:
     - name: J. Margueron
     - name: et al.
-  copyright: '2025'
+  copyright: "2025"
   github: jeromemargueron/nucleardatapy
   bibliography:
     - references.bib
   toc:
     - file: landing.md
     - file: notebooks/nuda_intro.md
+      hidden: true
     - file: notebooks/chapter1_introduction/tutorial_chap1.md
       children:
         - file: notebooks/chapter1_introduction/Tutorial-1.1.ipynb
