@@ -2106,8 +2106,10 @@ class setupMicro:
                 print("Reads file1:", file_in1)
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
-            self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = "We consider MBPT(3) when possible, otherwise MBPT(2)."
+            self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024); F. Marino, C. Barbieri, G. Colo, W. Jiang, S.J. Novario,
+PoS QNP2024, 180 (2025); F. Marino, W. Jiang, C. Barbieri, G. Colò, S. Novario. Data: Equations of state from chiral interactions with
+adc green’s function and coupled-cluster (2025). DOI 10.5281/zenodo.17053839."
+            self.note = "We consider MBPT(3) when possible, otherwise MBPT(2). Zenodo repository is available from the URL https://doi.org/10.5281/zenodo.17053839"
             self.label = "MBPT-2024"
             self.model = model
             self.marker = "x"
@@ -2204,8 +2206,10 @@ class setupMicro:
                 print("Reads file1:", file_in1)
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
-            self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = "We consider ADC(3)-D when possible, otherwise ADC(3)"
+            self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024); F. Marino, C. Barbieri, G. Colo, W. Jiang, S.J. Novario,
+PoS QNP2024, 180 (2025); F. Marino, W. Jiang, C. Barbieri, G. Colò, S. Novario. Data: Equations of state from chiral interactions with
+adc green’s function and coupled-cluster (2025). DOI 10.5281/zenodo.17053839."
+            self.note = "We consider ADC(3)-D. Zenodo repository is available from the URL https://doi.org/10.5281/zenodo.17053839"
             self.label = "SCGF-2024"
             self.marker = "x"
             self.linestyle = "solid"
@@ -2302,9 +2306,11 @@ class setupMicro:
                 print("Reads file1:", file_in1)
             if nuda.env.verb:
                 print("Reads file2:", file_in2)
+            self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024); F. Marino, C. Barbieri, G. Colo, W. Jiang, S.J. Novario,
+PoS QNP2024, 180 (2025); F. Marino, W. Jiang, C. Barbieri, G. Colò, S. Novario. Data: Equations of state from chiral interactions with
+adc green’s function and coupled-cluster (2025). DOI 10.5281/zenodo.17053839."
+            self.note = "we consider CCD(T). Zenodo repository is available from the URL https://doi.org/10.5281/zenodo.17053839"
             self.ref = "F. Marino, W.G. Jiang, and S.J. Novario, Phys. Rev. C 110, 054322 (2024)."
-            self.note = "we consider CCD(T)"
-            self.label = "CC-2024"
             self.marker = "x"
             self.linestyle = "solid"
             self.model = model
