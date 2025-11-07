@@ -11,7 +11,7 @@ eos.setupAM
 
 Here are a set of figures which are produced with the Python sample: /nucleardatapy_sample/eos_setupAM_e_plot.py
 
-.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_eos_setupAM_e.png
+.. figure:: ../../../version-1.0/nucleardatapy_samples/figs/plot_eos_setupAM_e2a.png
 	:width: 70%
 	:alt: map to buried treasure
 
