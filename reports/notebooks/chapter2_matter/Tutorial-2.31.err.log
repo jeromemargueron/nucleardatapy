@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+den = np.array([0.04,0.06,0.08,0.1,0.12,0.14,0.16])
+models = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
+band = nuda.matter.setupMicroBand( models, den=den, matter='ESYM' )
+micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()
+pheno_models = [ 'Skyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+nuda.fig.matter_Esym_fig( None, micro_mbs, pheno_models, band )
+------------------
+
+----- stdout -----
+
+Band for Esym
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-> model: 2016-MBPT-AM
+model ->  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 3[39m
+[32m      1[39m den = np.array([[32m0.04[39m,[32m0.06[39m,[32m0.08[39m,[32m0.1[39m,[32m0.12[39m,[32m0.14[39m,[32m0.16[39m])
+[32m      2[39m models = [ [33m'[39m[33m2016-MBPT-AM[39m[33m'[39m, [33m'[39m[33m2020-MBPT-AM[39m[33m'[39m ]
+[32m----> [39m[32m3[39m band = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroBand[49m[43m([49m[43m [49m[43mmodels[49m[43m,[49m[43m [49m[43mden[49m[43m=[49m[43mden[49m[43m,[49m[43m [49m[43mmatter[49m[43m=[49m[33;43m'[39;49m[33;43mESYM[39;49m[33;43m'[39;49m[43m [49m[43m)[49m
+[32m      4[39m micro_mbs, micro_mbs_lower = nuda.matter.micro_esym_mbs()
+[32m      5[39m pheno_models = [ [33m'[39m[33mSkyrme[39m[33m'[39m, [33m'[39m[33mNLRH[39m[33m'[39m, [33m'[39m[33mDDRH[39m[33m'[39m, [33m'[39m[33mDDRHF[39m[33m'[39m ]
+
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_band.py:101[39m, in [36msetupMicroBand.__init__[39m[34m(self, models, nden, ne, den, matter, e2a_min, e2a_max)[39m
+[32m     99[39m         exit()
+[32m    100[39m [38;5;28;01melif[39;00m matter.lower() == [33m'[39m[33mesym[39m[33m'[39m:
+[32m--> [39m[32m101[39m     esym = [43mnuda[49m[43m.[49m[43mmatter[49m[43m.[49m[43msetupMicroEsym[49m[43m([49m[43m [49m[43mmodel[49m[43m [49m[43m=[49m[43m [49m[43mmodel[49m[43m [49m[43m)[49m
+[32m    102[39m     [38;5;28;01mif[39;00m esym.esym [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m    103[39m         [38;5;28mprint[39m([33m'[39m[33mThere are no calculation for Esym for model [39m[33m'[39m,model)
+
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_esym.py:241[39m, in [36msetupMicroEsym.__init__[39m[34m(self, model, var1, var2)[39m
+[32m    239[39m     [38;5;28mself[39m.sm_pre_err = mic.sm_pre_err
+[32m    240[39m     [38;5;28mself[39m.nm_pre_err = mic.nm_pre_err
+[32m--> [39m[32m241[39m [38;5;28;01mif[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mcsc2_err[49m:
+[32m    242[39m     [38;5;28mself[39m.sm_cs2_err = mic.sm_cs2_err
+[32m    243[39m     [38;5;28mself[39m.nm_cs2_err = mic.nm_cs2_err
+
+[31mAttributeError[39m: 'setupMicroEsym' object has no attribute 'csc2_err'
+

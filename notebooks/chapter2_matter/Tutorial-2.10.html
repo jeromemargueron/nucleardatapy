@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.6. Phenomenological interactions (pheno) &#8212; Nuclear data toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter2_matter/Tutorial-2.10';</script>
+    <link rel="canonical" href="/nucleardatapy/notebooks/chapter2_matter/Tutorial-2.10.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.7. Nuclear Empirical Parameters (NEP)" href="Tutorial-2.20.html" />
+    <link rel="prev" title="2.5. Pairing gap (micro)" href="Tutorial-2.5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../landing.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Nuclear data toolkit - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Nuclear data toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../landing.html">
+                    Welcome to our Jupyter Book!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1_introduction/tutorial_chap1.html">1. Tutorial 1 : Introduction to NUDA</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1_introduction/Tutorial-1.1.html">1.1. Introduction to nucleardatapy toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1_introduction/Tutorial-1.2.html">1.2. Warm up</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorial_chap2.html">2. Chapter 2: Matter</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.1.html">2.1. Free Fermi gas (FFG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.2.html">2.2. Microscopic calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.3.html">2.3. Uncertainties in the theoretical predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.4.html">2.4. Landau effective mass (micro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.5.html">2.5. Pairing gap (micro)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.6. Phenomenological interactions (pheno)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.20.html">2.7. Nuclear Empirical Parameters (NEP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.30.html">2.8. Check if a model is inside the reference band</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tutorial-2.31.html">2.9. Figures with micro and pheno together</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3_correlations/tutorial_chap3.html">3. Chapter 3: Correlations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.1.html">3.1. Ksat-Qsat correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.2.html">3.2. Esym-Lsym correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3_correlations/Tutorial-3.3.html">3.3. Esym(n)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4_nuclei/tutorial_chap4.html">4. Chapter 4: Nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.1.html">4.1. Experimental nuclear chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.2.html">4.2. Two-neutron and two-proton separation energies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.3.html">4.3. Experimental odd-even mass staggering (OEMS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.4.html">4.4. Experimental charge radii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4_nuclei/Tutorial-4.5.html">4.5. Experimental isoscalar giant monopole resonance (ISGMR)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter5_hypernuclei/tutorial_chap5.html">5. Chapter 5: Hyper-nuclei</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.1.html">5.1. Experimental hyper-nuclei with 1 Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.2.html">5.2. Experimental hyper-nuclei with 2 Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.3.html">5.3. Experimental hyper-nuclei with 1 Xi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter5_hypernuclei/Tutorial-5.4.html">5.4. Experimental hyper-nuclear chart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter6_crust/tutorial_chap6.html">6. Chapter 6: Neutron Star Crusts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter6_crust/Tutorial-6.1.html">6.1. Neutron Star Crust</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter7_eos/tutorial_chap7.html">7. Chapter 7: Equations of State</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter7_eos/Tutorial-7.1.html">7.1. Equation of state (eos)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter8_astro/tutorial_chap8.html">8. Chapter 8: Astrophysical Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.1.html">8.1. Gravitational waveform analysis (GW)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.2.html">8.2. Maximum masses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.3.html">8.3. TOV mass probability distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter8_astro/Tutorial-8.4.html">8.4. Observation constraints on masses and radii (NICER observatory)</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jeromemargueron/nucleardatapy/blob/gh-pages/book/notebooks/chapter2_matter/Tutorial-2.10.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeromemargueron/nucleardatapy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeromemargueron/nucleardatapy/issues/new?title=Issue%20on%20page%20%2Fnotebooks/chapter2_matter/Tutorial-2.10.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/chapter2_matter/Tutorial-2.10.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Phenomenological interactions (pheno)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="phenomenological-interactions-pheno">
+<h1><span class="section-number">2.6. </span>Phenomenological interactions (pheno)<a class="headerlink" href="#phenomenological-interactions-pheno" title="Link to this heading">#</a></h1>
+<p>In this tutorial, you will learn how to employ the phenomenological module to make predictions on thermodynamical properties.</p>
+<hr class="docutils" />
+<p>Import the libraries that will be employed in this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># Import matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># Import nucleardatapy package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can simply print out the properties of the nuda’s function that we will use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the nucleardatapy module to find the correct attribute</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;print_outputs&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Get the full list of models:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fix one model for which we want to extract the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the full list of <code class="docutils literal notranslate"><span class="pre">parameters</span></code> associated to <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;params:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fix one parameter set associated to <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;BSK17&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: BSK17
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Instantiate <code class="docutils literal notranslate"><span class="pre">pheno</span></code> with the data from phenomonological model defined by <code class="docutils literal notranslate"><span class="pre">model</span></code> and <code class="docutils literal notranslate"><span class="pre">param</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
+<span class="n">pheno</span><span class="o">.</span><span class="n">print_outputs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Print output:
+   model: Skyrme
+   param: BSK17
+   label: SKY-BSK17
+   sm_den: [0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1  0.11 0.12 0.13 0.14
+ 0.15 0.16 0.17 0.18 0.19 0.2  0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28
+ 0.29 0.3  0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4  0.41 0.42
+ 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5  0.51 0.52 0.53 0.54 0.55 0.56
+ 0.57 0.58 0.59 0.6  0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7
+ 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8  0.81 0.82 0.83 0.84
+ 0.85 0.86 0.87 0.88 0.89 0.9  0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98
+ 0.99] in fm$^{-3}$
+   sm_kfn: [0.55 0.68 0.77 0.85 0.91 0.97 1.02 1.06 1.1  1.14 1.18 1.21 1.25 1.28
+ 1.31 1.34 1.36 1.39 1.41 1.44 1.46 1.48 1.51 1.53 1.55 1.57 1.59 1.61
+ 1.63 1.65 1.66 1.68 1.7  1.72 1.73 1.75 1.76 1.78 1.8  1.81 1.83 1.84
+ 1.85 1.87 1.88 1.9  1.91 1.92 1.94 1.95 1.96 1.98 1.99 2.   2.01 2.02
+ 2.04 2.05 2.06 2.07 2.08 2.09 2.11 2.12 2.13 2.14 2.15 2.16 2.17 2.18
+ 2.19 2.2  2.21 2.22 2.23 2.24 2.25 2.26 2.27 2.28 2.29 2.3  2.31 2.32
+ 2.33 2.34 2.34 2.35 2.36 2.37 2.38 2.39 2.4  2.41 2.41 2.42 2.43 2.44
+ 2.45] in fm$^{-1}$
+   sm_e2a: [ 937.16  935.09  933.2   931.49  929.97  928.62  927.43  926.39  925.51
+  924.76  924.14  923.65  923.28  923.03  922.89  922.87  922.95  923.13
+  923.41  923.79  924.26  924.82  925.48  926.22  927.05  927.97  928.96
+  930.04  931.2   932.43  933.74  935.13  936.59  938.12  939.72  941.4
+  943.14  944.95  946.83  948.78  950.79  952.86  955.    957.2   959.47
+  961.79  964.18  966.62  969.13  971.69  974.31  976.99  979.73  982.52
+  985.37  988.27  991.23  994.24  997.3  1000.42 1003.59 1006.81 1010.08
+ 1013.41 1016.78 1020.2  1023.68 1027.2  1030.77 1034.4  1038.06 1041.78
+ 1045.55 1049.36 1053.21 1057.12 1061.07 1065.06 1069.11 1073.19 1077.32
+ 1081.5  1085.72 1089.98 1094.29 1098.64 1103.03 1107.47 1111.95 1116.47
+ 1121.03 1125.63 1130.28 1134.96 1139.69 1144.46 1149.27 1154.12 1159.01] in MeV
+   sm_cs2: [-0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.01 -0.   -0.    0.    0.01
+  0.01  0.02  0.02  0.03  0.04  0.04  0.05  0.06  0.07  0.08  0.08  0.09
+  0.1   0.11  0.12  0.13  0.14  0.15  0.16  0.17  0.18  0.19  0.2   0.21
+  0.22  0.23  0.25  0.26  0.27  0.28  0.29  0.3   0.31  0.32  0.33  0.35
+  0.36  0.37  0.38  0.39  0.4   0.41  0.42  0.43  0.44  0.46  0.47  0.48
+  0.49  0.5   0.51  0.52  0.53  0.54  0.55  0.56  0.57  0.58  0.59  0.6
+  0.61  0.62  0.63  0.64  0.65  0.66  0.66  0.67  0.68  0.69  0.7   0.71
+  0.72  0.73  0.73  0.74  0.75  0.76  0.77  0.78  0.78  0.79  0.8   0.81
+  0.81  0.82  0.83]
+   nm_den: [0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1  0.11 0.12 0.13 0.14
+ 0.15 0.16 0.17 0.18 0.19 0.2  0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28
+ 0.29 0.3  0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4  0.41 0.42
+ 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5  0.51 0.52 0.53 0.54 0.55 0.56
+ 0.57 0.58 0.59 0.6  0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7
+ 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8  0.81 0.82 0.83 0.84
+ 0.85 0.86 0.87 0.88 0.89 0.9  0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98
+ 0.99] in fm$^{-3}$
+   nm_kfn: [0.69 0.85 0.97 1.07 1.15 1.22 1.28 1.34 1.39 1.44 1.49 1.53 1.57 1.61
+ 1.65 1.68 1.72 1.75 1.78 1.81 1.84 1.87 1.9  1.93 1.95 1.98 2.   2.03
+ 2.05 2.07 2.1  2.12 2.14 2.16 2.18 2.2  2.22 2.24 2.26 2.28 2.3  2.32
+ 2.34 2.35 2.37 2.39 2.41 2.42 2.44 2.46 2.47 2.49 2.5  2.52 2.54 2.55
+ 2.57 2.58 2.6  2.61 2.62 2.64 2.65 2.67 2.68 2.69 2.71 2.72 2.73 2.75
+ 2.76 2.77 2.79 2.8  2.81 2.82 2.84 2.85 2.86 2.87 2.88 2.9  2.91 2.92
+ 2.93 2.94 2.95 2.97 2.98 2.99 3.   3.01 3.02 3.03 3.04 3.05 3.06 3.07
+ 3.08] in fm$^{-1}$
+   nm_e2a: [ 943.04  944.31  945.26  946.06  946.78  947.47  948.13  948.8   949.46
+  950.14  950.84  951.55  952.28  953.04  953.83  954.63  955.47  956.33
+  957.23  958.15  959.1   960.08  961.08  962.12  963.19  964.29  965.41
+  966.57  967.76  968.97  970.22  971.49  972.79  974.13  975.49  976.88
+  978.3   979.75  981.23  982.73  984.27  985.83  987.42  989.04  990.68
+  992.36  994.06  995.79  997.55  999.33 1001.14 1002.98 1004.85 1006.74
+ 1008.66 1010.6  1012.57 1014.57 1016.59 1018.65 1020.72 1022.82 1024.95
+ 1027.1  1029.28 1031.49 1033.72 1035.97 1038.25 1040.55 1042.88 1045.24
+ 1047.62 1050.02 1052.45 1054.9  1057.38 1059.88 1062.4  1064.95 1067.53
+ 1070.12 1072.74 1075.39 1078.06 1080.75 1083.46 1086.2  1088.96 1091.74
+ 1094.55 1097.38 1100.24 1103.11 1106.01 1108.93 1111.88 1114.84 1117.83] in MeV
+   nm_cs2: [0.   0.   0.   0.   0.01 0.01 0.01 0.01 0.01 0.02 0.02 0.02 0.02 0.03
+ 0.03 0.03 0.04 0.04 0.05 0.05 0.05 0.06 0.06 0.07 0.07 0.08 0.08 0.09
+ 0.09 0.1  0.11 0.11 0.12 0.12 0.13 0.14 0.14 0.15 0.15 0.16 0.17 0.17
+ 0.18 0.19 0.19 0.2  0.21 0.21 0.22 0.23 0.23 0.24 0.25 0.26 0.26 0.27
+ 0.28 0.28 0.29 0.3  0.31 0.31 0.32 0.33 0.34 0.34 0.35 0.36 0.36 0.37
+ 0.38 0.39 0.39 0.4  0.41 0.42 0.42 0.43 0.44 0.44 0.45 0.46 0.47 0.47
+ 0.48 0.49 0.49 0.5  0.51 0.51 0.52 0.53 0.54 0.54 0.55 0.56 0.56 0.57
+ 0.58]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Fix a list of params instead of a unique one</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;params:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+    <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+param: BSK14
+param: BSK16
+param: BSK17
+param: BSK27
+param: BSkG1
+param: BSkG2
+param: F-
+param: F+
+param: F0
+param: FPL
+param: LNS
+param: LNS1
+param: LNS5
+param: NRAPR
+param: RATP
+param: SAMI
+param: SGII
+param: SIII
+param: SKGSIGMA
+param: SKI2
+param: SKI4
+param: SKMP
+param: SKMS
+param: SKO
+param: SKOP
+param: SKP
+param: SKRSIGMA
+param: SKX
+param: Skz2
+param: SLY4
+param: SLY5
+param: SLY230A
+param: SLY230B
+param: SV
+param: T6
+param: T44
+param: UNEDF0
+param: UNEDF1
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Run over all models and params:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+        <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+model: Skyrme
+param: BSK14
+param: BSK16
+param: BSK17
+param: BSK27
+param: BSkG1
+param: BSkG2
+param: F-
+param: F+
+param: F0
+param: FPL
+param: LNS
+param: LNS1
+param: LNS5
+param: NRAPR
+param: RATP
+param: SAMI
+param: SGII
+param: SIII
+param: SKGSIGMA
+param: SKI2
+param: SKI4
+param: SKMP
+param: SKMS
+param: SKO
+param: SKOP
+param: SKP
+param: SKRSIGMA
+param: SKX
+param: Skz2
+param: SLY4
+param: SLY5
+param: SLY230A
+param: SLY230B
+param: SV
+param: T6
+param: T44
+param: UNEDF0
+param: UNEDF1
+model: ESkyrme
+param: BSk22
+param: BSk24
+param: BSk25
+param: BSk26
+param: BSk31
+param: BSk32
+param: BSkG3
+param: BSkG4
+model: Gogny
+param: D1S
+param: D1
+param: D250
+param: D260
+param: D280
+param: D300
+model: Fayans
+param: Fy(IVP)
+param: Fy(Dr,HDB)
+param: Fy(std)
+model: NLRH
+param: NL-SH
+param: NL3
+param: NL3II
+param: PK1
+param: PK1R
+param: TM1
+model: DDRH
+param: DDME1
+param: DDME2
+param: DDMEd
+param: PKDD
+param: TW99
+model: DDRHF
+param: PKA1
+param: PKO1
+param: PKO2
+param: PKO3
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reference band:</span>
+<span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.14</span><span class="p">,</span><span class="mf">0.16</span><span class="p">])</span>
+<span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">den</span><span class="o">=</span><span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">&#39;NM&#39;</span>  <span class="p">)</span>
+<span class="c1"># plot:</span>
+<span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_E_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
+model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-MBPT-AM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-QMC-NM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+model: Skyrme
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_E_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
+
+<span class="ne">AttributeError</span>: module &#39;nucleardatapy.fig&#39; has no attribute &#39;matter_setupPheno_E_fig&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/chapter2_matter"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tutorial-2.5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>Pairing gap (micro)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Tutorial-2.20.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.7. </span>Nuclear Empirical Parameters (NEP)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Margueron, et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
