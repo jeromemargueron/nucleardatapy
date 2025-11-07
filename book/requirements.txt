@@ -3,6 +3,6 @@ scipy
 matplotlib
 pandas
 pytest
-jupyter-book
+jupyter-book <2.0.0
 myst-nb
 nucleardatapy
