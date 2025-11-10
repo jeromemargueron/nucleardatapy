@@ -12,7 +12,7 @@ def matter_setupMicro_effmass_fig(pname, models, matter="NM"):
 
     [0]: effmass(den).  [1]: effmass(kF).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: list of models to run on.
     :type models: array of str.

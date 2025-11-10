@@ -11,7 +11,7 @@ def astro_setupGW_fig( pname, sources ):
     
     [0]: Tidal deformabilities versus sources.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param sources: array of sources names.
     :type sources: array of str.

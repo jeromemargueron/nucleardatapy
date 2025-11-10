@@ -11,7 +11,7 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
 
     [0]: E/A versus den (micro). [1]: E/A versus den (pheno).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
@@ -56,6 +56,7 @@ def matter_all_e2a_fig( pname, micro_mbs, pheno_models, band_check, band_plot, m
     for kmb,mb in enumerate(micro_mbs):
         #
         models, models_lower = nuda.matter.micro_models_mb( mb )
+        print('models in matter code:',models)
         #
         for model in models:
             #
@@ -218,7 +219,7 @@ def matter_all_Esym_fig( pname, micro_mbs, pheno_models, band_check, band_plot )
 
     [0]: Esym versus den (micro).  [1]: Esym versus den (pheno).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
@@ -351,7 +352,7 @@ def matter_all_pre_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
     [0]: pre versus den (micro). [1]: pre versus den (pheno).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
@@ -567,7 +568,7 @@ def matter_all_eos_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
     [0]: pre versus eps (micro). [1]: pre versus eps (pheno).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.
@@ -781,7 +782,7 @@ def matter_all_cs2_fig( pname, micro_mbs, pheno_models, band_check, matter ):
 
     [0]: cs2 versus den (micro). [1]: cs2 versus den (pheno).
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: many-body (mb) approach considered.
     :type micro_mbs: str.

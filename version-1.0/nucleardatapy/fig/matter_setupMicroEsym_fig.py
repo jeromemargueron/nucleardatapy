@@ -14,7 +14,7 @@ def matter_setupMicroEsym_fig(pname, mbs, band):
 
     [0,0]: esym/esym,FFG function of the density. [0,1]: esym/esym,FFG function of the Fermi momentum.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param mbs: list of many-body approaches.
     :type mbs: array of str.

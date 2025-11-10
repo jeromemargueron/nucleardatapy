@@ -11,7 +11,7 @@ def matter_setupCheck_fig( pname, mb, models, band, matter ):
     
     [0]: E/A versus den.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param mb: many-body (mb) approach considered.
     :type mb: str.

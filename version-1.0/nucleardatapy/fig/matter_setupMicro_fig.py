@@ -13,7 +13,7 @@ def matter_setupMicro_e2a_fig( pname, mb, models, band, matter ):
 
     [1,0]: E/E_NRFFG versus den. [1,1]: E/E_NRFFG versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param mb: many-body (mb) approach considered.
     :type mb: str.
@@ -179,7 +179,7 @@ def matter_setupMicro_pre_fig( pname, mb, models, band, matter ):
 
     [1,0]: pre/pre_NRFFG versus den. [1,1]: pre/pre_NRFFG versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param mb: many-body (mb) approach considered.
     :type mb: str.
@@ -309,7 +309,7 @@ def matter_setupMicro_cs2_fig( pname, mb, models, band, matter ):
 
     [0]: cs2 versus den.   [1]: cs2 versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param mb: many-body (mb) approach considered.
     :type mb: str.

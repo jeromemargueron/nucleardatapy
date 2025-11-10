@@ -11,7 +11,7 @@ def nuc_setupBETheo_diff_fig( pname, tables, table_ref = '1995-DZ', Zref = 50 ):
 
     [0]: show the energy difference as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -75,7 +75,7 @@ def nuc_setupBETheo_S2n_fig( pname, tables, Zref = 50 ):
 
     [0]: show S2n as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -144,7 +144,7 @@ def nuc_setupBETheo_S2p_fig( pname, tables, Nref = 50 ):
 
     [0]: show S2p as a function of Z.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -210,7 +210,7 @@ def nuc_setupBETheo_D3n_fig( pname, tables, Zref = 50 ):
 
     [0]: show D3n as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -282,7 +282,7 @@ def nuc_setupBETheo_D3p_fig( pname, tables, Nref = 50 ):
 
     [0]: show D3p as a function of Z.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.

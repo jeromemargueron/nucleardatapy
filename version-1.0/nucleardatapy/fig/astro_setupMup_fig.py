@@ -11,7 +11,7 @@ def astro_setupMup_fig( pname, sources ):
     
     [0]: upper boundary for the mass versus sources.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param sources: array of sources.
     :type sources: array of str.

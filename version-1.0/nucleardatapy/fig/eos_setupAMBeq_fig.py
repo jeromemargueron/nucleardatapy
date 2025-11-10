@@ -11,7 +11,7 @@ def eos_setupAMBeq_e2a_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -123,7 +123,7 @@ def eos_setupAMBeq_pre_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -234,7 +234,7 @@ def eos_setupAMBeq_cs2_nuc_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -345,7 +345,7 @@ def eos_setupAMBeq_e2a_lep_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -459,7 +459,7 @@ def eos_setupAMBeq_pre_lep_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -572,7 +572,7 @@ def eos_setupAMBeq_cs2_lep_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -686,7 +686,7 @@ def eos_setupAMBeq_e2a_tot_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -798,7 +798,7 @@ def eos_setupAMBeq_pre_tot_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -923,7 +923,7 @@ def eos_setupAMBeq_cs2_tot_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -1034,7 +1034,7 @@ def eos_setupAMBeq_eos_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -1174,7 +1174,7 @@ def eos_setupAMBeq_xp_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -1288,7 +1288,7 @@ def eos_setupAMBeq_xe_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -1401,7 +1401,7 @@ def eos_setupAMBeq_xmu_fig( pname, micro_mbs, pheno_models, band ):
 
     [0]: microscopic models.  [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.

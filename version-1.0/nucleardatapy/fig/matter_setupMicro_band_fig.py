@@ -12,7 +12,7 @@ def matter_setupMicro_band_fig(pname, models, den, matter):
 
     [0]: E versus den.  [1]: E/EFFG versus den.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: list of models to run on.
     :type models: array of str.

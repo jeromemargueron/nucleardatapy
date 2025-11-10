@@ -50,12 +50,6 @@ jobs:
         working-directory: book
         run: |
           pip install -r requirements.txt  # Ensure nucleardatapy is installed for Jupyter Book
-          # Debug: Confirm the core config files exist before running build
-          echo "Checking for Jupyter Book config files in $(pwd):"
-          ls -A _config.yml _toc.yml 
-          # Debug 2: CHECK FOR CONTENT. This will confirm if your .md or .ipynb files are present.
-          echo "Listing all files in the 'book' directory (should contain your actual content):"
-          find . -maxdepth 1 -print
           jupyter-book build .
 
       - name: Upload documentation artifacts

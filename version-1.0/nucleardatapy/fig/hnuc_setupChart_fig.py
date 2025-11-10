@@ -11,7 +11,7 @@ def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
 
     [0]: nuclear chart.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param table1L: table.
     :type table1L: str.

@@ -11,7 +11,7 @@ def corr_setupEsymLsym_fig( pname, constraints, origine ):
 
     [0]: Esym - Lsym correlation plot.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param constraints: list of constraints to run on.
     :type constraints: array of str.

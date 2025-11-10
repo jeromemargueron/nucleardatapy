@@ -11,7 +11,7 @@ def nuc_setupRchExp_fig( pname, tables ):
 
     [0]: Rch as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -54,7 +54,7 @@ def nuc_setupRchExp_3Zref_fig( pname, tables ):
     The plot is 1x1 with:\\
     [0]: Rch as a function of N. \\
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.

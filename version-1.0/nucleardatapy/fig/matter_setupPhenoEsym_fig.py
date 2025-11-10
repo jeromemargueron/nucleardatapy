@@ -14,7 +14,7 @@ def matter_setupPhenoEsym_fig(pname, models, band):
 
     [0,0]: esym/esym,FFG function of the density. [0,1]: esym/esym,FFG function of the Fermi momentum.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: list of phenomenological models.
     :type models: array of str.

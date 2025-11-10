@@ -11,7 +11,7 @@ def astro_setupMR_fig( pname, sources, sources_av ):
     
     [0]: Masses versus radii.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param sources: array of sources.
     :type sources: array of str.

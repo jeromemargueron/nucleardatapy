@@ -139,7 +139,7 @@ def nuc_setupBEExp_chart_year_fig( pname, sYear, year_min, year_max ):
 
     [0]: nuclear chart.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param sYear: select nuclei for given discovery years.
     :type sYear: object.
@@ -212,7 +212,7 @@ def nuc_setupBEExp_chart_Rch_fig( pname, table, version, Rch_table ):
 
     [0]: nuclear chart.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param table: table.
     :type table: str.

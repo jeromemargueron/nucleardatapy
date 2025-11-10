@@ -17,7 +17,7 @@ def matter_setupMicro_LP_fig( pname, models, matter="SM", ell=0 ):
 
     [0]: F_ell versus den.    [1]: G_ell versus den.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: models to run on.
     :type models: array of str.

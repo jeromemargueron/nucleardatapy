@@ -12,7 +12,7 @@ def matter_setupMicro_err_NM_fig(pname, models):
 
     [0]: uncertainty for E/A versus den.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: array of models.
     :type models: array of str.

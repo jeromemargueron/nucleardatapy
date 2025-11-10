@@ -11,7 +11,7 @@ def nuc_setupBEExp_year_fig( pname, table, version ):
 
     [0]: full range of years. [1]: last two decades.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param table: table.
     :type table: str.
@@ -72,7 +72,7 @@ def nuc_setupBEExp_S2n_fig( pname, tables, versions, Zref = 50 ):
 
     [0]: show S2n as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -126,7 +126,7 @@ def nuc_setupBEExp_S2p_fig( pname, tables, versions, Nref = 50 ):
 
     [0]: show S2p as a function of Z.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -180,7 +180,7 @@ def nuc_setupBEExp_D3n_fig( pname, tables, versions, Zref = 50 ):
 
     [0]: show D3n as a function of N.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.
@@ -237,7 +237,7 @@ def nuc_setupBEExp_D3p_fig( pname, tables, versions, Nref = 50 ):
 
     [0]: show D3p as a function of Z.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.

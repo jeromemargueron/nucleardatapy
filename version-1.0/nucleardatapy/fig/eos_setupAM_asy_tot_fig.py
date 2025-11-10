@@ -11,7 +11,7 @@ def eos_setupAM_e2a_asy_tot_fig( pname, micro_mbs, pheno_models, asy, band ):
 
     [0]: microscopic models. [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -127,7 +127,7 @@ def eos_setupAM_pre_asy_tot_fig( pname, micro_mbs, pheno_models, asy, band ):
 
     [0]: microscopic models. [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.
@@ -243,7 +243,7 @@ def eos_setupAM_cs2_asy_tot_fig( pname, micro_mbs, pheno_models, asy, band ):
 
     [0]: microscopic models. [1]: phenomenologic models.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param micro_mbs: array with names of many-body framework for microscopic interactions.
     :type micro_mbs: array of str.

@@ -11,7 +11,7 @@ def nuc_setupISGMRExp_fig( pname, tables ):
 
     [0]: for Zr. [1]: for Sn. [2]: for Pb.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: tables.
     :type tables: array of str.

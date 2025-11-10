@@ -13,7 +13,7 @@ def matter_setupMicro_gap_1s0_fig(pname, models, matter="NM"):
 
     [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: models to run on.
     :type models: array of str.
@@ -113,7 +113,7 @@ def matter_setupMicro_gap_3pf2_fig(pname, models, matter="NM"):
 
     [1,0]: gap/EF versus den. [1,1]: gap/EF versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param models: models to run on.
     :type models: array of str.

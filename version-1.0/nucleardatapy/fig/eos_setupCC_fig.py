@@ -11,7 +11,7 @@ def eos_setupCC_eos_fig( pname, band, crust_model, core_kind, core_model, core_p
 
     [0]: pressure as a function of the energy density.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param band: object instantiated on the reference band.
     :type band: object.
@@ -103,7 +103,7 @@ def eos_setupCC_checkpre_fig( pname, band, crust_model, core_kind, core_model, c
 
     [0]: pressure and band to check visualy.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param band: object instantiated on the reference band.
     :type band: object.
@@ -190,7 +190,7 @@ def eos_setupCC_checkeos_fig( pname, band, crust_model, core_kind, core_model, c
 
     [0]: pressure and band to check visualy.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param band: object instantiated on the reference band.
     :type band: object.

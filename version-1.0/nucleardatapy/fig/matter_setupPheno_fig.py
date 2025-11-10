@@ -13,7 +13,7 @@ def matter_setupPheno_e2a_fig(pname, model, band, matter):
 
     [1,0]: E/E_NRFFG versus den. [1,1]: E/E_NRFFG versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param model: class of model considered.
     :type model: str.
@@ -229,7 +229,7 @@ def matter_setupPheno_pre_fig(pname, model, band, matter):
 
     [1,0]: pre/pre_NRFFG versus den. [1,1]: pre/pre_NRFFG versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param model: class of model considered.
     :type model: str.
@@ -341,7 +341,7 @@ def matter_setupPheno_cs2_fig(pname, model, band, matter):
 
     [0]: cs2 versus den.    [1]: cs2 versus kfn.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param model: class of model considered.
     :type model: str.

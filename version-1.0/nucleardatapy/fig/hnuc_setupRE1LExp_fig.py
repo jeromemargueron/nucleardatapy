@@ -11,7 +11,7 @@ def hnuc_setupRE1LExp_fig( pname, tables ):
 
     [0]: nuclear chart.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param tables: table.
     :type tables: str.

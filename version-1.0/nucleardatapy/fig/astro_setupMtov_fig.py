@@ -13,7 +13,7 @@ def astro_setupMtov_fig( pname, sources_lo_all, sources_lo_dist, sources_up1, so
     
     [0]: distribution of maximum mass versus maximum mass.
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param sources_lo_all: array of all sources (low boundaries).
     :type sources_lo_all: array of str.

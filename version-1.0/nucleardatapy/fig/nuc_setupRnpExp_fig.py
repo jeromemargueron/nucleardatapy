@@ -18,7 +18,7 @@ def nuc_setupRnpExp_fig(pname=None, source=None):
 
     [0]: Rch as a function of N. 
 
-    :param pname: name of the figure (\*.png)
+    :param pname: name of the figure (*.png)
     :type pname: str.
     :param source: experimental table.
     :type source: str.
