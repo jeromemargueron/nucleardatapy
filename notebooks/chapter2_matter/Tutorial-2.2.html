@@ -956,14 +956,14 @@ flag_kf: False
 flag_den: True
 model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
-sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
- [-0.83636896  1.40263142 -0.5763757 ]
- [ 0.34040806 -0.5763757   0.23873678]]
-nm_popt: [-1.18794133  0.71930878 -0.11294907]
-nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
- [-0.01702127  0.02165016 -0.00663766]
- [ 0.00515285 -0.00663766  0.00205604]]
+sm_popt: [-9.17066387 10.01180304 -3.06959969]
+sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
+ [-0.83636905  1.40263157 -0.57637575]
+ [ 0.34040809 -0.57637575  0.23873679]]
+nm_popt: [-1.18794131  0.71930874 -0.11294906]
+nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
+ [-0.01702128  0.02165017 -0.00663766]
+ [ 0.00515286 -0.00663766  0.00205605]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -1065,7 +1065,7 @@ flag_den: True
     <span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="n">matter</span>  <span class="p">)</span>
     <span class="k">for</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">mbs</span><span class="p">:</span>
         <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models_mb_matter</span><span class="p">(</span> <span class="n">mb</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
-        <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupMicro_E_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mb</span> <span class="o">=</span> <span class="n">mb</span><span class="p">,</span> <span class="n">models</span> <span class="o">=</span> <span class="n">models</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
+        <span class="c1"># nuda.fig.matter_all_e2a_fig( pname=None, micro_mbs = mb, pheno_models=models, band_check= band, band_plot=band, matter = matter )</span>
 </pre></div>
 </div>
 </div>
@@ -1120,16 +1120,78 @@ flag_kf: False
 flag_den: True
 For mb (in NM): VAR
 models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+For mb (in NM): AFDMC
+models2: [&#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;]
+For mb (in NM): BHF2
+models2: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+For mb (in NM): BHF23
+models2: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+For mb (in NM): QMC
+models2: [&#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;]
+For mb (in NM): MBPT
+models2: [&#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+For mb (in NM): NLEFT
+models2: [&#39;2024-NLEFT-AM&#39;]
+For mb (in NM): SCGF
+models2: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+For mb (in NM): CC
+models2: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+
+Band in SM
+model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2020-MBPT-AM
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">for</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">mbs</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models_mb_matter</span><span class="p">(</span> <span class="n">mb</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupMicro_E_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mb</span> <span class="o">=</span> <span class="n">mb</span><span class="p">,</span> <span class="n">models</span> <span class="o">=</span> <span class="n">models</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;nucleardatapy.fig&#39; has no attribute &#39;matter_setupMicro_E_fig&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-MBPT-AM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-MBPT-AM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+For mb (in SM): VAR
+models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+For mb (in SM): AFDMC
+models2: []
+For mb (in SM): BHF2
+models2: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+For mb (in SM): BHF23
+models2: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+For mb (in SM): QMC
+models2: []
+For mb (in SM): MBPT
+models2: [&#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+For mb (in SM): NLEFT
+models2: [&#39;2024-NLEFT-AM&#39;]
+For mb (in SM): SCGF
+models2: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+For mb (in SM): CC
+models2: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
 </pre></div>
 </div>
 </div>
