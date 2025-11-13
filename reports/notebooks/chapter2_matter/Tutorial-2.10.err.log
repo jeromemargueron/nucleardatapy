@@ -60,6 +60,7 @@ flag_sm: False
 flag_kf: True
 flag_den: False
 model ->  2020-MBPT-AM
+----- stdout -----
 flag_nm: True
 flag_sm: True
 flag_kf: False
