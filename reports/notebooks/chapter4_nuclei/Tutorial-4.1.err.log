@@ -47,7 +47,6 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1067
 number of nuclei(Sta): 480
 number of nuclei(Sel): 480
------ stdout -----
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
@@ -61,6 +60,7 @@ Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
+----- stdout -----
 number of nuclei(Tot): 5573
 number of nuclei(Sta): 2297
 number of nuclei(Sel): 2297
