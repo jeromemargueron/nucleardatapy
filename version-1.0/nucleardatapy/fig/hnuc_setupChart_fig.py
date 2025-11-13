@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
+def hnuc_setupChart_fig( pname, tables1L, tables2L, tables1Xi ):
     """
     Plot hyper-nuclear chart (N versus Z).
 
@@ -14,18 +14,14 @@ def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
     :param pname: name of the figure (*.png)
     :type pname: str.
     :param table1L: table.
-    :type table1L: str.
+    :type table1L: array of str.
     :param table2L: table.
-    :type table2L: str.
+    :type table2L: array of str.
     :param table1Xi: table.
-    :type table1Xi: str.
+    :type table1Xi: array of str.
     """
     #
     print(f'Plot name: {pname}')
-    #
-    hnuc1L = nuda.hnuc.setupRE1LExp( table = table1L )
-    hnuc2L = nuda.hnuc.setupRE2LExp( table = table2L )
-    hnuc1Xi = nuda.hnuc.setupRE1XiExp( table = table1Xi )
     #
     # plot
     #
@@ -40,9 +36,15 @@ def hnuc_setupChart_fig( pname, table1L, table2L, table1Xi ):
     axs.set_xlim([0.8, 140])
     axs.set_ylim([0.8, 90.0])
     #
-    axs.scatter( hnuc1L.N,      hnuc1L.Z,      marker='s', s=12, color=nuda.param.col[0], label=r'1$\Lambda$ from table '+table1L )
-    axs.scatter( hnuc2L.N+0.05, hnuc2L.Z+0.05, marker='s', s=12, color=nuda.param.col[1], label=r'2$\Lambda$ from table '+table2L )
-    axs.scatter( hnuc1Xi.N+0.1, hnuc1Xi.Z+0.1, marker='s', s=12, color=nuda.param.col[2], label=r'1$\Xi^{-}$ from table '+table1Xi )
+    for table1L in tables1L:
+        hnuc1L = nuda.hnuc.setupRE1LExp( table = table1L )
+        axs.scatter( hnuc1L.N,      hnuc1L.Z,      marker='s', s=12, color=nuda.param.col[0], label=r'1$\Lambda$ from table '+table1L )
+    for table2L in tables2L:
+        hnuc2L = nuda.hnuc.setupRE2LExp( table = table2L )
+        axs.scatter( hnuc2L.N+0.05, hnuc2L.Z+0.05, marker='s', s=12, color=nuda.param.col[1], label=r'2$\Lambda$ from table '+table2L )
+    for table1Xi in tables1Xi:
+        hnuc1Xi = nuda.hnuc.setupRE1XiExp( table = table1Xi )
+        axs.scatter( hnuc1Xi.N+0.1, hnuc1Xi.Z+0.1, marker='s', s=12, color=nuda.param.col[2], label=r'1$\Xi^{-}$ from table '+table1Xi )
     #
     #axs.text(0.15,12,r'$K_{sym}$='+str(int(Ksym))+' MeV',fontsize='12')
     axs.legend(loc='lower right',fontsize='11',ncol=1)

@@ -17,9 +17,10 @@ def main():
     nuda.create_folder_fig(folder = folder)
     #
     #tables, tables_lower = nuda.hnuc.be1L_exp_tables()
-    table1L = '2016-1L-GHM'
-    table2L = '2013-2L-Ahn'
-    table1Xi = '2015-1Xi-Nakazawa'
+    table1L = [ '2016-1L-GHM' ]
+    #table2L = '2013-2L-Ahn'
+    table2L = [ '1991-2L-Yamamoto', '2013-2L-Ahn', '2019-2L-Ekawa' ]
+    table1Xi = [ '2015-1Xi-Nakazawa' ]
     #
     pname = folder+'/plot_hnuc_setupChart.png'
     #

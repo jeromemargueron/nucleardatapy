@@ -16,7 +16,8 @@ def re2L_exp_tables():
     #
     if nuda.env.verb: print("\nEnter re2L_exp_tables()")
     #
-    tables = [ '2013-2L-Ahn' ]
+    #tables = [ '2013-2L-Ahn' ]
+    tables = [ '1991-2L-Yamamoto', '2013-2L-Ahn', '2019-2L-Ekawa' ]
     #
     #print('tables available in the toolkit:',tables)
     tables_lower = [ item.lower() for item in tables ]
@@ -78,13 +79,34 @@ class setupRE2LExp():
       color = []
       mark = []
       #
-      if table.lower() == '2013-2l-ahn':
+      if table.lower() == '1991-2l-yamamoto':
+         #
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/1991-2L-Yamamoto.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'Y. Yamamoto, H. Takaki, K. Ikeda, Prog. Theo. Phys. 86, 867 (1991).'
+         self.keyref = 'YYamamoto:1991'
+         #: Attribute providing additional notes about the data.
+         self.note = "https://doi.org/10.1143/ptp/86.4.867"
+         #
+
+      elif table.lower() == '2013-2l-ahn':
          #
          file_in = os.path.join(nuda.param.path_data,'hnuclei/2013-2L-Ahn.csv')
          if nuda.env.verb: print('Reads file:',file_in)
          #: Attribute providing the full reference to the paper to be citted.
          self.ref = 'J. K. Ahn, H. Akikawa, S. Aoki, K. Arai, Phys. Rev. C 88, 014003 (2013)'
          self.keyref = 'JKAhn:2013'
+         #: Attribute providing additional notes about the data.
+         self.note = "write here notes about this table."
+         #
+      if table.lower() == '2019-2l-ekawa':
+         #
+         file_in = os.path.join(nuda.param.path_data,'hnuclei/2019-2L-Ekawa.csv')
+         if nuda.env.verb: print('Reads file:',file_in)
+         #: Attribute providing the full reference to the paper to be citted.
+         self.ref = 'H. Ekawa et al., PTEP 2019, 021D02.'
+         self.keyref = 'HEkawa:2019'
          #: Attribute providing additional notes about the data.
          self.note = "write here notes about this table."
          #
@@ -102,11 +124,12 @@ class setupRE2LExp():
                nuclre_err.append(linesplit[4].strip())
                nucldre.append(linesplit[5].strip())
                nucldre_err.append(linesplit[6].strip())
-               probe.append(linesplit[6].strip().strip('\n'))
-               if probe[-1] == 'emul':
-                  label.append("Ahn-2013 Emul")
-                  color.append('blue')
-                  mark.append('s')
+               label.append(linesplit[7].strip('\n'))
+               probe.append(linesplit[7].strip().strip('\n'))
+               color.append('blue')
+               mark.append('s')
+               print('label:',label[-1])
+               print('probe:',probe[-1])
             else:
                break
       #
