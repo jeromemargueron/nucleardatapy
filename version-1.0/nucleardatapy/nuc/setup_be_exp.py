@@ -746,8 +746,8 @@ class setupBEExp():
         #
         Nstable, Zstable = stable_fit_Z( Zmin = Zref, Zmax = Zref )
         #
-        nucNmin = Nstable[0]
-        nucNmax = Nstable[0]
+        nucNmin = Nstable[0]+4
+        nucNmax = Nstable[0]-4
         #
         for ind,A in enumerate(self.sel_nucA):
             #
