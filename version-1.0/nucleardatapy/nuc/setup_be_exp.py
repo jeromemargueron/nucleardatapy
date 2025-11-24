@@ -537,6 +537,7 @@ class setupBEExp():
         self.sel_nucBE = []
         self.sel_nucBE_err = []
         #
+        self.sel_Zmin = 100
         self.sel_Zmax = 0
         #
         for ind in range(self.nbNuc):
@@ -587,6 +588,7 @@ class setupBEExp():
             nbNucSel = nbNucSel + 1
             self.sel_nucA.append( nucA )
             self.sel_nucZ.append( nucZ )
+            if nucZ < self.sel_Zmin: self.sel_Zmin = nucZ
             if nucZ > self.sel_Zmax: self.sel_Zmax = nucZ
             self.sel_nucN.append( nucN )
             self.sel_nucI.append( nucI )

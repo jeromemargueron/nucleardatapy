@@ -14,8 +14,8 @@ def main():
     print("Enter nuc_setupBEExp_script.py:")
     print(50*'-')
     #
-    #tables = [ 'AME' ]
-    tables, tables_lower = nuda.nuc.be_exp_tables()
+    tables = [ 'AME' ]
+    #tables, tables_lower = nuda.nuc.be_exp_tables()
     print('tables:',tables)
     #
     for table in tables:
@@ -31,7 +31,13 @@ def main():
         #print('A:',sel.A)
         print('After selection')
         print('number of nuclei:',sel.sel_nbNucSel)
+        print('Zmin:',sel.sel_Zmin)
+        print('Zmax:',sel.sel_Zmax)
         if nuda.env.verb_output: mas.print_outputs( )
+        for Zref in range(sel.sel_Zmin,sel.sel_Zmax+1):
+           print('For Zref:',Zref)
+           itp = sel.isotopes( Zref = Zref )
+           print('Nmin:',itp.itp_nucNmin,' Nmax:',itp.itp_nucNmax)
         #
         # Search for nuclei discovered betwen 1950 and 1960
         #
