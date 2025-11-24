@@ -34,6 +34,7 @@ for model in models:
 
 Band in NM
 model ->  2016-MBPT-AM
+----- stdout -----
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -49,6 +50,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model ->  2016-MBPT-AM
+----- stdout -----
 flag_nm: True
 flag_sm: True
 flag_kf: False
