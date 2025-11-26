@@ -78,16 +78,20 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     legend = 0
     for i,theo_table in enumerate( theo_tables ):
         theo = nuda.nuc.setupBETheo( table = theo_table )
-        s2n = theo.S2n( Zmin=1, Zmax = 95 )
-        drip_S2n = s2n.drip_S2n( Zmin = 1, Zmax = 95 )
-        if legend == 0:
-            axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker='o', s = 3, linewidth=0, color = 'purple', label='Drip Lines' )
-            legend = 1
-        else:
-            axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker='o', s = 3, linewidth=0, color = 'purple' )
-        s2p = theo.S2p( Nmin=1, Nmax = 150 )
-        drip_S2p = s2p.drip_S2p( Nmin = 1, Nmax = 150 )
-        axs.scatter( drip_S2p.drip_S2p_N, drip_S2p.drip_S2p_Z, marker='o', s = 3, linewidth=0, color = 'purple' )
+        for zref in range(1,96):
+            itp = theo.isotopes( Zref= zref)
+            s2n = itp.S2n( Zref= zref )
+            drip_S2n = itp.drip_S2n(Zref = zref)
+            if legend == 0:
+                axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker='o', s = 3, linewidth=0, color = 'purple', label='Drip Lines' )
+                legend = 1
+            else:
+                axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker='o', s = 3, linewidth=0, color = 'purple' )
+        # for nref in range(1,170):
+        #     itn = theo.isotones( Nref= nref)
+        #     s2p = itn.S2p( Nref= nref)
+        # drip_S2p = theo.drip_S2p( Nmin=1, Nmax=169)
+        # axs.scatter( drip_S2p.drip_S2p_N, drip_S2p.drip_S2p_Z, marker='o', s = 3, linewidth=0, color = 'purple' )
     #
     # First and last isotopes
     #

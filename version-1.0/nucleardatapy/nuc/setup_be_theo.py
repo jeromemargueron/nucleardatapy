@@ -607,6 +607,7 @@ class setupBETheo():
         #
         S2n_N = []
         S2n_E = []
+        S2n_Z = []
         #
         Nmin=self.itp_nucNmin
         Nmax=self.itp_nucNmax
@@ -626,8 +627,10 @@ class setupBETheo():
                     #
             if flagN and flagNm2:
                 S2n_N.append( N )
+                S2n_Z.append( Zref )
                 S2n_E.append( self.nucBE[indN] - self.nucBE[indNm2] )
         self.S2n_N = np.array( S2n_N, dtype = int )
+        self.S2n_Z = np.array( S2n_Z, dtype = int )
         self.S2n_E = np.array( S2n_E, dtype = float )
         #
         if nuda.env.verb: print("Exit S2n()")
@@ -652,6 +655,7 @@ class setupBETheo():
         #
         S2p_Z = []
         S2p_E = []
+        S2p_N = []
         #
         Zmin=self.itn_nucZmin
         Zmax=self.itn_nucZmax
@@ -671,15 +675,17 @@ class setupBETheo():
                     #
             if flagZ and flagZm2:
                 S2p_Z.append( Z )
+                S2p_N.append( Nref )    
                 S2p_E.append( self.nucBE[indZ] - self.nucBE[indZm2] )
         self.S2p_Z = np.array( S2p_Z, dtype = int )
+        self.S2p_N = np.array( S2p_N, dtype = int )
         self.S2p_E = np.array( S2p_E, dtype = float )
         #
         if nuda.env.verb: print("Exit S2p()")
         #
         return self
         #
-    def drip_S2n(self, Zmin = 1, Zmax = 95 ):
+    def drip_S2n(self, Zref=50):
         """
         Method which find the drip-line nuclei from S2n (neutron side).
 
@@ -693,13 +699,13 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter drip_S2n()")
         #
-        if Zmin > Zmax:
-            print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
-            print('setup_be_theo: Bad definition of Zmin and Zmax')
-            print('setup_be_theo: It is expected that Zmin<=Zmax')
-            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
-            print('setup_be_theo: exit')
-            exit()
+        # if Zmin > Zmax:
+        #     print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
+        #     print('setup_be_theo: Bad definition of Zmin and Zmax')
+        #     print('setup_be_theo: It is expected that Zmin<=Zmax')
+        #     print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
+        #     print('setup_be_theo: exit')
+        #     exit()
         #
         if not any(self.S2n_Z):
             print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
@@ -712,12 +718,13 @@ class setupBETheo():
         self.drip_S2n_Z = []
         self.drip_S2n_N = []
         #
+        print("S2n_Z:",self.S2n_Z)
         for ind,Z in enumerate(self.S2n_Z):
             #
-            if Z > Zmax :
-                break
-            if Z < Zmin :
-                continue
+            # if Z > Zmax :
+            #     break
+            # if Z < Zref :
+            #     continue
             #
             #Nmax = Nstable[ind]
             Nmax = 0

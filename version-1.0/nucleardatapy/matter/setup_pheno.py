@@ -15,7 +15,9 @@ def pheno_models():
     #
     if nuda.env.verb: print("\nEnter pheno_models()")
     #
-    models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    # models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
+    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+
     #print('Phenomenological models available in the toolkit:',models)
     models_lower = [ item.lower() for item in models ]
     #
