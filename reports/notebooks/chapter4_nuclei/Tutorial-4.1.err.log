@@ -18,6 +18,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+
 nuda.fig.nuc_setupBEExp_chart_lt_fig( None,  table = 'AME', version = '2020', theo_tables = theo_tables )
 ------------------
 
@@ -38,6 +39,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1808
 number of nuclei(Sta): 883
 number of nuclei(Sel): 883
+----- stdout -----
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
@@ -54,10 +56,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1495
 number of nuclei(Sta): 91
 number of nuclei(Sel): 91
------ stdout -----
-Oldest discovery is from:
------ stdout -----
- 1896
+Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
@@ -65,19 +64,31 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 5573
 number of nuclei(Sta): 2297
 number of nuclei(Sel): 2297
+setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:
+setup_be_theo: Should compute first S2n
+setup_be_theo: exit
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mTypeError[39m                                 Traceback (most recent call last)
+[31mNameError[39m                                 Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[12][39m[32m, line 1[39m
 [32m----> [39m[32m1[39m [43mnuda[49m[43m.[49m[43mfig[49m[43m.[49m[43mnuc_setupBEExp_chart_lt_fig[49m[43m([49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m  [49m[43mtable[49m[43m [49m[43m=[49m[43m [49m[33;43m'[39;49m[33;43mAME[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mversion[49m[43m [49m[43m=[49m[43m [49m[33;43m'[39;49m[33;43m2020[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mtheo_tables[49m[43m [49m[43m=[49m[43m [49m[43mtheo_tables[49m[43m [49m[43m)[49m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/fig/nuc_setupBEExp_chart_fig.py:81[39m, in [36mnuc_setupBEExp_chart_lt_fig[39m[34m(pname, table, version, theo_tables)[39m
-[32m     79[39m [38;5;28;01mfor[39;00m i,theo_table [38;5;129;01min[39;00m [38;5;28menumerate[39m( theo_tables ):
-[32m     80[39m     theo = nuda.nuc.setupBETheo( table = theo_table )
-[32m---> [39m[32m81[39m     s2n = [43mtheo[49m[43m.[49m[43mS2n[49m[43m([49m[43m [49m[43mZmin[49m[43m=[49m[32;43m1[39;49m[43m,[49m[43m [49m[43mZmax[49m[43m [49m[43m=[49m[43m [49m[32;43m95[39;49m[43m [49m[43m)[49m
-[32m     82[39m     drip_S2n = s2n.drip_S2n( Zmin = [32m1[39m, Zmax = [32m95[39m )
-[32m     83[39m     [38;5;28;01mif[39;00m legend == [32m0[39m:
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/fig/nuc_setupBEExp_chart_fig.py:84[39m, in [36mnuc_setupBEExp_chart_lt_fig[39m[34m(pname, table, version, theo_tables)[39m
+[32m     82[39m itp = theo.isotopes( Zref= zref)
+[32m     83[39m s2n = itp.S2n( Zref= zref )
+[32m---> [39m[32m84[39m drip_S2n = [43mitp[49m[43m.[49m[43mdrip_S2n[49m[43m([49m[43mZref[49m[43m [49m[43m=[49m[43m [49m[43mzref[49m[43m)[49m
+[32m     85[39m [38;5;28;01mif[39;00m legend == [32m0[39m:
+[32m     86[39m     axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker=[33m'[39m[33mo[39m[33m'[39m, s = [32m3[39m, linewidth=[32m0[39m, color = [33m'[39m[33mpurple[39m[33m'[39m, label=[33m'[39m[33mDrip Lines[39m[33m'[39m )
 
-[31mTypeError[39m: setupBETheo.S2n() got an unexpected keyword argument 'Zmin'
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/nuc/setup_be_theo.py:714[39m, in [36msetupBETheo.drip_S2n[39m[34m(self, Zref)[39m
+[32m    712[39m     [38;5;28mprint[39m([33m'[39m[33msetup_be_theo: Should compute first S2n[39m[33m'[39m)
+[32m    713[39m     [38;5;28mprint[39m([33m'[39m[33msetup_be_theo: exit[39m[33m'[39m)
+[32m--> [39m[32m714[39m     [43mexit[49m()
+[32m    715[39m [38;5;66;03m#[39;00m
+[32m    716[39m [38;5;66;03m#Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )[39;00m
+[32m    717[39m [38;5;66;03m#[39;00m
+[32m    718[39m [38;5;28mself[39m.drip_S2n_Z = []
+
+[31mNameError[39m: name 'exit' is not defined
 

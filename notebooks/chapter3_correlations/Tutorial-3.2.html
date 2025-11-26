@@ -473,6 +473,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="c1"># Import matplotlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># Import nucleardatapy package</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
 </pre></div>
@@ -553,17 +554,82 @@ document.write(`
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymLsym_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymLsym_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">&#39;finiteNuclei&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymLsym_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span> <span class="p">)</span>
-
-<span class="ne">TypeError</span>: corr_setupEsymLsym_fig() missing 1 required positional argument: &#39;origine&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
+list of constraints: [&#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208Pb&#39;, &#39;2015-POL-120Sn&#39;, &#39;2015-POL-68Ni&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, &#39;2021-PREXII-Reinhard&#39;, &#39;2023-PREXII+CREX-Zhang&#39;, &#39;2023-EDF-D4&#39;, &#39;2023-EDF-D4-IAS&#39;, &#39;2023-EDF-D4-IAS-Rnp&#39;]
+constraint: 2009-HIC
+constraint: 2010-RNP
+constraint: 2012-FRDM
+constraint: 2013-NS
+constraint: 2014-IAS
+constraint: 2014-IAS+RNP
+constraint: 2015-POL-208Pb
+constraint: 2015-POL-120Sn
+constraint: 2015-POL-68Ni
+constraint: 2017-UG
+constraint: 2021-PREXII-Reed
+constraint: 2021-PREXII-Reinhard
+constraint: 2023-PREXII+CREX-Zhang
+constraint: 2023-EDF-D4
+plot: contour
+Esym: [29.85, 31.97, 33.06, 37.26, 39.42, 38.58, 36.44, 30.97, 29.85]
+Lsym: [50.3, 45.36, 55.45, 99.14, 126.6, 124.57, 115.71, 61.79, 50.3]
+constraint: 2023-EDF-D4-IAS
+plot: contour
+Esym: [29.85, 31.97, 33.06, 33.96, 34.54, 30.97, 29.85]
+Lsym: [50.3, 45.36, 55.45, 71.55, 88.03, 61.79, 50.3]
+constraint: 2023-EDF-D4-IAS-Rnp
+plot: contour
+Esym: [29.85, 32.01, 32.54, 32.74, 31.98, 30.97, 29.85]
+Lsym: [50.3, 48.15, 61.52, 70.45, 67.44, 61.79, 50.3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymLsym_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">&#39;neutronStar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
+list of constraints: [&#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208Pb&#39;, &#39;2015-POL-120Sn&#39;, &#39;2015-POL-68Ni&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, &#39;2021-PREXII-Reinhard&#39;, &#39;2023-PREXII+CREX-Zhang&#39;, &#39;2023-EDF-D4&#39;, &#39;2023-EDF-D4-IAS&#39;, &#39;2023-EDF-D4-IAS-Rnp&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraint: 2009-HIC
+constraint: 2010-RNP
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraint: 2012-FRDM
+constraint: 2013-NS
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraint: 2014-IAS
+constraint: 2014-IAS+RNP
+constraint: 2015-POL-208Pb
+constraint: 2015-POL-120Sn
+constraint: 2015-POL-68Ni
+constraint: 2017-UG
+constraint: 2021-PREXII-Reed
+constraint: 2021-PREXII-Reinhard
+constraint: 2023-PREXII+CREX-Zhang
+constraint: 2023-EDF-D4
+plot: contour
+Esym: [29.85, 31.97, 33.06, 37.26, 39.42, 38.58, 36.44, 30.97, 29.85]
+Lsym: [50.3, 45.36, 55.45, 99.14, 126.6, 124.57, 115.71, 61.79, 50.3]
+constraint: 2023-EDF-D4-IAS
+plot: contour
+Esym: [29.85, 31.97, 33.06, 33.96, 34.54, 30.97, 29.85]
+Lsym: [50.3, 45.36, 55.45, 71.55, 88.03, 61.79, 50.3]
+constraint: 2023-EDF-D4-IAS-Rnp
+plot: contour
+Esym: [29.85, 32.01, 32.54, 32.74, 31.98, 30.97, 29.85]
+Lsym: [50.3, 48.15, 61.52, 70.45, 67.44, 61.79, 50.3]
 </pre></div>
 </div>
 </div>

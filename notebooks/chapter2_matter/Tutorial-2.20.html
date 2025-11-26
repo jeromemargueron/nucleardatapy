@@ -484,18 +484,50 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the nucleardatapy module to find the correct attribute</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEPModelDist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEPStat_models</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Explore the nucleardatapy module to find the correct attribute</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEPModelDist</span><span class="p">))</span>
-
-<span class="ne">AttributeError</span>: module &#39;nucleardatapy.matter&#39; has no attribute &#39;setupNEPModelDist&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: BSK14
+param: BSK16
+param: BSK17
+param: BSK27
+param: BSkG1
+param: BSkG2
+param: F-
+param: F+
+param: F0
+param: FPL
+param: LNS
+param: LNS1
+param: LNS5
+param: NRAPR
+param: RATP
+param: SAMI
+param: SGII
+param: SIII
+param: SKGSIGMA
+param: SKI2
+param: SKI4
+param: SKMP
+param: SKMS
+param: SKO
+param: SKOP
+param: SKP
+param: SKRSIGMA
+param: SKX
+param: Skz2
+param: SLY4
+param: SLY5
+param: SLY230A
+param: SLY230B
+param: SV
+param: T6
+param: T44
+param: UNEDF0
+param: UNEDF1
+[&#39;Dmsat&#39;, &#39;Dmsat_mean&#39;, &#39;Dmsat_std&#39;, &#39;Esat&#39;, &#39;Esat_mean&#39;, &#39;Esat_std&#39;, &#39;Esym&#39;, &#39;Esym_mean&#39;, &#39;Esym_std&#39;, &#39;Ksat&#39;, &#39;Ksat_mean&#39;, &#39;Ksat_std&#39;, &#39;Ksym&#39;, &#39;Ksym_mean&#39;, &#39;Ksym_std&#39;, &#39;Lsym&#39;, &#39;Lsym_mean&#39;, &#39;Lsym_std&#39;, &#39;Qsat&#39;, &#39;Qsat_mean&#39;, &#39;Qsat_std&#39;, &#39;Qsym&#39;, &#39;Qsym_mean&#39;, &#39;Qsym_std&#39;, &#39;Zsat&#39;, &#39;Zsat_mean&#39;, &#39;Zsat_std&#39;, &#39;Zsym&#39;, &#39;Zsym_mean&#39;, &#39;Zsym_std&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;kappas&#39;, &#39;kappas_mean&#39;, &#39;kappas_std&#39;, &#39;kappasat&#39;, &#39;kappasat_mean&#39;, &#39;kappasat_std&#39;, &#39;kappasym&#39;, &#39;kappasym_mean&#39;, &#39;kappasym_std&#39;, &#39;kappav&#39;, &#39;kappav_mean&#39;, &#39;kappav_std&#39;, &#39;models&#39;, &#39;msat&#39;, &#39;msat_mean&#39;, &#39;msat_std&#39;, &#39;nsat&#39;, &#39;nsat_mean&#39;, &#39;nsat_std&#39;, &#39;params&#39;, &#39;print_latex&#39;, &#39;print_outputs&#39;]
 </pre></div>
 </div>
 </div>
@@ -510,7 +542,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;Skyrme2&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;GSkyrme&#39;, &#39;Skyrme2&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;, &#39;xEFT&#39;]
 </pre></div>
 </div>
 </div>
@@ -526,7 +558,7 @@ document.write(`
 <p>Instantiate <code class="docutils literal notranslate"><span class="pre">pheno</span></code> with the data from phenomonological model defined by <code class="docutils literal notranslate"><span class="pre">model</span></code> and <code class="docutils literal notranslate"><span class="pre">param</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEPModelDist</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupNEPStat_model</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
 <span class="n">dist</span><span class="o">.</span><span class="n">print_latex</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -536,6 +568,8 @@ document.write(`
 param: BSK16
 param: BSK17
 param: BSK27
+param: BSkG1
+param: BSkG2
 param: F-
 param: F+
 param: F0
@@ -570,12 +604,12 @@ param: UNEDF0
 param: UNEDF1
 
 - Print latex:
-   model: Skyrme 36 [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+   model: Skyrme 38 [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
  table:
  NEP &amp; $E_{\sat}$ &amp; $n_{\sat}$ &amp; $K_{\sat}$ &amp; $Q_{\sat}$ &amp; $Z_{\sat}$ &amp;  $E_{sym}$ &amp; $L_{sym}$ &amp; $K_{sym}$ &amp; $Q_{sym}$ &amp; $Z_{sym}$ &amp;  $m^*_{sat}/m$ &amp; $\Delta m^*_{sat}/m$ \\\\
  &amp; MeV &amp; fm$^{-3}n$ &amp; MeV &amp; MeV &amp; MeV &amp;  MeV &amp; MeV &amp; MeV &amp; MeV &amp; MeV &amp;   &amp;  \\\\
- centroid &amp; -15.88 &amp; 0.160 &amp;  238.0 &amp; -348 &amp; 1439 &amp;  30.82 &amp; 49.1 &amp; -134 &amp;  375 &amp; -2197 &amp; 0.77 &amp;  0.123 \\\\
- std.dev. &amp; 0.18 &amp; 0.004 &amp;  26.4 &amp; 88 &amp; 508 &amp;  1.54 &amp; 21.8 &amp; 90 &amp;  189 &amp; 1071 &amp; 0.14 &amp;  0.308 \\\\
+ centroid &amp; -15.89 &amp; 0.159 &amp;  238.0 &amp; -350 &amp; 1445 &amp;  30.88 &amp; 49.3 &amp; -135 &amp;  372 &amp; -2180 &amp; 0.77 &amp;  0.126 \\\\
+ std.dev. &amp; 0.18 &amp; 0.004 &amp;  25.7 &amp; 86 &amp; 494 &amp;  1.52 &amp; 21.2 &amp; 88 &amp;  184 &amp; 1044 &amp; 0.14 &amp;  0.300 \\\\
 </pre></div>
 </div>
 </div>
@@ -590,60 +624,72 @@ param: UNEDF1
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Print output:
    model: Skyrme
  NEP:
-   Esat: [-15.85 -16.05 -16.05 -16.05 -16.02 -16.04 -16.03 -15.92 -15.31 -15.9
- -15.56 -15.85 -16.05 -15.93 -15.59 -15.85 -15.59 -15.76 -15.93 -15.56
- -15.83 -15.75 -15.95 -15.59 -16.05 -16.   -15.97 -15.98 -15.99 -15.97
- -16.05 -15.96 -16.02 -16.06 -15.8 ]
-   nsat: [0.159 0.159 0.159 0.159 0.162 0.162 0.162 0.162 0.175 0.162 0.16  0.161
- 0.16  0.159 0.158 0.145 0.158 0.158 0.16  0.157 0.16  0.16  0.162 0.158
- 0.155 0.16  0.16  0.16  0.16  0.16  0.155 0.161 0.161 0.16  0.159]
-   Ksat: [239.34 241.67 241.69 241.66 230.02 230.03 230.01 217.06 210.79 244.22
- 240.24 225.66 239.52 245.   214.65 355.38 237.25 240.72 247.74 230.88
- 223.36 222.32 201.03 237.39 271.08 230.11 229.91 229.96 229.91 229.92
- 305.68 235.97 230.03 230.02 220.02]
-   Qsat: [-358.66 -363.56 -363.6  -363.51 -404.91 -406.16 -405.42 -399.45 -382.52
- -324.63 -316.09 -362.53 -349.81 -338.68 -380.89  101.39 -348.71 -339.28
- -330.8  -338.03 -392.86 -390.73 -435.56 -348.39 -297.42 -365.23 -363.08
- -363.97 -364.18 -363.08 -175.76 -383.15 -365.9  -403.67 -404.18]
-   Zsat: [1434.7  1459.72 1459.89 1459.44 1702.4  1709.6  1705.43 1832.78 1748.62
- 1299.23 1255.13 1611.1  1451.85 1330.51 1741.62 -903.05 1379.43 1349.04
- 1277.72 1423.54 1720.29 1709.57 2127.56 1377.1   903.91 1597.65 1586.7
- 1591.72 1593.51 1586.7   183.37 1560.77 1603.34 1706.58 1781.27]
-   Esym: [30.   30.   30.   30.   32.   32.   32.   30.93 33.43 29.91 29.15 32.78
- 29.26 28.16 26.83 28.16 31.37 33.37 29.5  29.89 31.97 31.95 30.   30.58
- 31.1  32.01 32.01 32.03 31.99 32.01 32.82 29.97 32.   30.54 28.99]
-   Lsym: [ 43.92  34.89  36.3   28.51  43.79  41.53  42.42  42.77  61.47  30.92
-  50.93  59.65  32.39  43.68  37.62   9.91  94.02 104.32  60.41  70.29
-  79.12  68.94  19.66  85.68  33.18  16.81  45.99  48.28  44.32  45.96
-  96.1   30.86  50.04  45.07  40.  ]
-   Ksym: [-152.09 -187.46 -181.92 -221.53 -105.1  -117.92 -113.48 -135.62 -127.41
- -211.39 -119.04 -123.38 -191.13 -119.93 -145.83 -393.9    13.98   70.63
-  -40.62  -49.8   -43.14  -78.84 -266.55   -9.14 -252.   -259.6  -119.56
- -112.41  -98.24 -119.66   24.18 -211.64 -106.71 -189.61 -179.45]
-   Qsym: [388.57 462.24 450.81 487.92 655.14 660.58 657.96 485.9  302.66 444.4
- 285.85 311.85 440.36 371.86 330.16 130.53 -26.74  51.77 351.43 159.33
- 131.01 223.47 508.14  22.24 379.4  682.41 521.03 500.98 603.11 521.11
-  48.01 472.72 481.27 287.74 323.83]
-   Zsym: [-2190.6  -2565.8  -2507.73 -2650.89 -3869.47 -3875.17 -3870.47 -2912.97
- -1766.34 -2470.88 -1670.6  -1837.54 -2476.83 -2179.12 -1890.8   -798.85
-    -4.89  -610.47 -2234.92 -1019.99  -850.6  -1348.65 -2747.74  -255.06
- -1888.91 -3893.87 -3197.27 -3087.04 -3785.62 -3197.55  -480.83 -2561.61
- -2971.81 -1495.46 -1744.06]
-   kappas: [ 0.25  0.25  0.25  0.25  0.43  0.43  0.43  0.19  0.21  0.66  0.66  0.44
-  0.5   0.48  0.27  0.31  0.28  0.46  0.54  0.53  0.12  0.12 -0.    0.28
-  0.01  0.43  0.44  0.44  0.44  0.44  1.61  0.    0.43 -0.1  -0.01]
-   kappav: [0.28 0.28 0.28 0.39 0.15 0.6  0.43 0.03 0.38 1.09 0.97 0.66 0.78 0.51
- 0.49 0.53 0.48 0.24 0.25 0.71 0.17 0.15 0.35 0.48 0.33 0.57 0.25 0.25
- 0.   0.25 2.02 0.   0.25 0.25 0.25]
-   kappasym: [-0.03 -0.03 -0.03 -0.14  0.28 -0.17 -0.    0.16 -0.16 -0.44 -0.31 -0.22
- -0.28 -0.03 -0.22 -0.21 -0.2   0.22  0.29 -0.18 -0.06 -0.03 -0.35 -0.2
- -0.33 -0.15  0.19  0.19  0.44  0.19 -0.4   0.    0.18 -0.35 -0.26]
-   msat: [0.8  0.8  0.8  0.8  0.7  0.7  0.7  0.84 0.83 0.6  0.6  0.69 0.67 0.68
- 0.79 0.76 0.78 0.69 0.65 0.65 0.9  0.9  1.   0.78 0.99 0.7  0.69 0.7
- 0.7  0.69 0.38 1.   0.7  1.11 1.01]
-  Dmsat: [ 0.03  0.04  0.04  0.18 -0.28  0.17  0.   -0.23  0.23  0.34  0.23  0.21
-  0.26  0.02  0.28  0.26  0.25 -0.21 -0.25  0.16  0.09  0.05  0.8   0.25
-  0.72  0.14 -0.19 -0.18 -0.47 -0.19  0.12 -0.   -0.18  1.02  0.56]
+   Esat: [-15.85 -16.05 -16.05 -16.05 -16.09 -16.07 -16.02 -16.04 -16.03 -15.92
+ -15.31 -15.9  -15.56 -15.85 -16.05 -15.93 -15.59 -15.85 -15.59 -15.76
+ -15.93 -15.56 -15.83 -15.75 -15.95 -15.59 -16.05 -16.   -15.97 -15.98
+ -15.99 -15.97 -16.05 -15.96 -16.02 -16.06 -15.8 ]
+   nsat: [0.159 0.159 0.159 0.159 0.158 0.158 0.162 0.162 0.162 0.162 0.175 0.162
+ 0.16  0.161 0.16  0.159 0.158 0.145 0.158 0.158 0.16  0.157 0.16  0.16
+ 0.162 0.158 0.155 0.16  0.16  0.16  0.16  0.16  0.155 0.161 0.161 0.16
+ 0.159]
+   Ksat: [239.34 241.67 241.69 241.66 237.8  237.45 230.02 230.03 230.01 217.06
+ 210.79 244.22 240.24 225.66 239.52 245.   214.65 355.38 237.25 240.72
+ 247.74 230.88 223.36 222.32 201.03 237.39 271.08 230.11 229.91 229.96
+ 229.91 229.92 305.68 235.97 230.03 230.02 220.02]
+   Qsat: [-358.66 -363.56 -363.6  -363.51 -376.7  -376.26 -404.91 -406.16 -405.42
+ -399.45 -382.52 -324.63 -316.09 -362.53 -349.81 -338.68 -380.89  101.39
+ -348.71 -339.28 -330.8  -338.03 -392.86 -390.73 -435.56 -348.39 -297.42
+ -365.23 -363.08 -363.97 -364.18 -363.08 -175.76 -383.15 -365.9  -403.67
+ -404.18]
+   Zsat: [1434.7  1459.72 1459.89 1459.44 1548.3  1546.92 1702.4  1709.6  1705.43
+ 1832.78 1748.62 1299.23 1255.13 1611.1  1451.85 1330.51 1741.62 -903.05
+ 1379.43 1349.04 1277.72 1423.54 1720.29 1709.57 2127.56 1377.1   903.91
+ 1597.65 1586.7  1591.72 1593.51 1586.7   183.37 1560.77 1603.34 1706.58
+ 1781.27]
+   Esym: [30.   30.   30.   30.   32.   32.   32.   32.   32.   30.93 33.43 29.91
+ 29.15 32.78 29.26 28.16 26.83 28.16 31.37 33.37 29.5  29.89 31.97 31.95
+ 30.   30.58 31.1  32.01 32.01 32.03 31.99 32.01 32.82 29.97 32.   30.54
+ 28.99]
+   Lsym: [ 43.92  34.89  36.3   28.51  51.7   53.03  43.79  41.53  42.42  42.77
+  61.47  30.92  50.93  59.65  32.39  43.68  37.62   9.91  94.02 104.32
+  60.41  70.29  79.12  68.94  19.66  85.68  33.18  16.81  45.99  48.28
+  44.32  45.96  96.1   30.86  50.04  45.07  40.  ]
+   Ksym: [-152.09 -187.46 -181.92 -221.53 -156.4  -150.6  -105.1  -117.92 -113.48
+ -135.62 -127.41 -211.39 -119.04 -123.38 -191.13 -119.93 -145.83 -393.9
+   13.98   70.63  -40.62  -49.8   -43.14  -78.84 -266.55   -9.14 -252.
+ -259.6  -119.56 -112.41  -98.24 -119.66   24.18 -211.64 -106.71 -189.61
+ -179.45]
+   Qsym: [388.57 462.24 450.81 487.92 341.52 331.9  655.14 660.58 657.96 485.9
+ 302.66 444.4  285.85 311.85 440.36 371.86 330.16 130.53 -26.74  51.77
+ 351.43 159.33 131.01 223.47 508.14  22.24 379.4  682.41 521.03 500.98
+ 603.11 521.11  48.01 472.72 481.27 287.74 323.83]
+   Zsym: [-2190.6  -2565.8  -2507.73 -2650.89 -1893.74 -1846.97 -3869.47 -3875.17
+ -3870.47 -2912.97 -1766.34 -2470.88 -1670.6  -1837.54 -2476.83 -2179.12
+ -1890.8   -798.85    -4.89  -610.47 -2234.92 -1019.99  -850.6  -1348.65
+ -2747.74  -255.06 -1888.91 -3893.87 -3197.27 -3087.04 -3785.62 -3197.55
+  -480.83 -2561.61 -2971.81 -1495.46 -1744.06]
+   kappas: [ 0.25  0.25  0.25  0.25  0.25  0.25  0.43  0.43  0.43  0.19  0.21  0.66
+  0.66  0.44  0.5   0.48  0.27  0.31  0.28  0.46  0.54  0.53  0.12  0.12
+ -0.    0.28  0.01  0.43  0.44  0.44  0.44  0.44  1.61  0.    0.43 -0.1
+ -0.01]
+   kappav: [0.28 0.28 0.28 0.39 0.39 0.39 0.15 0.6  0.43 0.03 0.38 1.09 0.97 0.66
+ 0.78 0.51 0.49 0.53 0.48 0.24 0.25 0.71 0.17 0.15 0.35 0.48 0.33 0.57
+ 0.25 0.25 0.   0.25 2.02 0.   0.25 0.25 0.25]
+   kappasat: [ 0.25  0.25  0.25  0.25  0.25  0.25  0.43  0.43  0.43  0.19  0.21  0.66
+  0.66  0.44  0.5   0.48  0.27  0.31  0.28  0.46  0.54  0.53  0.12  0.12
+ -0.    0.28  0.01  0.43  0.44  0.44  0.44  0.44  1.61  0.    0.43 -0.1
+ -0.01]
+   kappasym: [-0.03 -0.03 -0.03 -0.14 -0.14 -0.14  0.28 -0.17 -0.    0.16 -0.16 -0.44
+ -0.31 -0.22 -0.28 -0.03 -0.22 -0.21 -0.2   0.22  0.29 -0.18 -0.06 -0.03
+ -0.35 -0.2  -0.33 -0.15  0.19  0.19  0.44  0.19 -0.4   0.    0.18 -0.35
+ -0.26]
+   msat: [0.8  0.8  0.8  0.8  0.86 0.86 0.7  0.7  0.7  0.84 0.83 0.6  0.6  0.69
+ 0.67 0.68 0.79 0.76 0.78 0.69 0.65 0.65 0.9  0.9  1.   0.78 0.99 0.7
+ 0.69 0.7  0.7  0.69 0.38 1.   0.7  1.11 1.01]
+  Dmsat: [ 0.03  0.04  0.04  0.18  0.18  0.18 -0.28  0.17  0.   -0.23  0.23  0.34
+  0.23  0.21  0.26  0.02  0.28  0.26  0.25 -0.21 -0.25  0.16  0.09  0.05
+  0.8   0.25  0.72  0.14 -0.19 -0.18 -0.47 -0.19  0.12 -0.   -0.18  1.02
+  0.56]
 </pre></div>
 </div>
 </div>
@@ -654,16 +700,20 @@ param: UNEDF1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reference band:</span>
 <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">nep_models</span><span class="p">()</span>
-<span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupNEPModelDist_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">models</span> <span class="p">)</span>
+<span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupNEPStats_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">models</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-param: BSK14
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: BSK14
 param: BSK16
 param: BSK17
 param: BSK27
+param: BSkG1
+param: BSkG2
 param: F-
 param: F+
 param: F0
@@ -696,8 +746,23 @@ param: T6
 param: T44
 param: UNEDF0
 param: UNEDF1
+param: BSk22
+param: BSk24
+param: BSk25
+param: BSk26
+param: BSk31
+param: BSk32
+param: BSkG3
+param: BSkG4
+param: SkK180
+param: SkK200
+param: SkK220
+param: SkK240
+param: SkKM
 param: SLy4
-param: SkM*
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: SkM*
 param: SV-min
 param: SV-bas
 param: SV-K218
@@ -712,15 +777,6 @@ param: SV-sym34
 param: SV-kap00
 param: SV-kap20
 param: SV-kap60
-param: BSk22
-param: BSk24
-param: BSk25
-param: BSk26
-param: BSk31
-param: BSk32
-param: BSkG1
-param: BSkG2
-param: BSkG3
 param: D1S
 param: D1
 param: D250
@@ -742,12 +798,21 @@ param: DDMEd
 param: PKDD
 param: TW99
 param: PKA1
-param: PKO1
-param: PKO2
-param: PKO3
 </pre></div>
 </div>
-<img alt="../../_images/05c2574920bf59b69d381283c5f134ba7a6c5652a4d08f3262828d3f5202dc71.png" src="../../_images/05c2574920bf59b69d381283c5f134ba7a6c5652a4d08f3262828d3f5202dc71.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: PKO1
+param: PKO2
+param: PKO3
+param: H1MM
+param: H2MM
+param: H3MM
+param: H4MM
+param: H5MM
+param: H6MM
+param: H7MM
+</pre></div>
+</div>
+<img alt="../../_images/5a2d1282629f5928b597d5353c0c6daeedcad8f7b7b4dc903a8571dae1b90adf.png" src="../../_images/5a2d1282629f5928b597d5353c0c6daeedcad8f7b7b4dc903a8571dae1b90adf.png" />
 </div>
 </div>
 </section>

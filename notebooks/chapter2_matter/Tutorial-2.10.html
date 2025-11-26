@@ -504,7 +504,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
 </pre></div>
 </div>
 </div>
@@ -706,7 +706,7 @@ param: UNEDF1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
 model: Skyrme
 param: BSK14
 param: BSK16
@@ -755,17 +755,6 @@ param: BSk31
 param: BSk32
 param: BSkG3
 param: BSkG4
-model: Gogny
-param: D1S
-param: D1
-param: D250
-param: D260
-param: D280
-param: D300
-model: Fayans
-param: Fy(IVP)
-param: Fy(Dr,HDB)
-param: Fy(std)
 model: NLRH
 param: NL-SH
 param: NL3
@@ -798,24 +787,24 @@ param: PKO3
 <span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">den</span><span class="o">=</span><span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">&#39;NM&#39;</span>  <span class="p">)</span>
 <span class="c1"># plot:</span>
 <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="c1"># print(&#39;models:&#39;,models)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
-    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_E_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
+    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_e2a_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
 model -&gt;  2016-MBPT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2016-QMC-NM
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: False
 flag_kf: True
 flag_den: False
@@ -832,7 +821,9 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2016-QMC-NM
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: False
 flag_kf: True
 flag_den: False
@@ -841,20 +832,27 @@ flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
-models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
 model: Skyrme
+Plot name: None
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_E_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;nucleardatapy.fig&#39; has no attribute &#39;matter_setupPheno_E_fig&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: ESkyrme
+Plot name: None
+model: NLRH
+Plot name: None
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH
+Plot name: None
+model: DDRHF
+Plot name: None
+</pre></div>
+</div>
+<img alt="../../_images/9965058e7b6b675a3f21416f5a56c40f751ba272018ab38f21ab1952e329f54a.png" src="../../_images/9965058e7b6b675a3f21416f5a56c40f751ba272018ab38f21ab1952e329f54a.png" />
+<img alt="../../_images/995668d8e3f392d51ccaf943670019e35efb3cb9ac0da216bad1076a8fb17fb2.png" src="../../_images/995668d8e3f392d51ccaf943670019e35efb3cb9ac0da216bad1076a8fb17fb2.png" />
+<img alt="../../_images/456baca35f74230203be3941c27fa4f6b544399b6fada196ada8f0fc840709e1.png" src="../../_images/456baca35f74230203be3941c27fa4f6b544399b6fada196ada8f0fc840709e1.png" />
+<img alt="../../_images/d18db892ca5f2818a083364ab82333701533a246d17914db5e1a82fca0c9cd21.png" src="../../_images/d18db892ca5f2818a083364ab82333701533a246d17914db5e1a82fca0c9cd21.png" />
+<img alt="../../_images/56f3b18bb82e3a63c2e48503c95d1b092bda35fcf5ee96845e2fc6ef3c4ebef0.png" src="../../_images/56f3b18bb82e3a63c2e48503c95d1b092bda35fcf5ee96845e2fc6ef3c4ebef0.png" />
 </div>
 </div>
 </section>
