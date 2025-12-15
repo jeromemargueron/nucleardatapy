@@ -39,7 +39,6 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1808
 number of nuclei(Sta): 883
 number of nuclei(Sel): 883
------ stdout -----
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
@@ -48,6 +47,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1067
 number of nuclei(Sta): 480
 number of nuclei(Sel): 480
+----- stdout -----
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
@@ -56,6 +56,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 1495
 number of nuclei(Sta): 91
 number of nuclei(Sel): 91
+----- stdout -----
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
@@ -64,6 +65,7 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 number of nuclei(Tot): 5573
 number of nuclei(Sta): 2297
 number of nuclei(Sel): 2297
+----- stdout -----
 setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:
 setup_be_theo: Should compute first S2n
 setup_be_theo: exit
