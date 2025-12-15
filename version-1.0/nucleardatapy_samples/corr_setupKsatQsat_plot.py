@@ -30,6 +30,33 @@ def main():
     pname = folder+'/plot_corr_setupKsatQsat.png'
     nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
     #
+    constraints = [ 'EDF-SKY', 'EDF-ESKY', 'EDF-Gogny', 'EDF-Fayans' ]
+    pname = folder+'/plot_corr_setupKsatQsat-2.png'
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
+    #
+    constraints = [ 'EDF-SKY', 'EDF-ESKY', 'EDF-Gogny', 'EDF-Fayans', \
+               'EDF-DDRH', 'EDF-NLRH', 'EDF-DDRHF', 'EDF-xEFT' ]
+    pname = folder+'/plot_corr_setupKsatQsat-3.png'
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
+    #
+    constraints = [ 'EDF-SKY', 'EDF-ESKY', 'EDF-Gogny', 'EDF-Fayans', \
+               'EDF-DDRH', 'EDF-NLRH', 'EDF-DDRHF', 'EDF-xEFT', \
+               '1991-Pearson' ]
+    pname = folder+'/plot_corr_setupKsatQsat-4.png'
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
+    #
+    constraints = [ 'EDF-SKY', 'EDF-ESKY', 'EDF-Gogny', 'EDF-Fayans', \
+               'EDF-DDRH', 'EDF-NLRH', 'EDF-DDRHF', 'EDF-xEFT', \
+               '1991-Pearson', '2025-MK-95', '2025-MK-90', '2025-MK-67' ]
+    pname = folder+'/plot_corr_setupKsatQsat-5.png'
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
+    #
+    constraints = [ 'EDF-SKY', 'EDF-ESKY', 'EDF-Gogny', 'EDF-Fayans', \
+               'EDF-DDRH', 'EDF-NLRH', 'EDF-DDRHF', 'EDF-xEFT', \
+               '1991-Pearson', '2025-MK-95', '2025-MK-90', '2025-MK-67', 'EDF-GSKY' ]
+    pname = folder+'/plot_corr_setupKsatQsat-6.png'
+    nuda.fig.corr_setupKsatQsat_fig( pname, constraints )
+    #
     print(50*'-')
     print("Exit corr_setupKsatQsat_plot.py:")
     print(50*'-')
