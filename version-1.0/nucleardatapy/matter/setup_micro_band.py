@@ -215,7 +215,7 @@ class setupMicroBand():
         print("   den_max:",self.den_max)
         print("   den :",np.round(self.den,3))
         print("   kfn :",np.round(self.kfn,2))
-        print("   e2a :",np.round(self.e2a,2))
+        print("   e2a :",np.round(self.e2a_int,2))
         print("   std :",np.round(self.e2a_std,3))
         #if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
         #

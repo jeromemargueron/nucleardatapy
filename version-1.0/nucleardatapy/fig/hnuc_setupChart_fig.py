@@ -37,6 +37,7 @@ def hnuc_setupChart_fig( pname, tables1L, tables2L, tables1Xi ):
     axs.set_ylim([0.8, 90.0])
     #
     for table1L in tables1L:
+        print(f'Processing table: {table1L}')
         hnuc1L = nuda.hnuc.setupRE1LExp( table = table1L )
         axs.scatter( hnuc1L.N,      hnuc1L.Z,      marker='s', s=12, color=nuda.param.col[0], label=r'1$\Lambda$ from table '+table1L )
     for table2L in tables2L:
@@ -52,6 +53,6 @@ def hnuc_setupChart_fig( pname, tables1L, tables2L, tables1Xi ):
     axs.text(1.1,60,'Chart of hypernuclides in nuda toolkit',fontsize='14')
     #
     if pname is not None:
-    	plt.savefig(pname, dpi=200)
-    	plt.close()
+        plt.savefig(pname, dpi=200)
+        plt.close()
     #

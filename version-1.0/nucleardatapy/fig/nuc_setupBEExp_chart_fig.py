@@ -78,7 +78,7 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     legend = 0
     for i,theo_table in enumerate( theo_tables ):
         theo = nuda.nuc.setupBETheo( table = theo_table )
-        for zref in range(1,96):
+        for zref in range(10,96):
             itp = theo.isotopes( Zref= zref)
             s2n = itp.S2n( Zref= zref )
             drip_S2n = itp.drip_S2n(Zref = zref)
