@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -513,36 +513,17 @@ document.write(`
 <p>Fix one model for which we want to extract the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2013-QMC-NM&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2018-QMC-NM&#39;</span>
 <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model -&gt;  2013-QMC-NM
-setup_micro: The model name  2013-QMC-NM  is not in the list of models.
-setup_micro: list of models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;, &#39;2024-NLEFT-AM&#39;, &#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;, &#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
-setup_micro: -- Exit the code --
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2013-QMC-NM&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
-
-<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro.py:410,</span> in <span class="ni">setupMicro.__init__</span><span class="nt">(self, model, var1, var2)</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;setup_micro: list of models:&quot;</span><span class="p">,</span> <span class="n">models</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;setup_micro: -- Exit the code --&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">410</span>     <span class="n">exit</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span> <span class="c1"># ==============================</span>
-<span class="g g-Whitespace">    </span><span class="mi">413</span> <span class="c1"># Read files associated to model</span>
-<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="c1"># ==============================</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="bp">self</span><span class="o">.</span><span class="n">nm_rmass</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">cst</span><span class="o">.</span><span class="n">mnc2</span>
-
-<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 </pre></div>
 </div>
 </div>
@@ -556,10 +537,10 @@ setup_micro: -- Exit the code --
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Print output:
-   model: 2013-QMC-NM
-   ref:   I. Tews et al., PRL 110, 032504 (2013)
-   label: QMC-2013
-   note:  write here notes about this EOS.
+   model: 2018-QMC-NM
+   ref:   I. Tews, J. Carlson, S. Gandolfi, S. Reddy, Astroph. J. 860(2), 149 (2018).
+   label: QMC-2018
+   note:  
    self.sm_den:  None
    self.sm_effmass:  None
    den: [0.01  0.031 0.051 0.072 0.092 0.113 0.133 0.154 0.174 0.195 0.215 0.236
@@ -567,14 +548,23 @@ setup_micro: -- Exit the code --
    kfn: [0.01  0.031 0.051 0.072 0.092 0.113 0.133 0.154 0.174 0.195 0.215 0.236
  0.256 0.277 0.297 0.318 0.338 0.359 0.379 0.4  ] in fm$^{-1}$
    asy: 0.0
-   nm_den: [0.04 0.06 0.08 0.1  0.12 0.14 0.16 0.18 0.2 ] in fm$^{-3}$
-   nm_kfn: [1.058 1.211 1.333 1.436 1.526 1.606 1.68  1.747 1.809] in fm$^{-1}$
-   nm_chempot: [ 9.172 12.018 15.248 19.158 23.751 29.183 35.202 42.038 49.605] in MeV
-   nm_e2a: [ 5.934  7.342  8.779 10.467 12.356 14.559 16.783 19.225 21.766] in MeV
-   nm_e2a_err: [0.556 1.043 1.495 1.912 2.372 2.829 3.337 3.82  4.241] in MeV
-   nm_e2v: [0.237 0.44  0.702 1.047 1.483 2.038 2.685 3.46  4.353] in MeV fm$^{-3}$
-   nm_e2v_err: [0.022 0.063 0.12  0.191 0.285 0.396 0.534 0.688 0.848] in MeV fm$^{-3}$
-   nm_pre: [0.13  0.281 0.518 0.869 1.367 2.047 2.947 4.106 5.568] in MeV fm$^{-3}$
+   nm_den: [0.02 0.04 0.06 0.08 0.1  0.12 0.14 0.16 0.18 0.2  0.22 0.24 0.26 0.28
+ 0.3  0.32] in fm$^{-3}$
+   nm_kfn: [0.84  1.058 1.211 1.333 1.436 1.526 1.606 1.68  1.747 1.809 1.868 1.923
+ 1.975 2.024 2.071 2.116] in fm$^{-1}$
+   nm_e2a: [944.084 946.293 948.039 949.658 951.231 952.797 954.406 956.061 957.794
+ 959.592 961.46  963.39  965.406 967.425 969.633 971.778] in MeV
+   nm_e2a_err: [ 0.071  0.118  0.265  0.499  0.815  1.213  1.717  2.307  3.023  3.828
+  4.741  5.78   6.944  8.227  9.662 11.134] in MeV
+   nm_eps: [ 18.882  37.852  56.882  75.973  95.123 114.336 133.617 152.97  172.403
+ 191.918 211.521 231.214 251.005 270.879 290.89  310.969] in MeV fm$^{-3}$
+   nm_eps_err: [1.000e-03 5.000e-03 1.600e-02 4.000e-02 8.100e-02 1.460e-01 2.400e-01
+ 3.690e-01 5.440e-01 7.660e-01 1.043e+00 1.387e+00 1.805e+00 2.304e+00
+ 2.899e+00 3.563e+00] in MeV fm$^{-3}$
+   nm_pre: [ 0.053  0.152  0.298  0.509  0.78   1.141  1.595  2.167  2.862  3.67
+  4.578  5.727  6.753  8.288 10.058 10.27 ] in MeV fm$^{-3}$
+   nm_cs2: [ 0.004  0.006  0.009  0.012  0.016  0.021  0.026  0.033  0.039  0.042
+  0.054  0.054  0.06   0.093  0.067 -0.063]
 </pre></div>
 </div>
 </div>
@@ -587,8 +577,10 @@ setup_micro: -- Exit the code --
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uncertainties: [0.09374429 0.14202996 0.17025439 0.18262481 0.19196782 0.19433464
- 0.1988345  0.19871935 0.19484428]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>uncertainties: [7.52051449e-05 1.24327198e-04 2.79935751e-04 5.25557873e-04
+ 8.56469462e-04 1.27288455e-03 1.79902540e-03 2.41271280e-03
+ 3.15641938e-03 3.98929776e-03 4.93120071e-03 5.99995944e-03
+ 7.19257165e-03 8.50381566e-03 9.96459952e-03 1.14573441e-02]
 </pre></div>
 </div>
 </div>
@@ -597,7 +589,7 @@ setup_micro: -- Exit the code --
 <p>Fix a list of models instead of a unique one</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2013-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-QMC-NM&#39;</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2018-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-QMC-NM&#39;</span> <span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
@@ -606,17 +598,37 @@ setup_micro: -- Exit the code --
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2013-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2016-QMC-NM&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-QMC-NM&#39;]
-model: 2013-QMC-NM
-model -&gt;  2013-QMC-NM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2018-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2016-QMC-NM&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-QMC-NM&#39;]
+model: 2018-QMC-NM
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2016-MBPT-AM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2016-QMC-NM
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2020-MBPT-AM
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2024-QMC-NM
 model -&gt;  2024-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: True
 </pre></div>
 </div>
 </div>
@@ -631,19 +643,39 @@ model -&gt;  2024-QMC-NM
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-model -&gt;  2013-QMC-NM
-model: 2013-QMC-NM
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model: 2018-QMC-NM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2016-MBPT-AM
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2016-QMC-NM
 model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2020-MBPT-AM
 model -&gt;  2024-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: False
+flag_den: True
 model: 2024-QMC-NM
 </pre></div>
 </div>
-<img alt="../../_images/d2194c224a5bf3289889af0945320a663b3b498cd681c7a288a79e9b8692b0a0.png" src="../../_images/d2194c224a5bf3289889af0945320a663b3b498cd681c7a288a79e9b8692b0a0.png" />
+<img alt="../../_images/c27c0b47f1307490295c68434d31f51bab5951bea3671fe21119b885c8a36bc5.png" src="../../_images/c27c0b47f1307490295c68434d31f51bab5951bea3671fe21119b885c8a36bc5.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -657,7 +689,7 @@ model: 2024-QMC-NM
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av8p&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2024-BHF-AM-2BF-SSCV14&#39;, &#39;2024-BHF-AM-23BF-Av8p&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2024-BHF-AM-23BF-SSCV14&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2013-QMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2010-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-NLEFT-AM&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;, &#39;2024-NLEFT-AM&#39;, &#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;, &#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
 </pre></div>
 </div>
 </div>
@@ -665,7 +697,7 @@ model: 2024-QMC-NM
 <p>Then we select a few of them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2013-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2018-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span> <span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -680,23 +712,59 @@ model: 2024-QMC-NM
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
-model -&gt;  2013-QMC-NM
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
-model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
-model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 - Print output:
-   models : [&#39;2013-QMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;]
-   den_min: 0.04
+   models : [&#39;2018-QMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2016-MBPT-AM&#39;]
+   den_min: 0.02
    den_max: 0.16
-   den : [0.04  0.052 0.064 0.076 0.088 0.1   0.112 0.124 0.136 0.148 0.16 ]
-   kfn : [1.06 1.15 1.24 1.31 1.38 1.44 1.49 1.54 1.59 1.64 1.68]
-   e2a : [ 6.28  7.21  8.1   9.    9.92 10.87 11.85 12.9  13.99 15.11 16.24]
-   std : [0.46  0.646 0.827 1.007 1.182 1.371 1.594 1.845 2.131 2.461 2.829]
+   den : [0.02  0.034 0.048 0.062 0.076 0.09  0.104 0.118 0.132 0.146 0.16 ]
+   kfn : [0.84 1.   1.12 1.22 1.31 1.39 1.45 1.52 1.58 1.63 1.68]
+   e2a : [ 4.5   5.95  7.22  8.33  9.42 10.5  11.58 12.68 13.8  14.96 16.14]
+   std : [0.017 0.37  0.434 0.572 0.745 0.965 1.232 1.553 1.941 2.397 2.918]
 </pre></div>
 </div>
 </div>
@@ -713,23 +781,59 @@ model -&gt;  2016-MBPT-AM
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>den: [0.04 0.06 0.08 0.1  0.12 0.14 0.16]
 Plot name: None
-model -&gt;  2013-QMC-NM
-model: 2013-QMC-NM
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model: 2018-QMC-NM
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model: 2016-QMC-NM
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 model: 2016-MBPT-AM
 
 Band in NM
-model -&gt;  2013-QMC-NM
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
-model -&gt;  2013-QMC-NM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2018-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
 model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
 </pre></div>
 </div>
-<img alt="../../_images/49c164b5db8a344c96ee383676045ecea3fcb93baf34c3bd418f3673cbec5617.png" src="../../_images/49c164b5db8a344c96ee383676045ecea3fcb93baf34c3bd418f3673cbec5617.png" />
+<img alt="../../_images/1fc5c0fd28df51b9eeb9373a67eb128bb2c7574f79b42fff0a27b12bcac5fa16.png" src="../../_images/1fc5c0fd28df51b9eeb9373a67eb128bb2c7574f79b42fff0a27b12bcac5fa16.png" />
 </div>
 </div>
 </section>

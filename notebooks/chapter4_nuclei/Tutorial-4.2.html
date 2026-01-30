@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -525,8 +525,8 @@ document.write(`
 <p>Extract data from a given table and version:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mas</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">setupBEExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei:&#39;</span><span class="p">,</span><span class="n">mas</span><span class="o">.</span><span class="n">nbNuc</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mas_exp</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">setupBEExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei:&#39;</span><span class="p">,</span><span class="n">mas_exp</span><span class="o">.</span><span class="n">nbNuc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -544,18 +544,17 @@ number of nuclei: 5827
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">s2n</span> <span class="o">=</span> <span class="n">mas</span><span class="o">.</span><span class="n">S2n</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zref</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
+<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span> <span class="p">)</span>
+<span class="n">mas_exp3</span> <span class="o">=</span> <span class="n">mas_exp2</span><span class="o">.</span><span class="n">isotopes</span><span class="p">(</span> <span class="n">Zref</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
+<span class="n">s2n</span> <span class="o">=</span> <span class="n">mas_exp3</span><span class="o">.</span><span class="n">S2n</span><span class="p">(</span> <span class="n">Zref</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s2n</span> <span class="o">=</span> <span class="n">mas</span><span class="o">.</span><span class="n">S2n</span><span class="p">(</span> <span class="n">Zmin</span> <span class="o">=</span> <span class="n">Zref</span><span class="p">,</span> <span class="n">Zmax</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
-
-<span class="ne">TypeError</span>: setupBEExp.S2n() got an unexpected keyword argument &#39;Zmin&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of nuclei(Tot): 5573
+number of nuclei(Sta): 2297
+number of nuclei(Sel): 2297
+Nmin,Nmax: 50 85
 </pre></div>
 </div>
 </div>
@@ -564,7 +563,17 @@ number of nuclei: 5827
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nref</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">s2p</span> <span class="o">=</span> <span class="n">mas</span><span class="o">.</span><span class="n">S2p</span><span class="p">(</span> <span class="n">Nmin</span> <span class="o">=</span> <span class="n">Nref</span><span class="p">,</span> <span class="n">Nmax</span> <span class="o">=</span> <span class="n">Nref</span> <span class="p">)</span>
+<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span> <span class="p">)</span>
+<span class="n">mas_exp3</span> <span class="o">=</span> <span class="n">mas_exp2</span><span class="o">.</span><span class="n">isotones</span><span class="p">(</span> <span class="n">Nref</span> <span class="o">=</span> <span class="n">Nref</span> <span class="p">)</span>
+<span class="n">s2p</span> <span class="o">=</span> <span class="n">mas_exp3</span><span class="o">.</span><span class="n">S2p</span><span class="p">(</span> <span class="n">Nref</span> <span class="o">=</span> <span class="n">Nref</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of nuclei(Tot): 5573
+number of nuclei(Sta): 2297
+number of nuclei(Sel): 2297
+Zmin,Zmax: 29 50
 </pre></div>
 </div>
 </div>
@@ -581,20 +590,11 @@ number of nuclei: 5827
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N(Z=50): [52 54 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77
- 78 79 80 81 82 83 84 85]
-S2n(Z=50): [23.9226342 22.8396342 21.8696342 21.3166342 20.8586342 20.2606342
- 19.9146342 19.4516342 18.9556842 18.5317342 18.0473192 17.8483802
- 17.1088792 16.5064882 16.2694542 15.8099342 15.5875342 15.2742342
- 14.9849342 14.7607342 14.4341342 14.2216342 13.9261342 13.7189342
- 13.4886342 13.2636342 12.9138342 12.8166342 12.5570342  9.7515342
-  6.0300342  5.9007342]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N(Z=50): [52 54 56 57 58 59 60 61 63 73 75 77 78 79 80 81 82 83 84 85]
+S2n(Z=50): &lt;bound method setupBEExp.S2n of &lt;nucleardatapy.nuc.setup_be_exp.setupBEExp object at 0x7f1ec0b2ec30&gt;&gt;
 
-Z(N=50): [31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 50]
-S2p(N=50): [29.7959412 28.3444412 26.6192412 25.1105412 23.4836412 21.8959172
- 20.6007432 19.2338942 17.6913392 15.4288622 13.5047412 12.6139812
- 11.5460412 10.3533512  9.3128412  8.1769412  7.1409412  6.0349412
-  4.0879412]
+Z(N=50): [31 33 35 37 43 45 47]
+S2p(N=50): &lt;bound method setupBEExp.S2p of &lt;nucleardatapy.nuc.setup_be_exp.setupBEExp object at 0x7f1ec0b2ec30&gt;&gt;
 </pre></div>
 </div>
 </div>
@@ -614,9 +614,12 @@ Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
+number of nuclei(Tot): 5573
+number of nuclei(Sta): 2297
+number of nuclei(Sel): 2297
+Nmin,Nmax: 50 85
 </pre></div>
 </div>
-<img alt="../../_images/e3e35774855a94e64e918aff728b5f6de130051ea6ec6386a4e3c56611fc0a1d.png" src="../../_images/e3e35774855a94e64e918aff728b5f6de130051ea6ec6386a4e3c56611fc0a1d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -629,14 +632,18 @@ dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
 Tables: [&#39;AME&#39;]
 Nref: 50
-Plot name: None
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
 </pre></div>
 </div>
-<img alt="../../_images/33a7d22ab582b5c8a609a78e04e1a544ad2fbe1bb77e46d7bc8ba0c0b70eef53.png" src="../../_images/33a7d22ab582b5c8a609a78e04e1a544ad2fbe1bb77e46d7bc8ba0c0b70eef53.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of nuclei(Tot): 5573
+number of nuclei(Sta): 2297
+number of nuclei(Sel): 2297
+Zmin,Zmax: 29 50
+</pre></div>
+</div>
 </div>
 </div>
 </section>

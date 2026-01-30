@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -670,9 +670,7 @@ number of nuclei(Sel): 480
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of nuclei(Tot): 1495
+number of nuclei(Tot): 1495
 number of nuclei(Sta): 91
 number of nuclei(Sel): 91
 </pre></div>
@@ -688,13 +686,15 @@ number of nuclei(Sta): 2297
 number of nuclei(Sel): 2297
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:
-setup_be_theo: Should compute first S2n
-setup_be_theo: exit
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S2n_Z:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10]
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">nuc_setupBEExp_chart_lt_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span>  <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span> <span class="n">theo_tables</span> <span class="o">=</span> <span class="n">theo_tables</span> <span class="p">)</span>
 
@@ -705,16 +705,14 @@ setup_be_theo: exit
 <span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="k">if</span> <span class="n">legend</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">86</span>     <span class="n">axs</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="n">drip_S2n</span><span class="o">.</span><span class="n">drip_S2n_N</span><span class="p">,</span> <span class="n">drip_S2n</span><span class="o">.</span><span class="n">drip_S2n_Z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drip Lines&#39;</span> <span class="p">)</span>
 
-<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/nuc/setup_be_theo.py:714,</span> in <span class="ni">setupBETheo.drip_S2n</span><span class="nt">(self, Zref)</span>
-<span class="g g-Whitespace">    </span><span class="mi">712</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: Should compute first S2n&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_be_theo: exit&#39;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">714</span>     <span class="n">exit</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">716</span> <span class="c1">#Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )</span>
-<span class="g g-Whitespace">    </span><span class="mi">717</span> <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="bp">self</span><span class="o">.</span><span class="n">drip_S2n_Z</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/nuc/setup_be_theo.py:733,</span> in <span class="ni">setupBETheo.drip_S2n</span><span class="nt">(self, Zref)</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span> <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span><span class="n">Z2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S2n_Z</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">733</span>     <span class="k">if</span> <span class="n">Z2</span> <span class="o">==</span> <span class="n">Z</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">S2n_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Nmax</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">S2n</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span>         <span class="n">Nmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">S2n_N</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">735</span> <span class="bp">self</span><span class="o">.</span><span class="n">drip_S2n_Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">Z</span> <span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
+<span class="ne">TypeError</span>: &#39;method&#39; object is not subscriptable
 </pre></div>
 </div>
 <img alt="../../_images/922025c87195dec5abf513b3ac002c39608dfa8ed7a448d770217c2854a1d6dc.png" src="../../_images/922025c87195dec5abf513b3ac002c39608dfa8ed7a448d770217c2854a1d6dc.png" />

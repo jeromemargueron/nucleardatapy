@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -475,6 +475,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># Import nucleardatapy package</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nucleardatapy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nuda</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -1016,14 +1017,14 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -1184,9 +1185,7 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-DN2LO-500
 model -&gt;  2024-CC-AM-DN2LO-500
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1202,9 +1201,7 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-DN2LOgo-394
 model -&gt;  2024-CC-AM-DN2LOgo-394
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1220,7 +1217,9 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-DN2LOgo-450
 model -&gt;  2024-CC-AM-DN2LOgo-450
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1236,7 +1235,9 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-N2LOsat
 model -&gt;  2024-CC-AM-N2LOsat
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1259,11 +1260,9 @@ flag_den: True
 <p>list the available models to plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">micro_models</span><span class="p">,</span> <span class="n">micro_models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_esym_models</span><span class="p">()</span>
-<span class="n">micro_models</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-VAR-AM-APR-fit&#39;</span><span class="p">)</span>
-<span class="n">micro_models_lower</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-var-am-apr-fit&#39;</span><span class="p">)</span>
-<span class="c1">#micro_models = [ &#39;1998-VAR-AM-APR&#39; ]</span>
-<span class="c1">#pheno_models, pheno_models_lower = nuda.matter.pheno_esym_models()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">micro_mbs</span><span class="p">,</span> <span class="n">micro_mbs_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_esym_mbs</span><span class="p">()</span>
+<span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">])</span>
+<span class="n">micro_models</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2016-MBPT-AM&quot;</span><span class="p">,</span> <span class="s2">&quot;2016-QMC-NM&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-MBPT-AM&quot;</span><span class="p">]</span>
 <span class="n">pheno_models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="s1">&#39;ESkyrme&#39;</span><span class="p">,</span> <span class="s1">&#39;NLRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRHF&#39;</span> <span class="p">]</span>
 </pre></div>
 </div>
@@ -1271,19 +1270,1090 @@ flag_den: True
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">eos_setupAM_e_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">micro_models</span><span class="p">,</span> <span class="n">pheno_models</span><span class="p">,</span> <span class="n">asy</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span><span class="n">models</span> <span class="o">=</span> <span class="n">micro_models</span><span class="p">,</span> <span class="n">den</span> <span class="o">=</span> <span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">&#39;NM&#39;</span><span class="p">)</span>
+<span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">eos_setupAM_e2a_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">micro_mbs</span><span class="o">=</span><span class="n">micro_mbs</span><span class="p">,</span> <span class="n">pheno_models</span><span class="o">=</span><span class="n">pheno_models</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">band</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">eos_setupAM_e_fig</span><span class="p">(</span> <span class="kc">None</span><span class="p">,</span> <span class="n">micro_models</span><span class="p">,</span> <span class="n">pheno_models</span><span class="p">,</span> <span class="n">asy</span> <span class="p">)</span>
-
-<span class="ne">AttributeError</span>: module &#39;nucleardatapy.fig&#39; has no attribute &#39;eos_setupAM_e_fig&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
+model -&gt;  2016-MBPT-AM
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model -&gt;  2016-QMC-NM
+flag_nm: True
+flag_sm: False
+flag_kf: True
+flag_den: False
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+Plot name: None
+asy: 0.6
+mb: VAR 0
+models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+-&gt; model: 1981-VAR-AM-FP
+model -&gt;  1981-VAR-AM-FP
+flag_nm: True
+flag_sm: True
+flag_kf: True
+flag_den: False
+mb: VAR
+model: 1981-VAR-AM-FP
+den: [0.004323   0.04563185 0.0869407  0.12824955 0.1695584  0.21086725
+ 0.2521761  0.29348495 0.3347938  0.37610265 0.4174115  0.45872035
+ 0.5000292  0.54133805 0.5826469  0.62395575 0.6652646  0.70657345
+ 0.7478823  0.78919115 0.8305    ]
+e2a_lep: [ 8.72415409 19.13628898 23.72322014 27.00537277 29.63949061 31.87378343
+ 33.83230585 35.58705266 37.18396596 38.65436708 40.02067944 41.2995728
+ 42.5038166  43.64343439 44.72645559 45.7594234  46.74774864 47.6959629
+ 48.6079038  49.4868532  50.33564219]
+-&gt; model: 1998-VAR-AM-APR
+model -&gt;  1998-VAR-AM-APR
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 1998-VAR-AM-APR
+den: [0.04  0.086 0.132 0.178 0.224 0.27  0.316 0.362 0.408 0.454 0.5   0.546
+ 0.592 0.638 0.684 0.73  0.776 0.822 0.868 0.914 0.96 ]
+e2a_lep: [18.31424411 23.63734958 27.26608621 30.12341515 32.52219226 34.611316
+ 36.47475134 38.16506471 39.71760628 41.15742401 42.50298923 43.76836
+ 44.96451279 46.10020125 47.18253179 48.2173619  49.20958342 50.16332873
+ 51.08212404 51.96900531 52.8266073 ]
+mb: BHF2 1
+models: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+-&gt; model: 2024-BHF-AM-2BF-Av18
+model -&gt;  2024-BHF-AM-2BF-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-BONN
+model -&gt;  2024-BHF-AM-2BF-BONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-CDBONN
+model -&gt;  2024-BHF-AM-2BF-CDBONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-NSC97a
+model -&gt;  2024-BHF-AM-2BF-NSC97a
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: BHF2
+model: 2024-BHF-AM-2BF-NSC97a
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-2BF-NSC97b
+model -&gt;  2024-BHF-AM-2BF-NSC97b
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97b
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-2BF-NSC97c
+model -&gt;  2024-BHF-AM-2BF-NSC97c
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97c
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-2BF-NSC97d
+model -&gt;  2024-BHF-AM-2BF-NSC97d
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97d
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-2BF-NSC97e
+model -&gt;  2024-BHF-AM-2BF-NSC97e
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97e
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-2BF-NSC97f
+model -&gt;  2024-BHF-AM-2BF-NSC97f
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97f
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+mb: BHF23 2
+models: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+-&gt; model: 2006-BHF-AM-Av18
+model -&gt;  2006-BHF-AM-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: BHF23
+model: 2006-BHF-AM-Av18
+den: [0.001   0.01695 0.0329  0.04885 0.0648  0.08075 0.0967  0.11265 0.1286
+ 0.14455 0.1605  0.17645 0.1924  0.20835 0.2243  0.24025 0.2562  0.27215
+ 0.2881  0.30405 0.32   ]
+e2a_lep: [ 5.35612028 13.7561883  17.15939715 19.57595277 21.50924888 23.14623371
+ 24.57957914 25.86280395 27.02994796 28.10416308 29.10199439 30.03572437
+ 30.91475104 31.74644462 32.53670446 33.29033475 34.011306   34.70294187
+ 35.36805579 36.00905284 36.62800705]
+-&gt; model: 2024-BHF-AM-23BF-Av18
+model -&gt;  2024-BHF-AM-23BF-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-Av18
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-BONN
+model -&gt;  2024-BHF-AM-23BF-BONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-BONN
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-CDBONN
+model -&gt;  2024-BHF-AM-23BF-CDBONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-CDBONN
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97a
+model -&gt;  2024-BHF-AM-23BF-NSC97a
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97a
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97b
+model -&gt;  2024-BHF-AM-23BF-NSC97b
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97b
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97c
+model -&gt;  2024-BHF-AM-23BF-NSC97c
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97c
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97d
+model -&gt;  2024-BHF-AM-23BF-NSC97d
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97d
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97e
+model -&gt;  2024-BHF-AM-23BF-NSC97e
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97e
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+-&gt; model: 2024-BHF-AM-23BF-NSC97f
+model -&gt;  2024-BHF-AM-23BF-NSC97f
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97f
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.46252595
+ 26.91738232 28.22997354 29.43068494 30.5406846  31.57537914 32.54637207
+ 33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
+ 38.1298898  38.80443008 39.45630062]
+mb: MBPT 3
+models: [&#39;2019-MBPT-AM-L59&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+-&gt; model: 2019-MBPT-AM-L59
+model -&gt;  2019-MBPT-AM-L59
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: MBPT
+model: 2019-MBPT-AM-L59
+den: [0.05  0.058 0.066 0.074 0.082 0.09  0.098 0.106 0.114 0.122 0.13  0.138
+ 0.146 0.154 0.162 0.17  0.178 0.186 0.194 0.202 0.21 ]
+e2a_lep: [19.72837366 20.72891944 21.64120742 22.48245238 23.2650537  23.99827328
+ 24.68923341 25.34354261 25.96570563 26.55940176 27.12767949 27.67309634
+ 28.19782139 28.70371207 29.19237259 29.66519911 30.12341515 30.56809961
+ 31.00020931 31.42059721 31.8300273 ]
+-&gt; model: 2016-MBPT-AM
+model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2016-MBPT-AM
+den: [0.00182378 0.01524208 0.02866039 0.04207869 0.05549699 0.06891529
+ 0.08233359 0.0957519  0.1091702  0.1225885  0.1360068  0.1494251
+ 0.16284341 0.17626171 0.18968001 0.20309831 0.21651661 0.22993492
+ 0.24335322 0.25677152 0.27018982]
+e2a_lep: [ 6.54352699 13.27773443 16.38821189 18.62613776 20.42634448 21.95525846
+ 23.29655943 24.49898581 25.59371458 26.60203806 27.53921999 28.41661937
+ 29.24294479 30.0250369  30.76837864 31.47744023 32.1559199  32.80691604
+ 33.43305342 34.03657732 34.61942516]
+-&gt; model: 2019-MBPT-AM-L69
+model -&gt;  2019-MBPT-AM-L69
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2019-MBPT-AM-L69
+den: [0.05  0.058 0.066 0.074 0.082 0.09  0.098 0.106 0.114 0.122 0.13  0.138
+ 0.146 0.154 0.162 0.17  0.178 0.186 0.194 0.202 0.21 ]
+e2a_lep: [19.72837366 20.72891944 21.64120742 22.48245238 23.2650537  23.99827328
+ 24.68923341 25.34354261 25.96570563 26.55940176 27.12767949 27.67309634
+ 28.19782139 28.70371207 29.19237259 29.66519911 30.12341515 30.56809961
+ 31.00020931 31.42059721 31.8300273 ]
+-&gt; model: 2020-MBPT-AM
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-MBPT-AM
+den: [0.05   0.0645 0.079  0.0935 0.108  0.1225 0.137  0.1515 0.166  0.1805
+ 0.195  0.2095 0.224  0.2385 0.253  0.2675 0.282  0.2965 0.311  0.3255
+ 0.34  ]
+e2a_lep: [19.72837366 21.47600508 22.97780772 24.30540808 25.50194098 26.59563504
+ 27.60609204 28.54754303 29.43068494 30.26378542 31.05338236 31.80474559
+ 32.52219226 33.20930875 33.86911062 34.50416059 35.11665705 35.70850171
+ 36.28135201 36.83666228 37.37571648]
+-&gt; model: 2024-MBPT-AM-DN2LO-450
+model -&gt;  2024-MBPT-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LO-500
+model -&gt;  2024-MBPT-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LOgo-394
+model -&gt;  2024-MBPT-AM-DN2LOgo-394
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LOgo-450
+model -&gt;  2024-MBPT-AM-DN2LOgo-450
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-N2LOsat
+model -&gt;  2024-MBPT-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: NLEFT 4
+models: [&#39;2024-NLEFT-AM&#39;]
+-&gt; model: 2024-NLEFT-AM
+model -&gt;  2024-NLEFT-AM
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: False
+mb: NLEFT
+model: 2024-NLEFT-AM
+den: [0.0154  0.02488 0.03436 0.04384 0.05332 0.0628  0.07228 0.08176 0.09124
+ 0.10072 0.1102  0.11968 0.12916 0.13864 0.14812 0.1576  0.16708 0.17656
+ 0.18604 0.19552 0.205  ]
+e2a_lep: [13.32342888 15.63346669 17.40954941 18.88246691 20.1556924  21.28564953
+ 22.30690084 23.2423344  24.10798301 24.91556521 25.67393655 26.38997133
+ 27.06912528 27.71580939 28.33364668 28.92565365 29.49437174 30.04196448
+ 30.57029068 31.08096054 31.57537914]
+mb: SCGF 5
+models: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+-&gt; model: 2020-SCGF-AM-N3LO-414
+model -&gt;  2020-SCGF-AM-N3LO-414
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: SCGF
+model: 2020-SCGF-AM-N3LO-414
+den: [0.02  0.037 0.054 0.071 0.088 0.105 0.122 0.139 0.156 0.173 0.19  0.207
+ 0.224 0.241 0.258 0.275 0.292 0.309 0.326 0.343 0.36 ]
+e2a_lep: [14.53617473 17.84445611 20.24101137 22.17444199 23.81917869 25.26359546
+ 26.55940176 27.73977774 28.82743474 29.83868144 30.78567075 31.67772996
+ 32.52219226 33.32493975 34.09077115 34.8236586  35.5269316  36.20341186
+ 36.85551404 37.48532239 38.09464987]
+-&gt; model: 2020-SCGF-AM-N3LO-450
+model -&gt;  2020-SCGF-AM-N3LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-SCGF-AM-N3LO-450
+den: [0.02  0.037 0.054 0.071 0.088 0.105 0.122 0.139 0.156 0.173 0.19  0.207
+ 0.224 0.241 0.258 0.275 0.292 0.309 0.326 0.343 0.36 ]
+e2a_lep: [14.53617473 17.84445611 20.24101137 22.17444199 23.81917869 25.26359546
+ 26.55940176 27.73977774 28.82743474 29.83868144 30.78567075 31.67772996
+ 32.52219226 33.32493975 34.09077115 34.8236586  35.5269316  36.20341186
+ 36.85551404 37.48532239 38.09464987]
+-&gt; model: 2020-SCGF-AM-N3LO-500
+model -&gt;  2020-SCGF-AM-N3LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-SCGF-AM-N3LO-500
+den: [0.03   0.0465 0.063  0.0795 0.096  0.1125 0.129  0.1455 0.162  0.1785
+ 0.195  0.2115 0.228  0.2445 0.261  0.2775 0.294  0.3105 0.327  0.3435
+ 0.36  ]
+e2a_lep: [16.63965667 19.25688008 21.30822123 23.02618112 24.52012704 25.85131978
+ 27.05794334 28.16559576 29.19237259 30.15159386 31.05338236 31.90563247
+ 32.71463362 33.48548738 34.22239572 34.92886565 35.60785808 36.26189837
+ 36.89315983 37.50352784 38.09464987]
+-&gt; model: 2024-SCGF-AM-DN2LO-450
+model -&gt;  2024-SCGF-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LO-500
+model -&gt;  2024-SCGF-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LOgo-394
+model -&gt;  2024-SCGF-AM-DN2LOgo-394
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LOgo-450
+model -&gt;  2024-SCGF-AM-DN2LOgo-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-N2LOsat
+model -&gt;  2024-SCGF-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: CC 6
+models: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+-&gt; model: 2024-CC-AM-DN2LO-450
+model -&gt;  2024-CC-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LO-500
+model -&gt;  2024-CC-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LOgo-394
+model -&gt;  2024-CC-AM-DN2LOgo-394
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LOgo-450
+model -&gt;  2024-CC-AM-DN2LOgo-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-N2LOsat
+model -&gt;  2024-CC-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: Skyrme  param: BSK16
+model: Skyrme  param: BSK17
+model: Skyrme  param: BSK27
+model: Skyrme  param: FPL
+model: Skyrme  param: LNS
+model: Skyrme  param: LNS1
+model: Skyrme  param: NRAPR
+model: Skyrme  param: RATP
+model: Skyrme  param: SKP
+model: Skyrme  param: SLY4
+model: Skyrme  param: SLY5
+model: Skyrme  param: SLY230A
+model: Skyrme  param: SLY230B
+model: Skyrme  param: T6
+model: Skyrme  param: T44
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH  param: DDME2
+model: DDRH  param: DDMEd
+model: DDRH  param: TW99
+asy: 0.8
+mb: VAR 0
+models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+-&gt; model: 1981-VAR-AM-FP
+model -&gt;  1981-VAR-AM-FP
+flag_nm: True
+flag_sm: True
+flag_kf: True
+flag_den: False
+model: 1981-VAR-AM-FP
+den: [0.004323   0.04563185 0.0869407  0.12824955 0.1695584  0.21086725
+ 0.2521761  0.29348495 0.3347938  0.37610265 0.4174115  0.45872035
+ 0.5000292  0.54133805 0.5826469  0.62395575 0.6652646  0.70657345
+ 0.7478823  0.78919115 0.8305    ]
+e2a_lep: [ 3.46233977  7.59431288  9.41462388 10.71714    11.76248585 12.6491623
+ 13.42639995 14.12276969 14.7565035  15.34003117 15.88225138 16.38977949
+ 16.86768302 17.3199398  17.74973629 18.15966914 18.55188564 18.92818413
+ 19.29008758 19.63889838 19.97574005]
+-&gt; model: 1998-VAR-AM-APR
+model -&gt;  1998-VAR-AM-APR
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 1998-VAR-AM-APR
+den: [0.04  0.086 0.132 0.178 0.224 0.27  0.316 0.362 0.408 0.454 0.5   0.546
+ 0.592 0.638 0.684 0.73  0.776 0.822 0.868 0.914 0.96 ]
+e2a_lep: [ 7.26808737  9.38054634 10.82060371 11.95453069 12.90648266 13.73554943
+ 14.47505221 15.14585185 15.76197698 16.33336782 16.86735468 17.36951647
+ 17.84420919 18.2949067  18.72442918 19.13510116 19.52886395 19.9073575
+ 20.27198117 20.62393978 20.96427893]
+mb: BHF2 1
+models: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+-&gt; model: 2024-BHF-AM-2BF-Av18
+model -&gt;  2024-BHF-AM-2BF-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-BONN
+model -&gt;  2024-BHF-AM-2BF-BONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-CDBONN
+model -&gt;  2024-BHF-AM-2BF-CDBONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-BHF-AM-2BF-NSC97a
+model -&gt;  2024-BHF-AM-2BF-NSC97a
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97a
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-2BF-NSC97b
+model -&gt;  2024-BHF-AM-2BF-NSC97b
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97b
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-2BF-NSC97c
+model -&gt;  2024-BHF-AM-2BF-NSC97c
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97c
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-2BF-NSC97d
+model -&gt;  2024-BHF-AM-2BF-NSC97d
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97d
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-2BF-NSC97e
+model -&gt;  2024-BHF-AM-2BF-NSC97e
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97e
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-2BF-NSC97f
+model -&gt;  2024-BHF-AM-2BF-NSC97f
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-2BF-NSC97f
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+mb: BHF23 2
+models: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+-&gt; model: 2006-BHF-AM-Av18
+model -&gt;  2006-BHF-AM-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2006-BHF-AM-Av18
+den: [0.001   0.01695 0.0329  0.04885 0.0648  0.08075 0.0967  0.11265 0.1286
+ 0.14455 0.1605  0.17645 0.1924  0.20835 0.2243  0.24025 0.2562  0.27215
+ 0.2881  0.30405 0.32   ]
+e2a_lep: [ 2.1258332   5.45924648  6.80979107  7.76879196  8.53601474  9.1856481
+  9.75446816 10.2637135  10.72689262 11.15319324 11.54918119 11.91973071
+ 12.26857138 12.59862804 12.91224181 13.21131924 13.497436   13.77191107
+ 14.03586096 14.29024012 14.53587162]
+-&gt; model: 2024-BHF-AM-23BF-Av18
+model -&gt;  2024-BHF-AM-23BF-Av18
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-Av18
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-BONN
+model -&gt;  2024-BHF-AM-23BF-BONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-BONN
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-CDBONN
+model -&gt;  2024-BHF-AM-23BF-CDBONN
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-CDBONN
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97a
+model -&gt;  2024-BHF-AM-23BF-NSC97a
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97a
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97b
+model -&gt;  2024-BHF-AM-23BF-NSC97b
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97b
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97c
+model -&gt;  2024-BHF-AM-23BF-NSC97c
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97c
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97d
+model -&gt;  2024-BHF-AM-23BF-NSC97d
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97d
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97e
+model -&gt;  2024-BHF-AM-23BF-NSC97e
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97e
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+-&gt; model: 2024-BHF-AM-23BF-NSC97f
+model -&gt;  2024-BHF-AM-23BF-NSC97f
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2024-BHF-AM-23BF-NSC97f
+den: [0.01   0.0295 0.049  0.0685 0.088  0.1075 0.127  0.1465 0.166  0.1855
+ 0.205  0.2245 0.244  0.2635 0.283  0.3025 0.322  0.3415 0.361  0.3805
+ 0.4   ]
+e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.10486391
+ 10.68222113 11.20312093 11.67962159 12.12012356 12.53074089 12.9160784
+ 13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
+ 15.13189271 15.39958357 15.65827799]
+mb: MBPT 3
+models: [&#39;2019-MBPT-AM-L59&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+-&gt; model: 2019-MBPT-AM-L59
+model -&gt;  2019-MBPT-AM-L59
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2019-MBPT-AM-L59
+den: [0.05  0.058 0.066 0.074 0.082 0.09  0.098 0.106 0.114 0.122 0.13  0.138
+ 0.146 0.154 0.162 0.17  0.178 0.186 0.194 0.202 0.21 ]
+e2a_lep: [ 7.82927969  8.2263432   8.58838214  8.92222805  9.23280154  9.52377813
+  9.79798424 10.05764559 10.30454985 10.54015714 10.76567722 10.98212505
+ 11.1903614  11.3911234  11.58504765 11.77268823 11.95453069 12.13100317
+ 12.30248539 12.46931585 12.63179773]
+-&gt; model: 2016-MBPT-AM
+model -&gt;  2016-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2016-MBPT-AM
+den: [0.00182378 0.01524208 0.02866039 0.04207869 0.05549699 0.06891529
+ 0.08233359 0.0957519  0.1091702  0.1225885  0.1360068  0.1494251
+ 0.16284341 0.17626171 0.18968001 0.20309831 0.21651661 0.22993492
+ 0.24335322 0.25677152 0.27018982]
+e2a_lep: [ 2.59700957  5.26937553  6.50374976  7.39186119  8.10626722  8.71301247
+  9.24530452  9.72248486 10.15692587 10.55707728 10.92899642 11.27719106
+ 11.60511716 11.9154894  12.21048366 12.49187394 12.76112786 13.019475
+ 13.267957   13.5074649  13.73876754]
+-&gt; model: 2019-MBPT-AM-L69
+model -&gt;  2019-MBPT-AM-L69
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2019-MBPT-AM-L69
+den: [0.05  0.058 0.066 0.074 0.082 0.09  0.098 0.106 0.114 0.122 0.13  0.138
+ 0.146 0.154 0.162 0.17  0.178 0.186 0.194 0.202 0.21 ]
+e2a_lep: [ 7.82927969  8.2263432   8.58838214  8.92222805  9.23280154  9.52377813
+  9.79798424 10.05764559 10.30454985 10.54015714 10.76567722 10.98212505
+ 11.1903614  11.3911234  11.58504765 11.77268823 11.95453069 12.13100317
+ 12.30248539 12.46931585 12.63179773]
+-&gt; model: 2020-MBPT-AM
+model -&gt;  2020-MBPT-AM
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-MBPT-AM
+den: [0.05   0.0645 0.079  0.0935 0.108  0.1225 0.137  0.1515 0.166  0.1805
+ 0.195  0.2095 0.224  0.2385 0.253  0.2675 0.282  0.2965 0.311  0.3255
+ 0.34  ]
+e2a_lep: [ 7.82927969  8.52282203  9.11880863  9.64566393 10.12050569 10.55453625
+ 10.95553449 11.32914793 11.67962159 12.01023646 12.32358706 12.62176471
+ 12.90648266 13.17916415 13.44100589 13.6930249  13.93609359 14.17096665
+ 14.39830183 14.61867629 14.83259956]
+-&gt; model: 2024-MBPT-AM-DN2LO-450
+model -&gt;  2024-MBPT-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LO-500
+model -&gt;  2024-MBPT-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LOgo-394
+model -&gt;  2024-MBPT-AM-DN2LOgo-394
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-DN2LOgo-450
+model -&gt;  2024-MBPT-AM-DN2LOgo-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-MBPT-AM-N2LOsat
+model -&gt;  2024-MBPT-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: NLEFT 4
+models: [&#39;2024-NLEFT-AM&#39;]
+-&gt; model: 2024-NLEFT-AM
+model -&gt;  2024-NLEFT-AM
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: False
+model: 2024-NLEFT-AM
+den: [0.0154  0.02488 0.03436 0.04384 0.05332 0.0628  0.07228 0.08176 0.09124
+ 0.10072 0.1102  0.11968 0.12916 0.13864 0.14812 0.1576  0.16708 0.17656
+ 0.18604 0.19552 0.205  ]
+e2a_lep: [ 5.28750903  6.20423296  6.90906292  7.49358448  7.99885977  8.44727995
+  8.85256086  9.22378544  9.56731621  9.88780357 10.18876181 10.47291896
+ 10.74244008 10.99907566 11.24426347 11.4792006  11.70489562 11.92220709
+ 12.1318727  12.33453143 12.53074089]
+mb: SCGF 5
+models: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+-&gt; model: 2020-SCGF-AM-N3LO-414
+model -&gt;  2020-SCGF-AM-N3LO-414
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-SCGF-AM-N3LO-414
+den: [0.02  0.037 0.054 0.071 0.088 0.105 0.122 0.139 0.156 0.173 0.19  0.207
+ 0.224 0.241 0.258 0.275 0.292 0.309 0.326 0.343 0.36 ]
+e2a_lep: [ 5.76877897  7.08165384  8.03271834  8.79999489  9.45270482 10.02591871
+ 10.54015714 11.00858746 11.44022256 11.84153447 12.21734602 12.5713587
+ 12.90648266 13.2250522  13.52897167 13.8198174  14.0989107  14.36737135
+ 14.6261576  14.87609658 15.11790777]
+-&gt; model: 2020-SCGF-AM-N3LO-450
+model -&gt;  2020-SCGF-AM-N3LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-SCGF-AM-N3LO-450
+den: [0.02  0.037 0.054 0.071 0.088 0.105 0.122 0.139 0.156 0.173 0.19  0.207
+ 0.224 0.241 0.258 0.275 0.292 0.309 0.326 0.343 0.36 ]
+e2a_lep: [ 5.76877897  7.08165384  8.03271834  8.79999489  9.45270482 10.02591871
+ 10.54015714 11.00858746 11.44022256 11.84153447 12.21734602 12.5713587
+ 12.90648266 13.2250522  13.52897167 13.8198174  14.0989107  14.36737135
+ 14.6261576  14.87609658 15.11790777]
+-&gt; model: 2020-SCGF-AM-N3LO-500
+model -&gt;  2020-SCGF-AM-N3LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: 2020-SCGF-AM-N3LO-500
+den: [0.03   0.0465 0.063  0.0795 0.096  0.1125 0.129  0.1455 0.162  0.1785
+ 0.195  0.2115 0.228  0.2445 0.261  0.2775 0.294  0.3105 0.327  0.3435
+ 0.36  ]
+e2a_lep: [ 6.60353442  7.64216904  8.45623747  9.13800551  9.73087472 10.25915603
+ 10.73800254 11.17757271 11.58504765 11.96571337 12.32358706 12.66180156
+ 12.98285282 13.28876537 13.58120676 13.86156873 14.1310263  14.39058167
+ 14.6410973  14.8833214  15.11790777]
+-&gt; model: 2024-SCGF-AM-DN2LO-450
+model -&gt;  2024-SCGF-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LO-500
+model -&gt;  2024-SCGF-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LOgo-394
+model -&gt;  2024-SCGF-AM-DN2LOgo-394
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-DN2LOgo-450
+model -&gt;  2024-SCGF-AM-DN2LOgo-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-SCGF-AM-N2LOsat
+model -&gt;  2024-SCGF-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+mb: CC 6
+models: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+-&gt; model: 2024-CC-AM-DN2LO-450
+model -&gt;  2024-CC-AM-DN2LO-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LO-500
+model -&gt;  2024-CC-AM-DN2LO-500
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LOgo-394
+model -&gt;  2024-CC-AM-DN2LOgo-394
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-DN2LOgo-450
+model -&gt;  2024-CC-AM-DN2LOgo-450
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+-&gt; model: 2024-CC-AM-N2LOsat
+model -&gt;  2024-CC-AM-N2LOsat
+flag_nm: True
+flag_sm: True
+flag_kf: False
+flag_den: True
+model: Skyrme  param: BSK16
+model: Skyrme  param: BSK17
+model: Skyrme  param: BSK27
+model: Skyrme  param: FPL
+model: Skyrme  param: LNS
+model: Skyrme  param: LNS1
+model: Skyrme  param: NRAPR
+model: Skyrme  param: RATP
+model: Skyrme  param: SKP
+model: Skyrme  param: SLY4
+model: Skyrme  param: SLY5
+model: Skyrme  param: SLY230A
+model: Skyrme  param: SLY230B
+model: Skyrme  param: T6
+model: Skyrme  param: T44
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH  param: DDME2
+model: DDRH  param: DDMEd
+model: DDRH  param: TW99
+</pre></div>
+</div>
+<img alt="../../_images/292a82c4268b3e94b13cc3b7c0c7a526e65fa50c7025d4e215b73f216c152352.png" src="../../_images/292a82c4268b3e94b13cc3b7c0c7a526e65fa50c7025d4e215b73f216c152352.png" />
 </div>
 </div>
 </section>

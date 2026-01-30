@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -512,7 +512,7 @@ document.write(`
 <p>Fix one model for which we want to extract the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2006-BHF-NM&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;2006-BHF-NM-Av18&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -527,27 +527,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; model: 2006-BHF-NM
-setup_micro_gap: The model name  2006-BHF-NM  is not in the list of models.
-setup_micro_gap: list of models: [&#39;2006-BHF-NM-Av18&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
-setup_micro_gap: -- Exit the code --
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroGap</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pheno</span><span class="o">.</span><span class="n">print_outputs</span><span class="p">()</span>
-
-<span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/matter/setup_micro_gap.py:91,</span> in <span class="ni">setupMicroGap.__init__</span><span class="nt">(self, model, matter)</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro_gap: list of models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setup_micro_gap: -- Exit the code --&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">91</span>     <span class="n">exit</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="c1">#</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;2006-bhf-nm-av18&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="c1">#</span>
-
-<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; model: 2006-BHF-NM-Av18
+- Print output:
+   model:  2006-BHF-NM-Av18
+   ref:    L.G. Cao, U. Lombardo, and P. Schuck, Phys. Rev. C 74, 64301 (2006)
+   note:   
+   label:  EBHF-Av18-2006
+   marker: o
+   every:  1
+   nm_den_1s0: [0.    0.002 0.008 0.019 0.037 0.064 0.081] in fm$^{-3}$
+   nm_kfn_1s0: [0.186 0.385 0.608 0.822 1.03  1.24  1.34 ] in fm$^{-1}$
+   nm_gap_1s0: [0.37 1.04 1.55 1.86 1.54 0.47 0.  ] in MeV
 </pre></div>
 </div>
 </div>
@@ -565,9 +555,9 @@ setup_micro_gap: -- Exit the code --
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
-model: 2006-BHF-NM
--&gt; model: 2006-BHF-NM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2006-BHF-NM-Av18&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
+model: 2006-BHF-NM-Av18
+-&gt; model: 2006-BHF-NM-Av18
 model: 2008-BCS-NM
 -&gt; model: 2008-BCS-NM
 model: 2008-QMC-NM-swave
@@ -604,8 +594,8 @@ model: 2022-AFDMC-NM
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
--&gt; model: 2006-BHF-NM
+models: [&#39;2006-BHF-NM-Av18&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
+-&gt; model: 2006-BHF-NM-Av18
 -&gt; model: 2008-BCS-NM
 -&gt; model: 2008-QMC-NM-swave
 -&gt; model: 2009-DLQMC-NM
@@ -619,7 +609,7 @@ models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#3
 -&gt; model: 2022-AFDMC-NM
 </pre></div>
 </div>
-<img alt="../../_images/58ad8e08d3b9ea97376f8a76587691d828a55265e0455ba976bc2dfb1e88ac8c.png" src="../../_images/58ad8e08d3b9ea97376f8a76587691d828a55265e0455ba976bc2dfb1e88ac8c.png" />
+<img alt="../../_images/9d211650e097aaf9c61138e7a7111d739a7a0d3c3a0d1a488c9bdadd0bf14396.png" src="../../_images/9d211650e097aaf9c61138e7a7111d739a7a0d3c3a0d1a488c9bdadd0bf14396.png" />
 </div>
 </div>
 <p>plot 3PGF2 pairing gap in NM:</p>
@@ -631,8 +621,8 @@ models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#3
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
--&gt; model: 2006-BHF-NM
+models: [&#39;2006-BHF-NM-Av18&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-500-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EMG-450-700-N3LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N2LO&#39;, &#39;2017-MBPT-NM-GAP-EM-500-N3LO&#39;, &#39;2022-AFDMC-NM&#39;]
+-&gt; model: 2006-BHF-NM-Av18
 -&gt; model: 2008-BCS-NM
 -&gt; model: 2008-QMC-NM-swave
 -&gt; model: 2009-DLQMC-NM
@@ -646,7 +636,7 @@ models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#3
 -&gt; model: 2022-AFDMC-NM
 </pre></div>
 </div>
-<img alt="../../_images/b8c55b6935ac8ee92072ffd2d467d2e160b9acdf367c8a99a688727ee464e90c.png" src="../../_images/b8c55b6935ac8ee92072ffd2d467d2e160b9acdf367c8a99a688727ee464e90c.png" />
+<img alt="../../_images/3779b9a3b2311b141717471c086d821558195c6c7720bc67c0121cd6d8068c47.png" src="../../_images/3779b9a3b2311b141717471c086d821558195c6c7720bc67c0121cd6d8068c47.png" />
 </div>
 </div>
 <p>plot 1S0 pairing gap in SM:</p>
@@ -659,13 +649,13 @@ models: [&#39;2006-BHF-NM&#39;, &#39;2008-BCS-NM&#39;, &#39;2008-QMC-NM-swave&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2006-BHF-SM&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;2006-BHF-SM-Av18&#39;]
 Plot name: None
-models: [&#39;2006-BHF-SM&#39;]
--&gt; model: 2006-BHF-SM
+models: [&#39;2006-BHF-SM-Av18&#39;]
+-&gt; model: 2006-BHF-SM-Av18
 </pre></div>
 </div>
-<img alt="../../_images/0e7664437ac14fd89049edc148a333909c844c44752a5344a4d7579d463caed9.png" src="../../_images/0e7664437ac14fd89049edc148a333909c844c44752a5344a4d7579d463caed9.png" />
+<img alt="../../_images/e2afc96383e2e0fb567925e33bf559be1ace4b23eb0ae6ea681b0399f80e101a.png" src="../../_images/e2afc96383e2e0fb567925e33bf559be1ace4b23eb0ae6ea681b0399f80e101a.png" />
 </div>
 </div>
 </section>

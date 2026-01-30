@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -810,14 +810,14 @@ with marker 1: x
 with no error False
 models in matter code: [&#39;2024-NLEFT-AM&#39;]
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -935,12 +935,12 @@ model: Skyrme  param: BSK14
 model: Skyrme  param: BSK16
 model: Skyrme  param: BSK17
 model: Skyrme  param: BSK27
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: BSkG1
+model: Skyrme  param: BSkG1
 model: Skyrme  param: BSkG2
 model: Skyrme  param: F-
-model: Skyrme  param: F+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: F+
 model: Skyrme  param: F0
 model: Skyrme  param: FPL
 model: Skyrme  param: LNS
@@ -953,13 +953,13 @@ model: Skyrme  param: SGII
 model: Skyrme  param: SIII
 model: Skyrme  param: SKGSIGMA
 model: Skyrme  param: SKI2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: SKI4
+model: Skyrme  param: SKI4
 model: Skyrme  param: SKMP
 model: Skyrme  param: SKMS
 model: Skyrme  param: SKO
-model: Skyrme  param: SKOP
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: SKOP
 model: Skyrme  param: SKP
 model: Skyrme  param: SKRSIGMA
 model: Skyrme  param: SKX
@@ -1124,9 +1124,7 @@ flag_den: True
 mb: BHF2 model: 2024-BHF-AM-2BF-NSC97e
 -&gt; model: 2024-BHF-AM-2BF-NSC97f
 model -&gt;  2024-BHF-AM-2BF-NSC97f
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1140,7 +1138,9 @@ flag_den: True
 mb: BHF23 model: 2006-BHF-AM-Av18
 -&gt; model: 2024-BHF-AM-23BF-Av18
 model -&gt;  2024-BHF-AM-23BF-Av18
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1173,9 +1173,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: BHF23 model: 2024-BHF-AM-23BF-NSC97b
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; model: 2024-BHF-AM-23BF-NSC97c
+-&gt; model: 2024-BHF-AM-23BF-NSC97c
 model -&gt;  2024-BHF-AM-23BF-NSC97c
 flag_nm: True
 flag_sm: True
@@ -1196,7 +1194,9 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: BHF23 model: 2024-BHF-AM-23BF-NSC97e
--&gt; model: 2024-BHF-AM-23BF-NSC97f
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; model: 2024-BHF-AM-23BF-NSC97f
 model -&gt;  2024-BHF-AM-23BF-NSC97f
 flag_nm: True
 flag_sm: True
@@ -1266,19 +1266,19 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: MBPT model: 2024-MBPT-AM-N2LOsat
--&gt; model: 2024-NLEFT-AM
-model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; model: 2024-NLEFT-AM
+model -&gt;  2024-NLEFT-AM
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: False
@@ -1369,14 +1369,14 @@ flag_den: True
 mb: CC model: 2024-CC-AM-DN2LOgo-450
 -&gt; model: 2024-CC-AM-N2LOsat
 model -&gt;  2024-CC-AM-N2LOsat
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
 mb: CC model: 2024-CC-AM-N2LOsat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: BSK14
+model: Skyrme  param: BSK14
 model: Skyrme  param: BSK16
 model: Skyrme  param: BSK17
 model: Skyrme  param: BSK27
@@ -1384,11 +1384,11 @@ model: Skyrme  param: BSkG1
 model: Skyrme  param: BSkG2
 model: Skyrme  param: F-
 model: Skyrme  param: F+
+model: Skyrme  param: F0
+model: Skyrme  param: FPL
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: F0
-model: Skyrme  param: FPL
-model: Skyrme  param: LNS
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: LNS
 model: Skyrme  param: LNS1
 model: Skyrme  param: LNS5
 model: Skyrme  param: NRAPR
@@ -1419,9 +1419,7 @@ model: Skyrme  param: UNEDF1
 model: NLRH  param: NL-SH
 model: NLRH  param: NL3
 model: NLRH  param: NL3II
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: NLRH  param: PK1
+model: NLRH  param: PK1
 model: NLRH  param: PK1R
 model: NLRH  param: TM1
 model: DDRH  param: DDME1
@@ -1431,11 +1429,13 @@ model: DDRH  param: PKDD
 model: DDRH  param: TW99
 model: DDRHF  param: PKA1
 model: DDRHF  param: PKO1
-model: DDRHF  param: PKO2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRHF  param: PKO2
 model: DDRHF  param: PKO3
 </pre></div>
 </div>
-<img alt="../../_images/36e88bce95627d6684f337e2cdb0d0fb26d59d93cd9e4bd846f498cbcd14fe15.png" src="../../_images/36e88bce95627d6684f337e2cdb0d0fb26d59d93cd9e4bd846f498cbcd14fe15.png" />
+<img alt="../../_images/37d6d2d6b0bbe931d7d1771a0474d3be7652ea8fe70b31beebbbe6c34bb006f8.png" src="../../_images/37d6d2d6b0bbe931d7d1771a0474d3be7652ea8fe70b31beebbbe6c34bb006f8.png" />
 </div>
 </div>
 </section>
