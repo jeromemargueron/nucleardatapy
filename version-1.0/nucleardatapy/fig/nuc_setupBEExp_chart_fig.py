@@ -38,22 +38,28 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     axs.set_ylim([0, 132])
     axs.text(10,120,'Number of nuclei:')
     #
-    # longlive nuclei
+    # longlived nuclei
     #
+    print(20*'-')
+    print('longlived nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'longlive' )
     axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'grey', label='long-lived ('+str(ustbl.sel_nbNucSel)+')' )
     #axs.text(10,96,'long live: '+str(ustbl.sel_nbNucSel))
     #
-    # shortlive nuclei
+    # shortlived nuclei
     #
+    print(20*'-')
+    print('shortlived nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'shortlive' )
     axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'r', label='short-lived ('+str(ustbl.sel_nbNucSel)+')' )
     #axs.text(10,88,'short live: '+str(ustbl.sel_nbNucSel))
     #
-    # veryshortlive nuclei
+    # veryshortlived nuclei
     #
+    print(20*'-')
+    print('veryshortlived nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'veryshortlive' )
     axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'b', label='very-short-lived ('+str(ustbl.sel_nbNucSel)+')' )
@@ -61,6 +67,8 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     #
     # hypershortlive nuclei
     #
+    print(20*'-')
+    print('hypershortlived nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'hypershortlive' )
     axs.scatter( ustbl.sel_nucN, ustbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'g', label='hyper-short-lived ('+str(ustbl.sel_nbNucSel)+')' )
@@ -68,20 +76,30 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     #
     # unstable nuclei:
     #
+    print(20*'-')
+    print('unstable nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     ustbl = mas.select( state= 'gs', interp = 'n', nucleus = 'unstable' )
     #axs.scatter( ustbl.sel_nucN, ustbl.sel_Z, marker='.', s = 1, linewidth=0, color = 'b' )
     axs.text(10,104,'unstable: '+str(ustbl.sel_nbNucSel))
     #
-    # drip line nuclei
+    # dripline nuclei
     #
+    print(20*'-')
+    print('dripline nuclei:')
+    print('theo_tables:',theo_tables)
     legend = 0
     for i,theo_table in enumerate( theo_tables ):
+        print('theo_table:',theo_table)
         theo = nuda.nuc.setupBETheo( table = theo_table )
         for zref in range(10,96):
+            #print('zref:',zref)
+            #print('isotopes:')
             itp = theo.isotopes( Zref= zref)
-            s2n = itp.S2n( Zref= zref )
-            drip_S2n = itp.drip_S2n(Zref = zref)
+            #print('S2n:')
+            s2n = itp.S2n()
+            #print('drip_S2n:')
+            drip_S2n = itp.drip_S2n()
             if legend == 0:
                 axs.scatter( drip_S2n.drip_S2n_N, drip_S2n.drip_S2n_Z, marker='o', s = 3, linewidth=0, color = 'purple', label='Drip Lines' )
                 legend = 1
@@ -101,6 +119,8 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     #
     # stable nuclei:
     #
+    print(20*'-')
+    print('stable nuclei:')
     mas = nuda.nuc.setupBEExp( table = table, version = version )
     stbl = mas.select( state= 'gs', interp = 'n', nucleus = 'stable' )
     axs.scatter( stbl.sel_nucN, stbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'k' )

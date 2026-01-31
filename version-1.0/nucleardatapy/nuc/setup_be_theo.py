@@ -525,6 +525,8 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter isotopes()")
         #
+        self.Zref = Zref
+        #
         if Zref < 0:
             print('setup_be_exp.py: issue with the function isotopes.')
             print('setup_be_exp.py: Bad definition for Zref')
@@ -547,6 +549,8 @@ class setupBETheo():
         self.itp_nucNmin = nucNmin
         self.itp_nucNmax = nucNmax
         #
+        #print('Nmin,Nmax:',nucNmin,nucNmax)
+        #
         if nuda.env.verb: print("Exit isotopes()")
         #
         return self
@@ -562,6 +566,8 @@ class setupBETheo():
         """
         #
         if nuda.env.verb: print("Enter isotones()")
+        #
+        self.Nref = Nref
         #
         if Nref < 0:
             print('setup_be_exp.py: issue with the function isotones.')
@@ -589,7 +595,7 @@ class setupBETheo():
         #
         return self
         #
-    def S2n( self, Zref = 50 ):
+    def S2n( self ):
         """
         Compute the two-neutron separation energy (S2n)
         S2n = E(Z,N)-E(Z,N-2)
@@ -597,11 +603,11 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter S2n()")
         #
-        if Zref < 0:
+        if self.Zref < 0:
             print('setup_be_theo: In S2n attribute function of setup_be_theo.py:')
             print('setup_be_theo: Bad definition of Zref')
             print('setup_be_theo: It is expected that Zref>=0')
-            print('setup_be_theo: Zref:',Zref)
+            print('setup_be_theo: Zref:',self.Zref)
             print('setup_be_theo: exit')
             exit()
         #
@@ -618,26 +624,29 @@ class setupBETheo():
             #
             for ind,Z in enumerate(self.nucZ):
                 #
-                if Z == Zref and self.nucN[ind] == N:
+                if Z == self.Zref and self.nucN[ind] == N:
                     indN = ind
                     flagN = True
-                if Z == Zref and self.nucN[ind] == N-2:
+                if Z == self.Zref and self.nucN[ind] == N-2:
                     indNm2 = ind
                     flagNm2 = True
                     #
             if flagN and flagNm2:
                 S2n_N.append( N )
-                S2n_Z.append( Zref )
+                S2n_Z.append( self.Zref )
                 S2n_E.append( self.nucBE[indN] - self.nucBE[indNm2] )
         self.S2n_N = np.array( S2n_N, dtype = int )
         self.S2n_Z = np.array( S2n_Z, dtype = int )
         self.S2n_E = np.array( S2n_E, dtype = float )
         #
+        #print('S2n_N:',self.S2n_N)
+        #print('S2n_Z:',self.S2n_Z)
+        #
         if nuda.env.verb: print("Exit S2n()")
         #
         return self
         #
-    def S2p( self, Nref = 50 ):
+    def S2p( self ):
         """
         Compute the two-proton separation energy (S2p)
         S2p(Z,Nref) = E(Z,Nref)-E(Z-2,Nref)
@@ -645,11 +654,11 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter S2p()")
         #
-        if Nref < 0:
+        if self.Nref < 0:
             print('setup_be_exp.py: In S2p attribute function of setup_be_exp.py:')
             print('setup_be_exp.py: Bad definition of Nref')
             print('setup_be_exp.py: It is expected that Nref>=0')
-            print('setup_be_exp.py: Nref:',Nref)
+            print('setup_be_exp.py: Nref:',self.Nref)
             print('setup_be_exp.py: exit')
             exit()
         #
@@ -666,16 +675,16 @@ class setupBETheo():
             #
             for ind,N in enumerate(self.nucN):
                 #
-                if N == Nref and self.nucZ[ind] == Z:
+                if N == self.Nref and self.nucZ[ind] == Z:
                     indZ = ind
                     flagZ = True
-                if N == Nref and self.nucZ[ind] == Z-2:
+                if N == self.Nref and self.nucZ[ind] == Z-2:
                     indZm2 = ind
                     flagZm2 = True
                     #
             if flagZ and flagZm2:
                 S2p_Z.append( Z )
-                S2p_N.append( Nref )    
+                S2p_N.append( self.Nref )    
                 S2p_E.append( self.nucBE[indZ] - self.nucBE[indZm2] )
         self.S2p_Z = np.array( S2p_Z, dtype = int )
         self.S2p_N = np.array( S2p_N, dtype = int )
@@ -685,27 +694,29 @@ class setupBETheo():
         #
         return self
         #
-    def drip_S2n(self, Zref=50):
+    def drip_S2n(self):
         """
         Method which find the drip-line nuclei from S2n (neutron side).
 
-        :param Zmin: Fix the minimum charge for the search of the neutron drip line.
-        :type Zmin: int, optional. Default: 1.
-        :param Zmax: Fix the maximum charge for the search of the neutron drip line.
-        :type Zmax: int, optional. Default: 95.
+        :param Zref: Fix the charge for the search of isotopes.
+        :type Zref: int, optional. Default: 50.
 
         **Attributes:**
         """
         #
         if nuda.env.verb: print("Enter drip_S2n()")
         #
-        # if Zmin > Zmax:
-        #     print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
-        #     print('setup_be_theo: Bad definition of Zmin and Zmax')
-        #     print('setup_be_theo: It is expected that Zmin<=Zmax')
-        #     print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
-        #     print('setup_be_theo: exit')
-        #     exit()
+        #print('Zref:',self.Zref)
+        #print('self.nucZ:',self.nucZ)
+        #print('self.nucN:',self.nucN)
+        #
+        if self.Zref not in self.nucZ:
+             print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
+             print('setup_be_theo: Zref is not in self.nucZ')
+             print('setup_be_theo: Zref:',self.Zref)
+             print('setup_be_theo: self.nucZ:',self.nucZ)
+             print('setup_be_theo: exit')
+             exit()
         #
         if not any(self.S2n_Z):
             print('setup_be_theo: In drip_S2n attribute function of setup_be_theo.py:')
@@ -713,54 +724,52 @@ class setupBETheo():
             print('setup_be_theo: exit')
             exit()
         #
-        #Nstable, Zstable = stable_fit( Zmin = Zmin, Zmax = Zmax )
-        #
         self.drip_S2n_Z = []
         self.drip_S2n_N = []
         #
-        print("S2n_Z:",self.S2n_Z)
+        #print("S2n_Z:",self.S2n_Z)
+        #print("S2n_N:",self.S2n_N)
+        #print("S2n_E:",self.S2n_E)
+        #
+        Nmax = 0
         for ind,Z in enumerate(self.S2n_Z):
             #
-            # if Z > Zmax :
-            #     break
-            # if Z < Zref :
-            #     continue
-            #
-            #Nmax = Nstable[ind]
-            Nmax = 0
-            #
-            for ind2,Z2 in enumerate(self.S2n_Z):
-                if Z2 == Z and self.S2n_N[ind2] > Nmax and self.S2n[ind2] > 0.0:
-                    Nmax = self.S2n_N[ind2]
-            self.drip_S2n_Z.append( Z )
-            self.drip_S2n_N.append( Nmax )
+            if self.S2n_N[ind] > Nmax and self.S2n_E[ind] > 0.0:
+                    Nmax = self.S2n_N[ind]
+        self.drip_S2n_Z = Z
+        self.drip_S2n_N = Nmax
+        #
+        #print('drip_S2n_Z',self.drip_S2n_Z)
+        #print('drip_S2n_N',self.drip_S2n_N)
         #
         if nuda.env.verb: print("Exit drip_S2n()")
         #
         return self
         #
     #
-    def drip_S2p(self, Nmin = 1, Nmax = 95 ):
+    def drip_S2p(self ):
         """
         Method which find the drip-line nuclei from S2p (proton side).
 
-        :param Nmin: Fix the minimum neutron number for the search of the proton drip line.
-        :type Nmin: int, optional. Default: 1.
-        :param Nmax: Fix the maximum neutron number for the search of the proton drip line.
-        :type Nmax: int, optional. Default: 95.
+        :param Nref: Fix the charge for the search of isotones.
+        :type Nref: int, optional. Default: 50.
 
         **Attributes:**
         """
         #
         if nuda.env.verb: print("Enter drip_S2p()")
         #
-        if Nmin > Nmax:
-            print('setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:')
-            print('setup_be_theo: Bad definition of Nmin and Nmax')
-            print('setup_be_theo: It is expected that Nmin<=Nmax')
-            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
-            print('setup_be_theo: exit')
-            exit()
+        #print('Nref:',self.Nref)
+        #print('self.nucZ:',self.nucZ)
+        #print('self.nucN:',self.nucN)
+        #
+        if self.Nref not in self.nucN:
+             print('setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:')
+             print('setup_be_theo: Nref is not in self.nucN')
+             print('setup_be_theo: Nref:',self.Nref)
+             print('setup_be_theo: self.nucN:',self.nucN)
+             print('setup_be_theo: exit')
+             exit()
         #
         if not any(self.S2p_N):
             print('setup_be_theo: In drip_S2p attribute function of setup_be_theo.py:')
@@ -771,26 +780,19 @@ class setupBETheo():
         self.drip_S2p_Z = []
         self.drip_S2p_N = []
         #
+        Zmax = 0
         for ind,N in enumerate(self.S2p_N):
             #
-            if N > Nmax :
-                break
-            if N < Nmin :
-                continue
-            #
-            Zmax = 0
-            #
-            for ind2,N2 in enumerate(self.S2p_N):
-                if N2 == N and self.S2p_Z[ind2] > Zmax and self.S2p[ind2] > 0.0:
-                    Zmax = self.S2p_Z[ind2]
-            self.drip_S2p_N.append( N )
-            self.drip_S2p_Z.append( Zmax )
+            if self.S2p_Z[ind] > Zmax and self.S2p_E[ind] > 0.0:
+                Zmax = self.S2p_Z[ind]
+        self.drip_S2p_N = N
+        self.drip_S2p_Z = Zmax
         #
         if nuda.env.verb: print("Exit drip_S2p()")
         #
         return self
         #
-    def D3n( self, Zref = 50 ):
+    def D3n( self ):
         """
         Compute the three-points odd-even mass staggering (D3n)
         D3n = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
@@ -798,11 +800,11 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter D3n()")
         #
-        if Zref < 0:
+        if self.Zref < 0:
             print('setup_be_theo: In D3n attribute function of setup_be_theo.py:')
             print('setup_be_theo: Bad definition of Zref')
             print('setup_be_theo: It is expected that Zref>=0')
-            print('setup_be_theo: Zref:',Zref)
+            print('setup_be_theo: Zref:',self.Zref)
             print('setup_be_theo: exit')
             exit()
         #
@@ -820,17 +822,17 @@ class setupBETheo():
             #
             for ind,Z in enumerate(self.nucZ):
                 #
-                if Z == Zref and self.nucN[ind] == N:
+                if Z == self.Zref and self.nucN[ind] == N:
                     indN = ind
                     flagN = True
                     if N % 2:
                         sign = -1.0 # odd
                     else:
                         sign = 1.0 # even
-                if Z == Zref and self.nucN[ind] == N-1:
+                if Z == self.Zref and self.nucN[ind] == N-1:
                     indNm1 = ind
                     flagNm1 = True
-                if Z == Zref and self.nucN[ind] == N+1:
+                if Z == self.Zref and self.nucN[ind] == N+1:
                     indNp1 = ind
                     flagNp1 = True
                     #
@@ -850,7 +852,7 @@ class setupBETheo():
         #
         return self
         #
-    def D3p( self, Nref = 50 ):
+    def D3p( self ):
         """
         Compute the three-points odd-even mass staggering (D3n)
         D3p = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
@@ -858,11 +860,11 @@ class setupBETheo():
         #
         if nuda.env.verb: print("Enter D3p()")
         #
-        if Nref < 0:
+        if self.Nref < 0:
             print('setup_be_theo: In D3p attribute function of setup_be_theo.py:')
             print('setup_be_theo: Bad definition of Nref')
             print('setup_be_theo: It is expected that Nref>=0')
-            print('setup_be_theo: Nref:',Nref)
+            print('setup_be_theo: Nref:',self.Nref)
             print('setup_be_theo: exit')
             exit()
         #
@@ -880,17 +882,17 @@ class setupBETheo():
             #
             for ind,N in enumerate(self.nucN):
                 #
-                if N == Nref and self.nucZ[ind] == Z:
+                if N == self.Nref and self.nucZ[ind] == Z:
                     indZ = ind
                     flagZ = True
                     if Z % 2:
                         sign = -1.0 # odd
                     else:
                         sign = 1.0 # even
-                if N == Nref and self.nucZ[ind] == Z-1:
+                if N == self.Nref and self.nucZ[ind] == Z-1:
                     indZm1 = ind
                     flagZm1 = True
-                if N == Nref and self.nucZ[ind] == Z+1:
+                if N == self.Nref and self.nucZ[ind] == Z+1:
                     indZp1 = ind
                     flagZp1 = True
                     #
@@ -910,148 +912,6 @@ class setupBETheo():
         #
         return self
         #
-    def D3n_old( self, Zmin = 1, Zmax = 95 ):
-        """
-        Compute the three-points odd-even mass staggering (D3n)
-        D3N = (-)**N * ( 2*E(Z,N)-E(Z,N+1)-E(Z,N-1) ) / 2
-        """
-        #
-        if nuda.env.verb: print("Enter D3n()")
-        #
-        if Zmin > Zmax:
-            print('setup_be_theo: In D3n attribute function of setup_be_exp.py:')
-            print('setup_be_theo: Bad definition of Zmin and Zmax')
-            print('setup_be_theo: It is expected that Zmin<=Zmax')
-            print('setup_be_theo: Zmin,Zmax:',Zmin,Zmax)
-            print('setup_be_theo: exit')
-            exit()
-        #
-        D3n_Z_even = []
-        D3n_Z_odd = []
-        D3n_N_even = []
-        D3n_N_odd = []
-        D3n_even = []
-        D3n_odd = []
-        #
-        for ind,Z in enumerate(self.nucZ):
-            #
-            if Z > Zmax :
-                continue
-            if Z < Zmin :
-                continue
-            #
-            N = self.nucN[ind]
-            #
-            if N % 2 == 0:
-                sign = 1.0 #even
-            else:
-                sign = -1.0 # odd
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find1 = 0
-            for ind1,Z1 in enumerate(self.nucZ):
-                if Z == Z1 and self.nucN[ind1] == N+1:
-                    flag_find1 = 1
-                    break
-            flag_find2 = 0
-            for ind2,Z2 in enumerate(self.nucZ):
-                if Z == Z2 and self.nucN[ind2] == N-1:
-                    flag_find2 = 1
-                    break
-            if flag_find1*flag_find2 == 1: 
-                if sign > 0: #even
-                    D3n_Z_even.append( self.nucZ[ind] )
-                    D3n_N_even.append( self.nucN[ind] )
-                    D3n_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-                else:
-                    D3n_Z_odd.append( self.nucZ[ind] )
-                    D3n_N_odd.append( self.nucN[ind] )
-                    D3n_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3n_N_even = np.array( D3n_N_even, dtype = int )
-        self.D3n_N_odd  = np.array( D3n_N_odd,  dtype = int )
-        self.D3n_Z_even = np.array( D3n_Z_even, dtype = int )
-        self.D3n_Z_odd  = np.array( D3n_Z_odd,  dtype = int )
-        self.D3n_even   = np.array( D3n_even,   dtype = float )
-        self.D3n_odd    = np.array( D3n_odd,    dtype = float )            
-        #
-        if nuda.env.verb: print("Exit D3n()")
-        #
-        return self
-    #
-    def D3p_old( self, Nmin = 1, Nmax = 95 ):
-        """
-        Compute the three-points odd-even mass staggering (D3p)
-        D3Z = (-)**Z * ( 2*E(Z,N)-E(Z+1,N)-E(Z-1,N) ) / 2
-        """
-        #
-        if nuda.env.verb: print("Enter D3p()")
-        #
-        if Nmin > Nmax:
-            print('setup_be_theo: In D3p attribute function of setup_be_exp.py:')
-            print('setup_be_theo: Bad definition of Nmin and Nmax')
-            print('setup_be_theo: It is expected that Nmin<=Nmax')
-            print('setup_be_theo: Nmin,Nmax:',Nmin,Nmax)
-            print('setup_be_theo: exit')
-            exit()
-        #
-        D3p_Z_even = []
-        D3p_Z_odd = []
-        D3p_N_even = []
-        D3p_N_odd = []
-        D3p_even = []
-        D3p_odd = []
-        #
-        for ind,N in enumerate(self.nucN):
-            #
-            if N > Nmax :
-                continue
-            if N < Nmin :
-                continue
-            #
-            Z = self.nucZ[ind]
-            #
-            if Z % 2 == 0:
-                sign = 1.0 #even
-            else:
-                sign = -1.0 # odd
-            #
-            #print('For Z,N:',Z,N)
-            #
-            # search index for Z,N+2
-            #
-            flag_find1 = 0
-            for ind1,N1 in enumerate(self.nucN):
-                if N == N1 and self.nucZ[ind1] == Z+1:
-                    flag_find1 = 1
-                    break
-            flag_find2 = 0
-            for ind2,N2 in enumerate(self.nucN):
-                if N == N2 and self.nucZ[ind2] == Z-1:
-                    flag_find2 = 1
-                    break
-            if flag_find1*flag_find2 == 1: 
-                if sign > 0: #even
-                    D3p_Z_even.append( self.nucZ[ind] )
-                    D3p_N_even.append( self.nucN[ind] )
-                    D3p_even.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-                else:
-                    D3p_Z_odd.append( self.nucZ[ind] )
-                    D3p_N_odd.append( self.nucN[ind] )
-                    D3p_odd.append( sign/2.0*( -2*self.nucBE[ind] + self.nucBE[ind1] + self.nucBE[ind2] ) )
-        self.D3p_N_even = np.array( D3p_N_even, dtype = int )
-        self.D3p_N_odd  = np.array( D3p_N_odd,  dtype = int )
-        self.D3p_Z_even = np.array( D3p_Z_even, dtype = int )
-        self.D3p_Z_odd  = np.array( D3p_Z_odd,  dtype = int )
-        self.D3p_even   = np.array( D3p_even,   dtype = float )
-        self.D3p_odd    = np.array( D3p_odd,    dtype = float )            
-        #
-        if nuda.env.verb: print("Exit D3p()")
-        #
-        return self
-    #
     def diff(self, table, Zref = 50 ):
         """
         Method calculates the difference between a given mass 
