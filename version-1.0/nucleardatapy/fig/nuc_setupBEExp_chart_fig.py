@@ -127,7 +127,7 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     axs.scatter( stbl.sel_nucN, stbl.sel_nucZ, marker='s', s = 3, linewidth=0, color = 'k' )
     axs.text(10,112,'stable: '+str(stbl.sel_nbNucSel))
     #
-    axs.text(49,120,str(ustbl.sel_nbNucSel+stbl.sel_nbNucSel))
+    axs.text(70,120,str(ustbl.sel_nbNucSel+stbl.sel_nbNucSel))
     #
     # plot N=Z dotted line
     #
