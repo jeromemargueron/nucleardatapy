@@ -103,6 +103,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='1988-mj':
@@ -121,6 +122,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='1995-dz':
@@ -139,6 +141,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='1995-etfsi':
@@ -157,6 +160,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='1995-frdm':
@@ -220,6 +224,7 @@ class setupBETheo():
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
             #print('nucZ:',self.nucZ)
+            self.Zmin = min( self.nucZ )
             self.Zmax = max( self.nucZ )
             #
         elif table.lower()=='2005-ktuy':
@@ -238,6 +243,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2007-hfb14':
@@ -256,6 +262,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2010-hfb21':
@@ -277,6 +284,7 @@ class setupBETheo():
             #self.nucBE = self.Mcal * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2010-ws*':
@@ -295,6 +303,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2011-ws3':
@@ -313,6 +322,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2013-hfb22':
@@ -331,6 +341,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2013-hfb23':
@@ -349,6 +360,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2013-hfb24':
@@ -367,6 +379,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2013-hfb25':
@@ -385,6 +398,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2013-hfb26':
@@ -403,6 +417,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2021-bskg1':
@@ -424,6 +439,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2022-bskg2':
@@ -445,6 +461,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2023-bskg3':
@@ -466,6 +483,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         elif table.lower()=='2025-bskg4':
@@ -487,6 +505,7 @@ class setupBETheo():
             #self.nucBE = self.nucBE2A * self.nucA
             self.nucBE = conversionMBE(self.nucMass,self.nucN,self.nucZ)
             self.nucBE2A = self.nucBE / self.nucA
+            self.Zmin = int( min( self.nucZ ) )
             self.Zmax = int( max( self.nucZ ) )
             #
         self.nucI = ( self.nucN - self.nucZ ) / self.nucA

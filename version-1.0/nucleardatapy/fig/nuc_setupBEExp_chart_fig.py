@@ -34,7 +34,7 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     axs.set_title(r''+table+' mass table version '+version)
     axs.set_ylabel(r'Z',fontsize='14')
     axs.set_xlabel(r'N',fontsize='14')
-    axs.set_xlim([0, 200])
+    axs.set_xlim([0, 220])
     axs.set_ylim([0, 132])
     axs.text(10,120,'Number of nuclei:')
     #
@@ -92,7 +92,8 @@ def nuc_setupBEExp_chart_lt_fig( pname, table, version, theo_tables ):
     for i,theo_table in enumerate( theo_tables ):
         print('theo_table:',theo_table)
         theo = nuda.nuc.setupBETheo( table = theo_table )
-        for zref in range(10,96):
+        print('   Zmin, Zmax:',theo.Zmin,theo.Zmax)
+        for zref in range(theo.Zmin+4,theo.Zmax-4):
             #print('zref:',zref)
             #print('isotopes:')
             itp = theo.isotopes( Zref= zref)

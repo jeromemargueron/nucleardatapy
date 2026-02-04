@@ -30,6 +30,9 @@ def main():
     #theo_tables, theo_tables_lower = nuda.nuc.be_theo_tables()
     theo_tables = [ '2013-HFB22', '2013-HFB23', '2013-HFB24', '2013-HFB25', \
     '2013-HFB26', '2021-BSkG1', '2022-BSkG2', '2023-BSkG3', '2023-BSkG4' ]
+
+    theo_tables, theo_tables_lower = nuda.nuc.be_theo_tables()
+    print('theo_tables:',theo_tables)
     #
     # loop over the tables
     #
