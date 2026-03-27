@@ -1,0 +1,3 @@
+# obs,  Mchirp, sig_up, sig_do, q_do, q_up, lambda, sig_up, sig_do, latexCite
+1, 1.44, 0.02, 0.02, 0.8, 1.0, 300, 300, 300, BPAbbott:2020
+2, 1.44, 0.02, 0.02, 0.4, 1.0, 550, 550, 550, BPAbbott:2020

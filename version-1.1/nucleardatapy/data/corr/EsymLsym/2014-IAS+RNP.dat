@@ -1,0 +1,15 @@
+# from Danielewicz and Lee, NPA 922, 1 (2014)
+# constraint from IAS + Neutron Skin
+# It indicates the isobaric analog state (IAS) 
+# phenomenology combined with the skin width data, and 
+# represents simultaneous constraints by Skyrme-Hartree-Fock 
+# calculations of the IAS and the 208Pb neutron-skin thickness.
+# Lsym (MeV) Esym (MeV)
+ 34.0   29.9
+ 44.0   30.5
+ 74.0   33.8
+ 70.0   34.0
+ 64.0   33.8
+ 56.0   33.0
+ 42.0   31.3
+ 34.0   29.9

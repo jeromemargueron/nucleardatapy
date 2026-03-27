@@ -1,0 +1,4 @@
+#Lucien Mauviard, Sebastien Guillot, Tuomo Salmi, Devarshi Choudhury, et al., https://doi.org/10.48550/arXiv.2506.14883
+# obs, R_e, sig+, sig-, M, sig+, sig-, C, sig+, sig-, spin, latexCite
+#      km,  km,   km,   Mo, Mo, Mo, -, -, -, Hz
+1, 10.29, 1.01, 0.86, 1.44, 0.06, 0.07, 0.21, 0.02, 0.02, 318, LMauviard:2025

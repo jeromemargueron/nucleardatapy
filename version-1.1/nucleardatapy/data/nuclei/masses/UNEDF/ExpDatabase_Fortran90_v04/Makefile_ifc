@@ -1,0 +1,16 @@
+FORTRAN=ifort
+FLAGS=-i-static -r8 -C -w95 -implicitnone
+
+all : main_f90
+
+input.mod : input03.f90
+	$(FORTRAN) $(FLAGS) -c $<
+
+main03.o : main03.f90 input.mod
+	$(FORTRAN) $(FLAGS) -c $<
+
+main_f90 : main03.o input03.o
+	$(FORTRAN) $(FLAGS) -o $@ $^
+
+clean :
+	rm -f *.o *.mod *~ main

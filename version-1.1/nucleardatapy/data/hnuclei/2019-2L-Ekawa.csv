@@ -1,0 +1,7 @@
+# Binding and bound energies for LL-hypernuclei
+# Ref. H. Ekawa et al., PTEP 2019, 021D02.
+# Z, name,   N, LLBE,   err,  LLDBE,   err, probe
+#              (MeV), (MeV),  (MeV), (MeV),
+  4,   Be,   4, 15.05,  0.11,   1.63,  0.11, (K-,K+) JPARC-E07 2019
+  4,   Be,   5, 19.07,  0.11,   1.87,  0.37, (K-,K+) JPARC-E07 2019
+  4,   Be,   6, 13.68,  0.11,  -2.70,  1.00, (K-,K+) JPARC-E07 2019

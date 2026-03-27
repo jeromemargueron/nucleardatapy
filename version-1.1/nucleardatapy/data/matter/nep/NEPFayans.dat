@@ -1,0 +1,5 @@
+# reference: preliminary, to be published Nature Physics, 15 (2019) 1, Phys. Rev. C, 95 (2017) 064328, Phys.Rev. C, 79 (2009) 034310 for all.
+# parametrization rho_0   E/A       K       Q_skew    m*/m      a_sym    a'_sym  kappa_TRK=kappav
+Fy(IVP)         0.1648  -15.827    210.5  -440.49    1.0000    27.70    43.04   0.0
+Fy(Dr,HFB)      0.1640  -15.856    210.3  -441.71    1.0000    28.13    37.54   0.0
+Fy(std)         0.1623  -15.870    217.3  -426.34    1.0000    30.51    59.20   0.0

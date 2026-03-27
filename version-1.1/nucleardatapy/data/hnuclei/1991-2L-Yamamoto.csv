@@ -1,0 +1,6 @@
+# Binding and bound energies for LL-hypernuclei
+# Ref. Yasuo Yamamoto, Hideo Takaki, Kiyomi Ikeda, Progress of Theoretical Physics, Volume 86, Issue 4, October 1991, Pages 867–875, https://doi.org/10.1143/ptp/86.4.867
+# Z, name,   N, LLBE,   err,  LLDBE,   err, probe
+#              (MeV), (MeV),  (MeV), (MeV),
+  4,   Be,   4,  8.50,  0.70,  -4.90,  0.70, Emul KEK-E176 1991
+  3,   B,    8, 27.60,  0.70,   4.80,  0.70, Emul KEK-E176 1991
