@@ -28,7 +28,8 @@ def main():
     #
     crust_models, crust_models_lower = nuda.crust.crust_models()
     print('List of crust_models:',crust_models)
-    crust_models = [ '2022-GMRS-H4' ]
+    #crust_models = [ '2022-GMRS-H4' ]
+    crust_models = [ '2018-PCPFDDG-BSK22' ]
     #
     # ==============
     # core models

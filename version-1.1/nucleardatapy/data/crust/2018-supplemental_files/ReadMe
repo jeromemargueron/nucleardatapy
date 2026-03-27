@@ -1,0 +1,146 @@
+    Unified equations of state for neutron stars (Pearson+, 2018)
+================================================================================
+Unified equations of state for cold non-accreting neutron stars with 
+Brussels-Montreal functionals. I. Role of symmetry energy
+    Pearson J.M., Chamel N., Potekhin A.Y., Fantina, A.F., Ducoin C., 
+    Dutta A.K., Goriely S.
+================================================================================
+ADC_Keywords: Models ; Pulsars
+Keywords: stars: neutron - equation of state - gravitation - dense matter -
+          methods: numerical
+
+Abstract: 
+    The theory of the nuclear energy-density functional is used to provide 
+    a unified and thermodynamically consistent treatment of all regions of 
+    neutron stars. In order to assess the impact of our incomplete knowledge 
+    of the density dependence of the symmetry energy on the constitution and 
+    the global structure of neutron stars, we employ four different 
+    functionals. All of them were precision fitted to essentially all the 
+    nuclear mass data with the Hartree-Fock-Bogoliubov method and two different 
+    neutron-matter equations of state based on realistic nuclear forces. For 
+    each functional, we calculate the composition, the pressure-density 
+    relation, and the chemical potentials throughout the star. All our results 
+    are fitted by analytic expressions. We show that uncertainties in the 
+    symmetry energy can significantly affect the theoretical results for the 
+    composition and observable properties of neutron stars. 
+          
+Description:
+    Numerical results for the properties of dense matter in the inner crust 
+    of cold non-accreting neutron stars using the 4th-order Extended 
+    Thomas-Fermi (ETF) method with proton shell correction added perturbatively
+    via the Strutinsky integral (SI). Four different functionals were used
+    based on the generalized Skyrme forces BSk22, BSk24, BSk25, and BSk26. 
+    The nucleon distributions were parametrized using damped Fermi profiles, 
+    and the Coulomb energy was calculated within the Wigner-Seitz (WS) 
+    approximation. For each mean baryon number density, the equilibrium 
+    configuration was determined by minimizing the energy per nucleon with 
+    respect to the numbers of neutrons and protons in the WS cell. 
+
+    Complete results are contained in files full22.dat full24.dat full25.dat 
+    and full26.dat. Equilibrium properties are summarized in files eq22.dat 
+    eq24.dat eq25.dat and eq26.dat.
+
+    
+File Summary:
+--------------------------------------------------------------------------------
+ FileName    Lrecl  Records   Explanations
+--------------------------------------------------------------------------------
+ReadMe          80       .    This file
+eq22.dat       406      83    Equilibrium inner-crust results 
+                               for functional BSk22
+eq24.dat       406      74    Equilibrium inner-crust results 
+                               for functional BSk24
+eq25.dat       406     130    Equilibrium inner-crust results 
+                               for functional BSk25
+eq26.dat       406      81    Equilibrium inner-crust results 
+                               for functional BSk26
+full22.dat     412    4735    Complete inner-crust results 
+                               for functional BSk22                            
+full24.dat     412    6209    Complete inner-crust results 
+                               for functional BSk24   
+full25.dat     412   14383    Complete inner-crust results 
+                               for functional BSk25   
+full26.dat     412    7125    Complete inner-crust results 
+                               for functional BSk26 
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: eq22.dat eq24.dat eq25.dat eq26.dat
+--------------------------------------------------------------------------------
+   Bytes Format Units   Label   Explanations
+--------------------------------------------------------------------------------
+   1- 12  E12.6 fm-3    nbar     Mean baryon number density 
+  16- 27  E12.6 -       Z        Proton number
+  31- 42  E12.6 -       Yp       Proton fraction Y_p
+  46- 57  E12.6 -       N        Neutron number
+  61- 72  E12.6 -       A        Baryon number
+  76- 87  E12.6 fm      R        Wigner-Seitz cell radius
+  91-102  E12.6 -       Lambda   Inhomogeneity factor
+ 106-117  E12.6 MeV/fm3 P        Pressure
+ 121-132  E12.6 MeV     eETF     ETF energy per nucleon
+ 136-147  E12.6 MeV     e        Total energy per nucleon
+ 151-162  E12.6 g/cm3   rho      Mass-energy density
+ 166      I1    -       siswitch Proton-drip switch: 1 below proton drip, 
+                                                     0 above
+ 170-181  E12.6 MeV     eSI      Shell correction energy per nucleon
+ 185-196  E12.6 MeV     epair    Pairing energy per nucleon
+ 200-211  E12.6 MeV     mup      Proton chemical potential {mu}_p-M_p.c^2^
+ 215-226  E12.6 MeV     mun      Neutron chemical potential {mu}_n-M_n.c^2^
+ 230-241  E12.6 MeV     mue      Electron chemical potential {mu}_e-m_e.c^2^
+ 245-256  E12.6 fm      ap       Proton diffusivity a_p
+ 260-271  E12.6 fm      Cp       Proton cluster radius C_p
+ 275-286  E12.6 fm      an       Neutron diffusivity a_n
+ 290-301  E12.6 fm      Cn       Neutron cluster radius C_n
+ 305-316  E12.6 fm-3    nLp      Proton cluster density n_{Lambda}p
+ 320-331  E12.6 fm-3    nLn      Neutron cluster density n_{Lambda}n
+ 335-346  E12.6 fm-3    nBp      Proton background density n_Bp
+ 350-361  E12.6 fm-3    nBn      Neutron background density n_Bn
+ 365-376  E12.6 -       Zcl      Proton cluster number Z_cl
+ 380-391  E12.6 -       Ncl      Neutron cluster number N_cl
+ 395-406  E12.6 -       Acl      Baryon cluster number A_cl
+--------------------------------------------------------------------------------
+
+Byte-by-byte Description of file: full22.dat full24.dat full25.dat full26.dat
+--------------------------------------------------------------------------------
+   Bytes Format Units   Label   Explanations
+--------------------------------------------------------------------------------
+   1      I1    -       k        Equilibrium index: k=1 if equilibrium, 
+                                                    0 otherwise
+   7- 18  E12.6 fm-3    nbar     Mean baryon number density 
+  22- 33  E12.6 -       Z        Proton number
+  37- 48  E12.6 -       Yp       Proton fraction Y_p
+  52- 63  E12.6 -       N        Neutron number
+  67- 78  E12.6 -       A        Baryon number
+  82- 93  E12.6 fm      R        Wigner-Seitz cell radius
+  97-108  E12.6 -       Lambda   Inhomogeneity factor
+ 112-123  E12.6 MeV/fm3 P        Pressure
+ 127-138  E12.6 MeV     eETF     ETF energy per nucleon
+ 142-153  E12.6 MeV     e        Total energy per nucleon
+ 157-168  E12.6 g/cm3   rho      Mass-energy density
+ 172      I1    -       siswitch Proton-drip switch: 1 below proton drip, 
+                                                     0 above
+ 176-187  E12.6 MeV     eSI      Shell correction energy per nucleon
+ 191-202  E12.6 MeV     epair    Pairing energy per nucleon
+ 206-217  E12.6 MeV     mup      Proton chemical potential {mu}_p-M_p.c^2^
+ 221-232  E12.6 MeV     mun      Neutron chemical potential {mu}_n-M_n.c^2^
+ 236-247  E12.6 MeV     mue      Electron chemical potential {mu}_e-m_e.c^2^
+ 251-262  E12.6 fm      ap       Proton diffusivity a_p
+ 266-277  E12.6 fm      Cp       Proton cluster radius C_p
+ 281-292  E12.6 fm      an       Neutron diffusivity a_n
+ 296-307  E12.6 fm      Cn       Neutron cluster radius C_n
+ 311-322  E12.6 fm-3    nLp      Proton cluster density n_{Lambda}p
+ 326-337  E12.6 fm-3    nLn      Neutron cluster density n_{Lambda}n
+ 341-352  E12.6 fm-3    nBp      Proton background density n_Bp
+ 356-367  E12.6 fm-3    nBn      Neutron background density n_Bn
+ 371-382  E12.6 -       Zcl      Proton cluster number Z_cl
+ 386-397  E12.6 -       Ncl      Neutron cluster number N_cl
+ 401-412  E12.6 -       Acl      Baryon cluster number A_cl
+--------------------------------------------------------------------------------
+
+
+Acknowledgements:
+    Nicolas Chamel, nchamel(at)ulb.ac.be,
+      IAA, Universite Libre de Bruxelles
+
+References:
+================================================================================
+(End)  N. Chamel [IAA, Univ. Libre de Bruxelles]
