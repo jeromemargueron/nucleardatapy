@@ -31,15 +31,16 @@ for model in models:
 [32m----> [39m[32m2[39m     crust = nuda.crust.setupCrust( model = model )
 [32m      3[39m     [38;5;66;03m#crust.print_outputs( )[39;00m
 
-[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.0/nucleardatapy/crust/setup_crust.py:250[39m, in [36msetupCrust.__init__[39m[34m(self, model)[39m
+[36mFile [39m[32m~/work/nucleardatapy/nucleardatapy/version-1.1/nucleardatapy/crust/setup_crust.py:250[39m, in [36msetupCrust.__init__[39m[34m(self, model)[39m
 [32m    245[39m [38;5;28mself[39m.latexCite = [33m'[39m[33mMPearson:2018[39m[33m'[39m
 [32m    246[39m [38;5;28mself[39m.ncl = [32m0.16[39m [38;5;66;03m# in fm-3[39;00m
 [32m    247[39m [38;5;28mself[39m.den, [38;5;28mself[39m.Z, [38;5;28mself[39m.xp, [38;5;28mself[39m.N, A, [38;5;28mself[39m.RWS, xlambda, [38;5;28mself[39m.pre, [38;5;28mself[39m.e2a_etf, [38;5;28mself[39m.e2a_tot, \
 [32m    248[39m [38;5;28mself[39m.rho, siswitch, [38;5;28mself[39m.e_si, [38;5;28mself[39m.e_pair, [38;5;28mself[39m.mu_p, [38;5;28mself[39m.mu_n, [38;5;28mself[39m.mu_e, ap, Cp, an, Cp, nLP, nLn, \
 [32m    249[39m nBp, nBn, [38;5;28mself[39m.Zcl, [38;5;28mself[39m.Ncl, [38;5;28mself[39m.Acl \
 [32m--> [39m[32m250[39m     = [43mnp[49m[43m.[49m[43mloadtxt[49m[43m([49m[43m [49m[43mfile_in[49m[43m,[49m[43m [49m[43musecols[49m[43m=[49m[43m([49m[32;43m0[39;49m[43m,[49m[32;43m1[39;49m[43m,[49m[32;43m2[39;49m[43m,[49m[32;43m3[39;49m[43m,[49m[32;43m4[39;49m[43m,[49m[32;43m5[39;49m[43m,[49m[32;43m6[39;49m[43m,[49m[32;43m7[39;49m[43m,[49m[32;43m8[39;49m[43m,[49m[32;43m9[39;49m[43m,[49m[32;43m10[39;49m[43m,[49m[32;43m11[39;49m[43m,[49m[32;43m12[39;49m[43m,[49m[32;43m13[39;49m[43m,[49m[32;43m14[39;49m[43m,[49m[32;43m15[39;49m[43m,[49m[32;43m16[39;49m[43m,[49m[32;43m17[39;49m[43m,[49m[32;43m18[39;49m[43m,[49m[32;43m19[39;49m[43m,[49m[32;43m20[39;49m[43m,[49m[32;43m21[39;49m[43m,[49m[32;43m22[39;49m[43m,[49m[32;43m23[39;49m[43m,[49m[32;43m24[39;49m[43m,[49m[32;43m25[39;49m[43m,[49m[32;43m26[39;49m[43m,[49m[32;43m27[39;49m[43m,[49m[32;43m28[39;49m[43m)[49m[43m,[49m[43m [49m[43munpack[49m[43m [49m[43m=[49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m [49m[43m)[49m
-[32m    251[39m [38;5;28mself[39m.den_cgs = [38;5;28mself[39m.den / [32m1.e-39[39m [38;5;66;03m# in cm-3[39;00m
-[32m    252[39m [38;5;28mself[39m.N = np.array([ [38;5;28mint[39m(item) [38;5;28;01mfor[39;00m item [38;5;129;01min[39;00m [38;5;28mself[39m.N ])
+[32m    251[39m [38;5;66;03m#self.den, self.Z, self.xp, self.N,  self.RWS, self.pre, self.e2a_etf, self.e2a_int, self.e2a_tot, self.mu_p, self.mu_n, self.mu_e, self.den_f,self.Zcl, self.Ncl \[39;00m
+[32m    252[39m [38;5;66;03m#    = np.loadtxt( file_in, usecols=(0,1,2,3,5,7,8,9,10,14,15,16,23,25,27), unpack = True )[39;00m
+[32m    253[39m [38;5;28mself[39m.den_cgs = [38;5;28mself[39m.den / [32m1.e-39[39m [38;5;66;03m# in cm-3[39;00m
 
 [36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1384[39m, in [36mloadtxt[39m[34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)[39m
 [32m   1381[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(delimiter, [38;5;28mbytes[39m):
