@@ -53,18 +53,25 @@ def nuc_setupRchTheo_fig( pname, tables, table_exp ):
     #
     for indZ,Zref in enumerate(Zrefs):
         rchExpIsot = nuda.nuc.setupRchExpIsotopes( rch_exp, Zref = Zref )
+        nucN = rchExpIsot.N
+        nucA = rchExpIsot.A
+        nucZ = rchExpIsot.Z
+        clas = nuda.nuc.setupRchEmp( nucA, nucZ, formula = 'classic' )
+        npp = nuda.nuc.setupRchEmp( nucA, nucZ, formula = '1994-NPP' )
+        baks1 = nuda.nuc.setupRchEmp( nucA, nucZ, formula = '2013-BAKS-1' )
+        baks3 = nuda.nuc.setupRchEmp( nucA, nucZ, formula = '2013-BAKS-3' )
         if indZ == 0:
-            axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3, label=table_exp )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k', label='empirical(classic)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '1994-NPP' ), linestyle='dashed', color='red', label='empirical(NPP-1994)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-1' ), linestyle='dotted', color='k', label='empirical(BAKS-1-2013)' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-3' ), linestyle='dotted', color='red', label='empirical(BAKS-3-2013)' )
+            axs.errorbar( nucN, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3, label=table_exp )
+            axs.plot( nucN, clas.nucRch, linestyle='dashed', color='k', label=clas.label )
+            axs.plot( nucN, npp.nucRch, linestyle='dashed', color='red', label=npp.label )
+            axs.plot( nucN, baks1.nucRch, linestyle='dotted', color='k', label=baks1.label )
+            axs.plot( nucN, baks3.nucRch, linestyle='dotted', color='red', label=baks3.label )
         else:
-            axs.errorbar( rchExpIsot.N, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3 )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, 'classic' ), linestyle='dashed', color='k' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '1994-NPP' ), linestyle='dashed', color='red' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-1' ), linestyle='dotted', color='k' )
-            axs.plot( rchExpIsot.N, nuda.nuc.rch_emp( rchExpIsot.A, rchExpIsot.Z, '2013-BAKS-3' ), linestyle='dotted', color='red' )
+            axs.errorbar( nucN, rchExpIsot.Rch, yerr=rchExpIsot.Rch_err, color='k', fmt='s', markersize=3 )
+            axs.plot( nucN, clas.nucRch, linestyle='dashed', color='k' )
+            axs.plot( nucN, npp.nucRch, linestyle='dashed', color='red' )
+            axs.plot( nucN, baks1.nucRch, linestyle='dotted', color='k' )
+            axs.plot( nucN, baks3.nucRch, linestyle='dotted', color='red' )
     #
     axs.legend(loc='lower right',fontsize='10',ncol=2,frameon=False)
     #

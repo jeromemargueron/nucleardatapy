@@ -1,7 +1,7 @@
 #/bin/sh
 
 # version number
-VER=1.0
+VER=1.1
 
 # Folder where libraries are installed:
 LIB=$HOME/mylib

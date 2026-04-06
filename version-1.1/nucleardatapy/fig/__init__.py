@@ -41,6 +41,7 @@ from nucleardatapy.fig.nuc_setupBETheo_fig          import *
 from nucleardatapy.fig.nuc_setupBEExp_chart_fig     import *
 from nucleardatapy.fig.nuc_setupRchExp_fig          import *
 from nucleardatapy.fig.nuc_setupRchTheo_fig         import *
+from nucleardatapy.fig.nuc_setupRchEmp_fig          import *
 from nucleardatapy.fig.nuc_setupISGMRExp_fig        import *
 from nucleardatapy.fig.nuc_setupRnpExp_fig          import *
 from nucleardatapy.fig.nuc_setupRnpTheo_fig         import *

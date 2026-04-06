@@ -3,7 +3,7 @@ import re
 
 # Configuration
 RST_DIR = "docs"  # Change to the folder where your .rst files live
-HARDCODED_PATH = "../../../version-0.2/nucleardatapy_samples/figs"
+HARDCODED_PATH = "../../../version-1.1/nucleardatapy_samples/figs"
 SUB_FILE = "_substitutions.rst"
 INCLUDE_DIRECTIVE = f".. include:: {SUB_FILE}"
 SUB_KEY = "|imgpath|"

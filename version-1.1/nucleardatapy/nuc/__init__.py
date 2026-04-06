@@ -9,4 +9,5 @@ from nucleardatapy.nuc.setup_rnp_exp    import *
 from nucleardatapy.nuc.setup_rnp_theo   import *
 from nucleardatapy.nuc.setup_rch_exp    import *
 from nucleardatapy.nuc.setup_rch_theo   import *
+from nucleardatapy.nuc.setup_rch_emp    import *
 #

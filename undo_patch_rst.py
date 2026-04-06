@@ -6,7 +6,7 @@ RST_DIR = "docs"  # Directory containing your .rst files
 SUB_FILE = "_substitutions.rst"
 INCLUDE_DIRECTIVE = f".. include:: {SUB_FILE}"
 SUB_KEY = "|imgpath|"
-RAW_PATH = "../../../version-0.2/nucleardatapy_samples/figs"
+RAW_PATH = "../../../version-1.1/nucleardatapy_samples/figs"
 
 # Regex to match variants like ":scale: 70%", ":scale:70 %", etc.
 scale_pattern = re.compile(r'^(\s*):scale:\s*70\s*%')
