@@ -1,4 +1,8 @@
+
+
 # The toolkit `nucleardatapy`
+
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/nucleardatapy?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/nucleardatapy)
 
 ## Purpose:
 
