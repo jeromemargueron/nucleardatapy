@@ -15,7 +15,7 @@ description = "A toolkit for nuclear data processing and meta-analyses."
 license = {file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
-version = "1.0.1"
+version = "1.1.0"
 dependencies = [
     "numpy",
     "scipy",

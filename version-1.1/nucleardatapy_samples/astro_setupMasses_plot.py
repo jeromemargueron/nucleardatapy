@@ -1,0 +1,34 @@
+
+import numpy as np
+
+import nucleardatapy as nuda
+
+def main():
+    #
+    print(50*'-')
+    print("Enter astro_setupMasses_plot.py:")
+    print(50*'-')
+    #
+    # create the folder where the figures are stored
+    #
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
+    #
+    sources, sources_lower = nuda.astro.masses_sources( )
+    print('Complete list of available sources:',sources)
+    #
+    sources = [ 'J1614–2230', 'J0348+0432', 'J2215+5135', 'J1600+3053', 'J0740+6620' ]
+    #
+    print('sources considered:',sources)
+    #
+    pname = folder+'/plot_astro_setupMasses.png'
+    nuda.fig.astro_setupMasses_fig( pname, sources )
+    #
+    print(50*'-')
+    print("Exit astro_setupMasses_plot.py:")
+    print(50*'-')
+    #
+
+if __name__ == "__main__":
+    main()

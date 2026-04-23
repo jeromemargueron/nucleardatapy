@@ -11,7 +11,7 @@ class CustomInstall(install):
 
 setup(
     name="nucleardatapy",
-    version="1.0.0",
+    version="1.1.0",
     description="A toolkit for nuclear data processing",
     authors=[
         "Jerome Margueron <marguero@frib.msu.edu>",
@@ -20,8 +20,8 @@ setup(
         "Guilherme Grams",
         "Rohit Kumar",
     ],
-    package_dir={"": "version-1.0"},
-    packages=find_packages(where="version-1.0"),
+    package_dir={"": "version-1.1"},
+    packages=find_packages(where="version-1.1"),
     include_package_data=True,
     package_data={"nucleardatapy": ["data/*"]},
     install_requires=["numpy", "scipy", "matplotlib", "pandas", "sphinx"],

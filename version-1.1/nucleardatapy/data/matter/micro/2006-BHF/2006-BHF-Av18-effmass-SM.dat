@@ -1,0 +1,11 @@
+# from L.G. Cao, U. Lombardo, C.W. Shen, N.V. Giai, Phys. Rev. C 73, 014313 (2006)
+# \rho  proton/neutron
+# with beta = 0.2
+0.08     0.9171
+0.10     0.9030
+0.12     0.8750
+0.14     0.8545
+0.16     0.8363
+0.18     0.8160
+0.20     0.7991
+0.22     0.8020
