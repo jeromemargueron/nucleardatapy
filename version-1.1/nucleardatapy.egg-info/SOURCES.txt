@@ -1012,6 +1012,7 @@ version-1.1/nucleardatapy/corr/setup_EsymLsym.py
 version-1.1/nucleardatapy/corr/setup_KsatQsat.py
 version-1.1/nucleardatapy/crust/__init__.py
 version-1.1/nucleardatapy/crust/setup_crust.py
+version-1.1/nucleardatapy/data/.DS_Store
 version-1.1/nucleardatapy/data/LandauParameters/micro/1994-BHF-SM.dat
 version-1.1/nucleardatapy/data/LandauParameters/micro/2006-BHF-NM-AV18.dat
 version-1.1/nucleardatapy/data/LandauParameters/micro/2006-BHF-SM-AV18.dat
@@ -1053,6 +1054,7 @@ version-1.1/nucleardatapy/data/corr/EsymLsym/2021-PREXII-Reed.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/2021-PREXII-Reinhard.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/2023-PREXII-Zhang.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/test.png
+version-1.1/nucleardatapy/data/crust/.DS_Store
 version-1.1/nucleardatapy/data/crust/1973-Negele-Vautherin.dat
 version-1.1/nucleardatapy/data/crust/2018-PCPFDDG-BSK22.dat
 version-1.1/nucleardatapy/data/crust/2018-PCPFDDG-BSK24.dat
