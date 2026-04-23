@@ -22,6 +22,9 @@ def main():
     pname = folder+'/plot_crust_setupCrust.png'
     nuda.fig.crust_setupCrust_fig( pname, models )
     #
+    pname = folder+'/plot_crust_setupCrust_thermo.png'
+    nuda.fig.crust_setupCrust_thermo_fig( pname, models )
+    #
     print(50*'-')
     print("Exit crust_setupCrust_plot.py:")
     print(50*'-')

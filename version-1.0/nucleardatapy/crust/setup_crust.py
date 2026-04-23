@@ -102,6 +102,13 @@ class setupCrust():
             self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
             self.e2a_int = self.e2a_tot - self.e2a_rm
+            #
+            # pressure
+            #self.pre=None
+            x = np.insert(self.den, 0, 0.0) # density in fm-3
+            y = np.insert(self.e2a_int, 0, 0.0) # E/A in MeV
+            cs_e2a = CubicSpline(x, y)
+            self.pre = np.array(self.den**2 * cs_e2a(self.den, 1))
             # NEP
             self.nsat = 0.16
             self.Esym = 32.0
