@@ -473,7 +473,7 @@ class setupBEExp():
        #
        if nuda.env.verb: print("Exit print_outputs()")
        #
-    def select(self, Amin = 0, Zmin = 0, interp = 'n', state= 'gs', nucleus = 'unstable', every = 1):
+    def select(self, Amin = 0, Zmin = 0, interp = 'n', state= 'gs', nucleus = 'all', every = 1):
         """
         Method which select some nuclei from the table according to some criteria.
 
@@ -509,7 +509,7 @@ class setupBEExp():
         self.state = state
         if nuda.env.verb: print("state:",state)
         #
-        nuclei = [ 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive', 'hypershortlive' ]
+        nuclei = [ 'all', 'stable', 'unstable', 'longlive', 'shortlive', 'veryshortlive', 'hypershortlive' ]
         #
         if nucleus.lower() not in nuclei:
             print('setup_be_exp.py: Nucleus ',nucleus,' is not in the list: ',nuclei)
@@ -559,7 +559,9 @@ class setupBEExp():
             if nucA < Amin or nucZ < Zmin:
                 continue
             #
-            if nucleus.lower() == 'stable' and nucStbl == 'y':
+            if nucleus.lower() == 'all':
+                pass
+            elif nucleus.lower() == 'stable' and nucStbl == 'y':
                 pass
             elif nucleus.lower() == 'unstable' and nucStbl == 'n':
                 pass
@@ -724,6 +726,57 @@ class setupBEExp():
         #
         return self
         #
+    def nucleus(self, Aref = 120, Zref = 50 ):
+        """
+        Method which find the properties of the nucleus idnetified as Aref and Zref.
+
+        :param Aref: Fix the mass of the nucleus.
+        :type Aref: int, optional. Default: 120.
+        :param Zref: Fix the charge of the nucleus.
+        :type Zref: int, optional. Default: 50.
+
+        **Attributes:**
+        """
+        #
+        if nuda.env.verb: print("Enter nucleus()")
+        #
+        #
+        if Aref < 1:
+            print('setup_be_exp.py: issue with the function nucleus.')
+            print('setup_be_exp.py: Bad definition for Aref')
+            print('setup_be_exp.py: It is expected that Aref>=1')
+            print('setup_be_exp.py: Aref:',Aref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        if Zref < 0:
+            print('setup_be_exp.py: issue with the function nucleus.')
+            print('setup_be_exp.py: Bad definition for Zref')
+            print('setup_be_exp.py: It is expected that Zref>=0')
+            print('setup_be_exp.py: Zref:',Zref)
+            print('setup_be_exp.py: exit')
+            exit()
+        #
+        ind_nuc = -1
+        for ind,A in enumerate(self.sel_nucA):
+            #
+            if self.sel_nucA[ind] == Aref and self.sel_nucZ[ind] == Zref:
+                ind_nuc = ind
+                break
+        if ind_nuc == -1:
+            print('setup_be_exp.py: issue with the function nucleus.')
+            print('setup_be_exp.py: no nucleus found')
+            print('setup_be_exp.py: exit')
+            exit()
+        else:
+            self.nuc_A = self.sel_nucA[ind_nuc]
+            self.nuc_Z = self.sel_nucZ[ind_nuc]
+            self.nuc_N = self.sel_nucN[ind_nuc]
+            self.nuc_BE = self.sel_BE[ind_nuc]
+            self.nuc_BE_err = self.sel_BE_err[ind_nuc]
+        #
+        return self
+    #
     def isotopes(self, Zref = 50 ):
         """
         Method which find the first and last isotopes for Z=Zref.
