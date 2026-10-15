@@ -641,10 +641,14 @@ class setupCrust():
         self.eps_rm = self.e2a_rm * self.den
         self.eps_int = self.e2a_int * self.den
         # compute the pressure from the derivative of the total energy per nucleon
-        x = np.insert(self.den, 0, 0.0)
-        y = np.insert(self.e2a_tot, 0, 0.0)
-        cs_e2a_tot = CubicSpline(x, y)
-        self.pre_tot = np.array( self.den**2 * cs_e2a_tot(self.den, 1) )
+        #x = np.insert(self.den, 0, 0.0)
+        #y = np.insert(self.e2a_tot, 0, 0.0)
+        #cs_e2a_tot = CubicSpline(x, y)
+        #self.pre_tot = np.array( self.den**2 * cs_e2a_tot(self.den, 1) )
+        x = np.array(self.den)
+        y = np.array(self.eps_tot)
+        cs_eps = CubicSpline(np.log(x), np.log(y))
+        self.pre_tot = np.array( ( cs_eps.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_eps(np.log(x))) )
         # enthalpy
         self.h2a_tot = self.e2a_tot + self.pre_tot / self.den
         # sound speed in the crust
