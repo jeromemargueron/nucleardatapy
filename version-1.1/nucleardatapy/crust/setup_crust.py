@@ -65,6 +65,8 @@ class setupCrust():
         #
         self = setupCrust.init_self( self )
         #
+        EveryN = 1
+        #
         if model.lower()=='1973-negele-vautherin':
             #
             file_in = nuda.param.path_data+'crust/1973-Negele-Vautherin.dat'
@@ -244,7 +246,7 @@ class setupCrust():
             self.linestyle = 'dashdot'
             self.latexCite = 'MPearson:2018'
             self.ncl = 0.16 # in fm-3
-            self.den, self.Z, self.xp, self.N, A, self.RWS, xlambda, self.pre, self.e2a_etf, self.e2a_tot, \
+            self.den, self.Z, self.xp, self.N, A, self.RWS, xlambda, self.pre, self.e2a_int_etf, self.e2a_int, \
             self.rho, siswitch, self.e_si, self.e_pair, self.mu_p, self.mu_n, self.mu_e, ap, Cp, an, Cp, nLP, nLn, \
             nBp, nBn, self.Zcl, self.Ncl, self.Acl \
                 = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28), unpack = True )
@@ -266,9 +268,12 @@ class setupCrust():
             #self.N_f = self.N - self.N_bound
             #self.e2a_tot = self.e2a_int2 + nuda.cst.mnuc2_approx
             self.e2a_rm = self.xn * nuda.cst.mnc2 + self.xp * ( nuda.cst.mpc2 + nuda.cst.mec2 )
+            self.e2a_tot = self.e2a_rm + self.e2a_int
             #self.e2a_int = self.e2a_tot - self.e2a_rm
             #
         elif '2022-gmrs' in model.lower():
+            #
+            EveryN = 10
             #
             if model.lower()=='2022-gmrs-bsk14':
                 #
@@ -604,7 +609,9 @@ class setupCrust():
             self.linestyle = 'dotted'
             self.latexCite = 'GGrams:2022'
             self.den, self.Acl, self.Zcl, self.ncl, self.xe, self.den_f, self.VWS, self.e2a_int2, self.pre, self.mu_n, self.mu_p \
-                = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8,9,10), unpack = True )
+                = np.loadtxt( (line for i, line in enumerate(open(file_in,'r')) if i % EveryN == 0), usecols=(0,1,2,3,4,5,6,7,8,9,10), unpack = True )
+            #self.den, self.Acl, self.Zcl, self.ncl, self.xe, self.den_f, self.VWS, self.e2a_int2, self.pre, self.mu_n, self.mu_p \
+            #    = np.loadtxt( file_in, usecols=(0,1,2,3,4,5,6,7,8,9,10), unpack = True )[::EveryN]
             self.den_cgs = self.den / 1.e-39 # in cm-3
             # bound nucleons
             self.A_bound = np.array([ int(item) for item in self.Acl ])
