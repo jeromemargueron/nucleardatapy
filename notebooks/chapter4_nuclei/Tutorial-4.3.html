@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter4_nuclei/Tutorial-4.3';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter4_nuclei/Tutorial-4.3.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;D3n&#39;, &#39;D3p&#39;, &#39;S2n&#39;, &#39;S2p&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;isotones&#39;, &#39;isotopes&#39;, &#39;print_outputs&#39;, &#39;select&#39;, &#39;select_year&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['D3n', 'D3p', 'S2n', 'S2p', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'isotones', 'isotopes', 'print_outputs', 'select', 'select_year']
 </pre></div>
 </div>
 </div>
@@ -485,12 +532,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">be_exp_tables</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'tables:'</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: [&#39;AME&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: ['AME']
 </pre></div>
 </div>
 </div>
@@ -498,13 +545,13 @@
 <p>Get the versions associated to this table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">be_exp_versions</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;versions:&#39;</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">versions</span><span class="p">,</span> <span class="n">versions_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">be_exp_versions</span><span class="p">(</span><span class="n">table</span> <span class="o">=</span> <span class="s1">'AME'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'versions:'</span><span class="p">,</span><span class="n">versions</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>versions: [&#39;2020&#39;, &#39;2016&#39;, &#39;2012&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>versions: ['2020', '2016', '2012']
 </pre></div>
 </div>
 </div>
@@ -512,8 +559,8 @@
 <p>Extract data from a given table and version:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mas_exp</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">setupBEExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;AME&#39;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nuclei:&#39;</span><span class="p">,</span><span class="n">mas_exp</span><span class="o">.</span><span class="n">nbNuc</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mas_exp</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">setupBEExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="s1">'AME'</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s1">'2020'</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'number of nuclei:'</span><span class="p">,</span><span class="n">mas_exp</span><span class="o">.</span><span class="n">nbNuc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -531,7 +578,7 @@ number of nuclei: 5827
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Zref</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span> <span class="p">)</span>
+<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">'gs'</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">'n'</span> <span class="p">)</span>
 <span class="n">mas_exp3</span> <span class="o">=</span> <span class="n">mas_exp2</span><span class="o">.</span><span class="n">isotopes</span><span class="p">(</span> <span class="n">Zref</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
 <span class="n">d3n</span> <span class="o">=</span> <span class="n">mas_exp3</span><span class="o">.</span><span class="n">D3n</span><span class="p">(</span> <span class="n">Zref</span> <span class="o">=</span> <span class="n">Zref</span> <span class="p">)</span>
 </pre></div>
@@ -550,7 +597,7 @@ Nmin,Nmax: 50 85
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nref</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span> <span class="p">)</span>
+<span class="n">mas_exp2</span> <span class="o">=</span> <span class="n">mas_exp</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">'gs'</span><span class="p">,</span> <span class="n">interp</span> <span class="o">=</span> <span class="s1">'n'</span> <span class="p">)</span>
 <span class="n">mas_exp3</span> <span class="o">=</span> <span class="n">mas_exp2</span><span class="o">.</span><span class="n">isotones</span><span class="p">(</span> <span class="n">Nref</span> <span class="o">=</span> <span class="n">Nref</span> <span class="p">)</span>
 <span class="n">d3p</span> <span class="o">=</span> <span class="n">mas_exp3</span><span class="o">.</span><span class="n">D3p</span><span class="p">(</span> <span class="n">Nref</span> <span class="o">=</span> <span class="n">Nref</span> <span class="p">)</span>
 </pre></div>
@@ -568,11 +615,11 @@ Zmin,Zmax: 29 50
 <p>print results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N_even(Z=50):&#39;</span><span class="p">,</span><span class="n">d3n</span><span class="o">.</span><span class="n">D3n_N_even</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;D3n(Z=50):&#39;</span><span class="p">,</span><span class="n">d3n</span><span class="o">.</span><span class="n">D3n_E_even</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'N_even(Z=50):'</span><span class="p">,</span><span class="n">d3n</span><span class="o">.</span><span class="n">D3n_N_even</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'D3n(Z=50):'</span><span class="p">,</span><span class="n">d3n</span><span class="o">.</span><span class="n">D3n_E_even</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z_even(N=50):&#39;</span><span class="p">,</span><span class="n">d3p</span><span class="o">.</span><span class="n">D3p_Z_even</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;D3p(N=50):&#39;</span><span class="p">,</span><span class="n">d3p</span><span class="o">.</span><span class="n">D3p_E_even</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Z_even(N=50):'</span><span class="p">,</span><span class="n">d3p</span><span class="o">.</span><span class="n">D3p_Z_even</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'D3p(N=50):'</span><span class="p">,</span><span class="n">d3p</span><span class="o">.</span><span class="n">D3p_E_even</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -595,7 +642,7 @@ D3p(N=50): [1.6296  1.76645 1.82555 1.61045 1.5605 ]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-Tables: [&#39;AME&#39;]
+Tables: ['AME']
 Zref: 50
 Oldest discovery is from:  1896
 Most recent discovery is from:  2020
@@ -607,7 +654,7 @@ number of nuclei(Sel): 2297
 Nmin,Nmax: 50 85
 </pre></div>
 </div>
-<img alt="../../_images/41c6f9ca42962cd157d6dcb4266b2b23d355f6c4be9127bcd53b573d2f51fdb2.png" src="../../_images/41c6f9ca42962cd157d6dcb4266b2b23d355f6c4be9127bcd53b573d2f51fdb2.png" />
+<img alt="../../_images/795ef127a65e56a86468c0d10facbbb078690c0769a2c007d56bbf0444010ef1.png" src="../../_images/795ef127a65e56a86468c0d10facbbb078690c0769a2c007d56bbf0444010ef1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -618,19 +665,23 @@ Nmin,Nmax: 50 85
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-Tables: [&#39;AME&#39;]
+Tables: ['AME']
 Nref: 50
-Oldest discovery is from:  1896
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Oldest discovery is from:  1896
 Most recent discovery is from:  2020
 dist: [  20.   19.  118.  170.  253.  620.  510.  888.  632.  394.  310.  252.
    72. 1569.    0.    0.    0.    0.    0.    0.]
-number of nuclei(Tot): 5573
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of nuclei(Tot): 5573
 number of nuclei(Sta): 2297
 number of nuclei(Sel): 2297
 Zmin,Zmax: 29 50
 </pre></div>
 </div>
-<img alt="../../_images/33359cad77433d52f70a8565e1bb66eb0f4b27ec6b61af50ff5646a8ebae1a98.png" src="../../_images/33359cad77433d52f70a8565e1bb66eb0f4b27ec6b61af50ff5646a8ebae1a98.png" />
+<img alt="../../_images/dc30c0a6b2ea01f9768fb0a876ad19dbebceaf87dcd5e2646af27be8d7ed9f43.png" src="../../_images/dc30c0a6b2ea01f9768fb0a876ad19dbebceaf87dcd5e2646af27be8d7ed9f43.png" />
 </div>
 </div>
 </section>
@@ -733,8 +784,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

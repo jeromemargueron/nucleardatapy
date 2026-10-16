@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter2_matter/Tutorial-2.10';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter2_matter/Tutorial-2.10.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;print_outputs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'init_self', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -485,12 +532,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF']
 </pre></div>
 </div>
 </div>
@@ -498,7 +545,7 @@
 <p>Fix one model for which we want to extract the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">'Skyrme'</span>
 </pre></div>
 </div>
 </div>
@@ -507,12 +554,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;params:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'params:'</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: ['BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', 'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1']
 </pre></div>
 </div>
 </div>
@@ -520,8 +567,8 @@
 <p>Fix one parameter set associated to <code class="docutils literal notranslate"><span class="pre">model</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="s1">&#39;BSK17&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="s1">'BSK17'</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'param:'</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -625,15 +672,15 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;params:&#39;</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'params:'</span><span class="p">,</span><span class="n">params</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'param:'</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
     <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>params: ['BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', 'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1']
 param: BSK14
 param: BSK16
 param: BSK17
@@ -681,18 +728,18 @@ param: UNEDF1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'model:'</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
     <span class="n">params</span><span class="p">,</span> <span class="n">params_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_params</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
     <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;param:&#39;</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'param:'</span><span class="p">,</span><span class="n">param</span><span class="p">)</span>
         <span class="n">pheno</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupPheno</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">param</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF']
 model: Skyrme
 param: BSK14
 param: BSK16
@@ -769,14 +816,14 @@ param: PKO3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reference band:</span>
 <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.14</span><span class="p">,</span><span class="mf">0.16</span><span class="p">])</span>
-<span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
-<span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">den</span><span class="o">=</span><span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">&#39;NM&#39;</span>  <span class="p">)</span>
+<span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'2016-MBPT-AM'</span><span class="p">,</span> <span class="s1">'2016-QMC-NM'</span><span class="p">,</span> <span class="s1">'2020-MBPT-AM'</span> <span class="p">]</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">den</span><span class="o">=</span><span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">'NM'</span>  <span class="p">)</span>
 <span class="c1"># plot:</span>
 <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">pheno_models</span><span class="p">()</span>
-<span class="c1"># print(&#39;models:&#39;,models)</span>
+<span class="c1"># print('models:',models)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
-    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_e2a_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="s1">&#39;NM&#39;</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'model:'</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">matter_setupPheno_e2a_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="s1">'NM'</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -803,9 +850,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2016-QMC-NM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: False
 flag_kf: True
 flag_den: False
@@ -820,21 +865,21 @@ Plot name: None
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: ESkyrme
 Plot name: None
-model: NLRH
-Plot name: None
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: NLRH
+Plot name: None
+model: DDRH
 Plot name: None
 model: DDRHF
 Plot name: None
 </pre></div>
 </div>
-<img alt="../../_images/75bc4ac6f389fb1a91b96be43b8a3de7012038330917dde7dbfdc0310f98842a.png" src="../../_images/75bc4ac6f389fb1a91b96be43b8a3de7012038330917dde7dbfdc0310f98842a.png" />
-<img alt="../../_images/f025b941886a9bcdc87c344ffceed0eaced4e0ba8b735acef038e8c2379383d6.png" src="../../_images/f025b941886a9bcdc87c344ffceed0eaced4e0ba8b735acef038e8c2379383d6.png" />
-<img alt="../../_images/382d70190e9ca55e293f2dd612a645ff37e78f56b5b76f097935e0099e431506.png" src="../../_images/382d70190e9ca55e293f2dd612a645ff37e78f56b5b76f097935e0099e431506.png" />
-<img alt="../../_images/fd60050ded0e3c9097e5f5a54a39586c4ccf958624a0042a25bae70de6aaa52b.png" src="../../_images/fd60050ded0e3c9097e5f5a54a39586c4ccf958624a0042a25bae70de6aaa52b.png" />
-<img alt="../../_images/14533091915fdea431b4d24a4fbd49aa7d2c4bd942e1112dc31c496c88d82d35.png" src="../../_images/14533091915fdea431b4d24a4fbd49aa7d2c4bd942e1112dc31c496c88d82d35.png" />
+<img alt="../../_images/bef2e3936cbf0e8d7a6a6ddc1ad49513dd5f93bd74ddc60bf321aa1eb28e1cf9.png" src="../../_images/bef2e3936cbf0e8d7a6a6ddc1ad49513dd5f93bd74ddc60bf321aa1eb28e1cf9.png" />
+<img alt="../../_images/145e196767802c78ddc9fcd4f11e89c6a7bac967122f83c131f6d87382e7cc1a.png" src="../../_images/145e196767802c78ddc9fcd4f11e89c6a7bac967122f83c131f6d87382e7cc1a.png" />
+<img alt="../../_images/c87a1b7f4f54f1dd90d491503b3179871ab70daaa399bca2a7941bbddd8d6c9f.png" src="../../_images/c87a1b7f4f54f1dd90d491503b3179871ab70daaa399bca2a7941bbddd8d6c9f.png" />
+<img alt="../../_images/5567f88480f2c95c291ed553a0b775a9544d002325026ad8615aad61cc662b35.png" src="../../_images/5567f88480f2c95c291ed553a0b775a9544d002325026ad8615aad61cc662b35.png" />
+<img alt="../../_images/6111ff0f4115b4680237e993f17abefe7a83a6394b318d0aa3e28c74dfbae57e.png" src="../../_images/6111ff0f4115b4680237e993f17abefe7a83a6394b318d0aa3e28c74dfbae57e.png" />
 </div>
 </div>
 </section>
@@ -937,8 +982,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

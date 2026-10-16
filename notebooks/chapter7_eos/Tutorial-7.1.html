@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter7_eos/Tutorial-7.1';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter7_eos/Tutorial-7.1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;print_outputs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'init_self', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -485,12 +532,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_esym_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;, &#39;2024-NLEFT-AM&#39;, &#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;, &#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat', '2024-NLEFT-AM', '2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat', '2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 </pre></div>
 </div>
 </div>
@@ -498,8 +545,8 @@
 <p>Remove the fit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-VAR-AM-APR-fit&#39;</span><span class="p">)</span>
-<span class="n">models_lower</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;1998-var-am-apr-fit&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">'1998-VAR-AM-APR-fit'</span><span class="p">)</span>
+<span class="n">models_lower</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">'1998-var-am-apr-fit'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -515,7 +562,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">eos</span><span class="o">.</span><span class="n">setupAM</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="n">asy</span> <span class="o">=</span> <span class="n">asy</span> <span class="p">)</span>
+    <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">eos</span><span class="o">.</span><span class="n">setupAM</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">'micro'</span><span class="p">,</span> <span class="n">asy</span> <span class="o">=</span> <span class="n">asy</span> <span class="p">)</span>
     <span class="n">mic</span><span class="o">.</span><span class="n">print_outputs</span><span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1003,14 +1050,14 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -1203,9 +1250,7 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-DN2LOgo-450
 model -&gt;  2024-CC-AM-DN2LOgo-450
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1221,9 +1266,7 @@ flag_den: True
    asy: 0.25
 -&gt; model: 2024-CC-AM-N2LOsat
 model -&gt;  2024-CC-AM-N2LOsat
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1248,15 +1291,15 @@ flag_den: True
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">micro_mbs</span><span class="p">,</span> <span class="n">micro_mbs_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_esym_mbs</span><span class="p">()</span>
 <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">])</span>
-<span class="n">micro_models</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2016-MBPT-AM&quot;</span><span class="p">,</span> <span class="s2">&quot;2016-QMC-NM&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-MBPT-AM&quot;</span><span class="p">]</span>
-<span class="n">pheno_models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Skyrme&#39;</span><span class="p">,</span> <span class="s1">&#39;ESkyrme&#39;</span><span class="p">,</span> <span class="s1">&#39;NLRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRH&#39;</span><span class="p">,</span> <span class="s1">&#39;DDRHF&#39;</span> <span class="p">]</span>
+<span class="n">micro_models</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2016-MBPT-AM"</span><span class="p">,</span> <span class="s2">"2016-QMC-NM"</span><span class="p">,</span> <span class="s2">"2020-MBPT-AM"</span><span class="p">]</span>
+<span class="n">pheno_models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'Skyrme'</span><span class="p">,</span> <span class="s1">'ESkyrme'</span><span class="p">,</span> <span class="s1">'NLRH'</span><span class="p">,</span> <span class="s1">'DDRH'</span><span class="p">,</span> <span class="s1">'DDRHF'</span> <span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span><span class="n">models</span> <span class="o">=</span> <span class="n">micro_models</span><span class="p">,</span> <span class="n">den</span> <span class="o">=</span> <span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">&#39;NM&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span><span class="n">models</span> <span class="o">=</span> <span class="n">micro_models</span><span class="p">,</span> <span class="n">den</span> <span class="o">=</span> <span class="n">den</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="s1">'NM'</span><span class="p">)</span>
 <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">eos_setupAM_e2a_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">micro_mbs</span><span class="o">=</span><span class="n">micro_mbs</span><span class="p">,</span> <span class="n">pheno_models</span><span class="o">=</span><span class="n">pheno_models</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">band</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1264,9 +1307,7 @@ flag_den: True
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Band in NM
 model -&gt;  2016-MBPT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1298,7 +1339,7 @@ flag_den: True
 Plot name: None
 asy: 0.6
 mb: VAR 0
-models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit']
 -&gt; model: 1981-VAR-AM-FP
 model -&gt;  1981-VAR-AM-FP
 flag_nm: True
@@ -1329,7 +1370,7 @@ e2a_lep: [18.31424411 23.63734958 27.26608621 30.12341515 32.52219226 34.611316
  44.96451279 46.10020125 47.18253179 48.2173619  49.20958342 50.16332873
  51.08212404 51.96900531 52.8266073 ]
 mb: BHF2 1
-models: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+models: ['2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f']
 -&gt; model: 2024-BHF-AM-2BF-Av18
 model -&gt;  2024-BHF-AM-2BF-Av18
 flag_nm: True
@@ -1421,7 +1462,9 @@ e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.4625259
  38.1298898  38.80443008 39.45630062]
 -&gt; model: 2024-BHF-AM-2BF-NSC97f
 model -&gt;  2024-BHF-AM-2BF-NSC97f
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1434,10 +1477,12 @@ e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.4625259
  33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
  38.1298898  38.80443008 39.45630062]
 mb: BHF23 2
-models: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+models: ['2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f']
 -&gt; model: 2006-BHF-AM-Av18
 model -&gt;  2006-BHF-AM-Av18
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1480,7 +1525,9 @@ e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.4625259
  38.1298898  38.80443008 39.45630062]
 -&gt; model: 2024-BHF-AM-23BF-CDBONN
 model -&gt;  2024-BHF-AM-23BF-CDBONN
-flag_nm: True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1577,7 +1624,7 @@ e2a_lep: [11.53755794 16.54669971 19.59596848 21.91106899 23.81917869 25.4625259
  33.46264622 34.33131451 35.15811674 35.94775959 36.7041563  37.43059967
  38.1298898  38.80443008 39.45630062]
 mb: MBPT 3
-models: [&#39;2019-MBPT-AM-L59&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+models: ['2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat']
 -&gt; model: 2019-MBPT-AM-L59
 model -&gt;  2019-MBPT-AM-L59
 flag_nm: True
@@ -1648,9 +1695,7 @@ flag_kf: False
 flag_den: True
 -&gt; model: 2024-MBPT-AM-DN2LOgo-394
 model -&gt;  2024-MBPT-AM-DN2LOgo-394
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1667,21 +1712,17 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: NLEFT 4
-models: [&#39;2024-NLEFT-AM&#39;]
+models: ['2024-NLEFT-AM']
 -&gt; model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -1696,7 +1737,7 @@ e2a_lep: [13.32342888 15.63346669 17.40954941 18.88246691 20.1556924  21.2856495
  27.06912528 27.71580939 28.33364668 28.92565365 29.49437174 30.04196448
  30.57029068 31.08096054 31.57537914]
 mb: SCGF 5
-models: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+models: ['2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat']
 -&gt; model: 2020-SCGF-AM-N3LO-414
 model -&gt;  2020-SCGF-AM-N3LO-414
 flag_nm: True
@@ -1769,7 +1810,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: CC 6
-models: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+models: ['2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 -&gt; model: 2024-CC-AM-DN2LO-450
 model -&gt;  2024-CC-AM-DN2LO-450
 flag_nm: True
@@ -1808,7 +1849,9 @@ model: Skyrme  param: LNS
 model: Skyrme  param: LNS1
 model: Skyrme  param: NRAPR
 model: Skyrme  param: RATP
-model: Skyrme  param: SKP
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: SKP
 model: Skyrme  param: SLY4
 model: Skyrme  param: SLY5
 model: Skyrme  param: SLY230A
@@ -1818,11 +1861,15 @@ model: Skyrme  param: T44
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH  param: DDME2
-model: DDRH  param: DDMEd
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH  param: DDMEd
 model: DDRH  param: TW99
-asy: 0.8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>asy: 0.8
 mb: VAR 0
-models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit']
 -&gt; model: 1981-VAR-AM-FP
 model -&gt;  1981-VAR-AM-FP
 flag_nm: True
@@ -1852,7 +1899,7 @@ e2a_lep: [ 7.26808737  9.38054634 10.82060371 11.95453069 12.90648266 13.7355494
  17.84420919 18.2949067  18.72442918 19.13510116 19.52886395 19.9073575
  20.27198117 20.62393978 20.96427893]
 mb: BHF2 1
-models: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+models: ['2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f']
 -&gt; model: 2024-BHF-AM-2BF-Av18
 model -&gt;  2024-BHF-AM-2BF-Av18
 flag_nm: True
@@ -1956,7 +2003,7 @@ e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.1048639
  13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
  15.13189271 15.39958357 15.65827799]
 mb: BHF23 2
-models: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+models: ['2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f']
 -&gt; model: 2006-BHF-AM-Av18
 model -&gt;  2006-BHF-AM-Av18
 flag_nm: True
@@ -2098,7 +2145,7 @@ e2a_lep: [ 4.57880158  6.56664489  7.77673513  8.69547599  9.45270482 10.1048639
  13.27970088 13.62443108 13.95254683 14.26591595 14.56609139 14.85437991
  15.13189271 15.39958357 15.65827799]
 mb: MBPT 3
-models: [&#39;2019-MBPT-AM-L59&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+models: ['2019-MBPT-AM-L59', '2016-MBPT-AM', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat']
 -&gt; model: 2019-MBPT-AM-L59
 model -&gt;  2019-MBPT-AM-L59
 flag_nm: True
@@ -2168,9 +2215,7 @@ flag_kf: False
 flag_den: True
 -&gt; model: 2024-MBPT-AM-DN2LOgo-394
 model -&gt;  2024-MBPT-AM-DN2LOgo-394
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -2187,17 +2232,17 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: NLEFT 4
-models: [&#39;2024-NLEFT-AM&#39;]
+models: ['2024-NLEFT-AM']
 -&gt; model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -2211,7 +2256,7 @@ e2a_lep: [ 5.28750903  6.20423296  6.90906292  7.49358448  7.99885977  8.4472799
  10.74244008 10.99907566 11.24426347 11.4792006  11.70489562 11.92220709
  12.1318727  12.33453143 12.53074089]
 mb: SCGF 5
-models: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+models: ['2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat']
 -&gt; model: 2020-SCGF-AM-N3LO-414
 model -&gt;  2020-SCGF-AM-N3LO-414
 flag_nm: True
@@ -2283,7 +2328,7 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 mb: CC 6
-models: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+models: ['2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 -&gt; model: 2024-CC-AM-DN2LO-450
 model -&gt;  2024-CC-AM-DN2LO-450
 flag_nm: True
@@ -2315,7 +2360,9 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model: Skyrme  param: BSK16
-model: Skyrme  param: BSK17
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: BSK17
 model: Skyrme  param: BSK27
 model: Skyrme  param: FPL
 model: Skyrme  param: LNS
@@ -2323,20 +2370,22 @@ model: Skyrme  param: LNS1
 model: Skyrme  param: NRAPR
 model: Skyrme  param: RATP
 model: Skyrme  param: SKP
-model: Skyrme  param: SLY4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: SLY4
 model: Skyrme  param: SLY5
 model: Skyrme  param: SLY230A
 model: Skyrme  param: SLY230B
 model: Skyrme  param: T6
-model: Skyrme  param: T44
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: DDRH  param: DDME2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model: Skyrme  param: T44
+model: DDRH  param: DDME2
 model: DDRH  param: DDMEd
 model: DDRH  param: TW99
 </pre></div>
 </div>
-<img alt="../../_images/292a82c4268b3e94b13cc3b7c0c7a526e65fa50c7025d4e215b73f216c152352.png" src="../../_images/292a82c4268b3e94b13cc3b7c0c7a526e65fa50c7025d4e215b73f216c152352.png" />
+<img alt="../../_images/6de8fb269cd2f617fe4eaae366a8ef8080d3f621b035757a81ee3779fbacaac9.png" src="../../_images/6de8fb269cd2f617fe4eaae366a8ef8080d3f621b035757a81ee3779fbacaac9.png" />
 </div>
 </div>
 </section>
@@ -2439,8 +2488,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

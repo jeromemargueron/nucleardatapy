@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter4_nuclei/Tutorial-4.5';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter4_nuclei/Tutorial-4.5.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;average&#39;, &#39;print_outputs&#39;, &#39;select&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'average', 'print_outputs', 'select']
 </pre></div>
 </div>
 </div>
@@ -485,12 +532,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tables</span><span class="p">,</span> <span class="n">tables_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">isgmr_exp_tables</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'tables:'</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: [&#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;, &#39;2018-ISGMR-GARG-few&#39;, &#39;2022-ISGMR-average&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tables: ['2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-few', '2022-ISGMR-average']
 </pre></div>
 </div>
 </div>
@@ -498,7 +545,7 @@
 <p>Fix a table</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;2018-ISGMR-GARG-LATEX&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="s1">'2018-ISGMR-GARG-LATEX'</span>
 </pre></div>
 </div>
 </div>
@@ -512,7 +559,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table  2018-ISGMR-GARG-LATEX  is not in the list of tables.
-list of tables: [&#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;, &#39;2018-ISGMR-GARG-few&#39;, &#39;2022-ISGMR-average&#39;]
+list of tables: ['2010-ISGMR-LI', '2018-ISGMR-GARG', '2018-ISGMR-GARG-few', '2022-ISGMR-average']
 -- Exit the code --
 </pre></div>
 </div>
@@ -522,13 +569,13 @@ list of tables: [&#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;, &#39;2018-I
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">gmr</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">nuc</span><span class="o">.</span><span class="n">setupISGMRExp</span><span class="p">(</span> <span class="n">table</span> <span class="o">=</span> <span class="n">table</span> <span class="p">)</span>
 
 <span class="nn">File ~/work/nucleardatapy/nucleardatapy/version-1.1/nucleardatapy/nuc/setup_isgmr_exp.py:68,</span> in <span class="ni">setupISGMRExp.__init__</span><span class="nt">(self, table)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;list of tables:&#39;</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Exit the code --&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">'list of tables:'</span><span class="p">,</span><span class="n">tables</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">'-- Exit the code --'</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">68</span>     <span class="n">exit</span><span class="p">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span> <span class="c1">#</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">nucA</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucZ</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucN</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucSymbol</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucEprobe</span><span class="o">=</span><span class="p">[];</span> <span class="n">nucProj</span><span class="o">=</span><span class="p">[];</span> 
 
-<span class="ne">NameError</span>: name &#39;exit&#39; is not defined
+<span class="ne">NameError</span>: name 'exit' is not defined
 </pre></div>
 </div>
 </div>
@@ -545,11 +592,11 @@ list of tables: [&#39;2010-ISGMR-LI&#39;, &#39;2018-ISGMR-GARG&#39;, &#39;2018-I
    table: 2018-ISGMR-GARG-LATEX
    ref: U. Garg and G. Colo, Prog. Part. Nucl. Phys. 101, 55 (2018)
    label: Garg-Colo-2018
-   note: Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\star$ indicate that the $\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main&#39;&#39; ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit.
+   note: Parameters of the ISGMR peaks and moment ratios of the ISGMR strength distributions in stable nuclei as reported by the TAMU and RCNP groups. The probes employed in the measurements are listed for each case. Entries marked with $\star$ indicate that the $\Gamma$ is an RMS width, not that of a fitted peak. Entries marked with $\dagger$ indicate a multimodal strength distribution; in those cases the parameters for only the ``main'' ISGMR peak are included. For the TAMU data, the peak parameters correspond to a Gaussian fit, whereas for the RCNP  data, the corresponding parameters are for a Lorentzian fit.
 
-Z: [&#39;8&#39;, &#39;12&#39;, &#39;12&#39;, &#39;14&#39;, &#39;14&#39;, &#39;16&#39;, &#39;20&#39;, &#39;20&#39;, &#39;22&#39;, &#39;22&#39;, &#39;26&#39;, &#39;28&#39;, &#39;28&#39;, &#39;28&#39;, &#39;40&#39;, &#39;40&#39;, &#39;40&#39;, &#39;40&#39;, &#39;40&#39;, &#39;40&#39;, &#39;42&#39;, &#39;42&#39;, &#39;42&#39;, &#39;42&#39;, &#39;42&#39;, &#39;42&#39;, &#39;48&#39;, &#39;48&#39;, &#39;48&#39;, &#39;48&#39;, &#39;48&#39;, &#39;48&#39;, &#39;48&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;50&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;62&#39;, &#39;82&#39;, &#39;82&#39;, &#39;82&#39;, &#39;82&#39;, &#39;82&#39;, &#39;82&#39;, &#39;82&#39;]
+Z: ['8', '12', '12', '14', '14', '16', '20', '20', '22', '22', '26', '28', '28', '28', '40', '40', '40', '40', '40', '40', '42', '42', '42', '42', '42', '42', '48', '48', '48', '48', '48', '48', '48', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '62', '62', '62', '62', '62', '62', '62', '62', '62', '62', '62', '82', '82', '82', '82', '82', '82', '82']
 
-A: [&#39;16&#39;, &#39;24&#39;, &#39;24&#39;, &#39;28&#39;, &#39;28&#39;, &#39;32&#39;, &#39;40&#39;, &#39;48&#39;, &#39;46&#39;, &#39;48&#39;, &#39;56&#39;, &#39;58&#39;, &#39;58&#39;, &#39;60&#39;, &#39;90&#39;, &#39;90&#39;, &#39;90&#39;, &#39;92&#39;, &#39;92&#39;, &#39;94&#39;, &#39;92&#39;, &#39;92&#39;, &#39;94&#39;, &#39;96&#39;, &#39;98&#39;, &#39;100&#39;, &#39;106&#39;, &#39;110&#39;, &#39;110&#39;, &#39;112&#39;, &#39;114&#39;, &#39;116&#39;, &#39;116&#39;, &#39;112&#39;, &#39;112&#39;, &#39;114&#39;, &#39;116&#39;, &#39;116&#39;, &#39;116&#39;, &#39;116&#39;, &#39;116&#39;, &#39;116&#39;, &#39;118&#39;, &#39;120&#39;, &#39;122&#39;, &#39;124&#39;, &#39;124&#39;, &#39;144&#39;, &#39;144&#39;, &#39;144&#39;, &#39;148&#39;, &#39;148&#39;, &#39;150&#39;, &#39;150&#39;, &#39;152&#39;, &#39;152&#39;, &#39;154&#39;, &#39;154&#39;, &#39;204&#39;, &#39;206&#39;, &#39;208&#39;, &#39;208&#39;, &#39;208&#39;, &#39;208&#39;, &#39;208&#39;]
+A: ['16', '24', '24', '28', '28', '32', '40', '48', '46', '48', '56', '58', '58', '60', '90', '90', '90', '92', '92', '94', '92', '92', '94', '96', '98', '100', '106', '110', '110', '112', '114', '116', '116', '112', '112', '114', '116', '116', '116', '116', '116', '116', '118', '120', '122', '124', '124', '144', '144', '144', '148', '148', '150', '150', '152', '152', '154', '154', '204', '206', '208', '208', '208', '208', '208']
 For Z: 8  A: 16
 Centroid energy: 19.63
    with errp: 0.38
@@ -1352,8 +1399,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter2_matter/Tutorial-2.20';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter2_matter/Tutorial-2.20.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -513,7 +560,7 @@ param: T6
 param: T44
 param: UNEDF0
 param: UNEDF1
-[&#39;Dmsat&#39;, &#39;Dmsat_mean&#39;, &#39;Dmsat_std&#39;, &#39;Esat&#39;, &#39;Esat_mean&#39;, &#39;Esat_std&#39;, &#39;Esym&#39;, &#39;Esym_mean&#39;, &#39;Esym_std&#39;, &#39;Ksat&#39;, &#39;Ksat_mean&#39;, &#39;Ksat_std&#39;, &#39;Ksym&#39;, &#39;Ksym_mean&#39;, &#39;Ksym_std&#39;, &#39;Lsym&#39;, &#39;Lsym_mean&#39;, &#39;Lsym_std&#39;, &#39;Qsat&#39;, &#39;Qsat_mean&#39;, &#39;Qsat_std&#39;, &#39;Qsym&#39;, &#39;Qsym_mean&#39;, &#39;Qsym_std&#39;, &#39;Zsat&#39;, &#39;Zsat_mean&#39;, &#39;Zsat_std&#39;, &#39;Zsym&#39;, &#39;Zsym_mean&#39;, &#39;Zsym_std&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;kappas&#39;, &#39;kappas_mean&#39;, &#39;kappas_std&#39;, &#39;kappasat&#39;, &#39;kappasat_mean&#39;, &#39;kappasat_std&#39;, &#39;kappasym&#39;, &#39;kappasym_mean&#39;, &#39;kappasym_std&#39;, &#39;kappav&#39;, &#39;kappav_mean&#39;, &#39;kappav_std&#39;, &#39;models&#39;, &#39;msat&#39;, &#39;msat_mean&#39;, &#39;msat_std&#39;, &#39;nsat&#39;, &#39;nsat_mean&#39;, &#39;nsat_std&#39;, &#39;params&#39;, &#39;print_latex&#39;, &#39;print_outputs&#39;]
+['Dmsat', 'Dmsat_mean', 'Dmsat_std', 'Esat', 'Esat_mean', 'Esat_std', 'Esym', 'Esym_mean', 'Esym_std', 'Ksat', 'Ksat_mean', 'Ksat_std', 'Ksym', 'Ksym_mean', 'Ksym_std', 'Lsym', 'Lsym_mean', 'Lsym_std', 'Qsat', 'Qsat_mean', 'Qsat_std', 'Qsym', 'Qsym_mean', 'Qsym_std', 'Zsat', 'Zsat_mean', 'Zsat_std', 'Zsym', 'Zsym_mean', 'Zsym_std', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'init_self', 'kappas', 'kappas_mean', 'kappas_std', 'kappasat', 'kappasat_mean', 'kappasat_std', 'kappasym', 'kappasym_mean', 'kappasym_std', 'kappav', 'kappav_mean', 'kappav_std', 'models', 'msat', 'msat_mean', 'msat_std', 'nsat', 'nsat_mean', 'nsat_std', 'params', 'print_latex', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -523,12 +570,12 @@ param: UNEDF1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">nep_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;Skyrme&#39;, &#39;ESkyrme&#39;, &#39;GSkyrme&#39;, &#39;Skyrme2&#39;, &#39;Gogny&#39;, &#39;Fayans&#39;, &#39;NLRH&#39;, &#39;DDRH&#39;, &#39;DDRHF&#39;, &#39;xEFT&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['Skyrme', 'ESkyrme', 'GSkyrme', 'Skyrme2', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF', 'xEFT']
 </pre></div>
 </div>
 </div>
@@ -536,7 +583,7 @@ param: UNEDF1
 <p>Fix one model for which we want to extract the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Skyrme&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">'Skyrme'</span>
 </pre></div>
 </div>
 </div>
@@ -590,7 +637,7 @@ param: UNEDF0
 param: UNEDF1
 
 - Print latex:
-   model: Skyrme 38 [&#39;BSK14&#39;, &#39;BSK16&#39;, &#39;BSK17&#39;, &#39;BSK27&#39;, &#39;BSkG1&#39;, &#39;BSkG2&#39;, &#39;F-&#39;, &#39;F+&#39;, &#39;F0&#39;, &#39;FPL&#39;, &#39;LNS&#39;, &#39;LNS1&#39;, &#39;LNS5&#39;, &#39;NRAPR&#39;, &#39;RATP&#39;, &#39;SAMI&#39;, &#39;SGII&#39;, &#39;SIII&#39;, &#39;SKGSIGMA&#39;, &#39;SKI2&#39;, &#39;SKI4&#39;, &#39;SKMP&#39;, &#39;SKMS&#39;, &#39;SKO&#39;, &#39;SKOP&#39;, &#39;SKP&#39;, &#39;SKRSIGMA&#39;, &#39;SKX&#39;, &#39;Skz2&#39;, &#39;SLY4&#39;, &#39;SLY5&#39;, &#39;SLY230A&#39;, &#39;SLY230B&#39;, &#39;SV&#39;, &#39;T6&#39;, &#39;T44&#39;, &#39;UNEDF0&#39;, &#39;UNEDF1&#39;]
+   model: Skyrme 38 ['BSK14', 'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', 'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', 'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', 'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1']
  table:
  NEP &amp; $E_{\sat}$ &amp; $n_{\sat}$ &amp; $K_{\sat}$ &amp; $Q_{\sat}$ &amp; $Z_{\sat}$ &amp;  $E_{sym}$ &amp; $L_{sym}$ &amp; $K_{sym}$ &amp; $Q_{sym}$ &amp; $Z_{sym}$ &amp;  $m^*_{sat}/m$ &amp; $\Delta m^*_{sat}/m$ \\\\
  &amp; MeV &amp; fm$^{-3}n$ &amp; MeV &amp; MeV &amp; MeV &amp;  MeV &amp; MeV &amp; MeV &amp; MeV &amp; MeV &amp;   &amp;  \\\\
@@ -692,9 +739,7 @@ param: UNEDF1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plot name: None
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: BSK14
+param: BSK14
 param: BSK16
 param: BSK17
 param: BSK27
@@ -746,7 +791,9 @@ param: SkK220
 param: SkK240
 param: SkKM
 param: SLy4
-param: SkM*
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: SkM*
 param: SV-min
 param: SV-bas
 param: SV-K218
@@ -762,7 +809,9 @@ param: SV-kap00
 param: SV-kap20
 param: SV-kap60
 param: D1S
-param: D1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: D1
 param: D250
 param: D260
 param: D280
@@ -770,9 +819,7 @@ param: D300
 param: Fy(IVP)
 param: Fy(Dr,HFB)
 param: Fy(std)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>param: NL-SH
+param: NL-SH
 param: NL3
 param: NL3II
 param: PK1
@@ -796,7 +843,7 @@ param: H6MM
 param: H7MM
 </pre></div>
 </div>
-<img alt="../../_images/b6d70992782d24d40d56ee08e40c6ea81a091379c3d7636e7a239182ffafa14e.png" src="../../_images/b6d70992782d24d40d56ee08e40c6ea81a091379c3d7636e7a239182ffafa14e.png" />
+<img alt="../../_images/495fa138904a64463f1eedb9614a392bead38400b41a71d0d0d44119d6363750.png" src="../../_images/495fa138904a64463f1eedb9614a392bead38400b41a71d0d0d44119d6363750.png" />
 </div>
 </div>
 </section>
@@ -899,8 +946,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

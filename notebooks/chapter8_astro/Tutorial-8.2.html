@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter8_astro/Tutorial-8.2';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter8_astro/Tutorial-8.2.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -476,8 +523,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;print_latex&#39;, &#39;print_output&#39;]
-[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;print_latex&#39;, &#39;print_output&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'print_latex', 'print_output']
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'print_latex', 'print_output']
 </pre></div>
 </div>
 </div>
@@ -487,12 +534,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sources</span><span class="p">,</span> <span class="n">sources_small</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">masses_sources</span><span class="p">(</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sources:&#39;</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sources:'</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sources: [&#39;J1614–2230&#39;, &#39;J0348+0432&#39;, &#39;J2215+5135&#39;, &#39;J0740+6620&#39;, &#39;J1600+3053&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sources: ['J1614–2230', 'J0348+0432', 'J2215+5135', 'J0740+6620', 'J1600+3053']
 </pre></div>
 </div>
 </div>
@@ -500,9 +547,9 @@
 <p>List all existing observations (<code class="docutils literal notranslate"><span class="pre">obss</span></code>) associated to a given source:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;J1614–2230&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="s1">'J1614–2230'</span>
 <span class="n">obss</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">masses_obss</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, obss: </span><span class="si">{</span><span class="n">obss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, obss: </span><span class="si">{</span><span class="n">obss</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -517,7 +564,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
     <span class="n">obss</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">masses_obss</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, obss: </span><span class="si">{</span><span class="n">obss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, obss: </span><span class="si">{</span><span class="n">obss</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">obss</span><span class="p">:</span>
         <span class="n">obs</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">setupMasses</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span> <span class="p">)</span>
         <span class="n">obs</span><span class="o">.</span><span class="n">print_output</span><span class="p">()</span>
@@ -579,7 +626,7 @@
    label:   J1614–2230 Agazie 2023
    note:    write here notes about this observation.
 
-- No output for source J1614–2230 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source J1614–2230 (average). To get output, write 'verb_output = True' in env.py.
 source: J0348+0432, obss: [1]
 
 - Print output:
@@ -592,7 +639,7 @@ source: J0348+0432, obss: [1]
    label:   J0348+0432 Antoniadis 2013
    note:    write here notes about this observation.
 
-- No output for source J0348+0432 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source J0348+0432 (average). To get output, write 'verb_output = True' in env.py.
 source: J2215+5135, obss: [1]
 
 - Print output:
@@ -605,7 +652,7 @@ source: J2215+5135, obss: [1]
    label:   J2215+5135 Linares 2018
    note:    write here notes about this observation.
 
-- No output for source J2215+5135 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source J2215+5135 (average). To get output, write 'verb_output = True' in env.py.
 source: J0740+6620, obss: [1, 2, 3]
 
 - Print output:
@@ -638,7 +685,7 @@ source: J0740+6620, obss: [1, 2, 3]
    label:   J0740+6620 Agazie 2023
    note:    write here notes about this observation.
 
-- No output for source J0740+6620 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source J0740+6620 (average). To get output, write 'verb_output = True' in env.py.
 source: J1600+3053, obss: [1]
 
 - Print output:
@@ -651,7 +698,7 @@ source: J1600+3053, obss: [1]
    label:   J1600+3053 Arzoumanian 2018
    note:    write here notes about this observation.
 
-- No output for source J1600+3053 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source J1600+3053 (average). To get output, write 'verb_output = True' in env.py.
 </pre></div>
 </div>
 </div>
@@ -688,7 +735,7 @@ source: J1600+3053, obss: [1]
 - table: J1600+3053 &amp; av &amp; $2.58\pm0.792$ \\\\
 </pre></div>
 </div>
-<img alt="../../_images/5c0b3a75a5e9ac972f3c89d81f9b1937170f4515b996162079e25c621d15a046.png" src="../../_images/5c0b3a75a5e9ac972f3c89d81f9b1937170f4515b996162079e25c621d15a046.png" />
+<img alt="../../_images/6746e798f2c269c299f90df9e74f80e1541f2f8b5ed38d09cf5922d731d002ba.png" src="../../_images/6746e798f2c269c299f90df9e74f80e1541f2f8b5ed38d09cf5922d731d002ba.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -696,12 +743,12 @@ source: J1600+3053, obss: [1]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sources</span><span class="p">,</span> <span class="n">sources_small</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">mup_sources</span><span class="p">(</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sources:&#39;</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'sources:'</span><span class="p">,</span><span class="n">sources</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sources: [&#39;GW170817&#39;, &#39;GW190814&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sources: ['GW170817', 'GW190814']
 </pre></div>
 </div>
 </div>
@@ -711,7 +758,7 @@ source: J1600+3053, obss: [1]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
     <span class="n">hyps</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">mup_hyps</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, hyps: </span><span class="si">{</span><span class="n">hyps</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, hyps: </span><span class="si">{</span><span class="n">hyps</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -727,7 +774,7 @@ source: GW190814, hyps: [1]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
     <span class="n">hyps</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">mup_hyps</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span> <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, hyps: </span><span class="si">{</span><span class="n">hyps</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'source: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">, hyps: </span><span class="si">{</span><span class="n">hyps</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">hyp</span> <span class="ow">in</span> <span class="n">hyps</span><span class="p">:</span>
         <span class="n">mup</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">astro</span><span class="o">.</span><span class="n">setupMup</span><span class="p">(</span> <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">hyp</span> <span class="o">=</span> <span class="n">hyp</span> <span class="p">)</span>
         <span class="n">mup</span><span class="o">.</span><span class="n">print_output</span><span class="p">()</span>
@@ -774,7 +821,7 @@ source: GW190814, hyps: [1]
    ref:      B.P. Abbott, R. Abbott, T.D. Abbott, F. Acernese, et al., PRX 9, 011001 (2019)
    label:   GW170817 high-spin Abbott 2019
    note:    write here notes about this observation.
-- No output for source GW170817 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source GW170817 (average). To get output, write 'verb_output = True' in env.py.
 source: GW190814, hyps: [1]
 - Print output:
    source:   GW190814
@@ -785,7 +832,7 @@ source: GW190814, hyps: [1]
    ref:     B.P. Abbott, R. Abbott, T.D. Abbott, et al., ApJL 892, L3 (2020)
    label:   GW190814 Abbott 2020
    note:    write here notes about this observation.
-- No output for source GW190814 (average). To get output, write &#39;verb_output = True&#39; in env.py.
+- No output for source GW190814 (average). To get output, write 'verb_output = True' in env.py.
 </pre></div>
 </div>
 </div>
@@ -812,7 +859,7 @@ hyps: [1]
 - table: GW190814 &amp; $2.59\pm0.084$ &amp; \cite{None} \\\\
 </pre></div>
 </div>
-<img alt="../../_images/18122b673c317649305914ffe6397ff95bf301a90f8504ea5d0d7a73bef38948.png" src="../../_images/18122b673c317649305914ffe6397ff95bf301a90f8504ea5d0d7a73bef38948.png" />
+<img alt="../../_images/3b2ecb6b94cc87a40f81b84ea662e54d7a5c439adecf1afb0520665aa3fe5020.png" src="../../_images/3b2ecb6b94cc87a40f81b84ea662e54d7a5c439adecf1afb0520665aa3fe5020.png" />
 </div>
 </div>
 </section>
@@ -915,8 +962,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

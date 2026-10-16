@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter2_matter/Tutorial-2.2';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter2_matter/Tutorial-2.2.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;init_self&#39;, &#39;print_outputs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'init_self', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -484,12 +531,12 @@
 <p>Get the full list of models:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;, &#39;2024-NLEFT-AM&#39;, &#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;, &#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2018-QMC-NM', '2024-QMC-NM', '2013-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat', '2024-NLEFT-AM', '2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat', '2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 </pre></div>
 </div>
 </div>
@@ -498,7 +545,7 @@
 <p>Fix one model for which we want to extract the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s1">'1998-VAR-AM-APR'</span>
 <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -576,16 +623,16 @@ flag_den: True
 <p>Fix a list of models instead of a unique one</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;1981-VAR-AM-FP&#39;</span><span class="p">,</span> <span class="s1">&#39;1998-VAR-AM-APR&#39;</span> <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'1981-VAR-AM-FP'</span><span class="p">,</span> <span class="s1">'1998-VAR-AM-APR'</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'model:'</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
     <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR']
 model: 1981-VAR-AM-FP
 model -&gt;  1981-VAR-AM-FP
 flag_nm: True
@@ -607,15 +654,15 @@ flag_den: True
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;models:&#39;</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'models:'</span><span class="p">,</span><span class="n">models</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model:&#39;</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'model:'</span><span class="p">,</span><span class="n">model</span><span class="p">)</span>
     <span class="n">mic</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicro</span><span class="p">(</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;, &#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;, &#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;, &#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;, &#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;, &#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;, &#39;2024-NLEFT-AM&#39;, &#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;, &#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>models: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit', '2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM', '2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f', '2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f', '2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2018-QMC-NM', '2024-QMC-NM', '2013-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat', '2024-NLEFT-AM', '2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat', '2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 model: 1981-VAR-AM-FP
 model -&gt;  1981-VAR-AM-FP
 flag_nm: True
@@ -942,14 +989,14 @@ flag_kf: False
 flag_den: True
 model: 2024-NLEFT-AM
 model -&gt;  2024-NLEFT-AM
-sm_popt: [-9.17066387 10.01180304 -3.06959969]
-sm_pcov: [[ 0.50462841 -0.83636905  0.34040809]
- [-0.83636905  1.40263157 -0.57637575]
- [ 0.34040809 -0.57637575  0.23873679]]
-nm_popt: [-1.18794131  0.71930874 -0.11294906]
-nm_pcov: [[ 0.01360533 -0.01702128  0.00515286]
- [-0.01702128  0.02165017 -0.00663766]
- [ 0.00515286 -0.00663766  0.00205605]]
+sm_popt: [-9.17066389 10.01180306 -3.0695997 ]
+sm_pcov: [[ 0.50462836 -0.83636896  0.34040806]
+ [-0.83636896  1.40263142 -0.5763757 ]
+ [ 0.34040806 -0.5763757   0.23873678]]
+nm_popt: [-1.18794133  0.71930878 -0.11294907]
+nm_pcov: [[ 0.01360533 -0.01702127  0.00515285]
+ [-0.01702127  0.02165016 -0.00663766]
+ [ 0.00515285 -0.00663766  0.00205604]]
 flag_nm: True
 flag_sm: True
 flag_kf: False
@@ -1041,13 +1088,13 @@ flag_den: True
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mbs</span><span class="p">,</span> <span class="n">mbs_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_mbs</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mbs:&#39;</span><span class="p">,</span><span class="n">mbs</span><span class="p">)</span>
-<span class="n">matters</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;NM&#39;</span><span class="p">,</span> <span class="s1">&#39;SM&#39;</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'mbs:'</span><span class="p">,</span><span class="n">mbs</span><span class="p">)</span>
+<span class="n">matters</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'NM'</span><span class="p">,</span> <span class="s1">'SM'</span> <span class="p">]</span>
 <span class="k">for</span> <span class="n">matter</span> <span class="ow">in</span> <span class="n">matters</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nm&#39;</span><span class="p">:</span>
-        <span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2016-QMC-NM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
-    <span class="k">elif</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;sm&#39;</span><span class="p">:</span>
-        <span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;2016-MBPT-AM&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-MBPT-AM&#39;</span> <span class="p">]</span>
+    <span class="k">if</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'nm'</span><span class="p">:</span>
+        <span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'2016-MBPT-AM'</span><span class="p">,</span> <span class="s1">'2016-QMC-NM'</span><span class="p">,</span> <span class="s1">'2020-MBPT-AM'</span> <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">matter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'sm'</span><span class="p">:</span>
+        <span class="n">bmodels</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'2016-MBPT-AM'</span><span class="p">,</span> <span class="s1">'2020-MBPT-AM'</span> <span class="p">]</span>
     <span class="n">band</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">setupMicroBand</span><span class="p">(</span> <span class="n">bmodels</span><span class="p">,</span> <span class="n">matter</span><span class="o">=</span><span class="n">matter</span>  <span class="p">)</span>
     <span class="k">for</span> <span class="n">mb</span> <span class="ow">in</span> <span class="n">mbs</span><span class="p">:</span>
         <span class="n">models</span><span class="p">,</span> <span class="n">models_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">matter</span><span class="o">.</span><span class="n">micro_models_mb_matter</span><span class="p">(</span> <span class="n">mb</span><span class="p">,</span> <span class="n">matter</span> <span class="o">=</span> <span class="n">matter</span> <span class="p">)</span>
@@ -1056,7 +1103,7 @@ flag_den: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mbs: [&#39;VAR&#39;, &#39;AFDMC&#39;, &#39;BHF2&#39;, &#39;BHF23&#39;, &#39;QMC&#39;, &#39;MBPT&#39;, &#39;NLEFT&#39;, &#39;SCGF&#39;, &#39;CC&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mbs: ['VAR', 'AFDMC', 'BHF2', 'BHF23', 'QMC', 'MBPT', 'NLEFT', 'SCGF', 'CC']
 
 Band in NM
 model -&gt;  2016-MBPT-AM
@@ -1105,23 +1152,23 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 For mb (in NM): VAR
-models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+models2: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit']
 For mb (in NM): AFDMC
-models2: [&#39;2012-AFDMC-NM-RES-1&#39;, &#39;2012-AFDMC-NM-RES-2&#39;, &#39;2012-AFDMC-NM-RES-3&#39;, &#39;2012-AFDMC-NM-RES-4&#39;, &#39;2012-AFDMC-NM-RES-5&#39;, &#39;2012-AFDMC-NM-RES-6&#39;, &#39;2012-AFDMC-NM-RES-7&#39;, &#39;2012-AFDMC-NM-FIT-1&#39;, &#39;2012-AFDMC-NM-FIT-2&#39;, &#39;2012-AFDMC-NM-FIT-3&#39;, &#39;2012-AFDMC-NM-FIT-4&#39;, &#39;2012-AFDMC-NM-FIT-5&#39;, &#39;2012-AFDMC-NM-FIT-6&#39;, &#39;2012-AFDMC-NM-FIT-7&#39;, &#39;2022-AFDMC-NM&#39;]
+models2: ['2012-AFDMC-NM-RES-1', '2012-AFDMC-NM-RES-2', '2012-AFDMC-NM-RES-3', '2012-AFDMC-NM-RES-4', '2012-AFDMC-NM-RES-5', '2012-AFDMC-NM-RES-6', '2012-AFDMC-NM-RES-7', '2012-AFDMC-NM-FIT-1', '2012-AFDMC-NM-FIT-2', '2012-AFDMC-NM-FIT-3', '2012-AFDMC-NM-FIT-4', '2012-AFDMC-NM-FIT-5', '2012-AFDMC-NM-FIT-6', '2012-AFDMC-NM-FIT-7', '2022-AFDMC-NM']
 For mb (in NM): BHF2
-models2: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+models2: ['2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f']
 For mb (in NM): BHF23
-models2: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+models2: ['2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f']
 For mb (in NM): QMC
-models2: [&#39;2008-QMC-NM-swave&#39;, &#39;2010-QMC-NM-AV4&#39;, &#39;2009-DLQMC-NM&#39;, &#39;2014-AFQMC-NM&#39;, &#39;2016-QMC-NM&#39;, &#39;2018-QMC-NM&#39;, &#39;2024-QMC-NM&#39;]
+models2: ['2008-QMC-NM-swave', '2010-QMC-NM-AV4', '2009-DLQMC-NM', '2014-AFQMC-NM', '2016-QMC-NM', '2018-QMC-NM', '2024-QMC-NM']
 For mb (in NM): MBPT
-models2: [&#39;2013-MBPT-NM&#39;, &#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+models2: ['2013-MBPT-NM', '2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat']
 For mb (in NM): NLEFT
-models2: [&#39;2024-NLEFT-AM&#39;]
+models2: ['2024-NLEFT-AM']
 For mb (in NM): SCGF
-models2: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+models2: ['2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat']
 For mb (in NM): CC
-models2: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+models2: ['2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 
 Band in SM
 model -&gt;  2016-MBPT-AM
@@ -1135,23 +1182,17 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2016-MBPT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2020-MBPT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
 model -&gt;  2016-MBPT-AM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flag_nm: True
+flag_nm: True
 flag_sm: True
 flag_kf: False
 flag_den: True
@@ -1161,23 +1202,23 @@ flag_sm: True
 flag_kf: False
 flag_den: True
 For mb (in SM): VAR
-models2: [&#39;1981-VAR-AM-FP&#39;, &#39;1998-VAR-AM-APR&#39;, &#39;1998-VAR-AM-APR-fit&#39;]
+models2: ['1981-VAR-AM-FP', '1998-VAR-AM-APR', '1998-VAR-AM-APR-fit']
 For mb (in SM): AFDMC
 models2: []
 For mb (in SM): BHF2
-models2: [&#39;2024-BHF-AM-2BF-Av18&#39;, &#39;2024-BHF-AM-2BF-BONN&#39;, &#39;2024-BHF-AM-2BF-CDBONN&#39;, &#39;2024-BHF-AM-2BF-NSC97a&#39;, &#39;2024-BHF-AM-2BF-NSC97b&#39;, &#39;2024-BHF-AM-2BF-NSC97c&#39;, &#39;2024-BHF-AM-2BF-NSC97d&#39;, &#39;2024-BHF-AM-2BF-NSC97e&#39;, &#39;2024-BHF-AM-2BF-NSC97f&#39;]
+models2: ['2024-BHF-AM-2BF-Av18', '2024-BHF-AM-2BF-BONN', '2024-BHF-AM-2BF-CDBONN', '2024-BHF-AM-2BF-NSC97a', '2024-BHF-AM-2BF-NSC97b', '2024-BHF-AM-2BF-NSC97c', '2024-BHF-AM-2BF-NSC97d', '2024-BHF-AM-2BF-NSC97e', '2024-BHF-AM-2BF-NSC97f']
 For mb (in SM): BHF23
-models2: [&#39;2006-BHF-AM-Av18&#39;, &#39;2024-BHF-AM-23BF-Av18&#39;, &#39;2024-BHF-AM-23BF-BONN&#39;, &#39;2024-BHF-AM-23BF-CDBONN&#39;, &#39;2024-BHF-AM-23BF-NSC97a&#39;, &#39;2024-BHF-AM-23BF-NSC97b&#39;, &#39;2024-BHF-AM-23BF-NSC97c&#39;, &#39;2024-BHF-AM-23BF-NSC97d&#39;, &#39;2024-BHF-AM-23BF-NSC97e&#39;, &#39;2024-BHF-AM-23BF-NSC97f&#39;]
+models2: ['2006-BHF-AM-Av18', '2024-BHF-AM-23BF-Av18', '2024-BHF-AM-23BF-BONN', '2024-BHF-AM-23BF-CDBONN', '2024-BHF-AM-23BF-NSC97a', '2024-BHF-AM-23BF-NSC97b', '2024-BHF-AM-23BF-NSC97c', '2024-BHF-AM-23BF-NSC97d', '2024-BHF-AM-23BF-NSC97e', '2024-BHF-AM-23BF-NSC97f']
 For mb (in SM): QMC
 models2: []
 For mb (in SM): MBPT
-models2: [&#39;2016-MBPT-AM&#39;, &#39;2019-MBPT-AM-L59&#39;, &#39;2019-MBPT-AM-L69&#39;, &#39;2020-MBPT-AM&#39;, &#39;2024-MBPT-AM-DN2LO-450&#39;, &#39;2024-MBPT-AM-DN2LO-500&#39;, &#39;2024-MBPT-AM-DN2LOgo-394&#39;, &#39;2024-MBPT-AM-DN2LOgo-450&#39;, &#39;2024-MBPT-AM-N2LOsat&#39;]
+models2: ['2016-MBPT-AM', '2019-MBPT-AM-L59', '2019-MBPT-AM-L69', '2020-MBPT-AM', '2024-MBPT-AM-DN2LO-450', '2024-MBPT-AM-DN2LO-500', '2024-MBPT-AM-DN2LOgo-394', '2024-MBPT-AM-DN2LOgo-450', '2024-MBPT-AM-N2LOsat']
 For mb (in SM): NLEFT
-models2: [&#39;2024-NLEFT-AM&#39;]
+models2: ['2024-NLEFT-AM']
 For mb (in SM): SCGF
-models2: [&#39;2020-SCGF-AM-N3LO-414&#39;, &#39;2020-SCGF-AM-N3LO-450&#39;, &#39;2020-SCGF-AM-N3LO-500&#39;, &#39;2024-SCGF-AM-DN2LO-450&#39;, &#39;2024-SCGF-AM-DN2LO-500&#39;, &#39;2024-SCGF-AM-DN2LOgo-394&#39;, &#39;2024-SCGF-AM-DN2LOgo-450&#39;, &#39;2024-SCGF-AM-N2LOsat&#39;]
+models2: ['2020-SCGF-AM-N3LO-414', '2020-SCGF-AM-N3LO-450', '2020-SCGF-AM-N3LO-500', '2024-SCGF-AM-DN2LO-450', '2024-SCGF-AM-DN2LO-500', '2024-SCGF-AM-DN2LOgo-394', '2024-SCGF-AM-DN2LOgo-450', '2024-SCGF-AM-N2LOsat']
 For mb (in SM): CC
-models2: [&#39;2024-CC-AM-DN2LO-450&#39;, &#39;2024-CC-AM-DN2LO-500&#39;, &#39;2024-CC-AM-DN2LOgo-394&#39;, &#39;2024-CC-AM-DN2LOgo-450&#39;, &#39;2024-CC-AM-N2LOsat&#39;]
+models2: ['2024-CC-AM-DN2LO-450', '2024-CC-AM-DN2LO-500', '2024-CC-AM-DN2LOgo-394', '2024-CC-AM-DN2LOgo-450', '2024-CC-AM-N2LOsat']
 </pre></div>
 </div>
 </div>
@@ -1282,8 +1323,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

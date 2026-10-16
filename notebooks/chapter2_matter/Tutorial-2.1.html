@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter2_matter/Tutorial-2.1';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter2_matter/Tutorial-2.1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -476,7 +523,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;print_outputs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -556,89 +603,89 @@ The non-relativistic quantities are:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;label&#39;: &#39;FFG $\\,\\delta=$0.0&#39;,
- &#39;note&#39;: &#39;&#39;,
- &#39;den&#39;: array([0.01      , 0.04222222, 0.07444444, 0.10666667, 0.13888889,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'label': 'FFG $\\,\\delta=$0.0',
+ 'note': '',
+ 'den': array([0.01      , 0.04222222, 0.07444444, 0.10666667, 0.13888889,
         0.17111111, 0.20333333, 0.23555556, 0.26777778, 0.3       ]),
- &#39;delta&#39;: array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]),
- &#39;ms&#39;: 0.6,
- &#39;x_n&#39;: array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
- &#39;x_p&#39;: array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
- &#39;den_n&#39;: array([0.005     , 0.02111111, 0.03722222, 0.05333333, 0.06944444,
+ 'delta': array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]),
+ 'ms': 0.6,
+ 'x_n': array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
+ 'x_p': array([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]),
+ 'den_n': array([0.005     , 0.02111111, 0.03722222, 0.05333333, 0.06944444,
         0.08555556, 0.10166667, 0.11777778, 0.13388889, 0.15      ]),
- &#39;den_p&#39;: array([0.005     , 0.02111111, 0.03722222, 0.05333333, 0.06944444,
+ 'den_p': array([0.005     , 0.02111111, 0.03722222, 0.05333333, 0.06944444,
         0.08555556, 0.10166667, 0.11777778, 0.13388889, 0.15      ]),
- &#39;kf_nuc&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
+ 'kf_nuc': array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
         1.36319004, 1.44388696, 1.51645008, 1.58266323, 1.64375626]),
- &#39;kf_n&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
+ 'kf_n': array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
         1.36319004, 1.44388696, 1.51645008, 1.58266323, 1.64375626]),
- &#39;kf_p&#39;: array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
+ 'kf_p': array([0.52900974, 0.85502215, 1.03293842, 1.16450112, 1.27160678,
         1.36319004, 1.44388696, 1.51645008, 1.58266323, 1.64375626]),
- &#39;eF_n&#39;: array([573.32253289, 588.44538774, 599.45574082, 608.77268689,
+ 'eF_n': array([573.32253289, 588.44538774, 599.45574082, 608.77268689,
         617.06070065, 624.62769737, 631.64869816, 638.23536908,
         644.46453039, 650.39192458]),
- &#39;eF_n_int&#39;: array([ 9.58332529, 24.70618014, 35.71653322, 45.03347929, 53.32149305,
+ 'eF_n_int': array([ 9.58332529, 24.70618014, 35.71653322, 45.03347929, 53.32149305,
         60.88848977, 67.90949056, 74.49616148, 80.72532279, 86.65271698]),
- &#39;eF_n_int_nr&#39;: array([ 9.67143798, 25.26494998, 36.87334867, 46.86445098, 55.88167136,
+ 'eF_n_int_nr': array([ 9.67143798, 25.26494998, 36.87334867, 46.86445098, 55.88167136,
         64.2209204 , 72.04935624, 79.4730631 , 86.5646824 , 93.37670705]),
- &#39;eF_p&#39;: array([572.55952168, 587.7020108 , 598.72603447, 608.05416161,
+ 'eF_p': array([572.55952168, 587.7020108 , 598.72603447, 608.05416161,
         616.35183738, 623.92743125, 630.95622434, 637.5500494 ,
         643.78584179, 649.71942768]),
- &#39;eF_p_int&#39;: array([ 9.59631388, 24.738803  , 35.76282667, 45.09095381, 53.38862958,
+ 'eF_p_int': array([ 9.59631388, 24.738803  , 35.76282667, 45.09095381, 53.38862958,
         60.96422345, 67.99301654, 74.5868416 , 80.82263399, 86.75621988]),
- &#39;eF_p_int_nr&#39;: array([ 9.67143798, 25.26494998, 36.87334867, 46.86445098, 55.88167136,
+ 'eF_p_int_nr': array([ 9.67143798, 25.26494998, 36.87334867, 46.86445098, 55.88167136,
         64.2209204 , 72.04935624, 79.4730631 , 86.5646824 , 93.37670705]),
- &#39;e2a_rm&#39;: array([563.3512077, 563.3512077, 563.3512077, 563.3512077, 563.3512077,
+ 'e2a_rm': array([563.3512077, 563.3512077, 563.3512077, 563.3512077, 563.3512077,
         563.3512077, 563.3512077, 563.3512077, 563.3512077, 563.3512077]),
- &#39;eps_rm&#39;: array([  5.63351208,  23.78593988,  41.93836768,  60.09079549,
+ 'eps_rm': array([  5.63351208,  23.78593988,  41.93836768,  60.09079549,
          78.24322329,  96.3956511 , 114.5480789 , 132.7005067 ,
         150.85293451, 169.00536231]),
- &#39;eps&#39;: array([  5.69118961,  24.41607596,  43.54871519,  63.00632965,
+ 'eps': array([  5.69118961,  24.41607596,  43.54871519,  63.00632965,
          82.74662667, 102.7419156 , 122.97200004, 143.42119548,
         164.07680589, 184.92824645]),
- &#39;e2a&#39;: array([569.11896085, 578.27548332, 584.9827413 , 590.68434047,
+ 'e2a': array([569.11896085, 578.27548332, 584.9827413 , 590.68434047,
         595.77571202, 600.43976647, 604.78032808, 608.8635657 ,
         612.73495974, 616.42748818]),
- &#39;e2a_int&#39;: array([ 5.76775315, 14.92427562, 21.6315336 , 27.33313277, 32.42450432,
+ 'e2a_int': array([ 5.76775315, 14.92427562, 21.6315336 , 27.33313277, 32.42450432,
         37.08855877, 41.42912038, 45.512358  , 49.38375204, 53.07628048]),
- &#39;e2a_int_nr&#39;: array([ 5.80286279, 15.15896999, 22.1240092 , 28.11867059, 33.52900282,
+ 'e2a_int_nr': array([ 5.80286279, 15.15896999, 22.1240092 , 28.11867059, 33.52900282,
         38.53255224, 43.22961374, 47.68383786, 51.93880944, 56.02602423]),
- &#39;e2a_nr&#39;: array([569.15407049, 578.51017769, 585.4752169 , 591.46987829,
+ 'e2a_nr': array([569.15407049, 578.51017769, 585.4752169 , 591.46987829,
         596.88021052, 601.88375994, 606.58082144, 611.03504556,
         615.29001714, 619.37723193]),
- &#39;eps_int&#39;: array([ 0.05767753,  0.63013608,  1.6103475 ,  2.91553416,  4.50340338,
+ 'eps_int': array([ 0.05767753,  0.63013608,  1.6103475 ,  2.91553416,  4.50340338,
          6.3462645 ,  8.42392114, 10.72068877, 13.22387138, 15.92288414]),
- &#39;eps_int_nr&#39;: array([ 0.05802863,  0.6400454 ,  1.64700957,  2.99932486,  4.65680595,
+ 'eps_int_nr': array([ 0.05802863,  0.6400454 ,  1.64700957,  2.99932486,  4.65680595,
          6.59334783,  8.79002146, 11.23219292, 13.90805897, 16.80780727]),
- &#39;eps_nr&#39;: array([  5.6915407 ,  24.42598528,  43.58537726,  63.09012035,
+ 'eps_nr': array([  5.6915407 ,  24.42598528,  43.58537726,  63.09012035,
          82.90002924, 102.98899892, 123.33810036, 143.93269962,
         164.76099348, 185.81316958]),
- &#39;esym_nr&#39;: array([ 3.40860771,  8.90439492, 12.99566628, 16.51693668, 19.69497153,
+ 'esym_nr': array([ 3.40860771,  8.90439492, 12.99566628, 16.51693668, 19.69497153,
         22.63406172, 25.39312059, 28.00953652, 30.5089113 , 32.90974557]),
- &#39;esym2_nr&#39;: array([ 3.22381266,  8.42164999, 12.29111622, 15.62148366, 18.62722379,
+ 'esym2_nr': array([ 3.22381266,  8.42164999, 12.29111622, 15.62148366, 18.62722379,
         21.40697347, 24.01645208, 26.49102103, 28.85489413, 31.12556902]),
- &#39;esym4_nr&#39;: array([0.11940047, 0.31191296, 0.45522653, 0.57857347, 0.68989718,
+ 'esym4_nr': array([0.11940047, 0.31191296, 0.45522653, 0.57857347, 0.68989718,
         0.79285087, 0.88949823, 0.98114893, 1.06869978, 1.15279885]),
- &#39;pre&#39;: array([ 0.03822066,  0.41370245,  1.05027312,  1.89110227,  2.90702181,
+ 'pre': array([ 0.03822066,  0.41370245,  1.05027312,  1.89110227,  2.90702181,
          4.07891207,  5.39283374,  6.83797603,  8.40560506, 10.08845639]),
- &#39;pre_nr&#39;: array([ 0.03868575,  0.42669693,  1.09800638,  1.99954991,  3.1045373 ,
+ 'pre_nr': array([ 0.03868575,  0.42669693,  1.09800638,  1.99954991,  3.1045373 ,
          4.39556522,  5.86001431,  7.48812861,  9.27203932, 11.20520485]),
- &#39;h2a&#39;: array([572.94102729, 588.07369927, 599.09088764, 608.41342425,
+ 'h2a': array([572.94102729, 588.07369927, 599.09088764, 608.41342425,
         616.70626901, 624.27756431, 631.30246125, 637.89270924,
         644.12518609, 650.05567613]),
- &#39;h2a_nr&#39;: array([573.02264568, 588.61615768, 600.22455637, 610.21565868,
+ 'h2a_nr': array([573.02264568, 588.61615768, 600.22455637, 610.21565868,
         619.23287906, 627.5721281 , 635.40056394, 642.8242708 ,
         649.9158901 , 656.72791475]),
- &#39;cs2&#39;: array([0.0110652 , 0.02743741, 0.03858471, 0.0475482 , 0.05518242,
+ 'cs2': array([0.0110652 , 0.02743741, 0.03858471, 0.0475482 , 0.05518242,
         0.06188839, 0.06789585, 0.07335214, 0.07835889, 0.08298996]),
- &#39;cs2_nr&#39;: array([0.01125196, 0.02861508, 0.04095506, 0.05119988, 0.06016226,
+ 'cs2_nr': array([0.01125196, 0.02861508, 0.04095506, 0.05119988, 0.06016226,
         0.06822156, 0.07559468, 0.08242072, 0.08879578, 0.09478985]),
- &#39;den_unit&#39;: &#39;fm$^{-3}$&#39;,
- &#39;kf_unit&#39;: &#39;fm$^{-1}$&#39;,
- &#39;e2a_unit&#39;: &#39;MeV&#39;,
- &#39;eps_unit&#39;: &#39;MeV fm$^{-3}$&#39;,
- &#39;pre_unit&#39;: &#39;MeV fm$^{-3}$&#39;,
- &#39;cs2_unit&#39;: &#39;c$^{2}$&#39;}
+ 'den_unit': 'fm$^{-3}$',
+ 'kf_unit': 'fm$^{-1}$',
+ 'e2a_unit': 'MeV',
+ 'eps_unit': 'MeV fm$^{-3}$',
+ 'pre_unit': 'MeV fm$^{-3}$',
+ 'cs2_unit': 'c$^{2}$'}
 </pre></div>
 </div>
 </div>
@@ -664,7 +711,7 @@ plot $\delta=0$ (SM)
 plot $\delta=1$ (NM)
 </pre></div>
 </div>
-<img alt="../../_images/d107707ab2ec79816492390c51d9db35dcaa622f2ea22268d13db2c4760e2f85.png" src="../../_images/d107707ab2ec79816492390c51d9db35dcaa622f2ea22268d13db2c4760e2f85.png" />
+<img alt="../../_images/4145a1133bc0a06236a11c3fd5b23d9e90b39415f46579becb99f5bd354cb7e9.png" src="../../_images/4145a1133bc0a06236a11c3fd5b23d9e90b39415f46579becb99f5bd354cb7e9.png" />
 </div>
 </div>
 </section>
@@ -767,8 +814,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

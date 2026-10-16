@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/chapter3_correlations/Tutorial-3.3';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/nucleardatapy/notebooks/chapter3_correlations/Tutorial-3.3.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -475,7 +522,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getstate__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__le__&#39;, &#39;__lt__&#39;, &#39;__module__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;print_outputs&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'print_outputs']
 </pre></div>
 </div>
 </div>
@@ -485,12 +532,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">EsymLsym_constraints</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'constraints:'</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraints: [&#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208Pb&#39;, &#39;2015-POL-120Sn&#39;, &#39;2015-POL-68Ni&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, &#39;2021-PREXII-Reinhard&#39;, &#39;2023-PREXII+CREX-Zhang&#39;, &#39;2023-EDF-D4&#39;, &#39;2023-EDF-D4-IAS&#39;, &#39;2023-EDF-D4-IAS-Rnp&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraints: ['2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', '2015-POL-208Pb', '2015-POL-120Sn', '2015-POL-68Ni', '2017-UG', '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang', '2023-EDF-D4', '2023-EDF-D4-IAS', '2023-EDF-D4-IAS-Rnp']
 </pre></div>
 </div>
 </div>
@@ -499,7 +546,7 @@
 <p>Fix one model for which we want to extract the constraint:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="s1">&#39;2014-IAS&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="s1">'2014-IAS'</span>
 <span class="n">el</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">setupEsymDen</span><span class="p">(</span> <span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -530,12 +577,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span><span class="p">,</span> <span class="n">constraints_lower</span> <span class="o">=</span> <span class="n">nuda</span><span class="o">.</span><span class="n">corr</span><span class="o">.</span><span class="n">EsymLsym_constraints</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;constraints:&#39;</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'constraints:'</span><span class="p">,</span><span class="n">constraints</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraints: [&#39;2009-HIC&#39;, &#39;2010-RNP&#39;, &#39;2012-FRDM&#39;, &#39;2013-NS&#39;, &#39;2014-IAS&#39;, &#39;2014-IAS+RNP&#39;, &#39;2015-POL-208Pb&#39;, &#39;2015-POL-120Sn&#39;, &#39;2015-POL-68Ni&#39;, &#39;2017-UG&#39;, &#39;2021-PREXII-Reed&#39;, &#39;2021-PREXII-Reinhard&#39;, &#39;2023-PREXII+CREX-Zhang&#39;, &#39;2023-EDF-D4&#39;, &#39;2023-EDF-D4-IAS&#39;, &#39;2023-EDF-D4-IAS-Rnp&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>constraints: ['2009-HIC', '2010-RNP', '2012-FRDM', '2013-NS', '2014-IAS', '2014-IAS+RNP', '2015-POL-208Pb', '2015-POL-120Sn', '2015-POL-68Ni', '2017-UG', '2021-PREXII-Reed', '2021-PREXII-Reinhard', '2023-PREXII+CREX-Zhang', '2023-EDF-D4', '2023-EDF-D4-IAS', '2023-EDF-D4-IAS-Rnp']
 </pre></div>
 </div>
 </div>
@@ -545,7 +592,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ksyms</span> <span class="o">=</span> <span class="p">[</span> <span class="o">-</span><span class="mf">200.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">200</span> <span class="p">]</span>
 <span class="k">for</span> <span class="n">Ksym</span> <span class="ow">in</span> <span class="n">Ksyms</span><span class="p">:</span>
-    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymDen_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">Ksym</span> <span class="o">=</span> <span class="n">Ksym</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">&#39;finiteNuclei&#39;</span> <span class="p">)</span>
+    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymDen_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">Ksym</span> <span class="o">=</span> <span class="n">Ksym</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">'finiteNuclei'</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -562,9 +609,7 @@ No Esyn(n) construction for constraint: 2023-EDF-D4-IAS
 No Esyn(n) construction for constraint: 2023-EDF-D4-IAS-Rnp
 Plot name: None
 No Esyn(n) construction for constraint: 2017-UG
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No Esyn(n) construction for constraint: 2023-EDF-D4
+No Esyn(n) construction for constraint: 2023-EDF-D4
 No Esyn(n) construction for constraint: 2023-EDF-D4-IAS
 No Esyn(n) construction for constraint: 2023-EDF-D4-IAS-Rnp
 </pre></div>
@@ -575,7 +620,7 @@ No Esyn(n) construction for constraint: 2023-EDF-D4-IAS-Rnp
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ksyms</span> <span class="o">=</span> <span class="p">[</span> <span class="o">-</span><span class="mf">200.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">200</span> <span class="p">]</span>
 <span class="k">for</span> <span class="n">Ksym</span> <span class="ow">in</span> <span class="n">Ksyms</span><span class="p">:</span>
-    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymDen_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">Ksym</span> <span class="o">=</span> <span class="n">Ksym</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">&#39;neutronStar&#39;</span> <span class="p">)</span>
+    <span class="n">nuda</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">corr_setupEsymDen_fig</span><span class="p">(</span> <span class="n">pname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constraints</span> <span class="o">=</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">Ksym</span> <span class="o">=</span> <span class="n">Ksym</span><span class="p">,</span> <span class="n">origine</span> <span class="o">=</span> <span class="s1">'neutronStar'</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -699,8 +744,8 @@ By J. Margueron, et al.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
