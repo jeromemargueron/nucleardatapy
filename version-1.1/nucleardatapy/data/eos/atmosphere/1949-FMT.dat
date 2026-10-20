@@ -1,0 +1,11 @@
+# EOS for the atmosphere
+#ref: R.P. Feynman, N. Metropolis and E. Teller, PR 75, 1561 (1949)
+# rho(g cm^-3) P(dynes cm^-2) nb(cm^-3) Z A Gamma
+7.86   1.01E9  4.73E24 26 56 None
+7.90   1.01E10 4.76E24 26 56 None
+8.15   1.01E11 4.91E24 26 56 None
+11.6   1.21E12 6.99E24 26 56 None
+16.4   1.40E13 9.90E24 26 56 None
+45.1   1.70E14 2.72E25 26 56 None
+212.0  5.82E15 1.27E26 26 56 None
+1150.0 1.90E17 6.93E26 26 56 None
