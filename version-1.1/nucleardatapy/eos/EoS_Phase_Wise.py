@@ -1,32 +1,13 @@
 import numpy as np
 from pathlib import Path
-import numpy as np
-from scipy.interpolate import interp1d
-from scipy.optimize import minimize_scalar
-from scipy.optimize import brentq
-from scipy.optimize import bisect
-from scipy.interpolate import interp1d
-import numpy as np
-from scipy.interpolate import CubicSpline
-from scipy.optimize import root
-from scipy.optimize import least_squares
-import numpy as np
-from scipy.interpolate import PchipInterpolator
-from scipy.integrate import cumulative_trapezoid
-from pathlib import Path
+from scipy.interpolate import CubicSpline, PchipInterpolator
 from copy import deepcopy
-#import mix_phase_Classes as PT_methods
-#import constants as cst
-
 import os
-#os.system('python boundaries.py')
-#os.system('sleep 0.001')
-
 import nucleardatapy as nuda
 
 
-with open("nuda.param.path_eos/dict_boundaries.txt", "r") as f:
-    available_models = eval(f.read(), {"np": np})
+#with open(nuda.param.path_eos+"/dict_boundaries.txt", "r") as f:
+    #available_models = eval(f.read(), {"np": np})
 
 #print(available_models)
 
@@ -92,26 +73,22 @@ class setupCSEoS:
     # Constants
     # =========================================================
 
-    light_speed = nuda.cst.c * 1e2
-    cgsP2MeVfm3 = 1./ nuda.cst.MeVfm32dyncm2
-    g_cm3toMeVfm3 = 1./nuda.cst.MeVfm32gcm3 #5.6096e-13
+    #light_speed = nuda.cst.c * 1e2
+    #cgsP2MeVfm3 = 1./ nuda.cst.MeVfm32dyncm2
+    #nuda.cst.g_cm3toMeVfm3 = 1./nuda.cst.MeVfm32gcm3 #5.6096e-13
     #cm3_to_fm3 = 1e39
 
-    den_sat = nuda.cst.nsat # fm^-3
+    #den_sat = nuda.cst.nsat # fm^-3
 
     # Ordinary hadronic layers
-    regions = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
-
-    hadronic_regions = ["outer_core","inner_crust","outer_crust","atmosphere",]
-
+    
     # =========================================================
     # Initialization
     # =========================================================
 
-    def __init__(self,eos_object=None, data_dict=available_models, nuclear_unit=True,PT_Method_core=None):
+    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None):
 
-        self.data_dict = ( available_models if data_dict is None else data_dict  )
-
+        
         self.base_dir = Path(nuda.param.path_eos)
         self.nuclear_unit = nuclear_unit
 
@@ -124,44 +101,18 @@ class setupCSEoS:
             "inner_core": {},
         }
 
-        self.eos = eos_object
+        self.eos_layers = eos_object
+        self.init_self()
 
         self.QMeos_functions = {"QM_linear":nuda.eos.mix_phase_Classes.QM_linear} ## currently only applicable to QM_linear
 
-        
-        self.models = {} ## For the hadronic regions
-        self.files = {}  ## For the hadronic regions
-
-        # Boundary information
-        self.boundaries_from_data = {} ## For the hadronic regions
-        self.boundaries = {}
-
-       
-        self.data = {} ## For the hadronic regions
-
-        # Inner-core phase information
-        self.inner_core_phases = {}
-
-        # Phase-transition settings
         self.PT_Method= PT_Method_core
         if PT_Method_core is None:
             self.PT_Method = {"method": "Maxwell"}
         
 
         
-        # Full EoS arrays
-        self.den_tot = None
-        self.eps_tot = None
-        self.pre_tot = None
-        self.rho_tot = None
-        self.mub_tot = None
-
-        # Individual layer arrays
-        for region in self.regions:
-            setattr(self, f"den_{region}", None)
-            setattr(self, f"pre_{region}", None)
-            setattr(self, f"eps_{region}", None)
-            setattr(self, f"rho_{region}", None)
+        
 
     # =========================================================
     # Sort and validate phase names
@@ -197,17 +148,17 @@ class setupCSEoS:
         Inner-core phases use a dictionary of phase definitions.
         """
 
-        eos_input = self.eos
+        eos_input = self.eos_layers
 
-        self.eos = deepcopy(self.default_eos)
+        self.eos_layers = deepcopy(self.default_eos)
 
         if eos_input is not None:
 
             if not isinstance(eos_input, dict):
                 raise TypeError("eos_object must be a dictionary or None.")
-            self.eos.update(eos_input)
+            self.eos_layers.update(eos_input)
 
-        phases = self.eos.get("inner_core", {})  
+        phases = self.eos_layers.get("inner_core", {})  
 
         if phases == "" or phases == " ":
             phases = {}
@@ -215,7 +166,7 @@ class setupCSEoS:
         if not isinstance(phases, dict):
             raise TypeError("'inner_core' must be a dictionary of phases.")
 
-        self.eos["inner_core"] = phases
+        self.eos_layers["inner_core"] = phases
 
         if not isinstance(phases, dict):
             raise TypeError("'inner_core' must be a dictionary of phases.")
@@ -260,56 +211,47 @@ class setupCSEoS:
     # =========================================================
     # Identify ordinary hadronic models
     # =========================================================
-
+    
     def identify_models(self):
         """
-        Inner-core phases are identified separately in another function.
+        Identify selected hadronic models directly from the filesystem.
+        Inner-core phases are identified separately.
         """
 
         self.set_eos()
-        if self.data_dict is None:
-            raise ValueError("data_dict containing hadronic model information " )       
 
         for region in self.hadronic_regions:
 
-            model_name = self.eos.get(region, "")
+            model_name = self.eos_layers.get(region, "")
 
-            # An empty model means that this layer is omitted.
+            # Skip omitted layers.
             if not model_name:
                 continue
 
-            if region not in self.data_dict:
-                raise KeyError(f"Region '{region}' is missing from data_dict." )
+            region_path = self.base_dir / region
 
-            available_region_models = self.data_dict[region]
+            if not region_path.is_dir():
+                raise FileNotFoundError(
+                    f"Directory not found for region '{region}': {region_path}"
+                )
 
-            matching_files = []
-            for filename in available_region_models:
-                if Path(filename).stem.startswith(model_name):
-                    matching_files.append(filename)
+            matching_files = sorted(
+                filepath.name
+                for filepath in region_path.iterdir()
+                if filepath.is_file()
+                and filepath.stem.startswith(model_name)
+            )
+
             if not matching_files:
-                raise KeyError(f"Model '{model_name}' not found in region '{region}'.")
+                raise FileNotFoundError(
+                    f"Model '{model_name}' not found in '{region_path}'."
+                )
 
-            filename = sorted(matching_files)[0]
+            filename = matching_files[0]
 
-            self.models[region] = {"model": model_name,"filename": filename,}
-
-            model_data = available_region_models[filename]
-
-            den = np.asarray(model_data["den"], dtype=float)
-            pre = np.asarray(model_data["pre"], dtype=float)
-            rho = np.asarray(model_data["rho"], dtype=float)
-
-            if self.nuclear_unit:
-                den = den / nuda.cst.cm3_to_fm3
-                pre = pre * self.cgsP2MeVfm3
-                rho = rho * self.g_cm3toMeVfm3
-
-            self.boundaries_from_data[region] = {
-                "den": den,
-                "pre": pre,
-                "rho": rho,
-                "eps": rho.copy(),
+            self.models[region] = {
+                "model": model_name,
+                "filename": filename,
             }
 
         # Identify inner-core phases.
@@ -317,10 +259,34 @@ class setupCSEoS:
 
         return self
 
-    # =========================================================
-    # Identify inner-core phases
-    # =========================================================
+    
+    def find_files(self):
+        """
+        Find files for ordinary hadronic layers.
 
+        Inner-core file paths are stored separately in
+        self.inner_core_phases.
+        """
+
+        self.identify_models()
+
+        
+        for region, model_info in self.models.items():
+
+            filepath = self.base_dir / region / model_info["filename"]
+
+            if not filepath.is_file():
+                raise FileNotFoundError(f"File not found: {filepath}")
+
+            self.files[region] = filepath
+
+        if not self.files and not self.inner_core_phases:
+            raise RuntimeError("No EoS models were identified.")
+
+        return self
+    
+    
+    
     def identify_inner_core_phases(self):
         """
         Identify each inner-core phase.
@@ -330,7 +296,7 @@ class setupCSEoS:
             source = "file"
         """
 
-        phases = self.eos.get("inner_core", {})
+        phases = self.eos_layers.get("inner_core", {})
 
         
 
@@ -374,27 +340,11 @@ class setupCSEoS:
                 phase_data["filename"] = matching_files[0].name
                 phase_data["filepath"] = matching_files[0]
                 
-                try:
-                    filename = matching_files[0].name
-                    model_boundaries = self.data_dict["inner_core"][phase_type][filename]
-                    den = np.asarray(model_boundaries["den"], dtype=float)
-                    pre = np.asarray(model_boundaries["pre"], dtype=float)
-                    rho = np.asarray(model_boundaries["rho"], dtype=float)
-
-                    if self.nuclear_unit:
-                        den = den / nuda.cst.cm3_to_fm3
-                        pre = pre * self.cgsP2MeVfm3
-                        rho = rho * self.g_cm3toMeVfm3
-                    region = f"inner_core_phase{phase_data['phase_number']}"
-
-                    self.boundaries_from_data[region] = {
-                        "den": den,
-                        "pre": pre,
-                        "rho": rho,
-                        "eps": rho.copy(),
-                    }
-                except KeyError:
-                    pass
+                #try:
+                   # filename = matching_files[0].name                    
+                    
+               # except KeyError:
+                   # pass
                 
 
 
@@ -430,11 +380,12 @@ class setupCSEoS:
             raise RuntimeError("No EoS models were identified.")
 
         return self
-
-    # =========================================================
-    # Load a file-based EoS
-    # =========================================================
-
+        
+    
+        
+    
+    
+    
     def _load_eos_file(self, filepath):
         """
         Load an EoS file with columns:
@@ -477,15 +428,15 @@ class setupCSEoS:
         den = den[order]
 
         # Energy density in CGS units.
-        eps = rho * self.light_speed**2
+        eps = rho * nuda.cst.c2_cgs
 
         if self.nuclear_unit:
 
             den = den / nuda.cst.cm3_to_fm3
-            pre = pre * self.cgsP2MeVfm3
+            pre = pre * nuda.cst.cgsP2MeVfm3
 
-            eps = rho * self.g_cm3toMeVfm3
-            rho = rho * self.g_cm3toMeVfm3
+            eps = rho * nuda.cst.g_cm3toMeVfm3
+            rho = rho * nuda.cst.g_cm3toMeVfm3
 
         # Baryon chemical potential.
         mub = (eps + pre) / den
@@ -524,7 +475,7 @@ class setupCSEoS:
         if self.nuclear_unit:
             rho = eps.copy()
         else:
-            rho = eps / self.light_speed**2
+            rho = eps / nuda.cst.c2_cgs
 
         mub = (eps + pre) / den
 
@@ -551,7 +502,7 @@ class setupCSEoS:
         # Load ordinary hadronic layers
         # -----------------------------------------------------
 
-        self.data = {}
+        
 
         for region, filepath in self.files.items():
 
@@ -562,6 +513,7 @@ class setupCSEoS:
             # Preserve region-specific initial arrays.
             for key in ("den", "pre", "eps", "rho", "mub"):
                 setattr(self,f"initial_{key}_{region}",eos_data[key].copy())
+            self.boundaries_from_data[region] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
 
         # -----------------------------------------------------
         # Load inner-core phases
@@ -572,6 +524,9 @@ class setupCSEoS:
             if phase_info["source"] == "file":
 
                 phase_data = self._load_eos_file(phase_info["filepath"])
+                region = f"inner_core_phase{phase_info['phase_number']}"
+
+                self.boundaries_from_data[region] = {key: [np.min(phase_data[key]), np.max(phase_data[key])]for key in ("den", "pre", "rho", "eps") }
 
             elif phase_info["source"] == "function":
                 ## Not useful now
@@ -584,7 +539,7 @@ class setupCSEoS:
             phase_info["data"] = phase_data
 
         return self
-        
+            
         
     def _match_eos_regions(self, regions):
         """
@@ -592,10 +547,6 @@ class setupCSEoS:
         """
 
         den_all, pre_all, rho_all, eps_all = [], [], [], []
-
-        # Reset matching information so repeated calls do not leave stale data.
-        #self.boundaries = {}
-        #self.boundaries_after_matching = {}
 
         previous_den = None
         previous_pre = None
@@ -991,6 +942,7 @@ class setupCSEoS:
             self.mu_critical = (self.Pre_critical_H + self.eps_critical_H ) /self.den_critical_H
             
             self.rho_critical_H = self.eps_critical_H 
+            self.Pre_critical = self.Pre_critical_H
             
 
              
@@ -1014,13 +966,30 @@ class setupCSEoS:
             mu_Q_branch = eos_QM.mu_QM
             
             if not self.nuclear_unit:
-                rho_Q_branch =rho_Q_branch/self.speedoflight**2
+                rho_Q_branch =rho_Q_branch/nuda.cst.c2_cgs
                 
             self.den_critical_Q = den_Q_branch[0]
             self.rho_critical_Q =rho_Q_branch[0]
             self.eps_critical_Q = eps_Q_branch[0]
             
             self.delta_E= self.eps_critical_Q - self.eps_critical_H 
+            
+            
+            den_M = np.linspace(self.den_critical_H+0.005*self.den_critical_H , self.den_critical_Q-0.005*self.den_critical_Q, 20)
+            pre_M=np.zeros_like(den_M)+self.Pre_critical_H
+            mu_M=np.zeros_like(den_M)+self.mu_critical
+            eps_M= den_M*self.mu_critical-self.Pre_critical_H
+            rho_M = eps_M.copy()
+
+            # Convert energy density to mass density if using cgs units.
+            if not self.nuclear_unit :
+                #rho_quark =rho_quark / nuda.cst.c2_cgs
+                rho_M = eps_M / nuda.cst.c2_cgs
+
+            den_Q_branch  = np.concatenate((den_M, den_Q_branch ))
+            pre_Q_branch = np.concatenate((pre_M, pre_Q_branch ))
+            rho_Q_branch = np.concatenate((rho_M, rho_Q_branch ))
+            eps_Q_branch = np.concatenate((eps_M, eps_Q_branch ))
             
         
         if qm_phase['source'] == 'file':
@@ -1034,6 +1003,11 @@ class setupCSEoS:
             pre_Q = np.asarray(values["pre"])
             rho_Q = np.asarray(values["rho"])
             eps_Q = np.asarray(values["eps"])
+            
+            
+            
+            
+            
 
     
 
@@ -1162,6 +1136,7 @@ class setupCSEoS:
                 if method == 'Maxwell':
                     self.Pre_critical_H= self.Pre_critical
                     
+                    
                     if (self.den_critical_Q -self.den_critical_H) <=0.:
                         print("n_Q < n_H. \n")
                         print("Returning the hadronic EoS." )
@@ -1170,6 +1145,22 @@ class setupCSEoS:
                         print("E_Q < E_H. \n")
                         print("Returning the hadronic EoS." )
                         return self
+                        
+                    den_M = np.linspace(self.den_critical_H+0.005*self.den_critical_H , self.den_critical_Q-0.005*self.den_critical_Q, 20)
+                    pre_M=np.zeros_like(den_M)+self.Pre_critical_H
+                    mu_M=np.zeros_like(den_M)+self.mu_critical
+                    eps_M= den_M*self.mu_critical-self.Pre_critical_H
+                    rho_M = eps_M.copy()
+
+                    # Convert energy density to mass density if using cgs units.
+                    if not self.nuclear_unit :
+                        rho_Q_branch  = rho_Q_branch / nuda.cst.c2_cgs
+                        rho_M = eps_M / nuda.cst.c2_cgs
+
+                    den_Q_branch  = np.concatenate((den_M, den_Q_branch ))
+                    pre_Q_branch = np.concatenate((pre_M, pre_Q_branch ))
+                    rho_Q_branch = np.concatenate((rho_M, rho_Q_branch ))
+                    eps_Q_branch = np.concatenate((eps_M, eps_Q_branch ))
                     
                     
                 
@@ -1220,8 +1211,8 @@ class setupCSEoS:
                     self.rho_critical_Q=self.eps_critical_Q
                     
                     if not self.nuclear_unit :
-                        self.rho_critical_H = self.rho_critical_H / self.self.light_speed**2
-                        self.rho_critical_Q = self.rho_critical_Q / self.self.light_speed**2
+                        self.rho_critical_H = self.rho_critical_H / nuda.cst.c2_cgs
+                        self.rho_critical_Q = self.rho_critical_Q / nuda.cst.c2_cgs
                         
                     if (self.den_critical_Q -self.den_critical_H) <=0.:
                         return self
@@ -1259,8 +1250,8 @@ class setupCSEoS:
 
                     # Convert energy density to mass density if using cgs units.
                     if not self.nuclear_unit :
-                        rho_quark =rho_quark / self.light_speed**2
-                        rho_M = eps_M / self.light_speed**2
+                        rho_quark =rho_quark / nuda.cst.c2_cgs
+                        rho_M = eps_M / nuda.cst.c2_cgs
 
                     den_Q_branch  = np.concatenate((den_M, den_quark))
                     pre_Q_branch= np.concatenate((pre_M, pre_quark))
@@ -1380,6 +1371,62 @@ class setupCSEoS:
         if phase1_type == "YM" and phase2_type == "QM":
             self.EoS_YM()
             return self.EoS_Hybrid()
+            
+    def print_outputs( self ):
+        """
+        Method which print outputs on terminal's screen.
+        """
+        #
+        if nuda.env.verb: print("Enter print_outputs()")
+        self.Final_EoS()
+        #
+        print("- Print output:")
+        print("eos_layers:",self.eos_layers)
+        print("   Inner core models:\n  ")
+        print([self.inner_core_phases[phase]['model'] for phase in self.inner_core_phases  if phase is not None])
+        
+        #if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
+        if self.den_tot is not None: print(f"   den: {np.round(self.den_tot,3)} in {self.den_unit}")
+        if self.eps_tot is not None: print(f"   eps: {np.round(self.eps_tot,3)}in {self.eps_unit}")
+        if self.pre_tot is not None: print(f"   pre: {np.round(self.pre_tot,3)}in {self.pre_unit}")
+        #if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)}")
+        #
+        if nuda.env.verb: print("Exit print_outputs()")
+        
+    def init_self( self ):
+        self.models = {} 
+        self.files = {}         
+        self.boundaries_from_data = {} ## For the intial regions
+        self.boundaries = {} ## after  the final matching of regions       
+        self.data = {} ## For the fixed regions
+        self.inner_core_phases = {}
+        
+        self.den_tot = None
+        self.eps_tot = None
+        self.pre_tot = None
+        self.rho_tot = None
+        self.mub_tot = None        
+        self.den_unit = 'g/cm^{3}$'
+        self.eps_unit = 'erg/cm^{3}$'
+        self.pre_unit = 'dyn/cm^{3}$'
+        self.mub_unit = 'erg'
+        self.den_sat = nuda.cst.nsat_cgs
+        if  self.nuclear_unit :
+            self.den_sat = nuda.cst.nsat
+            self.den_unit = 'fm$^{-3}$'
+            self.eps_unit = 'MeV fm$^{-3}$'
+            self.pre_unit = 'MeV fm$^{-3}$'
+            self.mub_unit = 'MeV'
+            
+        self.regions = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
+        self.hadronic_regions = ["outer_core","inner_crust","outer_crust","atmosphere",]
+
+        for region in self.regions:
+            setattr(self, f"den_{region}", None)
+            setattr(self, f"pre_{region}", None)
+            setattr(self, f"eps_{region}", None)
+            setattr(self, f"rho_{region}", None)
+        
 
                     
                 

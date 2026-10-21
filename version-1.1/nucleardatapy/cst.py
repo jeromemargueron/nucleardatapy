@@ -29,6 +29,10 @@ Msol_si  = 1.99e30     # solar mass in Kg
 Rsol_cgs = 6.96e10     # solar radius in cm
 Rsol_si  = 6.96e8      # solar radius in m
 rshsol_si = 2 * G_si * Msol_si / c2 # Schw. radius of the sun in m
+
+
+
+
 #
 # integers
 #
@@ -50,6 +54,14 @@ MeV2kg = (10**6*e)/c2
 MeVfm32gcm3=10**48*e/c**2
 MeVfm32dyncm2=c2*MeV2kg/10**-46
 cm3_to_fm3 = 1e39
+
+
+
+c_cgs = c * 1e2
+c2_cgs= c_cgs * c_cgs
+cgsP2MeVfm3 = 1./MeVfm32dyncm2
+g_cm3toMeVfm3 = 1./MeVfm32gcm3 #5.6096e-13
+nsat_cgs = nsat * cm3_to_fm3
 #
 
 

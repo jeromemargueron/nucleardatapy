@@ -1,19 +1,11 @@
 import numpy as np
 from pathlib import Path
-import numpy as np
 from scipy.interpolate import interp1d
-from scipy.optimize import minimize_scalar
-from scipy.optimize import brentq
-from scipy.optimize import bisect
-from scipy.interpolate import interp1d
-import numpy as np
-from scipy.interpolate import CubicSpline
-from scipy.optimize import root
+from scipy.optimize import brentq, root
+from scipy.interpolate import CubicSpline, PchipInterpolator
 from scipy.optimize import least_squares
-import numpy as np
-from scipy.interpolate import PchipInterpolator
 from scipy.integrate import cumulative_trapezoid
-import constants as cst
+import nucleardatapy as nuda
 """
 class Maxwell_construction:
     def __init__(self,regions=None):
@@ -434,11 +426,11 @@ class MixedInterpolatePhase:
         
         muH, muQ, alpha1, alpha2 = solution.x
         
-        solution = root(equations,[muH, muQ, alpha1, alpha2]) ## Sometimes, the least square does not work effectively
+        #solution = root(equations,[muH, muQ, alpha1, alpha2]) ## Sometimes, the least square does not work effectively
         
-        if not solution.success:
-            self.check_MIM=False
-            return None
+        #if not solution.success:
+            #self.check_MIM=False
+            #return None
 
         
 
@@ -592,7 +584,7 @@ class QM_linear:
     def __init__(self, parameters, den_max=None):
         self.den_H_pt, self.eps_H_pt, self.Pre_pt, self.deltan, self.alpha, self.mu_pt = parameters
         #self.den_sat = cst.nsat
-        self.den_max = 20. * cst.nsat if den_max is None else den_max
+        self.den_max = 20. * nuda.cst.nsat if den_max is None else den_max
         self.check_Qmlinear = False
 
     def liner_EoS(self):

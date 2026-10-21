@@ -12,6 +12,9 @@ def main():
     # ==============
     #
     eos=nuda.eos.setupCSEoS()
+    eos.print_outputs()
+    #print(eos.data_dict)
+    
     #
     # ==============
     # show dictionnary file
@@ -19,7 +22,8 @@ def main():
     #
     print('eos:')
     #
-    eos.Final_EoS()
+    
+    
     #
     print(50*'-')
     print("Exit eos_create_boundaries_script.py:")
