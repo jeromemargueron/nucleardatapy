@@ -10,9 +10,12 @@ nucleardatapy_tk = os.path.dirname(os.path.abspath(__file__))
 #
 path_data = os.path.join(nucleardatapy_tk, "data/")
 #
+# where data for eos are stored
+#
+path_eos = os.path.join(path_data, "eos/")
 # where AME/ is stored
 #
-path_ame = os.path.join(path_data, "AME/")
+path_ame = os.path.join(path_data, "nuclei/masses/AME/")
 #
 col = [
     "blue",

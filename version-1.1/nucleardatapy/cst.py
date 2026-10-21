@@ -49,7 +49,7 @@ MeV2J = e*10**6
 MeV2kg = (10**6*e)/c2
 MeVfm32gcm3=10**48*e/c**2
 MeVfm32dyncm2=c2*MeV2kg/10**-46
-
+cm3_to_fm3 = 1e39
 #
 
 
