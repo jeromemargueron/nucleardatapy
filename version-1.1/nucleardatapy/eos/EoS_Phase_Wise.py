@@ -86,9 +86,9 @@ class setupCSEoS:
     # Initialization
     # =========================================================
 
-    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None):
+    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None,speedup=True):
 
-        
+        self.speedup = speedup
         self.base_dir = Path(nuda.param.path_eos)
         self.nuclear_unit = nuclear_unit
 
@@ -260,33 +260,6 @@ class setupCSEoS:
         return self
 
     
-    def find_files(self):
-        """
-        Find files for ordinary hadronic layers.
-
-        Inner-core file paths are stored separately in
-        self.inner_core_phases.
-        """
-
-        self.identify_models()
-
-        
-        for region, model_info in self.models.items():
-
-            filepath = self.base_dir / region / model_info["filename"]
-
-            if not filepath.is_file():
-                raise FileNotFoundError(f"File not found: {filepath}")
-
-            self.files[region] = filepath
-
-        if not self.files and not self.inner_core_phases:
-            raise RuntimeError("No EoS models were identified.")
-
-        return self
-    
-    
-    
     def identify_inner_core_phases(self):
         """
         Identify each inner-core phase.
@@ -396,8 +369,10 @@ class setupCSEoS:
 
         Convert to nuclear units if nuclear_unit=True.
         """
-
-        raw = np.loadtxt(filepath,usecols=(0, 1, 2),ndmin=2,)
+        if self.speedup:
+            raw = np.loadtxt(filepath,usecols=(0, 1, 2),ndmin=2,)
+        else:
+            raw = np.loadtxt(filepath)
 
         rho = raw[:, 0]
         pre = raw[:, 1]

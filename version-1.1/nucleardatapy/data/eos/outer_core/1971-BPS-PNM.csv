@@ -1,6 +1,7 @@
 # Pandharipande EoS for pure-neutron matter
 # extracted from BPS paper
-# rho(g cm^-3) P(dynes cm^-2) nb(cm^-3) Gamma
+rho_cgs pre_cgs den_cgs Gamma
+# (g cm^-3) (dynes cm^-2) (cm^-3)
 #
 2.520E14 1.900E33 1.484E38 1.81
 2.761E14 2.242E33 1.625E38 1.82

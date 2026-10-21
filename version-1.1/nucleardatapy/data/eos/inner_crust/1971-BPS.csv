@@ -1,6 +1,7 @@
 #BPS EoS for the crust (inner and outer)
 # ref: G. Baym, C. Pethick, P. Sutherland, ApJ 170, 299 (1971)
-# rho (g cm^-3)	P (dynes cm^-2)	nb (cm^-3) Z A Gamma
+rho_cgs	pre_cgs den_cgs Z A Gamma
+# (g cm^-3)	(dynes cm^-2) (cm^-3)
 4.460E11 7.890E29 2.670E35 40  126  0.40
 5.228E11 8.352E29 3.126E35 40  128  0.36
 6.610E11 9.098E29 3.951E35 40  130  0.40
