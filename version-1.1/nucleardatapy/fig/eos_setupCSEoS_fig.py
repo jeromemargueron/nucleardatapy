@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import nucleardatapy as nuda
 
-def eos_setupCSEoS_fig( pname ):
+def eos_setupCSEoS_pvse_fig( pname ):
     """
     Plot the EoS with crust and core parts.
 
@@ -23,8 +23,8 @@ def eos_setupCSEoS_fig( pname ):
     #
     axs.set_xlabel(r'$\epsilon_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
     axs.set_ylabel(r'$p_\text{tot}$ (MeV fm$^{-3}$)',fontsize='14')
-    axs.set_xlim([1.e-2, 2.e3])
-    axs.set_ylim([1.e-5, 2.e3])
+    #axs.set_xlim([1.e-2, 2.e3])
+    #axs.set_ylim([1.e-5, 2.e3])
     #axs.set_tick_params('y', right=True)
     #axs.set_tick_params('x', top=True)
     axs.set_xscale('log')
@@ -33,9 +33,10 @@ def eos_setupCSEoS_fig( pname ):
     # check the core EOS against the band in NM
     #
     eos = nuda.eos.setupCSEoS( )
+    eos.Final_EoS(nuclear_unit=True)
     #
-    if eos.pre is not None:
-        axs.plot( eos.eps, eos.pre )
+    if eos.pre_tot is not None:
+        axs.plot( eos.eps_tot, eos.pre_tot )
     #
     fig.legend(loc='upper left',bbox_to_anchor=(0.2,0.9),fontsize='10')
     #fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)

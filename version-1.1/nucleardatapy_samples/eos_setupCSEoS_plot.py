@@ -1,5 +1,6 @@
 
 import nucleardatapy as nuda
+print(nuda.fig)
 
 def main():
     #
@@ -18,7 +19,7 @@ def main():
     # ==============
     #
     pname = folder+'/plot_eos_setupCSEoS.png'
-    nuda.fig.setupCSEoS_fig(pname)
+    nuda.fig.eos_setupCSEoS_pvse_fig(pname)
     #
     print(50*'-')
     print("Exit eos_setupCSEoS_plot.py")
