@@ -56,6 +56,7 @@ from nucleardatapy.fig.eos_setupAM_asy_tot_fig      import *
 from nucleardatapy.fig.eos_setupAMBeq_fig           import *
 from nucleardatapy.fig.eos_setupAMLeq_fig           import *
 from nucleardatapy.fig.eos_setupCC_fig              import *
+from nucleardatapy.fig.eos_setupCSEoS_fig           import *
 #
 from nucleardatapy.fig.crust_setupCrust_fig         import *
 #
