@@ -14,14 +14,17 @@ def denCC_emp(nsat, Esym, Lsym, Ksym, Qsym, emp):
     if emp == "Simple":
         den_cc = 0.5 * nsat
     elif emp == "Ducoin":
+        # Ref: C. Ducoin, J. Margueron, C. Providência, I. Vidaña, Phys.Rev. C.83(4), 045810 (2011)
         den_cc = 0.0802 + 0.000323 * (Lsym + 0.426 * Ksym + (Ksym + 0.426 * Qsym) * x01)
         pre_cc = -0.328 + 0.00959 * (Lsym - 0.343 * Ksym + (Ksym - 0.343 * Qsym) * x01)
     elif emp == "Newton":
+        # Ref: W.G. Newton, M. Gearheart, B.A. Li, Astrophys. J. Suppl.204(1), 9 (2013)
         den_cc = (varEsym) * (0.135 - 0.098 * varLsym + 0.026 * varLsym**2)
         pre_cc = -0.724 + 0.0157 * (
             Lsym - 0.343 * Ksym**2 + (1 - 2 * 0.343 * Qsym) * x01 * Ksym
         )
     elif emp == "Steiner":
+        # Ref: A.W. Steiner, S. Gandolfi, F.J. Fattoyev, W.G. Newton, Phys. Rev. C.91, 015804 (2015)
         den_cc = (varEsym) * (0.1327 - 0.0898 * varLsym + 0.0228 * varLsym**2)
     else:
         print("setupCC, denCC_emp: `emp` is badly defined ", emp)
