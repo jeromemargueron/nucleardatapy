@@ -4,6 +4,7 @@ from scipy.interpolate import CubicSpline, PchipInterpolator
 from copy import deepcopy
 import os
 import nucleardatapy as nuda
+import pandas as pd
 
 
 #with open(nuda.param.path_eos+"/dict_boundaries.txt", "r") as f:
@@ -86,11 +87,12 @@ class setupCSEoS:
     # Initialization
     # =========================================================
 
-    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None,speedup=True):
+    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None,full_outputs=False):
 
-        self.speedup = speedup
+        #self.speedup = speedup
         self.base_dir = Path(nuda.param.path_eos)
         self.nuclear_unit = nuclear_unit
+        self.full_outputs = full_outputs
 
         # Default EoS configuration
         self.default_eos = {
@@ -239,8 +241,10 @@ class setupCSEoS:
                 filepath.name
                 for filepath in region_path.iterdir()
                 if filepath.is_file()
-                and filepath.stem.startswith(model_name)
-            )
+                and filepath.stem.startswith(model_name) 
+                and filepath.suffix == ".csv"
+                )
+            
 
             if not matching_files:
                 raise FileNotFoundError(
@@ -352,14 +356,9 @@ class setupCSEoS:
         if not self.files and not self.inner_core_phases:
             raise RuntimeError("No EoS models were identified.")
 
-        return self
-        
+        return self 
     
-        
-    
-    
-    
-    def _load_eos_file(self, filepath):
+    def _load_eos_file(self, filepath,region=None,model_name=None):
         """
         Load an EoS file with columns:
 
@@ -368,60 +367,115 @@ class setupCSEoS:
             den : baryon number density [cm^-3]
 
         Convert to nuclear units if nuclear_unit=True.
+        
         """
-        if self.speedup:
-            raw = np.loadtxt(filepath,usecols=(0, 1, 2),ndmin=2,)
-        else:
-            raw = np.loadtxt(filepath)
+        df=pd.read_csv(filepath,sep=r'\s+',comment='#')
+        
+        pre_col = next(c for c in ("pre_cgs", "pre_nuc", "pre_SI") if c in df.columns)
+        den_col = next(c for c in ("den_cgs", "den_nuc", "den_SI") if c in df.columns)
+        rho_col = next(c for c in ("rho_cgs", "rho_nuc", "rho_SI") if c in df.columns)
+        
+        
+        if None in (pre_col, den_col, rho_col):
+            raise ValueError( f"Could not identify the required EoS columns in {filepath}, Available columns: {df.columns.tolist()}"  )
+        
+        pre = df[pre_col].to_numpy() 
+        den = df[den_col].to_numpy() 
+        rho = df[rho_col].to_numpy()
+        
+        
+        
 
-        rho = raw[:, 0]
-        pre = raw[:, 1]
-        den = raw[:, 2]
-
-        # Remove non-finite rows.
-        valid = (np.isfinite(rho)& np.isfinite(pre)& np.isfinite(den))
-
-        rho = rho[valid]
-        pre = pre[valid]
-        den = den[valid]
-
-        # Require physically meaningful values.
-        valid = ((rho > 0)& (pre >= 0)& (den > 0))
-
-        rho = rho[valid]
-        pre = pre[valid]
-        den = den[valid]
-
-        if den.size == 0:
-            raise ValueError(f"No valid EoS rows found in {filepath}.")
-
-        # Sort all arrays consistently by baryon density.
-        order = np.argsort(den)
-
-        rho = rho[order]
-        pre = pre[order]
-        den = den[order]
-
-        # Energy density in CGS units.
-        eps = rho * nuda.cst.c2_cgs
-
+   
+        if not self.nuclear_unit :
+            pre = pre * {"cgs": 1.0,"nuc": 1/nuda.cst.cgsP2MeVfm3,"SI": 10.0}[pre_col.split("_")[-1]]
+            den = den* {"cgs": 1, "nuc": nuda.cst.cm3_to_fm3, "SI": 1e-6}[den_col.split("_")[-1]]
+            rho = rho * {"cgs": 1, "nuc": 1/nuda.cst.g_cm3toMeVfm3, "SI": 1e-3}[rho_col.split("_")[-1]]
+            eps = rho * nuda.cst.c_cgs**2
         if self.nuclear_unit:
+            pre = df[pre_col].to_numpy() * {"cgs": nuda.cst.cgsP2MeVfm3,"nuc": 1,"SI": 10.0}[pre_col.split("_")[-1]]
+            den = df[den_col].to_numpy() * {"cgs": 1/nuda.cst.cm3_to_fm3, "nuc":1, "SI": 1e-6}[den_col.split("_")[-1]]
+            rho = df[rho_col].to_numpy() * {"cgs": nuda.cst.g_cm3toMeVfm3, "nuc":1, "SI": 1e-3}[rho_col.split("_")[-1]]
+            eps= rho
+        
+        if not self.full_outputs: 
+            #{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            
+            self.data[region] ={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            
+            return {"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            
+        else:
+            
+            df.drop(columns=[pre_col, den_col, rho_col], inplace=True,errors="ignore")
+            df["den"] = den.copy()
+            df["pre"] = pre.copy()
+            df["rho"] = rho.copy()
+            df["eps"] = eps.copy()
+                
+            self.data[region] = df
+            eos_data={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            
+            for key in ("den", "pre", "eps", "rho"):
+                setattr(self,f"initial_{key}_{region}",eos_data[key].copy())
+            self.boundaries_from_data[region] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
 
-            den = den / nuda.cst.cm3_to_fm3
-            pre = pre * nuda.cst.cgsP2MeVfm3
+                
+            return  df#{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}
+            #return self
+            
+            
+            
+            
+    def load_data(self):
+        """
+        Load all selected hadronic layers and inner-core phases.
 
-            eps = rho * nuda.cst.g_cm3toMeVfm3
-            rho = rho * nuda.cst.g_cm3toMeVfm3
+        full_outputs=False:
+            self.data[region] contains a dictionary of EoS arrays.
 
-        # Baryon chemical potential.
-        mub = (eps + pre) / den
+        full_outputs=True:
+            self.data[region] contains a DataFrame with the original
+            columns and standardized EoS columns.
+        """
 
-        return {"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy(),"mub": mub.copy(),}
+        self.find_files()
 
-    # =========================================================
-    # Evaluate a function-based EoS
-    # =========================================================
+        # --------------------------------------------------
+        # 1. Load ordinary EoS regions
+        # --------------------------------------------------
+        for region, filepath in self.files.items():
 
+            model_name = self.models[region].get("model")
+
+            self._load_eos_file( filepath=filepath,region=region, model_name=model_name)
+
+        # --------------------------------------------------
+        # 2. Load inner-core phases
+        # --------------------------------------------------
+        for phase_name, phase_info in self.inner_core_phases.items():
+
+            if phase_info["source"] == "file":
+
+                region = f"inner_core_phase{phase_info['phase_number']}"
+
+                model_name = phase_info.get("model")
+
+                phase_data = self._load_eos_file( filepath=phase_info["filepath"], region=region,model_name=model_name)
+                phase_info["data"] = phase_data
+
+            elif phase_info["source"] == "function":
+                # Function-based phases are handled separately.
+                continue
+
+            else:
+                raise ValueError(f"Unknown model for phase '{phase_name}'.")
+
+        return self         
+    
+    
+    
+    
     def _evaluate_eos_function(self, phase_name, phase_info):
         """
         Evaluate a  function-based EoS.        
@@ -460,61 +514,7 @@ class setupCSEoS:
     # Load ordinary layers and inner-core phases
     # =========================================================
 
-    def load_data(self):
-        """
-        Load all selected hadronic layers and inner-core phases.
-
-        layers till outer core:
-            self.data[region]
-
-        Inner-core phase data:
-            self.inner_core_phases[phase_name]["data"]
-        """
-
-        self.find_files()
-
-        # -----------------------------------------------------
-        # Load ordinary hadronic layers
-        # -----------------------------------------------------
-
-        
-
-        for region, filepath in self.files.items():
-
-            eos_data = self._load_eos_file(filepath)
-
-            self.data[region] = eos_data
-
-            # Preserve region-specific initial arrays.
-            for key in ("den", "pre", "eps", "rho", "mub"):
-                setattr(self,f"initial_{key}_{region}",eos_data[key].copy())
-            self.boundaries_from_data[region] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
-
-        # -----------------------------------------------------
-        # Load inner-core phases
-        # -----------------------------------------------------
-
-        for phase_name, phase_info in self.inner_core_phases.items():
-
-            if phase_info["source"] == "file":
-
-                phase_data = self._load_eos_file(phase_info["filepath"])
-                region = f"inner_core_phase{phase_info['phase_number']}"
-
-                self.boundaries_from_data[region] = {key: [np.min(phase_data[key]), np.max(phase_data[key])]for key in ("den", "pre", "rho", "eps") }
-
-            elif phase_info["source"] == "function":
-                ## Not useful now
-                #phase_data = self._evaluate_eos_function( phase_name,phase_info)
-                continue
-
-
-            else:
-                raise ValueError(f"Unknown source '{phase_info['source']}' for phase '{phase_name}'.")
-            phase_info["data"] = phase_data
-
-        return self
-            
+    
         
     def _match_eos_regions(self, regions):
         """
@@ -528,9 +528,10 @@ class setupCSEoS:
         previous_eps = None
 
         # Reset regional attributes for regions being reconstructed.
-        for region, _ in regions:
-            for quantity in ("den", "pre", "rho", "eps", "mub"):
-                setattr(self, f"{quantity}_{region}", None)
+        if self.full_outputs :
+            for region, _ in regions:
+                for quantity in ("den", "pre", "rho", "eps"):
+                    setattr(self, f"{quantity}_{region}", None)
 
         for region, values in regions:
 
@@ -538,38 +539,38 @@ class setupCSEoS:
             pre = np.asarray(values["pre"])
             rho = np.asarray(values["rho"])
             eps = np.asarray(values["eps"])
-            mub = np.asarray(values["mub"])
+            #mub = np.asarray(values["mub"])
 
             if len(den) == 0:
                 continue
 
             # Sort in decreasing density order.
             order = np.argsort(den)[::-1]
-            den, pre, rho, eps, mub = (arr[order] for arr in (den, pre, rho, eps, mub))
+            den, pre, rho, eps = (arr[order] for arr in (den, pre, rho, eps))
 
             # Apply matching conditions.
             if previous_den is not None:
                 mask = ((den < previous_den) & (pre < previous_pre) & (eps < previous_eps))
 
-                den, pre, rho, eps, mub = ( arr[mask] for arr in (den, pre, rho, eps, mub))
+                den, pre, rho, eps= ( arr[mask] for arr in (den, pre, rho, eps))
 
             if len(den) == 0:
                 continue
 
             # Update the retained regional data.
-            for quantity, array in (("den", den),("pre", pre),("rho", rho),("eps", eps),("mub", mub)):
-                setattr(self, f"{quantity}_{region}", array.copy())
+            if self.full_outputs:
+                for quantity, array in (("den", den),("pre", pre),("rho", rho),("eps", eps)):
+                    setattr(self, f"{quantity}_{region}", array.copy())
 
-            # Update the boundaries after matching.
-            boundary = {
-                "den": np.array([den.min(), den.max()]),
-                "pre": np.array([pre.min(), pre.max()]),
-                "rho": np.array([rho.min(), rho.max()]),
-                "eps": np.array([eps.min(), eps.max()]),
-                "mub": np.array([mub.min(), mub.max()]),
-            }
+                # Update the boundaries after matching.
+                boundary = {
+                    "den": np.array([den.min(), den.max()]),
+                    "pre": np.array([pre.min(), pre.max()]),
+                    "rho": np.array([rho.min(), rho.max()]),
+                    "eps": np.array([eps.min(), eps.max()]),
+                }
 
-            self.boundaries[region] = boundary
+                self.boundaries[region] = boundary
             
             # Collect the retained data.
             den_all.append(den)
@@ -596,6 +597,19 @@ class setupCSEoS:
         return den, pre, rho, eps, mub
         
         
+    def _get_region_data(self, region):
+        """Return the currently valid data for a region."""
+
+        data = self.data[region]
+
+        if not self.full_outputs:
+            return data
+
+        den_min, den_max = self.boundaries[region]["den"]
+
+        return data.loc[data["den"].between(den_min, den_max)].copy()
+                
+        
     def _set_active_regions(self, include_ym=False):
         """Set the valid regions from the constructed EoS. Currently works for nuclear and YM
         
@@ -621,22 +635,21 @@ class setupCSEoS:
         """Construct the hadronic EoS through the outer core and crust."""
 
         self.load_data()
-
-        regions = [(region, self.data[region]) for region in self.hadronic_regions if region in self.data ]
-        
-        
-        
-
+        regions = [(region, self.data[region]) for region in self.hadronic_regions if region in self.data ]  
         self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot, self.mub_tot = self._match_eos_regions(regions)
-
         #self.den_tot = self.den_had.copy()
         #self.pre_tot = self.pre_had.copy()
         #self.rho_tot = self.rho_had.copy()
         #self.eps_tot = self.eps_had.copy()
         #self.mub_tot = self.mub_had.copy()
-        self._set_active_regions(include_ym=False)
+        if self.full_outputs:
+            self._set_active_regions(include_ym=False)
+            for region in self.active_regions:
+                self.data_after_eos_construction[region] = self._get_region_data(region)
 
-        return self#(self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot,)
+        return self
+        
+        #(self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot,)
         
     def EoS_YM(self):
         """Construct an EoS containing one or two YM phases."""
@@ -645,8 +658,7 @@ class setupCSEoS:
         
         
 
-        phases = sorted(
-            self.inner_core_phases.items(),
+        phases = sorted( self.inner_core_phases.items(),
             key=lambda item: item[1]["phase_number"],
         )
 
@@ -683,8 +695,10 @@ class setupCSEoS:
         #self._set_active_regions(include_ym=True)
 
         (self.den_tot,self.pre_tot,self.rho_tot,self.eps_tot,self.mub_tot,) = self._match_eos_regions(regions)
-        self._set_active_regions(include_ym=True)
+        if self.full_outputs:
+            self._set_active_regions(include_ym=True)
 
+            self.data_after_eos_construction = {region: self._get_region_data(region)  for region in self.active_regions}
 
         return self#(self.den_tot,self.pre_tot,self.rho_tot, self.eps_tot,        )
         
@@ -697,20 +711,17 @@ class setupCSEoS:
 
         pb = pb[valid]
         nb = nb[valid]
-        rho = rho[valid]
         eps = eps[valid]
 
         order = np.argsort(pb)
 
         pb = pb[order]
         nb = nb[order]
-        rho = rho[order]
         eps = eps[order]
 
         pb_unique, indices = np.unique(pb, return_index=True)
 
         nb = nb[indices]
-        rho = rho[indices]
         eps = eps[indices]
         pb = pb_unique
 
@@ -724,9 +735,10 @@ class setupCSEoS:
 
         nb_at_P = np.exp(CubicSpline(log_P, np.log(nb))(log_Pc)) # CubicSpline flacuates
 
-        rho_at_P = np.exp(CubicSpline(log_P, np.log(rho))(log_Pc))
-
         eps_at_P = np.exp(CubicSpline(log_P, np.log(eps))(log_Pc))
+        rho_at_P = eps_at_P
+        if not self.nuclear_unit:
+            rho_at_P = rho_at_P/nuda.cst.c2_cgs        
 
         return nb_at_P, rho_at_P, eps_at_P 
 
@@ -785,16 +797,16 @@ class setupCSEoS:
 
         raise ValueError(f"Could not identify the region containing transition density n = {transition_density}.")
         
+        
+        
+        
     def update_regions(self, Pc, nH, rhoH, epsH):
-        """
-        Update the background regions after a phase transition.
-
-        The background branch is retained below Pc, and the
-        background-side critical point is inserted into its region.
-        """
+        """Update background regions after a phase transition."""
 
         transition_region = self._find_transition_region(nH)
         self.transition_region = transition_region
+
+        active_regions = []
 
         for region in self.active_regions:
 
@@ -806,37 +818,55 @@ class setupCSEoS:
             if den is None or len(den) == 0:
                 continue
 
-            # Keep the background branch below the transition pressure.
-            mask = pre < Pc
+            # Retain the background branch below the transition pressure.
+            mask = pre <= Pc
 
             den = den[mask].copy()
             pre = pre[mask].copy()
             rho = rho[mask].copy()
             eps = eps[mask].copy()
 
-            # Insert the background-side critical point into its region.
+            # Insert the hadronic-side critical point.
             if region == transition_region:
                 den = np.append(den, nH)
                 pre = np.append(pre, Pc)
                 rho = np.append(rho, rhoH)
                 eps = np.append(eps, epsH)
 
-            # Keep each regional array ordered by increasing density.
+            # Remove regions that have no valid points remaining.
+            if len(den) == 0:
+                for quantity in ("den", "pre", "rho", "eps"):
+                    setattr(self, f"{quantity}_{region}", None)
+
+                self.boundaries[region] = {
+                    quantity: np.array([])
+                    for quantity in ("den", "pre", "rho", "eps", "mub")
+                }
+                continue
+
+            # Sort by increasing density.
             order = np.argsort(den)
+            den, pre, rho, eps = (
+                arr[order] for arr in (den, pre, rho, eps)
+            )
 
-            den = den[order]
-            pre = pre[order]
-            rho = rho[order]
-            eps = eps[order]
-
-            setattr(self, f"den_{region}", den)
-            setattr(self, f"pre_{region}", pre)
-            setattr(self, f"rho_{region}", rho)
-            setattr(self, f"eps_{region}", eps)
+            for quantity, array in (
+                ("den", den),
+                ("pre", pre),
+                ("rho", rho),
+                ("eps", eps),
+            ):
+                setattr(self, f"{quantity}_{region}", array)
 
             self._update_region_boundaries(region)
+            active_regions.append(region)
 
-        return transition_region
+        # Keep only regions with valid data.
+        self.active_regions = active_regions
+
+        return transition_region      
+            
+    
                 
         
     def EoS_Hybrid(self, Method=None):
@@ -866,7 +896,10 @@ class setupCSEoS:
         rho_bg = np.asarray(self.rho_tot).copy()
         eps_bg = np.asarray(self.eps_tot).copy()
 
-        mub_bg = (eps_bg + pre_bg) / den_bg
+        mub_bg = np.asarray(self.mub_tot).copy()
+        
+        print(self.den_sat,"den_sat")
+        
         
         
         valid_bg = den_bg >= self.den_sat
@@ -876,6 +909,11 @@ class setupCSEoS:
         rho_H = rho_bg[valid_bg]
         eps_H = eps_bg[valid_bg]
         mub_H = mub_bg[valid_bg]
+        
+        #print('pre_H',pre_H)
+        #print('eps_H',eps_H)
+        #print('den_H',den_H)
+        #print('mub_H',pre_H)
         
         
         phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"])
@@ -973,25 +1011,15 @@ class setupCSEoS:
                 raise RuntimeError( f"Data for QM phase '{phase_key}' have not been loaded.")
 
             values = qm_phase["data"]
-
             den_Q = np.asarray(values["den"])
             pre_Q = np.asarray(values["pre"])
             rho_Q = np.asarray(values["rho"])
-            eps_Q = np.asarray(values["eps"])
-            
-            
-            
-            
-            
-
-    
-
-        
-            mub_Q = (eps_Q + pre_Q) / den_Q
-
-        
+            eps_Q = np.asarray(values["eps"]) 
+            mub_Q = (eps_Q + pre_Q) / den_Q        
             method = Method or self.PT_Method["method"]
             parameters = self.PT_Method.get("parameters", {})
+            
+            #print("pre_Q",pre_Q)
 
             
             # Validate the phase-transition method
@@ -1255,20 +1283,58 @@ class setupCSEoS:
         
         
         
-        self.update_regions(self.Pre_critical_H, self.den_critical_H , self.rho_critical_H ,self.eps_critical_H )
         
-        qm_region = f"inner_core_phase{qm_phase['phase_number']}"
+                   
+        mask_H = ((pre_bg < self.Pre_critical_H) & (den_bg < self.den_critical_H) & (eps_bg < self.eps_critical_H) )
+
+        den_H = den_bg[mask_H]
+        pre_H = pre_bg[mask_H]
+        rho_H = rho_bg[mask_H]
+        eps_H = eps_bg[mask_H]
+        
+        den_H = np.append(den_H, self.den_critical_H)
+        pre_H = np.append(pre_H, self.Pre_critical_H)
+        rho_H = np.append(rho_H, self.rho_critical_H)
+        eps_H = np.append(eps_H, self.eps_critical_H)
+        
+        self.den_tot = np.concatenate((den_H, den_Q_branch))
+        self.pre_tot = np.concatenate((pre_H, pre_Q_branch))
+        self.rho_tot = np.concatenate((rho_H, rho_Q_branch))
+        self.eps_tot = np.concatenate((eps_H, eps_Q_branch))
+        self.mub_tot = (self.pre_tot + self.eps_tot) / self.den_tot
+        
+        if not self.full_outputs :
+            return self 
+        if self.full_outputs :
+            self.update_regions(self.Pre_critical_H, self.den_critical_H , self.rho_critical_H ,self.eps_critical_H )     
+            
+
+            qm_region = f"inner_core_phase{qm_phase['phase_number']}"
+
+            for quantity, array in (("den", den_Q_branch[den_Q_branch>=self.den_critical_Q]), ("pre", pre_Q_branch[den_Q_branch>=self.den_critical_Q]), 
+            ("rho", rho_Q_branch[den_Q_branch>=self.den_critical_Q]), ("eps", eps_Q_branch[den_Q_branch>=self.den_critical_Q])):
+                setattr(self, f"{quantity}_{qm_region}", np.asarray(array).copy())
+
+            # Update the quark region's boundaries.
+            self._update_region_boundaries(qm_region)
+            regions = [region
+                for region in reversed(self.active_regions)
+                if region != qm_region
+                and getattr(self, f"den_{region}", None) is not None
+                and len(getattr(self, f"den_{region}")) > 0
+            ]
+            regions.append(qm_region)
+            #print(self.active_regions)
+            self.data_after_eos_construction = {
+                region: self._get_region_data(region)
+                for region in regions
+                if region in self.boundaries
+            }
+            return self
+
 
         
-
-        setattr(self, f"den_{qm_region}", den_Q_branch)
-        setattr(self, f"pre_{qm_region}", pre_Q_branch)
-        setattr(self, f"rho_{qm_region}", rho_Q_branch)
-        setattr(self, f"eps_{qm_region}", eps_Q_branch)
-        
-        
-
-        self._update_region_boundaries(qm_region)
+        """
         self.den_tot = np.concatenate([
             np.asarray(getattr(self, f"den_{region}"))
             for region in reversed(self.active_regions)
@@ -1298,6 +1364,7 @@ class setupCSEoS:
         ] + [eps_Q_branch])
 
         self.mub_tot = (self.eps_tot + self.pre_tot) / self.den_tot
+        """
 
         return self# self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot
         
@@ -1375,6 +1442,7 @@ class setupCSEoS:
         self.boundaries = {} ## after  the final matching of regions       
         self.data = {} ## For the fixed regions
         self.inner_core_phases = {}
+        self.data_after_eos_construction={}
         
         self.den_tot = None
         self.eps_tot = None
@@ -1386,6 +1454,7 @@ class setupCSEoS:
         self.pre_unit = 'dyn/cm^{3}$'
         self.mub_unit = 'erg'
         self.den_sat = nuda.cst.nsat_cgs
+        
         if  self.nuclear_unit :
             self.den_sat = nuda.cst.nsat
             self.den_unit = 'fm$^{-3}$'

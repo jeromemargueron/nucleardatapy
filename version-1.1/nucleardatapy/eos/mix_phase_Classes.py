@@ -138,7 +138,7 @@ class Maxwell_construction:
             self.P_c1=np.exp(logP1oflogmu1(np.log(mu0)))
             self.P_c2=np.exp(logP2oflogmu2(np.log(mu0))) 
             self.P_c = self.P_c1
-            print(self.P_c1,self.P_c2)
+            #print(self.P_c1,self.P_c2)
             self.check=True
             return 1
         else:

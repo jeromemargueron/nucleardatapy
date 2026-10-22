@@ -1,6 +1,7 @@
 # Pandharipande EoS C for hyperonic matter
 # extracted from BPS paper
 #rho (g cm^-3)	P (dynes cm^-2)	nb (cm^-3) gamma
+rho_cgs  pre_cgs  den_cgs  gamma
 6.968E14 2.720E34 4.000E38 None
 8.797E14 3.789E34 5.000E38 None
 1.066E15 5.478E34 6.000E38 None

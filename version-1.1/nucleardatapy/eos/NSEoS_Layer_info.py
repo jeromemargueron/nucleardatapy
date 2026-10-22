@@ -12,45 +12,35 @@ def get_boundaries(fname):
     }
 
 def available_models(layer):
-    layers=['atmosphere', 'outer_crust', 'inner_crust', 'outer_core', 'inner_core']
-    if  not layer  in layers:
-        raise KeyError("wrong Layer, availabe layers:", layers)
-    dic = {}
+    layers = ['atmosphere', 'outer_crust', 'inner_crust', 'outer_core', 'inner_core']
 
-    
-    dic[layer] = {}
-    #print(f'In {layer}:')
-    path_layer = nuda.param.path_eos+'/'+layer
+    if layer not in layers:
+        raise KeyError(f"Wrong layer '{layer}'. Available layers: {layers}")
+
+    path_layer = os.path.join(nuda.param.path_eos, layer)
 
     if layer != 'inner_core':
-        #path_layer = nuda.param.path_eos+'/'+layer
-        eoss = [fn for fn in os.listdir(path_layer) if fn.endswith('.dat')]
-        for eos in eoss:
-            fname = os.path.join(path_layer, eos)
-            #print(f'fname: {fname}')
-            dic[layer][Path(eos).stem] = get_boundaries(fname)
+        return {
+            layer: [
+                os.path.splitext(fn)[0]
+                for fn in os.listdir(path_layer)
+                if os.path.isfile(os.path.join(path_layer, fn))
+            ]
+        }
 
-    else:
-        
-        for eos_type in ['YM', 'QM']:
-            path_type = os.path.join(path_layer, eos_type)
-            #print(f"\nChecking type: {eos_type}")
-            #print(f"Directory: {path_type}")
-            #print(f"Does it exist? {os.path.isdir(path_type)}")
+    models = {}
 
-            if not os.path.isdir(path_type):
-                continue
+    for eos_type in ['YM', 'QM']:
+        path_type = os.path.join(path_layer, eos_type)
 
-            dic[layer][eos_type] = {}
-            #print(f'  Type: {eos_type}')
+        if os.path.isdir(path_type):
+            models[eos_type] = [
+                os.path.splitext(fn)[0]
+                for fn in os.listdir(path_type)
+                if os.path.isfile(os.path.join(path_type, fn))
+            ]
 
-            eoss = [fn for fn in os.listdir(path_type) if fn.endswith('.dat')]
-            for eos in eoss:
-                fname = os.path.join(path_type, eos)
-                #print(f'  fname: {fname}')
-                dic[layer][eos_type][eos] = get_boundaries(fname)
-    #print(dic)
-    return dic
+    return {layer: models}
 
 
 """

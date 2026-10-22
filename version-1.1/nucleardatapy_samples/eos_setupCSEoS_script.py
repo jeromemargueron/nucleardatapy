@@ -4,7 +4,7 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter eos_create_boundaries_script.py:")
+    print("Enter eos_setupCSEoS_script.py:")
     print(50*'-')
     #
     # ==============
@@ -26,7 +26,7 @@ def main():
     
     #
     print(50*'-')
-    print("Exit eos_create_boundaries_script.py:")
+    print("Exit eos_setupCSEoS_script.py")
     print(50*'-')
     #
     

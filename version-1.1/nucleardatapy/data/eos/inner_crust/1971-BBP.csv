@@ -1,7 +1,7 @@
 #BBP EoS for inner crust
 # ref: G. Baym, H.A. Bethe, C. J. Pethick, NPA 175, 225 (1971)
-rho_cgs pre_cgs den_cgs A Z Gamma
 # (g/cm^3) (dynes/cm^2) (cm^-3)
+rho_cgs pre_cgs den_cgs A Z Gamma
 4.46e11	7.89e29	2.67e35	126 40 0.40
 5.23e11	8.35e29	3.13e35	128 40 0.36
 6.61e11	9.10e29	3.95e35	130 40 0.40
