@@ -32,8 +32,8 @@ def eos_setupCSEoS_pvse_fig( pname ):
     #
     # check the core EOS against the band in NM
     #
-    eos = nuda.eos.setupCSEoS( )
-    eos.Final_EoS(nuclear_unit=True)
+    eos = nuda.eos.setupCSEoS(nuclear_unit=True)
+    eos.Final_EoS()
     #
     if eos.pre_tot is not None:
         axs.plot( eos.eps_tot, eos.pre_tot )
@@ -42,7 +42,7 @@ def eos_setupCSEoS_pvse_fig( pname ):
     #fig.legend(loc='upper left',bbox_to_anchor=(0.15,1.0),columnspacing=2,fontsize='8',ncol=3,frameon=False)
     #
     if pname is not None: 
-        plt.savefig(pname, dpi=200)
+        fig.savefig(pname, dpi=200)
         plt.close()
     #
 
