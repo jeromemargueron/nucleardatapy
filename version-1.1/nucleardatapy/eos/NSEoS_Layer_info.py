@@ -20,13 +20,13 @@ def available_models(layer):
     path_layer = os.path.join(nuda.param.path_eos, layer)
 
     if layer != 'inner_core':
-        return {
-            layer: [
-                os.path.splitext(fn)[0]
-                for fn in os.listdir(path_layer)
-                if os.path.isfile(os.path.join(path_layer, fn))
-            ]
-        }
+        models = [os.path.splitext(fn)[0] for fn in os.listdir(path_layer) if os.path.isfile(os.path.join(path_layer, fn))]
+
+        if layer == 'outer_core':
+            models += nuda.matter.micro_esym_models()[0]
+            models += [model for m in nuda.matter.pheno_esym_models()[0] for model in nuda.pheno_esym_params(model=m)[0]]
+
+        return {layer: sorted(set(models))}
 
     models = {}
 
@@ -34,14 +34,9 @@ def available_models(layer):
         path_type = os.path.join(path_layer, eos_type)
 
         if os.path.isdir(path_type):
-            models[eos_type] = [
-                os.path.splitext(fn)[0]
-                for fn in os.listdir(path_type)
-                if os.path.isfile(os.path.join(path_type, fn))
-            ]
+            models[eos_type] = [os.path.splitext(fn)[0] for fn in os.listdir(path_type) if os.path.isfile(os.path.join(path_type, fn))]
 
     return {layer: models}
-
 
 """
 

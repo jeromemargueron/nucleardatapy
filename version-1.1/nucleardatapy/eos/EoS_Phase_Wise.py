@@ -12,7 +12,6 @@ import pandas as pd
 
 #print(available_models)
 
-
 class setupCSEoS:
     """
     Construct an EoS from specified hadronic layers and inner-core phases.
@@ -87,11 +86,11 @@ class setupCSEoS:
     # Initialization
     # =========================================================
 
-    def __init__(self,eos_object=None, nuclear_unit=True,PT_Method_core=None,full_outputs=False):
+    def __init__(self,eos_object=None,PT_Method_core=None,full_outputs=False):
 
         #self.speedup = speedup
         self.base_dir = Path(nuda.param.path_eos)
-        self.nuclear_unit = nuclear_unit
+        #self.nuclear_unit = nuclear_unit
         self.full_outputs = full_outputs
 
         # Default EoS configuration
@@ -214,55 +213,9 @@ class setupCSEoS:
     # Identify ordinary hadronic models
     # =========================================================
     
-    def identify_models(self):
-        """
-        Identify selected hadronic models directly from the filesystem.
-        Inner-core phases are identified separately.
-        """
-
-        self.set_eos()
-
-        for region in self.hadronic_regions:
-
-            model_name = self.eos_layers.get(region, "")
-
-            # Skip omitted layers.
-            if not model_name:
-                continue
-
-            region_path = self.base_dir / region
-
-            if not region_path.is_dir():
-                raise FileNotFoundError(
-                    f"Directory not found for region '{region}': {region_path}"
-                )
-
-            matching_files = sorted(
-                filepath.name
-                for filepath in region_path.iterdir()
-                if filepath.is_file()
-                and filepath.stem.startswith(model_name) 
-                and filepath.suffix == ".csv"
-                )
-            
-
-            if not matching_files:
-                raise FileNotFoundError(
-                    f"Model '{model_name}' not found in '{region_path}'."
-                )
-
-            filename = matching_files[0]
-
-            self.models[region] = {
-                "model": model_name,
-                "filename": filename,
-            }
-
-        # Identify inner-core phases.
-        self.identify_inner_core_phases()
-
-        return self
-
+    
+        
+    
     
     def identify_inner_core_phases(self):
         """
@@ -279,8 +232,7 @@ class setupCSEoS:
 
         sorted_phases = sorted(
             phases.items(),
-            key=lambda item: self._phase_number(item[0]),
-        )
+            key=lambda item: self._phase_number(item[0]))
 
         for phase_name, phase_info in sorted_phases:
 
@@ -317,13 +269,7 @@ class setupCSEoS:
                 phase_data["filename"] = matching_files[0].name
                 phase_data["filepath"] = matching_files[0]
                 
-                #try:
-                   # filename = matching_files[0].name                    
-                    
-               # except KeyError:
-                   # pass
                 
-
 
             self.inner_core_phases[phase_name] = phase_data
 
@@ -333,30 +279,7 @@ class setupCSEoS:
     # Find selected files
     # =========================================================
 
-    def find_files(self):
-        """
-        Find files for ordinary hadronic layers.
-
-        Inner-core file paths are stored separately in
-        self.inner_core_phases.
-        """
-
-        self.identify_models()
-
-        
-        for region, model_info in self.models.items():
-
-            filepath = ( self.base_dir/ region/ model_info["filename"]   )
-
-            if not filepath.is_file():
-                raise FileNotFoundError(f"File not found: {filepath}")
-
-            self.files[region] = filepath
-
-        if not self.files and not self.inner_core_phases:
-            raise RuntimeError("No EoS models were identified.")
-
-        return self 
+    
     
     def _load_eos_file(self, filepath,region=None,model_name=None):
         """
@@ -387,11 +310,13 @@ class setupCSEoS:
         
 
    
+        """
         if not self.nuclear_unit :
             pre = pre * {"cgs": 1.0,"nuc": 1/nuda.cst.cgsP2MeVfm3,"SI": 10.0}[pre_col.split("_")[-1]]
             den = den* {"cgs": 1, "nuc": nuda.cst.cm3_to_fm3, "SI": 1e-6}[den_col.split("_")[-1]]
             rho = rho * {"cgs": 1, "nuc": 1/nuda.cst.g_cm3toMeVfm3, "SI": 1e-3}[rho_col.split("_")[-1]]
             eps = rho * nuda.cst.c_cgs**2
+        """
         if self.nuclear_unit:
             pre = df[pre_col].to_numpy() * {"cgs": nuda.cst.cgsP2MeVfm3,"nuc": 1,"SI": 10.0}[pre_col.split("_")[-1]]
             den = df[den_col].to_numpy() * {"cgs": 1/nuda.cst.cm3_to_fm3, "nuc":1, "SI": 1e-6}[den_col.split("_")[-1]]
@@ -407,11 +332,23 @@ class setupCSEoS:
             
         else:
             
-            df.drop(columns=[pre_col, den_col, rho_col], inplace=True,errors="ignore")
+            #df.drop(columns=[pre_col, den_col, rho_col], inplace=True,errors="ignore")
+            
+            self.models[region] = {"model": model_name,"filename": filepath}
             df["den"] = den.copy()
             df["pre"] = pre.copy()
             df["rho"] = rho.copy()
             df["eps"] = eps.copy()
+            
+            df["pre_cgs"]=np.asarray(pre)*1/nuda.cst.cgsP2MeVfm3
+            df["rho_cgs"]=np.asarray(rho.copy())*1/nuda.cst.g_cm3toMeVfm3
+            df["eps_cgs"]=np.asarray(df["rho_cgs"])*nuda.cst.c_cgs**2
+            df["den_cgs"]=np.asarray(den)*nuda.cst.cm3_to_fm3
+            
+            
+            
+            
+                
                 
             self.data[region] = df
             eos_data={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
@@ -423,6 +360,68 @@ class setupCSEoS:
                 
             return  df#{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}
             #return self
+            
+            
+    def _load_from_nuda_beta(self,region,model):
+        model_name= model.strip().upper()
+        print(model_name)
+        micro_models = nuda.matter.micro_esym_models()[0]
+        eos_beta={}
+        if model_name in micro_models:
+            eos_beta=nuda.eos.setupAMBeq(model=model_name)
+            if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
+                raise ValueError(f"Invalid EoS quantities for model '{model}'.")
+            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
+            self.data[region] = pd.DataFrame(df) if self.full_outputs else df
+            return df
+        else:
+            pheno_types = nuda.matter.pheno_esym_models()[0]        
+            for model_type in pheno_types:
+                available_pheno_models = nuda.pheno_esym_params(model=model_type)[0]                
+                if model_name in available_pheno_models:
+                    eos_beta=nuda.eos.setupAMBeq(param=model_name,kind='pheno',model=model_type)
+                    
+                    #print(df)
+                    if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
+                        raise ValueError(f"Invalid EoS quantities for model '{model}'.")
+                    
+                    df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
+                    self.data[region] = pd.DataFrame(df) if self.full_outputs else df
+                    return df
+                else:
+                    raise ValueError( f"Could not find outer_core model '{model}' in nucleardatapy.")
+    
+    def _load_region(self, region, model):
+        """Load an EoS from a local file or nucleardatapy."""
+
+        if not model:
+            return None
+
+        # 1. Search for the model in the region directory.
+        region_dir = self.base_dir / region
+
+        if region_dir.is_dir():
+            matching_files = sorted(filepath.name
+            for filepath in region_dir.iterdir()
+            if filepath.is_file()
+            and filepath.stem.startswith(model)
+            and filepath.suffix == ".csv")
+            
+            
+            if len(matching_files) > 1:
+                raise ValueError(f"Multiple files found for '{model}' in {region_dir}")
+            
+            if matching_files:
+                print(matching_files)
+                filepath = region_dir / matching_files[0]
+                return self._load_eos_file( filepath=filepath, region=region, model_name=model )
+        # 2. If no file exists, use nucleardatapy internally.
+        if region == "outer_core":
+            return self._load_from_nuda_beta(region, model)
+
+        # 3. No source found.
+        raise FileNotFoundError(f"Model '{model}' was not found in '{region_dir}'" )
+
             
             
             
@@ -439,20 +438,30 @@ class setupCSEoS:
             columns and standardized EoS columns.
         """
 
-        self.find_files()
+        self.set_eos()
+        
+        
+        
+
+        for region in self.hadronic_regions:
+            model = self.eos_layers.get(region, "")
+
+            if model:
+                self._load_region(region, model)
 
         # --------------------------------------------------
-        # 1. Load ordinary EoS regions
+        # Load ordinary EoS regions
         # --------------------------------------------------
-        for region, filepath in self.files.items():
+        #for region, filepath in self.files.items():
 
-            model_name = self.models[region].get("model")
+            #model_name = self.models[region].get("model")
 
-            self._load_eos_file( filepath=filepath,region=region, model_name=model_name)
+            #self._load_eos_file( filepath=filepath,region=region, model_name=model_name)
 
         # --------------------------------------------------
-        # 2. Load inner-core phases
+        # Load inner-core phases
         # --------------------------------------------------
+        self.identify_inner_core_phases()
         for phase_name, phase_info in self.inner_core_phases.items():
 
             if phase_info["source"] == "file":
@@ -634,7 +643,7 @@ class setupCSEoS:
     def EoS_Hadronic(self):
         """Construct the hadronic EoS through the outer core and crust."""
 
-        self.load_data()
+        #self.load_data()
         regions = [(region, self.data[region]) for region in self.hadronic_regions if region in self.data ]  
         self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot, self.mub_tot = self._match_eos_regions(regions)
         #self.den_tot = self.den_had.copy()
@@ -654,7 +663,7 @@ class setupCSEoS:
     def EoS_YM(self):
         """Construct an EoS containing one or two YM phases."""
 
-        self.load_data()
+        #self.load_data()
         
         
 
@@ -1335,35 +1344,10 @@ class setupCSEoS:
 
         
         """
-        self.den_tot = np.concatenate([
-            np.asarray(getattr(self, f"den_{region}"))
-            for region in reversed(self.active_regions)
-            if getattr(self, f"den_{region}", None) is not None
-            and len(getattr(self, f"den_{region}")) > 0
-        ] + [den_Q_branch])
-
-        self.pre_tot = np.concatenate([
-            np.asarray(getattr(self, f"pre_{region}"))
-            for region in reversed(self.active_regions)
-            if getattr(self, f"den_{region}", None) is not None
-            and len(getattr(self, f"den_{region}")) > 0
-        ] + [pre_Q_branch])
-
-        self.rho_tot = np.concatenate([
-            np.asarray(getattr(self, f"rho_{region}"))
-            for region in reversed(self.active_regions)
-            if getattr(self, f"den_{region}", None) is not None
-            and len(getattr(self, f"den_{region}")) > 0
-        ] + [rho_Q_branch])
-
-        self.eps_tot = np.concatenate([
-            np.asarray(getattr(self, f"eps_{region}"))
-            for region in reversed(self.active_regions)
-            if getattr(self, f"den_{region}", None) is not None
-            and len(getattr(self, f"den_{region}")) > 0
-        ] + [eps_Q_branch])
+        
 
         self.mub_tot = (self.eps_tot + self.pre_tot) / self.den_tot
+        
         """
 
         return self# self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot
@@ -1373,7 +1357,7 @@ class setupCSEoS:
     def Final_EoS(self):
         """Construct the final EoS based on the configured inner-core phases."""
 
-        self.identify_models()
+        self.load_data()
 
         phases = sorted(self.inner_core_phases.values(),key=lambda phase: phase["phase_number"] )
 
@@ -1454,6 +1438,7 @@ class setupCSEoS:
         self.pre_unit = 'dyn/cm^{3}$'
         self.mub_unit = 'erg'
         self.den_sat = nuda.cst.nsat_cgs
+        self.nuclear_unit =True
         
         if  self.nuclear_unit :
             self.den_sat = nuda.cst.nsat
