@@ -257,7 +257,6 @@ def micro_models_mb_matter(mb, matter):
     return models2, models2_lower
 
 # Define functions for APRfit
-
 def APRfit_compute(n, x):
     p53 = 5.0 / 3.0
     p83 = 8.0 / 3.0

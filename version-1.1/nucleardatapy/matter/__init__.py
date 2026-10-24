@@ -3,6 +3,8 @@ This module provides microscopic, phenomenological and experimental data constra
 """
 #
 from nucleardatapy.matter.setup_ffg             import *
+from nucleardatapy.matter.setup_matter          import *
+#
 from nucleardatapy.matter.setup_micro           import *
 from nucleardatapy.matter.setup_micro_effmass   import *
 from nucleardatapy.matter.setup_micro_gap       import *
