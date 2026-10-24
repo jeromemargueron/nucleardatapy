@@ -46,7 +46,7 @@ class setupCSEoS:
                             
     output :
          Returns the class object, which can  be avail to obtain different informations:
-           object.boundaries gives the bounadry of each region
+           object.boundaries gives the bounadry of each layer
            object.eps_tot : energy density
            object.pre_tot : pressure
            object.den_tot : number density
@@ -69,31 +69,11 @@ class setupCSEoS:
             eps : erg/cm^3
     """
 
-    # =========================================================
-    # Constants
-    # =========================================================
-
-    #light_speed = nuda.cst.c * 1e2
-    #cgsP2MeVfm3 = 1./ nuda.cst.MeVfm32dyncm2
-    #nuda.cst.g_cm3toMeVfm3 = 1./nuda.cst.MeVfm32gcm3 #5.6096e-13
-    #cm3_to_fm3 = 1e39
-
-    #den_sat = nuda.cst.nsat # fm^-3
-
-    # Ordinary hadronic layers
-    
-    # =========================================================
-    # Initialization
-    # =========================================================
-
     def __init__(self,eos_object=None,PT_Method_core=None,full_outputs=False):
 
-        #self.speedup = speedup
-        self.base_dir = Path(nuda.param.path_eos)
-        #self.nuclear_unit = nuclear_unit
-        self.full_outputs = full_outputs
-
-        # Default EoS configuration
+        
+        self.base_dir = Path(nuda.param.path_eos)       
+        self.full_outputs = full_outputs        
         self.default_eos = {
             "atmosphere": "1949-FMT",
             "outer_crust": "1971-BPS",
@@ -110,14 +90,6 @@ class setupCSEoS:
         self.PT_Method= PT_Method_core
         if PT_Method_core is None:
             self.PT_Method = {"method": "Maxwell"}
-        
-
-        
-        
-
-    # =========================================================
-    # Sort and validate phase names
-    # =========================================================
 
     @staticmethod
     def _phase_number(phase_name):
@@ -236,8 +208,8 @@ class setupCSEoS:
 
         for phase_name, phase_info in sorted_phases:
 
-            phase_type = phase_info["type"].upper()
-            model_name = phase_info["model"]
+            phase_type = phase_info["type"].strip().upper()
+            model_name = phase_info["model"].strip()
             phase_data = {**phase_info,"type": phase_type,"phase_number": self._phase_number(phase_name)}
 
             
@@ -281,7 +253,7 @@ class setupCSEoS:
 
     
     
-    def _load_eos_file(self, filepath,region=None,model_name=None):
+    def _load_eos_file(self, filepath,layer=None,model_name=None):
         """
         Load an EoS file with columns:
 
@@ -318,15 +290,15 @@ class setupCSEoS:
             eps = rho * nuda.cst.c_cgs**2
         """
         if self.nuclear_unit:
-            pre = df[pre_col].to_numpy() * {"cgs": nuda.cst.cgsP2MeVfm3,"nuc": 1,"SI": 10.0}[pre_col.split("_")[-1]]
-            den = df[den_col].to_numpy() * {"cgs": 1/nuda.cst.cm3_to_fm3, "nuc":1, "SI": 1e-6}[den_col.split("_")[-1]]
-            rho = df[rho_col].to_numpy() * {"cgs": nuda.cst.g_cm3toMeVfm3, "nuc":1, "SI": 1e-3}[rho_col.split("_")[-1]]
+            pre = df[pre_col].to_numpy() * {"cgs": nuda.cst.cgsP2MeVfm3,"nuc": 1,"SI": 10.0*nuda.cst.cgsP2MeVfm3 }[pre_col.split("_")[-1]]
+            den = df[den_col].to_numpy() * {"cgs": 1/nuda.cst.cm3_to_fm3, "nuc":1, "SI": 1e-6*1/nuda.cst.cm3_to_fm3}[den_col.split("_")[-1]]
+            rho = df[rho_col].to_numpy() * {"cgs": nuda.cst.g_cm3toMeVfm3, "nuc":1, "SI": 1e-3*nuda.cst.g_cm3toMeVfm3}[rho_col.split("_")[-1]]
             eps= rho
         
         if not self.full_outputs: 
             #{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
             
-            self.data[region] ={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            self.data[layer] ={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
             
             return {"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
             
@@ -334,7 +306,7 @@ class setupCSEoS:
             
             #df.drop(columns=[pre_col, den_col, rho_col], inplace=True,errors="ignore")
             
-            self.models[region] = {"model": model_name,"filename": filepath}
+            self.models[layer] = {"model": model_name,"filename": filepath}
             df["den"] = den.copy()
             df["pre"] = pre.copy()
             df["rho"] = rho.copy()
@@ -350,21 +322,21 @@ class setupCSEoS:
             
                 
                 
-            self.data[region] = df
+            self.data[layer] = df
             eos_data={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
             
             for key in ("den", "pre", "eps", "rho"):
-                setattr(self,f"initial_{key}_{region}",eos_data[key].copy())
-            self.boundaries_from_data[region] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
+                setattr(self,f"initial_{key}_{layer}",eos_data[key].copy())
+            self.boundaries_from_data[layer] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
 
                 
             return  df#{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}
             #return self
             
             
-    def _load_from_nuda_beta(self,region,model):
+    def _load_from_nuda_beta(self,layer,model):
         model_name= model.strip().upper()
-        print(model_name)
+        #print(model_name)
         micro_models = nuda.matter.micro_esym_models()[0]
         eos_beta={}
         if model_name in micro_models:
@@ -372,55 +344,53 @@ class setupCSEoS:
             if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
                 raise ValueError(f"Invalid EoS quantities for model '{model}'.")
             df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
-            self.data[region] = pd.DataFrame(df) if self.full_outputs else df
+            self.data[layer] = pd.DataFrame(df) if self.full_outputs else df
             return df
         else:
             pheno_types = nuda.matter.pheno_esym_models()[0]        
             for model_type in pheno_types:
                 available_pheno_models = nuda.pheno_esym_params(model=model_type)[0]                
                 if model_name in available_pheno_models:
-                    eos_beta=nuda.eos.setupAMBeq(param=model_name,kind='pheno',model=model_type)
+                    eos_beta=nuda.eos.setupAMBeq(param=model_name,kind='pheno',model=model_type)                    
                     
-                    #print(df)
                     if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
                         raise ValueError(f"Invalid EoS quantities for model '{model}'.")
                     
                     df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
-                    self.data[region] = pd.DataFrame(df) if self.full_outputs else df
+                    self.data[layer] = pd.DataFrame(df) if self.full_outputs else df
                     return df
                 else:
                     raise ValueError( f"Could not find outer_core model '{model}' in nucleardatapy.")
     
-    def _load_region(self, region, model):
+    def _load_layer(self, layer, model):
         """Load an EoS from a local file or nucleardatapy."""
 
         if not model:
             return None
 
-        # 1. Search for the model in the region directory.
-        region_dir = self.base_dir / region
+        # 1. Search for the model in the layer directory.
+        layer_dir = self.base_dir / layer
 
-        if region_dir.is_dir():
+        if layer_dir.is_dir():
             matching_files = sorted(filepath.name
-            for filepath in region_dir.iterdir()
+            for filepath in layer_dir.iterdir()
             if filepath.is_file()
             and filepath.stem.startswith(model)
             and filepath.suffix == ".csv")
             
             
             if len(matching_files) > 1:
-                raise ValueError(f"Multiple files found for '{model}' in {region_dir}")
+                raise ValueError(f"Multiple files found for '{model}' in {layer_dir}")
             
             if matching_files:
-                print(matching_files)
-                filepath = region_dir / matching_files[0]
-                return self._load_eos_file( filepath=filepath, region=region, model_name=model )
-        # 2. If no file exists, use nucleardatapy internally.
-        if region == "outer_core":
-            return self._load_from_nuda_beta(region, model)
+                filepath = layer_dir / matching_files[0]
+                return self._load_eos_file( filepath=filepath, layer=layer, model_name=model )
+        
+        if layer == "outer_core":
+            return self._load_from_nuda_beta(layer, model)
 
-        # 3. No source found.
-        raise FileNotFoundError(f"Model '{model}' was not found in '{region_dir}'" )
+        
+        raise FileNotFoundError(f"Model '{model}' was not found in '{layer_dir}'" )
 
             
             
@@ -431,10 +401,10 @@ class setupCSEoS:
         Load all selected hadronic layers and inner-core phases.
 
         full_outputs=False:
-            self.data[region] contains a dictionary of EoS arrays.
+            self.data[layer] contains a dictionary of EoS arrays.
 
         full_outputs=True:
-            self.data[region] contains a DataFrame with the original
+            self.data[layer] contains a DataFrame with the original
             columns and standardized EoS columns.
         """
 
@@ -443,34 +413,22 @@ class setupCSEoS:
         
         
 
-        for region in self.hadronic_regions:
-            model = self.eos_layers.get(region, "")
+        for layer in self.hadronic_layers:
+            model = self.eos_layers.get(layer, "")
 
             if model:
-                self._load_region(region, model)
-
-        # --------------------------------------------------
-        # Load ordinary EoS regions
-        # --------------------------------------------------
-        #for region, filepath in self.files.items():
-
-            #model_name = self.models[region].get("model")
-
-            #self._load_eos_file( filepath=filepath,region=region, model_name=model_name)
-
-        # --------------------------------------------------
-        # Load inner-core phases
-        # --------------------------------------------------
+                self._load_layer(layer, model)
+                
         self.identify_inner_core_phases()
         for phase_name, phase_info in self.inner_core_phases.items():
 
             if phase_info["source"] == "file":
 
-                region = f"inner_core_phase{phase_info['phase_number']}"
+                layer = f"inner_core_phase{phase_info['phase_number']}"
 
                 model_name = phase_info.get("model")
 
-                phase_data = self._load_eos_file( filepath=phase_info["filepath"], region=region,model_name=model_name)
+                phase_data = self._load_eos_file( filepath=phase_info["filepath"], layer=layer,model_name=model_name)
                 phase_info["data"] = phase_data
 
             elif phase_info["source"] == "function":
@@ -525,9 +483,9 @@ class setupCSEoS:
 
     
         
-    def _match_eos_regions(self, regions):
+    def _match_eos_layers(self, layers):
         """
-        Match EoS regions .
+        Match EoS layers .
         """
 
         den_all, pre_all, rho_all, eps_all = [], [], [], []
@@ -536,13 +494,13 @@ class setupCSEoS:
         previous_pre = None
         previous_eps = None
 
-        # Reset regional attributes for regions being reconstructed.
+        # Reset layeral attributes for layers being reconstructed.
         if self.full_outputs :
-            for region, _ in regions:
+            for layer, _ in layers:
                 for quantity in ("den", "pre", "rho", "eps"):
-                    setattr(self, f"{quantity}_{region}", None)
+                    setattr(self, f"{quantity}_{layer}", None)
 
-        for region, values in regions:
+        for layer, values in layers:
 
             den = np.asarray(values["den"])
             pre = np.asarray(values["pre"])
@@ -566,10 +524,10 @@ class setupCSEoS:
             if len(den) == 0:
                 continue
 
-            # Update the retained regional data.
+            # Update the retained layeral data.
             if self.full_outputs:
                 for quantity, array in (("den", den),("pre", pre),("rho", rho),("eps", eps)):
-                    setattr(self, f"{quantity}_{region}", array.copy())
+                    setattr(self, f"{quantity}_{layer}", array.copy())
 
                 # Update the boundaries after matching.
                 boundary = {
@@ -579,7 +537,7 @@ class setupCSEoS:
                     "eps": np.array([eps.min(), eps.max()]),
                 }
 
-                self.boundaries[region] = boundary
+                self.boundaries[layer] = boundary
             
             # Collect the retained data.
             den_all.append(den)
@@ -587,7 +545,7 @@ class setupCSEoS:
             rho_all.append(rho)
             eps_all.append(eps)
 
-            # The next region must extend below the lowest retained point.
+            # The next layer must extend below the lowest retained point.
             previous_den = den[-1]
             previous_pre = pre[-1]
             previous_eps = eps[-1]
@@ -606,55 +564,17 @@ class setupCSEoS:
         return den, pre, rho, eps, mub
         
         
-    def _get_region_data(self, region):
-        """Return the currently valid data for a region."""
-
-        data = self.data[region]
-
-        if not self.full_outputs:
-            return data
-
-        den_min, den_max = self.boundaries[region]["den"]
-
-        return data.loc[data["den"].between(den_min, den_max)].copy()
-                
-        
-    def _set_active_regions(self, include_ym=False):
-        """Set the valid regions from the constructed EoS. Currently works for nuclear and YM
-        
-         This is  just an internal function, latter being used to identify the phase transition regions        
-        """
-
-        regions = []
-
-        if include_ym:
-            phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"],)
-
-            for _, phase in phases:
-                if phase["type"].upper() == "YM":
-                    regions.append(f"inner_core_phase{phase['phase_number']}")
-
-        regions.extend(["outer_core","inner_crust","outer_crust","atmosphere",])
-
     
-        self.active_regions = [region for region in regions
-            if getattr(self, f"den_{region}", None) is not None    ]
-        
     def EoS_Hadronic(self):
         """Construct the hadronic EoS through the outer core and crust."""
 
         #self.load_data()
-        regions = [(region, self.data[region]) for region in self.hadronic_regions if region in self.data ]  
-        self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot, self.mub_tot = self._match_eos_regions(regions)
-        #self.den_tot = self.den_had.copy()
-        #self.pre_tot = self.pre_had.copy()
-        #self.rho_tot = self.rho_had.copy()
-        #self.eps_tot = self.eps_had.copy()
-        #self.mub_tot = self.mub_had.copy()
+        layers = [(layer, self.data[layer]) for layer in self.hadronic_layers if layer in self.data ]  
+        self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot, self.mub_tot = self._match_eos_layers(layers)
         if self.full_outputs:
-            self._set_active_regions(include_ym=False)
-            for region in self.active_regions:
-                self.data_after_eos_construction[region] = self._get_region_data(region)
+            self._set_active_layers(include_ym=False)
+            for layer in self.active_layers:
+                self.data_after_eos_construction[layer] = self._get_layer_data(layer)
 
         return self
         
@@ -677,11 +597,6 @@ class setupCSEoS:
         if len(phases) > 2:
             raise ValueError("At most two inner-core phases are currently supported." )
 
-        #phases = [(phase_name, phase_info)
-        #for phase_name, phase_info in phases
-        #if phase_info["type"].upper() == "YM"]
-        
-        
         phases = sorted([
         (phase_name, phase_info)
         for phase_name, phase_info in self.inner_core_phases.items()
@@ -689,8 +604,7 @@ class setupCSEoS:
         key=lambda item: item[1]["phase_number"])
         
 
-        # Inner-core phases first, ordered from innermost outward.
-        regions = [
+        layers = [
             (
                 f"inner_core_phase{phase_info['phase_number']}",
                 phase_info["data"],
@@ -699,15 +613,15 @@ class setupCSEoS:
         ]
 
         # Continue from the outer core through the atmosphere.
-        regions.extend( (region, self.data[region])  for region in self.hadronic_regions   if region in self.data )
+        layers.extend( (layer, self.data[layer])  for layer in self.hadronic_layers   if layer in self.data )
         
-        #self._set_active_regions(include_ym=True)
+        #self._set_active_layers(include_ym=True)
 
-        (self.den_tot,self.pre_tot,self.rho_tot,self.eps_tot,self.mub_tot,) = self._match_eos_regions(regions)
+        (self.den_tot,self.pre_tot,self.rho_tot,self.eps_tot,self.mub_tot,) = self._match_eos_layers(layers)
         if self.full_outputs:
-            self._set_active_regions(include_ym=True)
+            self._set_active_layers(include_ym=True)
 
-            self.data_after_eos_construction = {region: self._get_region_data(region)  for region in self.active_regions}
+            self.data_after_eos_construction = {layer: self._get_layer_data(layer)  for layer in self.active_layers}
 
         return self#(self.den_tot,self.pre_tot,self.rho_tot, self.eps_tot,        )
         
@@ -754,75 +668,67 @@ class setupCSEoS:
         
         
         
-    def _update_region_boundaries(self, region):
-        """Update the boundaries of a regional EoS."""
+    def _update_layer_boundaries(self, layer):
+        """Update the boundaries of a layeral EoS."""
 
         boundary = {}
 
         for quantity in ("den", "pre", "rho", "eps"):
-            values = getattr(self, f"{quantity}_{region}", None)
+            values = getattr(self, f"{quantity}_{layer}", None)
 
             if values is None or len(values) == 0:
                 boundary[quantity] = np.array([])
             else:
                 boundary[quantity] = np.array([ np.min(values),   np.max(values) ])
 
-        # Update regional chemical potential if available.
-        den = getattr(self, f"den_{region}", None)
-        pre = getattr(self, f"pre_{region}", None)
-        eps = getattr(self, f"eps_{region}", None)
+        # Update layeral chemical potential if available.
+        den = getattr(self, f"den_{layer}", None)
+        pre = getattr(self, f"pre_{layer}", None)
+        eps = getattr(self, f"eps_{layer}", None)
 
         if ( den is not None and pre is not None  and eps is not None  and len(den) > 0):
-            setattr(self, f"mub_{region}", (eps + pre) / den)
+            setattr(self, f"mub_{layer}", (eps + pre) / den)
 
-            boundary["mub"] = np.array([np.min(getattr(self, f"mub_{region}")), np.max(getattr(self, f"mub_{region}"))])
+            boundary["mub"] = np.array([np.min(getattr(self, f"mub_{layer}")), np.max(getattr(self, f"mub_{layer}"))])
         else:
             boundary["mub"] = np.array([])
 
-        self.boundaries[region] = boundary
+        self.boundaries[layer] = boundary
         
-    def _find_transition_region(self, transition_density):
-        """Find the active background region containing the transition."""
-        #print(self.active_regions)
+    def _find_transition_layer(self, transition_density):
+        """Find the active background layer containing the transition."""
+        #print(self.active_layers)
 
-        for region in self.active_regions:
+        for layer in self.active_layers:
         
-            ##attribute = f"den_{region}"
-
-            #print(f"Region: {region}")
-            #print(f"Attribute: {attribute}")
-            #print(f"Exists: {hasattr(self, attribute)}")
-
-            den = getattr(self, f"den_{region}", None)
-            #print(f"Density: {den}\n")
-            #den = getattr(self, f"den_{region}", None)
-            #print(self.den_inner_crust)
-
+            
+            den = getattr(self, f"den_{layer}", None)
+            
             if den is None or len(den) == 0:
                 continue
 
             if den.min() <= transition_density <= den.max():
-                return region
+                return layer
 
-        raise ValueError(f"Could not identify the region containing transition density n = {transition_density}.")
+        raise ValueError(f"Could not identify the layer containing transition density n = {transition_density}.")
         
         
         
         
-    def update_regions(self, Pc, nH, rhoH, epsH):
-        """Update background regions after a phase transition."""
+    def update_layers(self, Pc, nH, rhoH, epsH):
+        """Update background layers after a phase transition."""
 
-        transition_region = self._find_transition_region(nH)
-        self.transition_region = transition_region
+        transition_layer = self._find_transition_layer(nH)
+        self.transition_layer = transition_layer
 
-        active_regions = []
+        active_layers = []
 
-        for region in self.active_regions:
+        for layer in self.active_layers:
 
-            den = getattr(self, f"den_{region}", None)
-            pre = getattr(self, f"pre_{region}", None)
-            rho = getattr(self, f"rho_{region}", None)
-            eps = getattr(self, f"eps_{region}", None)
+            den = getattr(self, f"den_{layer}", None)
+            pre = getattr(self, f"pre_{layer}", None)
+            rho = getattr(self, f"rho_{layer}", None)
+            eps = getattr(self, f"eps_{layer}", None)
 
             if den is None or len(den) == 0:
                 continue
@@ -836,18 +742,18 @@ class setupCSEoS:
             eps = eps[mask].copy()
 
             # Insert the hadronic-side critical point.
-            if region == transition_region:
+            if layer == transition_layer:
                 den = np.append(den, nH)
                 pre = np.append(pre, Pc)
                 rho = np.append(rho, rhoH)
                 eps = np.append(eps, epsH)
 
-            # Remove regions that have no valid points remaining.
+            # Remove layers that have no valid points remaining.
             if len(den) == 0:
                 for quantity in ("den", "pre", "rho", "eps"):
-                    setattr(self, f"{quantity}_{region}", None)
+                    setattr(self, f"{quantity}_{layer}", None)
 
-                self.boundaries[region] = {
+                self.boundaries[layer] = {
                     quantity: np.array([])
                     for quantity in ("den", "pre", "rho", "eps", "mub")
                 }
@@ -865,15 +771,51 @@ class setupCSEoS:
                 ("rho", rho),
                 ("eps", eps),
             ):
-                setattr(self, f"{quantity}_{region}", array)
+                setattr(self, f"{quantity}_{layer}", array)
 
-            self._update_region_boundaries(region)
-            active_regions.append(region)
+            self._update_layer_boundaries(layer)
+            active_layers.append(layer)
 
-        # Keep only regions with valid data.
-        self.active_regions = active_regions
+        # Keep only layers with valid data.
+        self.active_layers = active_layers
 
-        return transition_region      
+        return transition_layer   
+        
+        
+    def _get_layer_data(self, layer):
+        """Return the currently valid data for a layer."""
+
+        data = self.data[layer]
+
+        if not self.full_outputs:
+            return data
+
+        den_min, den_max = self.boundaries[layer]["den"]
+
+        return data.loc[data["den"].between(den_min, den_max)].copy()
+                
+        
+    def _set_active_layers(self, include_ym=False):
+        """Set the valid layers from the constructed EoS. Currently works for nuclear and YM
+        
+         This is  just an internal function, latter being used to identify the phase transition layers        
+        """
+
+        layers = []
+
+        if include_ym:
+            phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"],)
+
+            for _, phase in phases:
+                if phase["type"].upper() == "YM":
+                    layers.append(f"inner_core_phase{phase['phase_number']}")
+
+        layers.extend(["outer_core","inner_crust","outer_crust","atmosphere",])
+
+    
+        self.active_layers = [layer for layer in layers
+            if getattr(self, f"den_{layer}", None) is not None    ]
+        
             
     
                 
@@ -907,7 +849,6 @@ class setupCSEoS:
 
         mub_bg = np.asarray(self.mub_tot).copy()
         
-        print(self.den_sat,"den_sat")
         
         
         
@@ -919,10 +860,6 @@ class setupCSEoS:
         eps_H = eps_bg[valid_bg]
         mub_H = mub_bg[valid_bg]
         
-        #print('pre_H',pre_H)
-        #print('eps_H',eps_H)
-        #print('den_H',den_H)
-        #print('mub_H',pre_H)
         
         
         phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"])
@@ -942,14 +879,11 @@ class setupCSEoS:
                 print(qm_phase['model'])
                 raise KeyError('In valid function for QM. See avilable models model.self.QMeos_functions')
             parameters=qm_phase.get("parameters", {})
-            #print(parameters)
             
             self.den_critical_H = parameters['den_nuc_pt']
             self.delta_Den_pt =parameters['delta_den']
             alpha = parameters['alpha']
-            
-            #pre_of_den_H=Cubicspline(np.log(den_H),np.log(pre_H),extrapolate=)
-            
+             
             if self.den_sat > self.den_critical_H:
                 raise ("no phase transition below saturation density is allowed ")
             
@@ -977,7 +911,7 @@ class setupCSEoS:
             eos_QM.liner_EoS()
             
             if not eos_QM.check_Qmlinear :
-                print("fails")
+                print("fails to have a QM - linear EoS")
                 return self#(self.den_tot,  self.pre_tot, self.rho_tot,  self.eps_tot )
                 
             
@@ -1005,7 +939,7 @@ class setupCSEoS:
 
             # Convert energy density to mass density if using cgs units.
             if not self.nuclear_unit :
-                #rho_quark =rho_quark / nuda.cst.c2_cgs
+                
                 rho_M = eps_M / nuda.cst.c2_cgs
 
             den_Q_branch  = np.concatenate((den_M, den_Q_branch ))
@@ -1028,14 +962,11 @@ class setupCSEoS:
             method = Method or self.PT_Method["method"]
             parameters = self.PT_Method.get("parameters", {})
             
-            #print("pre_Q",pre_Q)
-
             
-            # Validate the phase-transition method
             if method not in ["Maxwell", "MIM", "tanH_Interp"]:
                 raise KeyError(f"Invalid method for phase construction: {method}")
 
-            # Method-specific parameters
+            
             if method == "MIM":
                 self.x_deltaP = parameters.get("x_deltaP")
 
@@ -1087,11 +1018,11 @@ class setupCSEoS:
                 if ( np.min(pre_Q) > np.max(pre_H) or np.max(pre_Q) < np.min(pre_H)):
                     print( "No common pressure range for the Maxwell construction."  )
 
-                    return self#(self.den_tot,  self.pre_tot, self.rho_tot,  self.eps_tot )
+                    return self #(self.den_tot,  self.pre_tot, self.rho_tot,  self.eps_tot )
      
             
-                core1_core2_regions = {'r1': {'pre': pre_H,'mub': mub_H}, 'r2': {'pre': pre_Q,'mub': mub_Q}}
-                Maxwell= nuda.eos.mix_phase_Classes.Maxwell_construction(core1_core2_regions)
+                core1_core2_layers = {'r1': {'pre': pre_H,'mub': mub_H}, 'r2': {'pre': pre_Q,'mub': mub_Q}}
+                Maxwell= nuda.eos.mix_phase_Classes.Maxwell_construction(core1_core2_layers)
                 Maxwell.muc_pc_intersection()
 
                 if not Maxwell.check:
@@ -1194,8 +1125,8 @@ class setupCSEoS:
                     
                 
                 
-                    core1_core2_regions = {'r1': {'pre': pre_H,'mub': mub_H,'den':den_H}, 'r2': {'pre': pre_Q_branch,'mub': mub_Q_branch,'den':den_Q_branch}}
-                    MIM = nuda.eos.mix_phase_Classes.MixedInterpolatePhase(core1_core2_regions,muc=self.mu_critical,Pc=self.Pre_critical)
+                    core1_core2_layers = {'r1': {'pre': pre_H,'mub': mub_H,'den':den_H}, 'r2': {'pre': pre_Q_branch,'mub': mub_Q_branch,'den':den_Q_branch}}
+                    MIM = nuda.eos.mix_phase_Classes.MixedInterpolatePhase(core1_core2_layers,muc=self.mu_critical,Pc=self.Pre_critical)
                     result_MIM = MIM.find_boundaries(x_deltaP=self.x_deltaP)
                     if not MIM.check_MIM:
                         print("MIM failed : Returing the Hadronic EoS")
@@ -1280,8 +1211,7 @@ class setupCSEoS:
                         
                         
 
-            # Store the QM branch under its configured phase name.
-            
+             
        
         if len(den_Q_branch) == 0 or len(pre_Q_branch) != len(den_Q_branch) or len(rho_Q_branch) != len(den_Q_branch) or len(eps_Q_branch) != len(den_Q_branch) :
             return self
@@ -1315,30 +1245,31 @@ class setupCSEoS:
         if not self.full_outputs :
             return self 
         if self.full_outputs :
-            self.update_regions(self.Pre_critical_H, self.den_critical_H , self.rho_critical_H ,self.eps_critical_H )     
+            self.update_layers(self.Pre_critical_H, self.den_critical_H , self.rho_critical_H ,self.eps_critical_H )     
             
 
-            qm_region = f"inner_core_phase{qm_phase['phase_number']}"
+            qm_layer = f"inner_core_phase{qm_phase['phase_number']}"
 
             for quantity, array in (("den", den_Q_branch[den_Q_branch>=self.den_critical_Q]), ("pre", pre_Q_branch[den_Q_branch>=self.den_critical_Q]), 
             ("rho", rho_Q_branch[den_Q_branch>=self.den_critical_Q]), ("eps", eps_Q_branch[den_Q_branch>=self.den_critical_Q])):
-                setattr(self, f"{quantity}_{qm_region}", np.asarray(array).copy())
+                setattr(self, f"{quantity}_{qm_layer}", np.asarray(array).copy())
 
-            # Update the quark region's boundaries.
-            self._update_region_boundaries(qm_region)
-            regions = [region
-                for region in reversed(self.active_regions)
-                if region != qm_region
-                and getattr(self, f"den_{region}", None) is not None
-                and len(getattr(self, f"den_{region}")) > 0
-            ]
-            regions.append(qm_region)
-            #print(self.active_regions)
+            # Update the quark layer's boundaries.
+            self._update_layer_boundaries(qm_layer)
+            layers = []
+            for layer in reversed(self.active_layers):
+                if layer != qm_layer and getattr(self, f"den_{layer}", None) is not None and len(getattr(self, f"den_{layer}")) > 0:
+                    layers.append(qm_layer)
+            #print(self.active_layers)
             self.data_after_eos_construction = {
-                region: self._get_region_data(region)
-                for region in regions
-                if region in self.boundaries
+                layer: self._get_layer_data(layer)
+                for layer in layers
+                if layer in self.boundaries
             }
+            df={"den":den_M,"pre":pre_M,"eps":eps_M}
+            self.data_after_eos_construction['Mixed_Phase']=pd.DataFrame(df)
+            self.boundaries['Mixed_Phase']={
+                key:np.array([ np.min(df[key]),   np.max(df[key]) ]) for key in ["den","pre","eps"]}
             return self
 
 
@@ -1362,7 +1293,7 @@ class setupCSEoS:
         phases = sorted(self.inner_core_phases.values(),key=lambda phase: phase["phase_number"] )
 
         if len(phases) > 2:
-            raise ValueError("maximum 2 inner-core phases is supported.")
+            raise ValueError("maximum 2 inner-core phases are supported.")
 
         if not phases:
             return self.EoS_Hadronic()
@@ -1422,9 +1353,9 @@ class setupCSEoS:
     def init_self( self ):
         self.models = {} 
         self.files = {}         
-        self.boundaries_from_data = {} ## For the intial regions
-        self.boundaries = {} ## after  the final matching of regions       
-        self.data = {} ## For the fixed regions
+        self.boundaries_from_data = {} ## For the intial layers
+        self.boundaries = {} ## after  the final matching of layers       
+        self.data = {} ## For the fixed layers
         self.inner_core_phases = {}
         self.data_after_eos_construction={}
         
@@ -1447,14 +1378,14 @@ class setupCSEoS:
             self.pre_unit = 'MeV fm$^{-3}$'
             self.mub_unit = 'MeV'
             
-        self.regions = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
-        self.hadronic_regions = ["outer_core","inner_crust","outer_crust","atmosphere",]
+        self.layers = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
+        self.hadronic_layers = ["outer_core","inner_crust","outer_crust","atmosphere",]
 
-        for region in self.regions:
-            setattr(self, f"den_{region}", None)
-            setattr(self, f"pre_{region}", None)
-            setattr(self, f"eps_{region}", None)
-            setattr(self, f"rho_{region}", None)
+        for layer in self.layers:
+            setattr(self, f"den_{layer}", None)
+            setattr(self, f"pre_{layer}", None)
+            setattr(self, f"eps_{layer}", None)
+            setattr(self, f"rho_{layer}", None)
         
 
                     
