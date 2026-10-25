@@ -1,0 +1,77 @@
+
+import numpy as np
+
+import nucleardatapy as nuda
+
+def main():
+    #
+    print(50*'-')
+    print("Enter matter_setupMatter_plot.py:")
+    print(50*'-')
+    #
+    # create the folder where the figures are stored
+    #
+    #folder='figs-new'
+    folder='figs'
+    nuda.create_folder_fig(folder = folder)
+    #
+    # create the models for the figures
+    #
+    #models, models_lower = nuda.modelsPheno()
+    #models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF', 'Var', 'MC', 'MBPT', NLEFT', BHF2BF', 'BHF23BF', 'SCGF', 'CC' ]
+    models = [ 'Skyrme' ]
+    models = [ 'ESkyrme' ]
+    models = [ 'NLRH' ]
+    models = [ 'DDRH' ]
+    models = [ 'DDRHF' ]
+    models = [ 'Var' ]
+    models = [ 'MC' ]
+    models = [ 'MBPT' ]
+    models = [ 'NLEFT' ]
+    models = [ 'BHF2BF' ]
+    models = [ 'BHF23BF' ]
+    models = [ 'SCGF' ]
+    models = [ 'CC' ]
+    #
+    print('models:',models)
+    #
+    # list the different matter cases investigated
+    #
+    matters = [ 'NM', 'SM' ]
+    #
+    for matter in matters:
+        #
+        # fix the uncertainty band in NM
+        #
+        if matter.lower() == 'nm':
+            bmodels = [ '2016-MBPT-AM', '2016-QMC-NM', '2020-MBPT-AM' ]
+        elif matter.lower() == 'sm':
+            bmodels = [ '2016-MBPT-AM', '2020-MBPT-AM' ]
+        #
+        den = np.array([0.08,0.1,0.12,0.14,0.16])
+        band = nuda.matter.setupMicroBand( bmodels, den=den, matter = matter )
+        #
+        # plot E/A in matter grouped by mb
+        #
+        for model in models:
+            #
+            print('For model:',model)
+            #
+            pname = folder+'/plot_matter_setupMatter_e2a_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupMatter_e2a_fig( pname, model, band, matter )
+            #
+            pname = folder+'/plot_matter_setupMatter_pre_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupMatter_pre_fig( pname, model, band, matter )
+            #
+            pname = folder+'/plot_matter_setupMatter_cs2_'+matter+'_'+model+'.png'
+            nuda.fig.matter_setupMatter_cs2_fig( pname, model, band, matter )
+
+    #
+    print(50*'-')
+    print("Exit matter_setupMatter_plot.py:")
+    print(50*'-')
+    #
+
+if __name__ == "__main__":
+    main()
+

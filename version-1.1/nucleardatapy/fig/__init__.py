@@ -14,6 +14,9 @@ from nucleardatapy.fig.matter_setupMicroEsym_fig     import *
 from nucleardatapy.fig.matter_setupPheno_fig         import *
 from nucleardatapy.fig.matter_setupPhenoEsym_fig     import *
 #
+from nucleardatapy.fig.matter_setupMatter_fig        import *
+from nucleardatapy.fig.matter_setupMatterEsym_fig    import *
+#
 from nucleardatapy.fig.matter_setupHIC_fig           import *
 #
 from nucleardatapy.fig.matter_setupNEPStats_fig      import *
