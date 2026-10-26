@@ -596,24 +596,32 @@ class QM_linear:
             return None
 
         eps_star = self.eps_H_pt + self.deltaE - self.Pre_pt / self.alpha
-        self.den_QM = np.linspace(self.den_Q_pt, self.den_max, 100)
+        self.den = np.linspace(self.den_Q_pt, self.den_max, 100)
 
         eps1 = self.alpha / (self.alpha + 1.) * eps_star
         eps2 = self.eps_H_pt + self.deltaE - self.alpha / (self.alpha + 1.) * eps_star
-        self.eps_QM = eps1 + eps2 * (self.den_QM / self.den_Q_pt)**(self.alpha + 1.)
-        self.pre_QM = self.alpha * self.eps_QM - self.alpha * eps_star
+        self.eps = eps1 + eps2 * (self.den / self.den_Q_pt)**(self.alpha + 1.)
+        self.pre = self.alpha * self.eps - self.alpha * eps_star
 
-        if not np.all(np.isfinite(self.pre_QM)) or np.any(self.pre_QM <= 0.):
+        if not np.all(np.isfinite(self.pre)) or np.any(self.pre <= 0.):
             return None
-        if not np.all(np.isfinite(self.eps_QM)) or np.any(self.eps_QM <= 0.):
+        if not np.all(np.isfinite(self.eps)) or np.any(self.eps <= 0.):
             return None
-        if not np.all(np.isfinite(self.den_QM)) or np.any(self.den_QM <= 0.):
+        if not np.all(np.isfinite(self.den)) or np.any(self.den <= 0.):
             return None
 
-        self.mu_QM = (self.pre_QM + self.eps_QM) / self.den_QM
+        self.mu_QM = (self.pre + self.eps) / self.den
         self.check_Qmlinear = True
-        return self#.den_QM, self.pre_QM, self.eps_QM
+        return self
+    def get_eos(self):
+        self.liner_EoS()
+        if self.check_Qmlinear:
+            return self
+        else:
+            return None
         
  
+
+
 
 

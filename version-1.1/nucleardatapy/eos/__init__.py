@@ -9,3 +9,4 @@ from nucleardatapy.eos.setupCC        import *
 from nucleardatapy.eos.NSEoS_Layer_info     import *
 from nucleardatapy.eos.EoS_Phase_Wise import *
 from nucleardatapy.eos.mix_phase_Classes import *
+from nucleardatapy.eos.agnostic_models import *

@@ -1,6 +1,6 @@
 import numpy as np
 from pathlib import Path
-from scipy.interpolate import CubicSpline, PchipInterpolator
+from scipy.interpolate import interp1d, CubicSpline, PchipInterpolator
 from copy import deepcopy
 import os
 import nucleardatapy as nuda
@@ -50,7 +50,7 @@ class setupCSEoS:
            object.eps_tot : energy density
            object.pre_tot : pressure
            object.den_tot : number density
-           object.rho_tot : mass density
+           object.cs2_tot : squared speed of sound
            
            ## The phase transition and boundaries can also be obtained.
                             
@@ -85,8 +85,7 @@ class setupCSEoS:
         self.eos_layers = eos_object
         self.init_self()
 
-        self.QMeos_functions = {"QM_linear":nuda.eos.mix_phase_Classes.QM_linear} ## currently only applicable to QM_linear
-
+        
         self.PT_Method= PT_Method_core
         if PT_Method_core is None:
             self.PT_Method = {"method": "Maxwell"}
@@ -124,6 +123,8 @@ class setupCSEoS:
         eos_input = self.eos_layers
 
         self.eos_layers = deepcopy(self.default_eos)
+        
+       
 
         if eos_input is not None:
 
@@ -257,9 +258,9 @@ class setupCSEoS:
         """
         Load an EoS file with columns:
 
-            rho : mass density [g/cm^3]
-            pre : pressure [dyn/cm^2]
-            den : baryon number density [cm^-3]
+            rho  : mass density [in g/cm^3 or kg/m^3 or MeV/fm^3]
+            pre : pressure [in dyn/cm^2 or Pascal or MeV/fm^{3}]
+            den : baryon number density [in cm^-3 or m^{-3} or fm^{-3}]
 
         Convert to nuclear units if nuclear_unit=True.
         
@@ -282,13 +283,7 @@ class setupCSEoS:
         
 
    
-        """
-        if not self.nuclear_unit :
-            pre = pre * {"cgs": 1.0,"nuc": 1/nuda.cst.cgsP2MeVfm3,"SI": 10.0}[pre_col.split("_")[-1]]
-            den = den* {"cgs": 1, "nuc": nuda.cst.cm3_to_fm3, "SI": 1e-6}[den_col.split("_")[-1]]
-            rho = rho * {"cgs": 1, "nuc": 1/nuda.cst.g_cm3toMeVfm3, "SI": 1e-3}[rho_col.split("_")[-1]]
-            eps = rho * nuda.cst.c_cgs**2
-        """
+       
         if self.nuclear_unit:
             pre = df[pre_col].to_numpy() * {"cgs": nuda.cst.cgsP2MeVfm3,"nuc": 1,"SI": 10.0*nuda.cst.cgsP2MeVfm3 }[pre_col.split("_")[-1]]
             den = df[den_col].to_numpy() * {"cgs": 1/nuda.cst.cm3_to_fm3, "nuc":1, "SI": 1e-6*1/nuda.cst.cm3_to_fm3}[den_col.split("_")[-1]]
@@ -296,69 +291,58 @@ class setupCSEoS:
             eps= rho
         
         if not self.full_outputs: 
-            #{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
             
-            self.data[layer] ={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
+            df={"den": den.copy(),"pre": pre.copy(),"eps": eps.copy()}           
             
-            return {"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
-            
-        else:
-            
-            #df.drop(columns=[pre_col, den_col, rho_col], inplace=True,errors="ignore")
-            
+            return pd.DataFrame(df)
+        else:            
             self.models[layer] = {"model": model_name,"filename": filepath}
             df["den"] = den.copy()
             df["pre"] = pre.copy()
-            df["rho"] = rho.copy()
             df["eps"] = eps.copy()
-            
-            df["pre_cgs"]=np.asarray(pre)*1/nuda.cst.cgsP2MeVfm3
-            df["rho_cgs"]=np.asarray(rho.copy())*1/nuda.cst.g_cm3toMeVfm3
-            df["eps_cgs"]=np.asarray(df["rho_cgs"])*nuda.cst.c_cgs**2
-            df["den_cgs"]=np.asarray(den)*nuda.cst.cm3_to_fm3
-            
-            
-            
-            
-                
-                
-            self.data[layer] = df
-            eos_data={"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}                  
-            
-            for key in ("den", "pre", "eps", "rho"):
-                setattr(self,f"initial_{key}_{layer}",eos_data[key].copy())
-            self.boundaries_from_data[layer] = {key: [np.min(eos_data[key].copy()), np.max(eos_data[key].copy())] for key in ("den", "pre", "rho", "eps")}
+            df["rho"]= rho.copy()
+            for key in ("den", "pre", "eps","rho"):
+                setattr(self,f"initial_{key}_{layer}",df[key].to_numpy())
+            self.boundaries_from_data[layer] = {key: [np.min(df[key].to_numpy()), np.max(df[key].to_numpy())] for key in ("den", "pre", "eps","rho")}
 
                 
-            return  df#{"den": den.copy(),"pre": pre.copy(), "rho": rho.copy(),"eps": eps.copy()}
-            #return self
+            return  df
             
             
     def _load_from_nuda_beta(self,layer,model):
         model_name= model.strip().upper()
-        #print(model_name)
         micro_models = nuda.matter.micro_esym_models()[0]
         eos_beta={}
+        
         if model_name in micro_models:
             eos_beta=nuda.eos.setupAMBeq(model=model_name)
             if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
                 raise ValueError(f"Invalid EoS quantities for model '{model}'.")
-            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
-            self.data[layer] = pd.DataFrame(df) if self.full_outputs else df
-            return df
+            
+            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}   #,"rho":eos_beta.eps_tot}
+            if self.full_outputs:
+                df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}            
+                self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "eps","rho")}
+            return pd.DataFrame(df)
+            
         else:
-            pheno_types = nuda.matter.pheno_esym_models()[0]        
+            pheno_types = nuda.matter.pheno_esym_models()[0]  
+            
             for model_type in pheno_types:
-                available_pheno_models = nuda.pheno_esym_params(model=model_type)[0]                
+            
+                available_pheno_models = nuda.pheno_esym_params(model=model_type)[0]
+                
                 if model_name in available_pheno_models:
                     eos_beta=nuda.eos.setupAMBeq(param=model_name,kind='pheno',model=model_type)                    
                     
                     if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
                         raise ValueError(f"Invalid EoS quantities for model '{model}'.")
                     
-                    df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}
-                    self.data[layer] = pd.DataFrame(df) if self.full_outputs else df
-                    return df
+                    df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
+                    if self.full_outputs:
+                        df["rho"]=eos_beta.eps_tot
+                        self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}                    
+                    return pd.DataFrame(df)
                 else:
                     raise ValueError( f"Could not find outer_core model '{model}' in nucleardatapy.")
     
@@ -368,15 +352,14 @@ class setupCSEoS:
         if not model:
             return None
 
-        # 1. Search for the model in the layer directory.
+        
         layer_dir = self.base_dir / layer
 
         if layer_dir.is_dir():
-            matching_files = sorted(filepath.name
-            for filepath in layer_dir.iterdir()
-            if filepath.is_file()
-            and filepath.stem.startswith(model)
-            and filepath.suffix == ".csv")
+            matching_files =[]
+            for filepath in layer_dir.iterdir():
+                if filepath.is_file()   and filepath.stem.startswith(model)    and filepath.suffix == ".csv":
+                    matching_files.append(filepath.name)
             
             
             if len(matching_files) > 1:
@@ -390,12 +373,167 @@ class setupCSEoS:
             return self._load_from_nuda_beta(layer, model)
 
         
-        raise FileNotFoundError(f"Model '{model}' was not found in '{layer_dir}'" )
+        raise FileNotFoundError(f"Model '{model}' was not found in '{layer_dir}'" )   
+        
+    
+    
+    
+    def _load_layer_outer_core(self, layer):
+        """Load an EoS from a model, a function, or both."""
 
-            
-            
-            
-            
+        config = self.eos_layers[layer]
+        if isinstance(config, str):
+            config = {"model": config}
+
+        model = config.get("model")
+        #print(model)
+        
+
+        eos_data_file = None
+        df = None
+
+        
+        if model:
+            data = self._load_layer(layer, model)
+            df = data.copy() if isinstance(data, pd.DataFrame) else pd.DataFrame(data)
+
+            for key in ("den", "pre", "eps"):
+                if key not in df.columns:
+                    raise ValueError(f"Missing '{key}' in the loaded outer-core EoS.")
+
+                values = df[key].to_numpy(copy=True)
+                if not np.all(np.isfinite(values)):
+                    raise ValueError(f"Non-finite values found in outer_core['{key}'].")
+
+            if df.empty:
+                raise ValueError("The loaded outer-core EoS is empty.")
+
+            eos_data_file = { key: df[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
+
+        
+        function_name = config.get("function")
+        
+        if function_name:
+            function_name = function_name.strip().lower()
+
+            if function_name not in self.agnostic_models:
+                raise ValueError(f"Unknown function '{function_name}' Available functions: {list(self.agnostic_models)}")
+
+            parameters = dict(config.get("parameters") or {})
+
+            # Prepare transition-point parameters when stitching
+            if eos_data_file is not None and function_name == "random_speed_of_sound":
+
+                den = eos_data_file["den"]
+                eps = eos_data_file["eps"]
+                pre = eos_data_file["pre"]
+
+                den_tr = parameters.get("den_tr")
+
+                if den_tr is None:
+                    den_tr = den[-1]
+                    eps_tr, pre_tr = eps[-1], pre[-1]
+                else:
+                    den_tr = min(den_tr, den[-1])
+
+                    eps_tr = np.exp(PchipInterpolator(np.log(den), np.log(eps))(np.log(den_tr)))
+                    pre_tr = np.exp(PchipInterpolator(np.log(den), np.log(pre))(np.log(den_tr)))
+                    
+
+                mu_tr = (eps_tr + pre_tr) / den_tr
+
+                logpre_logeps = PchipInterpolator(np.log(eps), np.log(pre))
+                cs2_tr = pre_tr / eps_tr* logpre_logeps.derivative()(np.log(eps_tr))
+
+                parameters.update({
+                    "den_tr": den_tr,
+                    "eps_tr": eps_tr,
+                    "pre_tr": pre_tr,
+                    "mu_tr": mu_tr,
+                    "cs2_tr": cs2_tr,
+                })
+
+            parameters["full_outputs"] = self.full_outputs
+
+            eos_function_data = self._evaluate_eos_function( self.agnostic_models[function_name], **parameters)
+            if eos_function_data is None:
+                return None
+
+            for key in ("den", "pre", "eps"):
+                if key not in eos_function_data.columns:
+                    raise ValueError(f"Function '{function_name}' did not return '{key}'.")
+
+            # --------------------------------------------------
+            # 3. Stitch only if an existing EoS is available
+            # --------------------------------------------------
+            if eos_data_file is not None:
+                den_tr = parameters["den_tr"]
+                mask = eos_data_file["den"] <= den_tr
+
+                eos_data = {key: np.concatenate((eos_data_file[key][mask],eos_function_data[key].to_numpy() )) for key in ("den", "pre", "eps") }
+
+                if self.full_outputs:
+                    df = df.loc[df["den"] <= den_tr].copy()
+
+                    for col in eos_function_data.columns:
+                        if col not in df.columns:
+                            df[col] = np.nan
+
+                    for col in df.columns:
+                        if col not in eos_function_data.columns:
+                            eos_function_data[col] = np.nan
+
+                    df = pd.concat([df, eos_function_data[df.columns]], ignore_index=True )
+
+            else:
+                # Function-only EoS
+                eos_data = {key: eos_function_data[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
+
+                if self.full_outputs:
+                    df = eos_function_data.copy()
+
+        
+        elif eos_data_file is not None:
+            eos_data = eos_data_file
+
+        else:
+            raise ValueError( f"Outer-core EoS requires either 'model' or 'function'.")
+
+        if not self.full_outputs:
+            return pd.DataFrame(eos_data)
+
+        df["rho"] = df["eps"].to_numpy()
+        return df
+
+    
+    
+    
+    def _evaluate_eos_function(self, function, **parameters):
+        """
+        Evaluate a  function-based EoS.        
+        It works independently, when the parameters, does not depend upon the nucleoninc EoSs
+        Helpful, if we plan to include MIT, vMIT, NJL , vNJL, vQCD models for QM
+        or Any other agnostic approaches
+        
+        """
+        eos_function_class = function(**parameters) ### This is wehere we calculate the EoS
+        eos_data_from_function=eos_function_class.get_eos()
+        if eos_data_from_function is None:
+            return None
+        
+
+        pre = eos_function_class.pre        
+        den = eos_function_class.den
+        eps = eos_function_class.eps        
+        #mub = (eps + pre) / den
+        df= {"den": den.copy(),"pre": pre.copy(), "eps": eps.copy()}
+        if not self.full_outputs:
+            return pd.DataFrame(df)
+        else:
+            return pd.DataFrame(eos_function_class.all_data)
+        
+               
+        
     def load_data(self):
         """
         Load all selected hadronic layers and inner-core phases.
@@ -410,15 +548,35 @@ class setupCSEoS:
 
         self.set_eos()
         
-        
-        
-
-        for layer in self.hadronic_layers:
-            model = self.eos_layers.get(layer, "")
-
-            if model:
-                self._load_layer(layer, model)
+        for layer in self.nucleonic_layers:
+            if layer == "atmosphere":
+                model = self.eos_layers.get(layer, "")
+                if model:
+                    df=self._load_layer(layer, model)
+                    if df is not None : self.data[layer]=df 
+                    
+                    
+            
+            if layer == "outer_crust":
+                model = self.eos_layers.get(layer, "")
+                if model:
+                    df=self._load_layer(layer, model)
+                    if df is not None : self.data[layer]=df 
+                    
+                    
+            if layer == "inner_crust":
+                model = self.eos_layers.get(layer, "")
+                if model:
+                    df=self._load_layer(layer, model)
+                    if df is not None : self.data[layer]=df 
+                    
+            if layer == "outer_core":
+                df=self._load_layer_outer_core('outer_core')
+                if df is not None : self.data[layer]=df 
                 
+        
+        
+        
         self.identify_inner_core_phases()
         for phase_name, phase_info in self.inner_core_phases.items():
 
@@ -430,6 +588,7 @@ class setupCSEoS:
 
                 phase_data = self._load_eos_file( filepath=phase_info["filepath"], layer=layer,model_name=model_name)
                 phase_info["data"] = phase_data
+                if phase_data is not None : self.data[layer]=df 
 
             elif phase_info["source"] == "function":
                 # Function-based phases are handled separately.
@@ -438,57 +597,15 @@ class setupCSEoS:
             else:
                 raise ValueError(f"Unknown model for phase '{phase_name}'.")
 
-        return self         
-    
-    
-    
-    
-    def _evaluate_eos_function(self, phase_name, phase_info):
-        """
-        Evaluate a  function-based EoS.        
-        It works independently, when the parameters, does not depend upon the nucleoninc EoSs
-        Helpful, if we plan to include MIT, vMIT, NJL , vNJL, vQCD models
+        return self        
         
-        """
-
-        function = phase_info["function"]
-        parameters = phase_info.get("parameters", {})
-        
-
-        pre, den, eps = function(**parameters) ### This is wehere we calculate the EoS
-
-        pre = np.asarray(pre, dtype=float)
-        den = np.asarray(den, dtype=float)
-        eps = np.asarray(eps, dtype=float)
-        
-        order = np.argsort(den)
-
-        den = den[order]
-        pre = pre[order]
-        eps = eps[order]
-
-        
-        if self.nuclear_unit:
-            rho = eps.copy()
-        else:
-            rho = eps / nuda.cst.c2_cgs
-
-        mub = (eps + pre) / den
-
-        return {"den": den.copy(),"pre": pre.copy(),"rho": rho.copy(), "eps": eps.copy(), "mub": mub.copy()}
-
-    # =========================================================
-    # Load ordinary layers and inner-core phases
-    # =========================================================
-
-    
         
     def _match_eos_layers(self, layers):
         """
         Match EoS layers .
         """
 
-        den_all, pre_all, rho_all, eps_all = [], [], [], []
+        den_all, pre_all, eps_all = [], [], []
 
         previous_den = None
         previous_pre = None
@@ -497,35 +614,38 @@ class setupCSEoS:
         # Reset layeral attributes for layers being reconstructed.
         if self.full_outputs :
             for layer, _ in layers:
-                for quantity in ("den", "pre", "rho", "eps"):
+                for quantity in ("den", "pre", "rho","eps"):
                     setattr(self, f"{quantity}_{layer}", None)
 
         for layer, values in layers:
+        
+            #print(layer,values)
 
             den = np.asarray(values["den"])
-            pre = np.asarray(values["pre"])
-            rho = np.asarray(values["rho"])
+            pre = np.asarray(values["pre"])            
             eps = np.asarray(values["eps"])
             #mub = np.asarray(values["mub"])
+            #rho = np.asarray(values["rho"])
 
             if len(den) == 0:
                 continue
 
             # Sort in decreasing density order.
             order = np.argsort(den)[::-1]
-            den, pre, rho, eps = (arr[order] for arr in (den, pre, rho, eps))
+            den, pre, eps = (arr[order] for arr in (den, pre, eps))
 
             # Apply matching conditions.
             if previous_den is not None:
                 mask = ((den < previous_den) & (pre < previous_pre) & (eps < previous_eps))
 
-                den, pre, rho, eps= ( arr[mask] for arr in (den, pre, rho, eps))
+                den, pre,  eps= ( arr[mask] for arr in (den, pre, eps))
 
             if len(den) == 0:
                 continue
 
             # Update the retained layeral data.
             if self.full_outputs:
+                rho = eps
                 for quantity, array in (("den", den),("pre", pre),("rho", rho),("eps", eps)):
                     setattr(self, f"{quantity}_{layer}", array.copy())
 
@@ -542,7 +662,6 @@ class setupCSEoS:
             # Collect the retained data.
             den_all.append(den)
             pre_all.append(pre)
-            rho_all.append(rho)
             eps_all.append(eps)
 
             # The next layer must extend below the lowest retained point.
@@ -556,22 +675,24 @@ class setupCSEoS:
         # Reverse the complete arrays to increasing density.
         den = np.concatenate(den_all)[::-1]
         pre = np.concatenate(pre_all)[::-1]
-        rho = np.concatenate(rho_all)[::-1]
         eps = np.concatenate(eps_all)[::-1]
 
         mub = (eps + pre) / den
 
-        return den, pre, rho, eps, mub
+        return den, pre, eps, mub
         
         
     
-    def EoS_Hadronic(self):
+    def EoS_nucleonic(self):
         """Construct the hadronic EoS through the outer core and crust."""
 
         #self.load_data()
-        layers = [(layer, self.data[layer]) for layer in self.hadronic_layers if layer in self.data ]  
-        self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot, self.mub_tot = self._match_eos_layers(layers)
+        layers = [(layer, self.data[layer]) for layer in self.nucleonic_layers if layer in self.data ]  
+        
+        #print(layers)
+        self.den_tot, self.pre_tot,self.eps_tot, self.mub_tot = self._match_eos_layers(layers)
         if self.full_outputs:
+            self.rho_tot =  self.eps_tot
             self._set_active_layers(include_ym=False)
             for layer in self.active_layers:
                 self.data_after_eos_construction[layer] = self._get_layer_data(layer)
@@ -592,7 +713,7 @@ class setupCSEoS:
         )
 
         if not phases:
-            return self.EoS_Hadronic()
+            return self.EoS_nucleonic()
 
         if len(phases) > 2:
             raise ValueError("At most two inner-core phases are currently supported." )
@@ -613,24 +734,24 @@ class setupCSEoS:
         ]
 
         # Continue from the outer core through the atmosphere.
-        layers.extend( (layer, self.data[layer])  for layer in self.hadronic_layers   if layer in self.data )
+        layers.extend( (layer, self.data[layer])  for layer in self.nucleonic_layers   if layer in self.data )
         
         #self._set_active_layers(include_ym=True)
 
-        (self.den_tot,self.pre_tot,self.rho_tot,self.eps_tot,self.mub_tot,) = self._match_eos_layers(layers)
+        (self.den_tot,self.pre_tot,self.eps_tot,self.mub_tot,) = self._match_eos_layers(layers)
         if self.full_outputs:
+            self.rho_tot=self.eps_tot
             self._set_active_layers(include_ym=True)
 
             self.data_after_eos_construction = {layer: self._get_layer_data(layer)  for layer in self.active_layers}
 
-        return self#(self.den_tot,self.pre_tot,self.rho_tot, self.eps_tot,        )
+        return self
         
         
         
-        
-    def interpolate_at_pressure(self, pressure, nb, pb, rho, eps):
+    def interpolate_at_pressure(self, pressure, nb, pb, eps):
 
-        valid = (np.isfinite(pb)  & np.isfinite(nb) & np.isfinite(rho)  & np.isfinite(eps)  & (pb > 0)   & (nb > 0)  & (rho > 0)  & (eps > 0) )
+        valid = (np.isfinite(pb)  & np.isfinite(nb)  & np.isfinite(eps)  & (pb > 0)   & (nb > 0)   & (eps > 0) )
 
         pb = pb[valid]
         nb = nb[valid]
@@ -656,14 +777,13 @@ class setupCSEoS:
 
         
 
-        nb_at_P = np.exp(CubicSpline(log_P, np.log(nb))(log_Pc)) # CubicSpline flacuates
+        nb_at_P = np.exp(PchipInterpolator(log_P, np.log(nb))(log_Pc)) # PchipInterpolator flacuates
 
-        eps_at_P = np.exp(CubicSpline(log_P, np.log(eps))(log_Pc))
-        rho_at_P = eps_at_P
-        if not self.nuclear_unit:
-            rho_at_P = rho_at_P/nuda.cst.c2_cgs        
+        eps_at_P = np.exp(PchipInterpolator(log_P, np.log(eps))(log_Pc))
+        
+            
 
-        return nb_at_P, rho_at_P, eps_at_P 
+        return nb_at_P, eps_at_P 
 
         
         
@@ -715,7 +835,7 @@ class setupCSEoS:
         
         
         
-    def update_layers(self, Pc, nH, rhoH, epsH):
+    def update_layers(self, Pc, nH,epsH):
         """Update background layers after a phase transition."""
 
         transition_layer = self._find_transition_layer(nH)
@@ -727,7 +847,7 @@ class setupCSEoS:
 
             den = getattr(self, f"den_{layer}", None)
             pre = getattr(self, f"pre_{layer}", None)
-            rho = getattr(self, f"rho_{layer}", None)
+            #rho = getattr(self, f"rho_{layer}", None)
             eps = getattr(self, f"eps_{layer}", None)
 
             if den is None or len(den) == 0:
@@ -738,17 +858,18 @@ class setupCSEoS:
 
             den = den[mask].copy()
             pre = pre[mask].copy()
-            rho = rho[mask].copy()
+            
             eps = eps[mask].copy()
 
             # Insert the hadronic-side critical point.
             if layer == transition_layer:
                 den = np.append(den, nH)
                 pre = np.append(pre, Pc)
-                rho = np.append(rho, rhoH)
+                #rho = np.append(rho, rhoH)
                 eps = np.append(eps, epsH)
 
             # Remove layers that have no valid points remaining.
+            rho=eps
             if len(den) == 0:
                 for quantity in ("den", "pre", "rho", "eps"):
                     setattr(self, f"{quantity}_{layer}", None)
@@ -789,6 +910,14 @@ class setupCSEoS:
 
         if not self.full_outputs:
             return data
+        
+                 
+        data["rho"] = data["eps"].copy()
+        data["pre_cgs"]=np.asarray(data["pre"])*1/nuda.cst.cgsP2MeVfm3
+        data["rho_cgs"]=np.asarray(data["eps"])*1/nuda.cst.g_cm3toMeVfm3
+        data["eps_cgs"]=np.asarray(data["eps"])*nuda.cst.c_cgs**2
+        data["den_cgs"]=np.asarray(data["den"])*nuda.cst.cm3_to_fm3
+        
 
         den_min, den_max = self.boundaries[layer]["den"]
 
@@ -813,8 +942,7 @@ class setupCSEoS:
         layers.extend(["outer_core","inner_crust","outer_crust","atmosphere",])
 
     
-        self.active_layers = [layer for layer in layers
-            if getattr(self, f"den_{layer}", None) is not None    ]
+        self.active_layers = [layer for layer in layers  if getattr(self, f"den_{layer}", None) is not None    ]
         
             
     
@@ -834,17 +962,17 @@ class setupCSEoS:
         # --------------------------------------------------
         
         
-        required = ("den_tot","pre_tot","rho_tot","eps_tot")
+        required = ("den_tot","pre_tot","eps_tot")
 
         if not all(hasattr(self, name) for name in required):
             raise RuntimeError(
                 "The background EoS has not been constructed. "
-                "Call EoS_Hadronic() or EoS_YM() first."
+                "Call EoS_nucleonic() or EoS_YM() first."
             )
 
         den_bg = np.asarray(self.den_tot).copy()
         pre_bg = np.asarray(self.pre_tot).copy()
-        rho_bg = np.asarray(self.rho_tot).copy()
+        #rho_bg = np.asarray(self.rho_tot).copy()
         eps_bg = np.asarray(self.eps_tot).copy()
 
         mub_bg = np.asarray(self.mub_tot).copy()
@@ -856,7 +984,6 @@ class setupCSEoS:
 
         den_H = den_bg[valid_bg]
         pre_H = pre_bg[valid_bg]
-        rho_H = rho_bg[valid_bg]
         eps_H = eps_bg[valid_bg]
         mub_H = mub_bg[valid_bg]
         
@@ -875,7 +1002,8 @@ class setupCSEoS:
         phase_key, qm_phase = qm_phases[0]
         
         if qm_phase['source'] == 'function':
-            if qm_phase['model'] not in self.QMeos_functions :
+            QM_eos_function_name = qm_phase['model']
+            if  QM_eos_function_name.strip().lower() not in self.QMeos_functions :
                 print(qm_phase['model'])
                 raise KeyError('In valid function for QM. See avilable models model.self.QMeos_functions')
             parameters=qm_phase.get("parameters", {})
@@ -891,13 +1019,13 @@ class setupCSEoS:
                 raise ("The critical density is outside the density range ")
             
             
-            self.Pre_critical_H = np.exp(CubicSpline(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H)))
+            self.Pre_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H)))
 
-            self.eps_critical_H = np.exp(CubicSpline(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
+            self.eps_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
 
             self.mu_critical = (self.Pre_critical_H + self.eps_critical_H ) /self.den_critical_H
             
-            self.rho_critical_H = self.eps_critical_H 
+            #self.rho_critical_H = self.eps_critical_H 
             self.Pre_critical = self.Pre_critical_H
             
 
@@ -906,28 +1034,25 @@ class setupCSEoS:
             
             parameters_for_eos = [self.den_critical_H ,self.eps_critical_H,self.Pre_critical_H,self.delta_Den_pt,alpha,self.mu_critical]
             
-            eos_QM=nuda.eos.mix_phase_Classes.QM_linear(parameters_for_eos)
+            eos_QM=self._evaluate_eos_function(self.self.QMeos_functions[QM_eos_function_name.strip().lower()], **parameters_for_eos)
+            if eos_QM is None:
+                print("Valid QM EoS not found. Returning the hadronic EoS")
+                return self            
             
-            eos_QM.liner_EoS()
             
-            if not eos_QM.check_Qmlinear :
-                print("fails to have a QM - linear EoS")
-                return self#(self.den_tot,  self.pre_tot, self.rho_tot,  self.eps_tot )
+            for key in ("den", "pre", "eps"):
+                if key not in eos_QM.columns:
+                    raise ValueError(f"Function '{QM_eos_function_name}' did not return '{key}'.")
                 
             
-            den_Q_branch = eos_QM.den_QM
-            pre_Q_branch =  eos_QM.pre_QM
-            rho_Q_branch =  eos_QM.eps_QM
-            eps_Q_branch = eos_QM.eps_QM
-            mu_Q_branch = eos_QM.mu_QM
+            den_Q_branch = eos_QM["den"].to_numpy()
+            pre_Q_branch =  eos_QM["pre"].to_numpy()            
+            eps_Q_branch = eos_QM["eps"].to_numpy()
+            mu_Q_branch = (pre_Q_branch + eps_Q_branch)/den_Q_branch
             
-            if not self.nuclear_unit:
-                rho_Q_branch =rho_Q_branch/nuda.cst.c2_cgs
-                
+             
             self.den_critical_Q = den_Q_branch[0]
-            self.rho_critical_Q =rho_Q_branch[0]
-            self.eps_critical_Q = eps_Q_branch[0]
-            
+            self.eps_critical_Q = eps_Q_branch[0]            
             self.delta_E= self.eps_critical_Q - self.eps_critical_H 
             
             
@@ -935,16 +1060,13 @@ class setupCSEoS:
             pre_M=np.zeros_like(den_M)+self.Pre_critical_H
             mu_M=np.zeros_like(den_M)+self.mu_critical
             eps_M= den_M*self.mu_critical-self.Pre_critical_H
-            rho_M = eps_M.copy()
+            #rho_M = eps_M.copy()
 
             # Convert energy density to mass density if using cgs units.
-            if not self.nuclear_unit :
-                
-                rho_M = eps_M / nuda.cst.c2_cgs
-
+            
             den_Q_branch  = np.concatenate((den_M, den_Q_branch ))
             pre_Q_branch = np.concatenate((pre_M, pre_Q_branch ))
-            rho_Q_branch = np.concatenate((rho_M, rho_Q_branch ))
+            #rho_Q_branch = np.concatenate((rho_M, rho_Q_branch ))
             eps_Q_branch = np.concatenate((eps_M, eps_Q_branch ))
             
         
@@ -956,7 +1078,7 @@ class setupCSEoS:
             values = qm_phase["data"]
             den_Q = np.asarray(values["den"])
             pre_Q = np.asarray(values["pre"])
-            rho_Q = np.asarray(values["rho"])
+            #rho_Q = np.asarray(values["rho"])
             eps_Q = np.asarray(values["eps"]) 
             mub_Q = (eps_Q + pre_Q) / den_Q        
             method = Method or self.PT_Method["method"]
@@ -999,13 +1121,13 @@ class setupCSEoS:
             if method =='tanH_Interp':
             
             
-                self.Pre_critical = np.exp(CubicSpline(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H )))
+                self.Pre_critical = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H )))
 
-                self.eps_critical_H = np.exp(CubicSpline(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
+                self.eps_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
 
                 self.mu_critical = (self.Pre_critical + self.eps_critical_H ) /self.den_critical_H
                 
-                self.rho_critical_H= self.eps_critical_H 
+                #self.rho_critical_H= self.eps_critical_H 
                 raise NotImplementedError("not implimented Yet")
             
             
@@ -1040,15 +1162,15 @@ class setupCSEoS:
                 #if method == 'Maxwell':
                 Pc = self.Pre_critical
 
-                nH, rhoH, epsH = self.interpolate_at_pressure(self.Pre_critical, den_H, pre_H, rho_H, eps_H)
+                nH,  epsH = self.interpolate_at_pressure(self.Pre_critical, den_H, pre_H,  eps_H)
                 self.den_critical_H = nH
-                self.rho_critical_H = rhoH
+                #self.rho_critical_H = rhoH
                 self.eps_critical_H = epsH
 
-                nQ, rhoQ, epsQ = self.interpolate_at_pressure(self.Pre_critical, den_Q, pre_Q, rho_Q, eps_Q)
+                nQ, epsQ = self.interpolate_at_pressure(self.Pre_critical, den_Q, pre_Q,  eps_Q)
 
                 self.den_critical_Q = nQ
-                self.rho_critical_Q = rhoQ
+                #self.rho_critical_Q = rhoQ
                 self.eps_critical_Q = epsQ
 
     
@@ -1058,13 +1180,13 @@ class setupCSEoS:
 
                 den_Q_branch = den_Q[mask_Q]
                 pre_Q_branch = pre_Q[mask_Q]
-                rho_Q_branch = rho_Q[mask_Q]
+                #rho_Q_branch = rho_Q[mask_Q]
                 eps_Q_branch = eps_Q[mask_Q]
 
                 # Insert the QM-side critical point.
                 den_Q_branch = np.append(nQ, den_Q_branch)
                 pre_Q_branch = np.append(Pc, pre_Q_branch)
-                rho_Q_branch = np.append(rhoQ, rho_Q_branch)
+                #rho_Q_branch = np.append(rhoQ, rho_Q_branch)
                 eps_Q_branch = np.append(epsQ, eps_Q_branch)
 
                 # Ensure increasing density order.
@@ -1072,7 +1194,7 @@ class setupCSEoS:
 
                 den_Q_branch = den_Q_branch[order]
                 pre_Q_branch = pre_Q_branch[order]
-                rho_Q_branch = rho_Q_branch[order]
+                #rho_Q_branch = rho_Q_branch[order]
                 eps_Q_branch = eps_Q_branch[order]
                 mub_Q_branch = (pre_Q_branch + eps_Q_branch ) / den_Q_branch
                 
@@ -1093,16 +1215,13 @@ class setupCSEoS:
                     pre_M=np.zeros_like(den_M)+self.Pre_critical_H
                     mu_M=np.zeros_like(den_M)+self.mu_critical
                     eps_M= den_M*self.mu_critical-self.Pre_critical_H
-                    rho_M = eps_M.copy()
+                    #rho_M = eps_M.copy()
 
                     # Convert energy density to mass density if using cgs units.
-                    if not self.nuclear_unit :
-                        rho_Q_branch  = rho_Q_branch / nuda.cst.c2_cgs
-                        rho_M = eps_M / nuda.cst.c2_cgs
+                    
 
                     den_Q_branch  = np.concatenate((den_M, den_Q_branch ))
                     pre_Q_branch = np.concatenate((pre_M, pre_Q_branch ))
-                    rho_Q_branch = np.concatenate((rho_M, rho_Q_branch ))
                     eps_Q_branch = np.concatenate((eps_M, eps_Q_branch ))
                     
                     
@@ -1112,7 +1231,7 @@ class setupCSEoS:
 
                     den_H = den_bg[valid_bg]
                     pre_H = pre_bg[valid_bg]
-                    rho_H = rho_bg[valid_bg]
+                    #rho_H = rho_bg[valid_bg]
                     eps_H = eps_bg[valid_bg]
                     mub_H = mub_bg[valid_bg]
                     
@@ -1145,17 +1264,14 @@ class setupCSEoS:
                     self.mu_H= result_MIM['mu_H']
                     
                     self.eps_critical_H= self.mu_H * self.den_critical_H - self.Pre_critical
-                    self.rho_critical_H=self.eps_critical_H
+                    #self.rho_critical_H=self.eps_critical_H
                 
                     self.mu_Q= result_MIM['mu_Q']
                     self.Pre_critical_Q =  result_MIM['P_Q']
                     self.den_critical_Q = result_MIM['n_Q']
                     self.eps_critical_Q= self.mu_Q * self.den_critical_Q- self.Pre_critical_Q
-                    self.rho_critical_Q=self.eps_critical_Q
+                    #self.rho_critical_Q=self.eps_critical_Q
                     
-                    if not self.nuclear_unit :
-                        self.rho_critical_H = self.rho_critical_H / nuda.cst.c2_cgs
-                        self.rho_critical_Q = self.rho_critical_Q / nuda.cst.c2_cgs
                         
                     if (self.den_critical_Q -self.den_critical_H) <=0.:
                         return self
@@ -1174,7 +1290,7 @@ class setupCSEoS:
                
                     den_quark = den_Q[mask_quark].copy()
                     pre_quark = pre_Q[mask_quark].copy()
-                    rho_quark = eps_Q[mask_quark].copy()
+                    #rho_quark = eps_Q[mask_quark].copy()
                     eps_quark = eps_Q[mask_quark].copy()
                     mub_quark = mub_Q[mask_quark].copy()
 
@@ -1189,16 +1305,16 @@ class setupCSEoS:
                     #print(den_M, pre_M, eps_M)
 
                     # Assumption: eps_M is in energy-density units.
-                    rho_M = eps_M.copy()
+                    #rho_M = eps_M.copy()
 
                     # Convert energy density to mass density if using cgs units.
-                    if not self.nuclear_unit :
-                        rho_quark =rho_quark / nuda.cst.c2_cgs
-                        rho_M = eps_M / nuda.cst.c2_cgs
+                    #if not self.nuclear_unit :
+                     #   rho_quark =rho_quark / nuda.cst.c2_cgs
+                      #  rho_M = eps_M / nuda.cst.c2_cgs
 
                     den_Q_branch  = np.concatenate((den_M, den_quark))
                     pre_Q_branch= np.concatenate((pre_M, pre_quark))
-                    rho_Q_branch = np.concatenate((rho_M, rho_quark))
+                    #rho_Q_branch = np.concatenate((rho_M, rho_quark))
                     eps_Q_branch = np.concatenate((eps_M, eps_quark))
                     #mub_quark = np.concatenate((mueval, mub_quark))
                     
@@ -1206,7 +1322,7 @@ class setupCSEoS:
 
                     den_Q_branch = den_Q_branch[order]
                     pre_Q_branch = pre_Q_branch[order]
-                    rho_Q_branch = rho_Q_branch[order]
+                    #rho_Q_branch = rho_Q_branch[order]
                     eps_Q_branch = eps_Q_branch[order]
                         
                         
@@ -1228,28 +1344,35 @@ class setupCSEoS:
 
         den_H = den_bg[mask_H]
         pre_H = pre_bg[mask_H]
-        rho_H = rho_bg[mask_H]
+        #rho_H = rho_bg[mask_H]
         eps_H = eps_bg[mask_H]
         
         den_H = np.append(den_H, self.den_critical_H)
         pre_H = np.append(pre_H, self.Pre_critical_H)
-        rho_H = np.append(rho_H, self.rho_critical_H)
+        #rho_H = np.append(rho_H, self.rho_critical_H)
         eps_H = np.append(eps_H, self.eps_critical_H)
         
         self.den_tot = np.concatenate((den_H, den_Q_branch))
         self.pre_tot = np.concatenate((pre_H, pre_Q_branch))
-        self.rho_tot = np.concatenate((rho_H, rho_Q_branch))
+        #self.rho_tot = np.concatenate((rho_H, rho_Q_branch))
         self.eps_tot = np.concatenate((eps_H, eps_Q_branch))
         self.mub_tot = (self.pre_tot + self.eps_tot) / self.den_tot
+        
+        # Check positive quantities
+        
         
         if not self.full_outputs :
             return self 
         if self.full_outputs :
-            self.update_layers(self.Pre_critical_H, self.den_critical_H , self.rho_critical_H ,self.eps_critical_H )     
+            #rho = rho[mask].copy()
+            self.rho_tot =self.eps_tot
+            self.rho_critical_H= self.eps_critical_H
+            self.rho_critical_Q= self.eps_critical_Q 
+            rho_Q_branch = eps_Q_branch
             
-
+            self.update_layers(self.Pre_critical_H, self.den_critical_H,self.eps_critical_H )
             qm_layer = f"inner_core_phase{qm_phase['phase_number']}"
-
+            
             for quantity, array in (("den", den_Q_branch[den_Q_branch>=self.den_critical_Q]), ("pre", pre_Q_branch[den_Q_branch>=self.den_critical_Q]), 
             ("rho", rho_Q_branch[den_Q_branch>=self.den_critical_Q]), ("eps", eps_Q_branch[den_Q_branch>=self.den_critical_Q])):
                 setattr(self, f"{quantity}_{qm_layer}", np.asarray(array).copy())
@@ -1274,14 +1397,50 @@ class setupCSEoS:
 
 
         
-        """
         
-
-        self.mub_tot = (self.eps_tot + self.pre_tot) / self.den_tot
-        
-        """
 
         return self# self.den_tot, self.pre_tot, self.rho_tot, self.eps_tot
+    def _necessary_eos_checks(self):
+    
+        if np.any(self.pre_tot <= 0.):
+            raise ValueError("Pressure must be strictly positive. negative")
+
+        if np.any(self.eps_tot <= 0.):
+            raise ValueError("Energy density must be strictly positive.")
+
+        if np.any(self.den_tot <= 0.):
+            raise ValueError("Density must be strictly positive.")
+
+        # Check monotonicity
+        dn = np.diff(self.den_tot)
+        dp = np.diff(self.pre_tot)
+        de = np.diff(self.eps_tot)
+
+        if np.any(dn <= 0.):
+            self.init_self()
+            raise ValueError("Density must increase strictly (dn > 0).")
+
+        if np.any(dp < 0.):
+            self.init_self()
+            raise ValueError("Pressure must be non-decreasing (dp >= 0).")
+
+        if np.any(de <= 0.):
+            self.init_self()
+            raise ValueError("Energy density must increase strictly (de > 0).")
+        
+        
+            
+        logeoflogp = PchipInterpolator(np.log(self.eps_tot), np.log(self.pre_tot))
+        self.gamma_tot = logeoflogp.derivative()(np.log(self.eps_tot))
+        self.cs2_tot = self.pre_tot / self.eps_tot * self.gamma_tot 
+        
+        mask_cs2_acausal = self.cs2_tot > 1.
+
+        if np.any(mask_cs2_acausal):
+            print(f"Acausal EoS at densities:= {self.den_tot[mask_cs2_acausal]} {self.den_unit}, with cs^2 [c^2] = {self.cs2_tot[mask_cs2_acausal]}")
+            return self
+            
+        return self
         
              
         
@@ -1289,6 +1448,7 @@ class setupCSEoS:
         """Construct the final EoS based on the configured inner-core phases."""
 
         self.load_data()
+        #print(self.data)
 
         phases = sorted(self.inner_core_phases.values(),key=lambda phase: phase["phase_number"] )
 
@@ -1296,7 +1456,10 @@ class setupCSEoS:
             raise ValueError("maximum 2 inner-core phases are supported.")
 
         if not phases:
-            return self.EoS_Hadronic()
+            self.EoS_nucleonic()
+            self._necessary_eos_checks()
+            return self
+            
 
         phase1_type = phases[0]["type"].upper()
         phase2_type = phases[1]["type"].upper() if len(phases) == 2 else None
@@ -1317,17 +1480,23 @@ class setupCSEoS:
 
         # YM-only or YM + YM.
         if phase1_type == "YM" and phase2_type in (None, "YM"):
-            return self.EoS_YM()
+            self.EoS_YM()
+            self._necessary_eos_checks()
+            return self
 
         # QM only: construct the hadronic background first.
         if phase1_type == "QM" and phase2_type is None:
-            self.EoS_Hadronic()
-            return self.EoS_Hybrid()
+            self.EoS_nucleonic()
+            self.EoS_Hybrid()
+            self._necessary_eos_checks()
+            return self
 
         # YM followed by QM.
         if phase1_type == "YM" and phase2_type == "QM":
             self.EoS_YM()
-            return self.EoS_Hybrid()
+            self.EoS_Hybrid()
+            self._necessary_eos_checks()
+            return self
             
     def print_outputs( self ):
         """
@@ -1335,19 +1504,28 @@ class setupCSEoS:
         """
         #
         if nuda.env.verb: print("Enter print_outputs()")
-        self.Final_EoS()
-        #
-        print("- Print output:")
-        print("eos_layers:",self.eos_layers)
-        print("   Inner core models:\n  ")
-        print([self.inner_core_phases[phase]['model'] for phase in self.inner_core_phases  if phase is not None])
         
-        #if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
-        if self.den_tot is not None: print(f"   den: {np.round(self.den_tot,3)} in {self.den_unit}")
-        if self.eps_tot is not None: print(f"   eps: {np.round(self.eps_tot,3)}in {self.eps_unit}")
-        if self.pre_tot is not None: print(f"   pre: {np.round(self.pre_tot,3)}in {self.pre_unit}")
-        #if self.cs2 is not None: print(f"   cs2: {np.round(self.cs2,2)}")
-        #
+        self.set_eos()
+        print("- Print output:")
+        
+        print("Compact star layers:")#,self.eos_layers)
+        for key in self.eos_layers:
+            if self.eos_layers[key]:
+                print(f"layer: {key},model: {self.eos_layers[key]} ")
+        print(" Inner core models:")
+        print([self.inner_core_phases[phase]['model'] for phase in self.inner_core_phases  if phase is not None])    
+        self.Final_EoS()
+        
+        if self.full_outputs:
+            print("Boundaries of each layers:",self.boundaries)
+        if not self.full_outputs:
+            print(f"Use full_outputs=True, during class initiation to see the boundaries and  available information in each layer")
+        
+        print("EoS info:")        
+        if self.den_tot is not None: print(f"   den: {self.den_tot} in {self.den_unit}")
+        if self.eps_tot is not None: print(f"   eps: {self.eps_tot}in {self.eps_unit}")
+        if self.pre_tot is not None: print(f"   pre: {self.pre_tot}in {self.pre_unit}")
+        if self.cs2_tot is not None: print(f"   cs^2: {self.cs2_tot}in {self.cs2_unit}")
         if nuda.env.verb: print("Exit print_outputs()")
         
     def init_self( self ):
@@ -1357,29 +1535,30 @@ class setupCSEoS:
         self.boundaries = {} ## after  the final matching of layers       
         self.data = {} ## For the fixed layers
         self.inner_core_phases = {}
-        self.data_after_eos_construction={}
-        
+        self.data_after_eos_construction={}    
         self.den_tot = None
         self.eps_tot = None
         self.pre_tot = None
         self.rho_tot = None
         self.mub_tot = None        
-        self.den_unit = 'g/cm^{3}$'
-        self.eps_unit = 'erg/cm^{3}$'
-        self.pre_unit = 'dyn/cm^{3}$'
-        self.mub_unit = 'erg'
-        self.den_sat = nuda.cst.nsat_cgs
+        self.cs2_tot = None        
+        
+        
         self.nuclear_unit =True
         
-        if  self.nuclear_unit :
-            self.den_sat = nuda.cst.nsat
-            self.den_unit = 'fm$^{-3}$'
-            self.eps_unit = 'MeV fm$^{-3}$'
-            self.pre_unit = 'MeV fm$^{-3}$'
-            self.mub_unit = 'MeV'
+        #if  self.nuclear_unit :
+        self.den_sat = nuda.cst.nsat
+        self.den_unit = 'fm$^{-3}$'
+        self.eps_unit = 'MeV fm$^{-3}$'
+        self.pre_unit = 'MeV fm$^{-3}$'
+        self.mub_unit = 'MeV'
+        self.cs2_unit ="c^2"
             
         self.layers = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
-        self.hadronic_layers = ["outer_core","inner_crust","outer_crust","atmosphere",]
+        self.nucleonic_layers = ["outer_core","inner_crust","outer_crust","atmosphere"]
+        self.agnostic_models= {"random_speed_of_sound":nuda.eos.Random_speed_of_sound}
+        self.QMeos_functions = {"qm_linear":nuda.eos.mix_phase_Classes.QM_linear} ## currently only applicable to QM_linear
+
 
         for layer in self.layers:
             setattr(self, f"den_{layer}", None)
@@ -1391,3 +1570,103 @@ class setupCSEoS:
                     
                 
             
+"""
+def _load_layer_outer_core(self,layer):
+        #Load an EoS from a local file or nucleardatapy.
+        
+        config = self.eos_layers[layer]
+        
+        
+        if isinstance(config, str):
+            config = {"model": config}
+        
+        model = config.get("model")
+        eos_data_file={}
+        eos_data={}
+
+        if model:
+            data= self._load_layer(layer, model)
+            
+            #print(data,self.full_outputs)
+            if not isinstance(data, pd.DataFrame):
+                data=pd.DataFrame(data)
+            
+            df = data.copy()
+            eos_data_file = {key: df[key].to_numpy(copy=True)  for key in ("den", "pre", "eps")}
+            
+            for key in ("den", "pre", "eps"):
+                if key not in eos_data_file or eos_data_file[key] is None:
+                    raise ValueError( f"Missing '{key}' in the loaded outer-core EoS."   )
+
+                if not np.all(np.isfinite(eos_data_file[key])):
+                    raise ValueError(f"Non-finite values found in outer_core['{key}']." )
+
+            if len({len(eos_data_file[key]) for key in ("den", "pre", "eps")}) != 1:
+                raise ValueError("The outer-core den, pre, and eps arrays must have equal lengths.")               
+                    
+        
+        
+        den_min_file=np.min(np.asarray(df['den']))
+        den_max_file=np.max(np.asarray(df['den']))
+        eos_data=eos_data_file
+        
+        
+               
+        function_name = config.get("function")
+
+        if function_name:
+            function_name = function_name.strip().lower()
+            if function_name not in self.agnostic_models:
+                raise ValueError(f"Unknown function '{function_name}'. Available functions: {list(self.agnostic_models)}")
+
+            parameters = config.get("parameters") or {}
+
+            if function_name == "random_speed_of_sound":
+                den_tr = parameters.get("den_tr")
+                if den_tr is None:
+                    den_tr, eps_tr, pre_tr = eos_data_file["den"][-1], eos_data_file["eps"][-1], eos_data_file["pre"][-1]
+                else:
+                    den_tr=min(den_tr,den_max_file)
+                    eps_tr = np.exp(PchipInterpolator(np.log(eos_data_file["den"]), np.log(eos_data_file["eps"]))(np.log(den_tr)))
+                    pre_tr = np.exp(PchipInterpolator(np.log(eos_data_file["den"]), np.log(eos_data_file["pre"]))(np.log(den_tr)))
+
+                mu_tr = (eps_tr + pre_tr) / den_tr
+                logeoflogp = PchipInterpolator(np.log(eos_data_file["eps"]), np.log(eos_data_file["pre"]))
+                cs2_tr = pre_tr / eps_tr * logeoflogp.derivative()(np.log(eps_tr))
+                parameters.update({"den_tr": den_tr, "eps_tr": eps_tr, "pre_tr": pre_tr, "mu_tr": mu_tr, "cs2_tr": cs2_tr})
+                parameters["full_outputs"] = self.full_outputs
+                
+                
+            # update function parameters here
+
+            eos_function_data = self._evaluate_eos_function(self.agnostic_models[function_name], **parameters)
+
+            for key in ("den", "pre", "eps"):
+                if key not in eos_function_data.columns:
+                    raise ValueError(f"Function '{function_name}' did not return '{key}'.")
+
+            mask_den_file=eos_data["den"]<=den_tr 
+            
+            for key in ("den", "pre", "eps"):                           
+                eos_data[key] = np.concatenate((eos_data_file[key][mask_den_file], eos_function_data[key].to_numpy()))
+
+            
+
+            #print(eos_data)
+            if self.full_outputs:
+                df=df.loc[df["den"].between(den_min_file, den_tr)].copy()
+                
+                
+                df_func = eos_function_data.copy()
+                for col in df.columns:
+                    if col not in df_func.columns: df_func[col] = np.nan
+                for col in df_func.columns:
+                    if col not in df.columns: df[col] = np.nan
+                df = pd.concat([df, df_func[df.columns]], ignore_index=True)
+
+        if not self.full_outputs:
+            return pd.DataFrame(eos_data)
+        else:
+            df["rho"] = df["eps"].to_numpy()
+            return df
+"""
