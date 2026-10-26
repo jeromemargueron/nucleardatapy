@@ -54,8 +54,7 @@ def matter_setupMatterEsym_fig(pname, model, band):
         #
         print("in Sample: model, param", model, param)
         matt = nuda.matter.setupMatterEsym(model=model, param=param)
-        if nuda.env.verb_output:
-            matt.print_outputs()
+        if nuda.env.verb_output: matt.print_outputs()
         #
         lstyle = "dashed"
         if matt.nm_e2a_int is not None and matt.sm_e2a_int is not None:

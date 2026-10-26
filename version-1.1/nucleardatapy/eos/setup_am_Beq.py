@@ -9,6 +9,7 @@ import nucleardatapy as nuda
 
 def func_betaeq(var,*args):
     x_el, x_mu = var
+    #print(f'x_el:{x_el} x_mu:{x_mu}')
     den, esym = args
     n_el = x_el * den
     kFel = ( 3 * nuda.cst.pi2 * n_el )**nuda.cst.third
@@ -68,7 +69,7 @@ class setupAMBeqi():
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = matter_esym_params( model = model )
+        params, params_lower = nuda.matter.matter_esym_params( model = model )
         #
         if param.lower() not in params_lower:
             print('in setupAMBeqi: The param set ',param,' is not in the list of param.')

@@ -123,7 +123,7 @@ class setupCCi:
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = matter_esym_params( model = core_model )
+        params, params_lower = nuda.matter.matter_esym_params( model = core_model )
         #
         if core_param.lower() not in params_lower:
             print('in setupCCi: The param set ',param,' is not in the list of param.')

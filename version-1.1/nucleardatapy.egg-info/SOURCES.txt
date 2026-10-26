@@ -1012,6 +1012,7 @@ version-1.1/nucleardatapy/corr/setup_EsymLsym.py
 version-1.1/nucleardatapy/corr/setup_KsatQsat.py
 version-1.1/nucleardatapy/crust/__init__.py
 version-1.1/nucleardatapy/crust/setup_crust.py
+version-1.1/nucleardatapy/data/.DS_Store
 version-1.1/nucleardatapy/data/LandauParameters/micro/1994-BHF-SM.dat
 version-1.1/nucleardatapy/data/LandauParameters/micro/2006-BHF-NM-AV18.dat
 version-1.1/nucleardatapy/data/LandauParameters/micro/2006-BHF-SM-AV18.dat
@@ -1053,6 +1054,7 @@ version-1.1/nucleardatapy/data/corr/EsymLsym/2021-PREXII-Reed.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/2021-PREXII-Reinhard.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/2023-PREXII-Zhang.dat
 version-1.1/nucleardatapy/data/corr/EsymLsym/test.png
+version-1.1/nucleardatapy/data/crust/.DS_Store
 version-1.1/nucleardatapy/data/crust/1973-Negele-Vautherin.dat
 version-1.1/nucleardatapy/data/crust/2018-PCPFDDG-BSK22.dat
 version-1.1/nucleardatapy/data/crust/2018-PCPFDDG-BSK24.dat
@@ -1086,11 +1088,14 @@ version-1.1/nucleardatapy/data/crust/2018-supplemental_files/full22.dat
 version-1.1/nucleardatapy/data/crust/2018-supplemental_files/full24.dat
 version-1.1/nucleardatapy/data/crust/2018-supplemental_files/full25.dat
 version-1.1/nucleardatapy/data/crust/2018-supplemental_files/full26.dat
+version-1.1/nucleardatapy/data/eos/.DS_Store
 version-1.1/nucleardatapy/data/eos/atmosphere/1949-FMT.csv
 version-1.1/nucleardatapy/data/eos/atmosphere/1949-FMT.dat
+version-1.1/nucleardatapy/data/eos/inner_core/.DS_Store
 version-1.1/nucleardatapy/data/eos/inner_core/QM/MIT_B150_alpha_0.3.csv
 version-1.1/nucleardatapy/data/eos/inner_core/QM/MIT_B190_alpha_0.3.csv
 version-1.1/nucleardatapy/data/eos/inner_core/YM/1971-BPS-YM.csv
+version-1.1/nucleardatapy/data/eos/inner_crust/.DS_Store
 version-1.1/nucleardatapy/data/eos/inner_crust/1971-BBP.csv
 version-1.1/nucleardatapy/data/eos/inner_crust/1971-BBP.dat
 version-1.1/nucleardatapy/data/eos/inner_crust/1971-BPS.csv
@@ -1121,11 +1126,13 @@ version-1.1/nucleardatapy/data/eos/inner_crust/Crust_Pressure.py
 version-1.1/nucleardatapy/data/eos/inner_crust/NV_Pressure_Derivative_using_energy_density.png
 version-1.1/nucleardatapy/data/eos/inner_crust/NV_Pressure_Using_EbyA.png
 version-1.1/nucleardatapy/data/eos/inner_crust/Untitled.ipynb
+version-1.1/nucleardatapy/data/eos/inner_crust/.ipynb_checkpoints/Untitled-checkpoint.ipynb
 version-1.1/nucleardatapy/data/eos/outer_core/1971-BBP.dat
 version-1.1/nucleardatapy/data/eos/outer_core/1971-BPS-PNM.csv
 version-1.1/nucleardatapy/data/eos/outer_core/1971-BPS-PNM.dat
 version-1.1/nucleardatapy/data/eos/outer_core/2001-DH.dat
 version-1.1/nucleardatapy/data/eos/outer_core/2020-MVCD-D1MS.dat
+version-1.1/nucleardatapy/data/eos/outer_crust/.DS_Store
 version-1.1/nucleardatapy/data/eos/outer_crust/1971-BPS.csv
 version-1.1/nucleardatapy/data/eos/outer_crust/1971-BPS.dat
 version-1.1/nucleardatapy/data/eos/outer_crust/1994-HP.dat
@@ -1158,6 +1165,7 @@ version-1.1/nucleardatapy/data/hnuclei/2013-2L-Ahn.csv
 version-1.1/nucleardatapy/data/hnuclei/2015-1Xi-Nakazawa.csv
 version-1.1/nucleardatapy/data/hnuclei/2016-1L-GHM.csv
 version-1.1/nucleardatapy/data/hnuclei/2019-2L-Ekawa.csv
+version-1.1/nucleardatapy/data/matter/.DS_Store
 version-1.1/nucleardatapy/data/matter/hic/2002-DLL-NM-soft.dat
 version-1.1/nucleardatapy/data/matter/hic/2002-DLL-NM-stiff.dat
 version-1.1/nucleardatapy/data/matter/hic/2002-DLL-SM.dat
@@ -1169,6 +1177,7 @@ version-1.1/nucleardatapy/data/matter/hic/2016-FOPI-E2A.dat
 version-1.1/nucleardatapy/data/matter/hic/2016-FOPI-SM.dat
 version-1.1/nucleardatapy/data/matter/hic/2019-N2P-RATIO.dat
 version-1.1/nucleardatapy/data/matter/hic/2021-SPIRIT.dat
+version-1.1/nucleardatapy/data/matter/micro/.DS_Store
 version-1.1/nucleardatapy/data/matter/micro/1981-VAR-NM-FP.dat
 version-1.1/nucleardatapy/data/matter/micro/1981-VAR-SM-FP.dat
 version-1.1/nucleardatapy/data/matter/micro/1998-VAR-NM-APR.dat
@@ -1358,6 +1367,7 @@ version-1.1/nucleardatapy/data/matter/nep/NEPxEFT.dat
 version-1.1/nucleardatapy/data/matter/nep/best67DDSkyrme.dat
 version-1.1/nucleardatapy/data/matter/nep/best90DDSkyrme.dat
 version-1.1/nucleardatapy/data/matter/nep/best95DDSkyrme.dat
+version-1.1/nucleardatapy/data/matter/pheno/.DS_Store
 version-1.1/nucleardatapy/data/matter/pheno/ESkyrme/BSk22-NM.dat
 version-1.1/nucleardatapy/data/matter/pheno/ESkyrme/BSk22-SM.dat
 version-1.1/nucleardatapy/data/matter/pheno/ESkyrme/BSk24-NM.dat
@@ -1491,6 +1501,7 @@ version-1.1/nucleardatapy/data/matter/type/BSTmicro-SM.dat
 version-1.1/nucleardatapy/data/matter/type/BSTph-NM.dat
 version-1.1/nucleardatapy/data/matter/type/BSTph-SM.dat
 version-1.1/nucleardatapy/data/matter/type/convert.sh
+version-1.1/nucleardatapy/data/matter/type/BHF23BF/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/BHF23BF/2006-Av18-NM.dat
 version-1.1/nucleardatapy/data/matter/type/BHF23BF/2006-Av18-SM.dat
 version-1.1/nucleardatapy/data/matter/type/BHF23BF/2024-Av18-NM.dat
@@ -1530,6 +1541,7 @@ version-1.1/nucleardatapy/data/matter/type/BHF23BF-bkup/2006-BHF23BF-Av18-GAP-SM
 version-1.1/nucleardatapy/data/matter/type/BHF23BF-bkup/2006-BHF23BF-Av18-effmass-SM.dat
 version-1.1/nucleardatapy/data/matter/type/BHF23BF-bkup/2006-BHF23BF-Av18-effmass-beta0.2.dat
 version-1.1/nucleardatapy/data/matter/type/BHF23BF-bkup/2006-BHF23BF-Av18-effmass-beta0.4.dat
+version-1.1/nucleardatapy/data/matter/type/BHF2BF/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/BHF2BF/2024-Av18-NM.dat
 version-1.1/nucleardatapy/data/matter/type/BHF2BF/2024-Av18-SM.dat
 version-1.1/nucleardatapy/data/matter/type/BHF2BF/2024-Av8p-NM.dat
@@ -1562,7 +1574,6 @@ version-1.1/nucleardatapy/data/matter/type/CC/2024-DN2LOgo450-NM.dat
 version-1.1/nucleardatapy/data/matter/type/CC/2024-DN2LOgo450-SM.dat
 version-1.1/nucleardatapy/data/matter/type/CC/2024-N2LOsat-NM.dat
 version-1.1/nucleardatapy/data/matter/type/CC/2024-N2LOsat-SM.dat
-version-1.1/nucleardatapy/data/matter/type/ESkyrme/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/ESkyrme/BSk22-NM.dat
 version-1.1/nucleardatapy/data/matter/type/ESkyrme/BSk22-SM.dat
 version-1.1/nucleardatapy/data/matter/type/ESkyrme/BSk24-NM.dat
@@ -1581,6 +1592,7 @@ version-1.1/nucleardatapy/data/matter/type/ESkyrme/BSkG4-NM.dat
 version-1.1/nucleardatapy/data/matter/type/ESkyrme/BSkG4-SM.dat
 version-1.1/nucleardatapy/data/matter/type/ESkyrme-bkup/BSk32-NM-old.dat
 version-1.1/nucleardatapy/data/matter/type/ESkyrme-bkup/BSk32-SM-old.dat
+version-1.1/nucleardatapy/data/matter/type/MBPT/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/MBPT/2013-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT/2016-AM-0.1.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT/2016-AM-0.2.dat
@@ -1609,6 +1621,7 @@ version-1.1/nucleardatapy/data/matter/type/MBPT/2024-DN2LOgo450-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT/2024-DN2LOgo450-SM.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT/2024-N2LOsat-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT/2024-N2LOsat-SM.dat
+version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2010-MBPT-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N2LO_3N_forces.csv
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EGM450_500_effmass_1S0_HF_spectrum_N3LO_3N_forces.csv
@@ -1646,6 +1659,7 @@ version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EM500_g
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EM500_gap_3PF2_HF_spectrum_N3LO_3N_forces.csv
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EM500_gap_3PF2_free_spectrum_N2LO_3N_forces.csv
 version-1.1/nucleardatapy/data/matter/type/MBPT-bkup/2017-Drischler/N3LO_EM500_gap_3PF2_free_spectrum_N3LO_3N_forces.csv
+version-1.1/nucleardatapy/data/matter/type/MC/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/MC/2008-QMCswave-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC/2009-AFDMC-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC/2009-dQMC-NM.dat
@@ -1669,15 +1683,18 @@ version-1.1/nucleardatapy/data/matter/type/MC/2016-QMC-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC/2018-QMC-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC/2022-AFDMC-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC/2024-DMC-NM.dat
+version-1.1/nucleardatapy/data/matter/type/MC-bkup/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/MC-bkup/2008-AFDMC-NM-bkup.dat
 version-1.1/nucleardatapy/data/matter/type/MC-bkup/2008-AFDMC-NM.dat
 version-1.1/nucleardatapy/data/matter/type/MC-bkup/2008-QMC-NM-swave-bkup.dat
 version-1.1/nucleardatapy/data/matter/type/MC-bkup/2010-QMC-NM-AV4-bkup.dat
 version-1.1/nucleardatapy/data/matter/type/MC-bkup/2012-AFDMC-NM.txt
+version-1.1/nucleardatapy/data/matter/type/NLEFT/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/NLEFT/2024-NM.dat
 version-1.1/nucleardatapy/data/matter/type/NLEFT/2024-SM.dat
 version-1.1/nucleardatapy/data/matter/type/NLEFT-bkup/2024-NLEFT-NM-bkp.dat
 version-1.1/nucleardatapy/data/matter/type/NLEFT-bkup/2024-NLEFT-SM-bkp.dat
+version-1.1/nucleardatapy/data/matter/type/SCGF/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/SCGF/2020-N3LO414-NM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF/2020-N3LO414-SM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF/2020-N3LO450-NM.dat
@@ -1694,6 +1711,7 @@ version-1.1/nucleardatapy/data/matter/type/SCGF/2024-DN2LOgo450-NM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF/2024-DN2LOgo450-SM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF/2024-N2LOsat-NM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF/2024-N2LOsat-SM.dat
+version-1.1/nucleardatapy/data/matter/type/SCGF-bkup/.DS_Store
 version-1.1/nucleardatapy/data/matter/type/SCGF-bkup/2020-SCGF-N3LO414-NM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF-bkup/2020-SCGF-N3LO414-SM.dat
 version-1.1/nucleardatapy/data/matter/type/SCGF-bkup/2020-SCGF-N3LO450-NM.dat
@@ -1883,6 +1901,7 @@ version-1.1/nucleardatapy/fig/corr_setupKsatQsat_fig.py
 version-1.1/nucleardatapy/fig/crust_setupCrust_fig.py
 version-1.1/nucleardatapy/fig/eos_setupAMBeq_fig.py
 version-1.1/nucleardatapy/fig/eos_setupAMLeq_fig.py
+version-1.1/nucleardatapy/fig/eos_setupAMLeqi_fig.py
 version-1.1/nucleardatapy/fig/eos_setupAM_asy_lep_fig.py
 version-1.1/nucleardatapy/fig/eos_setupAM_asy_nuc_fig.py
 version-1.1/nucleardatapy/fig/eos_setupAM_asy_tot_fig.py

@@ -8,7 +8,8 @@ import random
 import nucleardatapy as nuda
 
 def func_am(var,*args):
-    x_mu = var
+    x_mu = var[0]
+    #print(f'x_mu: {x_mu}')
     den, x_p = args
     x_el = x_p - x_mu
     n_el = x_el * den
@@ -20,6 +21,10 @@ def func_am(var,*args):
     else:
         n_mu = x_mu * den
         kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
+        #print(f'mu_el: {mu_el} <? {nuda.cst.mmuc2}')
+        #print(f'kFmu: {kFmu}')
+        #print(f'kFel: {kFel}')
+        #print(f'kFel**2-mmu**2: {kFel**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2}')
         eq = kFmu - math.sqrt( kFel**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
     return eq
 
@@ -67,7 +72,7 @@ class setupAMLeqi():
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = matter_esym_params( model = model )
+        params, params_lower = nuda.matter.matter_esym_params( model = model )
         #
         if param.lower() not in params_lower:
             print('in setupAMLeqi: The param set ',param,' is not in the list of param.')

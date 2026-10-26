@@ -53,12 +53,19 @@ from nucleardatapy.fig.hnuc_setupRE1LExp_fig        import *
 from nucleardatapy.fig.hnuc_setupChart_fig          import *
 #
 from nucleardatapy.fig.eos_setupAM_fig              import *
+from nucleardatapy.fig.eos_setupAMi_fig             import *
 from nucleardatapy.fig.eos_setupAM_asy_nuc_fig      import *
+from nucleardatapy.fig.eos_setupAMi_asy_nuc_fig     import *
 from nucleardatapy.fig.eos_setupAM_asy_lep_fig      import *
+from nucleardatapy.fig.eos_setupAMi_asy_lep_fig     import *
 from nucleardatapy.fig.eos_setupAM_asy_tot_fig      import *
+from nucleardatapy.fig.eos_setupAMi_asy_tot_fig     import *
 from nucleardatapy.fig.eos_setupAMBeq_fig           import *
+from nucleardatapy.fig.eos_setupAMBeqi_fig           import *
 from nucleardatapy.fig.eos_setupAMLeq_fig           import *
+from nucleardatapy.fig.eos_setupAMLeqi_fig          import *
 from nucleardatapy.fig.eos_setupCC_fig              import *
+from nucleardatapy.fig.eos_setupCCi_fig             import *
 from nucleardatapy.fig.eos_setupCSEoS_fig           import *
 #
 from nucleardatapy.fig.crust_setupCrust_fig         import *
