@@ -1,4 +1,6 @@
 import math
+import os
+import sys
 import numpy as np  # 1.15.0
 from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
@@ -9,48 +11,66 @@ import nucleardatapy as nuda
 nsat = 0.16
 mnuc2 = 939.0
 
-def pheno_esym_models():
-    """
-    Return a list of models available in this toolkit and print them all on the prompt.
-
-    :return: The list of models with can be 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF'.
-    :rtype: list[str].
-    """
-    #
-    if nuda.env.verb: print("\nEnter pheno_esym_models()")
-    #
-    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
-    #print('Phenomenological models available in the toolkit:',models)
-    models_lower = [ item.lower() for item in models ]
-    #
-    if nuda.env.verb: print("Exit pheno_esym_models()")
-    #
-    return models, models_lower
-
-def pheno_esym_params( model ):
+def matter_esym_params( model ):
     """
     Return a list with the parameterizations available in 
     this toolkit for a given model and print them all on the prompt.
 
-    :param model: The type of model for which there are parametrizations. \
-    They should be chosen among the following options: 'Skyrme', 'NLRH', \
-    'DDRH', 'DDRHF'.
+    :param model: The type of model for which there are parametrizations.
     :type model: str.
-    :return: The list of parametrizations. \
-    If `models` == 'skyrme': 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
-    'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
-    'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
-    'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. \
-    If `models` == 'ESkyrme': 'BSk22', 'BSk24', 'BSk25', 'BSk26', 'BSk31', 'BSk32', \
-    'BSkG1', 'BSkG2', 'BSkG3'. \
-    If `models` == 'NLRH': 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. \
-    If `models` == 'DDRH': 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. \
-    If `models` == 'DDRHF': 'PKA1', 'PKO1', 'PKO2', 'PKO3'.
     :rtype: list[str].
     """
     #
-    if nuda.env.verb: print("\nEnter pheno_esym_params()")
+    if nuda.env.verb: print("\nEnter matter_esym_params()")
+    #
+    models, models_lower = nuda.matter.matter_models( )
+    #print(f'models: {models}')
+    #
+    if model.lower() not in models_lower:
+        print('In matter_esym_params( model ): The model name ',model,' is not in the list of models.')
+        print('In matter_esym_params( model ): list of models:',models)
+        print('-- Exit the code --')
+        exit()
+    # extract all parameters existing in the folder model
+    path_model = os.path.join(nuda.param.path_data,'matter/type/'+model)
+    print(f'path_model: {path_model}')
+    #params = [ os.path.splitext(par)[0] for par in os.listdir(path_model) if par.endswith('.dat')]
+    all_params = [ par[:-4] for par in os.listdir(path_model) if par.endswith('.dat')]
+    # remove params that contain '-AM-' in their name:
+    params = []
+    for param in all_params:
+        if '-AM-' not in param:
+            params.append(param)
+    # select only the parameters for which SM and NM have been calculated:
+    params.sort()
+    new_params = []
+    #for k,param in enumerate(params):
+    for k in range(len(params)-1):
+        #print(f'params[{k}][:-3]: {params[k][:-3]}')
+        if params[k][:-3]==params[k+1][:-3]:
+            new_params.append(params[k][:-3])
+    params = list(set(new_params))
+    #print(f'params: {params}')
+    params.sort()
+    #
+    params_lower = [ item.lower() for item in params ]
+    #
+    if nuda.env.verb: print("Exit matter_esym_params()")
+    #
+    return params, params_lower
+
+
+def matter_esym_params_old( model ):
+    """
+    Return a list with the parameterizations available in 
+    this toolkit for a given model and print them all on the prompt.
+
+    :param model: The type of model for which there are parametrizations.
+    :type model: str.
+    :rtype: list[str].
+    """
+    #
+    if nuda.env.verb: print("\nEnter matter_esym_params_old()")
     #
     #print('For model:',model)
     if model.lower() == 'skyrme':
@@ -73,9 +93,10 @@ def pheno_esym_params( model ):
     elif model.lower() == 'ddrhf':
         params = [ 'PKA1', 'PKO1', 'PKO2', 'PKO3' ]
     #print('Parameters available in the toolkit:',params)
+    #
     params_lower = [ item.lower() for item in params ]
     #
-    if nuda.env.verb: print("Exit pheno_esym_params()")
+    if nuda.env.verb: print("Exit matter_esym_params_old()")
     #
     return params, params_lower
 
@@ -85,25 +106,6 @@ class setupMatterEsym():
     interactions and choosen by the toolkit practitioner. \
     This choice is defined in the variables `model` and `param`.
 
-    If `models` == 'Skyrme', `param` can be: 'BSK14', \
-    'BSK16', 'BSK17', 'BSK27', 'BSkG1', 'BSkG2','F-', 'F+', 'F0', 'FPL', 'LNS', 'LNS1', 'LNS5', \
-    'NRAPR', 'RATP', 'SAMI', 'SGII', 'SIII', 'SKGSIGMA', 'SKI2', 'SKI4', 'SKMP', \
-    'SKMS', 'SKO', 'SKOP', 'SKP', 'SKRSIGMA', 'SKX', 'Skz2', 'SLY4', 'SLY5', \
-    'SLY230A', 'SLY230B', 'SV', 'T6', 'T44', 'UNEDF0', 'UNEDF1'. 
-
-    If `models` == 'ESkyrme', `param` can be: 'BSk22', 'BSk24', 'BSk25', \
-    'BSk26', 'BSk31', 'BSk32', 'BSkG3','BSkG4' .
-
-    If `models` == 'Fayans', `param` can be: 'Fy(IVP)', 'Fy(Dr,HDB)', 'Fy(std)' \
-
-    If `models` == 'Gogny', `param` can be: 'D1S', 'D1', 'D250', 'D260', 'D280', 'D300' \
-
-    If `models` == 'NLRH', `param` can be: 'NL-SH', 'NL3', 'NL3II', 'PK1', 'PK1R', 'TM1'. 
-
-    If `models` == 'DDRH', `param` can be: 'DDME1', 'DDME2', 'DDMEd', 'PKDD', 'TW99'. 
-
-    If `models` == 'DDRHF', `param` can be: 'PKA1', 'PKO1', 'PKO2', 'PKO3'. 
-    
     :param model: Fix the name of model: 'Skyrme', 'NLRH', \
     'DDRH', 'DDRHF'. Default value: 'Skyrme'.
     :type model: str, optional. 
@@ -135,21 +137,21 @@ class setupMatterEsym():
         if nuda.env.verb: print("param:",param)
         #print("-> param:",param)
         #
-        self = setupPhenoEsym.init_self( self )
+        self = setupMatterEsym.init_self( self )
         #
-        models, models_lower = pheno_esym_models()
+        models, models_lower = nuda.matter.matter_models()
         #
         if model.lower() not in models_lower:
-            print('The model name ',model,' is not in the list of models.')
-            print('list of models:',models)
+            print('in setupMatterEsym: The model name ',model,' is not in the list of models.')
+            print('in setupMatterEsym: list of models:',models)
             print('-- Exit the code --')
             exit()
         #
-        params, params_lower = pheno_esym_params( model = model )
+        params, params_lower = matter_esym_params( model = model )
         #
         if param.lower() not in params_lower:
-            print('The param set ',param,' is not in the list of param.')
-            print('list of param:',params)
+            print('in setupMatterEsym: The param set ',param,' is not in the list of param.')
+            print('in setupMatterEsym: list of param:',params)
             print('-- Exit the code --')
             exit()
         #
@@ -157,22 +159,22 @@ class setupMatterEsym():
         # load NM and SM quantities
         # =========================
         #
-        pheno = nuda.matter.setupPheno( model = model, param = param )
-        self.sm_den = pheno.sm_den
-        self.sm_e2a_int = pheno.sm_e2a_int
-        self.nm_den = pheno.nm_den
-        self.nm_e2a_int = pheno.nm_e2a_int
+        matt = nuda.matter.setupMatter( model = model, param = param )
+        self.sm_den = matt.sm_den
+        self.sm_e2a_int = matt.sm_e2a_int
+        self.nm_den = matt.nm_den
+        self.nm_e2a_int = matt.nm_e2a_int
         #pheno.print_outputs( )
         #
         # ===========================
         # compute the symmetry energy
         # ===========================
         #
-        self.ref = pheno.ref
-        self.note = pheno.note
-        self.label = pheno.label
-        self.marker = pheno.marker
-        self.linestyle = pheno.linestyle
+        self.ref = matt.ref
+        self.note = matt.note
+        self.label = matt.label
+        self.marker = matt.marker
+        self.linestyle = matt.linestyle
         #
         # E/A in SM (cubic spline)
         #
@@ -191,7 +193,7 @@ class setupMatterEsym():
         self.kf_min = nuda.kf( self.den_min ); self.kf_max = nuda.kf( self.den_max )
         den_step = ( self.den_max - self.den_min ) / float( self.nesym )
         self.den = self.den_min + np.arange(self.nesym+1) * den_step
-        self.kf = nuda.kf( self.den )
+        self.kfn = nuda.kf_n( nuda.cst.half * self.den )
         #
         # Symmetry energy for the densities defined in self.den
         #
@@ -202,7 +204,7 @@ class setupMatterEsym():
         self.esym_sym_pre = self.den**2 * cs_nm_e2a( self.den, 1 ) - self.esym_sm_pre
         #
         self.den_unit = 'fm$^{-3}$'
-        self.kf_unit = 'fm$^{-1}$'
+        self.kfn_unit = 'fm$^{-1}$'
         self.esym_unit = 'MeV'
         self.eps_unit = 'MeV fm$^{-3}$'
         self.pre_unit = 'MeV fm$^{-3}$'

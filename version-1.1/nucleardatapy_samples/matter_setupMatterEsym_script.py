@@ -4,15 +4,28 @@ import nucleardatapy as nuda
 def main():
     #
     print(50*'-')
-    print("Enter matter_setupMatter_Esym.py:")
+    print("Enter matter_setupMatterEsym_script.py:")
     print(50*'-')
     #
-    #models, models_lower = nuda.eos_pheno_esym_models()
-    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    #models, models_lower = nuda.matter.matter_models()
+    models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF', 'Var', 'MC', 'MBPT', 'NLEFT', 'BHF2BF', 'BHF23BF', 'SCGF', 'CC' ]
+    #models = [ 'Skyrme' ]
+    #models = [ 'ESkyrme' ]
+    #models = [ 'NLRH' ]
+    #models = [ 'DDRH' ]
+    #models = [ 'DDRHF' ]
+    #models = [ 'Var' ]
+    #models = [ 'MC' ]
+    #models = [ 'MBPT' ]
+    #models = [ 'NLEFT' ]
+    #models = [ 'BHF2BF' ]
+    #models = [ 'BHF23BF' ]
+    #models = [ 'SCGF' ]
+    #models = [ 'CC' ]
     #
     for model in models:
         #
-        params, params_lower = nuda.matter.matter_params( model = model )
+        params, params_lower = nuda.matter.matter_esym_params( model = model )
         #
         for param in params:
             #
@@ -23,7 +36,7 @@ def main():
         #
     #
     print(50*'-')
-    print("Exit matter_setupMatter_Esym.py:")
+    print("Exit matter_setupMatterEsym_script.py:")
     print(50*'-')
     #
     

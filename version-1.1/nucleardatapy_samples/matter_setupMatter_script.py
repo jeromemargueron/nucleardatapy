@@ -9,7 +9,7 @@ def main():
     print("Enter matter_setupMatter_script.py:")
     print(50*'-')
     #
-    #models, models_lower = nuda.matter.pheno_models()
+    #models, models_lower = nuda.matter.matter_models()
     #models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF', 'Var', 'MC', 'MBPT', 'NLEFT', 'BHF2BF', 'BHF23BF', 'SCGF', 'CC' ]
     models = [ 'Skyrme' ]
     models = [ 'ESkyrme' ]

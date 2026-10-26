@@ -30,12 +30,12 @@ def matter_micro_models():
         print("\nEnter matter_micro_mbs()")
     #
     models = [ "Var", "MC", "BHF2BF", "BHF23BF", "MBPT", "NLEFT", "SCGF", "CC" ]
-    models_loer = [ item.lower() for item in models ]
+    models_lower = [ item.lower() for item in models ]
     #
     if nuda.env.verb:
         print("Exit matter_micro_models()")
     #
-    return models, models_loer
+    return models, models_lower
 
 def matter_pheno_models():
     """
@@ -49,13 +49,13 @@ def matter_pheno_models():
     #
     # models = [ 'Skyrme', 'ESkyrme', 'Gogny', 'Fayans', 'NLRH', 'DDRH', 'DDRHF' ]
     models = [ 'Skyrme', 'ESkyrme', 'NLRH', 'DDRH', 'DDRHF' ]
+    # add Gogny and Fayans
 
-    #print('Phenomenological models available in the toolkit:',models)
-    models_loer = [ item.lower() for item in models ]
+    models_lower = [ item.lower() for item in models ]
     #
     if nuda.env.verb: print("Exit matter_pheno_models()")
     #
-    return models, models_loer
+    return models, models_lower
 
 def matter_models():
     """
@@ -67,17 +67,60 @@ def matter_models():
     #
     if nuda.env.verb: print("\nEnter matter_models()")
     #
-    pheno_models, pheno_models_loer = matter_pheno_models( )
-    micro_models, micro_models_loer = matter_micro_models( )
+    pheno_models, pheno_models_lower = matter_pheno_models( )
+    micro_models, micro_models_lower = matter_micro_models( )
     models = pheno_models + micro_models
-    models_loer = pheno_models_loer + micro_models_loer
+    models_lower = pheno_models_lower + micro_models_lower
     #
     if nuda.env.verb: print("Exit matter_models()")
     #
-    return models, models_loer
-
+    return models, models_lower
 
 def matter_params( model ):
+    """
+    Return a list of params available in this toolkit \
+    for a given model. 
+
+    :param model: The model for which there are parametrizations. \
+    They should be chosen among the following options: 'VAR', 'AFDMC', 'BHF', 'QMC', 'MBPT', 'NLEFT'.
+    :type model: str.
+    :return: The list of parametrizations.
+
+    """
+    #
+    if nuda.env.verb:
+        print("\nEnter matter_params( model )")
+    #
+    models, models_lower = matter_models( )
+    #print(f'models: {models}')
+    #
+    if model.lower() not in models_lower:
+        print('In matter_params( model ): The model name ',model,' is not in the list of models.')
+        print('In matter_params( model ): list of models:',models)
+        print('-- Exit the code --')
+        exit()
+    # extract all parameters existing in the folder model
+    path_model = os.path.join(nuda.param.path_data,'matter/type/'+model)
+    print(f'path_model: {path_model}')
+    #params = [ os.path.splitext(par)[0] for par in os.listdir(path_model) if par.endswith('.dat')]
+    all_params = [ par[:-7] for par in os.listdir(path_model) if par.endswith('.dat')]
+    # remove params that contain '-AM-' in their name:
+    params = []
+    for param in all_params:
+        if '-AM-' not in param:
+            params.append(param)
+    params = list(set(params))
+    #print(f'params: {params}')
+    #
+    params_lower = [item.lower() for item in params]
+    #
+    if nuda.env.verb:
+        print("\nExit matter_params()")
+    #
+    return params, params_lower
+
+
+def matter_params_old( model ):
     """
     Return a list with the name of the models available in this toolkit \
     for a given mb appoach and print them all on the prompt. 
@@ -90,7 +133,7 @@ def matter_params( model ):
     """
     #
     if nuda.env.verb:
-        print("\nEnter matter_micro_params( model )")
+        print("\nEnter matter_params_old( model )")
     #
     # print('mb:',mb)
     if model.lower() == 'skyrme':
@@ -117,7 +160,8 @@ def matter_params( model ):
     elif model.lower() == "mc":
         params = [
             "2008-QMCswave",
-            "2009-DQMC",
+            "2009-AFDMC",
+            "2009-dQMC",
             "2010-QMCAV4",
             "2012-AFDMC-1",
             "2012-AFDMC-2",
@@ -210,12 +254,12 @@ def matter_params( model ):
             "2024-N2LOsat",
         ]
     #
-    params_loer = [item.lower() for item in params]
+    params_lower = [item.lower() for item in params]
     #
     if nuda.env.verb:
-        print("\nExit matter_micro_params()")
+        print("\nExit matter_params_old()")
     #
-    return params, params_loer
+    return params, params_lower
 
 def matter_params_models( models ):
     #
@@ -224,32 +268,32 @@ def matter_params_models( models ):
     #
     params = []
     for model in models:
-        new_params, new_params_loer = matter_params( model )
+        new_params, new_params_lower = matter_params( model )
         params.extend(new_params)
     #
     if nuda.env.verb:
         print("params available in the toolkit:", params)
     #
-    params_loer = [item.lower() for item in params]
+    params_lower = [item.lower() for item in params]
     #
     if nuda.env.verb:
         print("Exit matter_micro_params_models()")
     #
-    return params, params_loer
+    return params, params_lower
 
 def matter_micro_params():
     #
     if nuda.env.verb:
         print("\nEnter matter_micro_params()")
     #
-    models, mmodels_loer = matter_micro_models()
+    models, mmodels_lower = matter_micro_models()
     #
-    params, params_loer = matter_params_models( models )
+    params, params_lower = matter_params_models( models )
     #
     if nuda.env.verb:
         print("Exit matter_micro_params()")
     #
-    return params, params_loer
+    return params, params_lower
 
 def matter_params_model_matter(model, matter):
     """
@@ -261,7 +305,7 @@ def matter_params_model_matter(model, matter):
     #
     print("For model (in " + matter + "):", model)
     #
-    params, params_loer = matter_params_model( model )
+    params, params_lower = matter_params_model( model )
     #
     params2 = []
     for j, param in enumerate(params):
@@ -269,9 +313,9 @@ def matter_params_model_matter(model, matter):
             param2.append(param)
     #
     print("params2:", params2)
-    params2_loer = [item.lower() for item in params2]
+    params2_lower = [item.lower() for item in params2]
     #
-    return params2, params2_loer
+    return params2, params2_lower
 
 # Define functions for APRfit
 def APRfit_compute(n, x):
