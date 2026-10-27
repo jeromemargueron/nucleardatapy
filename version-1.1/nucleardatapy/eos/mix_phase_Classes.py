@@ -581,25 +581,32 @@ class HyperbolicInterpolatePhase:
         
         
 class QM_linear:
-    def __init__(self, parameters, den_max=None):
-        self.den_H_pt, self.eps_H_pt, self.Pre_pt, self.deltan, self.alpha, self.mu_pt = parameters
+    def __init__(self, **parameters):
+        self.den_tr_H = parameters.get("den_tr_H")
+        
+        self.eps_tr_H = parameters.get("eps_tr_H")
+        self.pre_critical= parameters.get("pre_critical")
+        self.delta_den=parameters.get("delta_den")
+        self.alpha = parameters.get("alpha")
+        self.mu_critical = parameters.get("mu_critical")
+        den_max=parameters.get("den_max")
         #self.den_sat = cst.nsat
         self.den_max = 20. * nuda.cst.nsat if den_max is None else den_max
         self.check_Qmlinear = False
 
     def liner_EoS(self):
-        self.den_Q_pt = self.den_H_pt + self.deltan
-        self.eps_Q_pt = self.den_Q_pt * self.mu_pt - self.Pre_pt
-        self.deltaE = self.eps_Q_pt - self.eps_H_pt
+        self.den_Q_pt = self.den_tr_H + self.delta_den
+        self.eps_Q_pt = self.den_Q_pt * self.mu_critical - self.pre_critical
+        self.deltaE = self.eps_Q_pt - self.eps_tr_H
 
-        if self.deltaE <= 0. or self.alpha <= 0. or self.deltan < 0. or self.den_max <= self.den_Q_pt:
+        if self.deltaE <= 0. or self.alpha <= 0. or self.delta_den < 0. or self.den_max <= self.den_Q_pt:
             return None
 
-        eps_star = self.eps_H_pt + self.deltaE - self.Pre_pt / self.alpha
+        eps_star = self.eps_tr_H + self.deltaE - self.pre_critical / self.alpha
         self.den = np.linspace(self.den_Q_pt, self.den_max, 100)
 
         eps1 = self.alpha / (self.alpha + 1.) * eps_star
-        eps2 = self.eps_H_pt + self.deltaE - self.alpha / (self.alpha + 1.) * eps_star
+        eps2 = self.eps_tr_H + self.deltaE - self.alpha / (self.alpha + 1.) * eps_star
         self.eps = eps1 + eps2 * (self.den / self.den_Q_pt)**(self.alpha + 1.)
         self.pre = self.alpha * self.eps - self.alpha * eps_star
 

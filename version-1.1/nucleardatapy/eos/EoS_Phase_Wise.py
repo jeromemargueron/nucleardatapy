@@ -175,11 +175,12 @@ class setupCSEoS:
             # Validate parameters for function-based models.
             model_name = phase_info["model"]
 
-            if model_name in self.QMeos_functions:
+            if model_name.strip().lower() in self.QMeos_functions:
                 parameters = phase_info.get("parameters", {})
                 if not isinstance(parameters, dict):
                     raise TypeError(f"'parameters' for '{phase_name}' must be a dictionary.")
 
+        self.identify_inner_core_phases()
         return self
 
     # =========================================================
@@ -214,10 +215,10 @@ class setupCSEoS:
             phase_data = {**phase_info,"type": phase_type,"phase_number": self._phase_number(phase_name)}
 
             
-            if model_name in self.QMeos_functions:
+            if model_name.strip().lower() in self.QMeos_functions:
 
                 phase_data["source"] = "function"
-                phase_data["function"] = (self.QMeos_functions[model_name])
+                phase_data["function"] = (self.QMeos_functions[model_name.strip().lower()])
 
             
             else:
@@ -530,7 +531,11 @@ class setupCSEoS:
         if not self.full_outputs:
             return pd.DataFrame(df)
         else:
-            return pd.DataFrame(eos_function_class.all_data)
+            all_data = getattr(eos_function_class, "all_data", None)
+            if all_data:
+                return pd.DataFrame(all_data)
+            else:
+                return pd.DataFrame(df)
         
                
         
@@ -577,7 +582,7 @@ class setupCSEoS:
         
         
         
-        self.identify_inner_core_phases()
+        #self.identify_inner_core_phases()
         for phase_name, phase_info in self.inner_core_phases.items():
 
             if phase_info["source"] == "file":
@@ -1008,9 +1013,9 @@ class setupCSEoS:
                 raise KeyError('In valid function for QM. See avilable models model.self.QMeos_functions')
             parameters=qm_phase.get("parameters", {})
             
-            self.den_critical_H = parameters['den_nuc_pt']
+            self.den_critical_H = parameters['den_tr_H']
             self.delta_Den_pt =parameters['delta_den']
-            alpha = parameters['alpha']
+            #alpha = parameters['alpha']
              
             if self.den_sat > self.den_critical_H:
                 raise ("no phase transition below saturation density is allowed ")
@@ -1019,26 +1024,31 @@ class setupCSEoS:
                 raise ("The critical density is outside the density range ")
             
             
-            self.Pre_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H)))
+            self.pre_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H)))
 
             self.eps_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
 
-            self.mu_critical = (self.Pre_critical_H + self.eps_critical_H ) /self.den_critical_H
+            self.mu_critical = (self.pre_critical_H + self.eps_critical_H ) /self.den_critical_H
             
             #self.rho_critical_H = self.eps_critical_H 
-            self.Pre_critical = self.Pre_critical_H
+            self.pre_critical = self.pre_critical_H
             
 
              
             
             
-            parameters_for_eos = [self.den_critical_H ,self.eps_critical_H,self.Pre_critical_H,self.delta_Den_pt,alpha,self.mu_critical]
+            parameters.update({"eps_tr_H":self.eps_critical_H,"pre_critical":self.pre_critical,"mu_critical":self.mu_critical})
             
-            eos_QM=self._evaluate_eos_function(self.self.QMeos_functions[QM_eos_function_name.strip().lower()], **parameters_for_eos)
+            #self.den_critical_H ,self.eps_critical_H,self.pre_critical_H,self.delta_Den_pt,alpha,self.mu_critical)
+            
+            eos_QM=self._evaluate_eos_function(self.QMeos_functions[QM_eos_function_name.strip().lower()], **parameters)
             if eos_QM is None:
                 print("Valid QM EoS not found. Returning the hadronic EoS")
                 return self            
             
+            if self.full_outputs:
+                qm_layer = f"inner_core_phase{qm_phase['phase_number']}"
+                self.data[qm_layer]=eos_QM
             
             for key in ("den", "pre", "eps"):
                 if key not in eos_QM.columns:
@@ -1057,9 +1067,9 @@ class setupCSEoS:
             
             
             den_M = np.linspace(self.den_critical_H+0.005*self.den_critical_H , self.den_critical_Q-0.005*self.den_critical_Q, 20)
-            pre_M=np.zeros_like(den_M)+self.Pre_critical_H
+            pre_M=np.zeros_like(den_M)+self.pre_critical_H
             mu_M=np.zeros_like(den_M)+self.mu_critical
-            eps_M= den_M*self.mu_critical-self.Pre_critical_H
+            eps_M= den_M*self.mu_critical-self.pre_critical_H
             #rho_M = eps_M.copy()
 
             # Convert energy density to mass density if using cgs units.
@@ -1121,11 +1131,11 @@ class setupCSEoS:
             if method =='tanH_Interp':
             
             
-                self.Pre_critical = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H )))
+                self.pre_critical = np.exp(PchipInterpolator(np.log(den_H), np.log(pre_H))(np.log(self.den_critical_H )))
 
                 self.eps_critical_H = np.exp(PchipInterpolator(np.log(den_H), np.log(eps_H))(np.log(self.den_critical_H )))
 
-                self.mu_critical = (self.Pre_critical + self.eps_critical_H ) /self.den_critical_H
+                self.mu_critical = (self.pre_critical + self.eps_critical_H ) /self.den_critical_H
                 
                 #self.rho_critical_H= self.eps_critical_H 
                 raise NotImplementedError("not implimented Yet")
@@ -1155,19 +1165,19 @@ class setupCSEoS:
 
                 # Transition chemical potential and pressure
                 self.mu_critical = Maxwell.mu_c
-                self.Pre_critical = Maxwell.P_c
+                self.pre_critical = Maxwell.P_c
                 
                 
                 
                 #if method == 'Maxwell':
-                Pc = self.Pre_critical
+                Pc = self.pre_critical
 
-                nH,  epsH = self.interpolate_at_pressure(self.Pre_critical, den_H, pre_H,  eps_H)
+                nH,  epsH = self.interpolate_at_pressure(self.pre_critical, den_H, pre_H,  eps_H)
                 self.den_critical_H = nH
                 #self.rho_critical_H = rhoH
                 self.eps_critical_H = epsH
 
-                nQ, epsQ = self.interpolate_at_pressure(self.Pre_critical, den_Q, pre_Q,  eps_Q)
+                nQ, epsQ = self.interpolate_at_pressure(self.pre_critical, den_Q, pre_Q,  eps_Q)
 
                 self.den_critical_Q = nQ
                 #self.rho_critical_Q = rhoQ
@@ -1199,7 +1209,7 @@ class setupCSEoS:
                 mub_Q_branch = (pre_Q_branch + eps_Q_branch ) / den_Q_branch
                 
                 if method == 'Maxwell':
-                    self.Pre_critical_H= self.Pre_critical
+                    self.pre_critical_H= self.pre_critical
                     
                     
                     if (self.den_critical_Q -self.den_critical_H) <=0.:
@@ -1212,9 +1222,9 @@ class setupCSEoS:
                         return self
                         
                     den_M = np.linspace(self.den_critical_H+0.005*self.den_critical_H , self.den_critical_Q-0.005*self.den_critical_Q, 20)
-                    pre_M=np.zeros_like(den_M)+self.Pre_critical_H
+                    pre_M=np.zeros_like(den_M)+self.pre_critical_H
                     mu_M=np.zeros_like(den_M)+self.mu_critical
-                    eps_M= den_M*self.mu_critical-self.Pre_critical_H
+                    eps_M= den_M*self.mu_critical-self.pre_critical_H
                     #rho_M = eps_M.copy()
 
                     # Convert energy density to mass density if using cgs units.
@@ -1227,7 +1237,7 @@ class setupCSEoS:
                     
                 
                 if method == 'MIM':
-                    valid_bg = ((den_bg >= self.den_sat) & (pre_bg < self.Pre_critical))
+                    valid_bg = ((den_bg >= self.den_sat) & (pre_bg < self.pre_critical))
 
                     den_H = den_bg[valid_bg]
                     pre_H = pre_bg[valid_bg]
@@ -1236,7 +1246,7 @@ class setupCSEoS:
                     mub_H = mub_bg[valid_bg]
                     
                     den_H = np.append(den_H, self.den_critical_H)
-                    pre_H = np.append(pre_H, self.Pre_critical)
+                    pre_H = np.append(pre_H, self.pre_critical)
                     eps_H = np.append(eps_H, self.eps_critical_H)
                     mub_H = np.append(mub_H, self.mu_critical)
                     
@@ -1245,7 +1255,7 @@ class setupCSEoS:
                 
                 
                     core1_core2_layers = {'r1': {'pre': pre_H,'mub': mub_H,'den':den_H}, 'r2': {'pre': pre_Q_branch,'mub': mub_Q_branch,'den':den_Q_branch}}
-                    MIM = nuda.eos.mix_phase_Classes.MixedInterpolatePhase(core1_core2_layers,muc=self.mu_critical,Pc=self.Pre_critical)
+                    MIM = nuda.eos.mix_phase_Classes.MixedInterpolatePhase(core1_core2_layers,muc=self.mu_critical,Pc=self.pre_critical)
                     result_MIM = MIM.find_boundaries(x_deltaP=self.x_deltaP)
                     if not MIM.check_MIM:
                         print("MIM failed : Returing the Hadronic EoS")
@@ -1259,17 +1269,17 @@ class setupCSEoS:
                     self.alpha1=  result_MIM['alpha1']
                     self.alpha2= result_MIM['alpha2']               
                     
-                    self.Pre_critical_H= result_MIM['P_H']
+                    self.pre_critical_H= result_MIM['P_H']
                     self.den_critical_H= result_MIM['n_H']
                     self.mu_H= result_MIM['mu_H']
                     
-                    self.eps_critical_H= self.mu_H * self.den_critical_H - self.Pre_critical
+                    self.eps_critical_H= self.mu_H * self.den_critical_H - self.pre_critical
                     #self.rho_critical_H=self.eps_critical_H
                 
                     self.mu_Q= result_MIM['mu_Q']
-                    self.Pre_critical_Q =  result_MIM['P_Q']
+                    self.pre_critical_Q =  result_MIM['P_Q']
                     self.den_critical_Q = result_MIM['n_Q']
-                    self.eps_critical_Q= self.mu_Q * self.den_critical_Q- self.Pre_critical_Q
+                    self.eps_critical_Q= self.mu_Q * self.den_critical_Q- self.pre_critical_Q
                     #self.rho_critical_Q=self.eps_critical_Q
                     
                         
@@ -1279,13 +1289,13 @@ class setupCSEoS:
                         return self
                     if (self.mu_Q -self.mu_H) <=0.:
                         return self
-                    if (self.Pre_critical_Q -self.Pre_critical_H) <=0.:
+                    if (self.pre_critical_Q -self.pre_critical_H) <=0.:
                         return self
                     
                     
                     
                     
-                    mask_quark = ((pre_Q > self.Pre_critical_Q) & (mub_Q > self.mu_Q) &  (den_Q >self.den_critical_Q))
+                    mask_quark = ((pre_Q > self.pre_critical_Q) & (mub_Q > self.mu_Q) &  (den_Q >self.den_critical_Q))
 
                
                     den_quark = den_Q[mask_quark].copy()
@@ -1329,18 +1339,18 @@ class setupCSEoS:
 
              
        
-        if len(den_Q_branch) == 0 or len(pre_Q_branch) != len(den_Q_branch) or len(rho_Q_branch) != len(den_Q_branch) or len(eps_Q_branch) != len(den_Q_branch) :
+        if len(den_Q_branch) == 0 or len(pre_Q_branch) != len(den_Q_branch) or  len(eps_Q_branch) != len(den_Q_branch) :
             return self
-        if not all(np.all(np.isfinite(arr)) for arr in [den_Q_branch, pre_Q_branch, rho_Q_branch, eps_Q_branch]):
+        if not all(np.all(np.isfinite(arr)) for arr in [den_Q_branch, pre_Q_branch,eps_Q_branch]):
             return self
-        if any(np.any(arr <= 0.) for arr in [den_Q_branch, pre_Q_branch, rho_Q_branch, eps_Q_branch]):
+        if any(np.any(arr <= 0.) for arr in [den_Q_branch, pre_Q_branch, eps_Q_branch]):
             return self#(self.den_tot,  self.pre_tot, self.rho_tot,  self.eps_tot )
         
         
         
         
                    
-        mask_H = ((pre_bg < self.Pre_critical_H) & (den_bg < self.den_critical_H) & (eps_bg < self.eps_critical_H) )
+        mask_H = ((pre_bg < self.pre_critical_H) & (den_bg < self.den_critical_H) & (eps_bg < self.eps_critical_H) )
 
         den_H = den_bg[mask_H]
         pre_H = pre_bg[mask_H]
@@ -1348,7 +1358,7 @@ class setupCSEoS:
         eps_H = eps_bg[mask_H]
         
         den_H = np.append(den_H, self.den_critical_H)
-        pre_H = np.append(pre_H, self.Pre_critical_H)
+        pre_H = np.append(pre_H, self.pre_critical_H)
         #rho_H = np.append(rho_H, self.rho_critical_H)
         eps_H = np.append(eps_H, self.eps_critical_H)
         
@@ -1370,19 +1380,27 @@ class setupCSEoS:
             self.rho_critical_Q= self.eps_critical_Q 
             rho_Q_branch = eps_Q_branch
             
-            self.update_layers(self.Pre_critical_H, self.den_critical_H,self.eps_critical_H )
+            self.update_layers(self.pre_critical_H, self.den_critical_H,self.eps_critical_H )
             qm_layer = f"inner_core_phase{qm_phase['phase_number']}"
             
-            for quantity, array in (("den", den_Q_branch[den_Q_branch>=self.den_critical_Q]), ("pre", pre_Q_branch[den_Q_branch>=self.den_critical_Q]), 
-            ("rho", rho_Q_branch[den_Q_branch>=self.den_critical_Q]), ("eps", eps_Q_branch[den_Q_branch>=self.den_critical_Q])):
+            #for quantity, array in (("den", den_Q_branch[den_Q_branch>=self.den_critical_Q]), ("pre", pre_Q_branch[den_Q_branch>=self.den_critical_Q]), 
+            #("rho", rho_Q_branch[den_Q_branch>=self.den_critical_Q]), ("eps", eps_Q_branch[den_Q_branch>=self.den_critical_Q])):
+               # setattr(self, f"{quantity}_{qm_layer}", np.asarray(array).copy())
+                
+                
+            for quantity, array in (("den", den_Q_branch), ("pre", pre_Q_branch), ("rho", rho_Q_branch), ("eps", eps_Q_branch)):
                 setattr(self, f"{quantity}_{qm_layer}", np.asarray(array).copy())
 
             # Update the quark layer's boundaries.
             self._update_layer_boundaries(qm_layer)
             layers = []
+            
             for layer in reversed(self.active_layers):
                 if layer != qm_layer and getattr(self, f"den_{layer}", None) is not None and len(getattr(self, f"den_{layer}")) > 0:
-                    layers.append(qm_layer)
+                    layers.append(layer)
+            
+            layers.append(qm_layer)
+            self.active_layers=layers
             #print(self.active_layers)
             self.data_after_eos_construction = {
                 layer: self._get_layer_data(layer)
@@ -1403,7 +1421,7 @@ class setupCSEoS:
     def _necessary_eos_checks(self):
     
         if np.any(self.pre_tot <= 0.):
-            raise ValueError("Pressure must be strictly positive. negative")
+            raise ValueError("Pressure must be strictly positive")
 
         if np.any(self.eps_tot <= 0.):
             raise ValueError("Energy density must be strictly positive.")
@@ -1412,32 +1430,45 @@ class setupCSEoS:
             raise ValueError("Density must be strictly positive.")
 
         # Check monotonicity
-        dn = np.diff(self.den_tot)
-        dp = np.diff(self.pre_tot)
-        de = np.diff(self.eps_tot)
+        dn = np.diff(np.log(self.den_tot))
+        dp = np.diff(np.log(self.pre_tot))
+        de = np.diff(np.log(self.eps_tot))
+        #print(self.pre_tot)
+        
+        
+        
 
         if np.any(dn <= 0.):
             self.init_self()
             raise ValueError("Density must increase strictly (dn > 0).")
-
-        if np.any(dp < 0.):
-            self.init_self()
-            raise ValueError("Pressure must be non-decreasing (dp >= 0).")
-
-        if np.any(de <= 0.):
+            
+         if np.any(de <= 0.):
             self.init_self()
             raise ValueError("Energy density must increase strictly (de > 0).")
+            
+        
+
+        if np.any(dp < 0.):# and np.any(self.cs2_tot <0):
+            #self.init_self()
+            #print(dp)
+            raise ValueError(f"Pressure must be non-decreasing (dp >= 0).")
+
+       
         
         
             
-        logeoflogp = PchipInterpolator(np.log(self.eps_tot), np.log(self.pre_tot))
-        self.gamma_tot = logeoflogp.derivative()(np.log(self.eps_tot))
-        self.cs2_tot = self.pre_tot / self.eps_tot * self.gamma_tot 
         
+        try:
+            logeoflogp = PchipInterpolator(np.log(self.eps_tot), np.log(self.pre_tot))
+            self.gamma_tot = logeoflogp.derivative()(np.log(self.eps_tot))
+            self.cs2_tot = self.pre_tot / self.eps_tot * self.gamma_tot 
+        except:
+            pass
+            
         mask_cs2_acausal = self.cs2_tot > 1.
 
         if np.any(mask_cs2_acausal):
-            print(f"Acausal EoS at densities:= {self.den_tot[mask_cs2_acausal]} {self.den_unit}, with cs^2 [c^2] = {self.cs2_tot[mask_cs2_acausal]}")
+            print(f"Acausal EoS at densities [ in {self.den_unit} ] := {self.den_tot[mask_cs2_acausal]} , with cs^2 [in c^2] = {self.cs2_tot[mask_cs2_acausal]}")
             return self
             
         return self
@@ -1503,21 +1534,21 @@ class setupCSEoS:
         Method which print outputs on terminal's screen.
         """
         #
-        if nuda.env.verb: print("Enter print_outputs()")
-        
+        if nuda.env.verb: print("Enter print_outputs()")        
         self.set_eos()
-        print("- Print output:")
-        
+        print("- Printing output:")        
         print("Compact star layers:")#,self.eos_layers)
-        for key in self.eos_layers:
+        for key in self.layers:
             if self.eos_layers[key]:
-                print(f"layer: {key},model: {self.eos_layers[key]} ")
-        print(" Inner core models:")
-        print([self.inner_core_phases[phase]['model'] for phase in self.inner_core_phases  if phase is not None])    
+                print(f"layer: {key}, model: {self.eos_layers[key]} ")
+        
         self.Final_EoS()
         
-        if self.full_outputs:
-            print("Boundaries of each layers:",self.boundaries)
+        if self.full_outputs:        
+            print("Density Boundaries of each layers:")
+            #print(self.boundaries)
+            for layer in self.active_layers:
+                print(f"{layer} : minimum density= {self.boundaries[layer]['den'][0] } {self.den_unit}, maximum density = {self.boundaries[layer]['den'][1] } {self.den_unit}", )
         if not self.full_outputs:
             print(f"Use full_outputs=True, during class initiation to see the boundaries and  available information in each layer")
         
