@@ -1442,7 +1442,7 @@ class setupCSEoS:
             self.init_self()
             raise ValueError("Density must increase strictly (dn > 0).")
             
-         if np.any(de <= 0.):
+        if np.any(de <= 0.):
             self.init_self()
             raise ValueError("Energy density must increase strictly (de > 0).")
             
