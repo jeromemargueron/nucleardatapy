@@ -346,17 +346,17 @@ class setupCSEoS:
                 else:
                     raise ValueError( f"Could not find outer_core model '{model}' in nucleardatapy.")
                     
-    def _load_from_nuda_betaeqi(self,layer,eos_model):
-        eos_param_name= eos_model.strip().lower()
+    def _load_from_nuda_betaeqi(self,layer,eos_param):
+        eos_param_name= eos_param.strip().lower()
         eos_beta={}
         model_types, _ = nuda.matter.matter_models()
         param = None
         model_for_nuda =None
         for model_type in model_types:
-            params, params_lower = nuda.matter.matter_esym_params( model = model_type )
-            if eos_param_name in params_lower:
-                index = params_lower.index(eos_param_name)
-                param = params[index]
+            params, params_lower = nuda.matter.matter_esym_params( model = model_type ) # load all the params of each model type
+            if eos_param_name in params_lower: # check, which model type the param belongs to 
+                index = params_lower.index(eos_param_name)  # check the index from lowercase letters
+                param = params[index]                   # use the original name for calculation
                 model_for_nuda=model_type
                 break 
         if param is None or model_for_nuda is None :
