@@ -2,7 +2,7 @@ import numpy as np
 
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
-
+from scipy.interpolate import interp1d, CubicSpline, PchipInterpolator
 
 class Random_speed_of_sound:
     """
@@ -86,14 +86,16 @@ class Random_speed_of_sound:
         #if any(self.mu_tr <= 0 or self.pre_tr<=0 or self.eps_tr<=0) :
             #raise ValueError("mu0,pre0,eps0, must be positive.")
         
-        rng = np.random.default_rng(self.seed)
+        rng = np.random.Generator(np.random.PCG64(self.seed))
 
         den_interior = rng.uniform(self.den_tr,self.den_max,self.n_random)
 
         # Starting point is known.
         # The maximum-density endpoint is also included.
         self.den_random = np.sort(np.concatenate(([self.den_tr],den_interior,[self.den_max])))
+        
         self.den_random = np.unique(self.den_random)
+        #print(self.den_random)
         self.cs2_random = np.concatenate(([self.cs2_tr],rng.uniform(0.0, 1.0, len(self.den_random) - 1)))
         self.den_cs2_pair = np.column_stack((self.den_random,self.cs2_random))
         
@@ -184,10 +186,22 @@ class Random_speed_of_sound:
         self.mu = np.asarray(mu_all)
         self.pre = np.asarray(pre_all)
         self.eps = np.asarray(eps_all)
+        
+        
+        
+        #cs2=np.gradient(pre_all,eps_all)
+        
+        """
+        logeoflogp = PchipInterpolator(np.log(self.eps), np.log(self.pre))
+        self.gamma_tot = logeoflogp.derivative()(np.log(self.eps))
+        cs2 = self.pre / self.eps * self.gamma_tot
+        print("check:", cs2_all[-1],den_all[-1],self.cs2_random[-1],cs2[-1])
+        print("diff:",cs2_all-cs2)
+        """
+        
+    
 
-        self.eos = np.column_stack((
-            self.den, self.cs2, self.mu, self.pre, self.eps
-        ))
+        self.eos = np.column_stack(( self.den, self.cs2, self.mu, self.pre, self.eps ))
     def get_eos(self):
         
         self._construct_density_mesh()
@@ -209,83 +223,4 @@ class Random_speed_of_sound:
         else:
             return self.eos_data
        
-"""    
-eos = Random_speed_of_sound(
-    den_tr=0.5,
-    den_max=2.,
-    n_random=10,
-    n_eos=60,
-    cs2_tr=0.25,
-    mu_tr=1100.0,
-    pre_tr=50.0,
-    eps_tr=500.0,
-    seed=123
-)
 
-eos.get_eos()
-# Random nodes and their sound speeds
-print(eos.den_cs2_pair)
-
-# Reconstructed EoS
-den = eos.den
-cs2 = eos.cs2
-mu = eos.mu
-pre = eos.pre
-eps = eos.eps
-
-
-import matplotlib.pyplot as plt
-
-# Plot chemical potential
-plt.figure(figsize=(8, 5))
-
-plt.plot(eos.den, eos.mu,label=r"$\mu(n)$")
-plt.plot(eos.den, (eos.pre+eos.eps)/eos.den,label=r"$\mu(n)$")
-
-# Mark random density nodes
-#plt.scatter(eos.den_random,eos.cs2_random * 0 + [ eos.mu[np.argmin(np.abs(eos.den - n))]  for n in eos.den_random],marker="o",label="Random density nodes")
-
-plt.xlabel(r"Density $n$ [fm$^{-3}$]")
-plt.ylabel(r"Chemical potential $\mu$ [MeV]")
-plt.title("Chemical potential")
-plt.grid(True)
-plt.legend()
-plt.tight_layout()
-plt.show()
-
-
-plt.figure(figsize=(8, 5))
-
-plt.plot(eos.den, eos.cs2,label=r"$c^2(n)$")
-plt.scatter(eos.den_random, eos.cs2_random,label=r"$c^2$")
-
-# Mark random density nodes
-#plt.scatter(eos.den_random,eos.cs2_random * 0 + [ eos.mu[np.argmin(np.abs(eos.den - n))]  for n in eos.den_random],marker="o",label="Random density nodes")
-
-plt.xlabel(r"Density $n$ [fm$^{-3}$]")
-plt.ylabel(r"$c^2_s$")
-#plt.title("Chemical potential")
-plt.grid(True)
-plt.legend()
-plt.tight_layout()
-plt.show()
-
-
-import numpy as np
-
-mu_thermo = (eos.eps + eos.pre) / eos.den
-
-print("Segment | Density | mu | (eps + pre)/den | Difference")
-
-for i, n in enumerate(eos.den_random):
-    j = np.argmin(np.abs(eos.den - n))
-
-    print(
-        f"{i:3d} | "
-        f"{n:.6f} | "
-        f"{eos.mu[j]:.6f} | "
-        f"{mu_thermo[j]:.6f} | "
-        f"{mu_thermo[j] - eos.mu[j]:.6e}"
-    )
-    
-"""

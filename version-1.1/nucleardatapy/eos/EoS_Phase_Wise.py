@@ -517,8 +517,13 @@ class setupCSEoS:
         
         
             if function_name.strip().lower() == "random_speed_of_sound": # Can be used a json or h5 or pickle files if needed
-                self.den_random_extrapolation = eos_function_object.den_random
-                self.cs2_random_extrapolation = eos_function_object.cs2_random 
+                self.den_random_extrapolation = eos_function_object.den_random[1:]
+                self.cs2_random_extrapolation = eos_function_object.cs2_random[1:]
+                self.den_tr=den_tr
+                self.cs2_tr=cs2_tr
+                self.pre_tr=pre_tr
+                self.eps_tr=eps_tr
+                self.mu_tr=mu_tr
                 
             eos_function_data= pd.DataFrame({"den": den.copy(),"pre": pre.copy(), "eps": eps.copy()})
             if self.full_outputs:
@@ -1556,28 +1561,44 @@ class setupCSEoS:
         if nuda.env.verb: print("Enter print_outputs()")        
         self.set_eos()
         print("- Printing output:")        
-        print("Compact star layers:")
+        print("See the information of Compact star layers:")
         for key in self.layers:
             if self.eos_layers[key]:
                 print(f"layer: {key}, model: {self.eos_layers[key]} ")        
         
-        self.Final_EoS()        
-        
-        if self.full_outputs:        
-            print("Density Boundaries of each layers:")
-            for layer in self.active_layers:
-                print(f"{layer} :")
-                print(f" minimum density= {self.boundaries[layer]['den'][0] } {self.den_unit}")
-                print(f" maximum density = {self.boundaries[layer]['den'][1] } {self.den_unit}")
-        
-        if not self.full_outputs:
-            print(f"Use full_outputs=True, during class initiation to see the boundaries and  available information in each layer")
+        self.Final_EoS()  
         
         print("EoS info:")        
         if self.den_tot is not None: print(f"   den: {self.den_tot} in {self.den_unit}")
         if self.eps_tot is not None: print(f"   eps: {self.eps_tot}in {self.eps_unit}")
         if self.pre_tot is not None: print(f"   pre: {self.pre_tot}in {self.pre_unit}")
         if self.cs2_tot is not None: print(f"   cs^2: {self.cs2_tot}in {self.cs2_unit}")
+        
+        
+        
+        
+        if self.full_outputs:   
+            print(f"*** \n Do not set full_outputs=True, if you need a fast construction of EoS and no other information\n*** ")
+           
+            print("Density Boundaries of each layers:")
+            for layer in self.active_layers:
+                print(f"{layer} :")
+                print(f" minimum density= {self.boundaries[layer]['den'][0] } {self.den_unit}")
+                print(f" maximum density = {self.boundaries[layer]['den'][1] } {self.den_unit}")
+            
+
+            print("*** \n Available quantities for the eos_object=eos.setupCSEoS(full_outputs=True) in each layer can be accessed using:")
+            print("   eos_objec.data_after_eos_construction[layer]")
+            print("***")
+            print("Example: To access all available quantities for the inner crust, use:")
+            print(" eos_objec.data_after_eos_construction['inner_crust']")
+            print("Available quantities for the inner crust are :")
+            print(self.data_after_eos_construction['inner_crust'])
+        
+        if not self.full_outputs:
+            print(f"*** \n Use full_outputs=True, during class initiation to see the boundaries and  available information in each layer\n ***")
+            
+            
         if nuda.env.verb: print("Exit print_outputs()")
         
     def init_self( self ):
