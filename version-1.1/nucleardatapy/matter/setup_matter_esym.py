@@ -33,7 +33,7 @@ def matter_esym_params( model ):
         exit()
     # extract all parameters existing in the folder model
     path_model = os.path.join(nuda.param.path_data,'matter/type/'+model)
-    print(f'path_model: {path_model}')
+    #print(f'path_model: {path_model}')
     #params = [ os.path.splitext(par)[0] for par in os.listdir(path_model) if par.endswith('.dat')]
     all_params = [ par[:-4] for par in os.listdir(path_model) if par.endswith('.dat')]
     # remove params that contain '-AM-' in their name:
