@@ -1,7 +1,7 @@
 
 import nucleardatapy as nuda
 import numpy as np
-
+print(nuda.__file__)
 def main():
     #
     print(50*'-')
@@ -13,11 +13,11 @@ def main():
     # ==============
     #['atmosphere', 'outer_crust', 'inner_crust', 'outer_core', 'inner_core']
     #
-    print("avilable atmosphere  models:",nuda.eos.available_models('atmosphere'),"\n")
-    print("avilable outer_crusr models:",nuda.eos.available_models('outer_crust'),"\n")
-    print("avilable inner_crust models:",nuda.eos.available_models('inner_crust'),"\n") 
-    print("avilable outer core  models:",nuda.eos.available_models('outer_core'),"\n")
-    print("avilable inner core  models:",nuda.eos.available_models('inner_core'),"\n")
+    print("avilable atmosphere  models:",nuda.eos.available_modelsi('atmosphere'),"\n")
+    print("avilable outer_crusr models:",nuda.eos.available_modelsi('outer_crust'),"\n")
+    print("avilable inner_crust models:",nuda.eos.available_modelsi('inner_crust'),"\n") 
+    print("avilable outer core  models:",nuda.eos.available_modelsi('outer_core'),"\n")
+    print("avilable inner core  models:",nuda.eos.available_modelsi('inner_core'),"\n")
     
     
     #

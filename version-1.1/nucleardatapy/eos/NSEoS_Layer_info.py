@@ -3,13 +3,6 @@ import os
 from pathlib import Path
 import nucleardatapy as nuda
 
-def get_boundaries(fname):
-    rho, pre, den = np.loadtxt(fname, usecols=(0, 1, 2), unpack=True)
-    return {
-        'den': [float(np.min(den)), float(np.max(den))],
-        'pre': [float(np.min(pre)), float(np.max(pre))],
-        'rho': [float(np.min(rho)), float(np.max(rho))]
-    }
 
 def available_models(layer):
     layers = ['atmosphere', 'outer_crust', 'inner_crust', 'outer_core', 'inner_core']
@@ -38,27 +31,40 @@ def available_models(layer):
 
     return {layer: models}
 
-"""
-
-def save_dict_to_file(dic):
-    fname = os.path.join(nuda.param.path_eos,'dict_boundaries.txt')
-    with open(fname, 'w') as f:
-        f.write(repr(dic))
-
-def load_dict_from_file():
-    with open('nuda.param.path_eos/dict_boundaries.txt', 'r') as f:
-        return eval(f.read())
 
 
 
+def available_modelsi(layer):
+    layers = ['atmosphere', 'outer_crust', 'inner_crust', 'outer_core', 'inner_core']
 
-if __name__ == "__main__":
-    create_boundaries()
-    
-    
-BOUNDARIES_FILE = os.path.join(nuda.param.path_eos,'dict_boundaries.txt')
+    if layer not in layers:
+        raise KeyError(f"Wrong layer '{layer}'. Available layers: {layers}")
 
-if not os.path.isfile(BOUNDARIES_FILE):
-    create_boundaries()
-    
-"""
+    path_layer = os.path.join(nuda.param.path_eos, layer)
+
+    if layer != 'inner_core':
+        models = [os.path.splitext(fn)[0] for fn in os.listdir(path_layer) if os.path.isfile(os.path.join(path_layer, fn))]
+
+        if layer == 'outer_core':
+            param_nuda = []
+            model_types, _ = nuda.matter.matter_models()
+            for model_type in model_types:
+                params, params_lower = nuda.matter.matter_esym_params( model = model_type)
+                param_nuda += params
+            
+            models += param_nuda
+            #models += [model for m in nuda.matter.pheno_esym_models()[0] for model in nuda.pheno_esym_params(model=m)[0]]
+
+        return {layer: sorted(set(models))}
+
+    models = {}
+
+    for eos_type in ['YM', 'QM']:
+        path_type = os.path.join(path_layer, eos_type)
+
+        if os.path.isdir(path_type):
+            models[eos_type] = [os.path.splitext(fn)[0] for fn in os.listdir(path_type) if os.path.isfile(os.path.join(path_type, fn))]
+
+    return {layer: models}
+
+

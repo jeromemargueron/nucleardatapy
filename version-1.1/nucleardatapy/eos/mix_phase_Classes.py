@@ -593,6 +593,7 @@ class QM_linear:
         #self.den_sat = cst.nsat
         self.den_max = 20. * nuda.cst.nsat if den_max is None else den_max
         self.check_Qmlinear = False
+        self.eos_data =None
 
     def liner_EoS(self):
         self.den_Q_pt = self.den_tr_H + self.delta_den
@@ -623,7 +624,8 @@ class QM_linear:
     def get_eos(self):
         self.liner_EoS()
         if self.check_Qmlinear:
-            return self
+            self.eos_data = { "den": self.den,"pre": self.pre,"eps": self.eps }
+            return self.eos_data
         else:
             return None
         

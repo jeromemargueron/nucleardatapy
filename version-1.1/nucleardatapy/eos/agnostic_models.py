@@ -54,8 +54,8 @@ class Random_speed_of_sound:
         # --------------------------------------------------
         # 1. Input parameters
         # --------------------------------------------------
-        self.den_tr = kwargs.get("den_tr")
-        self.den_max = kwargs.get("den_max")
+        self.den_tr = kwargs.get("den_tr",0.2)
+        self.den_max = kwargs.get("den_max",2.0)
 
         self.n_random = kwargs.get("n_random", 11)
         self.n_eos = kwargs.get("n_eos", 60)
@@ -65,6 +65,8 @@ class Random_speed_of_sound:
         self.mu_tr = kwargs.get("mu_tr")
         self.pre_tr = kwargs.get("pre_tr")
         self.eps_tr = kwargs.get("eps_tr")
+        self.eos_data = None
+        
         self.full_outputs = kwargs.get("full_outputs")
 
         
@@ -187,22 +189,26 @@ class Random_speed_of_sound:
             self.den, self.cs2, self.mu, self.pre, self.eps
         ))
     def get_eos(self):
-        #self._construct_eos()
+        
         self._construct_density_mesh()
         self._construct_eos()
+        if self.den is None:
+            return None
+        if  self.pre is None:
+            return None
+            
+        if self.eps is None:
+            return None
         self.eos_data = { "den": self.den,"pre": self.pre,"eps": self.eps }
         self.all_data=self.eos_data
-        #self.all_data["cs2_random"]=self.cs2_random
         self.all_data["cs2"]=self.cs2
-        self.all_data["mu"]= self.mu
-        #self.all_data["den_random"] = self.den_random
+        self.all_data["mu"]= self.mu  
+        
         if self.full_outputs :
-            return self.full_outputs
+            return self.all_data
         else:
             return self.eos_data
-        #return { "den": self.den, "cs2": self.cs2,"mu": self.mu,"pre": self.pre,"eps": self.eps }
-        
-        
+       
 """    
 eos = Random_speed_of_sound(
     den_tr=0.5,
