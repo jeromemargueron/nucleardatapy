@@ -285,8 +285,8 @@ class setupCSEoS:
             eps= rho
         
         if not self.full_outputs:             
-            df={"den": den.copy(),"pre": pre.copy(),"eps": eps.copy()}
-            return pd.DataFrame(df)
+            #df={"den": den.copy(),"pre": pre.copy(),"eps": eps.copy()}
+            return {"den": den, "pre": pre, "eps": eps}
         else:            
             self.models[layer] = {"model": model_name,"filename": filepath}
             
@@ -360,25 +360,30 @@ class setupCSEoS:
                 model_for_nuda=model_type
                 break 
         if param is None or model_for_nuda is None :
-            raise (f"no  EoS model found for the model named {eos_model}")
+            raise (f"no  EoS model found for the model named {eos_param}")
             
         eos_beta=nuda.eos.setupAMBeqi(param=param,model=model_type)
         
         
         if not hasattr(eos_beta, 'den') or getattr(eos_beta, 'den') is None:
-            raise ValueError(f"Invalid densities for model '{model}'.")
+            raise ValueError(f"Invalid densities for model '{eos_param}'.")
             
         if not hasattr(eos_beta, 'pre_tot') or getattr(eos_beta, 'pre_tot') is None:
-            raise ValueError(f"Invalid pressure for model '{model}'.")
+            raise ValueError(f"Invalid pressure for model '{eos_param}'.")
         if not hasattr(eos_beta, 'eps_tot') or getattr(eos_beta, 'eps_tot') is None:
-            raise ValueError(f"Invalid energy density for model '{model}'.")
+            raise ValueError(f"Invalid energy density for model '{eos_param}'.")
         
-        df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
+        
+        if not self.full_outputs:
+            return {"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
+        
         if self.full_outputs:
+            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
             df["rho"]=eos_beta.eps_tot
-            self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}
+            self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}        
+            return pd.DataFrame(df)
+        return None
         
-        return pd.DataFrame(df)
         
         
         
@@ -439,18 +444,26 @@ class setupCSEoS:
 
         
         if model:
+        
+        
+            data = self._load_layer(layer, model)
+            df = data if isinstance(data, pd.DataFrame) else None
+
+            if isinstance(data, pd.DataFrame):
+                eos_data_file = {key: data[key].to_numpy(copy=True)  for key in ("den", "pre", "eps")   if key in data.columns }
+            else:
+                eos_data_file = { key: np.asarray(data[key])  for key in ("den", "pre", "eps") if key in data }
             data = self._load_layer(layer, model)
             df = data.copy() if isinstance(data, pd.DataFrame) else pd.DataFrame(data)
 
             for key in ("den", "pre", "eps"):
-                if key not in df.columns:
+                if key not in eos_data_file:
                     raise ValueError(f"Missing '{key}' in the loaded outer-core EoS.")
 
-                values = df[key].to_numpy(copy=True)
-                if not np.all(np.isfinite(values)):
+                if not np.all(np.isfinite(eos_data_file[key])):
                     raise ValueError(f"Non-finite values found in outer_core['{key}'].")
 
-            if df.empty:
+            if len(eos_data_file["den"]) == 0:
                 raise ValueError("The loaded outer-core EoS is empty.")
 
             eos_data_file = { key: df[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
@@ -504,7 +517,10 @@ class setupCSEoS:
             eos_function_object = self._evaluate_eos_function(self.agnostic_models[function_name], **parameters)
             
             if eos_function_object is None:
-                return pd.DataFrame(eos_data_file)   
+                if not self.full_outputs:
+                    return eos_data_file
+                else:
+                    return pd.DataFrame(eos_data_file)  
                 
             for key in ("den", "pre", "eps"):
                 if not hasattr(eos_function_object, key) or getattr(eos_function_object, key) is None:
@@ -523,26 +539,35 @@ class setupCSEoS:
                 self.cs2_tr=cs2_tr
                 self.pre_tr=pre_tr
                 self.eps_tr=eps_tr
-                self.mu_tr=mu_tr
-                
-            eos_function_data= pd.DataFrame({"den": den.copy(),"pre": pre.copy(), "eps": eps.copy()})
+                self.mu_tr=mu_tr   
+            
+            #eos_function_data= {"den": den,"pre": pre, "eps": eps}
+            
             if self.full_outputs:
                 all_data = getattr(eos_function_object, "all_data", None)
-                if all_data:
-                    eos_function_data= pd.DataFrame(all_data)
+
+                if all_data is not None:
+                    eos_function_data = pd.DataFrame(all_data)
+                else:
+                    eos_function_data = pd.DataFrame({"den": den,"pre": pre, "eps": eps})
+            else:
+                eos_function_data = { "den": np.asarray(den), "pre": np.asarray(pre), "eps": np.asarray(eps) }
+            
+            
                     
             if eos_data_file is not None:
                 
                 mask = eos_data_file["den"] <= den_tr
-                eos_function_data=eos_function_data.loc[eos_function_data["den"] > den_tr].copy()
                 
-                
+                if not self.full_outputs:
+                    mask_function = eos_function_data["den"] > den_tr
 
-                eos_data = {key: np.concatenate((eos_data_file[key][mask],eos_function_data[key].to_numpy() )) for key in ("den", "pre", "eps") }
-
-                if self.full_outputs:
-                    # in principle, we can return as many outputs we need
-                    df = df.loc[df["den"] <= den_tr].copy()                   
+                    eos_data = {key: np.concatenate(( eos_data_file[key][mask], eos_function_data[key][mask_function] ))  for key in ("den", "pre", "eps")}
+                    return eos_data
+                    
+                if self.full_outputs:   
+                    df = df.loc[df["den"] <= den_tr].copy()
+                    eos_function_data=eos_function_data.loc[eos_function_data["den"] > den_tr].copy() 
 
                     for col in eos_function_data.columns:
                         if col not in df.columns:
@@ -553,22 +578,24 @@ class setupCSEoS:
                             eos_function_data[col] = np.nan
 
                     df = pd.concat([df, eos_function_data[df.columns]], ignore_index=True )
+                    return df
 
             else:                
-                eos_data = {key: eos_function_data[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
-
+                eos_data = {key: eos_function_data[key].to_numpy() for key in ("den", "pre", "eps") }
                 if self.full_outputs:
                     df = eos_function_data.copy()
+                    return df
+                else:
+                    return eos_data
 
         
         elif eos_data_file is not None:
             eos_data = eos_data_file
-
         else:
             raise ValueError( f"Outer-core EoS requires either 'model' or 'function'.")
 
         if not self.full_outputs:
-            return pd.DataFrame(eos_data)
+            return eos_data
 
         df["rho"] = df["eps"].to_numpy()
         return df
@@ -590,9 +617,16 @@ class setupCSEoS:
         eos_function_class = function(**parameters) 
         eos_data_from_function=eos_function_class.get_eos()
         ## For the simplicity, this code returns the whole functional object and we can collect the quantities, we need at the respective places.
-        ## For example: when agnostic model is used, we can return the random densities and speed of sounds are drwan
+        ## For example: when agnostic model is used, we can return the random densities and speed of sounds are drawn
         if eos_data_from_function is None:
             return None
+            
+        for key in ("den", "pre", "eps"):
+                if not hasattr(eos_function_class, key) or getattr(eos_function_class, key) is None:
+                    raise ValueError( f"Function '{function_name}' did not provide a valid '{key}'.")
+
+                    
+            
         return eos_function_class
         
 
