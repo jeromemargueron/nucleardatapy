@@ -43,12 +43,14 @@ class setupCrust():
 
     `crust` can chosen among the following ones: 'Negele-Vautherin-1973'.
 
-    :param crust: Fix the name of `crust`. Default value: 'Negele-Vautherin-1973'.
-    :type crust: str, optional. 
+    :param model: Fix the name of `crust`. Default value: 'Negele-Vautherin-1973'.
+    :type model: str, optional. 
+    :param outer_crust: Fix the name of `outer_crust`. Default value: None.
+    :type outer_crust: str, optional. 
 
     **Attributes:**
     """
-    def __init__(self, model = '1973-Negele-Vautherin'):
+    def __init__(self, model = '1973-Negele-Vautherin', outer_crust=None):
         #
         if nuda.env.verb: print("Enter setupCrusts()")
         #
@@ -59,11 +61,15 @@ class setupCrust():
             print('-- Exit the code --')
             exit()
         self.model = model
+        self.outer_crust = outer_crust
         if nuda.env.verb: print("model:",model)
+        if nuda.env.verb: print("outer_crust:",outer_crust)
         #
         # initialize self
         #
         self = setupCrust.init_self( self )
+        #
+        # read the crust EoS from the ones stored in the toolkit
         #
         if model.lower()=='1973-negele-vautherin':
             #
@@ -637,6 +643,56 @@ class setupCrust():
             # electrons
             self.mu_e = self.mu_n - self.mu_p
             #
+        #
+        # Merge outer_crust and crust EoS
+        # if outer_crust is not None
+        #
+        # read outer_crust (oc) EoS
+        #
+        if outer_crust == "BPS":
+            # read BPS EoS:
+            file = nuda.param.path_data+'crust/BPS.dat'
+            if nuda.env.verb: print('Reads file:',file_in)
+            self.ref_oc= 'G.Baym, C.Pethick, Sutherland'
+#        n_B [fm^{-3}]  rho [g/cm^3]   p [dyn/cm^2]
+            self.den_oc_nuc, self.rho_oc_cgs, self.pre_oc_cgs\
+                = np.loadtxt( file, usecols=(1,2,3), unpack = True )
+            # convert in nuc units
+            self.den_oc_nuc, self.rho_oc_cgs, self.pre_oc_cgs\
+        #
+        # Localize the outer_crust - inner_crust interface
+        # and construct the EoS
+        #
+        if outer_crust is not None:
+            # localise first the merging density by minimizing eps(n_b):
+            # spline the crust EoS (log scale!)
+            x = self.den
+            y = self.e2a_tot * self.den
+            cs_eps_tot = CubicSpline(x, y)
+            # for each density of the outer_crust EoS (starting at high density), compute
+            # the crust EoS and compare eps(n_b)
+            for k,eps in reversed(enumerate(self.eps_oc)):
+                den = self.den_oc_nuc[k]
+                # Outer-Inner Crust (OIC) Transition :
+                if eps < cs_eos_tot(den):
+                    k_oc_max=k
+                    k_crust_min=1# localise the density of the crust-core tranisiton in the crust array
+                    self.nb_oic = den # in fm-3
+                    self.rho_oic = eps # in MeV/fm3
+                    self.pre_oic = self.pre_oc[k] # in MeV/fm3
+                    #self.mu_n_oic = 2.5617840312066730E-004 # in MeV
+                    break
+            # fill crust EoS with outer_crust first:
+            for k in range(0,k_oc_max):
+                self.nb = self.den_oc_nuc[k]
+                self.e2a_tot = self.rho_oc_nuc[k]
+                self.pre_tot = self.pre_oc_nuc[k]
+            # then complete with crust EoS:
+            k_crust_max = len(self.den_nuc)
+            for k in range(k_crust_min,k_crust_max):
+                self.nb = self.den_nuc[k]
+                self.e2a_tot = self.rho_nuc[k]
+                self.pre_tot = self.pre_nuc[k]
         #
         # For all models:
         #
