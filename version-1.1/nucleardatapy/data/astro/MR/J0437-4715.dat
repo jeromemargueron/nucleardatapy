@@ -1,0 +1,4 @@
+# obs, R_e, sig+, sig-, M, sig+, sig-, C, sig+, sig-, spin, latexCite, Notes
+#      km,  km,   km,   Mo, Mo, Mo, -, -, -, Hz
+1, 11.360, 0.945, 0.629, 1.418, 0.037, 0.037, 0.1847, 0.0097, 0.0143, , DChoudhury:2024, NICER
+2, 11.350, 0.400, 0.390, 1.377, 0.038, 0.034, 0.1795, 0.0070, 0.0067, , PStammler:2026, NICER+HST+NuSTAR

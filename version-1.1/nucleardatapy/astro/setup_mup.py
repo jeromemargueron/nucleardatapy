@@ -144,6 +144,8 @@ class setupMup():
         self.sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
+        #: Attribute notes for the measurement.
+        self.notes = None
         #
         # read file from `file_in`
         #
@@ -157,7 +159,8 @@ class setupMup():
                     self.mup = float(ele[2])
                     self.sig_up = float(ele[3])
                     self.sig_lo = float(ele[4])
-                    self.latexCite = ele[5].replace('\n','').replace(' ','')
+                    self.latexCite = ele[5].replace(' ','')
+                    self.notes = ele[6].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit setupMup()")
         #
@@ -178,6 +181,7 @@ class setupMup():
         print("   ref:    ",self.ref)
         print("   label:  ",self.label)
         print("   note:   ",self.note)
+        print("   notes:  ",self.notes)
         #
         if nuda.env.verb: print("Exit print_output()")
         #

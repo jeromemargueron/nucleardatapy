@@ -41,7 +41,7 @@ def mr_obss( source ):
     elif source.lower()=='j0740+6620':
         obss = [ 1, 2, 3 ]
     elif source.lower()=='j0437-4715':
-        obss = [ 1 ]
+        obss = [ 1, 2 ]
     elif source.lower()=='j0614-3329':
         obss = [ 1 ]
     elif source.lower()=='j1731-347':
@@ -97,7 +97,7 @@ class setupMR():
         # fix `file_in` and some properties of the object
         #
         if source.lower()=='j0030+0451':
-            file_in = nuda.param.path_data+'astro/NICER/J0030+0451.dat'
+            file_in = nuda.param.path_data+'astro/MR/J0030+0451.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, aet al., ApJL 887, L24 (2019)'
@@ -131,7 +131,7 @@ class setupMR():
                 self.note = "write notes about this observation."
                 self.marker = 'x'
         elif source.lower()=='j0740+6620':
-            file_in = nuda.param.path_data+'astro/NICER/J0740+6620.dat'
+            file_in = nuda.param.path_data+'astro/MR/J0740+6620.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='M.C. Miller, F.K. Lamb, A.J. Dittmann, S. Bogdanov, et al., ApJL 918, L28 (2021)'
@@ -157,7 +157,7 @@ class setupMR():
                 self.note = "write notes about this observation."
                 self.marker = 's'
         elif source.lower()=='j0437-4715':
-            file_in = nuda.param.path_data+'astro/NICER/J0437-4715.dat'
+            file_in = nuda.param.path_data+'astro/MR/J0437-4715.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='D. Choudhury, T. Salmi, S. Vinciguerra, T.E. Riley, et al., ApJL 971, L20 (2024)'
@@ -166,8 +166,16 @@ class setupMR():
                 #: Attribute providing additional notes about the observation.
                 self.note = "write notes about this observation."
                 self.marker = 'o'
+            elif obs==2:
+                #: Attribute providing the full reference to the paper to be citted.
+                self.ref='P. Stammler, S. Guillot, D. Gonz\'alez-Caniulef, I. Svensson, et al., arXiv:2610.41846v1'
+                #: Attribute providing the label the data is references for figures.
+                self.label = 'J0437 Stammler 2026'
+                #: Attribute providing additional notes about the observation.
+                self.note = "write notes about this observation."
+                self.marker = 'o'
         elif source.lower()=='j0614-3329':
-            file_in = nuda.param.path_data+'astro/NICER/J0614-3329.dat'
+            file_in = nuda.param.path_data+'astro/MR/J0614-3329.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='L. Mauviard, S. Guillot, T. Salmi, D. Choudhury, et al., arXiv:2506.14883'
@@ -177,7 +185,7 @@ class setupMR():
                 self.note = "write notes about this observation."
                 self.marker = 'o'
         elif source.lower()=='j1731-347':
-            file_in = nuda.param.path_data+'astro/HESS/J1731-347.dat'
+            file_in = nuda.param.path_data+'astro/MR/J1731-347.dat'
             if obs==1:
                 #: Attribute providing the full reference to the paper to be citted.
                 self.ref='V. Doroshenko, V. Suleimanov, G. P\"uhlhofer and A. Santangelo, Nature Astronomy volume 6, pages 1444–1451 (2022)'
@@ -201,6 +209,8 @@ class setupMR():
         self.rad_sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
+        #: Attribute notes about the measurement.
+        self.notes = None
         #
         # read file from `file_in`
         #
@@ -249,7 +259,8 @@ class setupMR():
 #                        self.comp = 0.0
 #                        self.comp_sig_up = 1.0
 #                        self.comp_sig_lo = 1.0
-                    self.latexCite = ele[11].replace('\n','').replace(' ','')
+                    self.latexCite = ele[11].replace(' ','')
+                    self.notes = ele[12].replace('\n','').replace(' ','')
                     #print('outputs:',self.rad,self.mass,self.comp,self.spin,self.latexCite)
         #
         # compute compactness
@@ -299,6 +310,7 @@ class setupMR():
         print("   ref:    ",self.ref)
         print("   label:  ",self.label)
         print("   note:   ",self.note)
+        print("   notes:  ",self.notes)
         #
         if nuda.env.verb: print("Exit print_output()")
         #

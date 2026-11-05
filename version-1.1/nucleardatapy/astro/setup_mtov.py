@@ -4,7 +4,7 @@ from scipy import special
 
 import nucleardatapy as nuda
 
-def compute_proba_do( amass, mass_cen, sig_up, sig_lo ):
+def compute_proba_lo( amass, mass_cen, sig_up, sig_lo ):
     fac = math.sqrt( 2.0 )
     prob = []
     for m in amass:
@@ -68,7 +68,7 @@ class setupMtov():
             #print('End of call average')
             #avmass.print_outputs( )
             #print('source:',source,' mass:',avmass.mass_cen,' sig_std:',avmass.sig_std )
-            self.proba_lo[ind] = compute_proba_do(self.mass, avmass.mass_cen, avmass.sig_std, avmass.sig_std)
+            self.proba_lo[ind] = compute_proba_lo(self.mass, avmass.mass_cen, avmass.sig_std, avmass.sig_std)
             self.label_lo.append( str(source) )
             #print('proba:',self.proba[ind])
             self.proba_lo_tot = self.proba_lo_tot * self.proba_lo[ind]

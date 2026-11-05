@@ -203,6 +203,8 @@ class setupMasses():
         self.sig_lo = None
         #: Attribute latexCite.
         self.latexCite = None
+        #: Attribute notes for the measurement.
+        self.notes = None
         #
         # read file from `file_in`
         #
@@ -215,7 +217,8 @@ class setupMasses():
                     self.mass = float(ele[1])
                     self.sig_up = float(ele[2])
                     self.sig_lo = float(ele[3])
-                    self.latexCite = ele[4].replace('\n','').replace(' ','')
+                    self.latexCite = ele[4].replace(' ','')
+                    self.notes = ele[5].replace('\n','').replace(' ','')
         #
         if nuda.env.verb: print("Exit setupMasses()")
         #
@@ -237,6 +240,7 @@ class setupMasses():
         print("   ref:    ",self.ref)
         print("   label:  ",self.label)
         print("   note:   ",self.note)
+        print("   notes:  ",self.notes)
         #
         if nuda.env.verb: print("Exit print_output()")
         #
