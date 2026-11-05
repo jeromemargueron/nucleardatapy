@@ -16,7 +16,6 @@ def main():
     models = [ 'NLRH' ]
     models = [ 'DDRH' ]
     models = [ 'DDRHF' ]
-    models = [ 'Var' ]
     models = [ 'MC' ]
     models = [ 'MBPT' ]
     models = [ 'NLEFT' ]
@@ -24,6 +23,7 @@ def main():
     models = [ 'BHF23BF' ]
     models = [ 'SCGF' ]
     models = [ 'CC' ]
+    models = [ 'Var' ]
     #
     for model in models:
         #
@@ -39,10 +39,10 @@ def main():
             if nuda.env.verb_output: matter.print_outputs( )
             if matter.sm_den is not None: print(f" sm_den: {np.round(matter.sm_den,2)} in {matter.den_unit}")
             if matter.sm_e2a is not None: print(f" sm_e2a: {np.round(matter.sm_e2a,2)} in {matter.e2a_unit}")
-            if matter.sm_cs2 is not None: print(f" sm_cs2: {np.round(matter.sm_cs2,2)}")
+            if matter.sm_cs2 is not None: print(f" sm_cs2: {np.round(matter.sm_cs2,2)} in {matter.cs2_unit}")
             if matter.nm_den is not None: print(f" nm_den: {np.round(matter.nm_den,2)} in {matter.den_unit}")
             if matter.nm_e2a is not None: print(f" nm_e2a: {np.round(matter.nm_e2a,2)} in {matter.e2a_unit}")
-            if matter.nm_cs2 is not None: print(f" nm_cs2: {np.round(matter.nm_cs2,2)}")
+            if matter.nm_cs2 is not None: print(f" nm_cs2: {np.round(matter.nm_cs2,2)} in {matter.cs2_unit}")
             #
         #
     #

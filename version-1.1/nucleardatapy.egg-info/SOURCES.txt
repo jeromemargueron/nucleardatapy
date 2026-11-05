@@ -2099,9 +2099,13 @@ version-1.1/nucleardatapy/data/matter/type/VAR/1981-FP-NM.dat
 version-1.1/nucleardatapy/data/matter/type/VAR/1981-FP-SM.dat
 version-1.1/nucleardatapy/data/matter/type/VAR/1998-APR-NM.dat
 version-1.1/nucleardatapy/data/matter/type/VAR/1998-APR-SM.dat
+version-1.1/nucleardatapy/data/matter/type/Var/1981-FP-NM.csv
 version-1.1/nucleardatapy/data/matter/type/Var/1981-FP-NM.dat
+version-1.1/nucleardatapy/data/matter/type/Var/1981-FP-SM.csv
 version-1.1/nucleardatapy/data/matter/type/Var/1981-FP-SM.dat
+version-1.1/nucleardatapy/data/matter/type/Var/1998-APR-NM.csv
 version-1.1/nucleardatapy/data/matter/type/Var/1998-APR-NM.dat
+version-1.1/nucleardatapy/data/matter/type/Var/1998-APR-SM.csv
 version-1.1/nucleardatapy/data/matter/type/Var/1998-APR-SM.dat
 version-1.1/nucleardatapy/data/matter/type/ddrh/DDME1-NM.dat
 version-1.1/nucleardatapy/data/matter/type/ddrh/DDME1-SM.dat

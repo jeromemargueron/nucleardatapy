@@ -1,5 +1,6 @@
 # ref: Friedman and Pandharipande, Nucl. Phys. A. 361, 502 (1981)
 # density (fm-3)  E/A (MeV) for NM
+#nm_den_nuc nm_e2a_int
 4.222e-3  2.057e0
 7.295e-3  2.747e0
 1.158e-2  3.503e0

@@ -1,6 +1,7 @@
 import os
 import sys
 import numpy as np  # 1.15.0
+import pandas as pd
 from scipy.interpolate import CubicSpline
 from scipy.optimize import curve_fit
 import random
@@ -472,6 +473,8 @@ class setupMatter():
         #
         file_SM = os.path.join(nuda.param.path_data,'matter/type/'+self.model+'/'+self.param+'-SM.dat')
         file_NM = os.path.join(nuda.param.path_data,'matter/type/'+self.model+'/'+self.param+'-NM.dat')
+        file_SM_csv = os.path.join(nuda.param.path_data,'matter/type/'+self.model+'/'+self.param+'-SM.csv')
+        file_NM_csv = os.path.join(nuda.param.path_data,'matter/type/'+self.model+'/'+self.param+'-NM.csv')
         if os.path.exists(file_SM):
             self.flag_sm = True
         else:
@@ -676,10 +679,18 @@ class setupMatter():
                 self.p_er = False
                 self.cs2_er = False
                 self.linestyle = "solid"
-                if os.path.exists(file_SM):
-                    self.sm_den, self.sm_e2a_int = np.loadtxt( file_SM, usecols=(0, 1), unpack=True )
-                if os.path.exists(file_NM):
-                    self.nm_den, self.nm_e2a_int = np.loadtxt( file_NM, usecols=(0, 1), unpack=True )
+                print(f'file_SM_csv: {file_SM_csv}')
+                if os.path.exists(file_SM_csv):
+                    df=pd.read_csv(file_SM_csv,comment='#') #-> sm_den_nuc sm_e2a_int
+                    self.sm_den = df['sm_den_nuc']
+                    self.sm_e2a_int = df['sm_e2a_int_nuc']
+                    #self.sm_den, self.sm_e2a_int = np.loadtxt( file_SM, usecols=(0, 1), unpack=True )
+                print(f'file_NM_csv: {file_NM_csv}')
+                if os.path.exists(file_NM_csv):
+                    df=pd.read_csv(file_NM_csv,comment='#') #-> nm_den_nuc nm_e2a_int
+                    self.nm_den = df['nm_den_nuc']
+                    self.nm_e2a_int = df['nm_e2a_int_nuc']
+                    #self.nm_den, self.nm_e2a_int = np.loadtxt( file_NM, usecols=(0, 1), unpack=True )
                 self.nm_e2a = self.nm_rmass + self.nm_e2a_int
                 self.sm_e2a = self.sm_rmass + self.sm_e2a_int
                 self.nm_eps = self.nm_e2a * self.nm_den
@@ -705,10 +716,16 @@ class setupMatter():
                 self.p_er = False
                 self.cs2_er = False
                 self.linestyle = "solid"
-                if os.path.exists(file_SM):
-                    self.sm_den, self.sm_e2a_int = np.loadtxt( file_SM, usecols=(0, 1), unpack=True )
-                if os.path.exists(file_NM):
-                    self.nm_den, self.nm_e2a_int = np.loadtxt( file_NM, usecols=(0, 1), unpack=True )
+                if os.path.exists(file_SM_csv):
+                    df=pd.read_csv(file_SM_csv,comment='#') #-> sm_den_nuc sm_e2a_int
+                    self.sm_den = df['sm_den_nuc']
+                    self.sm_e2a_int = df['sm_e2a_int_nuc']
+                    #self.sm_den, self.sm_e2a_int = np.loadtxt( file_SM, usecols=(0, 1), unpack=True )
+                if os.path.exists(file_NM_csv):
+                    df=pd.read_csv(file_NM_csv,comment='#') #-> nm_den_nuc nm_e2a_int
+                    self.nm_den = df['nm_den_nuc']
+                    self.nm_e2a_int = df['nm_e2a_int_nuc']
+                    #self.nm_den, self.nm_e2a_int = np.loadtxt( file_NM, usecols=(0, 1), unpack=True )
                 self.nm_e2a = self.nm_rmass + self.nm_e2a_int
                 self.sm_e2a = self.sm_rmass + self.sm_e2a_int
                 self.nm_eps = self.nm_e2a * self.nm_den
@@ -1866,6 +1883,7 @@ class setupMatter():
         self.e2a_unit = 'MeV'
         self.eps_unit = "MeV fm$^{-3}$"
         self.pre_unit = 'MeV fm$^{-3}$'
+        self.cs2_unit = '$c^2$'
         self.gap_unit = 'MeV'
         #
         if nuda.env.verb: print("Exit SetupMatter()")
@@ -1886,15 +1904,15 @@ class setupMatter():
         #print("   note:",self.note)
         print("   self.sm_den: ", self.sm_den)
         print("   self.sm_effmass: ", self.sm_effmass)
-        if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,2)} in {self.den_unit}")
-        if any(self.sm_kfn): print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kfn_unit}")
-        if any(self.sm_e2a): print(f"   sm_e2a: {np.round(self.sm_e2a,2)} in {self.e2a_unit}")
-        if any(self.sm_cs2): print(f"   sm_cs2: {np.round(self.sm_cs2,2)}")
-        if any(self.nm_den): print(f"   nm_den: {np.round(self.nm_den,2)} in {self.den_unit}")
-        if any(self.nm_kfn): print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
-        if any(self.nm_e2a): print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
-        if any(self.nm_cs2): print(f"   nm_cs2: {np.round(self.nm_cs2,2)}")
-        if any(self.nm_gap): print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
+        if self.sm_den is not None: print(f"   sm_den: {np.round(self.sm_den,2)} in {self.den_unit}")
+        if self.sm_kfn is not None: print(f"   sm_kfn: {np.round(self.sm_kfn,2)} in {self.kfn_unit}")
+        if self.sm_e2a is not None: print(f"   sm_e2a: {np.round(self.sm_e2a,2)} in {self.e2a_unit}")
+        if self.sm_cs2 is not None: print(f"   sm_cs2: {np.round(self.sm_cs2,2)}")
+        if self.nm_den is not None: print(f"   nm_den: {np.round(self.nm_den,2)} in {self.den_unit}")
+        if self.nm_kfn is not None: print(f"   nm_kfn: {np.round(self.nm_kfn,2)} in {self.kfn_unit}")
+        if self.nm_e2a is not None: print(f"   nm_e2a: {np.round(self.nm_e2a,2)} in {self.e2a_unit}")
+        if self.nm_cs2 is not None: print(f"   nm_cs2: {np.round(self.nm_cs2,2)}")
+        if self.nm_gap is not None: print(f"   nm_gap: {np.round(self.nm_gap,2)} in {self.gap_unit}")
         # if any(self.sm_den): print(f"   sm_den: {np.round(self.sm_den,3)} in {self.den_unit}")
         if self.den is not None:
             print(f"   den: {np.round(self.den,3)} in {self.den_unit}")
