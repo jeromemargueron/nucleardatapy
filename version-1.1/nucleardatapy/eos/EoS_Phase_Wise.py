@@ -302,94 +302,6 @@ class setupCSEoS:
             
             return  df
             
-            
-    def _load_from_nuda_betaeq(self,layer,model):
-        model_name= model.strip().upper()
-        micro_models = nuda.matter.micro_esym_models()[0]
-        eos_beta={}
-        
-        if model_name in micro_models:
-            eos_beta=nuda.eos.setupAMBeq(model=model_name)
-            if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
-                raise ValueError(f"Invalid EoS quantities for model '{model}'.")
-            
-            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}   
-            if self.full_outputs:
-            
-                df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot,"rho":eos_beta.eps_tot}   
-                
-                self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "eps","rho")}
-                
-            return pd.DataFrame(df)
-            
-        else:
-            pheno_types = nuda.matter.pheno_esym_models()[0]  
-            
-            for model_type in pheno_types:
-            
-                available_pheno_models = nuda.pheno_esym_params(model=model_type)[0]
-                
-                if model_name in available_pheno_models:
-                    eos_beta=nuda.eos.setupAMBeq(param=model_name,kind='pheno',model=model_type)                    
-                    
-                    if any(not hasattr(eos_beta, q) or getattr(eos_beta, q) is None or not np.all(np.isfinite(getattr(eos_beta, q))) for q in ['pre_tot','den','eps_tot']):
-                        raise ValueError(f"Invalid EoS quantities for model '{model}'.")
-                    
-                    df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
-                    
-                    if self.full_outputs:
-                        df["rho"]=eos_beta.eps_tot
-                        self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}
-                        
-                    return pd.DataFrame(df)
-                    
-                else:
-                    raise ValueError( f"Could not find outer_core model '{model}' in nucleardatapy.")
-                    
-    def _load_from_nuda_betaeqi(self,layer,eos_param):
-        eos_param_name= eos_param.strip().lower()
-        eos_beta={}
-        model_types, _ = nuda.matter.matter_models()
-        param = None
-        model_for_nuda =None
-        for model_type in model_types:
-            params, params_lower = nuda.matter.matter_esym_params( model = model_type ) # load all the params of each model type
-            if eos_param_name in params_lower: # check, which model type the param belongs to 
-                index = params_lower.index(eos_param_name)  # check the index from lowercase letters
-                param = params[index]                   # use the original name for calculation
-                model_for_nuda=model_type
-                break 
-        if param is None or model_for_nuda is None :
-            raise (f"no  EoS model found for the model named {eos_param}")
-            
-        eos_beta=nuda.eos.setupAMBeqi(param=param,model=model_type)
-        
-        
-        if not hasattr(eos_beta, 'den') or getattr(eos_beta, 'den') is None:
-            raise ValueError(f"Invalid densities for model '{eos_param}'.")
-            
-        if not hasattr(eos_beta, 'pre_tot') or getattr(eos_beta, 'pre_tot') is None:
-            raise ValueError(f"Invalid pressure for model '{eos_param}'.")
-        if not hasattr(eos_beta, 'eps_tot') or getattr(eos_beta, 'eps_tot') is None:
-            raise ValueError(f"Invalid energy density for model '{eos_param}'.")
-        
-        
-        if not self.full_outputs:
-            return {"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
-        
-        if self.full_outputs:
-            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
-            df["rho"]=eos_beta.eps_tot
-            self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}        
-            return pd.DataFrame(df)
-        return None
-        
-        
-        
-        
-        
-        
-    
     def _load_layer(self, layer, model):
         """Load an EoS from a local file or nucleardatapy."""
 
@@ -413,12 +325,141 @@ class setupCSEoS:
                 filepath = layer_dir / matching_files[0]
                 return self._load_eos_file( filepath=filepath, layer=layer, model_name=model )
         
-        if layer == "outer_core":
-            return self._load_from_nuda_betaeqi(layer, model)
-
+       
         
         raise FileNotFoundError(f"Model '{model}' was not found in '{layer_dir}'" )   
         
+            
+            
+    def _evaluate_eos_function(self, function, **parameters):
+        """
+        Evaluate a  function-based EoS.        
+        It works independently
+        Helpful, if we plan to include MIT, vMIT, NJL , vNJL, vQCD models for QM
+        or Any other agnostic approaches
+        The EoS model function, should be returning None, when fails:
+        The EoS model function, should also has den, pre and eps as minimal requirements        
+        """
+        
+        
+        eos_function_class = function(**parameters) 
+        eos_data_from_function=eos_function_class.get_eos()
+        ## For the simplicity, this code returns the whole functional object and we can collect the quantities, we need at the respective places.
+        ## For example: when agnostic model is used, we can return the random densities and speed of sounds are drawn
+        if eos_data_from_function is None:
+            return None
+            
+        for key in ("den", "pre", "eps"):
+                if not hasattr(eos_function_class, key) or getattr(eos_function_class, key) is None:
+                    raise ValueError( f"Function '{extrapolation_function_name}' did not provide a valid '{key}'.")
+
+                    
+            
+        return eos_function_class
+            
+    def _load_from_nuda_betaeqi(self, layer, eos_param=None, model=None):
+
+        if eos_param is None:
+            raise ValueError("No EoS parameter was provided.")
+
+        eos_param_name = eos_param.strip().lower()
+
+        
+
+        param = None
+        model_for_nuda = None
+        model_types, _ = nuda.matter.matter_models()
+
+        # First, try the specified model, if provided.
+        if model is not None and model.strip():
+
+            for model_type in model_types:
+
+                if model_type.lower() == model.strip().lower():
+
+                    params, params_lower = nuda.matter.matter_esym_params(model=model_type)
+
+                    if eos_param_name in params_lower:
+                        index = params_lower.index(eos_param_name)
+                        param = params[index]
+                        model_for_nuda = model_type
+                    else:
+                        raise ValueError(
+                            f"Parameter '{eos_param}' not found in model '{model_type}'.\n"
+                            f"Available parameters in model '{model_type}': {params}\n"
+                            f"Available models and parameters for outer_core:\n"
+                            f"{nuda.eos.available_modelsi('outer_core')}"
+                        )
+                    break
+                    
+            else:
+                raise ValueError(
+                    f"Model '{model}' is not available in nucleardatapy.\n"
+                    f"Available models are:\n{model_types}\n"
+                    f"Available models and parameters for outer_core:\n"
+                            f"{nuda.eos.available_modelsi('outer_core')}"
+                )
+                
+                    
+                    
+
+        # If not found, search all available model types.
+        if param is None:
+            
+
+            
+            #
+            for model_type in model_types:
+
+                params, params_lower = nuda.matter.matter_esym_params( model=model_type)
+
+                if eos_param_name in params_lower:
+
+                    index = params_lower.index(eos_param_name)
+
+                    param = params[index]
+                    model_for_nuda = model_type
+
+                    if model is not None and model.strip():
+                        print(f"Parameter '{param}' not found in '{model}'. "f"Using '{model_type}' instead.")
+
+                    break
+
+        # Raise an error if no model contains the parameter.
+        if param is None or model_for_nuda is None:
+
+            raise ValueError(f"No nucleardatapy EoS model found for parameter '{eos_param}'.")
+
+        # Construct the EoS.
+        eos_beta = nuda.eos.setupAMBeqi(param=param,model=model_for_nuda)
+
+        if not hasattr(eos_beta, 'den') or getattr(eos_beta, 'den') is None:
+            raise ValueError(f"Invalid densities for model '{eos_param}'.")
+            
+        if not hasattr(eos_beta, 'pre_tot') or getattr(eos_beta, 'pre_tot') is None:
+            raise ValueError(f"Invalid pressure for model '{eos_param}'.")
+        if not hasattr(eos_beta, 'eps_tot') or getattr(eos_beta, 'eps_tot') is None:
+            raise ValueError(f"Invalid energy density for model '{eos_param}'.")
+
+        # Return only the required arrays.
+        if not self.full_outputs:
+            return {"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
+        
+        if self.full_outputs:
+            df={"den":eos_beta.den,"pre":eos_beta.pre_tot,"eps":eos_beta.eps_tot}
+            df["rho"]=eos_beta.eps_tot
+            self.boundaries_from_data[layer] = {key: [np.min(df[key].copy()), np.max(df[key].copy())] for key in ("den", "pre", "rho", "eps")}        
+            return pd.DataFrame(df)
+        return None
+
+        #return pd.DataFrame(df)        
+        
+        
+        
+        
+        
+    
+   
     
     
     
@@ -432,9 +473,9 @@ class setupCSEoS:
         config = self.eos_layers[layer]
         
         if isinstance(config, str):
-            config = {"model": config}  # if the user gives {outer_core :"1994-APR"}, this means the code take this a model for outer core
+            config = {"param": config}  # if the user gives {outer_core :"1994-APR"}, this means the code take this a model for outer core
 
-        model = config.get("model")
+        param= config.get("param")
        
 
         
@@ -443,19 +484,44 @@ class setupCSEoS:
         df = None
 
         
-        if model:
+        if param:
+            #print(param)
+        
+            layer_dir = self.base_dir / layer
+
+            if layer_dir.is_dir():
+                matching_files =[]
+                for filepath in layer_dir.iterdir():
+                    if filepath.is_file()   and filepath.stem.startswith(param)    and filepath.suffix == ".csv":
+                        matching_files.append(filepath.name)
+                
+                
+                if len(matching_files) > 1:
+                    raise ValueError(f"Multiple files found for '{model}' in {layer_dir}")
+                
+                if matching_files:
+                    filepath = layer_dir / matching_files[0]
+                    data=self._load_eos_file( filepath=filepath, layer=layer, model_name=param )
+                    #print(data)
+                
+                else :
+                    param= config.get("param")
+                    model = config.get("model")
+
+                    data = self._load_from_nuda_betaeqi(layer=layer,eos_param=param,model=model)
+                    
         
         
-            data = self._load_layer(layer, model)
-            df = data if isinstance(data, pd.DataFrame) else None
+            #data = self._load_layer(layer, param)
+            
+            df = data.copy() if isinstance(data, pd.DataFrame) else pd.DataFrame(data)
+           
 
             if isinstance(data, pd.DataFrame):
                 eos_data_file = {key: data[key].to_numpy(copy=True)  for key in ("den", "pre", "eps")   if key in data.columns }
             else:
                 eos_data_file = { key: np.asarray(data[key])  for key in ("den", "pre", "eps") if key in data }
-            data = self._load_layer(layer, model)
-            df = data.copy() if isinstance(data, pd.DataFrame) else pd.DataFrame(data)
-
+            
             for key in ("den", "pre", "eps"):
                 if key not in eos_data_file:
                     raise ValueError(f"Missing '{key}' in the loaded outer-core EoS.")
@@ -466,21 +532,21 @@ class setupCSEoS:
             if len(eos_data_file["den"]) == 0:
                 raise ValueError("The loaded outer-core EoS is empty.")
 
-            eos_data_file = { key: df[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
+            #eos_data_file = { key: df[key].to_numpy(copy=True) for key in ("den", "pre", "eps") }
 
         
-        function_name = config.get("function")
+        extrapolation_function_name = config.get("extrapolation_function")
         
-        if function_name:
-            function_name = function_name.strip().lower()
+        if extrapolation_function_name:
+            extrapolation_function_name = extrapolation_function_name.strip().lower()
 
-            if function_name not in self.agnostic_models:
-                raise ValueError(f"Unknown function '{function_name}' Available functions: {list(self.agnostic_models)}")
+            if extrapolation_function_name not in self.agnostic_extrapolation_functions:
+                raise ValueError(f"Unknown function '{extrapolation_function_name}' Available functions: {list(self.agnostic_extrapolation_functions)}")
 
-            parameters = dict(config.get("parameters") or {})
+            parameters = dict(config.get("extrapolation_parameters") or {})
 
             # Prepare transition-point parameters when stitching
-            if eos_data_file is not None and function_name == "random_speed_of_sound":
+            if eos_data_file is not None and extrapolation_function_name == "csm_random":
 
                 den = eos_data_file["den"]
                 eps = eos_data_file["eps"]
@@ -492,15 +558,17 @@ class setupCSEoS:
                 if den_tr is None:
                     den_tr = den[-1]
                     eps_tr, pre_tr = eps[-1], pre[-1]
+                elif den_tr > den[-1]:
+                    raise ValueError(f"Transition density: {den_tr} {self.den_unit} > Maximum density of outer core model {den[-1]}{self.den_unit}\n")
                 else:
-                    den_tr = min(den_tr, den[-1])
+                    #den_tr = min(den_tr, den[-1])
                     eps_tr = np.exp(PchipInterpolator(np.log(den), np.log(eps))(np.log(den_tr)))
                     pre_tr = np.exp(PchipInterpolator(np.log(den), np.log(pre))(np.log(den_tr)))
                     
 
                 mu_tr = (eps_tr + pre_tr) / den_tr
 
-                logpre_logeps = PchipInterpolator(np.log(eps), np.log(pre))
+                logpre_logeps = CubicSpline(np.log(eps), np.log(pre))
                 cs2_tr = pre_tr / eps_tr* logpre_logeps.derivative()(np.log(eps_tr))
 
                 parameters.update({
@@ -514,7 +582,7 @@ class setupCSEoS:
 
             parameters["full_outputs"] = self.full_outputs
 
-            eos_function_object = self._evaluate_eos_function(self.agnostic_models[function_name], **parameters)
+            eos_function_object = self._evaluate_eos_function(self.agnostic_extrapolation_functions[extrapolation_function_name], **parameters)
             
             if eos_function_object is None:
                 if not self.full_outputs:
@@ -524,7 +592,7 @@ class setupCSEoS:
                 
             for key in ("den", "pre", "eps"):
                 if not hasattr(eos_function_object, key) or getattr(eos_function_object, key) is None:
-                    raise ValueError( f"Function '{function_name}' did not provide a valid '{key}'.")
+                    raise ValueError( f"Function '{extrapolation_function_name}' did not provide a valid '{key}'.")
                     
             
             pre =eos_function_object.pre        
@@ -532,7 +600,7 @@ class setupCSEoS:
             eps =eos_function_object.eps       
         
         
-            if function_name.strip().lower() == "random_speed_of_sound": # Can be used a json or h5 or pickle files if needed
+            if extrapolation_function_name.strip().lower() == "csm_random": # Can be used a json or h5 or pickle files if needed
                 self.den_random_extrapolation = eos_function_object.den_random[1:]
                 self.cs2_random_extrapolation = eos_function_object.cs2_random[1:]
                 self.den_tr=den_tr
@@ -560,9 +628,12 @@ class setupCSEoS:
                 mask = eos_data_file["den"] <= den_tr
                 
                 if not self.full_outputs:
+
+                    mask = eos_data_file["den"] < den_tr
                     mask_function = eos_function_data["den"] > den_tr
 
-                    eos_data = {key: np.concatenate(( eos_data_file[key][mask], eos_function_data[key][mask_function] ))  for key in ("den", "pre", "eps")}
+                    eos_data = { key: np.concatenate((eos_data_file[key][mask], [den_tr] if key == "den" else [pre_tr] if key == "pre" else [eps_tr],
+                            eos_function_data[key][mask_function])) for key in ("den", "pre", "eps") }
                     return eos_data
                     
                 if self.full_outputs:   
@@ -592,7 +663,7 @@ class setupCSEoS:
         elif eos_data_file is not None:
             eos_data = eos_data_file
         else:
-            raise ValueError( f"Outer-core EoS requires either 'model' or 'function'.")
+            raise ValueError( f"Outer-core EoS requires either 'model', 'param' or 'extrapolation_function'.")
 
         if not self.full_outputs:
             return eos_data
@@ -603,31 +674,7 @@ class setupCSEoS:
     
     
     
-    def _evaluate_eos_function(self, function, **parameters):
-        """
-        Evaluate a  function-based EoS.        
-        It works independently
-        Helpful, if we plan to include MIT, vMIT, NJL , vNJL, vQCD models for QM
-        or Any other agnostic approaches
-        The EoS model function, should be returning None, when fails:
-        The EoS model function, should also has den, pre and eps as minimal requirements        
-        """
-        
-        
-        eos_function_class = function(**parameters) 
-        eos_data_from_function=eos_function_class.get_eos()
-        ## For the simplicity, this code returns the whole functional object and we can collect the quantities, we need at the respective places.
-        ## For example: when agnostic model is used, we can return the random densities and speed of sounds are drawn
-        if eos_data_from_function is None:
-            return None
-            
-        for key in ("den", "pre", "eps"):
-                if not hasattr(eos_function_class, key) or getattr(eos_function_class, key) is None:
-                    raise ValueError( f"Function '{function_name}' did not provide a valid '{key}'.")
-
-                    
-            
-        return eos_function_class
+    
         
 
         
@@ -727,8 +774,7 @@ class setupCSEoS:
             den = np.asarray(values["den"])
             pre = np.asarray(values["pre"])            
             eps = np.asarray(values["eps"])
-            #mub = np.asarray(values["mub"])
-            #rho = np.asarray(values["rho"])
+            
 
             if len(den) == 0:
                 continue
@@ -786,6 +832,99 @@ class setupCSEoS:
         
         
     
+    
+    
+    def _get_layer_data(self, layer):
+        """Return the currently valid data for a layer."""
+
+        data = self.data[layer]
+
+        if not self.full_outputs:
+            return data
+        
+                 
+        data["rho"] = data["eps"].copy()
+        data["pre_cgs"]=np.asarray(data["pre"])*1/nuda.cst.cgsP2MeVfm3
+        data["rho_cgs"]=np.asarray(data["eps"])*1/nuda.cst.g_cm3toMeVfm3
+        data["eps_cgs"]=np.asarray(data["eps"])*nuda.cst.c_cgs**2
+        data["den_cgs"]=np.asarray(data["den"])*nuda.cst.cm3_to_fm3
+        
+
+        den_min, den_max = self.boundaries[layer]["den"]
+        
+        self._update_layer_boundaries(layer)
+        
+        
+
+        return data.loc[data["den"].between(den_min, den_max)].copy()
+                
+        
+    def _set_active_layers(self, include_ym=False):
+        """Set the valid layers from the constructed EoS. Currently works for nuclear and YM
+        
+         This is  just an internal function, latter being used to identify the phase transition layers        
+        """
+
+        layers = []
+
+        if include_ym:
+            phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"],)
+
+            for _, phase in phases:
+                if phase["type"].upper() == "YM":
+                    layers.append(f"inner_core_phase{phase['phase_number']}")
+
+        layers.extend(["outer_core","inner_crust","outer_crust","atmosphere",])
+
+    
+        self.active_layers = [layer for layer in layers  if getattr(self, f"den_{layer}", None) is not None    ]
+        
+            
+    def _update_layer_boundaries(self, layer):
+        """Update the boundaries of a layeral EoS."""
+
+        boundary = {}
+
+        for quantity in ("den", "pre", "rho", "eps"):
+            values = getattr(self, f"{quantity}_{layer}", None)
+
+            if values is None or len(values) == 0:
+                boundary[quantity] = np.array([])
+            else:
+                boundary[quantity] = np.array([ np.min(values),   np.max(values) ])
+
+        
+        den = getattr(self, f"den_{layer}", None)
+        pre = getattr(self, f"pre_{layer}", None)
+        eps = getattr(self, f"eps_{layer}", None)
+
+        if ( den is not None and pre is not None  and eps is not None  and len(den) > 0):
+            setattr(self, f"mub_{layer}", (eps + pre) / den)
+
+            boundary["mub"] = np.array([np.min(getattr(self, f"mub_{layer}")), np.max(getattr(self, f"mub_{layer}"))])
+        else:
+            boundary["mub"] = np.array([])
+
+        self.boundaries[layer] = boundary
+        
+    def _update_transition_densities(self):
+        """Calculate density boundaries between adjacent EoS layers."""
+
+        transitions = {
+            "den_cc_cgs": ("inner_crust", "outer_core"),
+            "den_iocrust_cgs": ("outer_crust", "inner_crust"),
+            "den_ac_cgs": ("atmosphere", "outer_crust")
+        }
+
+        for name, (layer1, layer2) in transitions.items():
+            den1 = self.boundaries.get(layer1, {}).get("den", np.array([]))
+            den2 = self.boundaries.get(layer2, {}).get("den", np.array([]))
+
+            value = nuda.cst.cm3_to_fm3*0.5 * (den1[1] + den2[0]) if len(den1) and len(den2) else None
+            #print(value)
+
+            setattr(self, name, value)
+    
     def EoS_nucleonic(self):
         """Construct the nucleonic EoS through the outer core, inner crust , outer crust, 'atmosphere'."""
 
@@ -799,6 +938,7 @@ class setupCSEoS:
             self._set_active_layers(include_ym=False)
             for layer in self.active_layers:
                 self.data_after_eos_construction[layer] = self._get_layer_data(layer)
+            self._update_transition_densities()
 
         return self
         
@@ -835,8 +975,8 @@ class setupCSEoS:
         if self.full_outputs:
             self.rho_tot=self.eps_tot
             self._set_active_layers(include_ym=True)
-
             self.data_after_eos_construction = {layer: self._get_layer_data(layer)  for layer in self.active_layers}
+            self._update_transition_densities()
 
         return self
         
@@ -881,32 +1021,7 @@ class setupCSEoS:
         
         
         
-    def _update_layer_boundaries(self, layer):
-        """Update the boundaries of a layeral EoS."""
-
-        boundary = {}
-
-        for quantity in ("den", "pre", "rho", "eps"):
-            values = getattr(self, f"{quantity}_{layer}", None)
-
-            if values is None or len(values) == 0:
-                boundary[quantity] = np.array([])
-            else:
-                boundary[quantity] = np.array([ np.min(values),   np.max(values) ])
-
-        
-        den = getattr(self, f"den_{layer}", None)
-        pre = getattr(self, f"pre_{layer}", None)
-        eps = getattr(self, f"eps_{layer}", None)
-
-        if ( den is not None and pre is not None  and eps is not None  and len(den) > 0):
-            setattr(self, f"mub_{layer}", (eps + pre) / den)
-
-            boundary["mub"] = np.array([np.min(getattr(self, f"mub_{layer}")), np.max(getattr(self, f"mub_{layer}"))])
-        else:
-            boundary["mub"] = np.array([])
-
-        self.boundaries[layer] = boundary
+    
         
     def _find_transition_layer(self, transition_density):
         """Find the active background layer containing the transition."""
@@ -988,6 +1103,7 @@ class setupCSEoS:
 
             self._update_layer_boundaries(layer)
             active_layers.append(layer)
+            #self._update_transition_densities()
 
         # Keep only layers with valid data.
         self.active_layers = active_layers
@@ -995,48 +1111,7 @@ class setupCSEoS:
         return transition_layer   
         
         
-    def _get_layer_data(self, layer):
-        """Return the currently valid data for a layer."""
-
-        data = self.data[layer]
-
-        if not self.full_outputs:
-            return data
-        
-                 
-        data["rho"] = data["eps"].copy()
-        data["pre_cgs"]=np.asarray(data["pre"])*1/nuda.cst.cgsP2MeVfm3
-        data["rho_cgs"]=np.asarray(data["eps"])*1/nuda.cst.g_cm3toMeVfm3
-        data["eps_cgs"]=np.asarray(data["eps"])*nuda.cst.c_cgs**2
-        data["den_cgs"]=np.asarray(data["den"])*nuda.cst.cm3_to_fm3
-        
-
-        den_min, den_max = self.boundaries[layer]["den"]
-
-        return data.loc[data["den"].between(den_min, den_max)].copy()
-                
-        
-    def _set_active_layers(self, include_ym=False):
-        """Set the valid layers from the constructed EoS. Currently works for nuclear and YM
-        
-         This is  just an internal function, latter being used to identify the phase transition layers        
-        """
-
-        layers = []
-
-        if include_ym:
-            phases = sorted(self.inner_core_phases.items(),key=lambda item: item[1]["phase_number"],)
-
-            for _, phase in phases:
-                if phase["type"].upper() == "YM":
-                    layers.append(f"inner_core_phase{phase['phase_number']}")
-
-        layers.extend(["outer_core","inner_crust","outer_crust","atmosphere",])
-
     
-        self.active_layers = [layer for layer in layers  if getattr(self, f"den_{layer}", None) is not None    ]
-        
-            
     
                 
         
@@ -1092,10 +1167,10 @@ class setupCSEoS:
         phase_key, qm_phase = qm_phases[0]
         
         if qm_phase['source'] == 'function':
-            QM_eos_function_name = qm_phase['model'].strip().lower()
+            QM_eos_extrapolation_function_name = qm_phase['model'].strip().lower()
             
-            if  QM_eos_function_name not in self.QMEoS_functions :
-                print(qm_phase['model'])
+            if  QM_eos_extrapolation_function_name not in self.QMEoS_functions :
+                #print(qm_phase['model'])
                 raise KeyError('In valid function for QM. See avilable models model.self.QMEoS_functions')
             parameters=qm_phase.get("parameters", {})
             
@@ -1126,13 +1201,13 @@ class setupCSEoS:
             
             
             
-            eos_QM=self._evaluate_eos_function(self.QMEoS_functions[QM_eos_function_name], **parameters)
+            eos_QM=self._evaluate_eos_function(self.QMEoS_functions[QM_eos_extrapolation_function_name], **parameters)
             if eos_QM is None:
                 print("Valid QM EoS not found. Returning the hadronic EoS")
                 return self
             for key in ("den", "pre", "eps"):
                 if not hasattr(eos_QM, key) or getattr(eos_QM, key) is None:
-                    raise ValueError(  f"Function '{function_name}' did not provide a valid '{key}'.")
+                    raise ValueError(  f"Function '{extrapolation_function_name}' did not provide a valid '{key}'.")
                     
                     
             eos_QM_data=pd.DataFrame({"den":eos_QM.den,"pre":eos_QM.pre,"eps":eos_QM.eps})            
@@ -1465,6 +1540,7 @@ class setupCSEoS:
             self.data_after_eos_construction['Mixed_Phase']=pd.DataFrame(df)
             self.boundaries['Mixed_Phase']={
                 key:np.array([ np.min(df[key]),   np.max(df[key]) ]) for key in ["den","pre","eps"]}
+            self._update_transition_densities()
             return self
 
 
@@ -1598,7 +1674,7 @@ class setupCSEoS:
         print("See the information of Compact star layers:")
         for key in self.layers:
             if self.eos_layers[key]:
-                print(f"layer: {key}, model: {self.eos_layers[key]} ")        
+                print(f"layer: {key}, model/param info: {self.eos_layers[key]} ")        
         
         self.Final_EoS()  
         
@@ -1611,23 +1687,34 @@ class setupCSEoS:
         
         
         
-        if self.full_outputs:   
-            print(f"*** \n Do not set full_outputs=True, if you need a fast construction of EoS and no other information\n*** ")
-           
-            print("Density Boundaries of each layers:")
+        if self.full_outputs:
+            print("***\nDo not set full_outputs=True if you need fast EoS construction without additional information.\n***")
+
+            print("Density Boundaries of each layer:")
             for layer in self.active_layers:
-                print(f"{layer} :")
-                print(f" minimum density= {self.boundaries[layer]['den'][0] } {self.den_unit}")
-                print(f" maximum density = {self.boundaries[layer]['den'][1] } {self.den_unit}")
+                print(f"{layer}:")
+                print(f"  Minimum density = {self.boundaries[layer]['den'][0]} {self.den_unit}")
+                print(f"  Maximum density = {self.boundaries[layer]['den'][1]} {self.den_unit}")
+
+            print("\nDensity at layer transitions:")
+            for name in ("den_cc_cgs", "den_iocrust_cgs", "den_ac_cgs"):
+                value = getattr(self, name, None)
+                if value is not None:
+                    print(f"  {name} = {value} in CGS")
+                
+            
             
 
-            print("*** \n Available quantities for the eos_object=eos.setupCSEoS(full_outputs=True) in each layer can be accessed using:")
-            print("   eos_objec.data_after_eos_construction[layer]")
+            print("*** \n Available quantities for the eos_class=eos.setupCSEoS(full_outputs=True) in each layer can be accessed using:")
+            print("   eos_class.data_after_eos_construction")
             print("***")
-            print("Example: To access all available quantities for the inner crust, use:")
-            print(" eos_objec.data_after_eos_construction['inner_crust']")
-            print("Available quantities for the inner crust are :")
-            print(self.data_after_eos_construction['inner_crust'])
+            print(" eos_class.data_after_eos_construction")
+            #print("Available quantities for the inner crust are :")
+            try:
+                from pprint import pprint
+                pprint(self.data_after_eos_construction,indent=1, compact=True, width=150, sort_dicts=False)
+            except:
+                print(self.data_after_eos_construction)
         
         if not self.full_outputs:
             print(f"*** \n Use full_outputs=True, during class initiation to see the boundaries and  available information in each layer\n ***")
@@ -1660,7 +1747,7 @@ class setupCSEoS:
             
         self.layers = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
         self.nucleonic_layers = ["outer_core","inner_crust","outer_crust","atmosphere"]
-        self.agnostic_models= {"random_speed_of_sound":nuda.eos.Random_speed_of_sound}
+        self.agnostic_extrapolation_functions= {"csm_random":nuda.eos.CSM_random}
         self.QMEoS_functions = {"qm_linear":nuda.eos.mix_phase_Classes.QM_linear} ## currently only applicable to QM_linear
 
 

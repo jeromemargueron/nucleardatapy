@@ -682,7 +682,7 @@ class setupMatter():
                 print(f'file_SM_csv: {file_SM_csv}')
                 if os.path.exists(file_SM_csv):
                     df=pd.read_csv(file_SM_csv,comment='#') #-> sm_den_nuc sm_e2a_int
-                    self.sm_den = df['sm_den_nuc']
+                    self.sm_den = df['sm_den_nuc']#.to_numpy()
                     self.sm_e2a_int = df['sm_e2a_int_nuc']
                     #self.sm_den, self.sm_e2a_int = np.loadtxt( file_SM, usecols=(0, 1), unpack=True )
                 print(f'file_NM_csv: {file_NM_csv}')

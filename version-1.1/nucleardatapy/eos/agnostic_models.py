@@ -1,10 +1,8 @@
 import numpy as np
-
-import numpy as np
 from scipy.integrate import cumulative_trapezoid
 from scipy.interpolate import interp1d, CubicSpline, PchipInterpolator
 
-class Random_speed_of_sound:
+class CSM_random:
     """
     Construct an EoS from a randomly generated piecewise-linear
     speed-of-sound-squared profile.
@@ -214,11 +212,12 @@ class Random_speed_of_sound:
         if self.eps is None:
             return None
         self.eos_data = { "den": self.den,"pre": self.pre,"eps": self.eps }
-        self.all_data=self.eos_data
-        self.all_data["cs2"]=self.cs2
-        self.all_data["mu"]= self.mu  
+        
         
         if self.full_outputs :
+            self.all_data=self.eos_data
+            self.all_data["cs2"]=self.cs2
+            self.all_data["mu"]= self.mu  
             return self.all_data
         else:
             return self.eos_data
