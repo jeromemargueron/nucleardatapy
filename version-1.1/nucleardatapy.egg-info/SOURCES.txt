@@ -1317,6 +1317,11 @@ version-1.1/nucleardatapy/data/LandauParameters/pheno/2023-BSkG3.dat
 version-1.1/nucleardatapy/data/astro/GW/GW170817.dat
 version-1.1/nucleardatapy/data/astro/GW/GW190425.dat
 version-1.1/nucleardatapy/data/astro/HESS/J1731-347.dat
+version-1.1/nucleardatapy/data/astro/MR/J0030+0451.dat
+version-1.1/nucleardatapy/data/astro/MR/J0437-4715.dat
+version-1.1/nucleardatapy/data/astro/MR/J0614-3329.dat
+version-1.1/nucleardatapy/data/astro/MR/J0740+6620.dat
+version-1.1/nucleardatapy/data/astro/MR/J1731-347.dat
 version-1.1/nucleardatapy/data/astro/NICER/J0030+0451.dat
 version-1.1/nucleardatapy/data/astro/NICER/J0437-4715.dat
 version-1.1/nucleardatapy/data/astro/NICER/J0614-3329.dat
