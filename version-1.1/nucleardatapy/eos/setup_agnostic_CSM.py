@@ -2,7 +2,7 @@ import numpy as np
 from scipy.integrate import cumulative_trapezoid
 from scipy.interpolate import interp1d, CubicSpline, PchipInterpolator
 
-class CSM_random:
+class CSMrandom:
     """
     Construct an EoS from a randomly generated piecewise-linear
     speed-of-sound-squared profile.
@@ -57,12 +57,13 @@ class CSM_random:
 
         self.n_random = kwargs.get("n_random", 11)
         self.n_eos = kwargs.get("n_eos", 60)
-        self.seed = kwargs.get("seed", None)
+        self.seed = kwargs.get("seed", 12)
 
         self.cs2_tr = kwargs.get("cs2_tr")
         self.mu_tr = kwargs.get("mu_tr")
         self.pre_tr = kwargs.get("pre_tr")
         self.eps_tr = kwargs.get("eps_tr")
+        self.density_mesh= kwargs.get("density_mesh",'fixed')
         self.eos_data = None
         
         self.full_outputs = kwargs.get("full_outputs")
@@ -85,8 +86,20 @@ class CSM_random:
             #raise ValueError("mu0,pre0,eps0, must be positive.")
         
         rng = np.random.Generator(np.random.PCG64(self.seed))
-
-        den_interior = rng.uniform(self.den_tr,self.den_max,self.n_random)
+        den_grid = np.linspace(self.den_tr,self.den_max,self.n_random)
+        if self.density_mesh=='full_random':
+            den_interior = rng.uniform(self.den_tr,self.den_max,self.n_random)
+        elif self.density_mesh=='fixed':        
+            den_interior = den_grid
+        elif self.density_mesh=='small_random':
+            delta_n=(self.den_max - self.den_tr)/self.n_random
+            den_inbetween = [den_k+(rng.uniform(0.,1.)-0.5)/(0.5)*delta_n *0.2 for den_k in den_grid[1:-1] ]
+            den_interior = np.sort(np.concatenate(([self.den_tr],np.array(den_inbetween),[self.den_max])))
+            
+            
+        else:
+            raise KeyError(f"The key {self.density_mesh} for 'density_mesh' is incorrect: Available keywords: random, fixed")
+            
 
         # Starting point is known.
         # The maximum-density endpoint is also included.
