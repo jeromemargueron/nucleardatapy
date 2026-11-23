@@ -78,7 +78,7 @@ class setupCSEoS:
             "atmosphere": "1949-FMT",
             "outer_crust": "1971-BPS",
             "inner_crust": "1971-BPS",
-            "outer_core": "1971-BPS-PNM",
+            "outer_core": {"param":"1971-BPS-PNM"},
             "inner_core": {},}
 
         self.eos_layers = eos_object
@@ -120,13 +120,26 @@ class setupCSEoS:
 
         self.eos_layers = deepcopy(self.default_eos)
         
-       
-
         if eos_input is not None:
 
             if not isinstance(eos_input, dict):
                 raise TypeError("eos_object must be a dictionary or None.")
-            self.eos_layers.update(eos_input)
+
+            for layer, config in eos_input.items():
+
+                if layer in self.eos_layers and isinstance(self.eos_layers[layer], dict) and isinstance(config, dict):
+                    self.eos_layers[layer].update(config)
+                else:
+                    self.eos_layers[layer] = config
+       
+
+        #if eos_input is not None:
+
+            #if not isinstance(eos_input, dict):
+                #raise TypeError("eos_object must be a dictionary or None.")
+            #self.eos_layers.update(eos_input)
+            
+        print(self.eos_layers)
 
         phases = self.eos_layers.get("inner_core", {})  
 
@@ -601,8 +614,8 @@ class setupCSEoS:
         
         
             if extrapolation_function_name.strip().lower() == "csm_random": # Can be used a json or h5 or pickle files if needed
-                self.den_random_extrapolation = eos_function_object.den_random[1:]
-                self.cs2_random_extrapolation = eos_function_object.cs2_random[1:]
+                self.den_random_extrapolation = eos_function_object.den_random#[]
+                self.cs2_random_extrapolation = eos_function_object.cs2_random#[1:]
                 self.den_tr=den_tr
                 self.cs2_tr=cs2_tr
                 self.pre_tr=pre_tr
@@ -1747,8 +1760,8 @@ class setupCSEoS:
             
         self.layers = ["inner_core","outer_core", "inner_crust","outer_crust","atmosphere"]
         self.nucleonic_layers = ["outer_core","inner_crust","outer_crust","atmosphere"]
-        self.agnostic_extrapolation_functions= {"csm_random":nuda.eos.CSM_random}
-        self.QMEoS_functions = {"qm_linear":nuda.eos.mix_phase_Classes.QM_linear} ## currently only applicable to QM_linear
+        self.agnostic_extrapolation_functions= {"csm_random":nuda.eos.CSMrandom}
+        self.QMEoS_functions = {"qm_linear":nuda.eos.QM_linear} ## currently only applicable to QM_linear
 
 
         for layer in self.layers:
