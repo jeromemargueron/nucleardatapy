@@ -7,24 +7,30 @@ import random
 
 import nucleardatapy as nuda
 
-def func_betaeq(var,*args):
+   
+def func_betaeq(var, *args):
     x_el, x_mu = var
-    #print(f'x_el:{x_el} x_mu:{x_mu}')
     den, esym = args
-    n_el = x_el * den
-    kFel = ( 3 * nuda.cst.pi2 * n_el )**nuda.cst.third
-    mu_el = nuda.cst.hbc * kFel
-    if mu_el < nuda.cst.mmuc2:
+    hbc, me, mmu = nuda.cst.hbc, nuda.cst.mec2, nuda.cst.mmuc2
+    kFel = (3*nuda.cst.pi2*x_el*den)**nuda.cst.third
+    
+    mu_el = np.sqrt((hbc*kFel)**2 + me**2)
+    
+    del_mass = nuda.cst.mnc2 - nuda.cst.mpc2
+
+    if mu_el < mmu:
         x_p = x_el
-        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_el * den )**nuda.cst.third
-        eq2 = 0.0
+        eq1 = 4*esym*(1-2*x_p) + del_mass - mu_el
+        eq2 = x_mu                      # pins x_mu = 0, well-posed
+        
     else:
         x_p = x_el + x_mu
-        eq1 = 4 * esym * (1-2*x_p) - nuda.cst.hbc * ( 3 * nuda.cst.pi2 * x_el * den )**nuda.cst.third
-        n_mu = x_mu * den
-        kFmu = ( 3 * nuda.cst.pi2 * n_mu )**nuda.cst.third
-        eq2 = kFmu - math.sqrt( kFel**2 - (nuda.cst.mmuc2/nuda.cst.hbc)**2 )
-    return (eq1,eq2)
+        eq1 = 4*esym*(1-2*x_p) + del_mass - mu_el
+        kFmu2_betaeq = kFel**2 + (me**2 - mmu**2)/hbc**2
+        
+        kFmu_sol= (3*nuda.cst.pi2*x_mu*den)**nuda.cst.third
+        eq2 = kFmu_sol**2 - kFmu2_betaeq
+    return (eq1, eq2)
 
 class setupAMBeqi():
     """
@@ -137,7 +143,7 @@ class setupAMBeqi():
             self.e2a_mu = self.x_mu * lep.e2n_mu
             self.e2a_int_mu = self.e2a_mu - self.x_mu * nuda.cst.mmuc2
             self.e2a_lep = self.x_lep * lep.e2n_lep
-            self.eps_lep = self.e2a_lep / self.den
+            self.eps_lep = self.e2a_lep * self.den
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
@@ -156,18 +162,14 @@ class setupAMBeqi():
             self.h2v_nuc = self.h2a_nuc * self.den
             self.h2v_tot = self.h2a_tot * self.den
             # sound speed self.cs2
-            #x = np.insert(self.den, 0, 0.0)
-            #y = np.insert(self.pre_lep, 0, 0.0)
-            x = np.array(self.den)
-            y = np.array(self.pre_lep)
+            x = np.insert(self.den, 0, 0.0)
+            y = np.insert(self.pre_lep, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_lep = cs_pre(self.den, 1) / self.h2a_lep
-            y = np.array(self.pre_nuc)
-            #y = np.insert(self.pre_nuc, 0, 0.0)
+            y = np.insert(self.pre_nuc, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_nuc = cs_pre(self.den, 1) / self.h2a_nuc
-            #y = np.insert(self.pre_tot, 0, 0.0)
-            y = np.array(self.pre_tot)
+            y = np.insert(self.pre_tot, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_tot = cs_pre(self.den, 1) / self.h2a_tot
             #            #
@@ -385,7 +387,7 @@ class setupAMBeq():
             self.e2a_mu = self.x_mu * lep.e2n_mu
             self.e2a_int_mu = self.e2a_mu - self.x_mu * nuda.cst.mmuc2
             self.e2a_lep = self.x_lep * lep.e2n_lep
-            self.eps_lep = self.e2a_lep / self.den
+            self.eps_lep = self.e2a_lep * self.den
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
