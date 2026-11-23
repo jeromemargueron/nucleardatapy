@@ -154,14 +154,18 @@ class setupAMLeqi():
             self.h2v_nuc = self.h2a_nuc * self.den
             self.h2v_tot = self.h2a_tot * self.den
             # sound speed self.cs2
-            x = np.insert(self.den, 0, 0.0)
-            y = np.insert(self.pre_lep, 0, 0.0)
+            #x = np.insert(self.den, 0, 0.0)
+            #y = np.insert(self.pre_lep, 0, 0.0)
+            x = np.array(self.den)
+            y = np.array(self.pre_lep)
             cs_pre = CubicSpline(x, y)
             self.cs2_lep = cs_pre(self.den, 1) / self.h2a_lep
-            y = np.insert(self.pre_nuc, 0, 0.0)
+            #y = np.insert(self.pre_nuc, 0, 0.0)
+            y = np.array(self.pre_nuc)
             cs_pre = CubicSpline(x, y)
             self.cs2_nuc = cs_pre(self.den, 1) / self.h2a_nuc
-            y = np.insert(self.pre_tot, 0, 0.0)
+            #y = np.insert(self.pre_tot, 0, 0.0)
+            y = np.array(self.pre_tot)
             cs_pre = CubicSpline(x, y)
             self.cs2_tot = cs_pre(self.den, 1) / self.h2a_tot
             #            #

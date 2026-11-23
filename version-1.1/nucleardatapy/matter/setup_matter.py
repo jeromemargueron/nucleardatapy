@@ -508,28 +508,44 @@ class setupMatter():
             self.nm_eps = self.nm_e2a * self.nm_den
             #self.sm_kf = self.sm_kfn
             # pressure in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_e2a_int, 0, 0.0 )
-            cs_sm_e2a = CubicSpline( x, y )
-            self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1) )
+            #x = np.insert( self.sm_den, 0, 0.0 )
+            #y = np.insert( self.sm_e2a_int, 0, 0.0 )
+            #cs_sm_e2a = CubicSpline( x, y )
+            #self.sm_pre = np.array( self.sm_den**2 * cs_sm_e2a( self.sm_den, 1) )
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_eps)
+            cs_eps = CubicSpline(np.log(x), np.log(y))
+            self.sm_pre = np.array( ( cs_eps.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_eps(np.log(x))) )
             # pressure in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_e2a_int, 0, 0.0 )
-            cs_nm_e2a = CubicSpline( x, y )
-            self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1) )
+            #x = np.insert( self.nm_den, 0, 0.0 )
+            #y = np.insert( self.nm_e2a_int, 0, 0.0 )
+            #cs_nm_e2a = CubicSpline( x, y )
+            #self.nm_pre = np.array( self.nm_den**2 * cs_nm_e2a( self.nm_den, 1) )
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_eps)
+            cs_eps = CubicSpline(np.log(x), np.log(y))
+            self.nm_pre = np.array( ( cs_eps.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_eps(np.log(x))) )
             # enthalpy
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed in SM
-            x = np.insert(self.sm_den, 0, 0.0)
-            y = np.insert(self.sm_pre, 0, 0.0)
-            cs_sm_pre = CubicSpline(x, y)
-            self.sm_cs2 = cs_sm_pre(self.sm_den, 1) / self.sm_h2a
+            #x = np.insert(self.sm_den, 0, 0.0)
+            #y = np.insert(self.sm_pre, 0, 0.0)
+            #cs_sm_pre = CubicSpline(x, y)
+            #self.sm_cs2 = cs_sm_pre(self.sm_den, 1) / self.sm_h2a
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.sm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.sm_h2a
             # sound speed in NM
-            x = np.insert(self.nm_den, 0, 0.0)
-            y = np.insert(self.nm_pre, 0, 0.0)
-            cs_nm_pre = CubicSpline(x, y)
-            self.nm_cs2 = cs_nm_pre(self.nm_den, 1) / self.nm_h2a
+            #x = np.insert(self.nm_den, 0, 0.0)
+            #y = np.insert(self.nm_pre, 0, 0.0)
+            #cs_nm_pre = CubicSpline(x, y)
+            #self.nm_cs2 = cs_nm_pre(self.nm_den, 1) / self.nm_h2a
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.nm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.nm_h2a
             #
         elif self.model_lo == 'eskyrme':
             #
@@ -556,15 +572,23 @@ class setupMatter():
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            #x = np.insert( self.sm_den, 0, 0.0 )
+            #y = np.insert( self.sm_pre, 0, 0.0 )
+            #cs_sm_pre = CubicSpline( x, y )
+            #self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.sm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.sm_h2a
             # sound speed in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #x = np.insert( self.nm_den, 0, 0.0 )
+            #y = np.insert( self.nm_pre, 0, 0.0 )
+            #cs_nm_pre = CubicSpline( x, y )
+            #self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.nm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.nm_h2a
             #
         elif self.model_lo == 'gogny':
             #
@@ -594,15 +618,23 @@ class setupMatter():
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            #x = np.insert( self.sm_den, 0, 0.0 )
+            #y = np.insert( self.sm_pre, 0, 0.0 )
+            #cs_sm_pre = CubicSpline( x, y )
+            #self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.sm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.sm_h2a
             # sound speed in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #x = np.insert( self.nm_den, 0, 0.0 )
+            #y = np.insert( self.nm_pre, 0, 0.0 )
+            #cs_nm_pre = CubicSpline( x, y )
+            #self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.nm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.nm_h2a
             #
         elif self.model_lo == 'ddrh':
             #
@@ -624,15 +656,23 @@ class setupMatter():
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            #x = np.insert( self.sm_den, 0, 0.0 )
+            #y = np.insert( self.sm_pre, 0, 0.0 )
+            #cs_sm_pre = CubicSpline( x, y )
+            #self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.sm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.sm_h2a
             # sound speed in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #x = np.insert( self.nm_den, 0, 0.0 )
+            #y = np.insert( self.nm_pre, 0, 0.0 )
+            #cs_nm_pre = CubicSpline( x, y )
+            #self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.nm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.nm_h2a
             #
         elif self.model_lo == 'ddrhf':
             #
@@ -654,15 +694,23 @@ class setupMatter():
             self.sm_h2a = self.sm_e2a + self.sm_pre / self.sm_den
             self.nm_h2a = self.nm_e2a + self.nm_pre / self.nm_den
             # sound speed in SM
-            x = np.insert( self.sm_den, 0, 0.0 )
-            y = np.insert( self.sm_pre, 0, 0.0 )
-            cs_sm_pre = CubicSpline( x, y )
-            self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            #x = np.insert( self.sm_den, 0, 0.0 )
+            #y = np.insert( self.sm_pre, 0, 0.0 )
+            #cs_sm_pre = CubicSpline( x, y )
+            #self.sm_cs2 = cs_sm_pre( self.sm_den, 1) / self.sm_h2a
+            x = np.array(self.sm_den)
+            y = np.array(self.sm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.sm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.sm_h2a
             # sound speed in NM
-            x = np.insert( self.nm_den, 0, 0.0 )
-            y = np.insert( self.nm_pre, 0, 0.0 )
-            cs_nm_pre = CubicSpline( x, y )
-            self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            #x = np.insert( self.nm_den, 0, 0.0 )
+            #y = np.insert( self.nm_pre, 0, 0.0 )
+            #cs_nm_pre = CubicSpline( x, y )
+            #self.nm_cs2 = cs_nm_pre( self.nm_den, 1) / self.nm_h2a
+            x = np.array(self.nm_den)
+            y = np.array(self.nm_pre)
+            cs_pre = CubicSpline(np.log(x), np.log(y))
+            self.nm_cs2 = np.array( ( cs_pre.derivative()(np.log(x)) - 1.0 ) * np.exp(cs_pre(np.log(x))) ) / self.nm_h2a
             #
         elif self.model_lo == 'var':
             #
