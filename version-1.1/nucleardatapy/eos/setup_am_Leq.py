@@ -135,7 +135,7 @@ class setupAMLeqi():
             self.e2a_mu = self.x_mu * lep.e2n_mu
             self.e2a_int_mu = self.e2a_mu - self.x_mu * nuda.cst.mmuc2
             self.e2a_lep = self.x_lep * lep.e2n_lep
-            self.eps_lep = self.e2a_lep / self.den
+            self.eps_lep = self.e2a_lep * self.den
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
@@ -154,18 +154,14 @@ class setupAMLeqi():
             self.h2v_nuc = self.h2a_nuc * self.den
             self.h2v_tot = self.h2a_tot * self.den
             # sound speed self.cs2
-            #x = np.insert(self.den, 0, 0.0)
-            #y = np.insert(self.pre_lep, 0, 0.0)
-            x = np.array(self.den)
-            y = np.array(self.pre_lep)
+            x = np.insert(self.den, 0, 0.0)
+            y = np.insert(self.pre_lep, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_lep = cs_pre(self.den, 1) / self.h2a_lep
-            #y = np.insert(self.pre_nuc, 0, 0.0)
-            y = np.array(self.pre_nuc)
+            y = np.insert(self.pre_nuc, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_nuc = cs_pre(self.den, 1) / self.h2a_nuc
-            #y = np.insert(self.pre_tot, 0, 0.0)
-            y = np.array(self.pre_tot)
+            y = np.insert(self.pre_tot, 0, 0.0)
             cs_pre = CubicSpline(x, y)
             self.cs2_tot = cs_pre(self.den, 1) / self.h2a_tot
             #            #
@@ -374,7 +370,7 @@ class setupAMLeq():
             self.e2a_mu = self.x_mu * lep.e2n_mu
             self.e2a_int_mu = self.e2a_mu - self.x_mu * nuda.cst.mmuc2
             self.e2a_lep = self.x_lep * lep.e2n_lep
-            self.eps_lep = self.e2a_lep / self.den
+            self.eps_lep = self.e2a_lep * self.den
             self.pre_el = lep.pre_el
             self.pre_mu = lep.pre_mu
             self.pre_lep = lep.pre_el + lep.pre_mu
