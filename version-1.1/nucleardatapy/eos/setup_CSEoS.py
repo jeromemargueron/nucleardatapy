@@ -139,7 +139,7 @@ class setupCSEoS:
                 #raise TypeError("eos_object must be a dictionary or None.")
             #self.eos_layers.update(eos_input)
             
-        print(self.eos_layers)
+        if nuda.env.verb:print(self.eos_layers)
 
         phases = self.eos_layers.get("inner_core", {})  
 
